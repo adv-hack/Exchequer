@@ -9,15 +9,22 @@ object frBase: TfrBase
     Top = 48
     object aExpand: TAction
       Caption = 'Expand All'
+      ShortCut = 24645
       OnExecute = aExpandExecute
     end
     object aCollapse: TAction
       Caption = 'Collapse All'
+      ShortCut = 24643
       OnExecute = aCollapseExecute
     end
     object aBestFit: TAction
       Caption = 'Apply Best Fit'
       OnExecute = aBestFitExecute
+    end
+    object aRefresh: TAction
+      Caption = 'Refresh'
+      ShortCut = 116
+      OnExecute = aRefreshExecute
     end
   end
   object pmMain: TPopupMenu
@@ -34,6 +41,9 @@ object frBase: TfrBase
     end
     object ApplyBestFit1: TMenuItem
       Action = aBestFit
+    end
+    object Refresh1: TMenuItem
+      Action = aRefresh
     end
   end
 end

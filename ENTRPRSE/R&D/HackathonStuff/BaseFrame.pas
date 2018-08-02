@@ -17,9 +17,12 @@ type
     aBestFit: TAction;
     ApplyBestFit1: TMenuItem;
     N1: TMenuItem;
+    aRefresh: TAction;
+    Refresh1: TMenuItem;
     procedure aExpandExecute(Sender: TObject);
     procedure aCollapseExecute(Sender: TObject);
     procedure aBestFitExecute(Sender: TObject);
+    procedure aRefreshExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +31,7 @@ type
     procedure ExpandAll(); virtual; abstract;
     procedure CollapseAll(); virtual; abstract;
     procedure ApplyBestFit(); virtual; abstract;
+    procedure RefreshGrid(); virtual; abstract;
   end;
 
 implementation
@@ -57,6 +61,11 @@ end;
 procedure TfrBase.aBestFitExecute(Sender: TObject);
 begin
   ApplyBestFit;
+end;
+
+procedure TfrBase.aRefreshExecute(Sender: TObject);
+begin
+  RefreshGrid;
 end;
 
 end.

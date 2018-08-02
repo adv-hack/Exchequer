@@ -40,34 +40,89 @@ inherited frDataGrid: TfrDataGrid
         OptionsView.Navigator = True
         OptionsView.NavigatorOffset = 60
       end
+      object vDetail: TcxGridDBTableView
+        NavigatorButtons.ConfirmDelete = False
+        NavigatorButtons.First.Visible = True
+        NavigatorButtons.PriorPage.Visible = True
+        NavigatorButtons.Prior.Visible = True
+        NavigatorButtons.Next.Visible = True
+        NavigatorButtons.NextPage.Visible = True
+        NavigatorButtons.Last.Visible = True
+        NavigatorButtons.Insert.Visible = False
+        NavigatorButtons.Append.Visible = False
+        NavigatorButtons.Delete.Visible = False
+        NavigatorButtons.Edit.Visible = False
+        NavigatorButtons.Post.Visible = False
+        NavigatorButtons.Cancel.Visible = True
+        NavigatorButtons.Refresh.Visible = False
+        NavigatorButtons.SaveBookmark.Visible = False
+        NavigatorButtons.GotoBookmark.Visible = False
+        NavigatorButtons.Filter.Visible = True
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.CancelOnExit = False
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsSelection.MultiSelect = True
+        OptionsView.Navigator = True
+        OptionsView.NavigatorOffset = 60
+      end
       object lvlMain: TcxGridLevel
         GridView = vMain
+        object lvlDetail: TcxGridLevel
+          GridView = vDetail
+          Visible = False
+        end
       end
     end
   end
   inherited alMain: TActionList
     Top = 56
-    object aColumnCust: TAction
+    object aColumnCust: TAction [3]
       Caption = 'Column Customization'
     end
-    object aExportToExcel: TAction
+    object aExportToExcel: TAction [4]
       Caption = 'Export To Excel'
       OnExecute = aExportToExcelExecute
     end
-    object aExportToHtml: TAction
+    object aExportToHtml: TAction [5]
       Caption = 'Export To HTML'
       OnExecute = aExportToHtmlExecute
     end
-    object aExportToXML: TAction
+    object aExportToXML: TAction [6]
       Caption = 'Export To XML'
       OnExecute = aExportToXMLExecute
     end
-    object aExportToText: TAction
+    object aExportToText: TAction [7]
       Caption = 'Export To Text'
       OnExecute = aExportToTextExecute
     end
+    object aShowDetail: TAction [8]
+      Caption = 'Show Detail'
+      OnExecute = aShowDetailExecute
+    end
   end
   inherited pmMain: TPopupMenu
+    inherited ApplyBestFit1: TMenuItem [0]
+    end
+    object N3: TMenuItem [1]
+      Caption = '-'
+    end
+    inherited CollapseAll1: TMenuItem [2]
+    end
+    inherited CollapseAll2: TMenuItem [3]
+    end
+    inherited N1: TMenuItem [4]
+    end
+    object mniShowDetail: TMenuItem [5]
+      Action = aShowDetail
+    end
     object N2: TMenuItem
       Caption = '-'
     end

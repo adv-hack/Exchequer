@@ -27,13 +27,20 @@ type
     ExportToHTML1: TMenuItem;
     ExportToText1: TMenuItem;
     ExportToXML1: TMenuItem;
+    lvlDetail: TcxGridLevel;
+    vDetail: TcxGridDBTableView;
+    aShowDetail: TAction;
+    mniShowDetail: TMenuItem;
+    N3: TMenuItem;
     procedure aExportToTextExecute(Sender: TObject);
     procedure aExportToXMLExecute(Sender: TObject);
     procedure aExportToHtmlExecute(Sender: TObject);
     procedure aExportToExcelExecute(Sender: TObject);
+    procedure aShowDetailExecute(Sender: TObject);
   private
     FAutoloadColumn: Boolean;
     procedure SetAutoloadColumn(const Value: Boolean);
+    procedure InitColumns(aView: TcxGridDBTableView);
     { Private declarations }
   public
     { Public declarations }
@@ -44,6 +51,7 @@ type
     procedure ExpandAll(); override;
     procedure CollapseAll(); override;
     procedure ApplyBestFit(); override;
+    procedure RefreshGrid(); override;
 
 
     procedure InitGridColumns();
@@ -98,26 +106,29 @@ begin
 
 end;
 
-procedure TfrDataGrid.InitGridColumns;
 
+procedure TfrDataGrid.InitColumns(aView : TcxGridDBTableView );
 var
   I: Integer;
   AItem: TcxCustomGridTableItem;
 begin
   inherited;
+  if aView.DataController.DataSource = nil then Exit;
+  if aView.DataController.DataSource.DataSet = nil then Exit;
+
   if AutoloadColumn then
   begin
-    if vMain.DataController.DataSource.DataSet = nil then Exit;
-    
+    if aView.DataController.DataSource.DataSet = nil then Exit;
+
     ShowHourglassCursor;
     try
-      vMain.BeginUpdate;
+      aView.BeginUpdate;
       try
-        with vMain.DataController.DataSource.DataSet  do
+        with aView.DataController.DataSource.DataSet  do
           for I := 0 to FieldCount - 1 do
           begin
             if Fields[I].Visible then
-            begin 
+            begin
               AItem := vMain.CreateItem;
               with AItem do
               begin
@@ -130,11 +141,25 @@ begin
             end;
           end;
       finally
-        vMain.EndUpdate;
+        aView.EndUpdate;
       end;
     finally
       HideHourglassCursor;
     end;
+  end;
+end;
+
+
+
+procedure TfrDataGrid.InitGridColumns;
+var
+  I: Integer;
+  AItem: TcxCustomGridTableItem;
+begin
+  inherited;
+  if AutoloadColumn then
+  begin
+    InitColumns(vMain);
   end;
 end;
 
@@ -151,7 +176,7 @@ begin
   SaveDialog.Filter := 'Text file|*.txt';
   SaveDialog.DefaultExt := '.txt';
   SaveDialog.Execute;
-  
+
   if SaveDialog.FileName <> EmptyStr then
   begin
     ExportGrid4ToText(SaveDialog.FileName,grdMain);
@@ -196,6 +221,31 @@ begin
   if SaveDialog.FileName <> EmptyStr then
   begin
     ExportGrid4ToExcel(SaveDialog.FileName,grdMain);
+  end;
+end;
+
+procedure TfrDataGrid.aShowDetailExecute(Sender: TObject);
+begin
+  inherited;
+  lvlDetail.Visible := not lvlDetail.Visible;
+  mniShowDetail.Checked := lvlDetail.Visible;
+end;
+
+procedure TfrDataGrid.RefreshGrid;
+var
+  lRecNo : Integer;
+begin
+  inherited;
+  if vMain.DataController.DataSource = nil then Exit;
+  if vMain.DataController.DataSource.DataSet = nil then Exit;
+
+  with vMain.DataController.DataSource,DataSet do
+  begin
+    lRecNo := RecNo;
+    Close;
+    Open;
+    if DataSet.RecordCount >= lRecNo then
+      DataSet.RecNo := lRecNo;
   end;
 end;
 
