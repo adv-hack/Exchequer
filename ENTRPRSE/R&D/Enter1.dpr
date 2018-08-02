@@ -7,12 +7,7 @@ program Enter1;
 
 uses
   ShareMem,
-  madExcept,
-  madLinkDisAsm,
-  madListForms in '\Compon\madCollection\madExcept\Custom\madListForms.pas',
-  madListHardware,
-  madListProcesses,
-  madListModules,  
+  madListForms in 'W:\Compon\madCollection\madExcept\Custom\madListForms.pas',  
   {$IFDEF HTMLHELP}
     D6OnHelpFix,
     conHTMLHelp,
@@ -23,15 +18,15 @@ uses
   Windows,
   BtrvU2,
   ExWrap1U,
-  GFXUtil in  '\entrprse\funcs\GFXUtil.pas',{ - shared directory selection dialog}
-  APIUtil in  '\entrprse\funcs\APIUtil.pas',{ - shared directory selection dialog}
-  XPThemes in  '\entrprse\funcs\XPThemes.pas',{ - shared directory selection dialog}
-  CompUtil in  '\entrprse\MULTCOMP\CompUtil.pas',{ - shared directory selection dialog}
-  ENTLic2 in  '\entrprse\MULTCOMP\EntLic2.pas',{ - shared directory selection dialog}
-  SerialU in  '\entrprse\MULTCOMP\SerialU.pas',{ - shared directory selection dialog}
-  Crypto in  '\entrprse\MULTCOMP\Crypto.pas',{ - pword encryption routines}
-  FileUtil in '\entrprse\funcs\fileutil.pas',
-  StrUtil in '\entrprse\funcs\Strutil.pas',
+  GFXUtil in  'W:\entrprse\funcs\GFXUtil.pas',{ - shared directory selection dialog}
+  APIUtil in  'W:\entrprse\funcs\APIUtil.pas',{ - shared directory selection dialog}
+  XPThemes in  'W:\entrprse\funcs\XPThemes.pas',{ - shared directory selection dialog}
+  CompUtil in  'W:\entrprse\MULTCOMP\CompUtil.pas',{ - shared directory selection dialog}
+  ENTLic2 in  'W:\entrprse\MULTCOMP\EntLic2.pas',{ - shared directory selection dialog}
+  SerialU in  'W:\entrprse\MULTCOMP\SerialU.pas',{ - shared directory selection dialog}
+  Crypto in  'W:\entrprse\MULTCOMP\Crypto.pas',{ - pword encryption routines}
+  FileUtil in 'W:\entrprse\funcs\fileutil.pas',
+  StrUtil in 'W:\entrprse\funcs\Strutil.pas',
 
   {$IFDEF EXSQL}
     SQLCallerU,
@@ -52,8 +47,8 @@ uses
   MovWarnU in 'MovWarnU.pas' {MovWarnFrm},
   AllcWrnU in 'AllcWrnU.pas' {GenWarnFrm1},
 
-  Brand in '\entrprse\funcs\Brand.pas',
-  GmXML in '\compon\TGMXml\GmXml.pas',
+  Brand in 'W:\entrprse\funcs\Brand.pas',
+  GmXML in 'W:\compon\TGMXml\GmXml.pas',
 //  antLabel in '\COMPON\Standard\antLabel.pas',
 //  antDesc in '\COMPON\Standard\antDesc.pas',
 
@@ -65,9 +60,9 @@ uses
 
     PrntDlg2,
 
-    FaxIntO  in '\Entrprse\Fax\FaxIntO.Pas' ,
+    FaxIntO  in 'W:\Entrprse\Fax\FaxIntO.Pas' ,
 
-    BrwseDir in  '\entrprse\funcs\BrwseDir.pas',{ - shared directory selection dialog}
+    BrwseDir in  'W:\entrprse\funcs\BrwseDir.pas',{ - shared directory selection dialog}
 
     DLLInt,
 
@@ -82,43 +77,43 @@ uses
   {$ENDIF}
 
   {$IFDEF ADDNOMWIZARD}
-    AddNomWizard in '\Entrprse\AddNom\AddNomWizard.Pas' ,
-    AddNomProc in '\Entrprse\AddNom\AddNomProc.Pas' ,
-    NomLine in '\Entrprse\AddNom\NomLine.Pas' ,
-    NumEdit in '\Entrprse\AddNom\NumEdit.Pas' ,
-    IncVATRate in '\Entrprse\AddNom\IncVATRate.Pas' ,
-    AddNomWizCustom in '\Entrprse\AddNom\AddNomWizCustom.Pas' ,
-    EnterpriseBeta_tlb  in '\entrprse\COMTK\EnterpriseBeta_tlb.pas',{ - I/F for COMTK}
-    SecCodes in '\entrprse\COMTK\SecCodes.pas',{ }
-    EnterToTab in '\COMPON\Standard\EnterToTab.pas',
-    KeyUtils in '\COMPON\Standard\KeyUtils.pas',
-    Enterprise04_tlb  in '\entrprse\COMTK\Enterprise04_tlb.pas',{ - I/F for COMTK}
+    AddNomWizard in 'W:\Entrprse\AddNom\AddNomWizard.Pas' ,
+    AddNomProc in 'W:\Entrprse\AddNom\AddNomProc.Pas' ,
+    NomLine in 'W:\Entrprse\AddNom\NomLine.Pas' ,
+    NumEdit in 'W:\Entrprse\AddNom\NumEdit.Pas' ,
+    IncVATRate in 'W:\Entrprse\AddNom\IncVATRate.Pas' ,
+    AddNomWizCustom in 'W:\Entrprse\AddNom\AddNomWizCustom.Pas' ,
+    EnterpriseBeta_tlb  in 'W:\entrprse\COMTK\EnterpriseBeta_tlb.pas',{ - I/F for COMTK}
+    SecCodes in 'W:\entrprse\COMTK\SecCodes.pas',{ }
+    EnterToTab in 'W:\COMPON\Standard\EnterToTab.pas',
+    KeyUtils in 'W:\COMPON\Standard\KeyUtils.pas',
+    Enterprise04_tlb  in 'W:\entrprse\COMTK\Enterprise04_tlb.pas',{ - I/F for COMTK}
 
   {$ENDIF}
 
   {$IFDEF EBANK}
-    GetRecon In '\Entrprse\Banking\GetRecon.pas',
-    grpview In '\Entrprse\Banking\grpview.pas',
-    RecFind In '\Entrprse\Banking\RecFind.pas',
-    RecInp In '\Entrprse\Banking\RecInp.pas',
-    ReconObj In '\Entrprse\Banking\ReconObj.pas',
-    RecReprt In '\Entrprse\Banking\RecReprt.pas',
-    StatFilt In '\Entrprse\Banking\StatFilt.pas',
-    StatForm In '\Entrprse\Banking\StatForm.pas',
-    TranFile In '\Entrprse\Banking\TranFile.pas',
-    TransLst In '\Entrprse\Banking\TransLst.pas',
-    BankDetl In '\Entrprse\Banking\BankDetl.pas',
-    BankList In '\Entrprse\Banking\BankList.pas',
-    Csvp In '\Entrprse\Banking\Csvp.pas',
-    GLList In '\Entrprse\Banking\GLList.pas',
-    ImpObj In '\Entrprse\Banking\ImpObj.pas',
-    ImpProgf In '\Entrprse\Banking\ImpProgf.pas',
-    statprnt In '\Entrprse\Banking\statprnt.pas',
-    StatRef In '\Entrprse\Banking\StatRef.pas',
-    Existng In '\Entrprse\Banking\Existng.pas',
-    Filter In '\Entrprse\Banking\Filter.pas',
-    NomDefs In '\Entrprse\Banking\NomDefs.pas',
-    SQLQueries In '\Entrprse\Banking\SQLQueries.pas',
+    GetRecon In 'W:\Entrprse\Banking\GetRecon.pas',
+    grpview In 'W:\Entrprse\Banking\grpview.pas',
+    RecFind In 'W:\Entrprse\Banking\RecFind.pas',
+    RecInp In 'W:\Entrprse\Banking\RecInp.pas',
+    ReconObj In 'W:\Entrprse\Banking\ReconObj.pas',
+    RecReprt In 'W:\Entrprse\Banking\RecReprt.pas',
+    StatFilt In 'W:\Entrprse\Banking\StatFilt.pas',
+    StatForm In 'W:\Entrprse\Banking\StatForm.pas',
+    TranFile In 'W:\Entrprse\Banking\TranFile.pas',
+    TransLst In 'W:\Entrprse\Banking\TransLst.pas',
+    BankDetl In 'W:\Entrprse\Banking\BankDetl.pas',
+    BankList In 'W:\Entrprse\Banking\BankList.pas',
+    Csvp In 'W:\Entrprse\Banking\Csvp.pas',
+    GLList In 'W:\Entrprse\Banking\GLList.pas',
+    ImpObj In 'W:\Entrprse\Banking\ImpObj.pas',
+    ImpProgf In 'W:\Entrprse\Banking\ImpProgf.pas',
+    statprnt in 'W:\Entrprse\Banking\statprnt.pas',
+    StatRef in 'W:\Entrprse\Banking\StatRef.pas',
+    Existng in 'W:\Entrprse\Banking\Existng.pas',
+    Filter in 'W:\Entrprse\Banking\Filter.pas',
+    NomDefs in 'W:\Entrprse\Banking\NomDefs.pas',
+    SQLQueries in 'W:\Entrprse\Banking\SQLQueries.pas',
 
 
     {$IFNDEF ADDNOMWIZARD}
@@ -126,15 +121,15 @@ uses
     {$ENDIF}
   {$ENDIF}
 
-   CommsInt in '\Entrprse\EntComms\CommsInt.Pas' ,
+   CommsInt in 'W:\Entrprse\EntComms\CommsInt.Pas' ,
 
   {$IFDEF SY}
-    TermServ in  '\entrprse\funcs\TermServ.pas',{ - Terminal Server routines}
-    oMCMSec in '\entrprse\MULTCOMP\OMCMSec.pas',{ - shared directory selection dialog}
+    TermServ in 'W:\Entrprse\funcs\TermServ.pas',{ - Terminal Server routines}
+    oMCMSec in 'W:\Entrprse\MULTCOMP\OMCMSec.pas',{ - shared directory selection dialog}
 
     {$IFDEF BUREAU}
       {$IFNDEF ADDNOMWIZARD}
-        Enterprise04_tlb  in '\entrprse\COMTK\Enterprise04_tlb.pas',{ - I/F for COMTK}
+        Enterprise04_tlb  in 'W:\Entrprse\COMTK\Enterprise04_tlb.pas',{ - I/F for COMTK}
 
       {$ENDIF}
     {$ENDIF}
@@ -232,11 +227,11 @@ uses
     CISEDIWU,
     CISEDITU,
 
-    CISWrite in '\entrprse\CISXML\CISWrite.pas' {TCISMessageRec},
-    CISXCnst in '\entrprse\CISXML\CISXCnst.pas' ,
-    InternetFiling_TLB in '\entrprse\CISXML\InternetFiling_TLB.pas',
+    CISWrite in 'W:\Entrprse\CISXML\CISWrite.pas' {TCISMessageRec},
+    CISXCnst in 'W:\Entrprse\CISXML\CISXCnst.pas' ,
+    InternetFiling_TLB in 'W:\Entrprse\CISXML\InternetFiling_TLB.pas',
     //MSCorLib_TLB in '\FBI Release 1.0.5\Delphi Test Harness\MSCorLib_TLB.pas',
-    MSCorLib_TLB in '\entrprse\CISXML\MSCorLib_TLB.pas',
+    MSCorLib_TLB in 'W:\Entrprse\CISXML\MSCorLib_TLB.pas',
     CISXMLWU,
     CISXMLTU,
 
@@ -677,12 +672,12 @@ uses
     ESecMsgU,
     SetModU,
     SYSU3,
-    MCMFuncs in  '\entrprse\MULTCOMP\MCMFuncs.pas',{ - shared directory selection dialog}
-    ENTLic in  '\entrprse\MULTCOMP\EntLic.pas',{ - shared directory selection dialog}
+    MCMFuncs in 'W:\Entrprse\MULTCOMP\MCMFuncs.pas',{ - shared directory selection dialog}
+    ENTLic in 'W:\Entrprse\MULTCOMP\EntLic.pas',{ - shared directory selection dialog}
 
   {$ENDIF}
 
-  EntLicence in '\entrprse\drilldn\EntLicence.pas', {Lic/Branding Object}
+  EntLicence in 'W:\Entrprse\drilldn\EntLicence.pas', {Lic/Branding Object}
 
   {$IFDEF VAT}
     SetVATU,
@@ -720,92 +715,92 @@ uses
   {$ENDIF}
 
   // Consumer Ledger
-  oBtrieveFile in '\Entrprse\MultComp\oBtrieveFile.pas',
+  oBtrieveFile in 'W:\Entrprse\MultComp\oBtrieveFile.pas',
 
   // Account Multi-Contacts
-  oAccountContactBtrieveFile in '\Entrprse\R&D\AccountContacts\oAccountContactBtrieveFile.Pas',
-  oContactRoleBtrieveFile in '\Entrprse\R&D\AccountContacts\oContactRoleBtrieveFile.Pas',
-  oAccountContactRoleBtrieveFile in '\Entrprse\R&D\AccountContacts\oAccountContactRoleBtrieveFile.Pas',
-  AccountContactRoleUtil in '\Entrprse\R&D\AccountContacts\AccountContactRoleUtil.Pas',
-  custRolesFrame in '\Entrprse\R&D\AccountContacts\CustRolesframe.pas',
-  ContactsManager in '\Entrprse\R&D\AccountContacts\ContactsManager.pas',
-  ContactsManagerSQL in '\Entrprse\R&D\AccountContacts\ContactsManagerSQL.pas',
-  ContactsManagerPerv in '\Entrprse\R&D\AccountContacts\ContactsManagerPerv.pas',
-  ContactEditor in '\Entrprse\R&D\AccountContacts\ContactEditor.pas',
+  oAccountContactBtrieveFile in 'W:\Entrprse\R&D\AccountContacts\oAccountContactBtrieveFile.Pas',
+  oContactRoleBtrieveFile in 'W:\Entrprse\R&D\AccountContacts\oContactRoleBtrieveFile.Pas',
+  oAccountContactRoleBtrieveFile in 'W:\Entrprse\R&D\AccountContacts\oAccountContactRoleBtrieveFile.Pas',
+  AccountContactRoleUtil in 'W:\Entrprse\R&D\AccountContacts\AccountContactRoleUtil.Pas',
+  custRolesFrame in 'W:\Entrprse\R&D\AccountContacts\CustRolesframe.pas',
+  ContactsManager in 'W:\Entrprse\R&D\AccountContacts\ContactsManager.pas',
+  ContactsManagerSQL in 'W:\Entrprse\R&D\AccountContacts\ContactsManagerSQL.pas',
+  ContactsManagerPerv in 'W:\Entrprse\R&D\AccountContacts\ContactsManagerPerv.pas',
+  ContactEditor in 'W:\Entrprse\R&D\AccountContacts\ContactEditor.pas',
 
   // Prompt Payment Discount (v7.0.14)
-  PromptPaymentDiscountFuncs in '\Entrprse\Funcs\PromptPaymentDiscountFuncs.pas',
-  oSystemSetupBtrieveFile in '\SBSLib\Win\ExCommon\oSystemSetupBtrieveFile.pas',
-  oSystemSetup in '\SBSLib\Win\ExCommon\oSystemSetup.pas',
-  oPPDLedgerTransactions in '\Entrprse\R&D\PPD\oPPDLedgerTransactions.pas',
-  PPDLedgerF in '\Entrprse\R&D\PPD\PPDLedgerF.pas',
-  oTakePPD in '\Entrprse\R&D\PPD\oTakePPD.pas',
+  PromptPaymentDiscountFuncs in 'W:\Entrprse\Funcs\PromptPaymentDiscountFuncs.pas',
+  oSystemSetupBtrieveFile in 'W:\SBSLib\Win\ExCommon\oSystemSetupBtrieveFile.pas',
+  oSystemSetup in 'W:\SBSLib\Win\ExCommon\oSystemSetup.pas',
+  oPPDLedgerTransactions in 'W:\Entrprse\R&D\PPD\oPPDLedgerTransactions.pas',
+  PPDLedgerF in 'W:\Entrprse\R&D\PPD\PPDLedgerF.pas',
+  oTakePPD in 'W:\Entrprse\R&D\PPD\oTakePPD.pas',
 
   {$IFDEF SOP}
     // Order Payments
-    oOPVATPayBtrieveFile in '\Entrprse\R&D\OrderPayments\oOPVATPayBtrieveFile.pas',
-    oOPVATPayMemoryList in '\Entrprse\R&D\OrderPayments\oOPVATPayMemoryList.pas',
-    oCreditCardGateway in '\Entrprse\R&D\OrderPayments\oCreditCardGateway.pas',
-    OrderPaymentsInterfaces in '\Entrprse\R&D\OrderPayments\OrderPaymentsInterfaces.pas',
-    oOrderPaymentsBaseTransactionInfo in '\Entrprse\R&D\OrderPayments\oOrderPaymentsBaseTransactionInfo.pas',
-    oOrderPaymentsTransactionInfo in '\Entrprse\R&D\OrderPayments\oOrderPaymentsTransactionInfo.pas',
-    oOrderPaymentsTransactionPaymentInfo in '\Entrprse\R&D\OrderPayments\oOrderPaymentsTransactionPaymentInfo.pas',
-    RefundF in '\Entrprse\R&D\OrderPayments\RefundF.pas',
-    RefundPaymentFrame in '\Entrprse\R&D\OrderPayments\RefundPaymentFrame.pas',
-    RefundQuantityF in '\Entrprse\R&D\OrderPayments\RefundQuantityF.pas',
-    oOrderPaymentsRefundManager in '\Entrprse\R&D\OrderPayments\oOrderPaymentsRefundManager.pas',
-    PaymentF in '\Entrprse\R&D\OrderPayments\PaymentF.pas',
-    oOPPayment in '\Entrprse\R&D\OrderPayments\oOPPayment.pas',
-    oOrderPaymentsSRC in '\Entrprse\R&D\OrderPayments\oOrderPaymentsSRC.pas',
-    OrdPayCustomisation in '\Entrprse\R&D\OrderPayments\OrdPayCustomisation.pas',
-    OrderPaymentsInvoiceMatching in '\Entrprse\R&D\OrderPayments\OrderPaymentsInvoiceMatching.pas',
-    OrderPaymentsMatching in '\Entrprse\R&D\OrderPayments\OrderPaymentsMatching.pas',
-    PasswordAuthorisationF in '\Entrprse\R&D\OrderPayments\PasswordAuthorisationF.pas',
-    TxStatusF in '\Entrprse\R&D\OrderPayments\TxStatusF.pas',
-    TransCancelF in '\Entrprse\R&D\OrderPayments\TransCancelF.pas',
-    ExchequerPaymentGateway_TLB in '\Entrprse\R&D\OrderPayments\ExchequerPaymentGateway_TLB.pas',
-    System_TLB in '\Entrprse\R&D\OrderPayments\System_TLB.pas',
-    System_Windows_Forms_TLB in '\Entrprse\R&D\OrderPayments\System_Windows_Forms_TLB.pas',
-    Accessibility_TLB in '\Entrprse\R&D\OrderPayments\Accessibility_TLB.pas',
-    OrderPaymentsUnmatchedReceipts in '\Entrprse\R&D\OrderPayments\OrderPaymentsUnmatchedReceipts.pas',
-    Rep_UnmatchedSalesReceipts in '\Entrprse\R&D\Rep_UnmatchedSalesReceipts.pas',
-    Rep_OrderPaymentsVATReturn in '\Entrprse\R&D\Rep_OrderPaymentsVATReturn.pas',
-    VATReturnWizardU in '\Entrprse\R&D\VATReturnWizardU.pas',
-    XMLFuncs in '\Entrprse\Funcs\XMLFuncs.pas',
-    RepInp_EndOfDayPayments in '\Entrprse\R&D\OrderPayments\RepInp_EndOfDayPayments.pas',
-    Rep_EndOfDayPayments in '\Entrprse\R&D\OrderPayments\Rep_EndOfDayPayments.pas',
-	  OrderPaymentFuncs in '\Entrprse\R&D\OrderPayments\OrderPaymentFuncs.pas',
-    oOPOrderAuditNotes in '\Entrprse\R&D\OrderPayments\oOPOrderAuditNotes.pas',
-  	OrderPaymentsTrackerF in '\Entrprse\R&D\OrderPayments\OrderPaymentsTrackerF.pas',
+    oOPVATPayBtrieveFile in 'W:\Entrprse\R&D\OrderPayments\oOPVATPayBtrieveFile.pas',
+    oOPVATPayMemoryList in 'W:\Entrprse\R&D\OrderPayments\oOPVATPayMemoryList.pas',
+    oCreditCardGateway in 'W:\Entrprse\R&D\OrderPayments\oCreditCardGateway.pas',
+    OrderPaymentsInterfaces in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentsInterfaces.pas',
+    oOrderPaymentsBaseTransactionInfo in 'W:\Entrprse\R&D\OrderPayments\oOrderPaymentsBaseTransactionInfo.pas',
+    oOrderPaymentsTransactionInfo in 'W:\Entrprse\R&D\OrderPayments\oOrderPaymentsTransactionInfo.pas',
+    oOrderPaymentsTransactionPaymentInfo in 'W:\Entrprse\R&D\OrderPayments\oOrderPaymentsTransactionPaymentInfo.pas',
+    RefundF in 'W:\Entrprse\R&D\OrderPayments\RefundF.pas',
+    RefundPaymentFrame in 'W:\Entrprse\R&D\OrderPayments\RefundPaymentFrame.pas',
+    RefundQuantityF in 'W:\Entrprse\R&D\OrderPayments\RefundQuantityF.pas',
+    oOrderPaymentsRefundManager in 'W:\Entrprse\R&D\OrderPayments\oOrderPaymentsRefundManager.pas',
+    PaymentF in 'W:\Entrprse\R&D\OrderPayments\PaymentF.pas',
+    oOPPayment in 'W:\Entrprse\R&D\OrderPayments\oOPPayment.pas',
+    oOrderPaymentsSRC in 'W:\Entrprse\R&D\OrderPayments\oOrderPaymentsSRC.pas',
+    OrdPayCustomisation in 'W:\Entrprse\R&D\OrderPayments\OrdPayCustomisation.pas',
+    OrderPaymentsInvoiceMatching in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentsInvoiceMatching.pas',
+    OrderPaymentsMatching in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentsMatching.pas',
+    PasswordAuthorisationF in 'W:\Entrprse\R&D\OrderPayments\PasswordAuthorisationF.pas',
+    TxStatusF in 'W:\Entrprse\R&D\OrderPayments\TxStatusF.pas',
+    TransCancelF in 'W:\Entrprse\R&D\OrderPayments\TransCancelF.pas',
+    ExchequerPaymentGateway_TLB in 'W:\Entrprse\R&D\OrderPayments\ExchequerPaymentGateway_TLB.pas',
+    System_TLB in 'W:\Entrprse\R&D\OrderPayments\System_TLB.pas',
+    System_Windows_Forms_TLB in 'W:\Entrprse\R&D\OrderPayments\System_Windows_Forms_TLB.pas',
+    Accessibility_TLB in 'W:\Entrprse\R&D\OrderPayments\Accessibility_TLB.pas',
+    OrderPaymentsUnmatchedReceipts in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentsUnmatchedReceipts.pas',
+    Rep_UnmatchedSalesReceipts in 'W:\Entrprse\R&D\Rep_UnmatchedSalesReceipts.pas',
+    Rep_OrderPaymentsVATReturn in 'W:\Entrprse\R&D\Rep_OrderPaymentsVATReturn.pas',
+    VATReturnWizardU in 'W:\Entrprse\R&D\VATReturnWizardU.pas',
+    XMLFuncs in 'W:\Entrprse\Funcs\XMLFuncs.pas',
+    RepInp_EndOfDayPayments in 'W:\Entrprse\R&D\OrderPayments\RepInp_EndOfDayPayments.pas',
+    Rep_EndOfDayPayments in 'W:\Entrprse\R&D\OrderPayments\Rep_EndOfDayPayments.pas',
+	  OrderPaymentFuncs in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentFuncs.pas',
+    oOPOrderAuditNotes in 'W:\Entrprse\R&D\OrderPayments\oOPOrderAuditNotes.pas',
+  	OrderPaymentsTrackerF in 'W:\Entrprse\R&D\OrderPayments\OrderPaymentsTrackerF.pas',
   {$ENDIF SOP}
 
   // VAT 100 Submission
-  vatReturnDBManager in '\ENTRPRSE\R&D\VAT100Submission\vatReturnDBManager.pas',
-  vatReturnDBManagerPerv in '\ENTRPRSE\R&D\VAT100Submission\vatReturnDBManagerPerv.pas',
-  vatReturnDBManagerSQL in '\ENTRPRSE\R&D\VAT100Submission\vatReturnDBManagerSQL.pas',
-  vatReturnDetail in '\ENTRPRSE\R&D\VAT100Submission\vatReturnDetail.pas',
-  vatReturnHistory in '\ENTRPRSE\R&D\VAT100Submission\vatReturnHistory.pas',
-  vatReturnSummary in '\ENTRPRSE\R&D\VAT100Submission\vatReturnSummary.pas',
-  vatUtils in '\ENTRPRSE\R&D\VAT100Submission\vatUtils.pas',
+  vatReturnDBManager in 'W:\Entrprse\R&D\VAT100Submission\vatReturnDBManager.pas',
+  vatReturnDBManagerPerv in 'W:\Entrprse\R&D\VAT100Submission\vatReturnDBManagerPerv.pas',
+  vatReturnDBManagerSQL in 'W:\Entrprse\R&D\VAT100Submission\vatReturnDBManagerSQL.pas',
+  vatReturnDetail in 'W:\Entrprse\R&D\VAT100Submission\vatReturnDetail.pas',
+  vatReturnHistory in 'W:\Entrprse\R&D\VAT100Submission\vatReturnHistory.pas',
+  vatReturnSummary in 'W:\Entrprse\R&D\VAT100Submission\vatReturnSummary.pas',
+  vatUtils in 'W:\Entrprse\R&D\VAT100Submission\vatUtils.pas',
 
-  CountryCodes in '\Entrprse\Funcs\CountryCodes.pas',
-  CountryCodeUtils in '\Entrprse\Funcs\CountryCodeUtils.pas',
+  CountryCodes in 'W:\Entrprse\Funcs\CountryCodes.pas',
+  CountryCodeUtils in 'W:\Entrprse\Funcs\CountryCodeUtils.pas',
 
   // Intrastat ----------------------
-  IntrastatControlCentreF in '\Entrprse\R&D\Intrastat\IntrastatControlCentreF.pas',
-  IntrastatXML in '\Entrprse\R&D\Intrastat\IntrastatXML.pas',
+  IntrastatControlCentreF in 'W:\Entrprse\R&D\Intrastat\IntrastatControlCentreF.pas',
+  IntrastatXML in 'W:\Entrprse\R&D\Intrastat\IntrastatXML.pas',
   IntrastatDetailsF in 'Intrastat\IntrastatDetailsF.pas' {IntrastatDetailsFrm},
-  IntrastatDataClass in '\ENTRPRSE\R&D\Intrastat\IntrastatDataClass.pas',
-  UKIntrastatReport in '\ENTRPRSE\R&D\Intrastat\UKIntrastatReport.pas',
+  IntrastatDataClass in 'W:\Entrprse\R&D\Intrastat\IntrastatDataClass.pas',
+  UKIntrastatReport in 'W:\Entrprse\R&D\Intrastat\UKIntrastatReport.pas',
   // Intrastat ----------------------
 
-  oRCTGateway in '\ENTRPRSE\R&D\RCTGateway\oRCTGateway.pas',
+  oRCTGateway in 'W:\Entrprse\R&D\RCTGateway\oRCTGateway.pas',
 
   Event1U,
   ImgModu in 'ImgModu.pas' {ImageRepos: TDataModule},
   Diary in 'Diary.pas' {DiaryFrm},
   DiaryNote in 'DiaryNote.pas' {DiaryNoteFrm},
-  Base36 in '\entrprse\Base36\Base36.pas',
+  Base36 in 'W:\Entrprse\Base36\Base36.pas',
   EParentU in 'EParentU.pas' {MainForm},
   BasePrintPreview in '..\FORMDES2\BasePrintPreview.pas' {Form_BasePrintPreview},
   PrintPreviewWizard in 'PrintPreviewWizard.pas' {Form_PrintPreviewWizard},
@@ -875,3 +870,5 @@ begin
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
+
+
