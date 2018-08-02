@@ -6,7 +6,7 @@ interface
 
 uses
   SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, TEditVal, ComCtrls, ExtCtrls, SBSPanel, Math,
+  StdCtrls, TEditVal, ComCtrls, ExtCtrls, SBSPanel, Math, cxGridDBDataDefinitions,
   GlobVar,VarConst,SBSComp,SBSComp2,ExWrap1U,BTSupU1,ColCtrlU,
   CmpCtrlU,SupListU, Menus, EntWindowSettings,IndeterminateProgressF,
 
@@ -993,7 +993,7 @@ Uses
   TransactionOriginatorDlg,
   UA_Const,    //  RJ 17/02/2016 2016-R1 ABSEXCH-17035: Check user Permission  before print actions.
 
-  oProcessLock
+  oProcessLock, cxGridDBTableView, cxGridCustomTableView
   ;
 
 
@@ -7949,7 +7949,8 @@ var
   lMsg,lErrormsg,lExcludeLog : string;
   PostRepCtrl:  PostRepPtr;
   lProgressFrm: TIndeterminateProgressFrm;
-
+  lStrList: TStringList;
+  i,K: Integer;
   //PL 22/03/2017 2017-R1 ABSEXCH-18516 Need exception raised when attempting to post a single transaction underneath a suspension
   //Prepare posting log for the transactions which are excluded.
   function GetPostLog(aRunNO: Integer; aSQLDayBookPosting: TSQLDayBookPosting): String;
@@ -7996,8 +7997,24 @@ begin
       lProgressFrm.Start('Single Daybook Posting', 'Posting '+ Inv.OurRef+'...');
       Application.ProcessMessages;
 
-      
-      lRes := lSQLDayBookPosting.ExecTransactionPost(Inv.OurRef, lPostRunNo, GetLocalPr(0).CYr,
+      if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+      begin
+        with frDaybkGrid,vMain,DataController do
+        begin
+          if not Assigned(TcxGridDBDataController(DataController).GetItemByFieldName('thOurRef')) then Exit;
+
+          k := TcxGridDBDataController(DataController).GetItemByFieldName('thOurRef').Index;
+          lStrList := TStringList.Create;
+          for i := 0 to frDaybkGrid.vMain.Controller.SelectedRecordCount - 1 do
+          begin
+            lStrList.Add(frDaybkGrid.vMain.Controller.SelectedRows[i].Values[k]);
+          end;
+        end;
+        lRes := lSQLDayBookPosting.ExecTransactionPost(lStrList.DelimitedText, lPostRunNo, GetLocalPr(0).CYr,
+                                                     GetLocalPr(0).CPr, Ord(Syss.SepRunPost), EntryRec^.LogIn);
+      end
+      else
+        lRes := lSQLDayBookPosting.ExecTransactionPost(Inv.OurRef, lPostRunNo, GetLocalPr(0).CYr,
                                                      GetLocalPr(0).CPr, Ord(Syss.SepRunPost), EntryRec^.LogIn);
 
       if (lRes = 0) and (lPostRunNo <> 0) then
