@@ -4055,8 +4055,11 @@ Begin
 
 
     100..109
-         :  With MULCtrlO[WParam-100] do
-            Begin
+         :
+
+          With MULCtrlO[WParam-100] do
+          Begin
+            if IsDataBase then Exit;
               If ((DocHed In SalesSplit) and (Inv.InvDocHed In SalesSplit)) or ((DocHed In PurchSplit) and (Inv.InvDocHed In PurchSplit))
               or ((DocHed In WOPSplit) and (Inv.InvDocHed In WOPSplit))
               {$IFDEF RET}  or ((DocHed In StkRETSplit) and (Inv.InvDocHed In StkRetSplit)) {$ENDIF}
@@ -5500,10 +5503,11 @@ begin
   AllowPostedEdit := False;
 
   If ((Sender Is TButton) or (Sender Is TMenuItem)) and (Not MULCtrlO[Current_Page].InListFind)
-     and ((MULCtrlO[Current_Page].ValidLine) or (Sender=Adddb1Btn) or (Sender=Add1)) then
+     and ((MULCtrlO[Current_Page].ValidLine) or (Sender=Adddb1Btn) or (Sender=Add1) or (IsDataBase)) then
   Begin
-    With MULCtrlO[Current_Page] do
-      RefreshLine(MUListBoxes[0].Row,BOff);
+    if (not IsDataBase) then
+      With MULCtrlO[Current_Page] do
+        RefreshLine(MUListBoxes[0].Row,BOff);
 
     If (Sender=Adddb1Btn) or (Sender=Editdb1Btn) or (Sender=Edit1) or (Sender=Add1) then
       Mode:=1+Ord(Sender=Editdb1Btn)+Ord(Sender=Edit1);

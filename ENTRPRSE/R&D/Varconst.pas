@@ -51,7 +51,7 @@ const
   NofChaseLtrs    =   3;            {* Max No of Chase Letters *}
 
 
-
+  IsDataBase  = True;
 
   {$I VARCOMNU.Pas}
   {$I VARCMN3U.Pas}
