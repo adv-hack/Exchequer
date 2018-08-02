@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BaseFrame, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxGridCommon,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxGridCommon,cxExportGrid4Link,
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses,cxGridDBDataDefinitions,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Menus, ActnList, ADODB;
@@ -17,7 +17,20 @@ type
     lvlMain: TcxGridLevel;
     grdMain: TcxGrid;
     aColumnCust: TAction;
-    procedure aColumnCustExecute(Sender: TObject);
+    aExportToExcel: TAction;
+    aExportToHtml: TAction;
+    aExportToXML: TAction;
+    aExportToText: TAction;
+    SaveDialog: TSaveDialog;
+    N2: TMenuItem;
+    ExportToExcel1: TMenuItem;
+    ExportToHTML1: TMenuItem;
+    ExportToText1: TMenuItem;
+    ExportToXML1: TMenuItem;
+    procedure aExportToTextExecute(Sender: TObject);
+    procedure aExportToXMLExecute(Sender: TObject);
+    procedure aExportToHtmlExecute(Sender: TObject);
+    procedure aExportToExcelExecute(Sender: TObject);
   private
     FAutoloadColumn: Boolean;
     procedure SetAutoloadColumn(const Value: Boolean);
@@ -132,11 +145,58 @@ begin
   FAutoloadColumn := Value;
 end;
 
-procedure TfrDataGrid.aColumnCustExecute(Sender: TObject);
+procedure TfrDataGrid.aExportToTextExecute(Sender: TObject);
 begin
   inherited;
-//
-//vMain.OptionsCustomize.
+  SaveDialog.Filter := 'Text file|*.txt';
+  SaveDialog.DefaultExt := '.txt';
+  SaveDialog.Execute;
+  
+  if SaveDialog.FileName <> EmptyStr then
+  begin
+    ExportGrid4ToText(SaveDialog.FileName,grdMain);
+  end;
+
+end;
+
+procedure TfrDataGrid.aExportToXMLExecute(Sender: TObject);
+begin
+  inherited;
+  SaveDialog.Filter := 'XML file|*.xml';
+  SaveDialog.DefaultExt := '.xml';
+  SaveDialog.Execute;
+
+  if SaveDialog.FileName <> EmptyStr then
+  begin
+    ExportGrid4ToXML(SaveDialog.FileName,grdMain);
+  end;
+end;
+
+procedure TfrDataGrid.aExportToHtmlExecute(Sender: TObject);
+begin
+  inherited;
+  SaveDialog.Filter := 'HTML file|*.html';
+  SaveDialog.DefaultExt := '.html';
+  SaveDialog.Execute;
+
+  if SaveDialog.FileName <> EmptyStr then
+  begin
+    ExportGrid4ToHTML(SaveDialog.FileName,grdMain);
+  end;
+end;
+
+procedure TfrDataGrid.aExportToExcelExecute(Sender: TObject);
+
+begin
+  inherited;
+  SaveDialog.Filter := 'Excel Worksheets (*.xls, *.xlsx)|*.xls;*.xlsx';
+  SaveDialog.DefaultExt := '.xls';
+  SaveDialog.Execute;
+
+  if SaveDialog.FileName <> EmptyStr then
+  begin
+    ExportGrid4ToExcel(SaveDialog.FileName,grdMain);
+  end;
 end;
 
 end.

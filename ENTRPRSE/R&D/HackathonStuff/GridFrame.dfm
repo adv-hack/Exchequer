@@ -46,9 +46,46 @@ inherited frDataGrid: TfrDataGrid
     end
   end
   inherited alMain: TActionList
+    Top = 56
     object aColumnCust: TAction
       Caption = 'Column Customization'
-      OnExecute = aColumnCustExecute
     end
+    object aExportToExcel: TAction
+      Caption = 'Export To Excel'
+      OnExecute = aExportToExcelExecute
+    end
+    object aExportToHtml: TAction
+      Caption = 'Export To HTML'
+      OnExecute = aExportToHtmlExecute
+    end
+    object aExportToXML: TAction
+      Caption = 'Export To XML'
+      OnExecute = aExportToXMLExecute
+    end
+    object aExportToText: TAction
+      Caption = 'Export To Text'
+      OnExecute = aExportToTextExecute
+    end
+  end
+  inherited pmMain: TPopupMenu
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object ExportToExcel1: TMenuItem
+      Action = aExportToExcel
+    end
+    object ExportToHTML1: TMenuItem
+      Action = aExportToHtml
+    end
+    object ExportToText1: TMenuItem
+      Action = aExportToText
+    end
+    object ExportToXML1: TMenuItem
+      Action = aExportToXML
+    end
+  end
+  object SaveDialog: TSaveDialog
+    Left = 240
+    Top = 96
   end
 end
