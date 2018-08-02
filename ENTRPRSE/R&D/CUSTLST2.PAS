@@ -30,7 +30,8 @@ uses
   // MH 23/02/2018 2018-R2 ABSEXCH-19172: Added support for exporting lists
   WindowExport, ExportListIntf,
 
-  EntWindowSettings, uExDatasets, uSQLDatasets;
+  EntWindowSettings, uExDatasets, uSQLDatasets,
+  dmMainTraderList;
 
 type
 
@@ -313,6 +314,9 @@ type
 
   private
     { Private declarations }
+
+    //AnkitaP - 
+    FdmTrader: TdmTraderList;
 
     // CJS 06/09/2013 - MRD1.1 - Consumer tab (removed redundant 4th tab page)
     LastBTag   :  Array[0..2] of LongInt;
@@ -1302,6 +1306,12 @@ begin
 
 
   SetTabs2;
+
+  //AnkitaP - Disable list
+  ScrolBox5.Visible := False;
+
+  //AnkitaP - DataModule stuff
+  FdmTrader := TdmTraderList.Create(Self);
 
   ScrolBox5.HorzScrollBar.Position:=0;
   ScrolBox5.VertScrollBar.Position:=0;

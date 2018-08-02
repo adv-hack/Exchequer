@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BaseFrame, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,     MainData,
+  Dialogs, BaseFrame, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxGridCommon,
   cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses,cxGridDBDataDefinitions,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView,
