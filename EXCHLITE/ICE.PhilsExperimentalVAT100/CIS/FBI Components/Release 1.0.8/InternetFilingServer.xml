@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InternetFilingServer</name>
+    </assembly>
+    <members>
+        <member name="T:IRIS.Systems.InternetFiling.GatewayServer">
+            <summary>
+            Summary description for GovGateway.
+            </summary>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.GatewayServer.Submit(IRIS.Systems.InternetFiling.GatewayDocument)">
+            <summary>
+            Subit the prepared document to the gateway specified in gtwDoc.Url
+            </summary>
+            <param name="gtwDoc">The full assembled gateway document object</param>
+            <returns>Tne response message provided by the gateway, this will usually be
+            the initial submission ackowledgement</returns>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.GatewayServer.Delete(IRIS.Systems.InternetFiling.GatewayDocument)">
+            <summary>
+            Sends a delete request to the gateway specified in gtwDoc.Url, the gtwDoc must have a valid
+            correlation identifier (i.e. it must be in the gateway somwhere.
+            </summary>
+            <param name="gtwDoc">The full assembled gateway document object</param>
+            <returns>The reposnse receoived from the gateway, this will usually be the 
+            deleteion ackowledgement</returns>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.GatewayServer.Poll(IRIS.Systems.InternetFiling.GatewayDocument)">
+            <summary>
+            Allows an additional poll to be madce by the application, however if the polling 
+            </summary>
+            <param name="gtwDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.IFBIServer">
+            <summary>
+            Seems to be an accessor method on to the global
+            variables defined elswhere.
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.FBIServer">
+            <summary>
+            This appears to be the remoting components of the
+            Internet Filing subsystem
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.IRMark32">
+            <summary>
+            Summary description for Class1.
+            </summary>
+        </member>
+        <member name="F:IRIS.Systems.InternetFiling.IRMark32.base32Chars">
+            <summary>
+            The main entry point for the application.
+            </summary> 
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.IRMark32.AddIRMark(System.Xml.XmlDocument@,System.String)">
+            <summary>
+            Takes a document
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.IRISGlobalVariables">
+            <summary>
+            A global, static instance of an FBIServer object
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.GatewayDocuments">
+            <summary>
+            This class appears to be used simply to write 
+            the gateway documents to a holding database.
+            Is this strictly necessary anymore???
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,24 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="eg+rgJYMb22hNMHU3QLupA==" identitycol="PositionId" reclen="108" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_contact_id" fullfieldname="f_contact_id" typename="int32" size="4" elements="1" id="-1" columnname="acrContactId" collation="0"/>
+        <schemafield fieldname="f_role_id" fullfieldname="f_role_id" typename="int32" size="4" elements="1" id="-1" columnname="acrRoleId" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+          <indexfields>
+            <item>f_contact_id</item>
+            <item>f_role_id</item>
+          </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+          <indexfields>
+            <item>f_role_id</item>
+            <item>f_contact_id</item>
+          </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>
+

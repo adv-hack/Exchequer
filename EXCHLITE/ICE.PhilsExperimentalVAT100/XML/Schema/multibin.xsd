@@ -1,0 +1,74 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:multibin"
+            targetNamespace="urn:www-iris-co-uk:multibin" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="binrec">
+    <xsd:sequence>
+      <xsd:element name='brbincode' type='xsd:string'/>
+      <xsd:element name='brindocref' type='xsd:string'/>
+      <xsd:element name='broutdocref' type='xsd:string'/>
+      <xsd:element name='brsold' type='tns:boolean2'/>
+      <xsd:element name='brindate' type='xsd:string'/>
+      <xsd:element name='brcostprice' type='xsd:double'/>
+      <xsd:element name='brcapacity' type='xsd:double'/>
+      <xsd:element name='brstockfolio' type='xsd:integer'/>
+      <xsd:element name='broutdate' type='xsd:string'/>
+      <xsd:element name='broutdocline' type='xsd:integer'/>
+      <xsd:element name='brindocline' type='xsd:integer'/>
+      <xsd:element name='brqty' type='xsd:double'/>
+      <xsd:element name='brqtyused' type='xsd:double'/>
+      <xsd:element name='brusedrec' type='tns:boolean2'/>
+      <xsd:element name='brinlocation' type='xsd:string'/>
+      <xsd:element name='broutlocation' type='xsd:string'/>
+      <xsd:element name='broutorderref' type='xsd:string'/>
+      <xsd:element name='brinorderref' type='xsd:string'/>
+      <xsd:element name='brinorderline' type='xsd:integer'/>
+      <xsd:element name='broutorderline' type='xsd:integer'/>
+      <xsd:element name='brcostpricecurrency' type='xsd:integer'/>
+      <xsd:element name='brpickingpriority' type='xsd:string'/>
+      <xsd:element name='brsalesprice' type='xsd:double'/>
+      <xsd:element name='brcompanyrate' type='xsd:double'/>
+      <xsd:element name='brdailyrate' type='xsd:double'/>
+      <xsd:element name='bruseorate' type='tns:boolean2'/>
+      <xsd:element name='brtrirates' type='xsd:double'/>
+      <xsd:element name='brtrieuro' type='xsd:integer'/>
+      <xsd:element name='brtriinvert' type='tns:boolean2'/>
+      <xsd:element name='brtrifloat' type='tns:boolean2'/>
+      <xsd:element name='brusebydate' type='xsd:string'/>
+      <xsd:element name='brsalespricecurrency' type='xsd:integer'/>
+      <xsd:element name='brunitofmeasurement' type='xsd:string'/>
+      <xsd:element name='brautopickmode' type='xsd:integer'/>
+      <xsd:element name='brtagno' type='xsd:integer'/>
+      <xsd:element name='brrecpos' type='xsd:integer'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='binrec' type='tns:binrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='multibin'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='multibin' type='tns:multibin'/>
+
+</xsd:schema>

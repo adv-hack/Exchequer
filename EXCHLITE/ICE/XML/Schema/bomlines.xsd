@@ -1,0 +1,34 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:bomlines"
+            targetNamespace="urn:www-iris-co-uk:bomlines" >
+            
+  <xsd:complexType name="bomlinerec">
+    <xsd:sequence>
+      <xsd:element name='stockcode' type='xsd:string'/>
+      <xsd:element name='qtyused' type='xsd:double'/>
+      <xsd:element name='qtycost' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='bomlinerec' type='tns:bomlinerec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='bomlines'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='bomlines' type='tns:bomlines'/>
+
+</xsd:schema>

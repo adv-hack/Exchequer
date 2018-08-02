@@ -1,0 +1,45 @@
+package B302vr60;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TurboPower Abbrevia 3.02 Run-time package - VCL60'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  B302_r60;
+
+contains
+  AbBseVCL in 'AbBseVCL.pas',
+  AbMeter in 'AbMeter.pas',
+  AbView in 'AbView.pas',
+  AbZipOut in 'AbZipOut.pas',
+  AbCView in 'AbCView.pas',
+  AbZView in 'AbZView.pas',
+  AbCompnd in 'AbCompnd.pas',
+  AbHexVw in 'AbHexVw.pas';
+
+end.

@@ -1,0 +1,370 @@
+date/time         : 2010-03-22, 17:12:24, 609ms
+computer name     : P004433
+user name         : nfrewer440 <admin>
+operating system  : Windows XP Service Pack 3 build 2600
+system language   : English
+system up time    : 8 hours 21 minutes
+program up time   : 1 second
+processors        : 2x Intel(R) Core(TM)2 CPU 6600 @ 2.40GHz
+physical memory   : 832/2046 MB (free/total)
+free disk space   : (C:) 88.23 GB (W:) 43.88 GB
+display mode      : 1280x1024, 32 bit
+process id        : $c7c
+allocated memory  : 26.79 MB
+executable        : CCDEPT.EXE
+exec. date/time   : 2010-03-22 17:11
+madExcept version : 3.0b
+callstack crc     : $ab60ce7d, $3190b577, $3190b577
+exception number  : 1
+exception class   : EOleException
+exception message : 'T:\ENTRPRSE\' is not a valid directory.
+
+main thread ($176c):
+0054a794 +054 CCDEPT.EXE CTKUTIL  26  +4 DoOpenTK
+0054a8aa +0aa CCDEPT.EXE CTKUTIL  40  +8 OpenToolkit
+0054daec +128 CCDEPT.EXE Main    320 +28 TfrmMain.cmbCompanyChange
+0054d230 +0a0 CCDEPT.EXE Main    163 +18 TfrmMain.FormCreate
+004ac069 +031 CCDEPT.EXE Forms           TCustomForm.DoCreate
+004abd55 +011 CCDEPT.EXE Forms           TCustomForm.AfterConstruction
+00403e9b +007 CCDEPT.EXE System          @AfterConstruction
+004abd2c +174 CCDEPT.EXE Forms           TCustomForm.Create
+004b3301 +031 CCDEPT.EXE Forms           TApplication.CreateForm
+00550d23 +02f CCDEPT.EXE CCDept   26  +2 initialization
+
+thread $14f4:
+7c90e514 +00 ntdll.dll              KiFastSystemCallRet
+7c90df48 +0a ntdll.dll              NtWaitForMultipleObjects
+0044d0c9 +0d CCDEPT.EXE   madExcept CallThreadProcSafe
+0044d133 +37 CCDEPT.EXE   madExcept ThreadExceptFrame
+>> created by main thread ($176c) at:
+77df8c8c +00 advapi32.dll
+
+thread $448:
+7c90e514 +00 ntdll.dll            KiFastSystemCallRet
+7c90daa8 +0a ntdll.dll            NtReplyWaitReceivePortEx
+0044d0c9 +0d CCDEPT.EXE madExcept CallThreadProcSafe
+0044d133 +37 CCDEPT.EXE madExcept ThreadExceptFrame
+>> created by main thread ($176c) at:
+77e7df36 +00 RPCRT4.dll
+
+thread $ec0:
+7c90e514 +00 ntdll.dll              KiFastSystemCallRet
+7c90d218 +0a ntdll.dll              NtDelayExecution
+7c8023eb +4b kernel32.dll           SleepEx
+7c802450 +0a kernel32.dll           Sleep
+0044d0c9 +0d CCDEPT.EXE   madExcept CallThreadProcSafe
+0044d133 +37 CCDEPT.EXE   madExcept ThreadExceptFrame
+>> created by main thread ($176c) at:
+7752fd64 +00 ole32.dll
+
+thread $13c:
+7c90e514 +00 ntdll.dll              KiFastSystemCallRet
+7c90df58 +0a ntdll.dll              NtWaitForSingleObject
+7c8025d5 +85 kernel32.dll           WaitForSingleObjectEx
+7c80253d +0d kernel32.dll           WaitForSingleObject
+0044d0c9 +0d CCDEPT.EXE   madExcept CallThreadProcSafe
+0044d133 +37 CCDEPT.EXE   madExcept ThreadExceptFrame
+>> created by main thread ($176c) at:
+76663fb6 +00 comsvcs.dll
+
+modules:
+00400000 CCDEPT.EXE                              W:\CCDeptValidation\INSTALL\FILES
+00ce0000 icorebtrv.dll          10.1.1.0         E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+00d10000 ExchSQLDbInstaller.dll 10.1.1.0         E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+00dd0000 ExchSQLDAL.dll         10.1.1.0         E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+00e80000 ExchSQLXml.dll         10.1.1.0         E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+00ea0000 ExchSQLEmulator.dll    10.1.1.0         E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+010f0000 borlndmm.dll           6.0.6.163        E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+029c0000 urlmon.dll             8.0.6001.18876   C:\WINDOWS\system32
+02b10000 Normaliz.dll           6.0.5441.0       C:\WINDOWS\system32
+03cb0000 xpsp2res.dll           5.1.2600.5512    C:\WINDOWS\system32
+042e0000 msadcer.dll            2.81.1132.0      C:\Program Files\Common Files\system\msadc
+04830000 SQLOLEDB.RLL           2000.85.1132.0   C:\Program Files\Common Files\system\ole db
+04960000 EntComp2.dll           6.3.0.1020       E:\EXCH630.PSQL
+10000000 BTRVSQL.DLL                             E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+14200000 ENTTOOLK.DLL                            E:\EXCH630.PSQL
+38a70000 MSOXMLMF.DLL           12.0.6413.1000   C:\PROGRA~1\COMMON~1\MICROS~1\OFFICE12
+3d930000 WININET.dll            8.0.6001.18876   C:\WINDOWS\system32
+3dfd0000 iertutil.dll           8.0.6001.18876   C:\WINDOWS\system32
+4dd00000 SQLOLEDB.DLL           2000.85.1132.0   C:\Program Files\Common Files\system\ole db
+4de10000 msado15.dll            2.81.1132.0      C:\Program Files\Common Files\system\ado
+4ec50000 gdiplus.dll            5.2.6001.22319   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df
+5ad70000 uxtheme.dll            6.0.2900.5512    C:\WINDOWS\system32
+5b860000 netapi32.dll           5.1.2600.5694    C:\WINDOWS\system32
+5d090000 comctl32.dll           5.82.2900.5512   C:\WINDOWS\system32
+5edd0000 olepro32.dll           5.1.2600.5512    C:\WINDOWS\system32
+60000000 EntComp.dll            6.1.0.608        E:\EXCH.ASAAUTOSETTLE.IR\Entrprse
+60e30000 MSDATL3.dll            2.81.1132.0      C:\Program Files\Common Files\system\ole db
+662b0000 hnetcfg.dll            5.1.2600.5512    C:\WINDOWS\system32
+68000000 rsaenh.dll             5.1.2600.5507    C:\WINDOWS\system32
+68100000 dssenh.dll             5.1.2600.5507    C:\WINDOWS\system32
+6d4f0000 DBNETLIB.DLL           2000.85.1132.0   C:\WINDOWS\system32
+6fa00000 SOPHOS~1.DLL           9.0.0.9055       C:\PROGRA~1\Sophos\SOPHOS~1
+71a50000 mswsock.dll            5.1.2600.5625    C:\WINDOWS\system32
+71a90000 wshtcpip.dll           5.1.2600.5512    C:\WINDOWS\System32
+71aa0000 WS2HELP.dll            5.1.2600.5512    C:\WINDOWS\system32
+71ab0000 WS2_32.dll             5.1.2600.5512    C:\WINDOWS\system32
+71ad0000 wsock32.dll            5.1.2600.5512    C:\WINDOWS\system32
+71b20000 mpr.dll                5.1.2600.5512    C:\WINDOWS\system32
+71f80000 security.dll           5.1.2600.5512    C:\WINDOWS\system32
+73000000 winspool.drv           5.1.2600.5512    C:\WINDOWS\system32
+73160000 oledb32.dll            2.81.1132.0      C:\Program Files\Common Files\system\ole db
+74060000 msadce.dll             2.81.3002.0      C:\Program Files\Common Files\system\msadc
+74720000 MSCTF.dll              5.1.2600.5512    C:\WINDOWS\system32
+74980000 msxml3.dll             8.100.1051.0     C:\WINDOWS\system32
+750b0000 RESUTILS.DLL           5.1.2600.5512    C:\WINDOWS\system32
+750f0000 MTXCLU.DLL             2001.12.4414.706 C:\WINDOWS\system32
+75130000 colbact.DLL            2001.12.4414.700 C:\WINDOWS\system32
+75350000 OLEDB32R.DLL           2.81.1132.0      C:\Program Files\Common Files\system\ole db
+755c0000 msctfime.ime           5.1.2600.5512    C:\WINDOWS\system32
+76390000 IMM32.DLL              5.1.2600.5512    C:\WINDOWS\system32
+763b0000 comdlg32.dll           6.0.2900.5512    C:\WINDOWS\system32
+765b0000 MSDART.DLL             2.81.1132.0      C:\WINDOWS\system32
+76620000 comsvcs.dll            2001.12.4414.702 C:\WINDOWS\system32
+76790000 cryptdll.dll           5.1.2600.5512    C:\WINDOWS\system32
+767a0000 ntdsapi.dll            5.1.2600.5512    C:\WINDOWS\system32
+767f0000 schannel.dll           5.1.2600.5834    C:\WINDOWS\system32
+769c0000 USERENV.dll            5.1.2600.5512    C:\WINDOWS\system32
+76bf0000 PSAPI.DLL              5.1.2600.5512    C:\WINDOWS\system32
+76d10000 CLUSAPI.DLL            5.1.2600.5512    C:\WINDOWS\system32
+76d60000 iphlpapi.dll           5.1.2600.5512    C:\WINDOWS\system32
+76f20000 DNSAPI.dll             5.1.2600.5625    C:\WINDOWS\system32
+76f60000 WLDAP32.dll            5.1.2600.5512    C:\WINDOWS\system32
+76fb0000 winrnr.dll             5.1.2600.5512    C:\WINDOWS\System32
+76fc0000 rasadhlp.dll           5.1.2600.5512    C:\WINDOWS\system32
+76fd0000 CLBCATQ.DLL            2001.12.4414.700 C:\WINDOWS\system32
+77050000 COMRes.dll             2001.12.4414.700 C:\WINDOWS\system32
+77120000 oleaut32.dll           5.1.2600.5512    C:\WINDOWS\system32
+773d0000 comctl32.dll           6.0.2900.5512    C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83
+774e0000 ole32.dll              5.1.2600.5512    C:\WINDOWS\system32
+77a80000 CRYPT32.dll            5.131.2600.5512  C:\WINDOWS\system32
+77b20000 MSASN1.dll             5.1.2600.5875    C:\WINDOWS\system32
+77c00000 version.dll            5.1.2600.5512    C:\WINDOWS\system32
+77c10000 msvcrt.dll             7.0.2600.5512    C:\WINDOWS\system32
+77c70000 msv1_0.dll             5.1.2600.5876    C:\WINDOWS\system32
+77dd0000 advapi32.dll           5.1.2600.5755    C:\WINDOWS\system32
+77e70000 RPCRT4.dll             5.1.2600.5795    C:\WINDOWS\system32
+77f10000 GDI32.dll              5.1.2600.5698    C:\WINDOWS\system32
+77f60000 SHLWAPI.dll            6.0.2900.5912    C:\WINDOWS\system32
+77fe0000 Secur32.dll            5.1.2600.5834    C:\WINDOWS\system32
+78130000 MSVCR80.dll            8.0.50727.3053   C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.3053_x-ww_b80fa8ca
+79000000 mscoree.dll            2.0.50727.3053   C:\WINDOWS\system32
+7c420000 MSVCP80.dll            8.0.50727.3053   C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.3053_x-ww_b80fa8ca
+7c4c0000 msvcm80.dll            8.0.50727.3053   C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.3053_x-ww_b80fa8ca
+7c800000 kernel32.dll           5.1.2600.5781    C:\WINDOWS\system32
+7c900000 ntdll.dll              5.1.2600.5755    C:\WINDOWS\system32
+7c9c0000 shell32.dll            6.0.2900.5622    C:\WINDOWS\system32
+7e410000 user32.dll             5.1.2600.5512    C:\WINDOWS\system32
+7e4b0000 hhctrl.ocx             5.2.3790.4110    C:\WINDOWS\system32
+7e720000 SXS.DLL                5.1.2600.5512    C:\WINDOWS\system32
+
+processes:
+0000 Idle
+0004 System                    normal
+03c4 smss.exe                  normal       C:\WINDOWS\system32
+0410 csrss.exe
+042c winlogon.exe              high         C:\WINDOWS\system32
+0458 services.exe              normal       C:\WINDOWS\system32
+0464 lsass.exe                 normal       C:\WINDOWS\system32
+0524 Ati2evxx.exe              normal       C:\WINDOWS\system32
+0534 svchost.exe               normal       C:\WINDOWS\system32
+0570 svchost.exe
+0128 svchost.exe               normal       C:\WINDOWS\System32
+0164 SavService.exe
+0170 svchost.exe               normal       C:\WINDOWS\system32
+034c svchost.exe
+04a8 svchost.exe
+05e4 spoolsv.exe               normal       C:\WINDOWS\system32
+06dc svchost.exe
+01b8 wsdwpps.exe               normal       C:\Program Files\Webroot\Desktop Web Proxy
+0304 QosServM.exe              normal       C:\WINDOWS\system32
+0354 inetinfo.exe              normal       C:\WINDOWS\system32\inetsrv
+0364 jqs.exe                   idle         C:\Program Files\Java\jre6\bin
+0390 mdm.exe                   normal       C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+03cc sqlservr.exe              normal       C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Binn
+0594 sqlservr.exe
+0680 SAVAdminService.exe       normal       C:\Program Files\Sophos\Sophos Anti-Virus
+07bc ManagementAgentNT.exe     normal       C:\Program Files\Sophos\Remote Management System
+08e0 ALsvc.exe                 normal       C:\Program Files\Sophos\AutoUpdate
+08f4 Explorer.EXE              normal       C:\WINDOWS
+0a10 RouterNT.exe              normal       C:\Program Files\Sophos\Remote Management System
+0aa0 sqlbrowser.exe            normal       C:\Program Files\Microsoft SQL Server\90\Shared
+0ac0 sqlwriter.exe             normal       C:\Program Files\Microsoft SQL Server\90\Shared
+0ae4 svchost.exe               normal       C:\WINDOWS\system32
+0b70 XMLHIP.exe                normal       E:\EXCH620.PSQL
+0c84 vmware-usbarbitrator.exe  normal       C:\Program Files\Common Files\VMware\USB
+0d54 wsdwpgi.exe               normal       C:\Program Files\Webroot\Desktop Web Proxy
+0eb4 vmnat.exe                 normal       C:\WINDOWS\system32
+0ffc SearchIndexer.exe         normal       C:\WINDOWS\system32
+07a0 smax4pnp.exe              normal       C:\Program Files\Analog Devices\Core
+07d8 Application Launcher.exe  normal       C:\Program Files\Sony Ericsson\Mobile2\Application Launcher
+0804 jusched.exe               normal       C:\Program Files\Common Files\Java\Java Update
+0810 hqtray.exe                normal       C:\Program Files\VMware\VMware Player
+088c vmware-authd.exe          normal       C:\Program Files\VMware\VMware Player
+08d8 ctfmon.exe                normal       C:\WINDOWS\system32
+08ec GoogleToolbarNotifier.exe normal       C:\Program Files\Google\GoogleToolbarNotifier
+0958 ALMon.exe                 normal       C:\Program Files\Sophos\AutoUpdate
+0d00 w3dbsmgr.exe              normal       C:\Program Files\Pervasive Software\PSQL\bin
+0d20 vmnetdhcp.exe             normal       C:\WINDOWS\system32
+0d44 WindowsSearch.exe         normal       C:\Program Files\Windows Desktop Search
+0e24 Timesheets.exe            normal       C:\Timesheets
+0fb8 alg.exe
+0ab8 Generic.exe               normal       C:\Program Files\Common Files\Teleca Shared
+0f58 epmworker.exe             normal       C:\Program Files\Sony Ericsson\Mobile2\Mobile Phone Monitor
+0930 OUTLOOK.EXE               normal       C:\Program Files\Microsoft Office\Office12
+1708 Exchequer Library.exe     normal       C:\Tecnotes.v6
+12f4 mstsc.exe                 normal       C:\WINDOWS\system32
+0d70 Delphi32.exe              normal       C:\Program Files\Borland\Delphi6\Bin
+04e0 IEXPLORE.EXE              normal       C:\Program Files\Internet Explorer
+14d0 IEXPLORE.EXE              normal       C:\Program Files\Internet Explorer
+1544 SearchProtocolHost.exe    below normal C:\WINDOWS\system32
+0da8 searchfilterhost.exe
+0c7c CCDEPT.EXE                normal       W:\CCDeptValidation\INSTALL\FILES
+
+hardware:
++ Computer
+  - ACPI Multiprocessor PC
++ Disk drives
+  - ST3160815AS
+  - ST3500320AS
++ Display adapters
+  - 128MB ATI Radeon X1300 (driver 8.263.0.0)
+  - 128MB ATI Radeon X1300 Secondary (driver 8.263.0.0)
++ DVD/CD-ROM drives
+  - HL-DT-ST DVD+-RW GSA-H73N
++ Human Interface Devices
+  - HID-compliant consumer control device
+  - USB Human Interface Device
+  - USB Human Interface Device
+  - USB Human Interface Device
+  - USB Human Interface Device
++ IDE ATA/ATAPI controllers
+  - Intel(R) ICH8 2 port Serial ATA Storage Controller - 2825 (driver 8.0.0.1008)
+  - Intel(R) ICH8 4 port Serial ATA Storage Controller - 2820 (driver 8.0.0.1008)
+  - Primary IDE Channel
+  - Primary IDE Channel
+  - Secondary IDE Channel
++ Keyboards
+  - HID Keyboard Device
++ Mice and other pointing devices
+  - HID-compliant mouse
+  - HID-compliant mouse
++ Monitors
+  - Dell E176FP (driver 2.0.0.0)
++ Network adapters
+  - Broadcom NetXtreme 57xx Gigabit Controller (driver 9.52.0.0)
+  - VMware Virtual Ethernet Adapter for VMnet1 (driver 4.0.3.0)
+  - VMware Virtual Ethernet Adapter for VMnet8 (driver 4.0.3.0)
++ Ports (COM & LPT)
+  - Communications Port (COM1)
+  - ECP Printer Port (LPT1)
++ Processors
+  - Intel(R) Core(TM)2 CPU          6600  @ 2.40GHz
+  - Intel(R) Core(TM)2 CPU          6600  @ 2.40GHz
++ Sound, video and game controllers
+  - Audio Codecs
+  - Legacy Audio Drivers
+  - Legacy Video Capture Devices
+  - Media Control Devices
+  - SoundMAX Integrated Digital HD Audio Driver (driver 5.10.1.4542)
+  - USB Audio Device
+  - Video Codecs
++ System devices
+  - ACPI Fixed Feature Button
+  - ACPI Power Button
+  - Direct memory access controller
+  - High Precision Event Timer (driver 7.0.0.1011)
+  - Intel(R) 82801 PCI Bridge - 244E
+  - Intel(R) ICH8 Family PCI Express Root Port 1 - 283F (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family PCI Express Root Port 5 - 2847 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family SMBus Controller - 283E (driver 8.0.0.1008)
+  - Intel(R) ICH8/ICH8R Family LPC Interface Controller - 2810 (driver 8.0.0.1008)
+  - Intel(R) Q963/Q965 PCI Express Root Port – 2991 (driver 8.0.0.1006)
+  - Intel(R) Q963/Q965 Processor to I/O Controller – 2990 (driver 8.0.0.1006)
+  - ISAPNP Read Data Port
+  - Logical Disk Manager
+  - Microcode Update Device
+  - Microsoft ACPI-Compliant System
+  - Microsoft System Management BIOS Driver
+  - Microsoft UAA Bus Driver for High Definition Audio
+  - Motherboard resources
+  - Numeric data processor
+  - PCI bus
+  - Plug and Play Software Device Enumerator
+  - Printer Port Logical Interface
+  - Programmable interrupt controller
+  - System board
+  - System board
+  - System CMOS/real time clock
+  - System speaker
+  - System timer
+  - Terminal Server Device Redirector
+  - Terminal Server Keyboard Driver
+  - Terminal Server Mouse Driver
+  - Volume Manager
++ Universal Serial Bus controllers
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2830 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2831 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2832 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2834 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB Universal Host Controller - 2835 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB2 Enhanced Host Controller - 2836 (driver 8.0.0.1008)
+  - Intel(R) ICH8 Family USB2 Enhanced Host Controller - 283A (driver 8.0.0.1008)
+  - USB Composite Device
+  - USB Composite Device
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+  - USB Root Hub
+
+cpu registers:
+eax = 00f52520
+ebx = 8000ffff
+ecx = 00000000
+edx = 0054a794
+esi = 0054a794
+edi = 0054cb90
+eip = 0054a794
+esp = 0012fcc4
+ebp = 0012fd28
+
+stack dump:
+0012fcc4  94 a7 54 00 de fa ed 0e - 01 00 00 00 07 00 00 00  ..T.............
+0012fcd4  d8 fc 12 00 94 a7 54 00 - 20 25 f5 00 ff ff 00 80  ......T..%......
+0012fce4  94 a7 54 00 90 cb 54 00 - 28 fd 12 00 f4 fc 12 00  ..T...T.(.......
+0012fcf4  34 fd 12 00 9c 42 40 00 - 28 fd 12 00 c0 fd 12 00  4....B@.(.......
+0012fd04  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fd14  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fd24  00 00 00 00 50 fd 12 00 - 17 6c 40 00 94 a7 54 00  ....P....l@...T.
+0012fd34  5c fd 12 00 9c 42 40 00 - 50 fd 12 00 01 24 f5 00  \....B@.P....$..
+0012fd44  00 00 00 00 00 00 00 00 - 00 00 00 00 9c fd 12 00  ................
+0012fd54  af a8 54 00 9c fd 12 00 - a4 fd 12 00 9c 42 40 00  ..T..........B@.
+0012fd64  9c fd 12 00 18 2c f4 00 - f8 46 f3 00 00 00 00 00  .....,...F......
+0012fd74  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fd84  00 00 00 00 af 9e 10 00 - b5 58 20 0f 18 ab 50 70  .........X....Pp
+0012fd94  00 00 00 00 00 00 00 00 - d4 fd 12 00 f1 da 54 00  ..............T.
+0012fda4  dc fd 12 00 9c 42 40 00 - d4 fd 12 00 e8 1b f3 00  .....B@.........
+0012fdb4  f8 46 f3 00 00 00 00 00 - 00 00 00 00 00 00 00 00  .F..............
+0012fdc4  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012fdd4  1c fe 12 00 35 d2 54 00 - 24 fe 12 00 9c 42 40 00  ....5.T.$....B@.
+0012fde4  1c fe 12 00 90 cb 54 00 - e8 1b f3 00 f8 46 f3 00  ......T......F..
+0012fdf4  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+
+disassembling:
+[...]
+0054a786      mov     eax, [ebp-8]
+0054a789      push    eax
+0054a78a      mov     eax, [eax]
+0054a78c      call    dword ptr [eax+$40]
+0054a78f      call    -$143b90 ($406c04)     ; System.@CheckAutoResult
+0054a794 26 > lea     eax, [ebp-$c]
+0054a797      push    eax
+0054a798      mov     eax, [ebp+8]
+0054a79b      mov     eax, [eax-4]
+0054a79e      push    eax
+0054a79f      mov     eax, [eax]
+[...]
+

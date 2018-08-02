@@ -1,0 +1,246 @@
+<html>
+
+  <head>
+    <title>mad* Help...</title>
+    <meta name="description" content="mad* Help...">
+    <meta name="keywords" content="madshi, components, delphi">
+    <meta http-equiv="expires" content="900">
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body background="bcklight.gif" bgcolor=#F8F8F8>
+    <a name="HookCode"></a>
+    <a name="HookAPI"></a>
+    <a name="SYSTEM_WIDE_9X"></a>
+    <a name="ACCEPT_UNKNOWN_TARGETS_9X"></a>
+    <a name="DONT_COUNT"></a>
+    <a name="NO_SAFE_UNHOOKING"></a>
+    <a name="NO_IMPROVED_SAFE_UNHOOKING"></a>
+    <a name="SAFE_HOOKING"></a>
+    <a name="MIXTURE_MODE"></a>
+    <a name="NO_MIXTURE_MODE"></a>
+    <table border=0 cellpadding=0 callspacing=0><tr>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=3 border=0>
+            <tr><td bgcolor=#FFFFF0>
+              <div id="verySmall"><br></div>
+              <div id="bigTitle">&nbsp;API/Code Hooking&nbsp;</div>
+              <div id="verySmall"><br></div>
+              <div id="small">
+                <a class="small" href="Content.htm">Content</a> /
+                <a class="small" href="madCodeHook.htm">madCodeHook</a> /...
+              </div>
+            </td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=7 border=0>
+            <tr><td bgcolor=#F4F4F8><a href="http://www.madshi.net">www.madshi.net</a></td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+    </tr></table>
+    <p>Use "HookCode/HookAPI" to hook any function or API. Both your callback
+       function and the next hook variable must have exactly the same definition
+       (parameters + calling convention). Please use "HookAPI" as much as you can.
+       "HookCode" is only meant for situations where "HookAPI" can't be used.
+       Normally when calling HookCode/API you don't need to put anything into the
+       "flags" parameter. However, in some specific situations the flags may be
+       useful. So here's what they mean:</p>
+    <p>SYSTEM_WIDE_9X: Generally the hook takes effect only in the current process,
+       except if you signal this flag. However, as the name already implies, this
+       flag works in win9x only and even there only for system APIs. If you're
+       interested in this topic, please read also
+       <a href="SystemWideApiHooking.htm">this one</a>.</p>
+    <p>ACCEPT_UNKNOWN_TARGETS_9X: This flag is only valid in combination with
+       SYSTEM_WIDE_9X. It means that installation of the hook shall succeed even if
+       your callback function contains unknown call/jmp targets. See the
+       documentation of <a href="CopyFunction.htm">CopyFunction</a> for more information.</p>
+    <p>NO_SAFE_UNHOOKING: By default madCodeHook counts how many times any thread is
+       currently running inside of your callback function. This way unhooking can
+       be safely synchronized with that counter. Sometimes you don't need/want this
+       counting to happen, though, e.g. if you don't plan to ever unhook, anyway.
+       Or if the counting performance drop is too high for your taste. Or if you
+       want to unhook from inside the hook callback function. In those cases you
+       can set the flag "NO_SAFE_UNHOOKING".</p>
+    <p>NO_IMPROVED_SAFE_UNHOOKING: With madCodeHook version 2.1f the "safe
+       unhooking" functionality (see above) was improved. Most probably there's no 
+       problem with the improvement, but to be sure you can disable it. The
+       improved safe unhooking is currently only available in the NT family.</p>
+    <p>SAFE_HOOKING: Optionally madCodeHook can use a special technique to make
+       sure that hooking in multi threaded situations won't result in crashing
+       threads. This technique is not tested too well right now, so it's optional
+       for now. You can turn this feature on by setting the flag "SAFE_HOOKING".
+       Without this technique crashes can happen, if a thread is calling the API
+       which we want to hook in exactly the moment when the hook is installed.
+       Safe hooking is currently only available in the NT family.</p>
+    <p>MIXTURE_MODE: madCodeHook implements two different API hooking methods. The
+       "mixture mode" is the second best method, it's only used if the main hooking
+       method doesn't work for whatever reason (e.g. because of a "bad" API code
+       structure). Normally madCodeHook chooses automatically which mode to use.
+       You can force the use of the mixture mode by specifying this flag. Normally
+       there's no need to do so, though.</p>
+    <p>NO_MIXTURE_MODE: If you don't want the mixture mode to be used, then simply
+       tell madCodeHook so by using this flag. If the main API hooking method can't
+       be used, this results in a failed hook attempt, though.</p>
+    <p>One thing you should know is that madCodeHook API hooks can be successfully
+       installed even if the DLL which exports the to-be-hooked API is not loaded
+       yet in the current process. For each API hook madCodeHook watches over
+       DLL loading/unloading and installs/uninstalls its API hooks automatically at
+       the right time. Can you have it any more comfortable?</p>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <span id='mono'>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>HookCode</span>&nbsp;(<span id='identifier'>code</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id='identifier'>pointer</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='identifier'>callbackFunc</span>&nbsp;: <span id='identifier'>pointer</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='bold'>out</span>&nbsp;<span id='identifier'>nextHook</span>&nbsp;: <span id='identifier'>pointer</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='identifier'>flags</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id='identifier'>dword</span>&nbsp;= <span id='number'>0</span>) : <span id='identifier'>bool</span>; <span id='bold'>stdcall</span>;<br>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>HookAPI</span>&nbsp;&nbsp;(<span id='identifier'>module</span>, <span id='identifier'>api</span>&nbsp;&nbsp;: <span id='identifier'>pchar</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='identifier'>callbackFunc</span>&nbsp;: <span id='identifier'>pointer</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='bold'>out</span>&nbsp;<span id='identifier'>nextHook</span>&nbsp;: <span id='identifier'>pointer</span>;<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='identifier'>flags</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id='identifier'>dword</span>&nbsp;= <span id='number'>0</span>) : <span id='identifier'>bool</span>; <span id='bold'>stdcall</span>;<br>
+                  <br>
+                  <span id='comment'>// Example:</span><br>
+                  <span id='bold'>var</span>&nbsp;<span id='identifier'>ExitProcessNext</span>&nbsp;: <span id='bold'>procedure</span>&nbsp;(<span id='identifier'>exitCode</span>: <span id='identifier'>dword</span>); <span id='bold'>stdcall</span>;<br>
+                  <br>
+                  <span id='bold'>procedure</span>&nbsp;<span id='identifier'>ExitProcessCallback</span>(<span id='identifier'>exitCode</span>: <span id='identifier'>dword</span>); <span id='bold'>stdcall</span>;<br>
+                  <span id='bold'>begin</span><br>
+                  &nbsp;&nbsp;<span id='comment'>// okay, this doesn't make much sense, but who cares... &nbsp;:-)</span><br>
+                  &nbsp;&nbsp;<span id='identifier'>ExitProcessNext</span>(<span id='identifier'>exitCode</span>&nbsp;+ <span id='number'>1</span>);<br>
+                  <span id='bold'>end</span>;<br>
+                  <br>
+                  <span id='identifier'>HookAPI</span>(<span id='string'>'kernel32.dll'</span>, <span id='string'>'ExitProcess'</span>, @<span id='identifier'>ExitProcessCallback</span>, @<span id='identifier'>ExitProcessNext</span>);
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <a name="UnhookCode"></a>
+    <a name="UnhookAPI"></a>
+    <p>If you're done with hooking, you can uninstall the hooks again. Process
+       wide hooks are uninstalled automatically, when your DLL is unloaded or when
+       your process exits. System wide hooks (only available in win9x) keep
+       installed, if you don't manually uninstall them. Uninstalling is normally
+       (if you didn't specify <a href="#DONT_COUNT">DONT_COUNT</a> when hooking) delayed until the
+       hook callback function is not in use by any thread anymore. This avoids
+       crashes when a hook DLL is being uninjected.</p>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <span id='mono'>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>UnhookCode</span>&nbsp;(<span id='bold'>var</span>&nbsp;<span id='identifier'>nextHook</span>: <span id='identifier'>pointer</span>) : <span id='identifier'>boolean</span>;<br>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>UnhookAPI</span>&nbsp;&nbsp;(<span id='bold'>var</span>&nbsp;<span id='identifier'>nextHook</span>: <span id='identifier'>pointer</span>) : <span id='identifier'>boolean</span>;<br>
+                  <br>
+                  <span id='comment'>// Example:</span><br>
+                  <span id='identifier'>UnhookAPI</span>(@<span id='identifier'>ExitProcessNext</span>);
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <a name="RenewHook"></a>
+    <p>Some firewall/antivirus programs install API hooks, too. Sometimes they
+       uninstall your hooks. So if you hook often hooked APIs like CreateProcess,
+       you might want to call RenewHook inside of your hook callback function
+       (after you called the next hook), to make sure that your hook is still
+       installed. Don't have fear, it rarely happens that another program is
+       uninstalling your hooks. And if it happens, it only happens for such APIs,
+       which are hooked very often. So normally you don't need to care. RenewHook
+       is only there just in case...</p>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <span id='mono'>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>RenewHook</span>&nbsp;(<span id='bold'>var</span>&nbsp;<span id='identifier'>nextHook</span>: <span id='identifier'>pointer</span>) : <span id='identifier'>bool</span>; <span id='bold'>stdcall</span>;
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <a name="IsHookInUse"></a>
+    <p>When unhooking an API madCodeHook (normally) waits until the hook is not in
+       use anymore. Only then the API is unhooked. This is what I call "safe 
+       unhooking". It makes sure that there are no access violations when a hook
+       dll gets unloaded. However, if safe unhooking constantly thinks that an API 
+       hook is still in use, this will freeze the unhooking and thus also the
+       unloading of the hook dll. In order to be able to debug such situations you
+       can call "IsHookInUse" to ask whether safe unhooking thinks that the hook
+       is still in use or not. The returned number indicates how often the hook is
+       still in use. "0" means the hook is not in use anymore.</p>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <span id='mono'>
+                  <span id='bold'>function</span>&nbsp;<span id='identifier'>IsHookInUse</span>&nbsp;(<span id='bold'>var</span>&nbsp;<span id='identifier'>nextHook</span>: <span id='identifier'>pointer</span>) : <span id='identifier'>integer</span>; <span id='bold'>stdcall</span>;
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <a name="CollectHooks"></a>
+    <a name="FlushHooks"></a>
+    <p>Sometimes when hooking a lot of APIs with the "mixture mode" in win9x, the
+       installation of all the hooks can take some time. To speed things up a bit,
+       you can put your <a href="#HookAPI">HookAPI</a> calls into a "CollectHooks".."FlushHooks"
+       frame:</p>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <span id='mono'>
+                  <span id='bold'>procedure</span>&nbsp;<span id='identifier'>CollectHooks</span>;<br>
+                  <span id='bold'>procedure</span>&nbsp;&nbsp;&nbsp;<span id='identifier'>FlushHooks</span>;<br>
+                  <br>
+                  <span id='comment'>// Example:</span><br>
+                  <span id='bold'>procedure</span>&nbsp;<span id='identifier'>InstallTextOutHooks</span>;<br>
+                  <span id='bold'>begin</span><br>
+                  &nbsp;&nbsp;<span id='identifier'>CollectHooks</span>;<br>
+                  &nbsp;&nbsp;<span id='identifier'>HookAPI</span>(<span id='string'>'gdi32.dll'</span>, &nbsp;&nbsp;&nbsp;<span id='string'>'TextOutA'</span>, &nbsp;&nbsp;&nbsp;@<span id='identifier'>TextOutACallbackProc</span>, &nbsp;&nbsp;&nbsp;@<span id='identifier'>TextOutANextHook</span>);<br>
+                  &nbsp;&nbsp;<span id='identifier'>HookAPI</span>(<span id='string'>'gdi32.dll'</span>, &nbsp;&nbsp;&nbsp;<span id='string'>'TextOutW'</span>, &nbsp;&nbsp;&nbsp;@<span id='identifier'>TextOutWCallbackProc</span>, &nbsp;&nbsp;&nbsp;@<span id='identifier'>TextOutWNextHook</span>);<br>
+                  &nbsp;&nbsp;<span id='identifier'>HookAPI</span>(<span id='string'>'gdi32.dll'</span>, <span id='string'>'ExtTextOutA'</span>, @<span id='identifier'>ExtTextOutACallbackProc</span>, @<span id='identifier'>ExtTextOutANextHook</span>);<br>
+                  &nbsp;&nbsp;<span id='identifier'>HookAPI</span>(<span id='string'>'gdi32.dll'</span>, <span id='string'>'ExtTextOutW'</span>, @<span id='identifier'>ExtTextOutWCallbackProc</span>, @<span id='identifier'>ExtTextOutWNextHook</span>);<br>
+                  &nbsp;&nbsp;<span id='identifier'>FlushHooks</span>;<br>
+                  <span id='bold'>end</span>;
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <p>In case you've not read enough yet, you can also have a look at the
+       <a href="ProcessFunc.htm">"ProcessFunc" Example</a> or at the <a href="ProcessApi.htm">"ProcessAPI" Example</a>.</p>
+  </body>
+
+</html>

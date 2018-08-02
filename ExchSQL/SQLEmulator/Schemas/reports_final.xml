@@ -1,0 +1,28 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" recordfieldname="" reclen="512">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_field_1" fullfieldname="" typename="char" size="2" elements="2" id="-1" columnname="f_field_1"/>
+        <schemafield fieldname="f_field_3" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="f_field_3"/>
+        <schemafield fieldname="f_field_4" fullfieldname="" typename="binary" size="20" elements="20" id="-1" columnname="f_field_4"/>
+		<schemafield fieldname="f_field_24" fullfieldname="" typename="binary" size="27" elements="27" id="-1" columnname="f_field_24"/>
+		<schemafield fieldname="f_field_51" fullfieldname="" typename="binary" size="10" elements="10" id="-1" columnname="f_field_51"/>
+	</fixedfields>
+    <defaultrecordtype>
+        <schemafield fieldname="image" fullfieldname="image" typename="image" size="16384" elements="1" id="-1" columnname="image_0"/>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="">
+            <indexfields>
+                <item>f_field_1</item>
+                <item>f_field_4</item>
+            </indexfields>
+        </schemaindexes>
+		<schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="">
+			<indexfields>
+				<item>f_field_1</item>
+				<item>f_field_51</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>

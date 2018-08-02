@@ -1,0 +1,149 @@
+{\rtf1\ansi\deff17
+\sectd \ftnbj 
+{\fonttbl
+{\f9\fswiss MS Sans Serif;}
+{\f17\fswiss Arial;}
+{\f850\froman 02020603050405020304;}
+{\f851\fswiss 020b0604020202020204;}
+{\f852\fswiss 020b0604030504040204;}
+}
+{\stylesheet
+{\s0\snext0 Base;}
+{\s1\fs36\snext1 Banner Base;}
+{\s2\fs12\li-144\sbasedon1\snext2 Button Bar;}
+{\s3\f850\fs16\b\qc\sa120\sbasedon4\snext3 heading 1;}
+{\s5\f850\b\li432\sa120\sbasedon4\snext5 heading 2;}
+{\s6\f851\sb240\sa60\sbasedon4\snext6 heading 3;}
+{\s7\li360\fi-360\tx360\sbasedon0\snext7 List1;}
+{\s8\li720\fi-360\tx720\sbasedon0\snext8 List2;}
+{\s9\li1080\fi-360\tx1080\sbasedon0\snext9 List3;}
+{\s4\f850\fs20\sa120\snext4 Normal;}
+}
+\pard\plain\s3\qc\sa120\keepn {\up $}{\footnote $ FaxCover Page Designer}
+{\up #}{\footnote # FaxCover_Page_Designer}
+{\plain\f850\fs16\b 
+}{\plain\f850\fs40\b FaxCover Page Designer}\par 
+{\plain\f850\fs16\b }\par \pard\plain\s1 {\plain\fs36 
+}{\plain\fs36\b Program Overview}\par 
+\pard\s0 {\plain \par 
+The TurboPower Fax Cover Page Designer program (FaxCover) is a program you can use to simplify the creation of fax cover pages for use with Async Professional.  The program allows you to create cover pages in a visual manner by placing image and text fields on a form, dragging and resizing the fields, and changing the image or font of the field.\par 
+\par 
+You can save your cover pages as Fax Cover Page (FCP) files, which can be read back into the Cover Page Designer and modified if desired.  You can also create the Async Professional Fax (APF) files, ready for faxing via Async Professional.\par 
+}\par 
+\pard\s1 {\plain\fs36 }{\plain\fs28\b Selecting Fields}\par 
+\pard\s0 {\plain\fs28\b }{\plain You can select a field by clicking on it once and then releasing the mouse button.  When selected, a field will display with stretch handles.  You can then resize it, or you can perform the Delete Field option, the Center Horizontally option, or the Center Vertically option on it.  These three options are only enabled when a field is selected.\par 
+\par 
+}{\plain\fs28\b Manipulating Fields\par 
+}{\plain FaxCover allows you to manipulate the fields on your cover page in a visual manner.  You can move fields by dragging them, and you can resize fields by grabbing one of the stretch handles that are displayed when a field is selected. \par 
+The FaxCover Menu\par 
+\par 
+}{\plain\fs28\b\ul The File Menu}\par 
+{\plain \par 
+}{\plain\b New\par 
+}{\plain This option opens a new fax page form.  FaxCover is an MDI application, so you can open as many fax page forms at a time as you like.  This option is also accessible via a speed button on the speedbar.\par 
+\par 
+}{\plain\b Open...\par 
+}{\plain This option allows you to open an already-existing FCP file.  Once the file is open, you can proceed to edit the cover page or create the APF file, ready for faxing.  This option is also accessible via a speed button on the speedbar.\par 
+\par 
+}{\plain\b Close (Alt+F3)\par 
+}{\plain This option closes the currently-active cover page form.  If you have made changes to it that have not been saved, FaxCover asks you to confirm that you want to loos the changes.\par 
+\par 
+}{\plain\b Save\par 
+}{\plain The Save option writes the fax page in the currently-active cover page form to a FCP file.  This option is also accessible via a speed button on the speedbar.\par 
+\par 
+}{\plain\b Save As...\par 
+}{\plain The Save As option saves the currently-active cover page form to an FCP file, but unlike the Save option, it allows you to specify a new file name.\par 
+\par 
+}{\plain\b Create Fax File\par 
+}{\plain This option creates an APF file from the currently-active cover page form, ready for faxing via Async Professional.  The file will have the same name as the FCP file, except with an extension of APF.\par 
+\par 
+If you have used any replacement tags in your cover page, such as $R for recipient or $F for sender, you should use the Options|Replacement Tags menu option to enter the values for your replacement tags before creating the APF file.\par 
+\par 
+}{\plain\b Convert FCP to APF...\par 
+}{\plain This option is similar to the Create Fax File option in that it creates an APF file.  The difference is that this option does not require you to have the cover page open in the Cover Page Designer.  Instead you enter or select the desired FCP file in a File Open dialog.  The FCP file is then saved as an APF file of the same name.\par 
+\par 
+Unlike the Create Fax File option, there is no way to specify replacement tag values when using this option.  If you have used any replacement tags other than $D or $T, which will be replaced by the system date and time, you should use the Create Fax File option instead.\par 
+This option is of limited value.  Its real purpose is to demonstrate how to use the ConvertFCPToAPF function in the FDConvrt unit that is included with the FaxCover source code.\par 
+\par 
+}{\plain\b Exit (Alt+X)\par 
+}{\plain Selecting this option closes the FaxCover program. If any of the open fax cover pages has been modified and not saved, you are ask to confirm exiting. This option is also accessible via a speed button on the speedbar.\par 
+\par 
+}{\plain\fs28\b\ul Options Menu}\par 
+{\plain\b \par 
+Page Layout...\par 
+}{\plain The Page Layout option invokes the Page Layout dialog, which lets you specify the system of measurement (English or Metric), the page size (letter, legal, A4, or B4), the horizontal and vertical grid spacing, whether the grid is visible, and whether snap-to-grid is active.\par 
+\par 
+}{\plain\b Replacement Tags...\par 
+}{\plain The Replacement Tags option invokes the Replacement Tags dialog, which lets you specify values that will be used to replace the various replacement tags when you select the Save As APF option.  For a list and description of supported replacement tags, see the Async Professional manual.\par 
+\par 
+}{\plain\b Design Mode (F2)\par 
+}{\plain Selecting this option exits editing mode and enables using the mouse to position text fields.\par 
+}\par 
+{\plain\b Edit Mode (F3)\par 
+}{\plain Selecting this option enters editing mode and allows text to be entered into text fields. While in editing mode, the mouse cannot be used to position the text field.}\par 
+{\plain\b \par 
+}{\plain\fs28\b\ul Fax Page Menu}\par 
+{\plain\b \par 
+Add Text Field (Ins)\par 
+}{\plain This option adds a new text field to the page at the location of the last mouse click.  The field starts out empty, and uses the default font.  You can change the font by double-clicking on the field, which opens the Font dialog. \par 
+}\par 
+{\plain\b Add Image Field (Ctrl+Ins)\par 
+}{\plain This option adds a new, empty image field at the location of the last mouse click.  You can assign a bitmap image to the field by double-clicking on it, which opens the Open Picture dialog.  (FaxCover currently supports only BMP images.) \par 
+}\par 
+{\plain\b Delete Field\par 
+}{\plain This option deletes the currently selected field.  It is disabled if no field is selected. \par 
+}\par 
+{\plain\b Select Font...\par 
+}{\plain This option displays a dialog that allows selection of the font for the currently selected text field.\par 
+}\par 
+{\plain\b Load Image...\par 
+}{\plain This options displays a dialog that allows loading of a bitmap image for the currently selected image field.}\par 
+{\plain\b \par 
+Center Horizontally\par 
+}{\plain This option centers the currently selected field horizontally on the page.  It is disabled if no field is selected. \par 
+\par 
+}{\plain\b Center Vertically\par 
+}{\plain This option centers the currently selected field vertically on the page.  It is disabled if no field is selected. \par 
+}\par 
+{\plain }{\plain\fs28\b\ul Window Menu\par 
+}\par 
+{\plain }{\plain\b Cascade\par 
+}{\plain This option arranges all of the currently-open,  non-minimized cover page forms in a cascading manner.\par 
+\par 
+}{\plain\b Tile\par 
+}{\plain This option arranges all of the currently-open,  non-minimized cover page forms in a tiled manner.\par 
+\par 
+}{\plain\b Arrange Icons\par 
+}{\plain This option arranges all of the icons for minimized cover page forms in an orderly manner along the bottom of the main application form.\par 
+\par 
+}{\plain\b Minimize All\par 
+}{\plain This option minimizes all of the currently-open cover page forms.\par 
+\par 
+}{\plain\b Select Window\par 
+}{\plain There isn\'92t actually an option called Select Window, but for every open cover page form, there will be a menu item at the bottom of the Window menu showing the name of the cover page loaded in the form.  You can select one of these menu items to cause the form to become active.\par 
+\par 
+}{\plain\fs28\b\ul Help Menu}\par 
+{\plain\b \par 
+About... (F1)\par 
+}{\plain The About option displays information about FaxCover and TurboPower.\par 
+\par 
+\par 
+}{\plain\fs28\b The FaxCover Speedbar\par 
+}{\plain The speedbar provides quick access to several program options, and also allows toggling between Edit and Design modes.\par 
+\par 
+}{\plain\b New Button\par 
+}{\plain The New button is a shortcut to the File|New menu option.\par 
+\par 
+}{\plain\b Open Button\par 
+}{\plain The Open button is a shortcut to the File|Open menu option.\par 
+\par 
+}{\plain\b Design Mode Button\par 
+}{\plain The Design Mode button places the current cover page form in Design mode as opposed to Edit mode.  While in Design mode, you can move text fields by dragging them.  While in Edit mode, text fields cannot be moved.  Instead, clicking and moving the mouse within a text field selects text within the field.  Image fields can always be moved by dragging them.  They are not affected by Design or Edit mode.\par 
+\par 
+}{\plain\b Edit Mode Button\par 
+}{\plain The Edit Mode button places the current cover page form in Edit mode as opposed to Design mode.  See the Design Mode Button section above for an explanation of the difference between Edit and Design modes.\par 
+\par 
+}{\plain\b Exit Button\par 
+}{\plain The Exit button is a shortcut to the File|Exit menu option.\par 
+\par 
+}}

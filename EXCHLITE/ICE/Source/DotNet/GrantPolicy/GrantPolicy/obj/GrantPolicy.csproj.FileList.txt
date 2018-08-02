@@ -1,0 +1,10 @@
+bin\Release\GrantPolicy.exe
+bin\Release\GrantPolicy.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\GrantPolicy.exe
+obj\Release\GrantPolicy.pdb
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\GrantPolicy.exe
+bin\Debug\GrantPolicy.pdb
+obj\Debug\GrantPolicy.exe
+obj\Debug\GrantPolicy.pdb

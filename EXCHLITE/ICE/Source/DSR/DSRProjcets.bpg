@@ -1,0 +1,92 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = DSRDownload.exe DSRimp.exe DSRProcessMail.dll DSR.dll Config.exe \
+  CSBackup.exe Dashboard.exe DSRUtility.dll CISIncoming.dll CISOutgoing.dll \
+  CISMonthlyReturn.dll DBUtility.exe CISExSubcontractor.dll CISReceiver.exe \
+  DSRIMAPReceive.dll DSRIMAPSEND.dll DSRMAPIReceive.dll DSRMAPISend.dll \
+  DSRPOP3Receive.dll DSRPOP3Send.dll CISImSubcontractor.dll DSRExport.dll \
+  DSRImport.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+
+DSRDownload.exe: DownloadMail\DSRDownload.dpr
+  $(DCC)
+
+DSRimp.exe: Import\DSRimp.dpr
+  $(DCC)
+
+DSRProcessMail.dll: ProcessMail\DSRProcessMail.dpr
+  $(DCC)
+
+DSR.dll: DSR.dpr
+  $(DCC)
+
+Config.exe: ..\Config\Config.dpr
+  $(DCC)
+
+CSBackup.exe: ..\CSBackup\CSBackup.dpr
+  $(DCC)
+
+Dashboard.exe: ..\Dashboard\Dashboard.dpr
+  $(DCC)
+
+DSRUtility.dll: ..\DSRUtility\DSRUtility.dpr
+  $(DCC)
+
+CISIncoming.dll: ..\CISIncoming\CISIncoming.dpr
+  $(DCC)
+
+CISOutgoing.dll: ..\CISOutgoing\CISOutgoing.dpr
+  $(DCC)
+
+CISMonthlyReturn.dll: ..\Export\CIS\MonthlyReturn\CISMonthlyReturn.dpr
+  $(DCC)
+
+DBUtility.exe: ..\DBUtility\DBUtility.dpr
+  $(DCC)
+
+CISExSubcontractor.dll: ..\Export\CIS\Subcontractors\CISExSubcontractor.dpr
+  $(DCC)
+
+CISReceiver.exe: ..\CISReceiver\CISReceiver.dpr
+  $(DCC)
+
+DSRIMAPReceive.dll: DSRIMAP\Receive\DSRIMAPReceive.dpr
+  $(DCC)
+
+DSRIMAPSEND.dll: DSRIMAP\Send\DSRIMAPSEND.dpr
+  $(DCC)
+
+DSRMAPIReceive.dll: DSRMAPI\Receive\DSRMAPIReceive.dpr
+  $(DCC)
+
+DSRMAPISend.dll: DSRMAPI\Send\DSRMAPISend.dpr
+  $(DCC)
+
+DSRPOP3Receive.dll: DSRPOP3\Receive\DSRPOP3Receive.dpr
+  $(DCC)
+
+DSRPOP3Send.dll: DSRPOP3\Send\DSRPOP3Send.dpr
+  $(DCC)
+
+CISImSubcontractor.dll: ..\Import\CIS\SubContractors\CISImSubcontractor.dpr
+  $(DCC)
+
+DSRExport.dll: ..\ExportBox\DSRExport.dpr
+  $(DCC)
+
+DSRImport.dll: ..\ImportBox\DSRImport.dpr
+  $(DCC)
+
+

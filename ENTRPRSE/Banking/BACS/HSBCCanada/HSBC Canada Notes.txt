@@ -1,0 +1,7 @@
+The following values should be set in the ini file:
+
+UserID	This is the 10-digit EFT Originator ID provided by HSBC
+FileNo	File Create Number. This starts at 1 and is incremented each time a file is created. As there is a maximum of 4 digits it resets once it reaches 10000. I don't know how this will work with HSBC since the spec says "Exch file must contain a creation number that is greater than that of previously transmitted files." - something missing there.
+DebitCPA	The CPA code to be used for Debit files. Defaults to 700
+CreditCPA	The CPA code to be used for Credit files. Defaults to 450
+

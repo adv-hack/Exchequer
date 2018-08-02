@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<GovTalkMessage xmlns:gti="http://www.govtalk.gov.uk/CM/envelope" xmlns:erp="http://www.govtalk.gov.uk/CM/errorresponse" xmlns="http://www.govtalk.gov.uk/CM/envelope">
+  <EnvelopeVersion>1.0</EnvelopeVersion>
+  <Header>
+    <MessageDetails>
+      <Class>IR-CIS-VERIFY</Class>
+      <Qualifier>response</Qualifier>
+      <Function>submit</Function>
+      <TransactionID/>
+      <AuditID/>
+      <CorrelationID>AEB8F0684C312ACB8BFDAA4FFB230511</CorrelationID>
+      <ResponseEndPoint PollInterval="10">https://secure.dev.gateway.gov.uk/submission</ResponseEndPoint>
+      <Transformation>XML</Transformation>
+      <GatewayTest>1</GatewayTest>
+      <GatewayTimestamp>2007-01-30T16:06:15.858</GatewayTimestamp>
+    </MessageDetails>
+    <SenderDetails/>
+  </Header>
+  <GovTalkDetails>
+    <Keys/>
+  </GovTalkDetails>
+  <Body>
+    <SuccessResponse xmlns:auto-ns1="http://www.govtalk.gov.uk/CM/envelope" xmlns="http://www.inlandrevenue.gov.uk/SuccessResponse">
+      <IRmarkReceipt>
+        <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+          <dsig:SignedInfo xmlns:sarvega="http://www.sarvega.com/xslt">
+            <dsig:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+            <dsig:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <dsig:Reference>
+              <dsig:Transforms>
+                <dsig:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                  <dsig:XPath>(count(ancestor-or-self::node()|/gti:GovTalkMessage/gti:Body)=count(ancestor-or-self::node())) and (count(ancestor-or-self::node()|/gti:GovTalkMessage/gti:Body/*[name()='IRenvelope']/*[name()='IRheader']/*[name()='IRmark'])!=count(ancestor-or-self::node()))</dsig:XPath>
+                </dsig:Transform>
+                <dsig:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+              </dsig:Transforms>
+              <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+              <dsig:DigestValue>LrRk/On+yEzEsl2rEX2GCAWWDyI=</dsig:DigestValue>
+            </dsig:Reference>
+          </dsig:SignedInfo>
+          <dsig:SignatureValue>LeGHCXC25eUN9Yv31EX7nSDcaGrviX60Kg2I23cdWcsovYa3H+5T7xM8qdqZGdaywG+bMiC3pwz5Wt7L+AB+HLWCe09ojLXDe7olw+A18NhkLFQu3DAQWZXD0MoTuS0dZO+JrOX3SP9YKMbTE6rNlxxFjWq1xy8yckwfVBPUF00=</dsig:SignatureValue>
+          <dsig:KeyInfo>
+            <dsig:X509Data>
+              <dsig:X509Certificate>MIIDKTCCApKgAwIBAgIBAjANBgkqhkiG9w0BAQQFADB1MQswCQYDVQQGEwJVUzERMA8GA1UECBMISWxsaW5vaXMxGTAXBgNVBAcTEE9ha2Jyb29rIFRlcnJhY2UxEDAOBgNVBAoTB1NhcnZlZ2ExEDAOBgNVBAsTB1N1cHBvcnQxFDASBgNVBAMTC1NhcnZlZ2FEZW1vMB4XDTA0MTAwNzE2MDYwOFoXDTI5MTAwMTE2MDYwOFoweTELMAkGA1UEBhMCVVMxETAPBgNVBAgTCElsbGlub2lzMRkwFwYDVQQHExBPYWticm9vayBUZXJyYWNlMRAwDgYDVQQKEwdTYXJ2ZWdhMRAwDgYDVQQLEwdTdXBwb3J0MRgwFgYDVQQDEw9TYXJ2ZWdhRGVtb0NlcnQwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOuak58DVFSXNRJzyvthjWYBn+yQX67cemqa1ZVF460RuwOCODZJHP8KlLnrJyZHVuBzlA0yHGKz5ABjpj/N7/IWxrC4LEH0Tuw1WCqaDTaSV2AtyEs7fgtopit6KM/yMGwqrDSHcuMi++yr5ynhfOS5uWZ9dSYwwmCtLmEauayfAgMBAAGjgcQwgcEwHQYDVR0OBBYEFH5QwQCCP0EqP0vwyRifonAT46ooMIGfBgNVHSMEgZcwgZSAFGU/dbDLz6UwZVm9DPwTghnj4tt6oXmkdzB1MQswCQYDVQQGEwJVUzERMA8GA1UECBMISWxsaW5vaXMxGTAXBgNVBAcTEE9ha2Jyb29rIFRlcnJhY2UxEDAOBgNVBAoTB1NhcnZlZ2ExEDAOBgNVBAsTB1N1cHBvcnQxFDASBgNVBAMTC1NhcnZlZ2FEZW1vggEAMA0GCSqGSIb3DQEBBAUAA4GBAJ7UjONH53zehnwbxNmLsr2FtdDSkQL9JFPEctPrjThu8w+4m/C8u+spUnIdPr9P3f5870L3/+EcePsXAc00xx4uqsrCkCD2unpKO7ZO0fqmvd2dMQqpcQv5Lm7jQa1HpmRcNwGiQhslp0K+oCxds2w4jZWt7W/l/H0Htg6kRnzD</dsig:X509Certificate>
+            </dsig:X509Data>
+          </dsig:KeyInfo>
+        </dsig:Signature>
+        <Message code="1">The Inland Revenue has received the IR-CIS-VERIFY document ref: 123 R033 at 2007-01-30T16:05:55.624. The associated IRmark was: F22GJ7HJ73EEZRFSLWVRC7MGBACZMDZC We advise you to keep this receipt in both electronic and hardcopy versions for your records. You may wish to use them to identify your submission in the future.</Message>
+      </IRmarkReceipt>
+      <AcceptedTime>2007-01-30T16:05:55.624</AcceptedTime>
+      <ResponseData>
+        <CISresponse xmlns="http://www.govtalk.gov.uk/taxation/CISresponse">
+          <Contractor>
+            <UTR>2325648152</UTR>
+            <AOref>123PP87654321</AOref>
+          </Contractor>
+          <Subcontractor>
+            <Name>
+              <Fore>George</Fore>
+              <Sur>Wilkinson</Sur>
+            </Name>
+            <UTR>5234567893</UTR>
+            <Partnership>
+              <Name>Wilkinson &amp; Wilkinson</Name>
+            </Partnership>
+            <Matched>unmatched</Matched>
+            <TaxTreatment>unmatched</TaxTreatment>
+            <VerificationNumber>V5678912356C</VerificationNumber>
+          </Subcontractor>
+          <Subcontractor>
+            <Name>
+              <Fore>Geoffrey</Fore>
+              <Sur>Palmer</Sur>
+            </Name>
+            <UTR>3234567894</UTR>
+            <Partnership>
+              <Name>Huntley &amp; Palmer</Name>
+              <UTR>1234567895</UTR>
+            </Partnership>
+            <Matched>matched</Matched>
+            <TaxTreatment>gross</TaxTreatment>
+            <VerificationNumber>V5678912356</VerificationNumber>
+          </Subcontractor>
+          <Subcontractor>
+            <TradingName>Sparks</TradingName>
+            <UTR>1234567896</UTR>
+            <CRN>44234567</CRN>
+            <Matched>matched</Matched>
+            <TaxTreatment>net</TaxTreatment>
+            <VerificationNumber>V5678912356</VerificationNumber>
+          </Subcontractor>
+        </CISresponse>
+      </ResponseData>
+    </SuccessResponse>
+  </Body>
+</GovTalkMessage>

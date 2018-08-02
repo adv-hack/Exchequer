@@ -1,0 +1,6 @@
+VBTEST16.FRM
+VBDECL16.BAS
+MTOOLDLL.BAS
+ProjWinSize=86,539,248,215
+ProjWinShow=2
+IconForm="Form1"

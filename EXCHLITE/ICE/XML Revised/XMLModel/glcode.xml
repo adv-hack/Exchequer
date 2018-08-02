@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:glcode xmlns:val="urn:www-iris-co-uk:glcode">
+<message guid="" number="0" count="0" source="" destination="" flag="0" plugin="" datatype="0" desc="" xsl="" xsd="" startperiod="0" startyear="0" endperiod="0" endyear="0">
+  <glcoderec>
+    <glclass/>      <!--: Byte;       { Optional Nom Classifier } -->
+    <glcode/>       <!--: Longint;    {  } -->
+    <glname/>       <!--: String[40]; -->
+    <glparent/>     <!--: LongInt;    { Parent Code } -->
+    <gltype/>       <!--: Char;       { Heading / A,B,C } -->
+    <glpage/>       <!--: Boolean;    { Page At end of this } -->
+    <glsubtotal/>   <!--: Boolean;    { Sub Total at end } -->
+    <gltotal/>      <!--: Boolean;    { Show Balance only or Cr/Dr } -->
+    <glcarryfwd/>   <!--: LongInt;    { Nom Code to Carry Forward to } -->
+    <glrevalue/>    <!--: Boolean;    { Code is to be revalued } -->
+    <glaltcode/>    <!--: String[50]; { Alternative look up code} -->
+    <glcurrency/>   <!--: Byte;       { Validation currency associated with this G/L. 0= All} -->
+    <glprivaterec/> <!--: Byte; -->
+    <glforcejc/>    <!--: Boolean;    { Force a JC when using this G/L code } -->
+    <glhideac/>     <!--: Byte;       { 1 = Hide from transactions } -->
+    <glspare/>      <!--: String[47]; { Stored in database as array[1..47] of Byte } -->
+  </glcoderec>
+</message>
+</val:glcode>

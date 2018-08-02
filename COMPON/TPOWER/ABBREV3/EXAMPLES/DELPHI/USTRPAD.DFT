@@ -1,0 +1,56 @@
+object Form1: TForm1
+  Left = 196
+  Top = 108
+  Width = 479
+  Height = 282
+  Caption = 'StreamPad'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Memo1: TMemo
+    Left = 0
+    Top = 65
+    Width = 469
+    Height = 191
+    Align = alClient
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 469
+    Height = 65
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    TabOrder = 1
+    object Memo2: TMemo
+      Left = 8
+      Top = 4
+      Width = 449
+      Height = 53
+      BorderStyle = bsNone
+      Ctl3D = False
+      Lines.Strings = (
+        
+          'This example will compress the contents of the memo control to a' +
+          ' memory stream and save the'
+        
+          'stream to a file on disk. The next time the program runs, the fi' +
+          'le will be read and the memory '
+        
+          'stream extracted. To test, enter text in the memo control and th' +
+          'en close the application. Next, '
+        'restart the application to view the extracted file.')
+      ParentColor = True
+      ParentCtl3D = False
+      TabOrder = 0
+    end
+  end
+end

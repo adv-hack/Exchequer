@@ -1,0 +1,39 @@
+:Base bigini.hlp
+:Title  BigIni
+:Index Index for bigini.hlp=bigini.hlp
+1 BigIni
+2 About BigIni=IDH_BigIni_Project
+2 Examples
+2 Packages
+3 Units
+2 Alphabetical Object and Component Listing
+2 TAppIniFile=IDH_TAppIniFile
+2 TBiggerIniFile=IDH_TBiggerIniFile
+2 TBigIniFile=IDH_TBigIniFile
+2 TCommaSeparatedInfo=IDH_TCommaSeparatedInfo
+2 TCSIFont=IDH_TCSIFont
+2 TCSIPoint=IDH_TCSIPoint
+2 TCSIRect=IDH_TCSIRect
+2 TLibIniFile=IDH_TLibIniFile
+2 TSectionList=IDH_TSectionList
+2 Alphabetical Object and Component Listing, By Unit
+3 BigIni
+3 TAppIniFile=IDH_TAppIniFile
+3 TBiggerIniFile=IDH_TBiggerIniFile
+3 TBigIniFile=IDH_TBigIniFile
+3 TCommaSeparatedInfo=IDH_TCommaSeparatedInfo
+3 TCSIFont=IDH_TCSIFont
+3 TCSIPoint=IDH_TCSIPoint
+3 TCSIRect=IDH_TCSIRect
+3 TLibIniFile=IDH_TLibIniFile
+3 TSectionList=IDH_TSectionList
+2 Alphabetical Routine Listing
+2 ModuleName=IDH_ModuleName_100018
+2 Alphabetical Routine Listing, By Unit
+3 BigIni
+3 ModuleName=IDH_ModuleName_100018
+2 Alphabetical Data Type Listing
+2 TEraseSectionCallback=IDH_TEraseSectionCallback_100000
+2 Alphabetical Data Type Listing, By Unit
+3 BigIni
+3 TEraseSectionCallback=IDH_TEraseSectionCallback_100000

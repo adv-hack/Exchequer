@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<GovTalkMessage xmlns="http://www.govtalk.gov.uk/CM/envelope">
+   <EnvelopeVersion>2.0</EnvelopeVersion>
+   <Header>
+      <MessageDetails>
+         <Class/>
+         <Qualifier/>
+         <Function/>
+         <CorrelationID/>
+         <ResponseEndPoint />
+         <Transformation/>
+	 <GatewayTest>1</GatewayTest>
+         <GatewayTimestamp/>
+      </MessageDetails>
+      <SenderDetails>
+         <IDAuthentication>
+            <SenderID/>
+            <Authentication>
+               <Method/>
+               <Role></Role>
+               <Value></Value>
+            </Authentication>
+         </IDAuthentication>
+         <EmailAddress></EmailAddress>
+      </SenderDetails>
+   </Header>
+   <GovTalkDetails>
+	 <Keys/>
+      <TargetDetails>
+         <Organisation>IR</Organisation>
+      </TargetDetails>
+   </GovTalkDetails>
+   <Body>
+   </Body>
+</GovTalkMessage>

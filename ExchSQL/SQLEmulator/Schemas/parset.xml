@@ -1,0 +1,38 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" identitycol="PositionId" reclen="495" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="psExeName"                    fullfieldname="psExeName"                    typename="DelphiString" size="21" elements="1" id="-1" columnname="psExeName"/>
+        <schemafield fieldname="psUserName"                   fullfieldname="psUserName"                   typename="DelphiString" size="11" elements="1" id="-1" columnname="psUserName"/>
+        <schemafield fieldname="psWindowName"                 fullfieldname="psWindowName"                 typename="DelphiString" size="41" elements="1" id="-1" columnname="psWindowName"/>
+        <schemafield fieldname="psName"                       fullfieldname="psName"                       typename="DelphiString" size="41" elements="1" id="-1" columnname="psName"/>
+        <schemafield fieldname="psBackgroundColor"            fullfieldname="psBackgroundColor"            typename="int32"        size="4"  elements="1" id="-1" columnname="psBackgroundColor"/>
+        <schemafield fieldname="psFontName"                   fullfieldname="psFontName"                   typename="DelphiString" size="41" elements="1" id="-1" columnname="psFontName"/>
+        <schemafield fieldname="psFontSize"                   fullfieldname="psFontSize"                   typename="int32"        size="4"  elements="1" id="-1" columnname="psFontSize"/>
+        <schemafield fieldname="psFontColor"                  fullfieldname="psFontColor"                  typename="int32"        size="4"  elements="1" id="-1" columnname="psFontColor"/>
+        <schemafield fieldname="psFontStyle"                  fullfieldname="psFontStyle"                  typename="uint8"        size="1"  elements="1" id="-1" columnname="psFontStyle"/>
+        <schemafield fieldname="psHeaderBackgroundColor"      fullfieldname="psHeaderBackgroundColor"      typename="int32"        size="4"  elements="1" id="-1" columnname="psHeaderBackgroundColor"/>
+        <schemafield fieldname="psHeaderFontName"             fullfieldname="psHeaderFontName"             typename="DelphiString" size="41" elements="1" id="-1" columnname="psHeaderFontName"/>
+        <schemafield fieldname="psHeaderFontSize"             fullfieldname="psHeaderFontSize"             typename="int32"        size="4"  elements="1" id="-1" columnname="psHeaderFontSize"/>
+        <schemafield fieldname="psHeaderFontColor"            fullfieldname="psHeaderFontColor"            typename="int32"        size="4"  elements="1" id="-1" columnname="psHeaderFontColor"/>
+        <schemafield fieldname="psHeaderFontStyle"            fullfieldname="psHeaderFontStyle"            typename="uint8"        size="1"  elements="1" id="-1" columnname="psHeaderFontStyle"/>
+        <schemafield fieldname="psHighlightBackgroundColor"   fullfieldname="psHighlightBackgroundColor"   typename="int32"        size="4"  elements="1" id="-1" columnname="psHighlightBackgroundColor"/>
+        <schemafield fieldname="psHighlightFontColor"         fullfieldname="psHighlightFontColor"         typename="int32"        size="4"  elements="1" id="-1" columnname="psHighlightFontColor"/>
+        <schemafield fieldname="psHighlightFontStyle"         fullfieldname="psHighlightFontStyle"         typename="uint8"        size="1"  elements="1" id="-1" columnname="psHighlightFontStyle"/>
+        <schemafield fieldname="psMultiSelectBackgroundColor" fullfieldname="psMultiSelectBackgroundColor" typename="int32"        size="4"  elements="1" id="-1" columnname="psMultiSelectBackgroundColor"/>
+        <schemafield fieldname="psMultiSelectFontColor"       fullfieldname="psMultiSelectFontColor"       typename="int32"        size="4"  elements="1" id="-1" columnname="psMultiSelectFontColor"/>
+        <schemafield fieldname="psMultiSelectFontStyle"       fullfieldname="psMultiSelectFontStyle"       typename="uint8"        size="1"  elements="1" id="-1" columnname="psMultiSelectFontStyle"/>
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0">
+            <indexfields>
+                <item>psExeName</item>
+                <item>psUserName</item>
+                <item>psWindowName</item>
+                <item>psName</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

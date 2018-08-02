@@ -1,0 +1,73 @@
+package B301_r60;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Abbrevia Components'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl;
+
+contains
+  AbArcTyp in 'AbArcTyp.pas',
+  AbBitBkt in 'AbBitBkt.pas',
+  AbCabTyp in 'AbCabTyp.pas',
+  AbConst in 'AbConst.pas',
+  AbExcept in 'AbExcept.pas',
+  AbFciFdi in 'AbFciFdi.pas',
+  AbUnzPrc in 'AbUnzPrc.pas',
+  AbUtils in 'AbUtils.pas',
+  AbVMStrm in 'AbVMStrm.pas',
+  AbZipPrc in 'AbZipPrc.pas',
+  AbZipTyp in 'AbZipTyp.pas',
+  AbTarTyp in 'AbTarTyp.pas',
+  AbDfBase in 'AbDfBase.pas',
+  AbDfCryS in 'AbDfCryS.pas',
+  AbDfDec in 'AbDfDec.pas',
+  AbDfEnc in 'AbDfEnc.pas',
+  AbDfHufD in 'AbDfHufD.pas',
+  AbDfInW in 'AbDfInW.pas',
+  AbDfOutW in 'AbDfOutW.pas',
+  AbDfPkMg in 'AbDfPkMg.pas',
+  AbDfStrm in 'AbDfStrm.pas',
+  AbDfXlat in 'AbDfXlat.pas',
+  AbZLTyp in 'AbZLTyp.pas',
+  AbGzTyp in 'AbGzTyp.pas',
+  AbSpanSt in 'AbSpanSt.pas',
+  AbBase in 'AbBase.pas',
+  AbSelfEx in 'AbSelfEx.pas',
+  AbZipExt in 'AbZipExt.pas',
+  AbBrowse in 'AbBrowse.pas',
+  AbCBrows in 'AbCBrows.pas',
+  AbCabExt in 'AbCabExt.pas',
+  AbCabKit in 'AbCabKit.pas',
+  AbCabMak in 'AbCabMak.pas',
+  AbZBrows in 'AbZBrows.pas',
+  AbZipKit in 'AbZipKit.pas',
+  AbZipper in 'AbZipper.pas',
+  AbUnzper in 'AbUnzper.pas',
+  AbZipCry in 'AbZipCry.pas',
+  AbSWStm in 'AbSWStm.pas';
+
+end.

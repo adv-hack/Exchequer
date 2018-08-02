@@ -1,0 +1,71 @@
+package RVCL40;
+
+{$DESCRIPTION 'Rave 4.0 Class Library'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, VCLDB50, VCLJPG50;
+
+contains
+  NDRVSystem,
+  NDRVStream,
+  NDRVCursor,
+  NDRVStrings,
+
+{ DIBL units }
+  LinkIL,
+  ILConfig,
+  ILConfig_Default,
+  ILRegister,
+
+{ ReportPrinter units }
+  RPDefine,
+  RPFont,
+  RPDevice,
+  RPCursor,
+  RPBase,
+  RPCanvas,
+  RPFiler,
+  RPrinter,
+  RPFPrint,
+  RPreview,
+  RPSystem,
+  RPMemo,
+  RPBars,
+  RPPreFrm,
+  RPStaFrm,
+  RPSetFrm,
+  RPRPTF,
+  RPHTFilr,
+  RPRTFilr,
+  RPTxFilr,
+  RPCon,
+  RPRender,
+  RPRender_HTML,
+  RPRender_PDF,
+
+{ Rave units }
+  RVDefine,
+  RVUtil,
+  RVClass,
+  RVData,
+  RVDatabase,
+  RVDataField,
+  RVDirectDataView,
+  RVSQLDataView,
+  RVSecurity,
+  RVProj,
+  RVTool,
+  RVToolEvents,
+  RVCmHuff,
+  RVPEAnch,
+  RVPEData,
+  RVPEDBAuth,
+  RVPEDTxt,
+  RVPEMemo,
+  RVPEPLst,
+  RVPEProj,
+  RVPEStrL,
+  RVPESys;
+
+end.

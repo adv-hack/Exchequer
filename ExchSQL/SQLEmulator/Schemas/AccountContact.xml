@@ -1,0 +1,35 @@
+<schemarecord tldformat="4" version="2" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="S4gioLKV6B4Lm0eUJFrpbw==" identitycol="PositionId" reclen="900" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_contact_id" fullfieldname="f_contact_id" typename="int32" size="4" elements="1" id="-1" columnname="acoContactId" collation="0"/>
+        <schemafield fieldname="f_account_code" fullfieldname="f_account_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="acoAccountCode" collation="1"/>
+        <schemafield fieldname="f_contact_name" fullfieldname="f_contact_name" typename="DelphiString" size="46" elements="1" id="-1" columnname="acoContactName" collation="1"/>
+        <schemafield fieldname="f_contact_job_title" fullfieldname="f_contact_job_title" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactJobTitle" collation="1"/>
+        <schemafield fieldname="f_contact_phone_number" fullfieldname="f_contact_phone_number" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactPhoneNumber" collation="1"/>
+        <schemafield fieldname="f_contact_fax_number" fullfieldname="f_contact_fax_number" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactFaxNumber" collation="1"/>
+        <schemafield fieldname="f_contact_email_address" fullfieldname="f_contact_email_address" typename="DelphiString" size="101" elements="1" id="-1" columnname="acoContactEmailAddress" collation="1"/>
+        <schemafield fieldname="f_has_own_address" fullfieldname="f_has_own_address" typename="bool1" size="1" elements="1" id="-1" columnname="acoContactHasOwnAddress" collation="0"/>
+        <schemafield fieldname="f_contact_address_1" fullfieldname="f_contact_address_1" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactAddress1" />
+        <schemafield fieldname="f_contact_address_2" fullfieldname="f_contact_address_2" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactAddress2" />
+        <schemafield fieldname="f_contact_address_3" fullfieldname="f_contact_address_3" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactAddress3" />
+        <schemafield fieldname="f_contact_address_4" fullfieldname="f_contact_address_4" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactAddress4" />
+        <schemafield fieldname="f_contact_address_5" fullfieldname="f_contact_address_5" typename="DelphiString" size="31" elements="1" id="-1" columnname="acoContactAddress5" />
+        <schemafield fieldname="f_contact_post_code" fullfieldname="f_contact_post_code" typename="DelphiString" size="21" elements="1" id="-1" columnname="acoContactPostCode" collation="1"/>
+        <schemafield fieldname="f_contact_country" fullfieldname="f_contact_country" typename="DelphiString" size="3" elements="1" id="-1"  columnname="acoContactCountry" collation="1"></schemafield>        
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+          <indexfields>
+            <item>f_contact_id</item>
+          </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+          <indexfields>
+            <item>f_account_code</item>
+            <item>f_contact_name</item>
+          </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

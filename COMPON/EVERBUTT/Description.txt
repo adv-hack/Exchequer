@@ -1,0 +1,160 @@
+//Description.txt - description of component(this file)
+//Install.txt- to install the component
+//License.txt- license agreement
+//Support.txt- Support information
+
+Content of file:
+  1.Shot desription of component
+  2.IAeverButton description
+  3.RgnEditor description
+  4.RotateRgn1 description
+
+
+1. This is The Button component (really Button, as it's based on TButton component)
+   It provide the hext Main functions:
+        13 default forms + User defined form;
+        7 Styles of Button Border;
+        3 Styles of gradient fill;
+          Gradient Bitmap allowed;
+        3 Styles of Caption;
+        Show/not show focus region, allow custom painting;
+        The Button,Caption and Gradient Could be turned at any angle, (Also with User Defined form)
+        Real Time Light/Shadow Calculating
+        3 Types of Animation (On Button Enter,Exit and Press)
+        The Button Point of rotation can be selected
+        Button Could Rotated at real Time even in Design Mode (Not using Timer)
+        All Parts of Button could be placed at any part of Button.
+        All Forms of Button (include User) could be freely resized undependly on X and Y axe
+  RgnEditor is The Editor of Regions (Button Forms).
+  It Provide the next main Function:
+        Selection The region at any kind of Bitmap
+        Selection provided  as at Fore ground Color as at Back Ground Color
+        You Can Use The not accurate on Colors Bitmaps to Choose Region (At Example Scanned Images)
+        This is also Example of IAeverButton using.
+  RotateRgn1 is Unit for back design of Regions from Microsoft inner presentation(couple of Rectangles)
+  to PolyPolyline representation (With automatically calculation of multiplicity) and the border
+  calculation.
+
+ 2. 
+    The properties writen done first value is default value,next-the avaible (if not Standart)
+Public
+
+    Name            value           Description
+
+    ButtonRegion    HRGN            value of Button region (used at bkUser Style)
+                                    For Design time region assigning Use the StringButtonRegion property
+Published
+
+    Name            value           Description
+
+    ArcAngle        2,09....        The bkArc angle of opening in Radians (full angle=2*Pi radians=360 degrees)
+    BitmapHAlign    haLeft          The horizontal align of MainBitmap and Animations Bitmaps
+                    haRight
+                    haCenter
+                    haNone
+    BitmapLeft      0               Value of Left of Lefttop point of MainBitmap and Animations Bitmaps
+    BitmapTop       0               Value of Top of Lefttop point of MainBitmap and Animations Bitmaps
+    BitmapVAlign    vaTop           The vertical align of MainBitmap and Animations Bitmaps
+                    vaCenter
+                    vaBottom
+                    vaNone
+    Button3DKind    dk3D            Style of Button Border
+                    dk3Dsimple
+                    dk3DBorder
+                    dkNone
+                    dkFlatten
+                    dkFlattenSimple
+                    dk3DBorderFlatten
+    ButtonAngle     0               Angle of Button
+    ButtonColor     clBtnFace       Main Color of Button
+    ButtonColor1    clBtnShadow     Second Color of Button (only in Gradients)
+    ButtonHeight    0               Height of Button (even at any angle(not simple Height))
+    ButtonKind      bkRect          Kind of Button form
+                    bkArc
+                    bkDonut
+                    bkElliptic
+                    bkRoundRect
+                    bkPoly
+                    bkPolyStar
+                    bkArrow
+                    bkArrow1
+                    bkArrow2 
+                    bkCross
+                    bkCutRect
+                    bkCross1
+                    bkUser          Any form (even with holes, multiply regions) could renders real time...
+    ButtonWidth     0               Width of Button (even at any angle(not simple Width))
+    Caption3DKind   ckSimple        Style of Caption
+                    ckEmbossed
+                    ckPressed
+    CaptionAngle    0               Angle of Caption
+    CaptionFixed    FALSE           Fixing/unfixing the Button and Caption angles (it could depends or not)
+    CaptionHAlign   haCenter        The horizontal align of Caption
+                    haLeft
+                    haRight
+                    haNone 
+    CaptionLeft     0               Left value of LeftTop point of Caption 
+                                    (relative button(T.i.button angle,not outer rect (Left,Top,Right,Bottom))
+    CaptionTop      0               Top value of LeftTop point of Caption 
+                                    (relative button(T.i.button angle,not outer rect (Left,Top,Right,Bottom))
+    CaptionVAlign   vaTop           The vertical align of Caption
+                    vaCenter
+                    vaBottom
+                    vaNone
+    GradientAngle   450             Angle of Gradient (Used in Linear kind only)
+    GradientBitmap  (None)          The Gradient Bitmap, line in witch is define the gradient
+    GradientBitmapLine 0            Number of gradient line in Gradient Bitmap
+    GradientFixed   FALSE           Fixing/unfixing the Button and Gradient angles (it could depends or not)
+    GradientKind    gkNone          Kind of gradient
+                    gkLinear
+                    gkCircular
+    MainBitmap      (None)          MainBitmap            
+    MainBitmapGlyphs 1              Number of MainBitmap Glyhs 
+    OnClickBitmap   (None)          |
+    OnClickGlyphs   1               |
+    OnClickInterval 40              |
+    OnEnterBitmap   (None)          |
+    OnEnterGlyphs   1               |-->Animation Bitmaps,it's Glyphs Number,Time between cadres representation  
+    OnEnterInterval 40              |
+    OnExitBitmap    (None)          |
+    OnExitGlyphs    1               |
+    OnExitInterval  40              |
+    PeaksNumber     6               Number of Peaks at bkPoly anb bk PolyStar button styles
+    RadiusRatio     0,5             Ratio of inner/outer diameters at bkDonut and bkArc Button Styles
+    Rotated         FALSE           Button is realTime rotated or no
+    RotatedAngle    40              Delta of Button angle if Button is Rotated
+    RotatedTime     40              delta of Time (not less then that value) between cadres if Button is Rotated
+    RotationCenterFixed FALSE       Fixing of rotation Point at Button center
+    RotationPointX  0               Rotation point X value
+    RotationPointY  0               Rotation point Y value
+    StringButtonRegion StringValue  String value of Button region (used at bkUser Style)
+                                    For run time region assigning Use the ButtonRegion property
+    Transparent    FALSE            SetUP All Bitmaps transparent or No
+    UserRGNAUTO    TRUE             (Use/not use) automatic recalculation for User Defined Style bkUser
+    OnPaint        TNotifyEvent     |
+    CustomDraw     Boolean          |allows custom painting;
+    ShowFocusRGN   Boolean          show/not show focus region;
+
+3. RGNeditor is Region Editor that help you to construct User region from it's image on Bitmap
+  So
+  3.1. Paint The Image of Region on Bitmap (at example Scan,Paint manually and so on) and save it as BMP file.
+  3.2. Load Bitmap at RGNEditor(You can SWitch on/off the auto RGN calculating in real time(Realized as parallel process))
+  3.3. Select The Fore or Back color (Press the corresponding Button and select color from image)
+  3.4. If more wastes then need on region You could remove it By selection of Smooth at up of Editor
+  3.5. By Accuracy switch you can increase the colors regions (so All Colors near Back Color, at example, will count as Back Color)
+  3.6. Press Ok button
+  Please do not foget to select bkUser Type!
+
+4. RotateRgn1 is unit with functions of back design of inner HRGN presentation to PolyPolynom kind.
+ 
+Function                     Action
+
+RotateRegion                 RotateRgn at defined point to angle
+RecreateRgn                  Get Rgh: HRGN from PolyPoly presentation
+PolyRotate                   Rotate PolyPoly at defined Point to angle
+GetInner                     Shift Even Polys from PolyPoly at defined number of points inner and 
+                             Odd polys Outer(all actions separatly could be denied)
+GetLDppoly                   Calculate   the Light and Shadow regions between two PolyPolyes
+RgnToPoly                    Get PolyPoly from region
+SimplifyPolys                Simplify Polypoly (remove repeated points and points at one line)
+  

@@ -1,0 +1,71 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="recordtype" identitycol="PositionId" reclen="2215" >
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="TOOLS_FIXED" size="0" elements="1" id="-1" columnname="" />
+    <schemafield fieldname="var" fullfieldname="var" typename="TOOLS_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+    <schemafield fieldname="recordtype" fullfieldname="recordtype" typename="char" size="1" elements="1" id="-1" columnname="recordtype" collation="1"/>
+    <schemafield fieldname="tools_code1" fullfieldname="Tools_code1" typename="DelphiEmbeddedCaseInsensitiveString" size="11" elements="1" id="-1" columnname="Toolscode1"/>
+    <schemafield fieldname="tools_code2" fullfieldname="Tools_code2" typename="DelphiEmbeddedCaseSensitiveString" size="51" elements="1" id="-1" columnname="Toolscode2"/>
+    <schemafield fieldname="tools_code3" fullfieldname="Tools_code3" typename="DelphiEmbeddedCaseInsensitiveString" size="61" elements="1" id="-1" columnname="Toolscode3"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="MenuItem" id="0" stringid="M">
+      <schemafields>
+        <schemafield fieldname="mifoliono" fullfieldname="mifoliono" typename="long" size="4" elements="1" id="0" columnname="mifoliono" />
+        <schemafield fieldname="miavailability" fullfieldname="miavailability" typename="char" size="1" elements="1" id="0" columnname="miavailability" />
+        <schemafield fieldname="micompany" fullfieldname="micompany" typename="DelphiString" size="7" elements="1" id="0" columnname="micompany" />
+        <schemafield fieldname="miitemtype" fullfieldname="miitemtype" typename="char" size="1" elements="1" id="0" columnname="miitemtype" />
+        <schemafield fieldname="midescription" fullfieldname="midescription" typename="DelphiString" size="51" elements="1" id="0" columnname="midescription" />
+        <schemafield fieldname="mifilename" fullfieldname="mifilename" typename="DelphiString" size="256" elements="1" id="0" columnname="mifilename" />
+        <schemafield fieldname="mistartdir" fullfieldname="mistartdir" typename="DelphiString" size="256" elements="1" id="0" columnname="mistartdir" />
+        <schemafield fieldname="miparameters" fullfieldname="miparameters" typename="DelphiString" size="256" elements="1" id="0" columnname="miparameters" />
+        <schemafield fieldname="mihelptext" fullfieldname="mihelptext" typename="DelphiString" size="151" elements="1" id="0" columnname="mihelptext" />
+        <schemafield fieldname="miallusers" fullfieldname="miallusers" typename="bool1" size="1" elements="1" id="0" columnname="miallusers" />
+        <schemafield fieldname="miallcompanies" fullfieldname="miallcompanies" typename="bool1" size="1" elements="1" id="0" columnname="miallcompanies" />
+        <schemafield fieldname="micomponentname" fullfieldname="micomponentname" typename="DelphiString" size="51" elements="1" id="0" columnname="micomponentname" />
+        <schemafield fieldname="miparentcomponentname" fullfieldname="miparentcomponentname" typename="DelphiString" size="51" elements="1" id="0" columnname="miparentcomponentname" />
+        <schemafield fieldname="miposition" fullfieldname="miposition" typename="long" size="4" elements="1" id="0" columnname="miposition" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="UserXRef" id="1" stringid="U">
+      <schemafields>
+        <schemafield fieldname="uxitemfolio" fullfieldname="uxitemfolio" typename="long" size="4" elements="1" id="0" columnname="uxitemfolio" />
+        <schemafield fieldname="uxusername" fullfieldname="uxusername" typename="DelphiString" size="11" elements="1" id="0" columnname="uxusername" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="SysSetup" id="2" stringid="S" >
+      <schemafields>
+        <schemafield fieldname="ssusepassword" fullfieldname="ssusepassword" typename="bool1" size="1" elements="1" id="0" columnname="ssusepassword" />
+        <schemafield fieldname="sspassword" fullfieldname="sspassword" typename="DelphiString" size="51" elements="1" id="0" columnname="sspassword" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="CompanyXRef" id="3" stringid="C" >
+      <schemafields>
+        <schemafield fieldname="cxitemfolio" fullfieldname="cxitemfolio" typename="long" size="4" elements="1" id="0" columnname="cxitemfolio" />
+        <schemafield fieldname="cxcompanycode" fullfieldname="cxcompanycode" typename="DelphiString" size="7" elements="1" id="0" columnname="cxcompanycode" />
+      </schemafields>
+    </recordtype>
+    </recordtypes>
+    <indexes>
+      <schemaindexes indexnumber="0" isunique="0" isclustered="0">
+        <indexfields>
+          <item>recordtype</item>
+		  <item computedcolumnname="Toolscode1Computed">tools_code1</item>
+        </indexfields>
+      </schemaindexes>
+      <schemaindexes indexnumber="1" isunique="0" isclustered="0">
+        <indexfields>
+          <item>recordtype</item>
+          <item computedcolumnname="Toolscode2Computed">tools_code2</item>
+        </indexfields>
+      </schemaindexes>
+      <schemaindexes indexnumber="2" isunique="0" isclustered="0">
+        <indexfields>
+          <item>recordtype</item>
+			<item computedcolumnname="Toolscode3Computed">tools_code3</item>
+        </indexfields>
+      </schemaindexes>		
+    </indexes>
+</schemarecord> 

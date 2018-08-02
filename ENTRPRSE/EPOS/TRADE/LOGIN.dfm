@@ -1,0 +1,256 @@
+object FrmLogin: TFrmLogin
+  Left = 298
+  Top = 269
+  HelpContext = 26
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'User Login'
+  ClientHeight = 138
+  ClientWidth = 411
+  Color = clNavy
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Arial Narrow'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnCloseQuery = FormCloseQuery
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Label1: TLabel
+    Left = 8
+    Top = 20
+    Width = 50
+    Height = 16
+    Caption = 'Company'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 52
+    Width = 56
+    Height = 16
+    Caption = 'User Name'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 84
+    Width = 51
+    Height = 16
+    Caption = 'Password'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape1: TShape
+    Left = 76
+    Top = 18
+    Width = 3
+    Height = 87
+    Pen.Style = psClear
+  end
+  object lCopyright: TLabel
+    Left = 74
+    Top = 113
+    Width = 46
+    Height = 14
+    Caption = 'Copyright'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ShowAccelChar = False
+    Transparent = True
+  end
+  object lUserCount: TLabel
+    Left = 234
+    Top = 53
+    Width = 23
+    Height = 14
+    Caption = '(0/0)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object cmbCompany: TComboBox
+    Left = 88
+    Top = 16
+    Width = 217
+    Height = 24
+    Style = csDropDownList
+    Enabled = False
+    ItemHeight = 16
+    TabOrder = 4
+  end
+  object edUserName: TEdit
+    Left = 88
+    Top = 48
+    Width = 137
+    Height = 24
+    CharCase = ecUpperCase
+    TabOrder = 0
+    OnExit = edUserNameExit
+  end
+  object edPassword: TEdit
+    Left = 88
+    Top = 80
+    Width = 137
+    Height = 24
+    PasswordChar = '*'
+    TabOrder = 1
+    OnExit = edPasswordExit
+  end
+  object btnOK: TIAeverButton
+    Left = 320
+    Top = 16
+    Width = 82
+    Height = 33
+    Caption = 'OK'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnOKClick
+    ButtonAngle = 1800
+    ButtonWidth = 82
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080000080C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+  object btnCancel: TIAeverButton
+    Left = 320
+    Top = 56
+    Width = 82
+    Height = 33
+    Cancel = True
+    Caption = 'Cancel'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 3
+    ButtonAngle = 1800
+    ButtonWidth = 82
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+end

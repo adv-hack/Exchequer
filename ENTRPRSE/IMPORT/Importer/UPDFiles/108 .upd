@@ -1,0 +1,9 @@
+[Version]
+Version=9.0.108
+
+[General Ledger]
+F016=GL.Inactive                  0120    W 0002 O   Inactive                                           default=N                                                                                                    comment=Y/N
+F017=GL.PadChar3                  0122    C 0003 N   Padding                                            default=                                                                                                     comment=
+F018=GL.Spare                     0125    C 0255 N   Spare                                              default=                                                                                                     comment=
+F019=GL.LastChar                  0380    C 0001 N   Padding                                            default=                                                                                                     comment=
+

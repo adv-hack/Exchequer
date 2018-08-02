@@ -1,0 +1,110 @@
+object Form1: TForm1
+  Left = 385
+  Top = 298
+  Width = 456
+  Height = 384
+  Caption = 'Compressed Memo'
+  Font.Color = clWindowText
+  Font.Height = -10
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Menu = MainMenu1
+  PixelsPerInch = 96
+  TextHeight = 13
+  object AbZipView1: TAbZipView
+    Left = 0
+    Top = 0
+    Width = 125
+    Height = 339
+    Align = alLeft
+    Attributes = [vaItemName]
+    Colors.Selected = clHighlight
+    Colors.SelectedText = clHighlightText
+    Colors.Alternate = clAqua
+    Colors.AlternateText = clRed
+    Colors.Deleted = clYellow
+    Colors.DeletedText = clNavy
+    Headings.Strings = (
+      'Name'
+      'Packed'
+      'Method'
+      'Ratio (%)'
+      'CRC32'
+      'Attributes'
+      'Format'
+      'Encrypted'
+      'Time Stamp'
+      'Size'
+      'Version Made'
+      'Version Needed'
+      'Path')
+    DefaultColWidth = 150
+    DisplayOptions = [doColSizing]
+    HeaderRowHeight = 24
+    SortAttributes = [saItemName]
+    TabOrder = 0
+    ZipComponent = AbZipKit1
+    OnDblClick = AbZipView1DblClick
+    RowHeights = (
+      24
+      24)
+  end
+  object Memo1: TMemo
+    Left = 125
+    Top = 0
+    Width = 321
+    Height = 339
+    Align = alClient
+    Lines.Strings = (
+      '')
+    ScrollBars = ssBoth
+    TabOrder = 1
+  end
+  object MainMenu1: TMainMenu
+    Left = 104
+    Top = 16
+    object File1: TMenuItem
+      Caption = '&File'
+      object Open1: TMenuItem
+        Caption = '&Open'
+        OnClick = Open1Click
+      end
+      object Close1: TMenuItem
+        Caption = '&Close'
+        OnClick = Close1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Exit1: TMenuItem
+        Caption = '&Exit'
+        OnClick = Exit1Click
+      end
+    end
+    object Action1: TMenuItem
+      Caption = '&Action'
+      object Extract1: TMenuItem
+        Caption = '&Extract to memo'
+        OnClick = Extract1Click
+      end
+      object Add1: TMenuItem
+        Caption = '&Add from memo'
+        OnClick = Add1Click
+      end
+      object Clearmemo1: TMenuItem
+        Caption = '&Clear memo'
+        OnClick = Clearmemo1Click
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 96
+    Top = 64
+  end
+  object AbZipKit1: TAbZipKit
+    AutoSave = False
+    ExtractOptions = []
+    Left = 32
+    Top = 96
+  end
+end

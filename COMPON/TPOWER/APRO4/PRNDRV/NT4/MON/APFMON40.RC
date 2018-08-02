@@ -1,0 +1,63 @@
+/*++
+
+Module Name:
+
+    apfmon40.rc
+
+Environment:
+
+    User Mode -Win32
+
+Revision History:
+
+--*/
+
+#include <windows.h>
+#include "apfmon40.h"
+
+STRINGTABLE
+{
+    IDS_LOCALMONITORNAME        "Local Monitor"
+    IDS_LOCALMONITOR            "TPS Fax Port Monitor"
+    IDS_INVALIDPORTNAME_S       "'%s' is an invalid port name."
+    IDS_PORTALREADYEXISTS_S     "Port %s already exists."
+    IDS_NOTHING_TO_CONFIGURE    "There is nothing to configure for this port."
+    IDS_COULD_NOT_OPEN_FILE     "Could not open the file: %s"
+    IDS_UNKNOWN_ERROR           "Unknown error."
+    IDS_OVERWRITE_EXISTING_FILE "The output file already exists.  Click OK to overwrite."
+}
+
+
+#define VERSIONINFO_1   1
+#define VOS_NT_WINDOWS32        0x00040004L             /* from winver.h !!.10 */
+
+VERSIONINFO_1 VERSIONINFO 
+FILEVERSION 4, 01, 0, 0
+PRODUCTVERSION 4, 01, 0, 0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "TurboPower Software Company\000\000"
+   VALUE "FileDescription", "Local Monitor DLL\000"
+   VALUE "FileVersion", "4.01.0.0\000\000"
+   VALUE "InternalName", "APFMON40.DLL\000"
+   VALUE "LegalCopyright", "Copyright © TurboPower Software Co. 1998-2001\000\000"
+   VALUE "OriginalFilename", "APFMON40.DLL\000"
+   VALUE "ProductName", "Async Professional\000\000"
+   VALUE "ProductVersion", "4.01\000\000"
+  }
+
+ }
+
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 0x409, 1252
+ }
+
+}
+
+

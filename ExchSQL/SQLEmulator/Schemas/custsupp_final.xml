@@ -1,0 +1,212 @@
+<schemarecord tldformat="4" version="9" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="1R1wJegDo4GuMDB6L+CyFQ" identitycol="PositionId" recordfieldname="" reclen="2119">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_cust_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1"  columnname="acCode" collation="1"></schemafield>
+    <schemafield fieldname="f_cust_supp" fullfieldname="" typename="char" size="1" elements="1" id="-1"  columnname="acCustSupp" collation="1"></schemafield>
+    <schemafield fieldname="f_company" fullfieldname="" typename="DelphiString" size="46" elements="1" id="-1"  columnname="acCompany" collation="1" ></schemafield>
+    <schemafield fieldname="f_area_code" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="acArea" ></schemafield>
+    <schemafield fieldname="f_rep_code" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="acAccType" ></schemafield>
+    <schemafield fieldname="f_remit_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="acStatementTo" collation="1" ></schemafield>
+    <schemafield fieldname="f_vat_reg_no" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1"  columnname="acVATRegNo"  collation="1" ></schemafield>
+    <schemafield fieldname="f_address_line1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acAddressLine1" ></schemafield>
+    <schemafield fieldname="f_address_line2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acAddressLine2" ></schemafield>
+    <schemafield fieldname="f_address_line3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acAddressLine3" ></schemafield>
+    <schemafield fieldname="f_address_line4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acAddressLine4" ></schemafield>
+    <schemafield fieldname="f_address_line5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acAddressLine5" ></schemafield>
+    <schemafield fieldname="f_desp_addr" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acDespAddr" ></schemafield>
+    <schemafield fieldname="f_desp_address_line1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acDespAddressLine1" ></schemafield>
+    <schemafield fieldname="f_desp_address_line2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acDespAddressLine2" ></schemafield>
+    <schemafield fieldname="f_desp_address_line3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acDespAddressLine3" ></schemafield>
+    <schemafield fieldname="f_desp_address_line4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acDespAddressLine4" ></schemafield>
+    <schemafield fieldname="f_desp_address_line5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acDespAddressLine5" ></schemafield>
+    <schemafield fieldname="f_contact" fullfieldname="" typename="DelphiString" size="26" elements="1" id="-1" columnname="acContact" ></schemafield>
+    <schemafield fieldname="f_phone" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acPhone" collation="1"></schemafield>
+    <schemafield fieldname="f_fax" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1"  columnname="acFax" collation="1"></schemafield>
+    <schemafield fieldname="f_ref_no" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1"  columnname="acTheirAcc"  collation="1"></schemafield>
+    <schemafield fieldname="f_trad_term" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acOwnTradTerm" ></schemafield>
+    <schemafield fieldname="f_sterms1" fullfieldname="" typename="DelphiString" size="81" elements="1" id="-1" columnname="acTradeTerms1" ></schemafield>
+    <schemafield fieldname="f_sterms2" fullfieldname="" typename="DelphiString" size="81" elements="1" id="-1" columnname="acTradeTerms2" ></schemafield>
+    <schemafield fieldname="f_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acCurrency" ></schemafield>
+    <schemafield fieldname="f_vat_code" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="acVATCode" ></schemafield>
+    <schemafield fieldname="f_pay_terms" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="acPayTerms" ></schemafield>
+    <schemafield fieldname="f_credit_limit" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="acCreditLimit" ></schemafield>
+    <schemafield fieldname="f_discount" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="acDiscount" ></schemafield>
+    <schemafield fieldname="f_credit_status" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="acCreditStatus" ></schemafield>
+    <schemafield fieldname="f_cust_cc" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="acCostCentre" collation="1" ></schemafield>
+    <schemafield fieldname="f_c_disc_ch" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="acDiscountBand" ></schemafield>
+    <schemafield fieldname="f_ord_cons_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acOrderConsolidationMode" ></schemafield>
+    <schemafield fieldname="f_def_set_d_days" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="acDefSettleDays" ></schemafield>
+    <schemafield fieldname="f_spare5" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="acSpare5" ></schemafield>
+    <schemafield fieldname="f_balance" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="acBalance" ></schemafield>
+    <schemafield fieldname="f_cust_dep" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="acDepartment" collation="1" ></schemafield>
+    <schemafield fieldname="f_eec_member" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acECMember" ></schemafield>
+    <schemafield fieldname="f_n_line_count" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="acNLineCount" ></schemafield>
+    <schemafield fieldname="f_inc_stat" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acStatement" ></schemafield>
+    <schemafield fieldname="f_def_nom_code" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="acSalesGL" ></schemafield>
+    <schemafield fieldname="f_def_mloc_stk" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="acLocation" collation="1" ></schemafield>
+    <schemafield fieldname="f_acc_status" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acAccStatus" ></schemafield>
+    <schemafield fieldname="f_pay_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="acPayType" ></schemafield>
+    <schemafield fieldname="f_old_bank_sort" fullfieldname="" typename="DelphiString" size="16" elements="1" id="-1" columnname="acOldBankSort" ></schemafield>
+    <schemafield fieldname="f_old_bank_acc" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="acOldBankAcc" ></schemafield>
+    <schemafield fieldname="f_bank_ref" fullfieldname="" typename="DelphiString" size="29" elements="1" id="-1" columnname="acBankRef" ></schemafield>
+    <schemafield fieldname="f_ave_pay" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="acAvePay" ></schemafield>
+    <schemafield fieldname="f_phone2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acPhone2" ></schemafield>
+    <schemafield fieldname="f_def_cos_nom" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="acCOSGL" ></schemafield>
+    <schemafield fieldname="f_def_ctrl_nom" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="acDrCrGL" ></schemafield>
+    <schemafield fieldname="f_last_used" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="acLastUsed" ></schemafield>
+    <schemafield fieldname="f_user_def1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef1" ></schemafield>
+    <schemafield fieldname="f_user_def2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef2" ></schemafield>
+    <schemafield fieldname="f_sop_inv_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1"  columnname="acInvoiceTo"  collation="1"></schemafield>
+    <schemafield fieldname="f_sop_auto_w_off" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acSOPAutoWOff" ></schemafield>
+    <schemafield fieldname="f_f_def_page_no" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acFormSet" ></schemafield>
+    <schemafield fieldname="f_b_ord_val" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="acBookOrdVal" ></schemafield>
+    <schemafield fieldname="f_dir_deb" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acDirDebMode" ></schemafield>
+    <schemafield fieldname="f_ccds_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="acCCStart" ></schemafield>
+    <schemafield fieldname="f_ccde_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="acCCEnd" ></schemafield>
+    <schemafield fieldname="f_ccd_name" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="acCCName" ></schemafield>
+    <schemafield fieldname="f_ccd_card_no" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acCCNumber" ></schemafield>
+    <schemafield fieldname="f_ccdsa_ref" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="acCCSwitch" ></schemafield>
+    <schemafield fieldname="f_def_set_disc" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="acDefSettleDisc" ></schemafield>
+    <schemafield fieldname="f_stat_d_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acStateDeliveryMode" ></schemafield>
+    <schemafield fieldname="f_spare2" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="acSpare2" ></schemafield>
+    <schemafield fieldname="f_eml_snd_rdr" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acSendReader" ></schemafield>
+    <schemafield fieldname="f_ebus_pwrd" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="acEBusPword" ></schemafield>
+    <schemafield fieldname="f_post_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1"  columnname="acPostCode"  collation="1"></schemafield>
+    <schemafield fieldname="f_cust_code2" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1"  columnname="acAltCode"  collation="1"></schemafield>
+    <schemafield fieldname="f_allow_web" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acUseForEbus" ></schemafield>
+    <schemafield fieldname="f_eml_zip_atc" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acZIPAttachments" ></schemafield>
+    <schemafield fieldname="f_user_def3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef3" ></schemafield>
+    <schemafield fieldname="f_user_def4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef4" ></schemafield>
+    <schemafield fieldname="f_web_live_cat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="acWebLiveCatalog" ></schemafield>
+    <schemafield fieldname="f_web_prev_cat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="acWebPrevCatalog" ></schemafield>
+    <schemafield fieldname="f_time_change" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="acTimeStamp" ></schemafield>
+    <schemafield fieldname="f_vat_ret_regc" fullfieldname="" typename="DelphiString" size="6" elements="1" id="-1" columnname="acVATCountryCode" ></schemafield>
+    <schemafield fieldname="f_ssd_del_terms" fullfieldname="" typename="DelphiString" size="6" elements="1" id="-1" columnname="acSSDDeliveryTerms" ></schemafield>
+    <schemafield fieldname="f_cvat_inc_flg" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="acInclusiveVATCode" ></schemafield>
+    <schemafield fieldname="f_ssd_mode_tr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acSSDModeOfTransport" ></schemafield>
+    <schemafield fieldname="f_private_rec" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acPrivateRec" ></schemafield>
+    <schemafield fieldname="f_last_opo" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="acLastOperator" ></schemafield>
+    <schemafield fieldname="f_inv_d_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acDocDeliveryMode" ></schemafield>
+    <schemafield fieldname="f_eml_snd_html" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acSendHTML" ></schemafield>
+    <schemafield fieldname="f_email_addr" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1"  columnname="acEmailAddr"  collation="1"></schemafield>
+    <schemafield fieldname="f_sop_cons_ho" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acOfficeType" ></schemafield>
+    <schemafield fieldname="f_def_tag_no" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acDefTagNo" ></schemafield>
+    <schemafield fieldname="f_user_def5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef5" ></schemafield>
+    <schemafield fieldname="f_user_def6" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef6" ></schemafield>
+    <schemafield fieldname="f_user_def7" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef7" ></schemafield>
+    <schemafield fieldname="f_user_def8" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef8" ></schemafield>
+    <schemafield fieldname="f_user_def9" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef9" ></schemafield>
+    <schemafield fieldname="f_user_def10" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acUserDef10" ></schemafield>
+    <schemafield fieldname="f_bank_sort_code" fullfieldname="bank_sort_code" typename="DelphiEmbeddedCaseSensitiveString" size="23" elements="1" id="-1" columnname="acBankSortCode" />
+    <schemafield fieldname="f_bank_account_code" fullfieldname="bank_account_code" typename="DelphiEmbeddedCaseSensitiveString" size="55" elements="1" id="-1" columnname="acBankAccountCode" />
+    <schemafield fieldname="f_mandate_id" fullfieldname="mandate_id" typename="DelphiEmbeddedCaseSensitiveString" size="55" elements="1" id="-1" columnname="acMandateID" />
+    <schemafield fieldname="f_mandate_date" fullfieldname="mandate_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="acMandateDate" ></schemafield>
+    <schemafield fieldname="f_delivery_postcode" fullfieldname="delivery_postcode" typename="DelphiString" size="21" elements="1" id="-1" columnname="acDeliveryPostCode" ></schemafield>
+    <schemafield fieldname="f_subtype" fullfieldname="" typename="char" size="1" elements="1" id="-1"  columnname="acSubType" collation="1"></schemafield>
+    <schemafield fieldname="f_long_accode" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="acLongAcCode" collation="1"></schemafield>
+    <schemafield fieldname="f_allow_order_payments" fullfieldname="f_allow_order_payments" typename="bool1" size="1" elements="1" id="-1" columnname="acAllowOrderPayments" ></schemafield>
+    <schemafield fieldname="f_order_payments_glcode" fullfieldname="f_order_payments_glcode" typename="int32" size="4" elements="1" id="-1" columnname="acOrderPaymentsGLCode" ></schemafield>
+    <schemafield fieldname="f_country" fullfieldname="" typename="DelphiString" size="3" elements="1" id="-1"  columnname="acCountry" collation="1"></schemafield>
+    <schemafield fieldname="f_delivery_country" fullfieldname="" typename="DelphiString" size="3" elements="1" id="-1"  columnname="acDeliveryCountry" collation="1"></schemafield>
+    <schemafield fieldname="f_ppd_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acPPDMode" ></schemafield>
+    <schemafield fieldname="f_default_to_QR" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="acDefaultToQR" ></schemafield>
+    <schemafield fieldname="f_tax_region" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="acTaxRegion" ></schemafield>
+	<schemafield fieldname="f_anonymisation_status" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="acAnonymisationStatus" ></schemafield>
+	<schemafield fieldname="f_anonymised_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="acAnonymisedDate" ></schemafield>
+	<schemafield fieldname="f_anonymised_time" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="acAnonymisedTime" ></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_company</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_supp</item>
+        <item size="5">f_vat_reg_no</item>
+        <item>f_cust_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="3" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_phone</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="4" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_code2</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="5" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_supp</item>
+        <item>f_cust_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="6" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_supp</item>
+        <item>f_company</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="7" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_supp</item>
+        <item>f_cust_code2</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="8" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00">
+		<indexfields>
+			<item>f_post_code</item>
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="9" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00">
+      <indexfields>
+        <item>f_ref_no</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="10" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_sop_inv_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="11" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_cust_supp</item>
+        <item>f_email_addr</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="12" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_subtype</item>
+        <item>f_cust_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="13" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_subtype</item>
+        <item>f_long_accode</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="14" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_subtype</item>
+        <item>f_company</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="15" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_subtype</item>
+        <item>f_cust_code2</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

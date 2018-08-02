@@ -1,0 +1,39 @@
+/*
+/* COPY (Files=xxx [, Ovr=xxx] [,SubD=xxx])
+/*
+/* Copies files from the Network Directory to the Local Direcortory.
+/*
+/*   Files   DOS File specification of files to copy
+/*   Ovr     Yes/No - Overwrite Existing Files, defaults to Yes
+/*   SubD    Copy Subdirectories, Defaults to No
+/*
+/*
+/* Run (Cmd=xxx))
+/*
+/* Uses WinExec to run the specified command.
+/*
+/*   Cmd     Command line to be executed
+/*
+
+
+/* Check and Copy Plug-In Files
+Copy (Files=AIBEFT.DLL)
+Copy (Files=AIBADMIN.EXE)
+Copy (Files=NATWEST.DLL)
+Copy (Files=AUTADMIN.EXE)
+Copy (Files=BACS1.DLL)
+Copy (Files=BACSTEL.DLL)
+Copy (Files=BANKIRE.DLL)
+Copy (Files=BIADMIN.EXE)
+Copy (Files=BANKSCOT.DLL)
+Copy (Files=HEXAGON.DLL)
+Copy (Files=IDEAL.DLL)
+Copy (Files=IDADMIN.EXE)
+Copy (Files=PAYAWAY.DLL)
+Copy (Files=PCPAYCSV.DLL)
+Copy (Files=RBS.DLL)
+Copy (Files=COUTTS.DLL)
+Copy (Files=COOPBANK.DLL)
+Copy (Files=DANSKE.DLL)
+Copy (Files=ULSTRBNK.DLL)
+Copy (Files=YORKBANK.DLL)

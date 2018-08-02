@@ -1,0 +1,419 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+  Text=....Icons.wse - Creates Icons and Program Groups
+end
+item: Remark
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Remark
+end
+item: Remark
+  Text=....Windows 95 style Interface
+end
+item: Remark
+end
+item: Remark
+  Text=....Identify root of Programs directory
+end
+item: Get Registry Key Value
+  Variable=V_PROGROOT
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_PROGROOT
+  Value=\
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=....Create Trade Counter Folder in Start Menu-Programs
+end
+item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%V_PROGROOT%
+end
+item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%PROGGROUP%
+  Flags=00000001
+end
+item: Check if File/Dir Exists
+  Pathname=%V_ENTGROUP%
+  Flags=00000101
+end
+item: Create Directory
+  Pathname=%V_ENTGROUP%
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Create normal shortcuts to EXEs
+end
+item: Set Variable
+  Variable=SHORCUTPATH
+  Value=%INSTALLTO%\TRADE.EXE
+  Flags=00010000
+end
+item: If/While Statement
+  Variable=DEMOCOPY
+  Value=TRUE
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_ENTGROUP%\Exchequer Trade Counter.lnk
+  Command Options=/PREVIEW:
+  Working Directory=%INSTALLTO%
+  Description=Exchequer Trade Counter
+  Key Type=1536
+  Flags=00000001
+end
+item: Else Statement
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_ENTGROUP%\Exchequer Trade Counter.lnk
+  Working Directory=%INSTALLTO%
+  Description=Exchequer Trade Counter
+  Key Type=1536
+  Flags=00000001
+end
+item: End Block
+end
+item: Remark
+end
+item: Set Variable
+  Variable=SHORCUTPATH
+  Value=%INSTALLTO%\POSSETUP.EXE
+  Flags=00010000
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_ENTGROUP%\Trade Counter Administrator.lnk
+  Working Directory=%INSTALLTO%
+  Description=Trade Counter Administrator
+  Key Type=1536
+  Flags=00000001
+end
+item: Set Variable
+  Variable=SHORCUTPATH
+  Value=%INSTALLTO%\TRADE.HLP
+  Flags=00010000
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_ENTGROUP%\Trade Counter Help File.lnk
+  Working Directory=%INSTALLTO%
+  Description=Trade Counter Help File
+  Key Type=1536
+  Flags=00000001
+end
+item: Set Variable
+  Variable=SHORCUTPATH
+  Value=%INSTALLTO%ENTWREPL.EXE
+  Flags=00010000
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_ENTGROUP%\Update Trade Counter Module.lnk
+  Working Directory=%INSTALLTO%
+  Description=Update Trade Counter Module
+  Key Type=1536
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=Identify Startup directory
+end
+item: Get Registry Key Value
+  Variable=V_STARTGROUP
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Startup
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_STARTGROUP
+  Value=\
+  Flags=00000001
+end
+item: Remark
+end
+item: Set Variable
+  Variable=SHORCUTPATH
+  Value=%INSTALLTO%ENTWREPL.EXE
+  Flags=00010000
+end
+item: Create Shortcut
+  Source=%SHORCUTPATH%
+  Destination=%V_STARTGROUP%\TCM Update Engine.lnk
+  Working Directory=%INST%
+  Description=TCM Update Engine
+  Key Type=1536
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=Identify Start Menu directory
+end
+item: Get Registry Key Value
+  Variable=V_STARTMENU
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Start Menu
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_STARTMENU
+  Value=\
+  Flags=00000001
+end
+item: Remark
+end
+remarked item: Remark
+  Text=Identify root of Programs directory
+end
+remarked item: Get Registry Key Value
+  Variable=V_PROGROOT
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\
+  Value Name=Programs
+  Flags=00000010
+end
+remarked item: Set Variable
+  Variable=V_PROGROOT
+  Value=\
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+end
+item: Remark
+end
+remarked item: Remark
+  Text=Create Enterprise Folder in Start Menu-Programs
+end
+remarked item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%V_PROGROOT%
+end
+remarked item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%V_GROUP%
+  Flags=00000001
+end
+remarked item: Check if File/Dir Exists
+  Pathname=%V_ENTGROUP%
+  Flags=00000101
+end
+remarked item: Create Directory
+  Pathname=%V_ENTGROUP%
+end
+remarked item: End Block
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Setup Path to STARTUP folder
+end
+remarked item: Set Variable
+  Variable=V_STARTGROUP
+  Value=%V_PROGROOT%
+end
+remarked item: Set Variable
+  Variable=V_STARTGROUP
+  Value=\StartUp
+  Flags=00000001
+end
+item: Remark
+end
+remarked item: If/While Statement
+  Variable=WGROUPINSTALLED
+  Value=Y
+  Flags=00000100
+end
+remarked item: Remark
+  Text=P.SQL Workgroup Engine - Add icon into Enterprise folders and setup the Auto-Startup Utility
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Enterprise folder
+end
+remarked item: Create Shortcut
+  Source=%ENTERDIR%\BIN\W3DBSMGR.EXE
+  Destination=%V_ENTGROUP%\Pervasive.SQL Workgroup Engine.lnk
+  Command Options=-SRDE
+  Working Directory=%ENTERDIR%\BIN
+  Icon Number=0
+  Description=Pervasive.SQL Workgroup Engine
+  Key Type=1536
+  Flags=00000001
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Startup folder
+end
+remarked item: Create Shortcut
+  Source=%ENTERDIR%\ENTSTART.EXE
+  Destination=%V_STARTGROUP%\Exchequer Enterprise Startup Utility.lnk
+  Working Directory=%ENTERDIR%
+  Icon Number=0
+  Description=Exchequer Enterprise Startup Utility
+  Key Type=1536
+  Flags=00000001
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Register Workgroup Engine with Auto-Startup Utility
+end
+remarked item: Edit INI File
+  Pathname=%ENTSTARTDIR%\ENTSTART.INI
+  Settings=[Workgroup]
+  Settings=Path=%ENTERDIR%\BIN\W3DBSMGR.EXE -SRDE
+  Settings=
+end
+remarked item: Else Statement
+end
+remarked item: Remark
+  Text=Not P.SQL Workgroup Engine - Remove icons from the Enterprise and Auto-Start folder if present
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Enterprise folder
+end
+remarked item: Check if File/Dir Exists
+  Pathname=%V_ENTGROUP%\Pervasive.SQL Workgroup Engine.lnk
+  Flags=01000100
+end
+remarked item: Delete File
+  Pathname=%V_ENTGROUP%\Pervasive.SQL Workgroup Engine.lnk
+end
+remarked item: End Block
+end
+remarked item: Remark
+end
+remarked item: Remark
+  Text=Startup folder
+end
+remarked item: Check if File/Dir Exists
+  Pathname=%V_STARTGROUP%\Exchequer Enterprise Startup Utility.lnk
+  Flags=01000100
+end
+remarked item: Delete File
+  Pathname=%V_STARTGROUP%\Exchequer Enterprise Startup Utility.lnk
+end
+remarked item: End Block
+end
+remarked item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Setup Uninstall details
+end
+remarked item: Edit Registry
+  Total Keys=2
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\Exchequer Card System
+    New Value=Exchequer Card System
+    Value Name=DisplayName
+    Root=2
+  end
+  item: Key
+    Key=Software\Microsoft\Windows\CurrentVersion\Uninstall\Exchequer Card System
+    New Value=%INSTALLTO%\UNWISE32.EXE %INSTALLTO%\INSTALL.LOG
+    New Value=
+    Value Name=UninstallString
+    Root=2
+  end
+end
+item: Remark
+end
+item: Else Statement
+end
+item: Remark
+end
+item: Remark
+  Text=....Windows 3/NT 3.51 Style Interface
+end
+item: Remark
+end
+item: Remark
+  Text=....Add Icon
+end
+item: If/While Statement
+  Variable=DEMOCOPY
+  Value=TRUE
+end
+item: Add ProgMan Icon
+  Group=%PROGGROUP%
+  Icon Name=Exchequer Trade Counter
+  Command Line=%INSTALLTO%\TRADE.EXE /PREVIEW:
+  Default Directory=%INSTALLTO%
+end
+item: Else Statement
+end
+item: Add ProgMan Icon
+  Group=%PROGGROUP%
+  Icon Name=Exchequer Trade Counter
+  Command Line=%INSTALLTO%\TRADE.EXE
+  Default Directory=%INSTALLTO%
+end
+item: End Block
+end
+item: Remark
+end
+item: Add ProgMan Icon
+  Group=%PROGGROUP%
+  Icon Name=Trade Counter Administrator
+  Command Line=%INSTALLTO%\POSSETUP.EXE
+  Default Directory=%INSTALLTO%
+end
+item: Add ProgMan Icon
+  Group=\Startup
+  Icon Name=TCM Update Engine
+  Command Line=%INST%ENTWREPL.EXE
+  Default Directory=%INST%
+end
+item: Remark
+end
+item: End Block
+end

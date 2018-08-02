@@ -1,0 +1,202 @@
+<schemarecord tldformat="3" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="2690" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="lhFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lhFolioNo" />
+        <schemafield fieldname="lhUserName" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="lhUserName"  collation="1"/>
+        <schemafield fieldname="lhAccountCode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="lhAccountCode" />
+        <schemafield fieldname="lhAccountName" fullfieldname="" typename="DelphiString" size="46" elements="1" id="-1" columnname="lhAccountName" />
+        <schemafield fieldname="lhCustomerName" fullfieldname="" typename="DelphiString" size="26" elements="1" id="-1" columnname="lhCustomerName" />
+        <schemafield fieldname="lhOrderNo" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="lhOrderNo" />        
+        <schemafield fieldname="lhAddress1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="lhAddress1" />
+        <schemafield fieldname="lhAddress2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="lhAddress2" />
+        <schemafield fieldname="lhAddress3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="lhAddress3" />
+        <schemafield fieldname="lhAddress4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="lhAddress4" />
+        <schemafield fieldname="lhAddress5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="lhAddress5" />
+        <schemafield fieldname="lhItemsDesc" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="lhItemsDesc" />
+        <schemafield fieldname="lhSettDisc" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lhSettDisc" />
+        <schemafield fieldname="lhSettDiscDays" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lhSettDiscDays" />
+        <schemafield fieldname="lhDepositToTake" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lhDepositToTake" />        
+        <schemafield fieldname="lhDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="lhDate" collation="1" />
+        <schemafield fieldname="lhTime" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="lhTime" collation="1" />        
+        <schemafield fieldname="lhTillNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lhTillNo" />
+        <schemafield fieldname="lhValue" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lhValue" />
+        <schemafield fieldname="lhCostCentre" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="lhCostCentre" />        
+        <schemafield fieldname="lhDepartment" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="lhDepartment" />            
+        <schemafield fieldname="lhDummyChar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lhDummyChar"  collation="1"/>
+
+
+		<schemafield fieldname="RunNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="RunNo" />
+		<schemafield fieldname="CustCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="CustCode" />
+		<schemafield fieldname="OurRef" fullfieldname="" typename="DelphiString" size="10" elements="1" id="-1" columnname="OurRef" />
+		<schemafield fieldname="PadChar1" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="PadChar1" />
+		<schemafield fieldname="FolioNum" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="FolioNum" />
+		<schemafield fieldname="Currency" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="Currency" />
+		<schemafield fieldname="AcYr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="AcYr" />
+		<schemafield fieldname="AcPr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="AcPr" />
+		<schemafield fieldname="DueDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="DueDate" />
+		<schemafield fieldname="TransDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="TransDate" />
+		<schemafield fieldname="CoRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CoRate" />
+		<schemafield fieldname="VATRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATRate" />
+		<schemafield fieldname="OldYourRef" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="OldYourRef" />
+		<schemafield fieldname="LongYrRef" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="LongYrRef" />
+		<schemafield fieldname="LineCount" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="LineCount" />
+		<schemafield fieldname="TransDocHed" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="TransDocHed" />
+
+    <schemafield fieldname="InvVatAnal1" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisStandard" ></schemafield>
+    <schemafield fieldname="InvVatAnal2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisExempt" ></schemafield>
+    <schemafield fieldname="InvVatAnal3" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisZero" ></schemafield>
+    <schemafield fieldname="InvVatAnal4" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate1" ></schemafield>
+    <schemafield fieldname="InvVatAnal5" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate2" ></schemafield>
+    <schemafield fieldname="InvVatAnal6" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate3" ></schemafield>
+    <schemafield fieldname="InvVatAnal7" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate4" ></schemafield>
+    <schemafield fieldname="InvVatAnal8" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate5" ></schemafield>
+    <schemafield fieldname="InvVatAnal9" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate6" ></schemafield>
+    <schemafield fieldname="InvVatAnal10" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate7" ></schemafield>
+    <schemafield fieldname="InvVatAnal11" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate8" ></schemafield>
+    <schemafield fieldname="InvVatAnal12" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRate9" ></schemafield>
+    <schemafield fieldname="InvVatAnal13" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateT" ></schemafield>
+    <schemafield fieldname="InvVatAnal14" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateX" ></schemafield>
+    <schemafield fieldname="InvVatAnal15" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateB" ></schemafield>
+    <schemafield fieldname="InvVatAnal16" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateC" ></schemafield>
+    <schemafield fieldname="InvVatAnal17" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateF" ></schemafield>
+    <schemafield fieldname="InvVatAnal18" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateG" ></schemafield>
+    <schemafield fieldname="InvVatAnal19" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateR" ></schemafield>
+    <schemafield fieldname="InvVatAnal20" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateW" ></schemafield>
+    <schemafield fieldname="InvVatAnal21" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="VATAnalysisRateY" ></schemafield>
+
+		<schemafield fieldname="InvNetVal" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="InvNetVal" />
+		
+		<schemafield fieldname="InvVat" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="InvVat" />
+		<schemafield fieldname="DiscSetl" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="DiscSetl" />
+		<schemafield fieldname="DiscSetAm" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="DiscSetAm" />
+
+		<schemafield fieldname="DiscAmount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="DiscAmount" />
+		<schemafield fieldname="DiscDays" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="DiscDays" />
+		<schemafield fieldname="DiscTaken" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="DiscTaken" />
+
+		<schemafield fieldname="Settled" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="Settled" />
+		<schemafield fieldname="TransNat" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="TransNat" />
+		<schemafield fieldname="TransMode" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="TransMode" />
+
+		<schemafield fieldname="HoldFlg" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="HoldFlg" />
+		<schemafield fieldname="PadChar2" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="PadChar2" />
+		<schemafield fieldname="TotalWeight" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="TotalWeight" />
+
+		<schemafield fieldname="DAddr1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DAddr1" />
+		<schemafield fieldname="DAddr2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DAddr2" />
+		<schemafield fieldname="DAddr3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DAddr3" />
+		<schemafield fieldname="DAddr4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DAddr4" />
+		<schemafield fieldname="DAddr5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DAddr5" />
+		<schemafield fieldname="PadChar3" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar3" />
+		<schemafield fieldname="TotalCost" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="TotalCost" />
+
+		<schemafield fieldname="PrintedDoc" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="PrintedDoc" />
+		<schemafield fieldname="ManVAT" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="ManVAT" />
+		<schemafield fieldname="DelTerms" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="DelTerms" />
+
+		<schemafield fieldname="OpName" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="OpName" />
+		<schemafield fieldname="DJobCode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="DJobCode" />
+		<schemafield fieldname="DJobAnal" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="DJobAnal" />
+
+		<schemafield fieldname="PadChar4" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="PadChar4" />
+		<schemafield fieldname="TotOrdOS" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="TotOrdOS" />
+		<schemafield fieldname="DocUser1" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="DocUser1" />
+
+		<schemafield fieldname="DocUser2" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="DocUser2" />
+		<schemafield fieldname="EmpCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="EmpCode" />
+		<schemafield fieldname="PadChar5" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar5" />
+		<schemafield fieldname="Tagged" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="Tagged" />
+
+		<schemafield fieldname="thNoLabels" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thNoLabels" />
+		<schemafield fieldname="PadChar6" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="PadChar6" />
+		<schemafield fieldname="CtrlNom" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="CtrlNom" />
+		<schemafield fieldname="DocUser3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DocUser3" />
+		<schemafield fieldname="DocUser4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="DocUser4" />
+		<schemafield fieldname="SSDProcess" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="SSDProcess" />
+		<schemafield fieldname="PadChar7" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar7" />
+		<schemafield fieldname="ExtSource" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="ExtSource" />
+		<schemafield fieldname="PostDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="PostDate" />
+		<schemafield fieldname="PadChar8" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar8" />
+		<schemafield fieldname="PORPickSOR" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="PORPickSOR" />
+		<schemafield fieldname="PadChar9" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="PadChar9" />
+
+		<schemafield fieldname="BDiscount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="BDiscount" />
+		<schemafield fieldname="PrePostFlg" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="PrePostFlg" />
+		<schemafield fieldname="AllocStat" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="AllocStat" />
+		<schemafield fieldname="PadChar10" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar10" />
+		<schemafield fieldname="SOPKeepRate" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="SOPKeepRate" />
+		<schemafield fieldname="TimeCreate" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="TimeCreate" />
+
+		<schemafield fieldname="TimeChange" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="TimeChange" />
+		<schemafield fieldname="CISTax" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CISTax" />
+		<schemafield fieldname="CISDeclared" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CISDeclared" />
+		<schemafield fieldname="CISManualTax" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="CISManualTax" />
+		<schemafield fieldname="CISDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="CISDate" />
+		<schemafield fieldname="PadChar11" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="PadChar11" />
+
+		<schemafield fieldname="TotalCost2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="TotalCost2" />
+		<schemafield fieldname="CISEmpl" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="CISEmpl" />
+		<schemafield fieldname="PadChar12" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="PadChar12" />
+		<schemafield fieldname="CISGross" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CISGross" />
+		<schemafield fieldname="CISHolder" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="CISHolder" />
+
+		<schemafield fieldname="NOMVatIO" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="NOMVatIO" />
+		<schemafield fieldname="AutoInc" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="AutoInc" />
+		<schemafield fieldname="AutoIncBy" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="AutoIncBy" />
+		<schemafield fieldname="AutoEndDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="AutoEndDate" />
+		<schemafield fieldname="AutoEndPr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="AutoEndPr" />
+
+		<schemafield fieldname="AutoEndYr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="AutoEndYr" />
+		<schemafield fieldname="AutoPost" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="AutoPost" />
+		<schemafield fieldname="thAutoTransaction" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="thAutoTransaction" />
+		<schemafield fieldname="PadChar13" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="PadChar13" />
+		<schemafield fieldname="thDeliveryRunNo" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="thDeliveryRunNo" />
+
+		<schemafield fieldname="thExternal" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="thExternal" />
+		<schemafield fieldname="thSettledVAT" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thSettledVAT" />
+		<schemafield fieldname="thVATClaimed" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thVATClaimed" />
+		<schemafield fieldname="thPickingRunNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thPickingRunNo" />
+		<schemafield fieldname="PadChar15" fullfieldname="" typename="binary" size="5" elements="1" id="-1" columnname="PadChar15" />
+
+		<schemafield fieldname="thDeliveryNoteRef" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thDeliveryNoteRef" />
+		<schemafield fieldname="thVATCompanyRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thVATCompanyRate" />
+		<schemafield fieldname="thVATDailyRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thVATDailyRate" />
+		<schemafield fieldname="thPostCompanyRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPostCompanyRate" />
+		<schemafield fieldname="thPostDailyRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPostDailyRate" />
+
+		<schemafield fieldname="thPostDiscAmount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPostDiscAmount" />
+		<schemafield fieldname="PadChar16" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="PadChar16" />
+		<schemafield fieldname="thPostDiscTaken" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="thPostDiscTaken" />
+		<schemafield fieldname="thLastDebtChaseLetter" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thLastDebtChaseLetter" />
+		<schemafield fieldname="thRevaluationAdjustment" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thRevaluationAdjustment" />
+		<schemafield fieldname="YourRef" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="YourRef" />
+		<schemafield fieldname="Spare" fullfieldname="" typename="binary" size="256" elements="1" id="-1" columnname="Spare" />
+		<schemafield fieldname="LastChar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="LastChar" />
+	
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>lhFolioNo</item>
+                <item>lhDummyChar</item>                
+            </indexfields>
+        </schemaindexes>        
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>lhUserName</item>
+                <item>lhDate</item>
+                <item>lhTime</item>
+            </indexfields>
+        </schemaindexes>        
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>lhDate</item>
+                <item>lhTime</item>                
+            </indexfields>
+        </schemaindexes>        
+
+    </indexes>
+</schemarecord>

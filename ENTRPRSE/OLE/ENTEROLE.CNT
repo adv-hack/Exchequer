@@ -1,0 +1,22 @@
+:Base ENTEROLE.HLP
+:Title 
+1 OLE Help
+2 Introduction=Introduction
+2 Installation Tips
+3 Installing the Excel Add-In=Installing_the_Excel_Add_In
+3 Trouble Shooting=Trouble_Shooting
+2 Functions
+3 How to Use a Function=How_to_Use_a_Function
+3 Function Reference=Function_Reference
+3 Parameters=Parameters
+3 Alphabetical Reference=Alphabetical_Reference
+3 Categorical Reference=Categorical_Reference
+3 Examples=Examples
+3 Error Messages=Error_Messages
+2 Trouble Shooting
+3 Examples=Examples
+3 Linkage Problem=Linkage_Problem
+3 Error Messages=Error_Messages
+3 Troubleshooting Enterprise=Trouble_Shooting_Enterprise@Entread.hlp>main
+3 Installing the Enterprise OLE  Server=Installing_the_Enterprise_OLE__Server@Entread.hlp>main
+3 General Tips on  Fault Finding Performance & Stability Issues=Tips_on_Logical_Fault_Finding@ENTREAD.HLP

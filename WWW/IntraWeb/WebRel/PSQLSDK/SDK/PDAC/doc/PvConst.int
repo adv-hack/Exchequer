@@ -1,0 +1,197 @@
+unit pvconst;
+
+
+interface
+
+resourcestring
+  SPvODBCAllocateHandleSTMTError = 'Cannot allocate statement handle';
+  SPvODBCAllocateHandleENVError  = 'Cannot allocate environment handle';
+  SPvODBCAllocateHandleDBCError  = 'Cannot allocate connection handle';
+  SPvODBCError                   = 'ODBC error %d';
+  SPvODBCUnknownErrorFromSqlGetDiagRec = 'Unknown error while trying to get extended error info from SQLGetDiagRec: %d';
+  SPvODBCInvalidHandle = 'The handle indicated by handle type %d and handle $%p is not a valid handle';
+
+  SPvODBCInstallerError = 'ODBC Installer function error';
+  SPvODBCUnknownErrorFromSQLInstallerError = 'Unknown error while trying to get extended error info from SQLInstallerError: %d';
+
+//------------------------------------------------------------------------------
+
+  SParameterNotFound = 'Parameter ''%s'' not found';
+  SInvalidVersion = 'Unable to load bind parameters';
+  SParamTooBig = 'Parameter ''%s'', cannot save data larger than %d bytes';
+  SFieldUndefinedType = 'Field ''%s'' is of unknown type';
+  SFieldUnsupportedType = 'Field ''%s'' is of an unsupported type';
+  SNoParameterValue = 'No value for parameter ''%s''';
+  SNoParameterType = 'No parameter type for parameter ''%s''';
+  STooManyResultParameters = 'Too many result parameters';
+  SEmptySQLStatement = 'No SQL statement available';
+  SHandleError = 'Error creating cursor handle';
+  SBookmarkError = 'Bookmark is invalid';
+  SUpdateFailed = 'Update failed';
+  SResultSetReadOnly = 'Result data set is read only';
+  SMultipleRecordsFound = 'Multiple records found, but only one was expected';
+  SNoRecordsFound = 'No records found';
+  SResultName = 'Result';
+  SCannotDetermineTableName = 'Cannot determine table name';
+
+  SDsnAlreadyExist = 'DSN already exists';
+  SDsnNotFound = 'DSN not found';
+  SPvInvalidDsnOpenMode = 'Invalid open mode';
+  SPvClientDSNsAreNotSupported = 'Client DSNs are not supported on remote servers';
+
+//------------------------------------------------------------------------------
+
+  SPvSQLError = 'P.SQL error %d';
+
+  SPvAliasSuffix = '. Alias name: ';
+  SPvDBNamesError = 'DB names API error %d';
+  SPvDBNamesErrorCannotLocateDB = 'Cannot locate the alias';
+  SPvDBNamesErrorCannotOpenCfg = 'Cannot open DBNAMES.CFG file';
+  SPvDBNamesInvalidParameter = 'Invalid parameters count';
+  SPvDBNamesErrorInvalidDDFPath = 'The specified path for data dictionary or data file locations is invalid';
+  SPvDBNamesErrorNotUniqueName = 'The database name must be unique';
+  SPvDBNamesErrorDictionaryInUse = 'The data dictionary is in use';
+  SPvDBNamesErrorDataDictAlreadyExist = 'The specified data dictionary already exists';
+  SPvDBNamesErrorReferTableDoesNotExist = 'A referenced table does not exist';
+  SPvDBNamesErrorNoMoreDBNamesDefined = 'No more database names are defined';
+  SPvDBNamesErrorInvalidBufferLenght = 'Invalid buffer Length';
+  SPvDBNamesErrorInvalidDBType = 'The database type is invalid';
+  SPvDBNamesErrorCouldNotUpdateCfg = 'DBNAMES.CFG could not be updated';
+  SPvDBNamesErrorInvalidRIFlag = 'The specified RI flag is invalid';
+  SPvDBNamesErrorDBInUse = 'The database is in use';
+  SPvDBNamesErrorBoundDBCanNotShareDataFile = 'The bound database cannot share table data file';
+  SPvDBNamesErrorBoundDBCanNotShareDDFFile = 'The bound database cannot share data dictionary files';
+  SPvDBNamesErrorCanNotCreateCfg = 'Cannot create DBNAMES.CFG file';
+  SPvDBNamesErrorDDFNotBound = 'Data dictionary files are not bound';
+  SPvDBNamesErrorDDFAlreadyBound = 'Data dictionary files are already bound';
+  SPvDBNamesErrorDDFNotNeedBeBound = 'Data dictionary files are bound, but do not need to be bound';
+  SPvDBNamesErrorDataFileNotBound = 'Data file for a table is not bound';
+  SPvDBNamesErrorDataFileNotNeedBeBound = 'Data file for a table is bound, but does not need to be bound';
+  SPvDBNamesErrorChangeDictLocationAndName = 'Not allowed to change data dictionary location and change name at the same time';
+  SPvDBNamesErrorBindAndChangeName = 'Not allowed to bind database and change name at the same time';
+  SPvDBNamesErrorUnbindAndChangeName = 'Not allowed to unbind database and change name at the same time';
+  SPvDBNamesErrorChangeDataLocationAndChangeName = 'Not allowed to change data locations and change name at the same time';
+  SPvDBNamesErrorChangeDictLocationAndBind = 'Not allowed to change data dictionary location and bind database at the same time';
+  SPvDBNamesErrorChangeDictLocationAndUnbind = 'Not allowed to change data dictionary location and unbind database at the same time';
+  SPvDBNamesErrorBindAndChangeDataLocation = 'Not allowed to bind database and change data locations at the same time';
+  SPvDBNamesErrorUnbindAndChangeDataLocation = 'Not allowed to unbind database and change data locations at the same time';
+  SPvDBNamesErrorGeneral = 'General DB names API error';
+
+  SPvDTIErrorINVALID_HANDLE = 'Invalid connection handle';
+  SPvDTIErrorNULL_PTR = 'Call with NULL pointer';
+  SPvDTIErrorBUFFER_TOO_SMALL = 'The buffer is too small';
+  SPvDTIErrorFAIL = 'DTI call failed. Probably, you don''t have enough access rights for requested operation or server is not found';
+  SPvDTIErrorINVALID_DATA_TYPE = 'Invalid data type';
+  SPvDTIErrorOUT_OF_RANGE = 'Out of range';
+  SPvDTIErrorINVALID_SELECTION = 'Invalid selection';
+  SPvDTIErrorINVALID_SEQUENCE = 'Sequence number is not valid';
+  SPvDTIErrorDATA_UNAVAILABLE = 'Data for database name are not available';
+  SPvDTIErrorINVALID_CLIENT = 'Invalid client';
+  SPvDTIErrorACCESS_RIGHT = 'Insufficient access rights';
+  SPvDTIErrorDUPLICATE_NAME = 'Named database already exists on the server';
+  SPvDTIErrorNOT_EXIST = 'Named database does not exist';
+  SPvDTIErrorINVALID_VERSION = 'Invalid DTI version';
+  SPvDTIErrorFILE_NOT_OPEN = 'File is not opened';
+  SPvDTIErrorDICTIONARY_ALREADY_EXISTS = 'Dictionary path is used by another database';
+  SPvDTIErrorSHARED_DDF_EXIST = 'DDF files already exist at the dictionary path';
+  SPvDTIErrorINVALID_NAME = 'Invalid DSN name';
+  SPvDTIErrorDSN_ALREADY_EXIST = 'DSN already exists';
+  SPvDTIErrorDSN_DOES_NOT_EXIST = 'DSN does not exist';
+  SPvDTIErrorINVALID_OPEN_MODE = 'Invalid open mode';
+  SPvDTIErrorPROBLEM_TO_LOAD_DLL = 'Unable to initialize DTI';
+  SPvDTIErrorCALL_NOT_SUPPORTED = 'Requested DTI call is not supported by P.SQL engine. Most probably, you are using old or incompatible version';
+  SPvDTIError = 'DTI error %d';
+  SPvDtiLoginError = 'Cannot connect to server ''%s''.';
+
+  SPvIndexWithNumNotFound = 'Index with number %d not found';
+  SPvCollectionNotFilled = 'Collection not filled';
+
+  SPvNestedTransactionsNotSupported = 'Nested transactions not supported';
+  SPvNotInTransaction = 'Currently not in transaction';
+  SPvCantCreateHandle = 'Can not create a handle';
+
+  SPvExprFound = '''%s'' found';
+
+  SPvNoIndexInTable = 'Table has no indexes';
+  SPvNoIndexForFields = '''%s'' has no index for fields ''%s''';
+  SPvIndexNotFound = '%s: Index ''%s'' not found';
+
+{$Ifdef PvDelphi3}
+  SIndexNotFound = 'Index ''%s'' not found';
+{$EndIf}
+
+  SPvParseUnknownNodeType = 'Unknown node type: %d';
+  SPvParseUnknownOperType = 'Unknown node operation type: %d';
+  SPvParseBadOperandType = 'Bad operand type';
+  SPvParseBadDataType = 'Bad data type';
+
+  SPvBadVariantType = 'Bad variant type';
+  SPvBadRetStructType = 'Bad TRetStruct type';
+  SPvResultUndefine = 'Result of operation is undefine';
+
+  SExprTermination = 'Expression incorrectly terminated';
+  SExprNoArith = 'Arithmetic expressions not supported';
+  SExprNotAgg = 'Expression is not an aggregate expression';
+  SExprInvalidChar = 'Invalid expression character: ''%s''';
+  SExprBadField = 'Field ''%s'' cannot be used in a expression';
+  SExprIncorrect = 'Incorrectly formed expression';
+  SExprBadConst = 'Constant is not correct for type %s';
+  SExprNoAggFilter = 'Aggregate expressions not allowed';
+  SExprNoFunctions = 'Function expressions not allowed';
+
+{$Ifndef PvDelphi4Up}
+  SExprTypeMis = 'Type mismatch in expression';
+  SInvalidKeywordUse = 'Invalid use of keyword';
+  SExprNoLParen = '''('' expected but %s found';
+  SExprNoRParenOrComma = ''')'' or '','' expected but %s found';
+  SExprEmptyInList = 'IN predicate list may not be empty';
+  SExprBadScope = 'Operation cannot mix aggregate value with record-varying value';
+
+  SPvListInExprTooLarge = 'List in expr too large';
+{$EndIf}
+
+  SPvNumericOverflow = 'Numeric Overflow';
+  SPvFieldNotFound = 'Field ''%s'' not found';
+
+  SPvCachedUpdatesNotSupported = 'Cached updates not supported';
+  SPvCachedUpdatesOverflow = 'Cached updates overflow';
+  SPvCachedUpdatesApplyUpdatesError = 'Error while applying cached updates';
+  SPvCachedUpdatesBadUpdateActionValue = 'Bad UpdateAction value';
+
+  SPvBlobReadOnly = 'BLOB stream read only';
+  SPvBlobWriteOnly = 'BLOB stream write only';
+
+  SProblemDuringBatchMove = 'A problem(s) detected during batch move';
+  SBCDOverflowDuringWriteToDB = 'BCD overflow';
+  SPvInvalidPrecision = 'Invalid precision';
+
+{$Ifdef PvDelphi5Up}
+  SInvalidSessionName = 'Invalid session name %s';
+  SSessionActive = 'Cannot perform this operation on an active session';
+  SAutoSessionActive = 'Cannot modify SessionName while AutoSessionName is enabled';
+  SDuplicateSessionName = 'Duplicate session name ''%s''';
+  SAutoSessionExclusive = 'Cannot enable AutoSessionName property with more than one session on a form or data-module';
+  SUpdateWrongDB = 'Cannot update, %s is not owned by %s';
+  SAutoSessionExists = 'Cannot add a session to the form or data-module while session ''%s'' has AutoSessionName enabled';
+  SDatabaseClosed = 'Cannot perform this operation on a closed database';
+  SDatabaseOpen = 'Cannot perform this operation on an open database';
+  SDatabaseNameMissing = 'Database name missing';
+  SLoginError = 'Cannot connect to database ''%s''';
+  SDuplicateDatabaseName = 'Duplicate database name ''%s''';
+  SNoCachedUpdates = 'Not in cached update mode';
+  SNoProvider = 'No provider available';
+  SNoFieldAccess = 'Cannot access field ''%s'' in a filter';
+  SLinkDesigner = 'Field ''%s'', from the Detail Fields list, must be linked';
+  SSessionNameMissing = 'Session name missing';
+  SDatabaseHandleSet = 'Database handle owned by a different session';
+  SCompositeIndexError = 'Cannot use array of Field values with Expression Indices';
+  SNoTableName = 'Missing TableName property';
+  STableMismatch = 'Source and destination tables are incompatible';
+  SInvalidBatchMove = 'Invalid batch move parameters';
+  SLinkMasterSource = 'The MasterSource property of ''%s'' must be linked to a DataSource';
+  SLinkMaster = 'Unable to open the MasterSource Table';
+{$EndIf}
+
+  SPvErrorSettingDirectory = 'Assignment to ''Directory'' property is not supported';
+
+implementation

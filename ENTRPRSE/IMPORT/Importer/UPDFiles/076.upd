@@ -1,0 +1,37 @@
+[Version]
+Version=6.00.085.076
+
+[Cost Centre Department]
+F001=CD.CCDepCode                 0001    S 0003 M   Cost Centre Code or Department Code                default=                                                                                                     comment=
+F002=CD.CCDepDesc                 0005    S 0030 M   Description                                        default=                                                                                                     comment=
+F003=CD.CCDepInactive             0036    b 0001 M   CC or Dept Inactive                                default=N                                                                                                    comment=Y/N
+F004=CD.CCorDept                  0037    C 0001 M   CC or Dept flag                                    default=C                                                                                                    comment=C for Cost Centre, D for Deparment
+F005=CD.Spare                     0038    C 0254 N   Spare                                              default=                                                                                                     comment=
+F006=CD.LastChar                  0292    C 0001 N   Last Char                                          default=                                                                                                     comment=
+
+[CD]
+S001=CD.RecType                           C 0002 F   Record Type                                        default=CD                                                                                                   comment=
+
+[XLATE CC or Dept Inactive]
+N=0
+Y=1
+
+[Record Types]
+CD=Cost Centre Department   ;
+
+[Detail Recs]
+CD=Cost Centre Department
+
+[Field Defs]
+Cost Centre Department=CD
+CD=Yes
+
+[Field Maps]
+CD=
+
+[Global Record Type]
+CD=
+
+[IAO Recs]
+CD=Yes
+Cost Centre Department=Yes

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="3" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="XIihRjj/Ckm1WCVXhNTm8A" identitycol="PositionId" recordfieldname="" reclen="1634">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_not_used" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="elNotUsed"></schemafield>
+    <schemafield fieldname="f_el_user_id" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="elUserID"></schemafield>
+    <schemafield fieldname="f_el_elert_name" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="elName"></schemafield>
+    <schemafield fieldname="f_f_el_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="elType"></schemafield>
+    <schemafield fieldname="f_f_el_priority" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="elPriority"></schemafield>
+    <schemafield fieldname="f_el_window_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elWindowID"></schemafield>
+    <schemafield fieldname="f_el_handler_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elHandlerID"></schemafield>
+    <schemafield fieldname="f_el_term_char" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="elTermChar"></schemafield>
+    <schemafield fieldname="f_el_description" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="elDescription"></schemafield>
+    <schemafield fieldname="f_el_active" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elActive"></schemafield>
+    <schemafield fieldname="f_el_time_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elTimeType"></schemafield>
+    <schemafield fieldname="f_el_frequency" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elFrequency"></schemafield>
+    <schemafield fieldname="f_el_time1" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elTime1"></schemafield>
+    <schemafield fieldname="f_el_time2" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elTime2"></schemafield>
+    <schemafield fieldname="f_el_days_of_week" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elDaysOfWeek"></schemafield>
+    <schemafield fieldname="f_el_fileno" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elFileno"></schemafield>
+    <schemafield fieldname="f_el_index_no" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elIndexNo"></schemafield>
+    <schemafield fieldname="f_range_start_eg_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elRangeStartEgType"></schemafield>
+    <schemafield fieldname="f_range_start_eg_string" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="elRangeStartEgString"></schemafield>
+    <schemafield fieldname="f_range_start_eg_int" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elRangeStartEgInt"></schemafield>
+    <schemafield fieldname="f_range_start_eg_offset" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elRangeStartEgOffset"></schemafield>
+    <schemafield fieldname="f_range_start_eg_input" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRangeStartEgInput"></schemafield>
+    <schemafield fieldname="f_range_start_spare" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="elRangeStartSpare"></schemafield>
+    <schemafield fieldname="f_range_end_eg_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elRangeEndEgType"></schemafield>
+    <schemafield fieldname="f_range_end_eg_string" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="elRangeEndEgString"></schemafield>
+    <schemafield fieldname="f_range_end_eg_int" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elRangeEndEgInt"></schemafield>
+    <schemafield fieldname="f_range_end_eg_offset" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="elRangeEndEgOffset"></schemafield>
+    <schemafield fieldname="f_range_end_eg_input" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRangeEndEgInput"></schemafield>
+    <schemafield fieldname="f_range_end_spare" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="elRangeEndSpare"></schemafield>
+    <schemafield fieldname="f_ea_email" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elEmail"></schemafield>
+    <schemafield fieldname="f_ea_sms" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elSMS"></schemafield>
+    <schemafield fieldname="f_ea_report" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elReport"></schemafield>
+    <schemafield fieldname="f_ea_csv" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCSV"></schemafield>
+    <schemafield fieldname="f_ea_rep_email" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRepEmail"></schemafield>
+    <schemafield fieldname="f_ea_rep_fax" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRepFax"></schemafield>
+    <schemafield fieldname="f_ea_rep_printer" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRepPrinter"></schemafield>
+    <schemafield fieldname="f_spare" fullfieldname="" typename="char" size="17" elements="1" id="-1" columnname="elSpare"></schemafield>
+    <schemafield fieldname="f_el_expiration" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elExpiration"></schemafield>
+    <schemafield fieldname="f_el_expiration_date" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elExpirationDate"></schemafield>
+    <schemafield fieldname="f_el_repeat_period" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elRepeatPeriod"></schemafield>
+    <schemafield fieldname="f_el_repeat_data" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elRepeatData"></schemafield>
+    <schemafield fieldname="f_el_email_report" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elEmailReport"></schemafield>
+    <schemafield fieldname="f_el_last_date_run" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elLastDateRun"></schemafield>
+    <schemafield fieldname="f_el_next_run_due" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elNextRunDue"></schemafield>
+    <schemafield fieldname="f_el_report_name" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="elReportName"></schemafield>
+    <schemafield fieldname="f_el_event_index" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elEventIndex"></schemafield>
+    <schemafield fieldname="f_el_run_on_startup" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRunOnStartup"></schemafield>
+    <schemafield fieldname="f_el_email_csv" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elEmailCSV"></schemafield>
+    <schemafield fieldname="f_el_status" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elStatus"></schemafield>
+    <schemafield fieldname="f_el_parent" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="elParent"></schemafield>
+    <schemafield fieldname="f_el_start_date" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elStartDate"></schemafield>
+    <schemafield fieldname="f_el_delete_on_expiry" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elDeleteOnExpiry"></schemafield>
+    <schemafield fieldname="f_el_periodic" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elPeriodic"></schemafield>
+    <schemafield fieldname="f_el_trigger_count" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elTriggerCount"></schemafield>
+    <schemafield fieldname="f_el_days_between" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elDaysBetween"></schemafield>
+    <schemafield fieldname="f_el_expired" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elExpired"></schemafield>
+    <schemafield fieldname="f_el_run_now" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elRunNow"></schemafield>
+    <schemafield fieldname="f_el_instance" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elInstance"></schemafield>
+    <schemafield fieldname="f_el_msg_instance" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elMsgInstance"></schemafield>
+    <schemafield fieldname="f_el_single_email" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elSingleEmail"></schemafield>
+    <schemafield fieldname="f_el_prev_status" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elPrevStatus"></schemafield>
+    <schemafield fieldname="f_el_single_sms" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elSingleSMS"></schemafield>
+    <schemafield fieldname="f_el_triggered" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elTriggered"></schemafield>
+    <schemafield fieldname="f_el_sms_tries" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elSMSTries"></schemafield>
+    <schemafield fieldname="f_el_email_tries" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elEmailTries"></schemafield>
+    <schemafield fieldname="f_el_send_doc" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elSendDoc"></schemafield>
+    <schemafield fieldname="f_el_doc_name" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="elDocName"></schemafield>
+    <schemafield fieldname="f_el_sms_retries_notified" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elSMSRetriesNotified"></schemafield>
+    <schemafield fieldname="f_el_email_retries_notified" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elEmailRetriesNotified"></schemafield>
+    <schemafield fieldname="f_el_email_error_no" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elEmailErrorNo"></schemafield>
+    <schemafield fieldname="f_el_sms_error_no" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elSMSErrorNo"></schemafield>
+    <schemafield fieldname="f_el_rep_file" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="elRepFile"></schemafield>
+    <schemafield fieldname="f_el_fax_cover" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="elFaxCover"></schemafield>
+    <schemafield fieldname="f_el_fax_tries" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elFaxTries"></schemafield>
+    <schemafield fieldname="f_el_print_tries" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elPrintTries"></schemafield>
+    <schemafield fieldname="f_el_fax_priority" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elFaxPriority"></schemafield>
+    <schemafield fieldname="f_el_has_conditions" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elHasConditions"></schemafield>
+    <schemafield fieldname="f_el_rep_folder" fullfieldname="" typename="DelphiString" size="100" elements="1" id="-1" columnname="elRepFolder"></schemafield>
+    <schemafield fieldname="f_el_ftp_site" fullfieldname="" typename="DelphiString" size="81" elements="1" id="-1" columnname="elFTPSite"></schemafield>
+    <schemafield fieldname="f_el_ftp_user_name" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="elFTPUserName"></schemafield>
+    <schemafield fieldname="f_el_ftp_password" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="elFTPPassword"></schemafield>
+    <schemafield fieldname="f_el_ftp_port" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elFTPPort"></schemafield>
+    <schemafield fieldname="f_el_csv_by_email" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCSVByEmail"></schemafield>
+    <schemafield fieldname="f_el_csv_by_ftp" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCSVByFTP"></schemafield>
+    <schemafield fieldname="f_el_csv_to_folder" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCSVToFolder"></schemafield>
+    <schemafield fieldname="f_el_upload_dir" fullfieldname="" typename="DelphiString" size="100" elements="1" id="-1" columnname="elUploadDir"></schemafield>
+    <schemafield fieldname="f_el_csv_file_name_old" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="elCSVFileNameOld"></schemafield>
+    <schemafield fieldname="f_el_ftp_tries" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elFTPTries"></schemafield>
+    <schemafield fieldname="f_el_ftp_timeout" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elFTPTimeout"></schemafield>
+    <schemafield fieldname="f_el_csv_file_renamed" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCSVFileRenamed"></schemafield>
+    <schemafield fieldname="f_el_ftp_retries_notified" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elFTPRetriesNotified"></schemafield>
+    <schemafield fieldname="f_el_fax_retries_notified" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elFaxRetriesNotified"></schemafield>
+    <schemafield fieldname="f_el_compress_report" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elCompressReport"></schemafield>
+    <schemafield fieldname="f_el_rp_attach_method" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elRpAttachMethod"></schemafield>
+    <schemafield fieldname="f_el_work_station" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="elWorkStation"></schemafield>
+    <schemafield fieldname="f_el_word_wrap" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elWordWrap"></schemafield>
+    <schemafield fieldname="f_el_sys_message" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elSysMessage"></schemafield>
+    <schemafield fieldname="f_el_dbf" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elDBF"></schemafield>
+    <schemafield fieldname="f_el_queue_counter" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elQueueCounter"></schemafield>
+    <schemafield fieldname="f_el_hours_before_notify" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elHoursBeforeNotify"></schemafield>
+    <schemafield fieldname="f_el_query_start" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="elQueryStart"></schemafield>
+    <schemafield fieldname="f_el_ex_rep_format" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="elExRepFormat"></schemafield>
+    <schemafield fieldname="f_el_recip_no" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="elRecipNo"></schemafield>
+    <schemafield fieldname="f_el_new_report" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="elNewReport"></schemafield>
+    <schemafield fieldname="f_el_new_report_name" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="elNewReportName"></schemafield>
+    <schemafield fieldname="f_el_csv_file_name" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="elCSVFileName"></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_el_user_id</item>
+        <item>f_el_elert_name</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_el_user_id</item>
+        <item>f_el_parent</item>
+        <item>f_el_elert_name</item>
+    </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_el_user_id</item>
+        <item>f_el_elert_name</item>
+        <item>f_f_el_type</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="3" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_el_window_id</item>
+        <item>f_el_handler_id</item>
+        <item>f_el_term_char</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

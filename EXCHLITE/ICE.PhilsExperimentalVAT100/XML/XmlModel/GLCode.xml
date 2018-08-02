@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:glcode xmlns:val="urn:www-iris-co-uk:glcode">
+<message guid="" number="" count="" source="" destination="" flag="">
+  <glcoderec>
+    <nomcode/>    <!--: Longint;    {  } -->
+    <desc/>       <!--: String[40]; -->
+    <cat/>        <!--: LongInt;    { Parent Code } -->
+    <nomtype/>    <!--: Char;       { Heading / A,B,C } -->
+    <nompage/>    <!--: Boolean;    { Page At end of this } -->
+    <subtype/>    <!--: Boolean;    { Sub Total at end } -->
+    <total/>      <!--: Boolean;    { Show Balance only or Cr/Dr } -->
+    <carryf/>     <!--: LongInt;    { Nom Code to Carry Forward to } -->
+    <revalue/>    <!--: Boolean;    { Code is to be revalued } -->
+    <altcode/>    <!--: String[50]; { Alternative look up code} -->
+    <privaterec/> <!--: Byte; -->
+    <defcurr/>    <!--: Byte;       { Validation currency associated with this G/L. 0= All} -->
+    <forcejc/>    <!--: Boolean;    { Force a JC when using this G/L code } -->
+    <hideac/>     <!--: Byte;       { 1 = Hide from transactions } -->
+    <nomclass/>   <!--: Byte;       { Optional Nom Classifier } -->
+    <spare/>      <!--: String[47]; { Stored in database as array[1..47] of Byte } -->
+  </glcoderec>
+</message>
+</val:glcode>

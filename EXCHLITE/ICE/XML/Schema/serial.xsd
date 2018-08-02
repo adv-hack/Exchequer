@@ -1,0 +1,68 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:serial"
+            targetNamespace="urn:www-iris-co-uk:serial" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="serialrec">
+    <xsd:sequence>
+      <xsd:element name='serialno' type='xsd:string'/>
+      <xsd:element name='batchno' type='xsd:string'/>
+      <xsd:element name='stockcode' type='xsd:string'/>
+      <xsd:element name='indoc' type='xsd:string'/>
+      <xsd:element name='datein' type='xsd:string'/>
+      <xsd:element name='sercost' type='xsd:double'/>
+      <xsd:element name='curcost' type='xsd:integer'/>
+      <xsd:element name='buyabsline' type='xsd:integer'/>
+      <xsd:element name='buyqty' type='xsd:double'/>
+      <xsd:element name='inmloc' type='xsd:string'/>
+      <xsd:element name='outdoc' type='xsd:string'/>
+      <xsd:element name='dateout' type='xsd:string'/>
+      <xsd:element name='sersell' type='xsd:double'/>
+      <xsd:element name='cursell' type='xsd:integer'/>
+      <xsd:element name='soldabsline' type='xsd:integer'/>
+      <xsd:element name='qtyused' type='xsd:double'/>
+      <xsd:element name='outmloc' type='xsd:string'/>
+      <xsd:element name='sold' type='tns:boolean2'/>
+      <xsd:element name='batchrec' type='tns:boolean2'/>
+      <xsd:element name='batchchild' type='tns:boolean2'/>
+      <xsd:element name='corate' type='xsd:double'/>
+      <xsd:element name='dailyrate' type='xsd:double'/>
+      <xsd:element name='inorddoc' type='xsd:string'/>
+      <xsd:element name='inordline' type='xsd:integer'/>
+      <xsd:element name='outorddoc' type='xsd:string'/>
+      <xsd:element name='outordline' type='xsd:integer'/>
+      <xsd:element name='dateusex' type='xsd:string'/>
+      <xsd:element name='donotupdatetl' type='tns:boolean2'/>
+      <xsd:element name='recpos' type='xsd:integer'/>
+      <xsd:element name='inbincode' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='serialrec' type='tns:serialrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='serial'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='serial' type='tns:serial'/>
+
+</xsd:schema>

@@ -1,0 +1,89 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Plug-In Files
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=INSTTYPE
+  Value=B
+  Flags=00000001
+end
+item: Copy Local File
+  Source=%INST%\%DLLNAME%.DLL
+  Destination=%ENTDIR%\%DLLNAME%.DLL
+  Description=%PLUGINDESC%
+  Flags=0000010011010010
+end
+item: If/While Statement
+  Variable=ADMIN
+  Flags=00000001
+end
+item: Copy Local File
+  Source=%INST%\%ADMIN%
+  Destination=%ENTDIR%\%ADMIN%
+  Description=Configuration Module
+  Flags=0000010011010010
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=INIFILE
+  Flags=00000001
+end
+item: Copy Local File
+  Source=%INST%\%INIFILE%
+  Destination=%ENTDIR%\%INIFILE%
+  Description=Configuration Settings
+  Flags=0000010011010010
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Update ENTSETUP.DLL in Enterprise Dir
+end
+item: Copy Local File
+  Source=%INST%\ENTSETUP.DLL
+  Destination=%ENTDIR%\ENTSETUP.DLL
+  Description=Plug-In Setup Function Library
+  Local Path=X:\BESPOKE\EXCHEQR\PERIOD\INSTALL\ENTSETUP.DLL
+  Flags=0000010011010010
+end
+item: Remark
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\Install\Files\BACSPI.LST
+  Destination=%ENTDIR%\BACSPI.LST
+  Description=BACS Plug-In
+  Flags=0000000010000010
+end

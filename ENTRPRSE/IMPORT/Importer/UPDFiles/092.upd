@@ -1,0 +1,68 @@
+[Version]
+Version=6.9.000.092
+
+[Customer]
+F087=CU.UserDef5                  1334    S 0030 O   User Defined Field 5                               default=                                                                                                     comment=
+F088=CU.UserDef6                  1365    S 0030 O   User Defined Field 6                               default=                                                                                                     comment=
+F089=CU.UserDef7                  1396    S 0030 O   User Defined Field 7                               default=                                                                                                     comment=
+F090=CU.UserDef8                  1427    S 0030 O   User Defined Field 8                               default=                                                                                                     comment=
+F091=CU.UserDef9                  1458    S 0030 O   User Defined Field 9                               default=                                                                                                     comment=
+F092=CU.UserDef10                 1489    S 0030 O   User Defined Field 10                              default=                                                                                                     comment=
+F093=CU.Spare                     1520    C 0257 N   Spare                                              default=                                                                                                     comment=
+F094=CU.LastChar                  1777    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Supplier]
+F087=SU.UserDef5                  1334    S 0030 O   User Defined Field 5                               default=                                                                                                     comment=
+F088=SU.UserDef6                  1365    S 0030 O   User Defined Field 6                               default=                                                                                                     comment=
+F089=SU.UserDef7                  1396    S 0030 O   User Defined Field 7                               default=                                                                                                     comment=
+F090=SU.UserDef8                  1427    S 0030 O   User Defined Field 8                               default=                                                                                                     comment=
+F091=SU.UserDef9                  1458    S 0030 O   User Defined Field 9                               default=                                                                                                     comment=
+F092=SU.UserDef10                 1489    S 0030 O   User Defined Field 10                              default=                                                                                                     comment=
+F093=SU.Spare                     1520    C 0257 N   Spare                                              default=                                                                                                     comment=
+F094=SU.LastChar                  1777    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Stock]
+F161=SK.StkUser5                  1254    S 0030 O X User Defined Field 5                               default=                                                                                                     comment=
+F162=SK.StkUser6                  1285    S 0030 O X User Defined Field 6                               default=                                                                                                     comment=
+F163=SK.StkUser7                  1316    S 0030 O X User Defined Field 7                               default=                                                                                                     comment=
+F164=SK.StkUser8                  1347    S 0030 O X User Defined Field 8                               default=                                                                                                     comment=
+F165=SK.StkUser9                  1378    S 0030 O X User Defined Field 9                               default=                                                                                                     comment=
+F166=SK.StkUser10                 1409    S 0030 O X User Defined Field 10                              default=                                                                                                     comment=
+F167=SK.Spare                     1440    C 0473 N   Padding                                            default=                                                                                                     comment=
+F168=SK.LastChar                  1913    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Trans Header]
+F119=TH.thOverrideLocation        1305    S 0003 O   Override Location                                  default=                                                                                                     comment=
+F120=TH.DocUser5                  1119    S 0030 O X User Defined Field 5                               default=                                                                                                     comment=
+F121=TH.DocUser6                  1150    S 0030 O X User Defined Field 6                               default=                                                                                                     comment=
+F122=TH.DocUser7                  1181    S 0030 O X User Defined Field 7                               default=                                                                                                     comment=
+F123=TH.DocUser8                  1212    S 0030 O X User Defined Field 8                               default=                                                                                                     comment=
+F124=TH.DocUser9                  1243    S 0030 O X User Defined Field 9                               default=                                                                                                     comment=
+F125=TH.DocUser10                 1274    S 0030 O X User Defined Field 10                              default=                                                                                                     comment=
+F126=TH.Spare                     1309    C 0284 N   Padding                                            default=                                                                                                     comment=
+F127=TH.PadChar13                 1593    C 0001 N   Padding                                            default=                                                                                                     comment=
+F128=TH.LastChar                  1594    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Trans Line]
+F114=TL.tlReference               0954    S 0020 O X Reference                                          default=                                                                                                     comment=
+F115=TL.tlReceiptNo               0975    S 0020 O X Receipt Number                                     default=                                                                                                     comment=
+F116=TL.tlFromPostCode            0996    S 0015 O X From Post Code                                     default=                                                                                                     comment=
+F117=TL.tlToPostCode              1012    S 0015 O X To Post Code                                       default=                                                                                                     comment=
+F118=TL.LineUser5                 1028    S 0030 O X User Defined Field 5                               default=                                                                                                     comment=
+F119=TL.LineUser6                 1059    S 0030 O X User Defined Field 6                               default=                                                                                                     comment=
+F120=TL.LineUser7                 1090    S 0030 O X User Defined Field 7                               default=                                                                                                     comment=
+F121=TL.LineUser8                 1121    S 0030 O X User Defined Field 8                               default=                                                                                                     comment=
+F122=TL.LineUser9                 1152    S 0030 O X User Defined Field 9                               default=                                                                                                     comment=
+F123=TL.LineUser10                1183    S 0030 O X User Defined Field 10                              default=                                                                                                     comment=
+F124=TL.Spare2                    1214    C 0003 N   Padding                                            default=                                                                                                     comment=
+F125=TL.LastChar                  1217    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Job Record]
+F032=JR.UserDef5                  0321    S 0030 O   User Defined Field 5                               default=                                                                                                     comment=
+F033=JR.UserDef6                  0352    S 0030 O   User Defined Field 6                               default=                                                                                                     comment=
+F034=JR.UserDef7                  0383    S 0030 O   User Defined Field 7                               default=                                                                                                     comment=
+F035=JR.UserDef8                  0414    S 0030 O   User Defined Field 8                               default=                                                                                                     comment=
+F036=JR.UserDef9                  0445    S 0030 O   User Defined Field 9                               default=                                                                                                     comment=
+F037=JR.UserDef10                 0476    S 0030 O   User Defined Field 10                              default=                                                                                                     comment=
+F038=JR.Spare                     0507    C 0258 N   Padding                                            default=                                                                                                     comment=
+F039=JR.LastChar                  0765    C 0001 N   Padding                                            default=                                                                                                     comment=

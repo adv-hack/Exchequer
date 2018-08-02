@@ -1,0 +1,443 @@
+html, body {margin: 0; padding: 0; border: 0;} 
+#container { 
+float: left; /* to *horizontally* contain floated children */ 
+min-width: 100%; /* for compliant browsers to apply */ 
+} 
+
+.mainbody A:link, .mainbody A:active, .mainbody A:visited, .boxbody A:link, .boxbody A:active, .boxbody A:visited, .iconcontainer A:link, .iconcontainer A:active, .iconcontainer A:visited {
+	color:#22229C;
+	text-decoration:none;
+}
+
+#titlebar{
+	background-color: #537694;
+	clear: both;
+	background-image: url(http://www.pcreview.co.uk/template/Top_Background.jpg);
+} 
+
+#menubar, [dummy="dummy"]{
+	background-color: #537694;
+	clear: both;
+	background-image: url(http://www.pcreview.co.uk/template/Bar_Background.jpg);
+	height:20px;
+} 
+
+#menubar{
+	background-color: #537694;
+	clear: both;
+	background-image: url(http://www.pcreview.co.uk/template/Bar_Background.jpg);
+} 
+
+#menuspacer{
+	background-color: #ffffff;
+	clear: both;
+	padding: 10px;
+} 
+
+#footer{
+	background-color: #677A98;
+	color: #fff;
+	clear: both;
+	background-image: url(http://www.pcreview.co.uk/template/Bottom_Background.jpg);
+	height: 30px;
+	text-align: center;
+} 
+
+#contentwrap { 
+padding: 0; 
+float: left; /* the floated child no width so it will shrinkwrap stretch*/ 
+} 
+
+/* IE then needs this, which it treats the same as min-width anyway, in case content does not reach a minimum width of 100% 
+this means you can't use padding or margin here so pad internal elements instead 
+*/ 
+* html #contentwrap {width: 100%;} 
+
+#left, #right { 
+width: 140px; 
+color: #000000; 
+background: #C3D3E3;
+height: 100%;
+
+} 
+
+#right {
+	float: right;
+	margin-left: -140px;
+} 
+
+#left {
+	float: left;
+	margin-right: -140px;
+} 
+#content {
+	margin: 0 155px;
+} 
+#content p { 
+margin: 0.5em; /* margin or pad internal elements */ 
+} 
+ .leftsidemenu A {
+	DISPLAY: block;
+	FONT: bold 10px Tahoma, Arial;
+	WIDTH: 135px;
+	COLOR: #364251;
+	TEXT-DECORATION: none;
+	background-color: #C3D3E3;
+	BORDER-BOTTOM: #ffffff 1px solid;
+	padding: 4px 2px 4px 3px;
+}
+
+.menutext {
+	PADDING-RIGHT: 0px;
+	DISPLAY: block;
+	PADDING-LEFT: 0px;
+	PADDING-BOTTOM: 4px;
+	FONT: 11px Tahoma, Arial;
+	WIDTH: 140px;
+	COLOR: #000000;
+	PADDING-TOP: 4px;
+	TEXT-DECORATION: none;
+	background-color: #C3D3E3;
+	BORDER-BOTTOM: #ffffff 1px solid
+}
+
+.leftsidemenu A:hover {
+	COLOR: #C3D3E3; TEXT-DECORATION: none
+}
+
+.leftsidemenu A:visited {
+	COLOR: #364251; TEXT-DECORATION: none
+}
+
+ .rightsidemenu A {
+	DISPLAY: block;
+	FONT: bold 10px Tahoma, Arial;
+	WIDTH: 132px;
+	COLOR: #364251;
+	TEXT-DECORATION: none;
+	background-color: #C3D3E3;
+	text-align: right;
+	padding: 4px;
+}
+.rightsidemenu A:hover {
+	COLOR: #C3D3E3; TEXT-DECORATION: none
+}
+
+.rightsidemenu A:visited {
+	COLOR: #364251; TEXT-DECORATION: none
+}
+
+.menutitle {
+	BORDER-BOTTOM: #ffffff 1px solid;
+	TEXT-DECORATION: none;
+}
+.menubuttons A {
+	BORDER-BOTTOM: #ffffff 1px solid
+}
+.menubuttons A:hover {
+	COLOR: #000000; BACKGROUND-COLOR: #FFCE84
+}
+body,td,th {
+	font-family: Tahoma;
+	font-size: 10pt;
+	color: #000000;
+}
+
+ HTML .boxhead H2 {
+	HEIGHT: 1%
+}
+
+.sideboxleft {
+	FONT-SIZE: 100%;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Right.gif) no-repeat right bottom;
+	WIDTH: 49.8%;
+	float:left;
+  }
+  
+  .sideboxright {
+	FONT-SIZE: 100%;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Right.gif) no-repeat right bottom;
+	WIDTH: 49.8%;
+	float:right;
+  }
+  .sideboxpage {
+	FONT-SIZE: 100%;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Right.gif) no-repeat right bottom;
+	WIDTH: 30%;
+	float:right;
+  }
+.sideboxarticle {
+	FONT-SIZE: 100%;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Right.gif) no-repeat right bottom;
+	WIDTH: 69.5%;
+	float:left;
+  }
+  .articlebox {
+
+	FONT-SIZE: 100%; BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Right.gif) no-repeat right bottom; FLOAT: left; WIDTH: 99.5%
+}
+
+.boxhead {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableTitle_Right.gif) no-repeat right top;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-TOP: 0px;
+	TEXT-ALIGN: center;
+	height: 20px;
+}
+.boxtitle {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND: url(http://www.pcreview.co.uk/template/TableTitle_Left.gif) no-repeat left top; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: white; LINE-HEIGHT: 20px; PADDING-TOP: 0px; height: 20px
+}
+.boxbody {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Left.gif) no-repeat left bottom;
+	PADDING-BOTTOM: 5px;
+	MARGIN: 0px;
+	PADDING-TOP: 5px;
+	font-size: 11px;
+	height: 190px;
+}
+.normboxbody {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Left.gif) no-repeat left bottom;
+	PADDING-BOTTOM: 5px;
+	MARGIN: 0px;
+	PADDING-TOP: 5px;
+	font-size: 11px;
+}
+.articleboxbody {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	BACKGROUND: url(http://www.pcreview.co.uk/template/TableBody_Left.gif) no-repeat left bottom;
+	PADDING-BOTTOM: 5px;
+	MARGIN: 0px;
+	PADDING-TOP: 5px;
+	font-size: 11px;
+	height: 130px;
+}
+.mainbody {
+	PADDING-TOP: 20px
+}
+#nav, #nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#nav a.topmenu {
+	display: block;
+	text-align: center;
+}
+
+#nav li {
+	float: left;
+}
+#nav li ul {
+	position: absolute;
+	width: 130px;
+	left: -999em;
+	background: #C3D3E3;
+	border-right:1px solid #617283;
+	border-bottom:1px solid #617283;
+	border-left:1px solid #617283;
+	z-index:10;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	COLOR: #364251;
+}
+#nav li ul li {
+}
+#nav li ul li a {
+	display: block;
+	text-decoration: none;
+	color: #364251;
+	text-align: left;
+	padding: 4px 0px;
+	width: 130px;
+	border-bottom-width: 1px;
+	border-bottom-color: #FFFFFF;
+	border-bottom-style: solid;
+}
+
+#nav li ul li a.last {
+	border-bottom:none;
+}
+
+#nav li ul li a img {
+	border: none;
+	margin-right: 5px;
+	margin-left: 2px;
+}
+#nav li ul li a img.droparrow {
+	margin-left: 73px;
+
+}
+#nav li ul ul { /* third-and-above-level lists */
+	margin: -16px 0 0 130px;
+	border:1px solid #666633;
+}
+
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li.sfhover ul ul, #nav li.sfhover ul ul ul {
+	left: -999em;
+}
+
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+	left: auto;
+}
+
+
+#nav li ul li a:hover {
+	background: #FFCE84;
+	COLOR: #000000;
+	}
+
+#nav li:hover ul {
+	left: auto;
+}
+ul#nav {
+ width:605px;
+ margin-left:auto;/* will center in compliant browsers*/
+ margin-right:auto;/* will center in compliant browsers*/
+}
+.microtext {
+font-size: 10px
+}
+.normaltext {
+font-size: 11px
+}
+.articleimage {
+	position: relative;
+	height: 80px;
+	width: 80px;
+	border: 0px;
+	margin: 7px 10px 7px 5px;
+	float: left;
+}
+
+.boximage {
+	position: relative;
+	height: 120px;
+	width: 120px;
+	border: 0px;
+	float: left;
+	margin: 5px 10px 5px 5px;
+}
+
+.topboxtitle {
+	font-weight: bold;
+	top: 20px;
+	position: relative;
+}
+.boxcontainer {
+	height: 94px;
+	width: 100%;
+}
+.topboxtext {
+	position: relative;
+	top: 20px;
+}
+
+.iconimage {
+	position: relative;
+	height: 55px;
+	width: 45px;
+	border: 0px;
+	float: left;
+}
+.icontitle {
+	font-weight: bold;
+	top: 5px;
+	position: relative;
+	padding-left: 0px;
+	color:#22229C;
+}
+.iconcontainer {
+	position: relative;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.icontag {
+	position: static;
+	background-color: #C3D3E3;
+	padding-right: 5px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	font-size: 11px;
+	padding-top: 2px;
+	top: -5px;
+	margin-top: 15px;
+	margin-left: 48px;
+}
+.toptitlebar {
+	position: absolute;
+	height: 20px;
+	width: 80px;
+	left: 0px;
+	top: 80px;
+}
+.topadvert {
+	position: absolute;
+	right: 50px;
+	top: 10px;
+}
+
+.row  {
+	background: #E0E9F1;
+	color: #000000;
+}
+
+.row-over A:link {
+ background: #FFE6BF;
+ color: #FF4400;
+}
+
+.row-over A:visited {
+ background: #FFE6BF;
+ color: #FF4400;
+}
+
+.row-over {
+	background: #FFE6BF;
+	color: #000000;
+	CURSOR: hand;
+}
+#leftbar {
+	BACKGROUND-POSITION: left 50%;
+	BACKGROUND-IMAGE: url(http://www.pcreview.co.uk/template/Menu_Bar.gif);
+	BACKGROUND-REPEAT: repeat-y;
+}
+#rightbar {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(http://www.pcreview.co.uk/template/Menu_Bar.gif); BACKGROUND-REPEAT: repeat-y
+}
+.hideright{
+position:absolute;
+right:0;top:100px;
+width:150px;
+text-align:right;
+padding-right:5px;
+}
+.hideleft{
+position:absolute;
+left:0;top:100px;
+width:150px;
+padding-left:5px;
+}
+.menuleft {
+	position: absolute;
+	left: 0px;
+	top: 80px;
+}
+.menuright {
+	position: absolute;
+	right: 0px;
+	top: 80px;
+}
+.newsimage {
+	float: right;
+	padding-left: 20px;
+}

@@ -1,0 +1,11 @@
+
+  This file is an Exchequer Licence file used in conjunction with the 
+  Exchequer Setup Program. Any unauthorised changes made to this licence 
+  may cause the licence to be invalidated and the Setup Program to refuse 
+  to accept the licence.
+
+  WARNING: Do not edit and save this file in any utility as that may 
+  cause the file to be changed and invalidate the licence.
+
+  Licence Details:
+  ----------------

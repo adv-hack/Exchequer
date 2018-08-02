@@ -1,0 +1,26 @@
+
+; Dependency file for setup wizards.
+
+[Version]
+;Version=1.0.3.0
+
+; Dependencies for fmprint4.ocx
+
+; Default Dependencies ----------------------------------------------
+
+[fmprint4.ocx]
+Dest=$(WinSysPath)
+Register=$(DLLSelfRegister)
+;Version=1.0.3.0
+Uses1=msvcr71.dll
+Uses2=msvcp71.dll
+Uses3=
+
+[msvcr71.dll]
+Dest=$(WinSysPathSysFile)
+Uses1=
+
+[msvcp71.dll]
+Dest=$(WinSysPathSysFile)
+Uses1=
+

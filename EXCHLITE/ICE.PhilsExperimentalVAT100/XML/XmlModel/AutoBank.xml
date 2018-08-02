@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:autobank xmlns:val="urn:www-iris-co-uk:autobank">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <autobankrec>
+         <bankref/>   <!-- :  String[40];      {  Bank Matching Reference }  -->
+         <bankvalue/> <!--:  Double;          {  Statement value }  -->
+         <banknom/>   <!--:  LongInt;         {  Nominal Code }  -->
+         <bankcr/>    <!--:  SmallInt;        {  Currency }  -->
+         <entryopo/>  <!--:  String[10];      {  Entered by }  -->
+         <entrydate/> <!--:  String[8];       {  Entry Date }  -->
+         <accountcode/> <!--:  String[8];       { Bank Account Code }  -->
+         <sortcode/>    <!--:  String[6];       { Sort Code }  -->
+    </autobankrec>
+</message>
+</val:autobank>

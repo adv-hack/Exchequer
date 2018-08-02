@@ -1,0 +1,5 @@
+"Filename not specified.",C:\ComTKExes\LinkTest.exe,Y,Y,30000,N,"2,30000"
+"Invalid Date.",C:\ComTKExes\LinkTest.exe,Y,Y,30005,N,"4,30005"
+"Invalid Time.",C:\ComTKExes\LinkTest.exe,Y,Y,30006,N,"4,30006"
+"Invalid link type",C:\ComTKExes\LinkTest.exe,Y,Y,30007,N,"4,30007"
+"Successful Add",C:\ComTKExes\LinkTest.exe,Y,Y,0,N,"1,0"

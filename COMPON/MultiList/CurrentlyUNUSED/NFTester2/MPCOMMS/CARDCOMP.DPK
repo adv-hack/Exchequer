@@ -1,0 +1,44 @@
+package CardComp;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+{$DEFINE WCA}
+
+requires
+  vcl,
+  vcljpg,
+  vclx,
+  HMESL1,
+  A403_R60,
+  DBMBtrieve,
+  B302_r60;
+
+contains
+  MPComms in '\\SBS_SERVER\VOL2\DEVELOP5\WinCard\MPCOMMS\Mpcomms.pas',
+  message in '\\SBS_SERVER\VOL2\DEVELOP5\WinCard\MPCOMMS\Message.pas' {FrmMessage},
+  debug in '\\SBS_SERVER\VOL2\DEVELOP5\WinCard\MPCOMMS\debug.pas' {FrmMPCommsDebug},
+  cmdlist in '\\SBS_SERVER\VOL2\DEVELOP5\WinCard\MPCOMMS\Cmdlist.pas' {FrmCommandList},
+  NeilProc in 'E:\Dev\NeilProc.pas';
+
+end.

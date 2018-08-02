@@ -1,0 +1,24 @@
+BACS Transaction Codes
+
+Value Items
+
+01 - Direct Debit first collection.
+
+17 - Direct Debit regular collection, or credit contra (debit record to balance credit records).
+
+18 - Direct Debit re-presentation.
+
+19 - Direct Debit final collection.
+
+99 - Direct Credit, or debit contra (credit record to balance debit records)
+
+Z4 - Interest payments.
+
+Z5 - Dividend payments.
+
+Direct Debit Instructions (DDIs)
+0N - New instruction.
+
+0C - Cancellation instruction.
+
+0S - Conversion instruction.

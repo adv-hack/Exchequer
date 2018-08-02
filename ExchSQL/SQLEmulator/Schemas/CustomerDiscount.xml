@@ -1,0 +1,35 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="78">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="f_cust_code" fullfieldname="" typename="DelphiString" size="7" elements="1" id="0" columnname="CustCode" collation="1" />
+		<schemafield fieldname="f_stock_code" fullfieldname="" typename="DelphiString" size="17" elements="1" id="0" columnname="StockCode"  />
+    <schemafield fieldname="f_currency" fullfieldname="" typename="BYTE" size="1" elements="1" id="0" columnname="Currency"/>
+    <schemafield fieldname="f_discount_type" fullfieldname="" typename="char" size="1" elements="1" id="0" columnname="DiscountType"  />
+    <schemafield fieldname="f_price" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="Price"/>
+    <schemafield fieldname="f_band" fullfieldname="" typename="char" size="1" elements="1" id="0" columnname="Band"  />
+    <schemafield fieldname="f_discount_p" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="DiscountP"/>
+    <schemafield fieldname="f_discount_a" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="DiscountA"/>
+    <schemafield fieldname="f_markup" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="Markup"/>
+    <schemafield fieldname="f_use_dates" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="UseDates"/>
+    <schemafield fieldname="f_start_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="StartDate"  />
+    <schemafield fieldname="f_end_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="EndDate"  />
+    <schemafield fieldname="f_qty_break_folio" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="QtyBreakFolio" collation="0"/>
+	</fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>f_cust_code</item>
+				<item>f_stock_code</item>
+        <item>f_currency</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>f_stock_code</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

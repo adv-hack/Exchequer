@@ -1,0 +1,40 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="512" recordfieldname="">
+	<recordfields/>
+	<fixedfields>
+		<schemafield fieldname="rtnodetype" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="rtnodetype" />
+		<schemafield fieldname="rtrepname" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="rtrepname" collation="1"/>
+		<schemafield fieldname="rtrepdesc" fullfieldname="" typename="DelphiString" size="256" elements="1" id="-1" columnname="rtrepdesc" />
+		<schemafield fieldname="rtparentname" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="rtparentname" collation="1"/>
+		<schemafield fieldname="rtfilename" fullfieldname="" typename="DelphiString" size="81" elements="1" id="-1" columnname="rtfilename" collation="1"/>
+		<schemafield fieldname="rtlastrun" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="rtlastrun" />
+		<schemafield fieldname="rtlastrunuser" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="rtlastrunuser" />
+		<schemafield fieldname="rtpositionnumber" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="rtpositionnumber" />
+		<schemafield fieldname="rtindexfix" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="rtindexfix" />
+
+		<schemafield fieldname="rtallowedit" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="rtallowedit" />
+		<schemafield fieldname="rtfileexists" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="rtfileexists" />
+	</fixedfields>
+	<defaultrecordtype>
+	</defaultrecordtype>
+	<recordtypes/> 
+	<indexes>
+		<schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+			<indexfields>
+				<item>rtrepname</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+			<indexfields>
+				<item>rtparentname</item>
+				<item>rtpositionnumber</item>
+				<item>rtindexfix</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isunique="1" isclustered="0" >
+			<indexfields>
+				<item>rtfilename</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

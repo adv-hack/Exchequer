@@ -1,0 +1,865 @@
+unit dti;
+
+
+interface
+
+type
+  PDAC_DTI_LONG = Longint;
+{$Ifdef PvDelphi4Up}
+  PDAC_DTI_ULONG = LongWord;
+{$Else}
+  PDAC_DTI_ULONG = Cardinal;
+{$EndIf}
+  PDAC_DTI_SINT = SmallInt;
+  PDAC_DTI_WORD = Word;
+  PDAC_DTI_INT = Integer;
+  PDAC_DTI_CHAR = Char;
+  PDAC_DTI_BYTE = Byte;
+  PDAC_DTI_BOOL = ByteBool; // must be the same size as PDAC_DTI_CHAR from C point of view
+
+  PDAC_DTI_CHAR_PTR = PChar;
+  PDAC_DTI_BUFFER_PTR = ^PDAC_DTI_BYTE;
+  PDAC_DTI_SINT_PTR = ^PDAC_DTI_SINT;
+  PDAC_DTI_INT_PTR = ^PDAC_DTI_INT;
+  PDAC_DTI_WORD_PTR = ^PDAC_DTI_WORD;
+  PDAC_DTI_LONG_PTR = ^PDAC_DTI_LONG;
+  PDAC_DTI_ULONG_PTR = ^PDAC_DTI_ULONG;
+  PDAC_DTI_VOID_PTR = Pointer;
+
+  PDAC_DTI_API = PDAC_DTI_SINT;
+
+const
+  P_OK					        = 0;
+  P_E_INVALID_HANDLE		= 7001;
+	P_E_NULL_PTR			    = 7002;
+	P_E_BUFFER_TOO_SMALL	= 7003;
+	P_E_FAIL				      = 7004;
+	P_E_INVALID_DATA_TYPE	= 7005;
+	P_E_OUT_OF_RANGE		  = 7006;
+	P_E_INVALID_SELECTION	= 7007;
+	P_E_INVALID_SEQUENCE	= 7008;
+	P_E_DATA_UNAVAILABLE	= 7009;
+	P_E_INVALID_CLIENT		= 7010;
+	P_E_ACCESS_RIGHT		  = 7011;	// Insufficient access right for the operation
+	P_E_DUPLICATE_NAME		= 7012;	// Named database already exists on the server
+	P_E_NOT_EXIST         = 7013;	// Named database does not exist
+	P_E_INVALID_VERSION   = 7014;
+  P_E_FILE_NOT_OPEN     = 7015;
+  P_E_DICTIONARY_ALREADY_EXISTS = 7016;
+  P_E_SHARED_DDF_EXIST  = 7017;
+
+// DSN Errors
+  P_E_INVALID_NAME       = 7018;
+  P_E_DSN_ALREADY_EXIST  = 7019;
+  P_E_DSN_DOES_NOT_EXIST = 7020;
+  P_E_INVALID_OPEN_MODE  = 7021;
+
+// Own errors
+  P_E_PROBLEM_TO_LOAD_DLL = 7590;
+  P_E_CALL_NOT_SUPPORTED  = 7591;
+
+  LOCAL_DTI_CONECTION     = -1;
+  INVALID_DTI_CONNECTION  = -2;
+
+{*==========================================================================
+ *
+ * Connection API
+ *
+ *=========================================================================*}
+
+{*
+ * Name:
+ *    PvConnectServer()
+ *
+ * Description:
+ *    Attempts to connect to the target server that has Pervasive database
+ *    server installed.  If connection is established successfully, a
+ *    connection handle is returned for subsequent references.
+ *
+ *    The implementation should perform necessary initializations when called
+ *    the first time.
+ *
+ *    Multiple simultaneous connections are allowed.
+ *
+ * Parameters:
+ *    pServerName      [in]       Server name to connect to
+ *    pUserName        [in]       User name
+ *    pPassword        [in]       User password
+ *    hConnection      [in/out]   Connection handle if
+ *                                connection is successful
+ *
+ * Return Value:
+ *    P_OK           Successful
+ *    P_E_NULL_PTR   Call with NULL pointer
+ *    P_E_FAIL       Failed to connect to the named server
+ *}
+function PvConnectServer(
+  pServerName: PDAC_DTI_CHAR_PTR;
+  pUserName: PDAC_DTI_CHAR_PTR;
+  pPassword: PDAC_DTI_CHAR_PTR;
+  var hConnection: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvDisconnect
+ *
+ * Description:
+ *    Attempts to disconnect the connection identified by the handle.
+ *
+ * Parameters:
+ *    hConnection    [in]     Connection handle to be disconnected
+ *
+ * Return Value:
+ *    P_OK                    Successful
+ *    P_E_INVALID_HANDLE      Invalid connection handle
+ *    P_E_FAIL                Failed to disconnect from the server
+ *}
+function PvDisconnect(
+  hConnection: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetServerName()
+ *
+ * Description:
+ *    Retrieve name of the connected server indicated by connection handle.
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    BufSize        [in/out]  Unsigned long containing size
+ *                             of the buffer allocated to receive server name
+ *                             Receives actual size of server name returned.
+ *    pServerName    [in/out]  Returned server name if successful, empty
+ *                             string otherwise
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_FAIL                 Failed to retrieve server name
+ *}
+function PvGetServerName(
+  hConnection: PDAC_DTI_LONG;
+  var BufSize: PDAC_DTI_ULONG;
+  pServerName: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvStart()
+ *
+ * Parameters:
+ *    Reserved		[in]
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_FAIL                 Failed
+ *}
+function PvStart(Reserved: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvStop()
+ *
+ * Parameters:
+ *    Reserved
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_FAIL                 Failed
+ *}
+function PvStop(pReserved: PDAC_DTI_LONG_PTR): PDAC_DTI_API; stdcall;
+
+{*==========================================================================
+ *
+ * DBNames API
+ *
+ *=========================================================================*}
+
+// Database flags
+const
+  P_DBFLAG_BOUND      = $00000001;  // bound database
+  P_DBFLAG_RI         = $00000002;  // reference integrity
+  P_DBFLAG_CREATE_DDF = $00000004;  // create ddf flag
+  P_DBFLAG_NA         = $80000000;  // not applicable
+  P_DBFLAG_DEFAULT    = P_DBFLAG_BOUND or P_DBFLAG_RI;
+
+// Server Client information
+  UNKNOWN_ENGINE_CLIENT = 0;
+  NT_SERVER             = 1;
+  NW_SERVER             = 2;
+  WIN32_CLIENT          = 3;
+  UNIX_SERVER           = 4;
+
+{*
+ * Name:
+ *    PvGetDbNamesData()
+ *
+ * Description:
+ *    Retrieve all the database names for a connected server.  This function
+ *    should be called first before calling any other functions to get
+ *    information on database names.  The caller should call
+ *    PvFreeDbNamesData() to free the resources allocated for database names.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectServer();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    Count          [out]     Address of an usinged long to receive the
+ *                             number of database names on the server
+ *
+ * See Also:
+ *    The following published functions may also be used to get database
+ *    names, see Pervasive.SQL Programmer's Reference for more details.
+ *       SQLGetCountDatabaseNames()
+ *       SQLGetCountRemoteDatabaseNames()
+ *       SQLGetDatabaseNames()
+ *       SQLGetGetRemoteDatabaseNames()
+ *       SQLUnloadDBNames()
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_FAIL                 Failed for any other reason
+ *}
+function PvGetDbNamesData(
+  hConnection: PDAC_DTI_LONG;
+  var Count: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvFreeDbNamesData()
+ *
+ * Description:
+ *    Free the resource allocated for database names on a connected server.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectServer();
+ *    Database names data retrieved by calling PvGetDbNamesData();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_DATA_UNAVAILABLE     Data related to database names not available
+ *    P_E_FAIL                 Failed for any other reason
+ *}
+function PvFreeDbNamesData(
+  hConnection: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDbName()
+ *
+ * Description:
+ *    Get the name of a database on a connected server.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectServer();
+ *    Database names data retrieved by calling PvGetDbNamesData();
+ *    Caller has a valid database name sequence number;
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the service
+ *    Sequence       [in]      The sequence number (1 based) of the database
+ *                             name.  Must be within a valid range with upper
+ *                             limit defined by PvGetDbNamesData()
+ *    BufSize        [in/out]  Address of an unsigned long containing size
+ *                             of buffer allocated to receive the database
+ *                             name.  Receives actual size of chars copied.
+ *                             The size should include the null terminator.
+ *    pDbName        [out]     String value returned
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_DATA_UNAVAILABLE     Data related to database names not available
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     Allocated buffer is too small for the string,
+ *                             returned string is truncated.  In this case
+ *                             the required size is retured in pBufSize.
+ *    P_E_INVALID_SEQUENCE     Sequence number is not valid
+ *    P_E_FAIL                 Failed for any other reason
+ *}
+function PvGetDbName(
+  hConnection: PDAC_DTI_LONG;
+  Sequence: PDAC_DTI_ULONG;
+  var BufSize: PDAC_DTI_ULONG;
+  pDbName: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvCreateDatabase()
+ *
+ * Description:
+ *    Create a named database using the specified information for dictionary
+ *    and data paths, and the database flag.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      name of the database
+ *    pDictPath      [in]      dictionary path
+ *    pDataPath      [in]      data path.  Set it to NULL to use the default
+ *                             data path (same as dictionary path?)
+ *    DbFlags        [in]      database flags, which can be a combination of
+ *                             the P_DBFLAG_ constants
+ *
+ * Return Value:
+ *    P_OK                          Successful
+ *    P_E_INVALID_HANDLE            Invalid connection handle
+ *    P_E_NULL_PTR                  Call with NULL pointer
+ *    P_E_ACCESS_RIGHT              Insufficient access right for the operation
+ *    P_E_DUPLICATE_NAME            Named database already exists on the server
+ *    P_E_DICTIONARY_ALREADY_EXISTS Dictionary path is used by another database
+ *    P_E_SHARED_DDF_EXIST          DDF files already exist at dictionary path
+ *    P_E_FAIL                      Failed to create the database
+ *}
+function PvCreateDatabase(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  pDictPath: PDAC_DTI_CHAR_PTR;
+  pDataPath: PDAC_DTI_CHAR_PTR;
+  DbFlags: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvDropDatabase()
+ *
+ * Description:
+ *    Delete a named database.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      name of the database
+ *    Option         [in]      if TRUE then delete DDFs
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to create the database
+ *}
+function PvDropDatabase(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  Option: PDAC_DTI_BOOL): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvModifyDatabase()
+ *
+ * Description:
+ *    Modify an existing named database using the specified information for
+ *    the new database name, dictionary & data paths, and the database flag.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection     [in]     Connection handle which identifies the server
+ *    pDbNameExisting [in]     name of the existing database
+ *    pDbNameNew      [in]     name of the new database.  Set it to NULL if
+ *                             the database name is not to be changed.
+ *    pDictPath       [in]     new dictionary path.  Set it to NULL if the
+ *                             dictionary path is not to be changed.
+ *    pDataPath       [in]     new data path.  Set it to NULL if the data
+ *                             path is not to be changed.
+ *    DbFlags         [in]     database flags, which can be a combination of
+ *                             the P_DBFLAG_ constants.  Set to P_DBFLAG_NA
+ *                             if database flags are not to be changed.
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer(for existing DB name)
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to create the database
+ *}
+function PvModifyDatabase(
+  hConnection: PDAC_DTI_LONG;
+  pDbNameExisting: PDAC_DTI_CHAR_PTR;
+  pDbNameNew: PDAC_DTI_CHAR_PTR;
+  pDictPath: PDAC_DTI_CHAR_PTR;
+  pDataPath: PDAC_DTI_CHAR_PTR;
+  DbFlags: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvCheckDbInfo()
+ *
+ * Description:
+ *    Check database info for a named database.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      name of an existing database
+ *    CheckFlags     [in]      flags indicating what to check.
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer(for existing DB name)
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to create the database
+ *
+ *}
+function PvCheckDbInfo(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  CheckFlags: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDbServerName()
+ *
+ * Description:
+ *    Retrieve the name of the server where the named database resides.
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      database name
+ *    BufSize        [in/out]  Address of an unsigned long containing size
+ *                             of the buffer.  Receives actual size of
+ *                             server name returned.
+ *    ServerName     [out]     Contain server name if successful, empty
+ *                             string otherwise
+ *    IsLocal       [out]      Non-zero for local server
+ *                             Zero for remote server
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to retrieve database name
+ *}
+function PvGetDbServerName(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  var BufSize: PDAC_DTI_ULONG;
+  ServerName: PDAC_DTI_CHAR_PTR;
+  var IsLocal: PDAC_DTI_SINT): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDbFlags()
+ *
+ * Description:
+ *    Retrieve the database flags associated with a named database
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      database name
+ *    DbFlags        [out]     database flags, which can be a combination of
+ *                             the P_DBFLAG_ constants
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to retrieve database flags
+ *}
+function PvGetDbFlags(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  var DbFlags: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDbDictionaryPath()
+ *
+ * Description:
+ *    Retrieve the dictionary path (where DDF files reside) of a named
+ *    database
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      database name
+ *    BufSize        [in/out]  Address of an unsigned long containing size
+ *                             of the buffer.  Receives actual size of
+ *                             the path returned.
+ *    pDictPath      [out]     Contain the dictionary path if successful,
+ *                             empty string otherwise
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to retrieve dictionary path
+ *
+ * Question:
+ *    What should be returned for thoese DBs without DDFs?
+ *}
+function PvGetDbDictionaryPath(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  var BufSize: PDAC_DTI_ULONG;
+  pDictPath: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDbDataPath()
+ *
+ * Description:
+ *    Retrieve the data path (where data files reside) of a named database
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDbName        [in]      database name
+ *    BufSize        [in/out]  Address of an unsigned long containing size
+ *                             of the buffer.  Receives actual size of
+ *                             database name returned.
+ *    pDataPath      [out]     Contain the data path if successful, empty
+ *                             string otherwise
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_NOT_EXIST            Named database does not exist
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvGetDbDataPath(
+  hConnection: PDAC_DTI_LONG;
+  pDbName: PDAC_DTI_CHAR_PTR;
+  var BufSize: PDAC_DTI_ULONG;
+  pDataPath: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*==========================================================================
+ *
+ * DSN API
+ *
+ *=========================================================================*}
+
+const
+  DSN_Filter_True: PDAC_DTI_CHAR  = #1;
+  DSN_Filter_False: PDAC_DTI_CHAR = #0;
+
+// DSN Open Mode
+  NORMAL_MODE      = 0;
+  // 32377 - corrected spelling of "ACCELARATED_MODE"
+  ACCELERATED_MODE = 1;
+  READONLY_MODE    = 2;
+  EXCLUSIVE_MODE   = 3;
+
+{*
+ * Name:
+ *    PvGetDSN()
+ *
+ * Description:
+ *    Retrieve information about DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDsnName       [in]      DSN name
+ *    DsnDescSize    [in/out]  Address of an unsigned long containing size
+ *                             of the buffer for DSN description.
+ *							               Receives actual size of DSN description(driver name) returned.
+ *    pDsnDes		     [out]     Contain the description if successful
+ *    DsnDBQSize     [in/out]  Address of an unsigned long containing size
+ *                             of the buffer for name of database.
+ *							               Receives actual size of DSN description returned.
+ *    pDsnDBQ	       [out]	   Contain the name of database if successful
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvGetDSN(
+  hConnection: PDAC_DTI_LONG;
+  pDsnName: PDAC_DTI_CHAR_PTR;
+  var DsnDescSize: PDAC_DTI_ULONG;
+  pDsnDesc: PDAC_DTI_CHAR_PTR;
+  var DsnDBQSize: PDAC_DTI_ULONG;
+  pDsnDBQ: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvCountDSNs()
+ *
+ * Description:
+ *    Retrieve count of DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    DsnCount       [out]     Address of an usinged long to receive the
+ *                             number DSN
+ *    Filtering      [in]      if filtering equal DSN_Filter_True - return only Pervasive DSN,
+ *	                                              DSN_Filter_False - all DSN.
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvCountDSNs(
+  hConnection: PDAC_DTI_LONG;
+  var	DsnCount: PDAC_DTI_ULONG;
+  Filtering: PDAC_DTI_CHAR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvListDSNs()
+ *
+ * Description:
+ *    Get list of information of DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    DsnListSize    [in/out]  Address of an unsigned long containing size
+ *                             of the buffer for list DSN.
+ *							               Receives actual size of list DSN returned.
+ *    pDsnList		   [out]	   Contain the name of list database if successful
+ *    Filtering      [in]      if filtering equal DSN_Filter_True - return only Pervasive DSN,
+ *	                                              DSN_Filter_False - all DSN.
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pdsnlistSize.
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvListDSNs(
+  hConnection: PDAC_DTI_LONG;
+  var DsnListSize: PDAC_DTI_ULONG;
+	pDsnList: PDAC_DTI_CHAR_PTR;
+  Filtering: PDAC_DTI_CHAR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvCreateDSN()
+ *
+ * Description:
+ *    Create New DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDsnName       [in]      DSN name
+ *    pDsnDesc		   [in]	     Contain the description of DSN
+ *    pDsnDBQ		     [in]	     Contain the name of database
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_INVALID_NAME         Invalid name of DSN
+ *    P_E_DSN_ALREADY_EXIST    DSN already exist
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_INVALID_OPEN_MODE    Invalid Open Mode
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvCreateDSN(
+  hConnection: PDAC_DTI_LONG;
+  pDsnName: PDAC_DTI_CHAR_PTR;
+  pDsnDesc: PDAC_DTI_CHAR_PTR;
+  pDsnDBQ: PDAC_DTI_CHAR_PTR;
+  OpenMode: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvDeleteDSN()
+ *
+ * Description:
+ *    Delete DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDsnName       [in]      DSN name
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_DSN_DOES_NOT_EXIST   DSN  Name doesnt exists
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvDeleteDSN(
+  hConnection: PDAC_DTI_LONG;
+  pDsnName: PDAC_DTI_CHAR_PTR): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvGetDSNEx()
+ *
+ * Description:
+ *    Retrieve information about DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDsnName       [in]      DSN name
+ *    DsnDescSize    [in/out]  Address of an unsigned long containing size
+ *                             of the buffer for DSN description.
+ *							               Receives actual size of DSN description(driver name) returned.
+ *    pDsnDesc		   [out]	   Contain the description if successful
+ *    DsnDBQSize     [in/out]  Address of an unsigned long containing size
+ *                             of the buffer for name of database.
+ *							               Receives actual size of DSN description returned.
+ *    pDsnDBQ		    [out]	     Contain the name of database if successful
+ *    OpenMode      [out]      Contain Open mode
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_BUFFER_TOO_SMALL     The buffer is too small for the string.
+ *                             In this case the required buffer size is
+ *                             returned in pBufSize.
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_DSN_DOES_NOT_EXIST   DSN does not exist
+ *    P_E_INVALID_OPEN_MODE    Invalid Open Mode
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvGetDSNEx(
+  hConnection: PDAC_DTI_LONG;
+  pDsnName: PDAC_DTI_CHAR_PTR;
+  var DsnDescSize: PDAC_DTI_ULONG;
+  pDsnDesc: PDAC_DTI_CHAR_PTR;
+  var DsnDBQSize: PDAC_DTI_ULONG;
+  pDsnDBQ: PDAC_DTI_CHAR_PTR;
+  var OpenMode: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*
+ * Name:
+ *    PvModifyDSN()
+ *
+ * Description:
+ *    Modify parameters for DSN
+ *
+ * Precondition:
+ *    Connection established by calling PvConnectService();
+ *
+ * Parameters:
+ *    hConnection    [in]      Connection handle which identifies the server
+ *    pDsnNae        [in]      DSN name
+ *    pDsnDesc 		   [in]	     Contain new description
+ *    pDsnDBQ		     [in]	     Contain new name of database
+ *    OpenMode       [in]      Contain new Open mode
+ *
+ * Return Value:
+ *    P_OK                     Successful
+ *    P_E_INVALID_HANDLE       Invalid connection handle
+ *    P_E_NULL_PTR             Call with NULL pointer
+ *    P_E_DSN_DOES_NOT_EXIST   DSN doesn not exists;
+ *    P_E_ACCESS_RIGHT         Insufficient access right for the operation
+ *    P_E_INVALID_OPEN_MODE    Invalid Open Mode
+ *    P_E_FAIL                 Failed to retrieve data path
+ *}
+function PvModifyDSN(
+  hConnection: PDAC_DTI_LONG;
+  pDsnName: PDAC_DTI_CHAR_PTR;
+  pDsnDesc: PDAC_DTI_CHAR_PTR;
+  pDsnDBQ: PDAC_DTI_CHAR_PTR;
+  OpenMode: PDAC_DTI_LONG): PDAC_DTI_API; stdcall;
+
+{*==========================================================================
+ *
+ * MISC API
+ *
+ *=========================================================================*}
+{*
+ * Name
+ *   PvGetEngineInformation
+ *
+ * Description:
+ *    Retrieve the information about engine for given hConnection
+ *
+ * Precondition:
+ *    none
+ *
+ * Parameters:
+ *    hConnection      [in]		Connection handle which identifies the server
+ *    pServerClient    [out]	Address of an PDAC_DTI_CHAR_PTR
+ *								            TRUE  - MKDE_SRVR_ENGINE_CID,
+ *								            FALSE - MKDE_CLNT_ENGINE_CID
+ *                             Maybe NULL
+ *	  dbuApiVer        [out]	version of the structures, maybe NULL
+ *	  major            [out]	Major version, maybe NULL
+ *    minor            [out]	Minor version, maybe NULL
+ *    ServerClientType [out]  Only for MKDE_SRVR_ENGINE_CID,  for NTSV return NT_SERVER, NWSV - NW_SERVER,
+ *                              for MKDE_CLNT_ENGINE_CID return  client type
+ *                              maybe NULL
+ *
+ * Return Value:
+ *    P_OK                      Successful
+ *    P_E_FAIL                  Failed to retrieve data path
+ *    P_E_INVALID_HANDLE        Invalid connection handle
+ *}
+function PvGetEngineInformation(
+  hConnection: PDAC_DTI_LONG;
+  var ServerClient: PDAC_DTI_BOOL;
+  var dbuApiVer: PDAC_DTI_ULONG;
+  var Major: PDAC_DTI_ULONG;
+  var Minor: PDAC_DTI_ULONG;
+  var ServerClientType: PDAC_DTI_ULONG): PDAC_DTI_API; stdcall;
+
+implementation

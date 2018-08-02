@@ -1,0 +1,63 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:curr"
+            targetNamespace="urn:www-iris-co-uk:curr" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="currrec">
+    <xsd:sequence>
+      <xsd:element name='scsymbol' type='xsd:string'/>
+      <xsd:element name='scprintsymb' type='xsd:string'/>
+      <xsd:element name='scdesc' type='xsd:string'/>
+      <xsd:element name='scdailyrate' type='xsd:double'/>
+      <xsd:element name='sccompanyrate' type='xsd:double'/>
+      <xsd:element name='sctrieuroccy' type='xsd:integer'/>
+      <xsd:element name='sctrirate' type='xsd:double'/>
+      <xsd:element name='sctriinvert' type='tns:boolean2'/>
+      <xsd:element name='sctrifloating' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="currpage">
+    <xsd:sequence>
+      <xsd:element name='pageno' type='xsd:integer' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='currrec' type='tns:currrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='currpage' type='tns:currpage' minOccurs='3' maxOccurs='3' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='curr'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='curr' type='tns:curr'/>
+
+</xsd:schema>

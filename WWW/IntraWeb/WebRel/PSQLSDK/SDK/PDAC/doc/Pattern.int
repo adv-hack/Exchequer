@@ -1,0 +1,11 @@
+unit pattern;
+
+
+interface
+
+function IsConfirmCase(const Pattern: string; const Str: string;
+  CaseSens: boolean): boolean;
+
+function IsConfirm(const Pattern: string; const Str: string): boolean;
+
+implementation

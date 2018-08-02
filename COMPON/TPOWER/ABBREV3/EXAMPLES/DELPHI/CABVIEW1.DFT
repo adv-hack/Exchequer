@@ -1,0 +1,402 @@
+object Form1: TForm1
+  Left = 286
+  Top = 198
+  Width = 511
+  Height = 465
+  Caption = ' TAbCabView example'
+  Font.Color = clBlack
+  Font.Height = -12
+  Font.Name = 'Arial'
+  Font.Style = []
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 15
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 501
+    Height = 18
+    Align = alTop
+    BevelOuter = bvLowered
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 363
+    Width = 501
+    Height = 57
+    Align = alBottom
+    BevelOuter = bvLowered
+    TabOrder = 1
+    object AbMeter1: TAbMeter
+      Left = 14
+      Top = 28
+      Width = 132
+      Height = 14
+      Orientation = moHorizontal
+      UnusedColor = clBtnFace
+      UsedColor = clNavy
+    end
+    object Label1: TLabel
+      Left = 41
+      Top = 7
+      Width = 78
+      Height = 15
+      Caption = 'Item Progress'
+    end
+    object Label2: TLabel
+      Left = 188
+      Top = 7
+      Width = 93
+      Height = 15
+      Caption = 'Archive Progress'
+    end
+    object AbMeter2: TAbMeter
+      Left = 168
+      Top = 28
+      Width = 132
+      Height = 14
+      Orientation = moHorizontal
+      UnusedColor = clBtnFace
+      UsedColor = clNavy
+    end
+  end
+  object AbCabView1: TAbCabView
+    Left = 0
+    Top = 18
+    Width = 501
+    Height = 345
+    Align = alClient
+    Attributes = [vaItemName, vaTimeStamp, vaFileSize, vaPath]
+    Colors.Selected = clHighlight
+    Colors.SelectedText = clHighlightText
+    Colors.Alternate = clAqua
+    Colors.AlternateText = clRed
+    Colors.Deleted = clYellow
+    Colors.DeletedText = clNavy
+    Headings.Strings = (
+      'Name'
+      'Packed'
+      'Method'
+      'Ratio (%)'
+      'CRC32'
+      'Attributes'
+      'Format'
+      'Encrypted'
+      'Time Stamp'
+      'Size'
+      'Version Made'
+      'Version Needed'
+      'Path')
+    DefaultColWidth = 150
+    DefaultRowHeight = 17
+    DisplayOptions = [doColSizing, doMultiSelect, doShowIcons, doThumbTrack]
+    HeaderRowHeight = 19
+    SortAttributes = [saItemName, saPacked, saRatio, saTimeStamp, saFileSize]
+    PopupMenu = PopupMenu1
+    TabOrder = 2
+    CabComponent = AbCabKit1
+    OnChange = AbCabView1Change
+    OnClick = AbCabView1Click
+    ColWidths = (
+      114
+      146
+      86
+      150)
+    RowHeights = (
+      19
+      17)
+  end
+  object OpenDialog1: TOpenDialog
+    FileName = '*.zip'
+    Options = [ofAllowMultiSelect]
+    Left = 88
+    Top = 64
+  end
+  object FontDialog1: TFontDialog
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'System'
+    Font.Style = []
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 152
+    Top = 64
+  end
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 64
+    object File1: TMenuItem
+      Caption = '&File'
+      object Open1: TMenuItem
+        Caption = '&Open'
+        OnClick = Open1Click
+      end
+      object Close1: TMenuItem
+        Caption = '&Close'
+        OnClick = Close1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Print1: TMenuItem
+        Caption = '&Print'
+        Enabled = False
+      end
+      object Exit1: TMenuItem
+        Caption = 'E&xit'
+        OnClick = Exit1Click
+      end
+    end
+    object Action1: TMenuItem
+      Caption = '&Action'
+      Enabled = False
+      object Extract1: TMenuItem
+        Caption = '&Extract selected items...'
+        OnClick = Extract1Click
+      end
+      object Additems1: TMenuItem
+        Caption = '&Add items to new cab...'
+        OnClick = Additems1Click
+      end
+    end
+    object CabView1: TMenuItem
+      Caption = 'Cab&View'
+      object Attributes1: TMenuItem
+        Caption = '&Attributes'
+        object Itemname1: TMenuItem
+          Caption = '&Item name'
+          OnClick = AttributeClick
+        end
+        object Packed1: TMenuItem
+          Tag = 1
+          Caption = '&Packed'
+          OnClick = AttributeClick
+        end
+        object Method1: TMenuItem
+          Tag = 2
+          Caption = '&Method'
+          OnClick = AttributeClick
+        end
+        object Ratio1: TMenuItem
+          Tag = 3
+          Caption = '&Ratio'
+          OnClick = AttributeClick
+        end
+        object CRC1: TMenuItem
+          Tag = 4
+          Caption = '&CRC'
+          OnClick = AttributeClick
+        end
+        object Fileattributes1: TMenuItem
+          Tag = 5
+          Caption = '&File attributes'
+          OnClick = AttributeClick
+        end
+        object Filetype1: TMenuItem
+          Tag = 6
+          Caption = 'File t&ype'
+          OnClick = AttributeClick
+        end
+        object Encryption1: TMenuItem
+          Tag = 7
+          Caption = '&Encryption'
+          OnClick = AttributeClick
+        end
+        object Timestamp1: TMenuItem
+          Tag = 8
+          Caption = '&Time stamp'
+          OnClick = AttributeClick
+        end
+        object Filesize1: TMenuItem
+          Tag = 9
+          Caption = 'File &size'
+          OnClick = AttributeClick
+        end
+        object Versionmade1: TMenuItem
+          Tag = 10
+          Caption = '&Version made'
+          OnClick = AttributeClick
+        end
+        object Versionneeded1: TMenuItem
+          Tag = 11
+          Caption = 'Version &needed'
+          OnClick = AttributeClick
+        end
+        object Path1: TMenuItem
+          Tag = 12
+          Caption = '&Path'
+          OnClick = AttributeClick
+        end
+      end
+      object Display1: TMenuItem
+        Caption = '&Display'
+        object Alternatecolors1: TMenuItem
+          Caption = '&Alternate colors'
+          OnClick = DisplayOptionClick
+        end
+        object Columnlines1: TMenuItem
+          Tag = 1
+          Caption = 'Column &lines'
+          OnClick = DisplayOptionClick
+        end
+        object Columnmoving1: TMenuItem
+          Tag = 2
+          Caption = 'Column mo&ving'
+          OnClick = DisplayOptionClick
+        end
+        object Columnresizing1: TMenuItem
+          Tag = 3
+          Caption = 'Column resi&zing'
+          OnClick = DisplayOptionClick
+        end
+        object MultiSelect1: TMenuItem
+          Tag = 4
+          Caption = '&MultiSelect'
+          OnClick = DisplayOptionClick
+        end
+        object Rowlines1: TMenuItem
+          Tag = 5
+          Caption = '&Row lines'
+          OnClick = DisplayOptionClick
+        end
+        object ShowIcons1: TMenuItem
+          Tag = 6
+          Caption = '&ShowIcons'
+          OnClick = DisplayOptionClick
+        end
+        object Thumbtracking1: TMenuItem
+          Tag = 7
+          Caption = '&Thumb tracking'
+          OnClick = DisplayOptionClick
+        end
+        object Trackactiverow1: TMenuItem
+          Tag = 8
+          Caption = 'Track &active row'
+          OnClick = DisplayOptionClick
+        end
+      end
+      object Font1: TMenuItem
+        Caption = '&Font...'
+        OnClick = Font1Click
+      end
+      object Rows1: TMenuItem
+        Caption = '&Row Height'
+        object Rowheight1: TMenuItem
+          Caption = '&Row height...'
+          OnClick = Rowheight1Click
+        end
+        object Headerheight1: TMenuItem
+          Caption = '&Header height...'
+          OnClick = Headerheight1Click
+        end
+      end
+      object Sort1: TMenuItem
+        Caption = '&Sort'
+        object Itemname2: TMenuItem
+          Caption = '&Item name'
+          OnClick = SortAttributeClick
+        end
+        object Packed2: TMenuItem
+          Tag = 1
+          Caption = '&Packed'
+          OnClick = SortAttributeClick
+        end
+        object Ratio2: TMenuItem
+          Tag = 2
+          Caption = '&Ratio'
+          OnClick = SortAttributeClick
+        end
+        object Timestamp2: TMenuItem
+          Tag = 3
+          Caption = '&Time stamp'
+          OnClick = SortAttributeClick
+        end
+        object Filesize2: TMenuItem
+          Tag = 4
+          Caption = '&File size'
+          OnClick = SortAttributeClick
+        end
+      end
+    end
+    object CabExtractor1: TMenuItem
+      Caption = 'Cab&Kit'
+      object Extractoptions1: TMenuItem
+        Caption = '&Options'
+        object CreateDirs1: TMenuItem
+          Caption = '&CreateDirs'
+          OnClick = ExtractOptionClick
+        end
+        object RestorePath1: TMenuItem
+          Tag = 1
+          Caption = '&RestorePath'
+          OnClick = ExtractOptionClick
+        end
+      end
+    end
+    object Select1: TMenuItem
+      Caption = 'Se&lect'
+      object SelectAll1: TMenuItem
+        Caption = 'Select &All'
+        OnClick = SelectAll1Click
+      end
+      object ClearSelections1: TMenuItem
+        Caption = '&Clear Selections'
+        OnClick = ClearSelections1Click
+      end
+    end
+    object Colors1: TMenuItem
+      Caption = '&Colors'
+      object Selectedcolor: TMenuItem
+        Caption = 'Selected color...'
+        OnClick = Selected1Click
+      end
+      object Selectedtextcolor: TMenuItem
+        Caption = 'Selected text color...'
+        OnClick = Selectedtext1Click
+      end
+      object Alternatecolor1: TMenuItem
+        Caption = 'Alternate color...'
+        OnClick = Alternatecolor1Click
+      end
+      object Alternatetextcolor1: TMenuItem
+        Caption = 'Alternate text color...'
+        OnClick = Alternatetextcolor1Click
+      end
+    end
+  end
+  object ColorDialog1: TColorDialog
+    Ctl3D = True
+    Left = 120
+    Top = 64
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 56
+    Top = 64
+    object Extract2: TMenuItem
+      Caption = '&Extract'
+      OnClick = Extract1Click
+    end
+  end
+  object AbCabKit1: TAbCabKit
+    ArchiveProgressMeter = AbVCLMeterLink2
+    CompressionType = ctMSZIP
+    FolderThreshold = 1000000
+    ItemProgressMeter = AbVCLMeterLink1
+    SetID = 0
+    SpanningThreshold = 500000
+    Left = 184
+    Top = 64
+  end
+  object AbVCLMeterLink1: TAbVCLMeterLink
+    Meter = AbMeter1
+    Left = 132
+    Top = 383
+  end
+  object AbVCLMeterLink2: TAbVCLMeterLink
+    Meter = AbMeter2
+    Left = 292
+    Top = 383
+  end
+end

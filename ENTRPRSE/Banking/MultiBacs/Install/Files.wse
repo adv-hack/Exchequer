@@ -1,0 +1,77 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Plug-In Files
+end
+item: Remark
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MULTIBAC.DLL
+  Destination=%ENTDIR%\MULTIBAC.DLL
+  Description=Multi-BACS Plug-In
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MBACSPI.LST
+  Destination=%ENTDIR%\MBACSPI.LST
+  Description=Multi-BACS Plug-In
+  Flags=0000000010000010
+end
+remarked item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MULTIBAC.DOC
+  Destination=%ENTDIR%\MULTIBAC.DOC
+  Description=Plug-In Documentation
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MULTIBAC.HLP
+  Destination=%ENTDIR%\MULTIBAC.HLP
+  Description=Plug-In Documentation
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MULTIBAC.Cnt
+  Destination=%ENTDIR%\MULTIBAC.Cnt
+  Description=Plug-In Documentation
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\BESPOKE\EXCHEQR\BACS\MultiBacs\Install\FILES\MBacs.ini
+  Destination=%ENTDIR%\MBacs.ini
+  Description=BACS Configuration File
+  Flags=0000000010001010
+end
+item: Remark
+end
+item: Copy Local File
+  Source=%INST%\ENTSETUP.DLL
+  Destination=%ENTDIR%\ENTSETUP.DLL
+  Description=Plug-In Setup Function Library
+  Local Path=X:\BESPOKE\EXCHEQR\CONTACTS\INSTALL\ENTSETUP.DLL
+  Flags=0000010011010010
+end

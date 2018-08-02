@@ -1,0 +1,307 @@
+<dbConverter timeOutRetryCount="2" timeOutRetryInterval="10000" converterMode="Exchequer">
+  <!-- TBD Change converterMode to Exchequer once we've implemented the exchequer.dat lookup -->
+	<exemptions dropFixedExemptions="true">
+		<fixedExemptions>
+		</fixedExemptions>
+		<patternExemptions>
+		</patternExemptions>
+	</exemptions>
+	<dataSearchPaths>
+    <!-- common-->
+    <dataSearchPath subDir="."          files="Company.dat" />
+    <dataSearchPath subDir="."          files="Contact.dat" />
+    <dataSearchPath subDir="."          files="Tools.dat" />
+    <dataSearchPath subDir="."          files="eBus.dat" />
+    <dataSearchPath subDir="."          files="GroupCmp.dat" />
+    <dataSearchPath subDir="."          files="Groups.dat" />
+    <dataSearchPath subDir="."          files="GroupUsr.dat" />
+    <dataSearchPath subDir="."          files="SentSys.dat" />
+    <dataSearchPath subDir="."          files="SchedCfg.dat" />
+    <dataSearchPath subDir="FaxSrv"     files="Faxes.dat" />
+    <dataSearchPath subDir="JC"         files="EmpPay.dat" />
+    <dataSearchPath subDir="JC"         files="McPay.dat" />
+    <dataSearchPath subDir="Misc"       files="ImportJob.dat" />
+    <dataSearchPath subDir="Reports"    files="Dictnary.dat" />
+    <dataSearchPath subDir="Trade"      files="TillName.dat" />
+    <dataSearchPath subDir="Workflow"   files="PaAuth.dat" />
+    <dataSearchPath subDir="Workflow"   files="PaComp.dat" />
+    <dataSearchPath subDir="Workflow"   files="PaEar.dat" />
+    <dataSearchPath subDir="Workflow"   files="PaGlobal.dat" />
+    <dataSearchPath subDir="Workflow"   files="PaUser.dat" />
+    <!-- company-->
+    <dataSearchPath subDir="."          files="ExchqNum.dat" />
+    <dataSearchPath subDir="."          files="ExchqSS.dat" />
+    <dataSearchPath subDir="Cust"       files="CustSupp.dat" />
+    <dataSearchPath subDir="Cust"       files="AccountContact.dat" />
+    <dataSearchPath subDir="Cust"       files="ContactRole.dat" />
+    <dataSearchPath subDir="Cust"       files="AccountContactRole.dat" />
+    <dataSearchPath subDir="Ebus"       files="EbusDetl.dat" />
+    <dataSearchPath subDir="Ebus"       files="EbusDoc.dat" />
+    <dataSearchPath subDir="Ebus"       files="EbusLkUp.dat" />
+    <dataSearchPath subDir="Ebus"       files="EbusNote.dat" />
+    <dataSearchPath subDir="Forms"      files="PaprSize.dat" />
+    <dataSearchPath subDir="Jobs"       files="JobCtrl.dat" />
+    <dataSearchPath subDir="Jobs"       files="JobDet.dat" />
+    <dataSearchPath subDir="Jobs"       files="JobHead.dat" />
+    <dataSearchPath subDir="Jobs"       files="JobMisc.dat" />
+    <dataSearchPath subDir="Jobs"       files="AnalysisCodeBudget.dat" />
+    <dataSearchPath subDir="Jobs"       files="JobTotalsBudget.dat" />
+    <dataSearchPath subDir="Misc"       files="ExchqChk.dat" />
+    <dataSearchPath subDir="Misc"       files="TransactionNote.dat" />
+    <dataSearchPath subDir="Misc"       files="FinancialMatching.dat" />
+    <dataSearchPath subDir="Misc"       files="ExStkChk.dat" />
+    <dataSearchPath subDir="Misc"       files="CustomerDiscount.dat" />
+    <dataSearchPath subDir="Misc"       files="SerialBatch.dat" />
+    <dataSearchPath subDir="Misc"       files="FiFo.dat" />
+    <dataSearchPath subDir="Misc"       files="MultiBuy.dat" />
+    <dataSearchPath subDir="Misc"       files="Settings.dat" />
+    <dataSearchPath subDir="Misc"       files="SortView.dat" />
+    <dataSearchPath subDir="Misc"       files="SVUsrDef.dat" />
+    <dataSearchPath subDir="Misc"       files="SystemSetup.dat" />
+    <dataSearchPath subDir="Misc"       files="OrderPaymentsMatching.dat" />
+    <dataSearchPath subDir="Reports"    files="VRWSec.dat" />
+    <dataSearchPath subDir="Reports"    files="VRWTree.dat" />
+    <dataSearchPath subDir="SMail"      files="Sent.dat" />
+    <dataSearchPath subDir="SMail"      files="SentLine.dat" />
+    <dataSearchPath subDir="Stock"      files="MLocStk.dat" />
+    <dataSearchPath subDir="Stock"      files="Stock.dat" />
+    <dataSearchPath subDir="Stock"      files="CustomerStockAnalysis.dat" />
+    <dataSearchPath subDir="Stock"      files="Location.dat" />
+    <dataSearchPath subDir="Stock"      files="StockLocation.dat" />
+    <dataSearchPath subDir="Stock"      files="AllocWizardSession.dat" />
+    <dataSearchPath subDir="Trade"      files="LBin.dat" />
+    <dataSearchPath subDir="Trade"      files="LHeader.dat" />
+    <dataSearchPath subDir="Trade"      files="LLines.dat" />
+    <dataSearchPath subDir="Trade"      files="LSerial.dat" />
+    <dataSearchPath subDir="Trans"      files="Details.dat" />
+    <dataSearchPath subDir="Trans"      files="Document.dat" />
+    <dataSearchPath subDir="Trans"      files="History.dat" />
+    <dataSearchPath subDir="Trans"      files="Nominal.dat" />
+    <dataSearchPath subDir="Trans"      files="NomView.dat" />
+    <dataSearchPath subDir="Trans"      files="GLBudgetHistory.dat" />
+    <dataSearchPath subDir="Trans"      files="OPVATPay.dat" />
+    <dataSearchPath subDir="Schedule"   files="Schedule.dat" />
+    <dataSearchPath subDir="."          files="CCDeptV.dat" />
+    <dataSearchPath subDir="."          files="UDEntity.dat" />
+    <dataSearchPath subDir="."          files="UDField.dat" />
+    <dataSearchPath subDir="."          files="UDItem.dat" />
+    <dataSearchPath subDir="PromPay"    files="PPCust.dat" />
+    <dataSearchPath subDir="PromPay"    files="PPDebt.dat" />
+    <dataSearchPath subDir="PromPay"    files="PPSetup.dat" />
+    <dataSearchPath subDir="SalesCom"   files="SCType.dat" />
+    <dataSearchPath subDir="SalesCom"   files="SaleCode.dat" />
+    <dataSearchPath subDir="SalesCom"   files="Commssn.dat" />
+    <dataSearchPath subDir="VatPer"     files="VatPrd.dat" />
+    <dataSearchPath subDir="VatPer"     files="VatOpt.dat" />
+    <dataSearchPath subDir="Misc"       files="WinSet.dat" />
+    <dataSearchPath subDir="Misc"       files="ParSet.dat" />
+    <dataSearchPath subDir="Misc"       files="ColSet.dat" />
+    <dataSearchPath subDir="Misc"       files="CustomFields.dat" />
+    <dataSearchPath subDir="Misc"       files="QtyBreak.dat" />
+    <dataSearchPath subDir="Misc"       files="VAT100.dat" />
+    <dataSearchPath subDir="."          files="CurrencyHistory.dat" />
+	</dataSearchPaths>
+	<postingSearchPaths>
+		<postingSearchPath subDir="." files="*.dat" maxFilenameLength="8"/>
+	</postingSearchPaths>
+	<conversionPasses>
+		<conversionPass>
+			<patternFiles>
+				<patternFile pattern="*"/>
+			</patternFiles>
+		</conversionPass>
+	</conversionPasses>
+    <sqlScripts path="schemas">
+	<preConversionScripts>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaFunctions.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaProcedures.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaReferentialConstraints.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaTables.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaViews.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropCustomerSchema.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_RethrowError.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_DropUserLogin.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_IsLoginUsed.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_BinaryConversionFunctions.sql" target="Common" timeout="10000"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetCompanyCurrentProcessCount.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_RaiseError.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_StkLocORReplaceInter.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_StkFreeze.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_CheckStkLocHistory.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ResetViewHistory.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ResetAuditHistory.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_IntToHex.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_HexToInt.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_ExchRnd.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_RebuildIndexes.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ReorganizeIndexes.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_UpdateStatistics.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_RI_NonClustered.sql" target = "Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_HexFloat2Float.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_Report_AgedDebtors_Consolidated_GetAgedPeriod.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_Report_TrialBalance_GetHiCodeComputedValue.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_Enable_Foreign_Keys.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_Enable_Triggers.sql" target="Common"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql" target="Common"/>
+
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_AdjustYear.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_LastYtd.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_AddHistory.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_PostToHistory.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_PostToYearToDate.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetHistoryPositionId.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetHistoryClearedQty.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetLineNumberAccounts.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetLineNumberStock.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_TotalProfitToDateRange.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_StockAddCustAnal.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_TotalProfitToDateRange.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_LFillBudget.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_EntFuncs.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetCustValue.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_RemovedLastCommit.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetNominalValue.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_EntGL.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetJCValue.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetJobBudgetValue.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\010 - Scalar Functions\ifn_GetJCBudgetValue.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\003 - Tables\SortViewCreate.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\003 - Tables\MultiBuyCreate.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\003 - Tables\WindowSettingsCreator.sql" target="Customer"/>
+
+    <!--
+         The CustomFields table must be created here, rather than in
+         the post-creation stage (where most of the upgrade scripts
+         are run), because it is required by other routines in the
+         upgrade.
+    -->
+    <preConversionScript file="Upgrade Scripts\6.9\CustomFieldsCreator.sql" target="Customer"/>
+
+    <preConversionScript file="SQLScripts\003 - Tables\CurrencyTableCreator.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_OLE_AccountAgedBalance.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\015 - Views &amp; TVFs\ivw_TransactionType.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_PostToStockHistory.sql" target="Customer"/>
+    <preConversionScript file="SQLScripts\020 - Stored Procedures\isp_HistoryRestore.sql" target="Customer"/>
+
+  </preConversionScripts>
+  <postConversionScripts>
+    <postConversionScript file="SQLScripts\003 - Tables\icc_DropBinaryConversionColumns.sql" target="Customer"/>
+    <postConversionScript file="SQLScripts\003 - Tables\icc_AddBinaryConversionColumns.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\005 - Indexes\idx_ExchequerReindexingV0.5.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\015 - Views &amp; TVFs\ivw_CreateHistoryViews.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\010 - Scalar Functions\ifn_TotalProfitToDateRange.sql" target="Customer"/>
+    <postConversionScript file="SQLScripts\003 - Tables\itr_UpdateAcLastUsed.sql" target="Customer"/>
+
+    <!--
+          The EXSTKCHK table must be updated with the new QtyBreakFolio
+          field before CustomerDiscountCreator.sql is run, as the latter
+          copies the fields from EXSTKCHK.
+    -->
+    <postConversionScript file="Upgrade Scripts\6.10\EXSTKCHKUpgraderV2.sql" target="Customer"/>
+
+    <postConversionScript file="Upgrade Scripts\6.3\TransactionNoteCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\FinancialMatchingCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\CustomerDiscountCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\CustomerStockAnalysisCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\FiFoCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\SerialBatchCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\LocationCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\StockLocationCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\AllocWizardSessionCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\AnalysisCodeBudgetCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.3\JobTotalsBudgetCreator.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.4\CleanseNormalisedData.sql" timeout="10000" target="Customer"/>
+
+    <!--
+         The Document and Details tables have to be 'upgraded' when we
+         first install them, because they now include indexes that the
+         Emulator knows nothing about, so these have to be added via a
+         script. Because the Upgrade scripts are not run on a normal
+         install, the scripts have been copied to here, as well as being
+         in the Upgrade section. We can't remove them from the Upgrade
+         section because the Emulator will complain about the version
+         numbers not matching.
+         CJS 2011-11-01
+    -->
+    <postConversionScript file="Upgrade Scripts\6.9\DetailsUpgraderV5.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.10\DetailsUpgraderV6.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\6.9\DocumentUpgraderV4.sql" timeout="10000" target="Customer"/>
+
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_GetCostCentreDepartments.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\003 - Tables\trgCurrencyUpdate.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\010 - Scalar Functions\ifn_Report_GetPostedBalance.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_GLPrePostingRun_Online.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_AuditHistoryNote_Online.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_GLHistory.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_Daybook.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_AgedDebtorsDocuments.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_Report_TrialBalanceData.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\isp_GetAccountTransactions_ResetHistory.sql" timeout="10000" target="Customer"/>
+    
+    <!-- CJS 2014-01-21 MRD2.4.04 - new tables for Ledger Multi-Contacts -->
+    <postConversionScript file="Upgrade Scripts\7.0.9\CreateAccountContact.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\7.0.9\CreateContactRole.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\7.0.9\CreateAccountContactRole.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\7.0.9\InitialiseAccountContact.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\7.0.9\InitialiseContactRole.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\7.0.9\InitialiseAccountContactRole.sql" timeout="10000" target="Customer"/>
+
+    <!-- ABSEXCH-15280 - Store Exchequer DB Version in SQL Database -->
+    <postConversionScript file="SQLScripts\000 - Scripts\UpdateVersion.sql" timeout="10000" target="Common"/>
+    
+    <!-- ABSEXCH-15398 - OLE Performance - ENTGLJOBACTUAL -->
+    <postConversionScript file="SQLScripts\005 - Indexes\idx_JOBDET.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\esp_GLJobActual.sql" timeout="10000" target="Customer"/>
+
+    <!-- ABSEXCH-15521 - OLE amendments -->
+    <postConversionScript file="SQLScripts\000 - Scripts\GrantExecUsers.sql" timeout="10000" target="Common"/>
+
+    <postConversionScript file="SQLScripts\020 - Stored Procedures\esp_GetNominalValue.sql" timeout="10000" target="Common"/>
+
+    <!-- ABSEXCH-15740 - VAT100 -->
+    <postConversionScript file="Upgrade Scripts\7.0.14\CreateVAT100.sql" timeout="10000" target="Customer"/>
+    
+    <!-- Amendments for Order Payments -->
+    <postConversionScript file="Upgrade Scripts\8.0\CreateOPVATPay.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\8.0\CreateOrderPaymentsMatching.sql" timeout="10000" target="Customer"/>
+
+    <!-- ABSEXCH-17379 - Amendments for Multi-Region Tax -->
+    <postConversionScript file="Upgrade Scripts\9.1\CreateRegionTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\CreateStockTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\CreateTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\CreateTaxRegionsTable.sql" timeout="10000" target="Customer"/>
+    
+    <postConversionScript file="Upgrade Scripts\9.1\InitialiseRegionTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\InitialiseStockTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\InitialiseTaxCodesTable.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="Upgrade Scripts\9.1\InitialiseTaxRegionsTable.sql" timeout="10000" target="Customer"/>
+    
+    <!-- ABSEXCH-17615 - Amendments to support Analytics -->
+    <postConversionScript file="SQLScripts\003 - Tables\001 - HISTORY - Revised Budgets.sql" timeout="10000" target="Customer"/>
+    <postConversionScript file="SQLScripts\003 - Tables\002 - HISTORY - hiBudget2.sql" timeout="10000" target="Customer"/>
+    
+	</postConversionScripts>
+	</sqlScripts>
+	<warningSuppression>
+		<files>
+			<file schemaName="exchqchk_final.xml">
+				<recordSuppressions>
+					<recordSuppression recordNumberPattern="H*" invalidRecordOk="true"/>
+				</recordSuppressions>
+			</file>
+			<file schemaName="exstkchk_final.xml">
+				<recordSuppressions>
+					<recordSuppression recordNumberPattern="MM" invalidRecordOk="true"/>
+				</recordSuppressions>
+			</file>
+			<file schemaName="dictionary_final.xml">
+				<recordSuppressions>
+					<recordSuppression recordNumberPattern="NA" invalidRecordOk="true"/>
+				</recordSuppressions>
+			</file>
+		</files>
+	</warningSuppression>
+</dbConverter>

@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = ConvertToSQL.exe ConvertToSQL_PSQL.dll ConvertToSQL_MSSQL.dll DWOCodeGen.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+ConvertToSQL.exe: Converter\ConvertToSQL.dpr
+  $(DCC)
+
+ConvertToSQL_PSQL.dll: Converter\PSQL DLL\ConvertToSQL_PSQL.dpr
+  $(DCC)
+
+ConvertToSQL_MSSQL.dll: Converter\MSSQL DLL\ConvertToSQL_MSSQL.dpr
+  $(DCC)
+
+DWOCodeGen.exe: C:\Develop\Utilities\CodeGen\DataWriteObjs\DWOCodeGen.dpr
+  $(DCC)
+
+

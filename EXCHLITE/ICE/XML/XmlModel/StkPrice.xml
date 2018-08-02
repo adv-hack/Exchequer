@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:stkprice xmlns:val="urn:www-iris-co-uk:stkprice">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <stkpricerec>
+              <stockcode/>  <!--:  String[16];   { Stock Code }  -->
+              <custcode/>   <!--:  String[6];    { Customer/Supplier Code }-->
+              <currency/>   <!--:  SmallInt;         { Currency 0-29 }-->
+              <qty/>        <!--:  Double;       { Quantity }-->
+              <price/>      <!--:  Double;       { Price before Discount }-->
+              <discval/>    <!--:  Double;       { Discount Amount or % Value }-->
+              <discchar/>   <!--:  Char;         { Blank = Disc.Amount , % = Discount % }-->
+              <loccode/>    <!--:  String[3];    { 30.11.2000 - Multi-Location Code }-->
+              <pricedate/>  <!--:  String[8];    {Date of price wanted in format YYYYMMDD}-->
+        </stkpricerec>
+    </message>
+</val:stkprice>

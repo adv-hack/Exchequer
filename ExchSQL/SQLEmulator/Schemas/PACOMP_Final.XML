@@ -1,0 +1,33 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="347" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="company" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="company" />
+        <schemafield fieldname="spauthsqu" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spauthsqu" />
+        <schemafield fieldname="spauthpqu" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spauthpqu" />
+        <schemafield fieldname="spauthpor" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spauthpor" />
+        <schemafield fieldname="spauthpin" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spauthpin" />
+        <schemafield fieldname="spsquform" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="spsquform" />
+        <schemafield fieldname="sppquform" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="sppquform" />
+        <schemafield fieldname="spporform" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="spporform" />
+        <schemafield fieldname="sppinform" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="sppinform" />
+        <schemafield fieldname="spauthmode" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="spauthmode" />
+        <schemafield fieldname="spallowprint" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spallowprint" />
+        <schemafield fieldname="spflooronpins" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spflooronpins" />
+        <schemafield fieldname="spauthonconvert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spauthonconvert" />
+        <schemafield fieldname="sppintolerance" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="sppintolerance" />
+
+        <schemafield fieldname="splastpincheck" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="splastpincheck" />
+        <schemafield fieldname="sppincheckinterval" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="sppincheckinterval" />
+
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>company</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

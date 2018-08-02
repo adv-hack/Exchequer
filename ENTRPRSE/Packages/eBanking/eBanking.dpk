@@ -1,0 +1,45 @@
+package eBanking;
+
+{$R *.res}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $6000000}
+{$DESCRIPTION 'eBanking'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  vcljpg,
+  VclSmp,
+  HMESL1,
+  EnterTab,
+  EnCommon,
+  DBMBtrieve;
+
+contains
+  BankList in 'BankList.pas' {frmBankList},
+  BankDetl in 'BankDetl.pas' {frmBankDetails},
+  GLList in 'GLList.pas' {frmGLList};
+
+end.

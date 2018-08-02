@@ -1,0 +1,57 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="256">			
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="DICTNARY_FIXED" size="0" elements="1" id="-1" columnname="" />	
+    <schemafield fieldname="var" fullfieldname="var" typename="DICTNARY_VAR" size="0" elements="1" id="-1" columnname="" />	
+  </recordfields>			
+  <fixedfields>
+    <schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix"/>
+    <schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+    <schemafield fieldname="var_name_key" fullfieldname="var_key" typename="DelphiEmbeddedCaseSensitiveString" size="15" elements="1" id="-1" columnname="VarKey"/>
+    <schemafield fieldname="var_pad_name" fullfieldname="var_name" typename="DelphiString" size="11" elements="1" id="-1" columnname="VarName"/>
+  </fixedfields>			
+  <defaultrecordtype/>			
+  <recordtypes>			
+  <recordtype name="DataVarType" id="0" stringid="DV"> 
+  <schemafields>
+    <schemafield fieldname="var_desc" fullfieldname="var_desc" typename="DelphiString" size="31" elements="1" id="0" columnname="VarDesc"/>
+    <schemafield fieldname="var_no" fullfieldname="var_no" typename="long" size="4" elements="1" id="0" columnname="VarNo"/>
+    <schemafield fieldname="rep_desc" fullfieldname="rep_desc" typename="DelphiString" size="31" elements="1" id="0" columnname="RepDesc"/>
+    <schemafield fieldname="avail_file" fullfieldname="avail_file" typename="long" size="4" elements="1" id="0" columnname="AvailFile"/>
+    <schemafield fieldname="avail_ver" fullfieldname="avail_ver" typename="long" size="4" elements="1" id="0" columnname="AvailVer"/>
+    <schemafield fieldname="pr_sel" fullfieldname="pr_sel" typename="bool1" size="1" elements="1" id="0" columnname="PrSel"/>
+    <schemafield fieldname="var_type" fullfieldname="var_type" typename="BYTE" size="1" elements="1" id="0" columnname="VarType"/>
+    <schemafield fieldname="var_len" fullfieldname="var_len" typename="BYTE" size="1" elements="1" id="0" columnname="VarLen"/>
+    <schemafield fieldname="var_no_dec" fullfieldname="var_no_dec" typename="BYTE" size="1" elements="1" id="0" columnname="VarNoDec"/>
+    <schemafield fieldname="var_dec" fullfieldname="var_dec" typename="bool1" size="1" elements="1" id="0" columnname="VarDec"/>
+    <schemafield fieldname="var_dec_type" fullfieldname="var_dec_type" typename="BYTE" size="1" elements="1" id="0" columnname="VarDecType"/>
+    <schemafield fieldname="format" fullfieldname="format" typename="DelphiString" size="31" elements="1" id="0" columnname="Format"/>
+    <schemafield fieldname="n_line_count" fullfieldname="n_line_count" typename="long" size="4" elements="1" id="0" columnname="NLineCount"/>
+    <schemafield fieldname="input_type" fullfieldname="input_type" typename="BYTE" size="1" elements="1" id="0" columnname="InputType"/>
+    <schemafield fieldname="avail_file2" fullfieldname="avail_file2" typename="long" size="4" elements="1" id="0" columnname="AvailFile2"/>
+  </schemafields>
+  </recordtype>
+  <recordtype name="DataXRefType" id="1" stringid="DX"> 
+  <schemafields>
+    <schemafield fieldname="spare" fullfieldname="spare" typename="char" size="20" elements="1" id="0" columnname="Spare"/>
+    <schemafield fieldname="var_file_no" fullfieldname="var_file_no" typename="int16" size="2" elements="1" id="0" columnname="VarFileNo"/>
+    <schemafield fieldname="var_ex_vers" fullfieldname="var_ex_vers" typename="int16" size="2" elements="1" id="0" columnname="VarExVers"/>
+  </schemafields>
+  </recordtype>
+  </recordtypes>			
+  <indexes>
+	<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item computedcolumnname="VarKeyComputed">var_name_key</item>
+	     </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isclustered="0" isunique="0" nullablecharacter="00">
+	    <indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item>var_pad_name</item>
+	    </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

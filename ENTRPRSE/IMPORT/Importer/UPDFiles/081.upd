@@ -1,0 +1,9 @@
+[Version]
+Version=6.01.000.081
+
+[Trans Header]
+F112=TH.thAddInLocationLines      1086    W 0002 O   Add In-Location Transfer Lines                     default=[I]Y                                                                                                 comment=Y/N                                                                                                 
+F113=TH.Spare                     1088    C 0300 N   Padding                                            default=                                                                                                     comment=                                                                                                    
+F114=TH.PadChar13                 1388    C 0001 N   Padding                                            default=                                                                                                     comment=                                                                                                    
+F115=TH.LastChar                  1389    C 0001 N   Padding                                            default=                                                                                                     comment=                                                                                                    
+

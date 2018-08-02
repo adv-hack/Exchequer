@@ -1,0 +1,11 @@
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\Data Integrity Checker.exe.config
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\Data Integrity Checker.exe
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\Data Integrity Checker.pdb
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data Integrity Checker.csprojResolveAssemblyReference.cache
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Interop.Enterprise01.dll
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data Integrity Checker.csproj.ResolveComReference.cache
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.DataIntegityUI.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.Properties.Resources.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data Integrity Checker.csproj.GenerateResource.Cache
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data Integrity Checker.exe
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data Integrity Checker.pdb

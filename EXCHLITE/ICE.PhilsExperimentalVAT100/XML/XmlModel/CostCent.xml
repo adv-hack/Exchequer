@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:ccdep xmlns:val="urn:www-iris-co-uk:ccdep">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <ccdeprec>
+         <ccdepcode/>  <!--:  String[3];   { Cost Centre/Department Code }  -->
+         <ccdepdesc/>  <!--:  String[30];  { Description } -->
+    </ccdeprec>
+</message>
+</val:ccdep>

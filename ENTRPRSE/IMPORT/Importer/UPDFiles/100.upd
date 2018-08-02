@@ -1,0 +1,73 @@
+[Version]
+Version=8.0.100
+
+[Customer]
+F050=CU.CCDSDate                  0891    S 0008 O   User Date 12                                       default=                                                                                                     comment=
+F051=CU.CCDEDate                  0900    S 0008 O   User Date 13                                       default=                                                                                                     comment=
+F052=CU.CCDName                   0909    S 0050 O   User Defined Field 14                              default=                                                                                                     comment=
+F053=CU.CCDCardNo                 0960    S 0030 O   User Defined Field 11                              default=                                                                                                     comment=
+F054=CU.CCDSARef                  0991    S 0004 O   User Defined Field 15                              default=                                                                                                     comment=
+F100=CU.acAllowOrderPayments      1671    W 0002 O   Allow Order Payments                               default=N                                                                                                    comment=Y/N
+F101=CU.acOrderPaymentsGLCode     1673    L 0004 O   Order Payments GL Code                             default=0                                                                                                    comment=
+F102=CU.acCountryCode             1677    S 0002 M   Country Code                                       default=                                                                                                     comment=ISO 2-letter Country Code
+F103=CU.acDeliveryCountryCode     1680    S 0002 O   Delivery Address Country Code                      default=                                                                                                     comment=ISO 2-letter Country Code. Mandatory if Delivery Address is populated
+F104=CU.acPPDMode                 1683    I 0002 O   PPD Mode                                           default=                                                                                                     comment=0 = Disabled; 1 = Enabled (Auto xJC); 2 = Enabled (Auto SCR); 3 = Enabled (Manual PCR)
+F105=CU.Spare                     1685    C 0230 N   Spare                                              default=                                                                                                     comment=
+F106=CU.LastChar                  1942    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Supplier]
+F050=SU.CCDSDate                  0891    S 0008 O   User Date 12                                       default=                                                                                                     comment=
+F051=SU.CCDEDate                  0900    S 0008 O   User Date 13                                       default=                                                                                                     comment=
+F052=SU.CCDName                   0909    S 0050 O   User Defined Field 14                              default=                                                                                                     comment=
+F053=SU.CCDCardNo                 0960    S 0030 O   User Defined Field 11                              default=                                                                                                     comment=
+F054=SU.CCDSARef                  0991    S 0004 O   User Defined Field 15                              default=                                                                                                     comment=
+F100=SU.acAllowOrderPayments      1671    W 0002 O   Spare                                              default=N                                                                                                    comment=
+F101=SU.acOrderPaymentsGLCode     1673    L 0004 O   Spare                                              default=0                                                                                                    comment=
+F102=SU.acCountryCode             1677    S 0002 M   Country Code                                       default=                                                                                                     comment=ISO 2-letter Country Code
+F103=SU.acDeliveryCountryCode     1680    S 0003 O   Delivery Address Country Code                      default=                                                                                                     comment=ISO 2-letter Country Code. Mandatory if Delivery Address is populated
+F104=SU.acPPDMode                 1683    I 0002 O   PPD Mode                                           default=                                                                                                     comment=0 = Disabled; 1 = Enabled (Auto xJC); 2 = Enabled (Auto SCR); 3 = Enabled (Manual PCR)
+F105=SU.Spare                     1685    C 0230 N   Spare                                              default=                                                                                                     comment=
+F106=SU.LastChar                  1942    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+
+[Trans Header]
+F119=TH.thOverrideLocation        1119    S 0003 O   Override Location                                  default=                                                                                                     comment=
+F120=TH.DocUser5                  1123    S 0030 O X User Defined Field 5                               default=                                                                                                     comment=
+F121=TH.DocUser6                  1154    S 0030 O X User Defined Field 6                               default=                                                                                                     comment=
+F122=TH.DocUser7                  1185    S 0030 O X User Defined Field 7                               default=                                                                                                     comment=
+F123=TH.DocUser8                  1216    S 0030 O X User Defined Field 8                               default=                                                                                                     comment=
+F124=TH.DocUser9                  1247    S 0030 O X User Defined Field 9                               default=                                                                                                     comment=
+F125=TH.DocUser10                 1278    S 0030 O X User Defined Field 10                              default=                                                                                                     comment=
+F126=TH.thDeliveryPostcode        1309    S 0020 O   Delivery Address Postcode                          default=                                                                                                     comment=
+F127=TH.thDONOTUSE                1330    S 0203 N   Padding                                            default=                                                                                                     comment=
+F128=TH.thPPDPercentage           1534    D 0008 O   Prompt Payment Discount Percentage                 default=                                                                                                     comment=
+F129=TH.thPPDDays                 1542    I 0002 O   Prompt Payment Discount Days                       default=                                                                                                     comment=
+F130=TH.thPPDGoodsValue           1544    D 0008 N   Read-only field                                    default=                                                                                                     comment=
+F131=TH.thPPDVATValue             1552    D 0008 N   Read-only field                                    default=                                                                                                     comment=
+F132=TH.thPPDTaken                1560    I 0002 O   Prompt Payment Discount Taken                      default=                                                                                                     comment=
+F133=TH.thPPDCreditNote           1562    W 0002 O   Credit Note from PPD                               default=N                                                                                                    comment=
+F134=TH.thCreateOrderPayment      1564    W 0002 O   Create Order Payment                               default=N                                                                                                    comment=Y/N (applies to SORs only)
+F135=TH.thOrderPaymentValue       1566    D 0008 O   Order Payment Value                                default=0                                                                                                    comment=
+F136=TH.thOrderPaymentCostCentre  1574    S 0003 O   Order Payment Cost Centre                          default=                                                                                                     comment=
+F137=TH.thOrderPaymentDepartment  1577    S 0003 O   Order Payment Department                           default=                                                                                                     comment=
+F138=TH.thOrderPaymentBankGL      1581    L 0004 O   Order Payment Bank GL Code                         default=0                                                                                                    comment=
+F139=TH.thOrderPaymentReference   1585    S 0010 O   Order Payment Reference                            default=                                                                                                     comment=
+F140=TH.thDeliveryCountryCode     1596    S 0002 O   Delivery Address Country Code                      default=                                                                                                     comment=ISO 2-letter Country Code. Mandatory if Delivery Address is populated
+F141=TH.Spare                     1599    C 0284 N   Padding                                            default=                                                                                                     comment=
+F142=TH.PadChar13                 1883    C 0001 N   Padding                                            default=                                                                                                     comment=
+F143=TH.LastChar                  1884    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Account Contact]
+F010=CO.iacCountryCode            0440    S 0002 O   Country Code                                       default=                                                                                                     comment=ISO 2-letter Country Code. Mandatory if Address is populated
+
+
+
+[User Date 12]
+Type=FreeText
+VRule=isDateFormat
+BlankOK=Yes
+
+[User Date 13]
+Type=FreeText
+VRule=isDateFormat
+BlankOK=Yes

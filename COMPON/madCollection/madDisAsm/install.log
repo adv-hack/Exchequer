@@ -1,0 +1,56 @@
+need 'madBasic'
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madDisAsm\Delphi 6\madDisAsm_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Search Path' -= 'C:\Program Files\madCollection\madDisAsm\Delphi 6;'
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Browsing Path' -= 'C:\Program Files\madCollection\madDisAsm\Sources;'
+'HKCU\Software\Borland\BDS\5.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\6.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\7.0\Globals'\'ForceEnvOptionsUpdate' = -
+'BDS4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS7', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 5', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Demos', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Help', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Sources', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS4\madDisAsm.dcu', B33C, 1CA946EB81A6472
+'BDS4\madDisAsm.h', 34, 1C4AEDABD955300
+'BDS4\madDisAsm.hpp', 1468, 1CA946EB2438204
+'BDS4\madDisAsm.obj', A202, 1CA946EB2438204
+'BDS4\madDisAsm_.bpi', 9F4, 1CA946EB2438204
+'BDS4\madDisAsm_.bpl', AA00, 1CA946EB86B7466
+'BDS4\madDisAsm_.dcp', 7D95, 1CA946EB24AA912
+'BDS4\madDisAsm_.lib', A600, 1CA946EB84A137A
+'BDS6\madDisAsm.dcu', BFB4, 1CA946EBF6C5CC6
+'BDS6\madDisAsm.h', 34, 1C4AEDABD955300
+'BDS6\madDisAsm.hpp', 152B, 1CA946EB9767BC6
+'BDS6\madDisAsm.obj', A603, 1CA946EB9767BC6
+'BDS6\madDisAsm_.bpi', A64, 1CA946EB9767BC6
+'BDS6\madDisAsm_.bpl', B000, 1CA946EBFF442D0
+'BDS6\madDisAsm_.dcp', 8768, 1CA946EB980052E
+'BDS6\madDisAsm_.lib', AA00, 1CA946EBFBFCF14
+'BDS7\madDisAsm.dcu', C6D0, 1CA946EC71B50D0
+'BDS7\madDisAsm.h', 34, 1C4AEDABD955300
+'BDS7\madDisAsm.hpp', 1541, 1CA946EC12EF938
+'BDS7\madDisAsm.obj', B040, 1CA946EC12EF938
+'BDS7\madDisAsm_.bpi', B74, 1CA946EC12EF938
+'BDS7\madDisAsm_.bpl', B800, 1CA946EC77F7394
+'BDS7\madDisAsm_.dcp', 8879, 1CA946EC13AE4FA
+'BDS7\madDisAsm_.lib', B400, 1CA946EC75BB04E
+'Delphi 4\madDisAsm.dcu', ABF4, 1CA946E9C35C184
+'Delphi 4\madDisAsm_.bpl', B200, 1CA946E9CA10B56
+'Delphi 4\madDisAsm_.dcp', 7E5A, 1CA946E7BA1DFC0
+'Delphi 5\madDisAsm.dcu', AC25, 1CA946EA5707BEA
+'Delphi 5\madDisAsm_.bpl', B200, 1CA946EA5C3EE38
+'Delphi 5\madDisAsm_.dcp', 7D40, 1CA946E9E9A7DDE
+'Delphi 6\madDisAsm.dcu', AC8C, 1CA946EAC54C812
+'Delphi 6\madDisAsm_.bpl', A600, 1CA946EACA375AC
+'Delphi 6\madDisAsm_.dcp', 7E15, 1CA946EA6C7CE8A
+'Demos\under construction', 0, 1BFE9B8D6FFB600
+'Help\Content.htm', 6CF, 1C4C4E8E2381700
+'Help\madDisAsm.htm', 6D3, 1C4C4E9190E2D00
+'Sources\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Sources\madDisAsm.pas', 2EC1A, 1CA8FA96A682C9C
+'Sources\madDisAsm_.dpk', 24C, 1CA8FA9949AEB8A
+'www.madshi.net.url', 59, 1BFE9B9B71CC200

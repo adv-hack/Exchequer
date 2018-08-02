@@ -1,0 +1,39 @@
+======================================================
+= EXTENDED DOCUMENT OBJECT MODEL BUG- AND TO-DO-LIST =
+======================================================
+
+BUGS
+----
+
+- Since the current XML specification's VC "Element 
+  Valid" (XML 1.0, § 3) is faulty, its implementation
+  probably needs to be changed, when the bug in the 
+  XML specification is fixed.
+- Namespace-aware TdomEntityDeclaration and
+  TdomEntity nodes have not been tested.
+- A few minor bugs and problems are indicated in 
+  the source code by 'xxx' together with a brief
+  comment.
+
+
+TO DO
+-----
+
+- review the implementation of namespaces for
+  possible improvements (performance, memory use).
+- review the code for private methods to be moved
+  to protected.
+- save locator information on nodes.
+- save reference to node on TXmlParserError.
+- Introduce a special list class for use with 
+  TdomDocument.IDs
+- Revise the code() methods to conform to James
+  Clark's "Canonical XML" 
+  (see "http://www.jclark.com/xml/canonxml.html").
+- Events on DOM tree modifications such as 
+  OnBeforeRemoveNode, ...
+- change type of RefNode parameter of some parser 
+  methods from TdomNode into a more specific type.
+- optimize parsing speed.
+- write more code examples.
+- write a FAQ

@@ -1,0 +1,61 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Benchmrk.exe Ccdept.exe Currlist.exe Custlist.exe Custsupp.exe \
+  Gltree.exe Jobs.exe Loc.exe Mcm.exe Stklist.exe Ccyver.exe Docnos.exe Test.exe \
+  MATCHING.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Benchmrk.exe: Benchmk\Benchmrk.dpr
+  $(DCC)
+
+Ccdept.exe: CCDept\Ccdept.dpr
+  $(DCC)
+
+Currlist.exe: CurrList\Currlist.dpr
+  $(DCC)
+
+Custlist.exe: CustList\Custlist.dpr
+  $(DCC)
+
+Custsupp.exe: CustList\Custsupp.dpr
+  $(DCC)
+
+Gltree.exe: GL\Gltree.dpr
+  $(DCC)
+
+Jobs.exe: Job\Jobs.dpr
+  $(DCC)
+
+Loc.exe: Location\Loc.dpr
+  $(DCC)
+
+Mcm.exe: MCM\Mcm.dpr
+  $(DCC)
+
+Stklist.exe: StkList\Stklist.dpr
+  $(DCC)
+
+Ccyver.exe: SysSetup\Ccyver.dpr
+  $(DCC)
+
+Docnos.exe: SysSetup\Docnos.dpr
+  $(DCC)
+
+Test.exe: Test.dpr
+  $(DCC)
+
+MATCHING.exe: Matching\MATCHING.DPR
+  $(DCC)
+
+

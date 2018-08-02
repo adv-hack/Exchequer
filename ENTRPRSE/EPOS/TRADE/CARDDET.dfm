@@ -1,0 +1,263 @@
+object FrmCardDetails: TFrmCardDetails
+  Left = 337
+  Top = 256
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Credit Card Details'
+  ClientHeight = 226
+  ClientWidth = 302
+  Color = clNavy
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Arial Narrow'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  Scaled = False
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Label1: TLabel
+    Left = 8
+    Top = 52
+    Width = 69
+    Height = 16
+    Caption = 'Card Number'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 84
+    Width = 57
+    Height = 16
+    Caption = 'Card Name'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 116
+    Width = 60
+    Height = 16
+    Caption = 'Expiry Date'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape1: TShape
+    Left = 124
+    Top = 19
+    Width = 3
+    Height = 148
+    Pen.Style = psClear
+  end
+  object Label4: TLabel
+    Left = 8
+    Top = 148
+    Width = 103
+    Height = 16
+    Caption = 'Authorisation Code'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label5: TLabel
+    Left = 8
+    Top = 20
+    Width = 53
+    Height = 16
+    Caption = 'Card Type'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object edExpiry: TEdit
+    Left = 136
+    Top = 112
+    Width = 57
+    Height = 24
+    TabOrder = 3
+  end
+  object edCardName: TEdit
+    Left = 136
+    Top = 80
+    Width = 153
+    Height = 24
+    TabOrder = 2
+  end
+  object edCardNo: TEdit
+    Left = 136
+    Top = 48
+    Width = 153
+    Height = 24
+    TabOrder = 1
+  end
+  object edAuthorCode: TEdit
+    Left = 136
+    Top = 144
+    Width = 153
+    Height = 24
+    TabOrder = 4
+  end
+  object btnOK: TIAeverButton
+    Left = 120
+    Top = 184
+    Width = 82
+    Height = 33
+    Caption = 'OK'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 5
+    OnClick = btnOKClick
+    ButtonAngle = 1800
+    ButtonWidth = 82
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080000080C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+  object btnCancel: TIAeverButton
+    Left = 208
+    Top = 184
+    Width = 82
+    Height = 33
+    Cancel = True
+    Caption = 'Cancel'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 6
+    OnClick = btnCancelClick
+    ButtonAngle = 1800
+    ButtonWidth = 82
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+  object cmbCardType: TComboBox
+    Left = 136
+    Top = 16
+    Width = 153
+    Height = 24
+    Style = csDropDownList
+    ItemHeight = 16
+    TabOrder = 0
+  end
+end

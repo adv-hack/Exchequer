@@ -1,0 +1,15 @@
+//Description.txt - description of component
+//Install.txt- to install the component
+//License.txt- license agreement(this file)
+//Support.txt- Support information
+
+License agreement
+ 1. You fully free from any obstacles in use of this program
+ 2. If you found this program useful please send $20
+by check to:
+Russia,142703,Moscow region,Vidnoe,Scolnaya st.,47 bild. 33 flat.I.N.Andronov
+or by Bank order to :
+Russian federation,cb "Platina",corr. account 30101810400000000931 at departament #2 
+GU CB RF at Moscow,
+account 42301810000009103487
+BIK 044585931

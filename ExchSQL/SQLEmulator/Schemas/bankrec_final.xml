@@ -1,0 +1,74 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" identitycol="PositionId" reclen="432"  recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="btdDocType" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="btdDocType"/>
+        <schemafield fieldname="btdYear" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="btdYear"/>
+        <schemafield fieldname="btdPeriod" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="btdPeriod"/>
+        <schemafield fieldname="btdAcCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="btdAcCode"/>
+        <schemafield fieldname="btdDesc" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="btdDesc"/>
+        <schemafield fieldname="btdAmount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="btdAmount"/>
+        <schemafield fieldname="btdStatus" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="btdStatus"/>
+        <schemafield fieldname="btdDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="btdDate"/>
+        <schemafield fieldname="btdLineKey" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="9" elements="1" id="-1" columnname="btdLineKey"/>
+        <schemafield fieldname="btdPayInRef" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="17" elements="1" id="-1" columnname="btdPayInRef"/>
+        <schemafield fieldname="btdOurRef" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="btdOurRef"/>
+        <schemafield fieldname="btdFullPayInRef" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="btdFullPayInRef"/>
+    </fixedfields>
+    <defaultrecordtype>
+        <schemafield fieldname="image" fullfieldname="image" typename="image" size="279" elements="1" id="-1" columnname="image_0"/>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdDocType</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdAcCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdStatus</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="3" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdDate</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="4" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdAmount</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="5" isunique="0" isclustered="0">
+            <indexfields>
+                <item computedcolumnname = "btdPayInRefComputed">btdPayInRef</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="6" isunique="0" isclustered="0">
+            <indexfields>
+                <item computedcolumnname = "btdLineKeyComputed">btdLineKey</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="7" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdOurRef</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="8" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdDesc</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="9" isunique="0" isclustered="0">
+            <indexfields>
+                <item>btdDocType</item>
+                <item computedcolumnname="btdPayInRefComputed">btdPayInRef</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

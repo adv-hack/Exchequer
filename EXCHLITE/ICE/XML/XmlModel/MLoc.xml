@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:mloc xmlns:val="urn:www-iris-co-uk:mloc">
+    <message guid="" number="" count="" source="" destination="" flag="">
+         <mlocrec>
+              <locode/>       <!--:  String[3];    { Master Location Code }  -->
+              <loname><![CDATA[]]></loname>       <!--:  String[45];   {    "       "    Name } -->
+              <loaddr>       <!--:  Array[1..5] of String[30]; { Address 1 to 5 } -->
+                 <loaddr1><![CDATA[]]></loaddr1>
+                 <loaddr2><![CDATA[]]></loaddr2>
+                 <loaddr3><![CDATA[]]></loaddr3>
+                 <loaddr4><![CDATA[]]></loaddr4>
+                 <loaddr5><![CDATA[]]></loaddr5>
+              </loaddr>
+              <lotel><![CDATA[]]></lotel>        <!--:  String[25];   { Tel     } -->
+              <lofax><![CDATA[]]></lofax>        <!--:  String[25];   { Fax     } -->
+              <loemail><![CDATA[]]></loemail>      <!--:  String[100];  { email   } -->
+              <lomodem><![CDATA[]]></lomodem>      <!--:  String[25];   { modem number } -->
+              <locontact><![CDATA[]]></locontact>    <!--:  String[30];   { Contact   } -->
+              <locurrency/>   <!--:  smallint;     { def currency }  -->
+              <loarea/>       <!--:  string[5];    { report area } -->
+              <lorep/>        <!--:  string[5];    { report rep  } -->
+              <lotag/>        <!--:  wordbool;     { tagged } -->
+              <lonominal>    <!--:  array[1..5]  of longint; { def nom } -->
+                 <lonominal1/>
+                 <lonominal2/>
+                 <lonominal3/>
+                 <lonominal4/>
+                 <lonominal5/>
+              </lonominal>
+              <locc/>         <!--:  string[3];    { def cc dep } -->
+              <lodep/>        <!--:  string[3];    { def cc dep } -->
+              <louseprice/>   <!--:  wordbool;     { override price } -->
+              <lousenom/>     <!--:  wordbool;     { override noms } -->
+              <louseccdep/>   <!--:  wordbool;     { override ccdep} -->
+              <lousesupp/>    <!--:  wordbool;     { override supplier} -->
+              <lousebinloc/>  <!--:  wordbool;     { override bin loc } -->
+              <lonlinecount/> <!--:  longint;      { notes line count } -->
+              <lousecprice/>  <!--:  wordbool;     { use locations own cost price} -->
+              <louserprice/>  <!--:  wordbool;     { use locations own re-order price} -->
+              <lowopwipgl/>   <!--:  longint;      { override wip gl} -->
+         </mlocrec>
+    </message>
+</val:mloc>

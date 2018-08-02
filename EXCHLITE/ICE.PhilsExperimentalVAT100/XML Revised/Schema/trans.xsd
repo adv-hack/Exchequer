@@ -1,0 +1,330 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:trans"
+            targetNamespace="urn:www-iris-co-uk:trans">
+
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="asapplication">
+    <xsd:sequence>
+      <xsd:element name='tpapplicationbasis' type='xsd:string'/>
+      <xsd:element name='tpapplied' type='xsd:string'/>
+      <xsd:element name='tpappsinterimflag' type='xsd:string'/>
+      <xsd:element name='tpatr' type='xsd:string'/>
+      <xsd:element name='tpcertified' type='xsd:string'/>
+      <xsd:element name='tpcertifiedvalue' type='xsd:string'/>
+      <xsd:element name='tpcisdate' type='xsd:string'/>
+      <xsd:element name='tpcismanualtax' type='xsd:string'/>
+      <xsd:element name='tpcissource' type='xsd:string'/>
+      <xsd:element name='tpcistaxdeclared' type='xsd:string'/>
+      <xsd:element name='tpcistaxdue' type='xsd:string'/>
+      <xsd:element name='tpcistotalgross' type='xsd:string'/>
+      <xsd:element name='tpdefervat' type='xsd:string'/>
+      <xsd:element name='tpemployeecode' type='xsd:string'/>
+      <xsd:element name='tpparentterms' type='xsd:string'/>
+      <xsd:element name='tptermsinterimflag' type='xsd:string'/>
+      <xsd:element name='tptermsstage' type='xsd:string'/>
+      <xsd:element name='tptotalappliedytd' type='xsd:string'/>
+      <xsd:element name='tptotalbudget' type='xsd:string'/>
+      <xsd:element name='tptotalcertytd' type='xsd:string'/>
+      <xsd:element name='tptotalcontra' type='xsd:string'/>
+      <xsd:element name='tptotaldeduct' type='xsd:string'/>
+      <xsd:element name='tptotaldeductytd' type='xsd:string'/>
+      <xsd:element name='tptotalretain' type='xsd:string'/>
+      <xsd:element name='tptotalretainytd' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="asbatch">
+    <xsd:sequence>
+      <xsd:element name='btbankgl' type='xsd:string'/>
+      <xsd:element name='btchequenostart' type='xsd:string'/>
+      <xsd:element name='bttotal' type='xsd:string'/>
+      <xsd:element name='thasbatch' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="asnom">
+    <xsd:sequence>
+      <xsd:element name='tnautoreversing' type='xsd:string'/>
+      <xsd:element name='tnvatio' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="autosettings">
+    <xsd:sequence>
+      <xsd:element name='atautocreateonpost' type='xsd:string'/>
+      <xsd:element name='atenddate' type='xsd:string'/>
+      <xsd:element name='atendperiod' type='xsd:string'/>
+      <xsd:element name='atendyear' type='xsd:string'/>
+      <xsd:element name='atincrement' type='xsd:string'/>
+      <xsd:element name='atincrementtype' type='xsd:string'/>
+      <xsd:element name='atstartdate' type='xsd:string'/>
+      <xsd:element name='atstartperiod' type='xsd:string'/>
+      <xsd:element name='atstartyear' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="deladdress">
+    <xsd:sequence>
+      <xsd:element name='street1' type='xsd:string'/>
+      <xsd:element name='street2' type='xsd:string'/>
+      <xsd:element name='town' type='xsd:string'/>
+      <xsd:element name='county' type='xsd:string'/>
+      <xsd:element name='postcode' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="goodsanalysisline">
+    <xsd:sequence>
+      <xsd:element name='tgacode'  type='xsd:string'/>
+      <xsd:element name='tgavalue' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="goodsanalysis">
+    <xsd:sequence>
+      <xsd:element name='tgaline' type='tns:goodsanalysisline' minOccurs='0' maxOccurs='unbounded'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="lineanalysisline">
+    <xsd:sequence>
+      <xsd:element name='tlacode'  type='xsd:integer'/>
+      <xsd:element name='tlavalue' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="lineanalysis">
+    <xsd:sequence>
+      <xsd:element name='tlaline' type='tns:lineanalysisline' minOccurs='0' maxOccurs='unbounded'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="vatanalysisline">
+    <xsd:sequence>
+      <xsd:element name='tvacode'  type='xsd:string'/>
+      <xsd:element name='tvavalue' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="vatanalysis">
+    <xsd:sequence>
+      <xsd:element name='tvaline' type='tns:vatanalysisline' minOccurs='0' maxOccurs='unbounded'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="lineasapplication">
+    <xsd:sequence>
+      <xsd:element name='tplcalculatebeforeretention' type='xsd:string'/>
+      <xsd:element name='tpldeductiontype' type='xsd:string'/>
+      <xsd:element name='tploverridevalue' type='xsd:string'/>
+      <xsd:element name='tplretentionexpiry' type='xsd:string'/>
+      <xsd:element name='tplretentiontype' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="lineasnom">
+    <xsd:sequence>
+      <xsd:element name='tlnnomvattype' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="transactionline">
+    <xsd:sequence>
+      <xsd:element name='tlabslineno' type='xsd:integer'/>
+      <xsd:element name='tlaccode' type='xsd:string'/>
+      <xsd:element name='tlasapplication' type='tns:lineasapplication' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='tlasnom' type='tns:lineasnom' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='tlb2blineno' type='xsd:integer'/>
+      <xsd:element name='tlb2blinkfolio' type='xsd:integer'/>
+      <xsd:element name='tlbinqty' type='xsd:double'/>
+      <xsd:element name='tlbomkitlink' type='xsd:integer'/>
+      <xsd:element name='tlchargecurrency' type='xsd:integer'/>
+      <xsd:element name='tlcisrate' type='xsd:double'/>
+      <xsd:element name='tlcisratecode' type='xsd:string'/>
+      <xsd:element name='tlcompanyrate' type='xsd:double'/>
+      <xsd:element name='tlcosdailyrate' type='xsd:double'/>
+      <xsd:element name='tlcost' type='xsd:double'/>
+      <xsd:element name='tlcostapport' type='xsd:double'/>
+      <xsd:element name='tlcostcentre' type='xsd:string'/>
+      <xsd:element name='tlcurrency' type='xsd:integer'/>
+      <xsd:element name='tldailyrate' type='xsd:double'/>
+      <xsd:element name='tldepartment' type='xsd:string'/>
+      <xsd:element name='tldescr' type='xsd:string'/>
+      <xsd:element name='tldiscflag' type='xsd:string'/>
+      <xsd:element name='tldiscount' type='xsd:double'/>
+      <xsd:element name='tldoctype' type='xsd:integer'/>
+      <xsd:element name='tlfolionum' type='xsd:integer'/>
+      <xsd:element name='tlglcode' type='xsd:integer'/>
+      <xsd:element name='tlinclusivevatcode' type='xsd:string'/>
+      <xsd:element name='tlitemno' type='xsd:string'/>
+      <xsd:element name='tljobcode' type='xsd:string'/>
+      <xsd:element name='tllineclass' type='xsd:string'/>
+      <xsd:element name='tllinedate' type='xsd:string'/>
+      <xsd:element name='tllineno' type='xsd:string'/>
+      <xsd:element name='tllinesource' type='xsd:string'/>
+      <xsd:element name='tllinetype' type='xsd:string'/>
+      <xsd:element name='tllocation' type='xsd:string'/>
+      <xsd:element name='tlnetvalue' type='xsd:string'/>
+      <xsd:element name='tlnominalmode' type='xsd:string'/>
+      <xsd:element name='tlourref' type='xsd:string'/>
+      <xsd:element name='tlpayment' type='xsd:string'/>
+      <xsd:element name='tlperiod' type='xsd:string'/>
+      <xsd:element name='tlpricemultiplier' type='xsd:string'/>
+      <xsd:element name='tlqty' type='xsd:double'/>
+      <xsd:element name='tlqtydel' type='xsd:double'/>
+      <xsd:element name='tlqtymul' type='xsd:double'/>
+      <xsd:element name='tlqtypack' type='xsd:double'/>
+      <xsd:element name='tlqtypicked' type='xsd:double'/>
+      <xsd:element name='tlqtypickedwo' type='xsd:double'/>
+      <xsd:element name='tlqtywoff' type='xsd:double'/>
+      <xsd:element name='tlreconciliationdate' type='xsd:string'/>
+      <xsd:element name='tlrecstatus' type='xsd:string'/>
+      <xsd:element name='tlrunno' type='xsd:integer'/>
+      <xsd:element name='tlsopabslineno' type='xsd:integer'/>
+      <xsd:element name='tlsopfolionum' type='xsd:integer'/>
+      <xsd:element name='tlssdcommodcode' type='xsd:string'/>
+      <xsd:element name='tlssdcountry' type='xsd:string'/>
+      <xsd:element name='tlssdsalesunit' type='xsd:string'/>
+      <xsd:element name='tlssdupliftperc' type='xsd:double'/>
+      <xsd:element name='tlssduselinevalues' type='tns:boolean2'/>
+      <xsd:element name='tlstockcode' type='xsd:string'/>
+      <xsd:element name='tlstockdeductqty' type='xsd:double'/>
+      <xsd:element name='tlunitweight' type='xsd:double'/>
+      <xsd:element name='tluserfield1' type='xsd:string'/>
+      <xsd:element name='tluserfield2' type='xsd:string'/>
+      <xsd:element name='tluserfield3' type='xsd:string'/>
+      <xsd:element name='tluserfield4' type='xsd:string'/>
+      <xsd:element name='tluseqtymul' type='tns:boolean2'/>
+      <xsd:element name='tlvatamount' type='xsd:double'/>
+      <xsd:element name='tlvatcode' type='xsd:string'/>
+      <xsd:element name='tlvatincvalue' type='xsd:double'/>
+      <xsd:element name='tlyear' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+    
+  <xsd:complexType name="threc">
+    <xsd:sequence>
+      <xsd:element name='thaccode' type='xsd:string'/>
+      <xsd:element name='thourref' type='xsd:string'/>
+      <xsd:element name='thamountsettled' type='xsd:string'/>
+      <xsd:element name='thasapplication' type='tns:asapplication' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='thasbatch' type='tns:asbatch' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='thasnom' type='tns:asnom' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='thautosettings' type='tns:autosettings' minOccurs='0' maxOccurs='1'/>
+      <xsd:element name='thautotransaction' type='xsd:string'/>
+      <xsd:element name='thbatchdiscamount' type='xsd:string'/>
+      <xsd:element name='thcisdate' type='xsd:string'/>
+      <xsd:element name='thcisemployee' type='xsd:string'/>
+      <xsd:element name='thcismanualtax' type='xsd:string'/>
+      <xsd:element name='thcissource' type='xsd:string'/>
+      <xsd:element name='thcistaxdeclared' type='xsd:string'/>
+      <xsd:element name='thcistaxdue' type='xsd:string'/>
+      <xsd:element name='thcistotalgross' type='xsd:string'/>
+      <xsd:element name='thcompanyrate' type='xsd:string'/>
+      <xsd:element name='thcontrolgl' type='xsd:string'/>
+      <xsd:element name='thcurrency' type='xsd:string'/>
+      <xsd:element name='thdailyrate' type='xsd:string'/>
+      <xsd:element name='thdeladdress' type='tns:deladdress'/>
+      <xsd:element name='thdeliverynoteref' type='xsd:string'/>
+      <xsd:element name='thdeliveryrunno' type='xsd:string'/>
+      <xsd:element name='thdeliveryterms' type='xsd:string'/>
+      <xsd:element name='thdoctype' type='xsd:string'/>
+      <xsd:element name='thduedate' type='xsd:string'/>
+      <xsd:element name='themployeecode' type='xsd:string'/>
+      <xsd:element name='thexternal' type='xsd:string'/>
+      <xsd:element name='thfixedrate' type='xsd:string'/>
+      <xsd:element name='thfolionum' type='xsd:string'/>
+      <xsd:element name='thgoodsanalysis' type='tns:goodsanalysis'/>
+      <xsd:element name='thholdflag' type='xsd:string'/>
+      <xsd:element name='thjobcode' type='xsd:string'/>
+      <xsd:element name='thlastdebtchaseletter' type='xsd:string'/>
+      <xsd:element name='thlineanalysis' type='tns:lineanalysis'/>
+      <xsd:element name='thlongyourref' type='xsd:string'/>
+      <xsd:element name='thmanualvat' type='xsd:string'/>
+      <xsd:element name='thnetvalue' type='xsd:string'/>
+      <xsd:element name='thnolabels' type='xsd:string'/>
+      <xsd:element name='thoperator' type='xsd:string'/>
+      <xsd:element name='thoutstanding' type='xsd:string'/>
+      <xsd:element name='thperiod' type='xsd:string'/>
+      <xsd:element name='thpickingrunno' type='xsd:string'/>
+      <xsd:element name='thporpicksor' type='xsd:string'/>
+      <xsd:element name='thpostcompanyrate' type='xsd:string'/>
+      <xsd:element name='thpostdailyrate' type='xsd:string'/>
+      <xsd:element name='thpostdiscamount' type='xsd:string'/>
+      <xsd:element name='thpostdisctaken' type='xsd:string'/>
+      <xsd:element name='thposteddate' type='xsd:string'/>
+      <xsd:element name='thprepost' type='xsd:string'/>
+      <xsd:element name='thprinted' type='xsd:string'/>
+      <xsd:element name='thprocess' type='xsd:string'/>
+      <xsd:element name='thrunno' type='xsd:string'/>
+      <xsd:element name='thsettlediscamount' type='xsd:string'/>
+      <xsd:element name='thsettlediscdays' type='xsd:string'/>
+      <xsd:element name='thsettlediscperc' type='xsd:string'/>
+      <xsd:element name='thsettledisctaken' type='xsd:string'/>
+      <xsd:element name='thsettledvat' type='xsd:string'/>
+      <xsd:element name='thsource' type='xsd:string'/>
+      <xsd:element name='thtagged' type='xsd:string'/>
+      <xsd:element name='thtagno' type='xsd:string'/>
+      <xsd:element name='thtotalcost' type='xsd:string'/>
+      <xsd:element name='thtotalcostapport' type='xsd:string'/>
+      <xsd:element name='thtotallinediscount' type='xsd:string'/>
+      <xsd:element name='thtotalorderos' type='xsd:string'/>
+      <xsd:element name='thtotalvat' type='xsd:string'/>
+      <xsd:element name='thtotalweight' type='xsd:string'/>
+      <xsd:element name='thtransdate' type='xsd:string'/>
+      <xsd:element name='thtransportmode' type='xsd:string'/>
+      <xsd:element name='thtransportnature' type='xsd:string'/>
+      <xsd:element name='thuserfield1' type='xsd:string'/>
+      <xsd:element name='thuserfield2' type='xsd:string'/>
+      <xsd:element name='thuserfield3' type='xsd:string'/>
+      <xsd:element name='thuserfield4' type='xsd:string'/>
+      <xsd:element name='thvatanalysis' type='tns:vatanalysis'/>
+      <xsd:element name='thvatclaimed' type='xsd:string'/>
+      <xsd:element name='thvatcompanyrate' type='xsd:string'/>
+      <xsd:element name='thvatdailyrate' type='xsd:string'/>
+      <xsd:element name='thyear' type='xsd:string'/>
+      <xsd:element name='thyourref' type='xsd:string'/>
+      <xsd:element name='thordmatch' type='tns:boolean2'/>
+      <xsd:element name='thautopost' type='tns:boolean2'/>
+      
+      <xsd:element name='tlrec' type='tns:transactionline' minOccurs='0' maxOccurs='unbounded'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='threc' type='tns:threc' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='trans'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='trans' type='tns:trans'/>
+
+</xsd:schema>

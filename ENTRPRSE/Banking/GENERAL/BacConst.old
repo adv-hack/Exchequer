@@ -1,0 +1,217 @@
+unit BacConst;
+
+interface
+
+const
+
+  KnownBacsTypes = 41; // Increase this when adding new types
+
+{Export objects}
+  exBacs1     = 0;
+  exAIB       = 1;
+  exBnkIre    = 2;
+  exIdeal     = 3;
+  exHex       = 4;
+  exBacstel   = 5;
+  exNatwest   = 6;
+  exBacsNc    = 7;
+  exPcPayCsv  = 8;
+  exPcPayAsc  = 9;
+  exCoutts    = 10;
+  exBusMaster = 11;
+  exPayaway   = 12;
+  exAbnAmro   = 13;
+  exBankScot  = 14;
+  exMultiBacs = 15;
+  exRBS       = 16;
+  exBBMInt    = 17;
+  exCoop      = 18;
+  exYorkBank  = 19;
+  exRBSCashM  = 20;
+  exUlsterBank= 21;
+  exDanske    = 22;
+  exRbsBulk   = 23;
+  exUnity     = 24;
+  exBACSess   = 25;
+  exSHBBacs   = 26;
+  exSHBIntl   = 27;
+  exHSBC18    = 28;
+  exPayMan    = 29;
+  exNorthern  = 30;
+  exFirstNat  = 31;
+  exBankLine  = 32;
+  exBnkIreEx  = 33;
+  exClydesdale= 34;
+  exNIB       = 35;
+  exTSBPerm   = 36;
+  exAcc       = 37;
+  exFirstTrust= 38;
+  exANZ       = 39;
+  exGerman    = 40;
+
+{File types allowed}
+  ftaCreditOnly = 0;
+  ftaDebitOnly  = 1;
+  ftaBoth       = 2;
+
+  BacsIDs : Array[0..KnownBacsTypes - 1] of String[8] =
+
+                     ('Bacs1','AIB','BnkIre','Ideal','Hex',
+                      'BacsTel','NatWest','BacsNc','PcPayCsv',
+                      'PcPayAsc','Coutts','BusMast','Payaway',
+                      'AbnEpf', 'BankScot', 'eBanking', 'Rbs',
+                      'BBMI', 'CoopBank', 'YorkBank', 'RbsCashM',
+                      'UlstrBnk', 'Danske', 'RBS Bulk', 'Unity', 'BACSess',
+                      'SHBBacs', 'SHBIntl', 'HSBC18', 'PayMnger', 'Northern',
+                      'FirstNat', 'Bankline','BnkIreEx','Clyddale', 'NIB', 'TSBPerm',
+                      'AccBank', '1stTrust', 'ANZ', 'German');
+
+
+
+  BacsDescriptions : Array[0..KnownBacsTypes - 1] of ShortString =
+
+                       ('BACS/no date',
+                        'Allied Irish Bank',
+                        'Bank of Ireland',
+                        'Development Bank of Singapore IDEAL',
+                        'HSBC Hexagon',
+                        'Barclays Bacstel',
+                        'Natwest Autopay',
+                        'BACS/no date/no contra',
+                        'Lloyds TSB PcPay Comma Separated',
+                        'Lloyds TSB PcPay Fixed-length',
+                        'Coutts BACS format',
+                        'Barclays BusinessMaster',
+                        'Natwest PayAway',
+                        'ABN-Amro',
+                        'Bank of Scotland HOBS',
+                        'eBanking',
+                        'Royal Bank of Scotland',
+                        'Barclays BusinessMaster (International)',
+                        'Co-operative Bank',
+                        'Yorkshire Bank',
+                        'RoyLine Cash Management',
+                        'Ulster Bank Anytime',
+                        'Den Danske Bank',
+                        'Royal Bank of Scotland Bulk Format',
+                        'Unity Bank',
+                        'BACSess',
+                        'Saudi Hollandi Bank (BACS)',
+                        'Saudi Hollandi Bank (International)',
+                        'HSBC 18',
+                        'Natwest BankLine Payment Manager',
+                        'Northern Bank',
+                        'First National Bank',
+                        'Bankline Internet Banking',
+                        'Bank of Ireland Extended',
+                        'Clydesdale Bank',
+                        'National Irish Bank',
+                        'TSB Permanent',
+                        'Acc Bank',
+                        'First Trust',
+                        'ANZ Bank',
+                        'German Bank');
+
+
+
+  BacsShortDescriptions : Array[0..KnownBacsTypes - 1] of ShortString =
+
+                       ('BACS/no date',
+                        'Allied Irish Bank',
+                        'Bank of Ireland',
+                        'DBS IDEAL',
+                        'HSBC Hexagon',
+                        'Barclays Bacstel',
+                        'Natwest Autopay',
+                        'BACS/no date/no contra',
+                        'Lloyds TSB PcPay CSV',
+                        'Lloyds TSB PcPay ASCII',
+                        'Coutts BACS format',
+                        'Barclays BusinessMaster',
+                        'Natwest PayAway',
+                        'ABN-Amro',
+                        'Bank of Scotland HOBS',
+                        'eBanking',
+                        'Royal Bank of Scotland',
+                        'BBM (Int)',
+                        'Co-op Bank',
+                        'Yorkshire Bank',
+                        'Royline Cash Management',
+                        'Ulster Bank Anytime',
+                        'Den Danske Bank',
+                        'RBS Bulk Format',
+                        'Unity Bank',
+                        'BACSess',
+                        'SHB BACS',
+                        'SHB Intl',
+                        'HSBC 18',
+                        'Natwest Payment Manager',
+                        'Northern Bank',
+                        'First National Bank',
+                        'Bankline Internet',
+                        'Bank of Ireland Extended',
+                        'Clydesdale Bank',
+                        'National Irish Bank',
+                        'TSB Permanent',
+                        'Acc Bank',
+                        'First Trust',
+                        'ANZ Bank',
+                        'German Bank');
+
+  StatementFormats : Array[0..KnownBacsTypes - 1] of ShortString =
+                       ('StdBacs', 'AIB', 'BankIRE', 'DBSIDEAL', 'Hexagon', 'Barclays',
+                        'Natwest', 'StdBacs1', 'Lloyds', 'Lloyds', 'Coutts', 'Barclays',
+                         'Payaway', 'ABN', 'BoSHobs',
+                        '', 'RBS', 'BBMInt', 'Co-op', 'Yorks',
+                         'Royline', 'Ulster', 'DenDansk', 'RBSBulk', 'Unity',
+                         'BacSess', 'ShbBacs', 'ShbIntl', 'HSBC18', 'Natwest', 'Northern',
+                         'FirstNat', 'Bankline', 'BankIEx','Clyddale', 'NIB', 'TSBPerm', 'AccBank',
+                         '1stTrust', 'ANZBank', 'German');
+  {$IFDEF EX600}
+   EntVer = 'v6.00.';
+  {$ELSE}
+   EntVer = 'v5.71.';
+  {$ENDIF}
+
+function BankProduct(WhichOne : Word;
+                     var ProductName : ShortString;
+                     var DefPayFile  : ShortString;
+                     var DefRecFile  : ShortString) : Boolean; Export;
+
+function BankProductCount : SmallInt; Export;
+
+function BankStatementFormat(WhichOne : Word) : ShortString; Export;
+
+
+
+implementation
+
+function BankProduct(WhichOne : Word;
+                     var ProductName : ShortString;
+                     var DefPayFile  : ShortString;
+                     var DefRecFile  : ShortString) : Boolean;
+begin
+  Result := WhichOne <= KnownBacsTypes;
+  if Result then
+  begin
+    ProductName := BacsShortDescriptions[WhichOne - 1];
+    DefPayFile := '';
+    DefRecFile := '';
+  end;
+end;
+
+function BankProductCount : SmallInt;
+begin
+  Result := SmallInt(KnownBacsTypes);
+end;
+
+function BankStatementFormat(WhichOne : Word) : ShortString;
+begin
+  if WhichOne <= KnownBacsTypes then
+    Result := StatementFormats[WhichOne - 1]
+  else
+    Result := '';
+end;
+
+
+end.

@@ -1,0 +1,7 @@
+:BASE email.hlp>main
+1 TEmail component help
+2 Overview and history=unit_Email
+2 Known Problems=TEmailProblems
+2 TEmail Class=class_TEmail
+2 Exception EMapiUnavailable=class_EMAPIunavailable
+2 Global constants=ConstEMAIL_OK

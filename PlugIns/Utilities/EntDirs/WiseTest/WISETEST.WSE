@@ -1,0 +1,222 @@
+Document Type: WSE
+item: Global
+  Version=7.041
+  Title=EntSetup.DLL Test Script
+  Flags=01010100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Progress Bar DLL=%_WISE_%\Progress\WIZ%_EXE_OS_TYPE_%.DLL
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Log Pathname=%MAINDIR%\INSTALL.LOG
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00100000000000100000000000000100
+  Extra Pages=00000000000000000000000000100000
+  Disk Filename=SETUP
+  Patch Flags=0000000000001001
+  Patch Threshold=85
+  Patch Memory=20000
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Step View=Properties
+  Variable Name1=_SYS_
+  Variable Default1=C:\WINNT\System32
+  Variable Flags1=00001000
+  Variable Name2=_WISE_
+  Variable Default2=D:\Program Files\WISE\IBuild7
+  Variable Flags2=00001000
+end
+item: Remark
+end
+item: Remark
+  Text=WISETEST.WSE - Test Harness for EntSetup.Dll
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Enterise Data Version - Used by conversion routines
+end
+item: Set Variable
+  Variable=V_ENTDATAVER
+  Value=5.00
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Display Title and Copyright
+end
+item: Custom Graphic
+  Y Position=5
+  Width=545
+  Height=68
+  Flags=0000000100101000
+  item: Text
+    Text=EntSetup.DLL Test Harness
+    Rectangle=0 0 545 68
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Extra Flags=00000011
+    Name=Times New Roman
+    Font Style=-32 0 0 0 700 255 0 0 0 3 2 1 18
+  end
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Set Installation Directories
+end
+item: Set Variable
+  Variable=V_MAINDIR
+  Value=x:\entrprse\custom\entsetup
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Set Variable
+  Variable=ENTDIR
+end
+item: Set Variable
+  Variable=FUNCRES
+end
+item: Call DLL Function
+  Pathname=%V_MAINDIR%\ENTSETUP.DLL
+  Function Name=Wise7_GetEnterpriseDir
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful - Carry on with install
+end
+item: Display Message
+  Title=Info
+  Text=Wise7_GetEnterpriseDir completed successfully
+  Flags=00100100
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PLUGIN
+  Value=M:\440TEST\CCCUSTOM.EXE
+end
+item: Set Variable
+  Variable=PLUGINDESC
+  Value=Exchequer Cost Centre/Department Plug-In
+end
+item: Set Variable
+  Variable=FUNCRES
+end
+item: Call DLL Function
+  Pathname=%V_MAINDIR%\ENTSETUP.DLL
+  Function Name=Wise7_AddCOMPlugIn
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful - Notify user
+end
+item: Display Message
+  Title=Info
+  Text=Wise7_AddCOMPlugIn completed successfully
+  Flags=00100100
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst trying to add a COM Plug-In:-
+  Text=
+  Text=  Error %FUNCRES%
+  Text=
+  Text=Please contact the program vendor.
+  Flags=00110000
+end
+item: End Block
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLLNAME
+  Value=ENTCARRG
+end
+item: Set Variable
+  Variable=PLUGINDESC
+  Value=Exchequer Carriage Plug-In
+end
+item: Set Variable
+  Variable=FUNCRES
+end
+item: Call DLL Function
+  Pathname=%V_MAINDIR%\ENTSETUP.DLL
+  Function Name=Wise7_AddDLLPlugIn
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful - Notify user
+end
+item: Display Message
+  Title=Info
+  Text=Wise7_AddDLLPlugIn completed successfully
+  Flags=00100100
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst trying to add a DLL Plug-In:-
+  Text=
+  Text=  Error %FUNCRES%
+  Text=
+  Text=Please contact the program vendor.
+  Flags=00110000
+end
+item: End Block
+end
+item: Remark
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst trying to get the Enterprise directory:-
+  Text=
+  Text=  Error %FUNCRES%
+  Text=
+  Text=Please contact the program vendor.
+  Flags=00110000
+end
+item: End Block
+end

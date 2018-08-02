@@ -1,0 +1,156 @@
+object frmConfirm: TfrmConfirm
+  Left = 326
+  Top = 259
+  Width = 393
+  Height = 236
+  HelpContext = 14
+  BorderIcons = [biMinimize, biMaximize]
+  Caption = 'Exchequer Importer'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  ShowHint = True
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Label1: TLabel
+    Left = 50
+    Top = 9
+    Width = 286
+    Height = 14
+    Caption = 'The job file you have selected will import data into company'
+  end
+  object lblJobCompany: TLabel
+    Left = 46
+    Top = 31
+    Width = 293
+    Height = 13
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'lblJobCompany'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object lblCompany: TLabel
+    Left = 20
+    Top = 76
+    Width = 345
+    Height = 13
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'lblCompany'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 121
+    Top = 53
+    Width = 144
+    Height = 14
+    Caption = 'You are currently logged-in to'
+  end
+  object lblOptions: TLabel
+    Left = 15
+    Top = 98
+    Width = 353
+    Height = 67
+    AutoSize = False
+    Caption = 
+      'You can either 1. change the company for this job 2. login again' +
+      ' to edit the job in its correct company or 3. cancel the editing' +
+      ' of this job.'
+    WordWrap = True
+  end
+  object Image1: TImage
+    Left = 8
+    Top = 8
+    Width = 32
+    Height = 32
+    Picture.Data = {
+      055449636F6E0000010002001010100000000000280100002600000020201000
+      00000000E80200004E0100002800000010000000200000000100040000000000
+      C000000000000000000000000000000000000000000000000000800000800000
+      0080800080000000800080008080000080808000C0C0C0000000FF0000FF0000
+      00FFFF00FF000000FF00FF00FFFF0000FFFFFF0044444444000000004F4FF4F4
+      000000004F4FF4F4111100004F4FF4F4000100004F4FF4F4000100004F4FF4F4
+      0011100044444444000100004444444400000000000000007077799000000000
+      08FCC70000000000FFC8777000000000FCF7877000000000CF8F78700000000C
+      0FF888000000000CC0FFF070000000000000000000FF000000FF0000000F0000
+      00EF000000EF000000C7000000EF000000C70000FF010000FF010000FE000000
+      FE000000FE000000FE010000FE010000FFC70000280000002000000040000000
+      0100040000000000800200000000000000000000000000000000000000000000
+      00008000008000000080800080000000800080008080000080808000C0C0C000
+      0000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0000000000
+      0000000000000000000000000444444444444444000000000000000004FF4FFF
+      F4FFF4F4000000000000000004FF4FFFF4FFF4F4000000000000000004FF4FFF
+      F4FFF4F4000000000000000004FF4FFFF4FFF4F4000000000000000004FF4FFF
+      F4FFF4F4111111110000000004FF4FFFF4FFF4F4000000010000000004FF4FFF
+      F4FFF4F4000000010000000004FF4FFFF4FFF4F4000000010000000004FF4FFF
+      F4FFF4F4000000010000000004FF4FFFF4FFF4F4000000010000000004444444
+      4444444400000011100000000444444444444444000000010000000000000000
+      0000000000000000000000000000000000000000000000000000999000000000
+      0000000000008787770999000000000000000000008888787CC7000000000000
+      00000000078888CCC777700000000000000000000F78CC887877700000000000
+      00000000F8CC8888878777000000000000000000FCF888888878770000000000
+      00000000CFFF8F888887770000000000000000007F8FF8888888770000000000
+      000000C0FFFF8F888887770000000000000000C0FFFFFF888888770000000000
+      00000C700FFFFFF8888880000000000000000C000FFFFF8F8888800000000000
+      00000C0000FFFFF88888000000000000000000CCC000FFFF8800000000000000
+      00000000000000000000000000000000000000000000000000000000FFFFFFFF
+      8000FFFF8000FFFF8000FFFF8000FFFF8000FFFF800000FF8000FEFF8000FEFF
+      8000FEFF8000FEFF8000FEFF8000FC7F8000FEFFFFFFFFFFFFFFF031FFFFC003
+      FFFF8007FFFF0003FFFF0003FFFE0001FFFE0001FFFE0001FFFE0001FFFC0001
+      FFFC0001FFF90003FFFB0003FFFB8007FFFC400FFFFFF03FFFFFFFFF}
+    Transparent = True
+  end
+  object btnChange: TButton
+    Left = 36
+    Top = 174
+    Width = 80
+    Height = 21
+    Hint = 
+      '|Change the Import Job to import data into the company you are l' +
+      'ogged-in to'
+    Caption = '&Change'
+    ModalResult = 5
+    TabOrder = 0
+  end
+  object btnLogin: TButton
+    Left = 153
+    Top = 174
+    Width = 80
+    Height = 21
+    Hint = '|Login to a different company'
+    Caption = '&Login'
+    Default = True
+    ModalResult = 4
+    TabOrder = 1
+  end
+  object btnCancel: TButton
+    Left = 265
+    Top = 174
+    Width = 80
+    Height = 21
+    Hint = '|Cancel opening the Import Job'
+    Cancel = True
+    Caption = 'Ca&ncel'
+    Default = True
+    ModalResult = 2
+    TabOrder = 2
+  end
+end

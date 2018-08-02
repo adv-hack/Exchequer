@@ -1,0 +1,40 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="1003" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="coCompany" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="coCompany" />        
+        <schemafield fieldname="coAccount" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="coAccount" />        
+        <schemafield fieldname="coCode" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="coCode" />        
+        <schemafield fieldname="coTitle" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="coTitle" />        
+        <schemafield fieldname="coFirstName" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="coFirstName" />                
+        <schemafield fieldname="coSurname" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="coSurname" />        
+        <schemafield fieldname="coPosition" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="coPosition" />        
+        <schemafield fieldname="coSalutation" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="coSalutation" />        
+        <schemafield fieldname="coContactNo" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="coContactNo" />        
+        <schemafield fieldname="coDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="coDate" />        
+        <schemafield fieldname="coFaxNumber" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="coFaxNumber" />        
+        <schemafield fieldname="coEmailAddr" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="coEmailAddr" />        
+        <schemafield fieldname="coAddress1" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="coAddress1" />        
+        <schemafield fieldname="coAddress2" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="coAddress2" />        
+        <schemafield fieldname="coAddress3" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="coAddress3" />        
+        <schemafield fieldname="coAddress4" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="coAddress4" />        
+        <schemafield fieldname="coPostCode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="coPostCode" />        
+    </fixedfields>
+    <defaultrecordtype>       
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>coCompany</item>
+                <item>coAccount</item>
+                <item>coCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>coCompany</item>
+                <item>coCode</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

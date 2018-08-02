@@ -1,0 +1,140 @@
+SOFTWARE LICENSE AGREEMENT
+--------------------------
+You should carefully read the following terms and conditions before using this
+software. Unless you have a different license agreement signed by Mathias Rauen,
+your use of this software indicates your acceptance of this license agreement
+and warranty.
+-------------
+
+
+FREEWARE PRODUCT(S)
+-------------------
+The package "madBasic" may be used freely for both non-commercial and commercial
+use, without buying a license, provided that:
+  (1) The author Mathias Rauen is given proper credit for his work.
+  (2) The licensee does not claim that the library was written by him.
+  (3) If the software is modified, any software containing modifications must
+      prominently state in the modified product or documentation
+      (a) that it has been modified,
+      (b) the identity of the person or entity that made the modifications and
+      (c) the date the modifications were made.
+  (4) "madBasic" must not be transferred to any third party unless such third
+      party receives a copy of this agreement and agrees to be bound by all
+      of its terms and conditions.
+----------------------------------------------------------------------------
+
+
+UNLICENSED COMMERCIALWARE PRODUCT(S)
+------------------------------------
+The packages "madDisAsm", "madExcept", "madRemote", "madKernel", "madCodeHook", 
+"madSecurity" and "madShell" may be used freely for non-commercial purpose,
+without buying a license, provided that:
+  (1) The author is given proper credit for his work.
+  (2) The licensee does not claim that the software was written by him.
+  (3) The licensee does not use any of the mentioned commercialware packages in
+      commercial software (including shareware).
+  (4) The mentioned packages must not be transferred to any third party unless
+      such third party receives a copy of this agreement and agrees to be bound
+      by all of its terms and conditions.
+Commercial use of any of the mentioned commercialware packages is not allowed
+without buying a commercial license before.
+-------------------------------------------
+
+
+LICENSED COMMERCIALWARE PRODUCT(S)
+----------------------------------
+Each bought commercial license of a commercialware package grants the licensee
+a non-exclusive right to use the licensed package on one development computer,
+for any legal purpose, at a time.
+The licensed software must not be rented or leased, but may be permanently
+transferred, if the person receiving it agrees to the terms of this license. If
+the software is an update, the transfer must include the update and all previous
+versions.
+---------
+
+
+LGPL ICONS USED IN MADEXCEPT
+----------------------------
+The madExcept settings dialog uses some icons taken from the Nuvola icon theme
+created by David Vignoni (www.icon-king.com). These icons are released under
+the LGPL license (see www.gnu.org).
+
+
+SPECIAL LICENSE ICONS USED IN MADEXCEPT
+---------------------------------------
+When using madExcept, some icons are (optionally) linked into your executable
+file and used/shown at runtime. Some of these icons are again taken from the
+Nuvola icon theme created by David Vignoni. madExcept includes a special
+license for these Nuvola icons. madExcept users automatically have a license
+to use these Nuvola icons without needing to follow the LGPL, as long as they
+are using the icons only in combination with madExcept. If madExcept users want
+to use any Nuvola icons outside of the madExcept dialogs, they need to follow
+the LGPL license again. The Nuvola icons licensed for madExcept are:
+
+- mail_generic
+- button_ok
+- button_cancel
+- redo
+- xmag
+- file_save
+- file_print
+- messagebox_critical
+- clanbomber
+
+
+RESTRICTIONS
+------------
+The licensee must not use any of the mentioned freeware and commercialware
+packages in any other product that directly or indirectly competes with the
+author's packages. Specifically, the licensee must not include the mentioned
+packages as part of any code library, as source code or in compiled form. The
+licensee must not provide any means by which his users could create, modify, or
+incorporate any part of the mentioned packages into their own products. The
+file "madCHook.dll" may however be distributed together with the licensee's
+products.
+---------
+
+
+DISCLAIMER
+----------
+The author's products and the accompanying files and documentation are
+distributed/sold "as is" and without warranties as to performance or
+merchantability or any other warranties whether expressed or implied. The
+licensee assumes the entire risk as to the use of the author's products. The
+author does not assume liability for the use of this product beyond the original
+purchase price (if applicable). In no event will the author be liable for
+additional direct or indirect damages including any lost profits, lost savings,
+or other incidental or consequential damages arising from any defects, or the
+use or inability to use this product, even if the author has been advised of the
+possibility of such damages.
+----------------------------
+
+
+TITLE
+-----
+Title, ownership rights, and intellectual property rights in and to the software
+shall remain in the author. The software is protected by the copyright laws of
+Germany and international copyright treaties.
+---------------------------------------------
+
+
+CONTENT
+-------
+Title, ownership rights, and intellectual property rights in and to the content
+accessed through the software is the property of the applicable content owner
+and may be protected by applicable copyright or other law. This license gives
+you no rights to such content.
+------------------------------
+
+
+TERMINATION
+-----------
+This agreement shall automatically terminate upon failure by you to comply with
+its terms, in which case you shall immediately discontinue the use of the
+software and shall within ten (10) days destroy all copies of the software.
+You may also terminate this agreement at any time by destroying the software
+and all copies thereof.
+-----------------------
+
+
+Copyright (C) 1999 - 2003 Mathias Rauen, www.madshi.net, All Rights Reserved

@@ -1,0 +1,24 @@
+:Base ims2.hlp
+:Title Internet Mail Suite
+1 Contents
+2 Introduction=CONTENTS
+2 What's new in IMS 2=What_s_new_in_IMS_2
+2 Using IMS in Console Applications=Using_IMS_in_Console_Applications
+2 Example Applications=Example_Applications
+2 Installation=Installation
+2 How to Register=How_To_Register
+2 Special Thanks=Special_Thanks
+2 How to Contact Us=Contact
+1 Components
+2 TmsClientSocket Component=TmsClientSocket_Component
+2 TmsSMTPClient Component=TmsSMTPClient_Component
+2 TmsPOPClient Component=TmsPOPClient_Component
+2 TmsMessage Component=TmsMessage_Component
+2 TmsNNTPClient Component=TmsNNTPClient_Component
+2 TmsArticle Component=TmsArticle_Component
+2 TmsFTPClient Component=TmsFTPClient_Component
+2 TmsHTTPClient Component=TmsHTTPClient_Component
+2 TmsSimpleListenerSocket Component=TmsSimpleListenerSocket_Component
+2 TmsListenerSocket Component=TmsListenerSocket_Component
+1 Classes
+2 TmsWinsock class=TmsWinsock_class

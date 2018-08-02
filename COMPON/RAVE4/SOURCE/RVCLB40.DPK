@@ -1,0 +1,12 @@
+package RVCLB40;
+
+{$DESCRIPTION 'Rave 4.0 Barcode Components'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, RVCL40;
+
+contains
+  RVCsBars;
+
+end.

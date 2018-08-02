@@ -1,0 +1,516 @@
+object Form1: TForm1
+  Left = 272
+  Top = 136
+  Width = 501
+  Height = 519
+  Caption = ' TAbZipView example'
+  Color = clBtnFace
+  Font.Color = clBlack
+  Font.Height = -12
+  Font.Name = 'Arial'
+  Font.Style = []
+  Menu = MainMenu1
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 15
+  object AbZipView1: TAbZipView
+    Left = 0
+    Top = 18
+    Width = 491
+    Height = 430
+    Align = alClient
+    Attributes = [vaItemName, vaTimeStamp, vaFileSize, vaPath]
+    Colors.Selected = clHighlight
+    Colors.SelectedText = clHighlightText
+    Colors.Alternate = clAqua
+    Colors.AlternateText = clRed
+    Colors.Deleted = clYellow
+    Colors.DeletedText = clNavy
+    Headings.Strings = (
+      'File name'
+      'Packed'
+      'Method'
+      'Ratio (%)'
+      'CRC32'
+      'Attributes'
+      'Format'
+      'Encrypted'
+      'Time stamp'
+      'Size'
+      'Version Made'
+      'Version Needed'
+      'Path')
+    DefaultColWidth = 150
+    DefaultRowHeight = 17
+    DisplayOptions = [doColSizing, doMultiSelect, doShowIcons, doThumbTrack]
+    HeaderRowHeight = 19
+    SortAttributes = [saItemName, saPacked, saRatio, saTimeStamp, saFileSize]
+    PopupMenu = PopupMenu1
+    TabOrder = 0
+    ZipComponent = AbZipKit1
+    OnChange = AbZipView1Change
+    OnClick = AbZipView1Click
+    ColWidths = (
+      116
+      152
+      69
+      150)
+    RowHeights = (
+      19
+      17)
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 491
+    Height = 18
+    Align = alTop
+    BevelOuter = bvLowered
+    TabOrder = 1
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 448
+    Width = 491
+    Height = 26
+    Align = alBottom
+    BevelOuter = bvLowered
+    TabOrder = 2
+    object AbMeter1: TAbMeter
+      Left = 94
+      Top = 7
+      Width = 132
+      Height = 14
+      Orientation = moHorizontal
+      UnusedColor = clBtnFace
+      UsedColor = clNavy
+    end
+    object Label1: TLabel
+      Left = 9
+      Top = 7
+      Width = 78
+      Height = 15
+      Caption = 'Item Progress'
+    end
+    object Label2: TLabel
+      Left = 252
+      Top = 7
+      Width = 93
+      Height = 15
+      Caption = 'Archive Progress'
+    end
+    object AbMeter2: TAbMeter
+      Left = 352
+      Top = 7
+      Width = 132
+      Height = 14
+      Orientation = moHorizontal
+      UnusedColor = clBtnFace
+      UsedColor = clNavy
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    FileName = '*.zip'
+    Left = 100
+    Top = 56
+  end
+  object FontDialog1: TFontDialog
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'System'
+    Font.Style = []
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 224
+    Top = 56
+  end
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 52
+    object File1: TMenuItem
+      Caption = '&File'
+      object Open1: TMenuItem
+        Caption = '&Open...'
+        OnClick = Open1Click
+      end
+      object Save1: TMenuItem
+        Caption = '&Save'
+        OnClick = Save1Click
+      end
+      object Close1: TMenuItem
+        Caption = '&Close'
+        OnClick = Close1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Print1: TMenuItem
+        Caption = '&Print'
+        Enabled = False
+      end
+      object Exit1: TMenuItem
+        Caption = 'E&xit'
+        OnClick = Exit1Click
+      end
+    end
+    object Action1: TMenuItem
+      Caption = '&Action'
+      Enabled = False
+      object Add1: TMenuItem
+        Caption = '&Add...'
+        OnClick = Add1Click
+      end
+      object Delete1: TMenuItem
+        Caption = '&Delete selected items'
+        OnClick = Delete1Click
+      end
+      object Extract1: TMenuItem
+        Caption = '&Extract selected items...'
+        OnClick = Extract1Click
+      end
+      object Freshen1: TMenuItem
+        Caption = '&Freshen selected items'
+        OnClick = Freshen1Click
+      end
+      object Moveselecteditem1: TMenuItem
+        Caption = '&Move selected item...'
+        OnClick = Moveselecteditem1Click
+      end
+      object Testselecteditems1: TMenuItem
+        Caption = '&Test selected items'
+        OnClick = Testselecteditems1Click
+      end
+    end
+    object ZipView1: TMenuItem
+      Caption = 'Zip&View'
+      object Attributes1: TMenuItem
+        Caption = '&Attributes'
+        object Itemname1: TMenuItem
+          Caption = '&Item name'
+          OnClick = AttributeClick
+        end
+        object Packed1: TMenuItem
+          Tag = 1
+          Caption = '&Packed'
+          OnClick = AttributeClick
+        end
+        object Method1: TMenuItem
+          Tag = 2
+          Caption = '&Method'
+          OnClick = AttributeClick
+        end
+        object Ratio1: TMenuItem
+          Tag = 3
+          Caption = '&Ratio'
+          OnClick = AttributeClick
+        end
+        object CRC1: TMenuItem
+          Tag = 4
+          Caption = '&CRC'
+          OnClick = AttributeClick
+        end
+        object Fileattributes1: TMenuItem
+          Tag = 5
+          Caption = '&File attributes'
+          OnClick = AttributeClick
+        end
+        object Filetype1: TMenuItem
+          Tag = 6
+          Caption = 'File t&ype'
+          OnClick = AttributeClick
+        end
+        object Encryption1: TMenuItem
+          Tag = 7
+          Caption = '&Encryption'
+          OnClick = AttributeClick
+        end
+        object Timestamp1: TMenuItem
+          Tag = 8
+          Caption = '&Time stamp'
+          OnClick = AttributeClick
+        end
+        object Filesize1: TMenuItem
+          Tag = 9
+          Caption = 'File &size'
+          OnClick = AttributeClick
+        end
+        object Versionmade1: TMenuItem
+          Tag = 10
+          Caption = '&Version made'
+          OnClick = AttributeClick
+        end
+        object Versionneeded1: TMenuItem
+          Tag = 11
+          Caption = 'Version &needed'
+          OnClick = AttributeClick
+        end
+        object Path1: TMenuItem
+          Tag = 12
+          Caption = '&Path'
+          OnClick = AttributeClick
+        end
+      end
+      object Display1: TMenuItem
+        Caption = '&Display'
+        object Alternatecolors1: TMenuItem
+          Caption = '&Alternate colors'
+          OnClick = DisplayOptionClick
+        end
+        object Columnlines1: TMenuItem
+          Tag = 1
+          Caption = 'Column &lines'
+          OnClick = DisplayOptionClick
+        end
+        object Columnmoving1: TMenuItem
+          Tag = 2
+          Caption = 'Column mo&ving'
+          OnClick = DisplayOptionClick
+        end
+        object Columnresizing1: TMenuItem
+          Tag = 3
+          Caption = 'Column resi&zing'
+          OnClick = DisplayOptionClick
+        end
+        object MultiSelect1: TMenuItem
+          Tag = 4
+          Caption = '&MultiSelect'
+          OnClick = DisplayOptionClick
+        end
+        object Rowlines1: TMenuItem
+          Tag = 5
+          Caption = '&Row lines'
+          OnClick = DisplayOptionClick
+        end
+        object ShowIcons1: TMenuItem
+          Tag = 6
+          Caption = '&ShowIcons'
+          OnClick = DisplayOptionClick
+        end
+        object Thumbtracking1: TMenuItem
+          Tag = 7
+          Caption = '&Thumb tracking'
+          OnClick = DisplayOptionClick
+        end
+        object Trackactiverow1: TMenuItem
+          Tag = 8
+          Caption = 'Track &active row'
+          OnClick = DisplayOptionClick
+        end
+      end
+      object Font1: TMenuItem
+        Caption = '&Font...'
+        OnClick = Font1Click
+      end
+      object Rows1: TMenuItem
+        Caption = '&Row Height'
+        object Rowheight1: TMenuItem
+          Caption = '&Row height...'
+          OnClick = Rowheight1Click
+        end
+        object Headerheight1: TMenuItem
+          Caption = '&Header height...'
+          OnClick = Headerheight1Click
+        end
+      end
+      object Sort1: TMenuItem
+        Caption = '&Sort'
+        object Itemname2: TMenuItem
+          Caption = '&Item name'
+          OnClick = SortAttributeClick
+        end
+        object Packed2: TMenuItem
+          Tag = 1
+          Caption = '&Packed'
+          OnClick = SortAttributeClick
+        end
+        object Ratio2: TMenuItem
+          Tag = 2
+          Caption = '&Ratio'
+          OnClick = SortAttributeClick
+        end
+        object Timestamp2: TMenuItem
+          Tag = 3
+          Caption = '&Time stamp'
+          OnClick = SortAttributeClick
+        end
+        object Filesize2: TMenuItem
+          Tag = 4
+          Caption = '&File size'
+          OnClick = SortAttributeClick
+        end
+      end
+    end
+    object ZipKit1: TMenuItem
+      Caption = 'Zip&Kit'
+      object Compress1: TMenuItem
+        Caption = '&Method'
+        object Stored1: TMenuItem
+          Caption = '&Stored'
+          OnClick = MethodClick
+        end
+        object Deflated1: TMenuItem
+          Tag = 1
+          Caption = '&Deflated'
+          OnClick = MethodClick
+        end
+        object Best1: TMenuItem
+          Tag = 2
+          Caption = '&Best'
+          OnClick = MethodClick
+        end
+      end
+      object Deflation1: TMenuItem
+        Caption = '&Deflation'
+        object Normal1: TMenuItem
+          Tag = 1
+          Caption = '&Normal'
+          OnClick = DeflationOptionClick
+        end
+        object Maximum1: TMenuItem
+          Tag = 2
+          Caption = '&Maximum'
+          OnClick = DeflationOptionClick
+        end
+        object Fast1: TMenuItem
+          Tag = 3
+          Caption = '&Fast'
+          OnClick = DeflationOptionClick
+        end
+        object SuperFast1: TMenuItem
+          Tag = 4
+          Caption = '&SuperFast'
+          OnClick = DeflationOptionClick
+        end
+      end
+      object N2: TMenuItem
+        Caption = '&Extract'
+        object CreateDirs1: TMenuItem
+          Caption = '&CreateDirs'
+          OnClick = ExtractOptionClick
+        end
+        object RestorePath1: TMenuItem
+          Tag = 1
+          Caption = '&RestorePath'
+          OnClick = ExtractOptionClick
+        end
+      end
+      object Store1: TMenuItem
+        Caption = '&Store'
+        object StripPath1: TMenuItem
+          Tag = 1
+          Caption = '&StripPath'
+          OnClick = StoreOptionClick
+        end
+        object RemoveDots1: TMenuItem
+          Tag = 2
+          Caption = '&RemoveDots'
+          OnClick = StoreOptionClick
+        end
+        object Recurse1: TMenuItem
+          Tag = 3
+          Caption = 'Re&curse'
+          OnClick = StoreOptionClick
+        end
+        object Freshen2: TMenuItem
+          Tag = 4
+          Caption = '&Freshen'
+          OnClick = StoreOptionClick
+        end
+        object Replace1: TMenuItem
+          Tag = 5
+          Caption = 'Rep&lace'
+          OnClick = StoreOptionClick
+        end
+      end
+      object Logging1: TMenuItem
+        Caption = '&Logging...'
+        OnClick = Logging1Click
+      end
+    end
+    object Select1: TMenuItem
+      Caption = 'Se&lect'
+      object SelectAll1: TMenuItem
+        Caption = 'Select &All'
+        OnClick = SelectAll1Click
+      end
+      object ClearSelections1: TMenuItem
+        Caption = '&Clear Selections'
+        OnClick = ClearSelections1Click
+      end
+    end
+    object Colors1: TMenuItem
+      Caption = '&Colors'
+      object AlternateColor1: TMenuItem
+        Caption = 'Alternate color...'
+        OnClick = AlternateColor1Click
+      end
+      object AlternateTextColor1: TMenuItem
+        Caption = 'Alternate text color...'
+        OnClick = AlternateTextColor1Click
+      end
+      object DeletedColor1: TMenuItem
+        Caption = 'Deleted color...'
+        OnClick = DeletedColor1Click
+      end
+      object DeletedTextColor1: TMenuItem
+        Caption = 'Deleted text color...'
+        OnClick = DeletedTextColor1Click
+      end
+      object Selectedcolor: TMenuItem
+        Caption = 'Selected color...'
+        OnClick = Selected1Click
+      end
+      object Selectedtextcolor: TMenuItem
+        Caption = 'Selected text color...'
+        OnClick = Selectedtext1Click
+      end
+    end
+  end
+  object ColorDialog1: TColorDialog
+    Ctl3D = True
+    Left = 164
+    Top = 56
+  end
+  object AbZipKit1: TAbZipKit
+    ArchiveProgressMeter = AbVCLMeterLink2
+    AutoSave = False
+    ExtractOptions = []
+    ItemProgressMeter = AbVCLMeterLink1
+    LogFile = 'c:\bogus\zip.log'
+    Logging = True
+    OnConfirmProcessItem = AbZipKit1ConfirmProcessItem
+    OnSave = AbZipKit1Save
+    Left = 20
+    Top = 168
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 20
+    Top = 108
+    object Delete2: TMenuItem
+      Caption = '&Delete'
+      OnClick = Delete1Click
+    end
+    object Extract2: TMenuItem
+      Caption = '&Extract'
+      OnClick = Extract1Click
+    end
+    object Freshen3: TMenuItem
+      Caption = '&Freshen'
+      OnClick = Freshen1Click
+    end
+    object Move1: TMenuItem
+      Caption = '&Move'
+      Enabled = False
+    end
+  end
+  object AbVCLMeterLink1: TAbVCLMeterLink
+    Meter = AbMeter1
+    Left = 216
+    Top = 440
+  end
+  object AbVCLMeterLink2: TAbVCLMeterLink
+    Meter = AbMeter2
+    Left = 460
+    Top = 440
+  end
+end

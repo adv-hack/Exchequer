@@ -1,0 +1,29 @@
+unit pwdlg;
+
+
+interface
+
+uses windows, classes, graphics, forms, controls, stdctrls, pvtables;
+
+type
+  TPervPasswordDialog = class(TForm)
+    GroupBox1: TGroupBox;
+    Edit: TEdit;
+    AddButton: TButton;
+    RemoveButton: TButton;
+    RemoveAllButton: TButton;
+    OKButton: TButton;
+    CancelButton: TButton;
+    procedure EditChange(Sender: TObject);
+    procedure AddButtonClick(Sender: TObject);
+    procedure RemoveButtonClick(Sender: TObject);
+    procedure RemoveAllButtonClick(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
+  private
+    PasswordAdded: Boolean;
+    FSession: TPvAbsSession;
+  end;
+
+function PervPasswordDialog(ASession: TPvAbsSession): Boolean;
+
+implementation

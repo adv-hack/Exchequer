@@ -1,0 +1,6 @@
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\NewOutgoing.dll
+bin\Release\Outgoing.dll
+bin\Release\Outgoing.pdb
+obj\Release\Outgoing.dll
+obj\Release\Outgoing.pdb

@@ -1,0 +1,1798 @@
+unit drm;
+
+
+interface
+
+type
+  DRM_UINT16 = Word;
+  PDRM_UINT16 = ^DRM_UINT16;
+
+  DRM_INT16 = SmallInt;
+  PDRM_INT16 = ^DRM_INT16;
+
+{$Ifdef PvDelphi4Up}
+  DRM_UINT32 = LongWord;
+{$Else}
+  DRM_UINT32 = Cardinal;
+{$EndIf}
+  PDRM_UINT32 = ^DRM_UINT32;
+
+  DRM_INT32 = LongInt;
+  PDRM_INT32 = ^DRM_INT32;
+
+  DRM_ERR = DRM_INT32;
+
+  DRM_SESID    = DRM_INT32;  // Session Identifier
+  PDRM_SESID   = ^DRM_SESID;
+
+  DRM_DBID     = DRM_UINT32;  // Database Identifier
+  PDRM_DBID    = ^DRM_DBID;
+
+  DRM_TABLEID  = DRM_UINT32;  // Table Identifier
+  PDRM_TABLEID = ^DRM_TABLEID;
+
+  DRM_COLUMNID = DRM_UINT32;  // Column Identifier
+  PDRM_COLUMNID = ^DRM_COLUMNID;
+
+  DRM_PREDID   = DRM_UINT32;  // Extended Predicate Identifier
+  PDRM_PREDID  = ^DRM_PREDID;
+
+  DRM_OBJTYP   = DRM_UINT32;  // Object Type
+  PDRM_OBJTYP  = ^DRM_OBJTYP;
+
+  DRM_COLTYP   = DRM_UINT32;  // Column Type
+  PDRM_COLTYP  = ^DRM_COLTYP;
+
+  DRM_GRBIT    = DRM_UINT32;  // Group of Bits
+  PDRM_GRBIT   = ^DRM_GRBIT;
+
+  DRM_COLLATEID = DRM_UINT32; // Collate ID
+  PDRM_COLLATEID = ^DRM_COLLATEID;
+
+  PPointer = ^Pointer;
+
+const
+  DRM_NULL_HANDLE = 0;
+
+//  All Drm resource strings must be offset from this value.
+  DRM_RES_STR_START  = 30000;
+
+// The following defines are used if supporting DRM_coltypNumeric.
+  ARITHMETIC_MINUS   = $ffff;
+  ARITHMETIC_PLUS    = $0000;
+  MAX_PRECISION      = 16;    // BIT16's
+  MAX_SCALE          = 8192;  // Digits
+
+type
+  PDRM_EXACTNUMERIC = ^DRM_EXACTNUMERIC;
+  DRM_EXACTNUMERIC = packed record
+    Overflow: DRM_UINT16;
+    Scale: DRM_INT16;
+    Size: DRM_UINT16;
+    Word: packed array [0..MAX_PRECISION-1] of DRM_UINT16;
+  end;
+
+// The following defines are used if supporting DRM_coltypDate.
+  PDRM_DATE = ^DRM_DATE;
+  DRM_DATE = packed record
+    year: DRM_INT16;
+    month: DRM_UINT16;
+    day: DRM_UINT16;
+  end;
+
+// The following defines are used if supporting DRM_coltypTime.
+  PDRM_TIME = ^DRM_TIME;
+  DRM_TIME = packed record
+    hour: DRM_UINT16;
+    minute: DRM_UINT16;
+    second: DRM_UINT16;
+  end;
+
+//  The following defines are used if supporting DRM_coltypTimeStamp.
+  PDRM_TIMESTAMP = ^DRM_TIMESTAMP;
+  DRM_TIMESTAMP = packed record
+    year: DRM_INT16;
+    month: DRM_UINT16;
+    day: DRM_UINT16;
+    hour: DRM_UINT16;
+    minute: DRM_UINT16;
+    second: DRM_UINT16;
+    fraction: DRM_UINT32;
+  end;
+
+type
+  TRANSACT_TYPE = Longint;
+const
+  DRM_AUTO_COMMIT: Longint = 1;
+  DRM_LOGGING_OFF: Longint = 2;
+  DRM_LOGGING_ON: Longint = 3;
+  DRM_COMMIT: Longint = 4;
+  DRM_ROLLBACK: Longint = 5;
+  DRM_SAVEPOINT: Longint = 6;
+
+//******** Virtual table structures ********
+
+// For DrmCreateColumn
+type
+  PDRM_COLUMNDEF = ^DRM_COLUMNDEF;
+  DRM_COLUMNDEF = packed record
+    Struct: DRM_UINT32;
+    coltyp: DRM_COLTYP;
+    Max: DRM_UINT32;
+    Precision: DRM_INT16;
+    Scale: DRM_INT16;
+    grbit: DRM_GRBIT;
+    pDefault: PAnsiChar;
+    pCollate: PAnsiChar;
+  end;
+
+const
+  DRM_COLUMN_DEF_CASE_INS        = '_CASE';
+  DRM_COLUMN_DEF_ACS_FILE_PREFIX = '_ACS_FILE_';
+  DRM_COLUMN_DEF_ACS_NAME_PREFIX = '_ACS_NAME_';
+  DRM_COLUMN_DEF_ACS_ID_PREFIX   = '_ACS_ID_';
+
+{ For DrmGetTableColumnInfo
+  Returned in columnidProcColType column if a result of a
+  DrmGetProcedureColumnInfo call. Otherwise always return
+  DRM_ProcColumnTypeColumn (0) }
+  DRM_ProcColumnTypeColumn           = 0;
+  DRM_ProcColumnTypeReturn           = 1;
+  DRM_ProcColumnTypeInParam          = 2;
+  DRM_ProcColumnTypeOutParam         = 3;
+  DRM_ProcColumnTypeInOutParam       = 4;
+
+type
+  PDRM_COLUMNLIST = ^DRM_COLUMNLIST;
+  DRM_COLUMNLIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdColumnName: DRM_COLUMNID;
+    ColumnIdColumnId: DRM_COLUMNID;
+    ColumnIdColTyp: DRM_COLUMNID;
+    ColumnIdcbMax: DRM_COLUMNID;
+    ColumnIdgrBit: DRM_COLUMNID;
+    ColumnIdScale: DRM_COLUMNID;
+    ColumnIdPrecision: DRM_COLUMNID;
+    ColumnIdBaseTableId: DRM_COLUMNID;
+    ColumnIdProcColType: DRM_COLUMNID;
+    ColumnIdColSequenceID: DRM_COLUMNID;
+  end;
+
+// For DrmGetIndexInfo and GetTableIndexInfo
+  PDRM_INDEXLIST = ^DRM_INDEXLIST;
+  DRM_INDEXLIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdIndexName: DRM_COLUMNID;
+    ColumnIdgrBitIndex: DRM_COLUMNID;
+    ColumnIdiColumn: DRM_COLUMNID;
+    ColumnIdColumnId: DRM_COLUMNID;
+    ColumnIdgrBitColumn: DRM_COLUMNID;
+    ColumnIdColumnName: DRM_COLUMNID;
+  end;
+
+// For DrmGetTableForeignKeyInfo
+  PDRM_FOREIGNKEYLIST = ^DRM_FOREIGNKEYLIST;
+  DRM_FOREIGNKEYLIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdPkTableName: DRM_COLUMNID;
+    ColumnIdPkColumnName: DRM_COLUMNID;
+    ColumnIdFkTableName: DRM_COLUMNID;
+    ColumnIdFkColumnName: DRM_COLUMNID;
+    ColumnIdKeySeq: DRM_COLUMNID;
+    ColumnIdUpdateRule: DRM_COLUMNID;
+    ColumnIdDeleteRule: DRM_COLUMNID;
+    ColumnIdFkName: DRM_COLUMNID;
+    ColumnIdPkName: DRM_COLUMNID;
+  end;
+
+// For DrmGetTablePrivilegeInfo and DrmGetTableColumnPrivilegeInfo
+  PDRM_PRIVILEGELIST = ^DRM_PRIVILEGELIST;
+  DRM_PRIVILEGELIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdTableName: DRM_COLUMNID;
+    ColumnIdColumnName: DRM_COLUMNID;
+    ColumnIdGrantor: DRM_COLUMNID;
+    ColumnIdGrantee: DRM_COLUMNID;
+    ColumnIdPrivilege: DRM_COLUMNID;
+    ColumnIdIsGrantable: DRM_COLUMNID;
+  end;
+
+// For DrmGetExtPredicateInfo
+  PDRM_PREDICATELIST = ^DRM_PREDICATELIST;
+  DRM_PREDICATELIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdPredId: DRM_COLUMNID;
+    GrBit: DRM_COLUMNID;
+    ColumnIdArgColTyp: DRM_COLUMNID;
+    ColumnIdArgData: DRM_COLUMNID;
+  end;
+
+// For DrmRetrieveColumn
+
+const
+  DRM_RETINFO_NEW		= $FFFFFFFF;
+  DRM_RETINFO_OLD		= $FFFFFFFE;
+  DRM_RETINFO_NULL	= $00000000;
+
+type
+  PDRM_RETINFO = ^DRM_RETINFO;
+  DRM_RETINFO = packed record
+    Struct: DRM_UINT32;
+    LongValue: DRM_UINT32;
+  end;
+
+// For DrmGetDatabaseTableInfo and DrmGetTableInfo
+  PDRM_TABLEINFO = ^DRM_TABLEINFO;
+  DRM_TABLEINFO = packed record
+    Struct: DRM_UINT32;
+    cRecord: DRM_UINT32;
+    Page: DRM_UINT32;
+  end;
+
+  PDRM_TABLELIST = ^DRM_TABLELIST;
+  DRM_TABLELIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    ColumnIdObjectName: DRM_COLUMNID;
+    ColumnIdObjTyp: DRM_COLUMNID;
+    ColumnIdcRecord: DRM_COLUMNID;
+    ColumnIdcPage: DRM_COLUMNID;
+    ColumnIdFlags: DRM_COLUMNID;
+    pTabNameFilterIn: PAnsiChar;
+  end;
+
+// For DrmGetTypeCatInfo
+  PDRM_TYPECATLIST = ^DRM_TYPECATLIST;
+  DRM_TYPECATLIST = packed record
+    Struct: DRM_UINT32;
+    TableId: DRM_TABLEID;
+    cRecord: DRM_UINT32;
+    ColumnIdsDRMType: DRM_COLUMNID;
+    ColumnIdpszName: DRM_COLUMNID;
+    ColumnIdfCreates: DRM_COLUMNID;
+    ColumnIdulFlags: DRM_COLUMNID;
+    ColumnIdlMaxLen: DRM_COLUMNID;
+    ColumnIdsMaxScale: DRM_COLUMNID;
+    ColumnIdlMaxPrecision: DRM_COLUMNID;
+    ColumnIdpszLocName: DRM_COLUMNID;
+  end;
+
+type
+  DRM_DROPBEHAVIOR_TYPE = Longint;
+const
+  DRM_CASCADE: Longint  = 1;
+  DRM_RESTRICT: Longint = 2;
+
+type
+  DRM_REF_ACTION = Longint;
+const
+  DRM_REF_NO_ACTION: Longint   = 0;
+  DRM_REF_CASCADE: Longint     = 1;
+  DRM_REF_RESTRICT: Longint    = 2;
+  DRM_REF_SET_NULL: Longint    = 3;
+  DRM_REF_SET_DEFAULT: Longint = 4;
+
+type
+  PDRM_CONSTRAINT = ^DRM_CONSTRAINT;
+  DRM_CONSTRAINT = packed record
+    Struct: DRM_UINT32;
+    pConstraintName: PAnsiChar;
+    ui32Type: DRM_UINT32;
+    pConstraintColumnNames: PAnsiChar;
+    pIndexName: PAnsiChar;
+    IndexNameMaxLen: DRM_UINT32;
+    pTargetTableName: PAnsiChar;
+    pTargetColumnNames: PAnsiChar;
+    UpdateRule: DRM_REF_ACTION;
+    DeleteRule: DRM_REF_ACTION;
+  end;
+
+//****************************************************************************
+//  Constant and macro definitions
+
+// Contraint Flags - DrmCreateConstraint, DrmDeleteConstraint
+const
+  DRM_bitConstraintPrimary    = $00000001;
+  DRM_bitConstraintUnique     = $00000002;
+  DRM_bitConstraintNotNULL    = $00000004;
+  DRM_bitConstraintReferences = $00000008;
+
+// Flags for DrmOpenDatabase
+  DRM_bitDbShared             = $00000000;
+  DRM_bitDbExclusive          = $00000002;
+  DRM_bitDbOEMConversion      = $00000004;
+
+// Flags for DrmGetDatabaseTableInfo
+  DRM_bitObjectSystemTable    = $80000000;
+
+// Flags for DrmGetTableColumnInfo
+  DRM_bitColumnUnique         = $00000001;
+  DRM_bitColumnPrimary        = $00000002;
+  DRM_bitColumnNotNULL        = $00000004;
+  DRM_bitColumnReferences     = $00000008;
+  DRM_bitColumnNotModifiable  = $00000010;
+  DRM_bitColumnUpdateable     = $00000020;
+  DRM_bitColumnUnsigned       = $00000400;
+
+// Constants for DrmMove
+{$Ifdef PvDelphi4Up}
+  DRM_MoveFirst: DRM_UINT32   = $80000000;
+  DRM_MovePrev: DRM_UINT32    = $F0000000;
+  DRM_MoveLast: DRM_UINT32    = $C0000000;
+{$Else}
+  DRM_MoveFirst               = $80000000;
+  DRM_MovePrev                = $F0000000;
+  DRM_MoveLast                = $C0000000;
+{$Endif}
+
+  DRM_MoveNext                = 1;
+
+// Flags for DrmMakeKey
+  DRM_bitNewKey               = $00000001;
+  DRM_bitSubSeqKey            = 0;
+  DRM_bitPartialKey           = $00000100;
+  DRM_bitLocateKey            = $00001000;
+
+  DRM_ktUpper                 = 0;
+  DRM_ktLower                 = 1;
+
+  // 35059 - shenders
+  DRM_ktRangeStart            = 2;
+  DRM_ktRangeEnd              = 3;
+
+// Flags for DrmSeek
+  DRM_bitSeekEQ               = $00000001;
+  DRM_bitSeekGE               = $00000008;
+  DRM_bitSeekGT               = $00000010;
+
+// Seek to (skipping nulls) lowest key value
+  DRM_bitSeekFirst            = $00000020;
+
+// Seek to highest key value
+  DRM_bitSeekLast             = $00000040;
+
+// Flags for DrmOpenTable
+  DRM_bitTableDenyWrite       = $00000001;
+  DRM_bitTableDenyRead        = $00000002;
+  DRM_bitTableReadOnly        = $00000004;
+
+// Options for DrmInitUpdate
+  DRM_initInsert              = 0;
+  DRM_initReplace             = 2;
+
+
+// Flags for DrmGetTypeCatalogInfo (ON = YES, OFF = NO)
+  DRM_bitTypeNotNullable      = $00000001;
+  DRM_bitTypeAutoInc          = $00000002;
+  DRM_bitTypeNotUpdateable    = $00000004;
+  DRM_bitTypeNoIndexSupport   = $00000008;
+  DRM_bitTypeTextNoCaseSens   = $00000010;
+  DRM_bitTypeUnsigned         = $00000020;
+  DRM_bitTypeMoney            = $00000040;
+  DRM_bitTypeSynonym          = $00000080;
+
+  DRM_bitTypeHidden           = $00000100;
+  DRM_bitTypeDefault          = $00000200;
+  DRM_bitTypeSecondary        = $00000400;
+
+// Flags for DrmCreateForeignKey
+  DRM_bitFKeyUpdateCascade    = $00000001;
+  DRM_bitFKeyUpdateRestrict   = $00000002;
+  DRM_bitFKeyUpdateSetNull    = $00000004;
+  DRM_bitFKeyUpdateSetDefault = $00000008;
+  DRM_bitFKeyDeleteCascade    = $00000010;
+  DRM_bitFKeyDeleteRestrict   = $00000020;
+  DRM_bitFKeyDeleteSetNull    = $00000040;
+  DRM_bitFKeyDeleteSetDefault = $00000080;
+
+// Flags for DrmCreateTriger
+  DRM_bitTriggerInsert        = $00000001;
+  DRM_bitTriggerUpdate        = $00000002;
+  DRM_bitTriggerDelete        = $00000004;
+  DRM_bitTriggerBefore        = $00000008;
+  DRM_bitTriggerAfter         = $00000010;
+
+
+// Flags for DrmGetTableIndexInfo
+  DRM_bitIndexUnique          = $00000001;
+  DRM_bitIndexPrimary         = $00000002;
+  DRM_bitIndexNotNull         = $00000004;
+  DRM_bitIndexNotModifiable   = $00000008;
+  DRM_bitIndexClustered       = $00000010;
+  DRM_bitIndexNotOrdered      = $00000020;
+  DRM_bitIndexCandidate       = $00000040;
+  DRM_bitIndexReference       = $80000000;    // IndexInfo only
+  DRM_bitIndexCaseSens        = $00010000;
+
+  DRM_bitKeyAscending         = $00000000;
+  DRM_bitKeyDescending        = $00000001;
+
+// Flags for DrmGetInfo
+
+// Passed in as reserved Sesion ID for DrmGetInfo
+// This may be called before DrmBeginSession
+  DRM_DriverInfoSesId         = $FFFFFFFF;
+
+// Driver wide flags
+  DRM_infoValidateQualifier   = 1;
+  DRM_infoDriverName          = 2;
+  DRM_infoSesPasswordSupport  = 3;
+  DRM_infoUserNameSupport     = 4;
+  DRM_infoAppAccessList       = 5;
+  DRM_infoOdbcIniTokens       = 6;
+
+// Session wide flags
+  DRM_infoCollate                    = 100;
+  DRM_infoAccess                     = 101;
+  DRM_infoIndexSupport               = 102;
+  DRM_infoColNullableSupport         = 103;
+  DRM_infoTabPasswordSupport         = 104;
+  DRM_infoTableNameCaseSens          = 105;
+  DRM_infoColumnNameCaseSens         = 106;
+  DRM_infoQualNameCaseSens           = 107;
+  DRM_infoQualMaxLen                 = 108;
+  DRM_infoTabNameMaxLen              = 109;
+  DRM_infoColNameMaxLen              = 110;
+  DRM_infoTabNameExtSupport          = 111;
+  DRM_infoDBMSName                   = 112;
+  DRM_infoIsamVersion                = 113;
+  DRM_infoQualTerm                   = 114;
+  DRM_infoTransactSupport            = 115;
+  DRM_infoIsolationSupport           = 116;
+  DRM_infoDefaultIsolation           = 117;
+  DRM_infoPDFilterSupport            = 118;
+  DRM_infoPDJoinSupport              = 119;
+  DRM_infoFoldNametoUpper            = 120;
+  DRM_infoSeekFirstLastSupport       = 121;
+  DRM_infoPrimaryKeySupport          = 122;
+  DRM_infoForeignKeySupport          = 123;
+  DRM_infoTablePrivilegeSupport      = 124;
+  DRM_infoColumnPrivilegeSupport     = 125;
+  DRM_infoStoredProcedureSupport     = 126;
+  DRM_infoStoredViewSupport          = 127;
+  DRM_infoColumnsOrdByColNameSupport = 128;
+  DRM_infoPDFiltIndexSupport         = 129;
+  DRM_infoDrmCntStrings              = 130;
+  DRM_infoCreateTblSupport           = 131;
+  DRM_infoAlterTblSupport            = 132;
+
+// Values for DRM_infoAccess grbit
+  DRM_bitInfoReadOnly         = $00000000;
+  DRM_bitInfoCreateTbl        = $00000001;
+  DRM_bitInfoDropTbl          = $00000002;
+  DRM_bitInfoInsert           = $00000004;
+  DRM_bitInfoUpdate           = $00000008;
+  DRM_bitInfoDelete           = $00000010;
+  DRM_bitInfoCreateNdx        = $00000020;
+  DRM_bitInfoDropNdx          = $00000040;
+  DRM_bitInfoAlterTbl         = $00000088;
+
+  DRM_bitInfoUnknown          = $80000000;
+
+// Collate values for DrmGetInfo
+  DRM_sortBinary              = $0000;
+  DRM_sortUnknown             = $FFFF;
+
+{ Transaction model values for DrmGetInfo. Use DRM_txnOFF if not supported
+ in any way by your DRM layer as query performance will increase if the
+ engine can ignore transaction states }
+
+// Engine will track and report txn state for this state. (implies autocommit mode)
+  DRM_txnNONE                 = 0;
+  DRM_txnDML                  = 1;
+  DRM_txnALL                  = 2;
+  DRM_txnDDL_COMMIT           = 3;
+  DRM_txnDDL_IGNORE           = 4;
+
+// Engine will not track or report txn state for this state.
+  DRM_txnOFF                  = 5;
+
+  DRM_txnNumModels            = 5;
+
+// Flags for push-down predicate grbit and DrmExtPredicateExec argument
+  DRM_bitPredName             = $00000010;
+  DRM_bitPredArgColName       = $00000020;
+  DRM_bitPredArgExprValue     = $00000040;
+  DRM_bitPredArgSeperator     = $00000080;
+
+// Flags for push-down join capability
+  DRM_bitInfoNoPDJoin         = $00000000;
+  DRM_bitInfoPDEquijoin       = $00000001;
+  DRM_bitInfoPDLeftOuterJoin  = $00000002;
+
+// Offsets into push-down join array groups
+
+// Join Conditions Array group
+  DRM_PDJ_CONDARRAY_COLARRAY  = 0;
+
+// Join Columns Array group
+  DRM_PDJ_COLARRAY_COLID      = 0;
+  DRM_PDJ_COLARRAY_TBLARRAY   = 1;
+  DRM_PDJ_COLARRAY_PRESERVE   = 2;
+  DRM_PDJ_COLARRAY_FJOIN      = 3;
+  DRM_PDJ_COLARRAY_FNEXT      = 4;
+
+// Join Tables Array group
+  DRM_PDJ_TBLARRAY_BASEID     = 0;
+  DRM_PDJ_TBLARRAY_VIRTID     = 1;
+
+type
+  DRM_FilterIsColumn = (fisConst, fisColumn, fisPartialConst, fisNull);
+
+  // shenders:  Do not believe this definition -- ExprWithNextTerm and CompareCode
+  //   are reversed; this needs to be fixed later...
+  //   Also, the length that comes back is incorrect for ZStrings...
+  PDRM_FilterStruct = ^DRM_FilterStruct;
+  DRM_FilterStruct = packed record
+    IsColumn: DRM_FilterIsColumn;
+      // if IsColumn == fisConst then this is Id of related field for compare
+    ColumnId: DRM_COLUMNID;
+    ExprWithNextTerm: Byte; // Logical expression with previous term in filter;
+    CompareCode: byte; // see GetNextExtended in Btrieve
+                       // if 0 then this is the last term in filters array
+    CompColumnId: DRM_COLUMNID;
+                       // use neither CompColumnId or below fields
+    pConst: Pointer;
+    ConstLen: word;    // size of const
+  end;
+
+  PDRM_FilterStructArray = ^DRM_FilterStructArray;
+  DRM_FilterStructArray = packed array[0..65535] of DRM_FilterStruct;
+
+const
+  DRM_FilterMergeInBegin      = 0;
+  DRM_FilterMergeInEnd        = 1;
+
+type
+  TBtrieveInfo = packed record
+    pKeyBuf: Pointer;
+    KeyLen: Byte;
+    KeyNum: Shortint;
+    CurFilter: Pointer;
+    CurFilterLen: integer;
+  end;
+
+const
+
+// Tags for DrmSetFilterOnColumns
+  fsReservLow = -100;
+  fsFilterTagAll = -1;  // delete all filters
+  fsFilterTagReturnNew = 0;
+  fsFilterTagRange = 1;
+  fsReservHigh = 100;
+
+// Flags for push-down filter capability
+  DRM_bitInfoNoPDFilter       = $00000000;
+
+  DRM_bitInfoAnd              = $00000001;
+  DRM_bitInfoOr               = $00000002;
+  DRM_bitInfoNot              = $00000004;
+
+  DRM_bitInfoEQ               = $00000008;
+  DRM_bitInfoLE               = $00000010;
+  DRM_bitInfoGE               = $00000020;
+  DRM_bitInfoLT               = $00000040;
+  DRM_bitInfoGT               = $00000080;
+  DRM_bitInfoNE               = $00000100;
+
+  DRM_bitInfoAdd              = $00000200;
+  DRM_bitInfoSubtract         = $00000400;
+  DRM_bitInfoMultiply         = $00000800;
+  DRM_bitInfoDivide           = $00001000;
+  DRM_bitInfoRemainder        = $00002000;
+  DRM_bitInfoNegative         = $00004000;
+
+  DRM_bitInfoIn               = $00008000;
+  DRM_bitInfoBetween          = $00010000;
+  DRM_bitInfoLike             = $00020000;
+  DRM_bitInfoExists           = $00040000;
+  DRM_bitInfoValues           = $00080000;
+  DRM_bitInfoIsNull           = $00100000;
+
+// update_rule and delete_rule values
+  DRM_fkruleCascade           = 0;
+  DRM_fkruleRestrict          = 1;
+  DRM_fkruleSetNull           = 2;
+
+// privilege values
+  DRM_privSelect              = 0;
+  DRM_privInsert              = 1;
+  DRM_privUpdate              = 2;
+  DRM_privDelete              = 3;
+  DRM_privReferences          = 4;
+  DRM_privAll                 = 5;
+  DRM_privAlter               = 6;
+  DRM_privCreate              = 7;
+  DRM_privSecurity            = 8;
+
+// isgrantable values
+  DRM_grantYes                = 0;
+  DRM_grantNo                 = 1;
+
+// Operators for DrmSetFilter
+// Must not conflict with DRM data types
+type
+  OPERATOR_TYPE = Longint;
+const
+  DRM_filtopNone: Longint      = 1000;
+  DRM_filtopAnd: Longint       = 1001;
+  DRM_filtopOr: Longint        = 1002;
+  DRM_filtopNot: Longint       = 1003;
+  DRM_filtopEQ: Longint        = 1004;
+  DRM_filtopLE: Longint        = 1005;
+  DRM_filtopGE: Longint        = 1006;
+  DRM_filtopLT: Longint        = 1007;
+  DRM_filtopGT: Longint        = 1008;
+  DRM_filtopNE: Longint        = 1009;
+  DRM_filtopAdd: Longint       = 1010;
+  DRM_filtopSubtract: Longint  = 1011;
+  DRM_filtopMultiply: Longint  = 1012;
+  DRM_filtopDivide: Longint    = 1013;
+  DRM_filtopRemainder: Longint = 1014;
+  DRM_filtopNegative: Longint  = 1015;
+  DRM_filtopIn: Longint        = 1016;
+  DRM_filtopBetween: Longint   = 1017;
+  DRM_filtopLike: Longint      = 1018;
+  DRM_filtopExists: Longint    = 1019;
+  DRM_filtopValues: Longint    = 1020;
+  DRM_filtopIsNull: Longint    = 1021;
+  DRM_filtopExtPred: Longint   = 1022;
+
+// Offsets into the Push-down Filter array nodes.
+const
+  FLT_NODE_TYPE       = 0;
+
+// Operand node offsets
+  FLT_DATA_LENGTH     = 1;
+  FLT_DYNAMICPARAM    = 2;
+  FLT_DATA_REF        = 3;
+
+  FLT_TABLE_ID        = 1;
+  FLT_COLUMN_ID       = 2;
+
+// Operator node offsets
+  FLT_NUM_REFS        = 1;
+  FLT_FIRST_REF       = 2;
+
+  FLT_NEG_OPERAND     = 2;
+  FLT_BETWEEN_EXPR    = 2;
+  FLT_BETWEEN_FIRST   = 3;
+  FLT_BETWEEN_LAST    = 4;
+  FLT_NOT_OPERAND     = 2;
+  FLT_COMPARE_LEFT    = 2;
+  FLT_COMPARE_RIGHT   = 3;
+  FLT_LIKE_COLUMN     = 2;
+  FLT_LIKE_PATTERN    = 3;
+  FLT_NULL_COLUMN     = 2;
+  FLT_EXPR_LEFT       = 2;
+  FLT_EXPR_RIGHT      = 3;
+
+// Flags for DrmSetColumn
+  DRM_bitSetLV                = 0;
+  DRM_bitSetAppendLV          = $00000001;
+
+  DRM_bitSetColumnNull        = 1;
+  DRM_bitSetColumnNotNull     = 0;
+
+// Column data types
+  DRM_coltypNil               = 0;
+  DRM_coltypBit               = 1;      // 1-byte; 1 is True, 0 is False
+  DRM_coltypUnsignedByte      = 2;      // 1-byte integer, unsigned
+  DRM_coltypShort             = 3;      // 2-byte integer, signed
+  DRM_coltypLong              = 4;      // 4-byte integer, signed
+  DRM_coltypCurrency          = 5;      // 8 byte integer, signed
+  DRM_coltypIEEESingle        = 6;      // 4-byte IEEE single precision
+  DRM_coltypIEEEDouble        = 7;      // 8-byte IEEE double precision
+  DRM_coltypDateTime          = 8;      // Integral date, fractional time
+  DRM_coltypBinary            = 9;      // Binary data, < 255 Byte
+  DRM_coltypText              = 10;     // ANSI text, case insensitive
+  DRM_coltypLongBinary        = 11;     // Binary data, < 256 bytes
+  DRM_coltypLongText          = 12;     // ANSI text, long value
+  DRM_coltypDate              = 101;    // 8-byte IEEE double precision
+  DRM_coltypTime              = 102;    // 8-byte IEEE double precision
+  DRM_coltypNumeric           = 103;    // Exact numeric.
+  DRM_coltypVarText           = 104;    // ANSI text, case insensitive, < 256 Byte
+  DRM_coltypVarBinary         = 106;
+
+// Push-down Filter extra data types.
+// Must not conflict with the Column data types
+  DRM_pdftypColumn            = 500;    // Used in Push-Down Filters
+  DRM_pdftypNoType            = 501;    // Used in Push-Down Filters
+
+// Stored Proc argument type
+  DRM_proctypNull			        = $0001;
+  DRM_proctypEmpty		        = $0002;
+
+// Engine Object Types
+  DRM_objtypTable             = 1;
+  DRM_objtypView              = 4;
+
+// Constants for DrmSetSessionOption
+  DRM_optSetTxnModel          = 0;     // Set transact model DEBUGGING ONLY
+  DRM_optSetIsolation         = 2;     // Set the transaction isolation level
+  DRM_optSetIniValue          = 3;     // Passes odbc.ini's token value to DRM layer
+  DRM_optSetMaxRowSize        = 4;
+  DRM_optSetCodePage          = 5;
+  DRM_optSetWaitLock				  = 6;
+
+// Transaction Isolation options
+  DRM_txnReadUncommitted      = $00000001;
+  DRM_txnReadCommitted        = $00000002;
+  DRM_txnRepeatableRead       = $00000004;
+  DRM_txnSerializable         = $00000008;
+  DRM_txnVersioning           = $00000010;
+
+// Unknown session ID in DrmGetExtErrStr
+  DRM_UnknownSessionId        = -1;
+
+// PdacGetTableOption/PdacSetTableOption options
+  DRM_TABLE_OPTION_OWNER        = 0;
+  DRM_TABLE_OPTION_IGNORE_OWNER = 1;
+
+//***********************     ERROR CODES     **************************
+
+  DRM_ExtErrMin                   = -4999;
+  DRM_ExtErrMax                   = -3000;
+
+// SUCCESS
+
+  DRM_errSuccess                  = 0;     // Successful Operation
+
+// ERRORS
+
+  DRM_wrnNyi                      = -1;    // Function Not Yet Implemented
+
+  DRM_errFeatureNotAvailable      = -1001; // API not supported
+  DRM_errInvalidName              = -1002; // Invalid name
+  DRM_errInvalidParameter         = -1003; // Invalid API parameter
+  DRM_wrnColumnNull               =  1004; // Column is NULL-valued
+  DRM_wrnBufferTruncated          =  1006; // Buf too short, data truncated
+  DRM_errInvalidDatabaseId        = -1010; // Invalid database id
+  DRM_errOutOfMemory              = -1011; // Out of memory
+  DRM_errNoMoreFiles              = -1020; // No more file handles
+  DRM_errDiskNotReady             = -1021; // Disk not ready
+  DRM_errDiskIO                   = -1022; // Disk IO error
+  DRM_errInvalidPath              = -1023; // Invalid path
+  DRM_errFileShareViolation       = -1024; // Sharing violation
+  DRM_errFileLockViolation        = -1025; // File locking violation
+  DRM_errRecordTooBig             = -1026; // Record length exceeds max
+  DRM_errTooManyOpenDatabases     = -1027; // Database limit reached
+  DRM_errInvalidDatabase          = -1028; // This isn't a database
+  DRM_errFileLockingUnavailable   = -1031; // File locking unavailable
+  DRM_errFileAccessDenied         = -1032; // File access denied
+  DRM_errBufferTooSmall           = -1038; // Buffer is too small
+  DRM_wrnSeekNotEqual             =  1039; // SeekLE or SeekGE didn't find exact match
+  DRM_errTooManyColumns           = -1040; // Too many columns defined
+  DRM_wrnSeekNullRowset           =  1041; // All the keyset columns are null in the table
+  DRM_errInvalidFilename          = -1044; // Filename is invalid
+  DRM_errInvalidBookmark          = -1045; // Invalid bookmark
+  DRM_errInvalidBufferSize        = -1047; // Data buffer doesn't match column size
+  DRM_errIndexInUse               = -1051; // Index is in use
+  DRM_errInvalidAppend            = -1060; // Cannot append long value
+  DRM_errCantBuildKey             = -1064; // Can't build key for this sort order
+
+  DRM_errCantBegin                = -1101; // Cannot begin session
+  DRM_errWriteConflict            = -1102; // Write lock failed due to outstanding write lock
+  DRM_errInvalidSesId             = -1104; // Invalid session handle
+  DRM_errReadConflict             = -1105; // Commit lock failed due to outstanding read lock
+  DRM_errTooManySessions          = -1113; // Too many active sessions
+  DRM_errInvalidOption            = -1114; // Invalid session option
+
+  DRM_errDatabaseInUse            = -1202; // Database in use, can't detach
+  DRM_errDatabaseNotFound         = -1203; // No such database
+  DRM_errDatabaseInvalidName      = -1204; // Invalid database name
+  DRM_errDatabaseCorrupted        = -1206; // Non-db file or corrupted db
+  DRM_errDatabaseLocked           = -1207; // Database exclusively locked
+
+  DRM_wrnTableEmpty               =  1301; // Open an empty table
+  DRM_errTableLocked              = -1302; // Table is exclusively locked
+  DRM_errTableDuplicate           = -1303; // Table already exists
+  DRM_errTableInUse               = -1304; // Table is in use, cannot lock
+  DRM_errObjectNotFound           = -1305; // No such table or object
+  DRM_errTableNotLocked           = -1309; // No DDLs w/o exclusive lock
+  DRM_errInvalidTableId           = -1310; // Invalid table id
+  DRM_errTooManyOpenTables        = -1311; // Cannot open any more tables
+
+  DRM_errIndexNotFound            = -1404; // No such index
+  DRM_errIndexHasPrimary          = -1402; // Primary index already defined
+  DRM_errIndexDuplicate           = -1403; // Index is already defined
+
+  DRM_errColumnLong               = -1501; // Column value is long
+  DRM_errNullInvalid              = -1504; // Null not valid
+  DRM_errColumnIndexed            = -1505; // Column indexed, cannot delete
+  DRM_errColumnTooBig             = -1506; // Field length is > maximum
+  DRM_errColumnNotFound           = -1507; // No such column
+  DRM_errColumnDuplicate          = -1508; // Field is already defined
+  DRM_errInvalidColumnType        = -1511; // Invalid column data type
+  DRM_wrnColumnMaxTruncated       =  1512; // Maximum data length exceeded
+  DRM_errColumnCannotIndex        = -1513; // Cannot index Bit, LongText, LongBinary
+  DRM_errNoCurrentIndex           = -1515; // Invalid w/o a current index
+  DRM_errKeyIsMade                = -1516; // The key is completely made
+  DRM_errBadColumnId              = -1517; // Column Id incorrect
+
+  DRM_errRecordNotFound           = -1601; // The key was not found
+  DRM_errNoCurrentRecord          = -1603; // Currency not on a record
+  DRM_errKeyDuplicate             = -1605; // Illegal duplicate key
+  DRM_errKeyNotMade               = -1608; // No call to DrmMakeKey
+  DRM_errUpdateNotPrepared        = -1609; // No call to DrmInitUpdate
+  DRM_errIntegrityViolationMaster = -1612; // References to key exist
+  DRM_errIntegrityViolationSlave  = -1613; // No referenced key exists
+
+  DRM_errDatabaseOpenError        = -1804; // Database file can't be opened
+  DRM_errTooManyAttachedDatabases = -1805; // Too many open databases
+  DRM_errDatabaseCloseError       = -1806; // Db file could not be closed
+  DRM_errTooManyOpenFiles         = -1807; // Too many files open
+  DRM_errDiskFull                 = -1808; // No space left on disk
+  DRM_errPermissionDenied         = -1809; // Permission denied
+  DRM_errFileNotFound             = -1811; // File not found
+
+  DRM_errCannotOpenSystemDb       = -1901; // Failed sysdb on beginsession
+  DRM_errInvalidLogon             = -1902; // Invalid logon at beginsession
+  DRM_errInvalidAccountName       = -1903; // Invalid account name
+  DRM_errInvalidPassword          = -1905; // Invalid password
+  DRM_errAccessDenied             = -1907; // Access denied
+
+  DRM_errFilterNotSupported       = -2001; // Filter not supported
+  DRM_errJoinDiscarded            = -2002; // Push-down join was discarded
+  DRM_errFilterDiscarded          = -2003; // Push-down filter was discarded
+  DRM_errFilterKeepIndexOpt       = -2004; // Push-down filter accepted, keep index optimization
+
+  DRM_errRecordLocked             = -5202; // Record locked
+  DRM_wrnColumnDataTruncated      =  5203; // Data truncated
+  DRM_errTableNotOpen             = -5204; // Table is not open
+  DRM_errDateOutOfRange           = -5208; // Invalid date
+  DRM_wrnOptionsIgnored           =  5211; // Options were ignored
+  DRM_errInvalidProcedure         = -5220; // Invalid procedure name
+  DRM_errInvalidPredicate         = -5221; // Invalid predicate name
+  DRM_errInvalidCPID              = -5222; // Invalid Code Page value
+
+  {-------------------------------------------------------------------------
+
+        Pervasive Data Record Manager (DRM) Error Codes
+
+        DRM errors -3099 to -3000
+
+        Note: Custom DRM errors in the range -3099 to -4999
+
+    -------------------------------------------------------------------------}
+    DRM_errLengthFKIncompatible                         = -3035;
+    DRM_errScaleFKIncompatible                          = -3036;
+    DRM_errPrecisionFKIncompatible                      = -3037;
+    DRM_errDataTypeFKIncompatible                       = -3038;
+    DRM_errTriggerDependency                            = -3039;
+    DRM_errGroupAlreadyExists                           = -3040;
+    DRM_errUserAlreadyExists                            = -3041;
+    DRM_errTooManyFileOpenAttempts                      = -3042;
+    DRM_errTableReferencedByForeignKey                  = -3043;
+    DRM_errTooManyLevelsOfTriggerRecursion              = -3044;
+    DRM_errIndexInUseByForeignKey                       = -3045;
+    DRM_errNullableColumnsNotAllowed                    = -3046;
+    DRM_errRINoMatchingPrimaryKey                       = -3047;
+    DRM_errInvalidPageSize                              = -3048;
+    DRM_errInvalidFreeSpaceThreshold                    = -3049;
+    DRM_errInvalidPageNum                               = -3050;
+    DRM_errDictionaryInUse                              = -3051;
+    DRM_errDictionaryAlreadyExists                      = -3052;
+    DRM_errRITableDoesntExist                           = -3053;
+    DRM_errDuplicateSavPtName                           = -3054;
+    DRM_errOnlyOneAcsPerIndex                           = -3055;
+    DRM_errAddNullableColumnInLegacyTable               = -3056;
+    DRM_errConflictingCollation                         = -3057;
+    DRM_errDropLastColumn                               = -3058;
+    DRM_errDatabaseNoFoundDictionary                    = -3059;
+    DRM_errConstraintAlreadyExists                      = -3060;
+    DRM_errInvalidConstraintName                        = -3061;
+    DRM_errDatabaseHasNoSecurity                        = -3062;
+    DRM_errDatabaseAlreadySecured                       = -3063;
+    DRM_errAlterLegacyTable                             = -3064;
+    DRM_errInvalidLogin                                 = -3065;
+    DRM_errGroupNotFound                                = -3066;
+    DRM_errGroupNotEmpty                                = -3067;
+    DRM_errNotAllowedToDefineSynonymForPUBLIC           = -3068;
+    DRM_errNotAllowedToDropPUBLIC                       = -3069;
+    DRM_errNotAllowedToDropAdministrator                = -3070;
+    DRM_errCannotRevokeSynonymPrivileges                = -3071;
+    DRM_errCannotGrantSynonymPrivileges                 = -3072;
+    DRM_errPrivilegesCannotBeRevokedFromAdministrator   = -3073;
+    DRM_errNotAuthorized                                = -3074;
+    DRM_errConversionRenameErr                          = -3075;
+    DRM_errConversionDeleteErr                          = -3076;
+    DRM_errBadIndexName                                 = -3077;
+    DRM_errBadColumnName                                = -3078;
+    DRM_errBadTableName                                 = -3079;
+    DRM_errDataNotBound                                 = -3080;
+    DRM_errWrongDDFBindInfo                             = -3081;
+    DRM_errDDFAlreadyBound                              = -3082;
+    DRM_errDDFNotBound                                  = -3083;
+    DRM_errSharedDDF                                    = -3084;
+    DRM_errSharedDataFile                               = -3085;
+    DRM_errIndexInUseByPrimaryKey                       = -3086;
+    DRM_errPrimaryKeyExists                             = -3087;
+    DRM_errIncompatibleFileVer                          = -3088;
+    DRM_errInconsistentMultiPath                        = -3089;
+    DRM_errDeleteConnectedCycle                         = -3090;
+    DRM_errSelfRefDeleteNotCascade                      = -3091;
+    DRM_errRISynchronization                            = -3092;
+    DRM_errTriggerRIConflict                            = -3093;
+    DRM_errInvalidDeleteRule                            = -3094;
+    DRM_errInvalidUpdateRule                            = -3095;
+    DRM_errObjectInUse                                  = -3096;
+    DRM_errInvalidCollate                               = -3097;
+    DRM_errNumberOutOfRange                             = -3098;
+    DRM_errForeignKeyInvalidDbName                      = -3099;
+
+    {-------------------------------------------------------------------------
+
+        DBNames Status Codes
+
+        -3399 to -3300
+
+    -------------------------------------------------------------------------*}
+    DRM_errDBNM_UNBIND_AND_CHANGE_DATA_LOCATION_ERR     = -3358; // 2342
+    DRM_errDBNM_BIND_AND_CHANGE_DATA_LOCATION_ERR       = -3359; // 2341
+    DRM_errDBNM_CREATE_DATA_DICT_AND_UNBIND_ERR         = -3360; // 2340
+    DRM_errDBNM_CREATE_DATA_DICT_AND_BIND_ERR           = -3361; // 2339
+    DRM_errDBNM_ChangeDictLocationAndCreateDict         = -3362; // 2338
+    DRM_errDBNM_CHANGE_DICT_LOCATION_AND_UNBIND_ERR     = -3363; // 2337
+    DRM_errDBNM_CHANGE_DICT_LOCATION_AND_BIND_ERR       = -3364; // 2336
+    DRM_errDBNM_ChangeDataLocationAndChangeName         = -3365; // 2335
+    DRM_errDBNM_CREATE_DATA_DICT_AND_CHANGE_NAME_ERR    = -3366; // 2334
+    DRM_errDBNM_UNBIND_AND_CHANGE_NAME_ERR              = -3367; // 2333
+    DRM_errDBNM_BIND_AND_CHANGE_NAME_ERR                = -3368; // 2332
+    DRM_errDBNM_ChangeDictLocationAndChangeName         = -3369; // 2331
+    DRM_errBOUND_DATAFILE_IN_UNBOUND_DB                 = -3370; // 2330
+    DRM_errDBNM_DataNotBound                            = -3371; // 2329
+    DRM_errDATAFILE_NOT_FOUND_ERR                       = -3372; // 2328
+    DRM_errDBNM_WrongDDFBindInfo                        = -3373; // 2327
+    DRM_errDDF_BOUND_TO_UNBOUND_DB                      = -3374; // 2326
+    DRM_errDBNM_DDFAlreadyBound                         = -3375; // 2325
+    DRM_errDBNM_DDFNotBound                             = -3376; // 2324
+    DRM_errBOUND_DB_DATAFILE_VERSION_ERR                = -3377; // 2322
+    DRM_errBOUND_DB_DDF_VERSION_ERR                     = -3378; // 2321
+    DRM_errBIND_UNBIND_SECURED_DB_ERR                   = -3379; // 2320
+    DRM_errBIND_UNBIND_DATAFILE_ERR                     = -3380; // 2319
+    DRM_errBOUND_DB_NAME_CHANGE_ERR                     = -3381; // 2318
+    DRM_errBOUND_DB_DDF_OPEN_ERR                        = -3382; // 2317
+    DRM_errBOUND_DB_DDF_CREATE_ERR                      = -3383; // 2316
+    DRM_errBIND_UNBIND_DB_ERR                           = -3384; // 2315
+    DRM_errCREATE_DBNAMES_CFG_ERR                       = -3385; // 2314
+    DRM_errDBNM_SharedDDF                               = -3386; // 2313
+    DRM_errDBNM_SharedDataFile                          = -3387; // 2312
+    DRM_errDB_ALREADY_BOUND                             = -3388; // 2311
+    DRM_errDB_NOT_BOUND                                 = -3389; // 2310
+    DRM_errNAMED_DATABASE_IN_USE                        = -3390; // 2309
+    DRM_errDBNM_INVALID_RI_FLAG                         = -3391; // 2308
+    DRM_errDBNM_COULD_NOT_OPEN_CFG                      = -3392; // 2307
+    DRM_errDBNM_COULD_NOT_UPDATE_CFG                    = -3393; // 2306
+    DRM_errDBNM_INVALID_DICTIONARY_PATH                 = -3394; // 2305
+    DRM_errDBNM_INVALID_DATABASE_TYPE                   = -3395; // 2304
+    DRM_errDBNM_NOT_UNIQUE                              = -3396; // 2303
+    DRM_errDBNM_INVALID_BUFFER_LENGTH                   = -3397; // 2302
+    DRM_errDBNM_INVALID_NAME                            = -3398; // 2301
+    DRM_errDBNM_END_OF_FILE                             = -3399; // 2300
+
+    {-------------------------------------------------------------------------
+
+        Component Management Status Codes
+
+        -3499 to -3472
+
+    -------------------------------------------------------------------------}
+    DRM_errNlFileNameResolution                         = -3473; // 3126
+    DRM_errNlNdsNameResolution                          = -3474; // 3125
+    DRM_errNL_TASK_TABLE_FULL                           = -3475; // 3124
+    DRM_errNlInvalidSessLevelParm                       = -3476; // 3123
+    DRM_errNL_AUTH_LEN_TOO_SMALL                        = -3477; // 3122
+    DRM_errNL_INVALID_AUTH_OBJECT                       = -3478; // 3121
+    DRM_errNL_INVALID_AUTH_TYPE                         = -3479; // 3120
+    DRM_errNlNoAuthContextAvail                         = -3480; // 3119
+    DRM_errNlInvalidAddressFamily                       = -3481; // 3118
+    DRM_errNL_CST_FULL                                  = -3482; // 3117
+    DRM_errNL_RCV_DATA_OVERFLOW                         = -3483; // 3116
+    DRM_errNL_TRANSPORT_FAILURE                         = -3484; // 3115
+    DRM_errNL_SRT_FULL                                  = -3485; // 3114
+    DRM_errNL_INVALID_SERVER_TYPE                       = -3486; // 3113
+    DRM_errNL_RECEIVE_FAILURE                           = -3487; // 3112
+    DRM_errNL_SEND_FAILURE                              = -3488; // 3111
+    DRM_errNL_NOT_CONNECTED                             = -3489; // 3110
+    DRM_errNL_MORE_DATA                                 = -3490; // 3109
+    DRM_errNL_INVALID_SESSION                           = -3491; // 3108
+    DRM_errNL_OUT_OF_MEMORY                             = -3492; // 3107
+    DRM_errNL_CONNECTION_FAILURE                        = -3493; // 3106
+    DRM_errNlNoAvailableTransport                       = -3494; // 3105
+    DRM_errNL_PERMISSION_ERROR                          = -3495; // 3104
+    DRM_errNL_NAME_NOT_FOUND                            = -3496; // 3103
+    DRM_errNL_NOT_INITIALIZED                           = -3497; // 3102
+    DRM_errNL_FAILURE                                   = -3498; // 3101
+
+    {-------------------------------------------------------------------------
+
+        Microkernel Router Status Codes
+
+        -3799 to -3775
+
+    -------------------------------------------------------------------------}
+    DRM_errMkInvalidOpOnRemote                          = -3775; // 3034
+    DRM_errMK_TASK_TABLE_FULL                           = -3776; // 3023
+    DRM_errMK_DatabufLenTooLarge                        = -3777; // 3022
+    DRM_errMK_BAD_SRB_FORMAT                            = -3778; // 3021
+    DRM_errMK_LOADING_ERROR                             = -3779; // 3020
+    DRM_errMK_SEMAPHORE_ERROR                           = -3780; // 3019
+    DRM_errMK_CLOSED_ERROR                              = -3781; // 3018
+    DRM_errMkdeDatabufTooSmall                          = -3782; // 3017
+    DRM_errMK_INTERNAL_ERROR                            = -3783; // 3016
+    DRM_errMK_INIT_ERROR                                = -3784; // 3015
+    DRM_errMK_CANT_FIND_ENGINE                          = -3785; // 3014
+    DRM_errMK_PNSL_NOT_LOADED                           = -3786; // 3013
+    DRM_errMK_LOCAL_NOT_LOADED                          = -3787; // 3012
+    DRM_errMK_THUNK_NOT_LOADED                          = -3788; // 3011
+    DRM_errMK_NWAPI_NOT_LOADED                          = -3789; // 3010
+    DRM_errMK_NETAPI_NOT_LOADED                         = -3790; // 3009
+    DRM_errMK_INVALID_CONFIG                            = -3791; // 3008
+    DRM_errMK_SERVER_NOT_FOUND                          = -3792; // 3007
+    DRM_errMK_INVALID_SESSION                           = -3793; // 3006
+    DRM_errMK_OS_ERROR                                  = -3794; // 3005
+    DRM_errMK_TIMEOUT_ERROR                             = -3795; // 3004
+    DRM_errMK_INCOMPAT_COMPONENT                        = -3796; // 3003
+    DRM_errMK_NO_RESOURCE_DLL                           = -3797; // 3002
+    DRM_errMkNoLocalAccessAllowed                       = -3798; // 3001
+    DRM_errMK_ROUTER_MEM_ERROR                          = -3799; // 3000
+
+    {-------------------------------------------------------------------------
+
+        Microkernel Errors
+
+        -4850 to -4999
+
+    -------------------------------------------------------------------------}
+    DRM_errCLIENT_TABLE_FULL                            = -4837; // 162
+    DRM_errUserCountLimitExceeded                       = -4838; // 161
+    DRM_errInvalidParametertoMKDE                       = -4839; // 160
+    DRM_errNESTING_DEPTH_ERROR                          = -4848; // 151
+    DRM_errDBS_INTERNAL_ERROR                           = -4849; // 150
+    DRM_errSYSTEM_KEY_INTERNAL                          = -4850; // 149
+    DRM_errROLL_FORWARD_ERROR                           = -4851; // 148
+    DRM_errLOG_SEGMENT_MISSING                          = -4852; // 147
+    DRM_errDUPLICATE_SYSTEM_KEY                         = -4853; // 146
+    DRM_errNO_DATABASE_SERVICES                         = -4854; // 145
+    DRM_errALREADY_LOGGED_IN                            = -4855; // 144
+    DRM_errNO_SSQL_RIGHTS                               = -4856; // 143
+    DRM_errINVALID_DATABASE                             = -4857; // 142
+    DRM_errINVALID_USERNAME                             = -4858; // 141
+    DRM_errINCOMPATIBLE_CLOSE                           = -4859; // 140
+    DRM_errINVALID_KEY_OPTION                           = -4860; // 139
+    DRM_errINVALID_NULL_INDICATOR                       = -4861; // 138
+    DRM_errCANNOT_CONVERT_RP                            = -4862; // 137
+    DRM_errACS_NOT_FOUND                                = -4863; // 136
+    DRM_errISR_INVALID                                  = -4864; // 135
+    DRM_errISR_NOT_FOUND                                = -4865; // 134
+    DRM_errMoreThan5Users                               = -4866; // 133
+    DRM_errFileFull                                     = -4867; // 132
+    DRM_errNoSystemLocksAvailable                       = -4869; // 130
+    DRM_errLocatorFileConflict                          = -4884; // 116
+    DRM_errArchDumpfileAccessErr                        = -4885; // 115
+    DRM_errArchiveLogfileInvalid                        = -4886; // 114
+    DRM_errArchiveLogfileNotFound                       = -4887; // 113
+    DRM_errArchiveFileInUse                             = -4888; // 112
+    DRM_errArchiveFileNotLogged                         = -4889; // 111
+    DRM_errArchiveBlogOpenError                         = -4890; // 110
+    DRM_errTransactionTooComplex                        = -4891; // 109
+    DRM_errChunkIncompatibleFile                        = -4892; // 107
+    DRM_errChunkCannotGetNext                           = -4893; // 106
+    DRM_errCannotCreateWithBat                          = -4894; // 105
+    DRM_errLocaleError                                  = -4895; // 104
+    DRM_errChunkOffsetTooLong                           = -4896; // 103
+    DRM_errNotEnoughStack                               = -4897; // 102
+    DRM_errNoOsMemory                                   = -4898; // 101
+    DRM_errNoCacheBuffers                               = -4899; // 100
+    DRM_errDemoError                                    = -4900; // 99
+    DRM_errInternalTrxError                             = -4901; // 98
+    DRM_errDataBufferTooSmall                           = -4902; // 97
+    DRM_errCommunicationsEnv                            = -4903; // 96
+    DRM_errSessionNotValid                              = -4904; // 95
+    DRM_errPermissionError                              = -4905; // 94
+    DRM_errWrongLockType                                = -4906; // 93
+    DRM_errTransactionFull                              = -4907; // 92
+    DRM_errServerError                                  = -4908; // 91
+    DRM_errDeviceFull                                   = -4909; // 90
+    DRM_errNameError                                    = -4910; // 89
+    DRM_errModeError                                    = -4911; // 88
+    DRM_errHandleFull                                   = -4912; // 87
+    DRM_errFileTableFull                                = -4913; // 86
+    DRM_errFileInUse                                    = -4914; // 85
+    DRM_errRecordInUse                                  = -4915; // 84
+    DRM_errReadOutsideTrx                               = -4916; // 83
+    DRM_errLostPosition                                 = -4917; // 82
+    DRM_errLockFull                                     = -4918; // 81
+    DRM_errConflict                                     = -4919; // 80
+    DRM_errProgrammingError                             = -4920; // 79
+    DRM_errDeadlockDetected                             = -4921; // 78
+    DRM_errWaitError                                    = -4922; // 77
+    DRM_errReferenceConflict                            = -4923; // 76
+    DRM_errTransactionAbort                             = -4925; // 74
+    DRM_errDefinitionNotSync                            = -4926; // 73
+    DRM_errNoOpenReference                              = -4927; // 72
+    DRM_errDefinitionsError                             = -4928; // 71
+    DRM_errCascadeError                                 = -4930; // 69
+    DRM_errCascadesTooDeeply                            = -4931; // 68
+    DRM_errNoOpenDictionaries                           = -4932; // 67
+    DRM_errMaxOpenDatabases                             = -4933; // 66
+    DRM_errWrongFieldOffset                             = -4934; // 65
+    DRM_errFilterLimitReached                           = -4935; // 64
+    DRM_errExtendInsertBuffer                           = -4936; // 63
+    DRM_errWrongDescription                             = -4937; // 62
+    DRM_errWorkSpaceTooSmall                            = -4938; // 61
+    DRM_errRejectCountReached                           = -4939; // 60
+    DRM_errFileAlreadyExists                            = -4940; // 59
+    DRM_errCompressionShort                             = -4941; // 58
+    DRM_errExpandMemoryError                            = -4942; // 57
+    DRM_errIncompleteIndex                              = -4943; // 56
+    DRM_errAutoincrementError                           = -4944; // 55
+    DRM_errVariablePageError                            = -4945; // 54
+    DRM_errInvalidInterface                             = -4946; // 53
+    DRM_errErrorWritingCache                            = -4947; // 52
+    DRM_errInvalidOwner                                 = -4948; // 51
+    DRM_errOwnerAlreadySet                              = -4949; // 50
+    DRM_errKeyTypeError                                 = -4950; // 49
+    DRM_errAlternateSequence                            = -4951; // 48
+    DRM_errMaximumOpenFiles                             = -4952; // 47
+    DRM_errBtvAccessDenied                              = -4953; // 46
+    DRM_errWrongKeyFlags                                = -4954; // 45
+    DRM_errNullKeyPath                                  = -4955; // 44
+    DRM_errWrongRecordAddress                           = -4956; // 43
+    DRM_errAcceleratedAccess                            = -4957; // 42
+    DRM_errTrxOpenClose                                 = -4958; // 41
+    DRM_errTrxMaxFiles                                  = -4959; // 40
+    DRM_errEndAbortError                                = -4960; // 39
+    DRM_errTrxControlFile                               = -4961; // 38
+    DRM_errBeginTransaction                             = -4962; // 37
+    DRM_errTransactionError                             = -4963; // 36
+    DRM_errDirectoryError                               = -4964; // 35
+    DRM_errExtendName                                   = -4965; // 34
+    DRM_errExtendDriveError                             = -4966; // 33
+    DRM_errExtendIOError                                = -4967; // 32
+    DRM_errExtendError                                  = -4968; // 31
+    DRM_errBtrieveFileName                              = -4969; // 30
+    DRM_errKeyLength                                    = -4970; // 29
+    DRM_errRecordLength                                 = -4971; // 28
+    DRM_errKeyPosition                                  = -4972; // 27
+    DRM_errNumberOfKeys                                 = -4973; // 26
+    DRM_errCreateIOError                                = -4974; // 25
+    DRM_errPageSize                                     = -4975; // 24
+    DRM_errPositionBlock                                = -4976; // 23
+    DRM_errRecordBuffer                                 = -4977; // 22
+    DRM_errKeyBufferError                               = -4978; // 21
+    DRM_errBtrieveInactive                              = -4979; // 20
+    DRM_errUnrecoverableError                           = -4980; // 19
+    DRM_errBtvDiskFull                                  = -4981; // 18
+    DRM_errCloseError                                   = -4982; // 17
+    DRM_errExpansionError                               = -4983; // 16
+    DRM_errPreimageError                                = -4984; // 15
+    DRM_errPreopenError                                 = -4985; // 14
+    DRM_errExtensionError                               = -4986; // 13
+    DRM_errBtvFileNotFound                              = -4987; // 12
+    DRM_errBtvInvalidFilename                           = -4988; // 11
+    DRM_errModifiableError                              = -4989; // 10
+    DRM_errEndOfFile                                    = -4990; // 9
+    DRM_errInvalidPositioning                           = -4991; // 8
+    DRM_errDifferentKeyNumber                           = -4992; // 7
+    DRM_errInvalidKeyNumber                             = -4993; // 6
+    DRM_errDuplicatesError                              = -4994; // 5
+    DRM_errKeyNotFound                                  = -4995; // 4
+    DRM_errNoOpen                                       = -4996; // 3
+    DRM_errIOError                                      = -4997; // 2
+    DRM_errInvalidOperation                             = -4998; // 1
+// -------------------------------------------------------------------------
+    DRM_errOrphanFound                                  = 6000;
+    DRM_errNoRelate                                     = 6001;
+    DRM_errInvalidColumn                                = 6002;
+    DRM_errForeignKeyNotFound                           = 6003;
+    DRM_errOffsetError                                  = 6004;
+    DRM_errColumnNotNullable                            = 6005;
+    DRM_errInvalidDataType                              = 6006;
+    DRM_errInvalidIndexNumber                           = 6007;
+    DRM_errTooManySegments                              = 6008;
+    DRM_errIndexNameDuplicate                           = 6009;
+
+(****************************************************************************
+
+    API
+
+*****************************************************************************)
+
+function PdacAlterTable(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pTableName: PAnsiChar;
+    const pPassword: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    var TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacBeginSession(
+    var SesId: DRM_SESID;
+    const pUserName: PAnsiChar;
+    const pPassword: PAnsiChar;
+    const pDataSource: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCloseDatabase(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID): DRM_ERR; stdcall;
+
+function PdacCloseTable(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacCreateColumn(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pColumn: PAnsiChar;
+    const pColumnDef: PDRM_COLUMNDEF;
+    var ColumnId: DRM_COLUMNID): DRM_ERR; stdcall;
+
+function PdacCreateConstraint(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const ConstraintName: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    const ColumnName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateForeignKey(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const ForeignKeyName: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    const ForeignKeyColumns: PAnsiChar; // Referencing Table columns
+    const TargetTableName: PAnsiChar; // Referenced table
+    const TargetColumnNames:PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateGroup(
+  SesId: DRM_SESID;
+  DbsId: DRM_DBID;
+  const Group: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateIndex(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pIndexName: PAnsiChar;
+    ulGrBit: DRM_GRBIT;
+    const pKey: PAnsiChar;
+    Key: DRM_UINT32;
+    Density: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacCreateProcedure(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pProcedureName: PAnsiChar;
+    const SQL: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateTable(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pTableName: PAnsiChar;
+    var TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacCreateTrigger(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pTriggerName: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    Order: DRM_INT32;
+    const pSQL: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateUser(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pUserName: PAnsiChar;
+    const pPassword: PAnsiChar;
+    const pGroup: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacCreateView(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pViewName: PAnsiChar;
+    const pVSQL: PAnsiChar;
+    pViewColData: PDRM_INT32;
+    DataLen: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacDeleteColumn(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pColumn: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteForeignKey(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pForeignKeyName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteGroup(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pGroup: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteConstraint(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pConstraintName: PAnsiChar;
+    DropBehavior: DRM_DROPBEHAVIOR_TYPE): DRM_ERR; stdcall;
+
+function PdacDeleteIndex(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pIndexName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteProcedure(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pProcedure: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacDeleteTable(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pTableName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteTrigger(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pTrigger: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteUser(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pUserName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacDeleteView(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pViewName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacEndSession(
+    SesId: DRM_SESID): DRM_ERR; stdcall;
+
+function PdacExecExtPredicate(
+    SesId: DRM_SESID;
+    PredId: DRM_PREDID;
+    pPredData: PDRM_INT32;
+    pLitData: PDRM_INT32;
+    pRetVal: PDRM_INT32): DRM_ERR; stdcall;
+
+function PdacExecProcedure(
+    SesId: DRM_SESID;
+    ProcId: DRM_TABLEID;
+    pArgData: PDRM_INT32;
+    pRetData: PDRM_INT32): DRM_ERR; stdcall;
+
+function PdacGetBookmark(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    pBookmark: Pointer;
+    Max: DRM_UINT32;
+    var Actual: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetCollateId(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pCollateName: PAnsiChar;
+	  var CollateId: DRM_COLLATEID): DRM_ERR; stdcall;
+
+function PdacGetDatabaseProcedureInfo(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    var StoreProcList: DRM_TABLELIST;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetDatabaseTableInfo(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    var TableList: DRM_TABLELIST;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetExtErrStr(
+    SesId: DRM_SESID;
+    StrCode: DRM_ERR;
+    pErrStr: PAnsiChar;
+    Max: DRM_UINT32;
+    var Data: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetExtPredicateInfo(
+    SesId: DRM_SESID;
+    pResult: Pointer;
+    uResult: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetInfo(
+    SesId: DRM_SESID;
+    GrBit: DRM_GRBIT;
+    pInfo: Pointer;
+    Max: DRM_UINT32;
+    var Actual: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetProcedureColumnInfo(
+    SesId: DRM_SESID;
+    ProcId: DRM_TABLEID;
+    pResult: Pointer;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableColumnInfo(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    var ResColumnList: DRM_COLUMNLIST;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableColumnPrivilegeInfo(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pColumnName: PAnsiChar;
+    pResult: Pointer;
+    uResult: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableForeignKeyInfo(
+    SesId: DRM_SESID;
+    PkTableId: DRM_TABLEID;
+    FkTableId: DRM_TABLEID;
+    pResult: Pointer;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableIndexInfo(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pIndexName: PAnsiChar;
+    var IndexList: DRM_INDEXLIST;
+    uResult: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableInfo(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    var ResTableInfo: DRM_TABLEINFO;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTablePrivilegeInfo(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    pResult: Pointer;
+    uResult: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTypeCatalogInfo(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    var TypeList: DRM_TYPECATLIST;
+    Max: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGotoBookmark(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    pBookmark: Pointer;
+    Bookmark: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGrantPrivilege(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    TableId: DRM_TABLEID;
+    ColumnId: DRM_COLUMNID;
+    const pUserOrGroup: PAnsiChar;
+    GrBit: DRM_GRBIT): DRM_ERR; stdcall;
+
+function PdacInitUpdate(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Init: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacMakeKey(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    pData: Pointer;
+    cbData: DRM_UINT32;
+    GrBit: DRM_GRBIT): DRM_ERR; stdcall;
+
+{$Ifdef PvDelphi4Up}
+function PdacMove(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Row: DRM_UINT32): DRM_ERR; stdcall;
+{$Else}
+function PdacMove(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Row: DRM_INT32): DRM_ERR; stdcall;
+{$EndIf}
+
+function PdacOpenDatabase(
+    SesId: DRM_SESID;
+    const pDbsName: PAnsiChar;
+    var DbsId: DRM_DBID;
+    GrBit: DRM_GRBIT;
+    pUserName: PAnsiChar;
+    PPassword: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacOpenProcedure(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pProcName: PAnsiChar;
+    var ProcId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacOpenTable(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pTableName: PAnsiChar;
+    const pPassword: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    var TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacOpenTableIndex(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    TableId: DRM_TABLEID;
+    const pIndexName: PAnsiChar;
+    var IndexTabId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacOpenView(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pVieName: PAnsiChar;
+    const pPassword: PAnsiChar;
+    GrBit: DRM_GRBIT;
+    pVSQL: PAnsiChar;
+    var SQLLen: DRM_INT32;
+    var ViewColData: DRM_INT32;
+    var ColDataLen: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacRetrieveColumn(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    ColumnId: DRM_COLUMNID;
+    pData: Pointer;
+    Data: DRM_UINT32;
+    var Actual: DRM_UINT32;
+    pRetInfo: PDRM_RETINFO): DRM_ERR; stdcall;
+
+function PdacRevokePrivilege(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    TableId: DRM_TABLEID;
+    ColumnId: DRM_COLUMNID;
+    const pUserOrGroup: PAnsiChar;
+    GrBit: DRM_GRBIT): DRM_ERR; stdcall;
+
+(*
+function PdacSeek(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    GrBit: DRM_GRBIT): DRM_ERR; stdcall;
+*)
+function PdacSetColumn(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    ColumnId: DRM_COLUMNID;
+    const pData: Pointer;
+    DataSize: DRM_UINT32;
+    GrBit: DRM_GRBIT;
+    IsNull: DRM_GRBIT;
+    Pos: DRM_UINT32): DRM_ERR; stdcall;
+
+(*
+  // no such function in the DRM!!
+function PdacSetFilter(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    pFilter: PDRM_INT32;
+    pData: Pointer): DRM_ERR; stdcall;
+*)
+
+function PdacSetJoin(
+    SesId: DRM_SESID;
+    pJoinConditions: PDRM_UINT32;
+    pJoinColumns: PDRM_UINT32;
+    pJoinTables: PDRM_UINT32): DRM_ERR; stdcall;
+
+function PdacSetParam(
+    SesId: DRM_SESID;
+    ParamId: DRM_INT32;
+    DrmType: DRM_COLTYP;
+    pDrmData: Pointer;
+    Data: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacSetRetrieveColumns(
+    SesID: DRM_SESID;
+    pRetrieveInfo: PDRM_INT32): DRM_ERR; stdcall;
+
+function PdacSetSecurity(
+    SesId: DRM_SESID;
+    DbsId: DRM_DBID;
+    const pPassword: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacSetSessionOption(
+    SesID: DRM_SESID;
+    Option: DRM_INT32;
+    Param: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacSetTableIndex(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    const pIndexName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacSetTransact(
+    SesID: DRM_SESID;
+    Command: DRM_INT32;
+    const pSavepointName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacStringCompare(
+    SesId: DRM_SESID;
+    pStr1: PAnsiChar;
+    Str1: DRM_UINT32;
+    Sort1: DRM_UINT32;
+    pStr2: PAnsiChar;
+    Str2: DRM_UINT32;
+    Sort2: DRM_UINT32;
+    var uResult: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacUpdateRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacCancelUpdate(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacSetFilterOnColumns(
+  TableId: DRM_TABLEID;
+  FilterStructs: PDRM_FilterStruct;
+  FilterStructCount: Word;
+  var nFiltersTag: DRM_INT32;
+  MergeType: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacRemoveFilterFromColumns(
+  TableId: DRM_TABLEID;
+  nFiltersTag: DRM_INT32;
+  nIsLocateFilter: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacRefreshCurRecord(
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacSetRange(
+  TableId: DRM_TABLEID;
+
+  // 35059 - shenders: new structs
+  UpperFilterStructs: PDRM_FilterStruct;
+  UpperFilterStructCount: Word;
+  LowerFilterStructs: PDRM_FilterStruct;
+  LowerFilterStructCount: Word): DRM_ERR; stdcall;
+
+function PdacCancelRange(
+    TableId: DRM_TABLEID): DRM_ERR; stdcall;
+
+function PdacGetBtrieveInfo(
+    TableId: DRM_TABLEID;
+    var BtrieveInfo: TBtrieveInfo): DRM_ERR; stdcall;
+
+function PdacBtrCall(
+    TableId: DRM_TABLEID;
+    Op: Smallint;
+    pDataBuf: Pointer;
+    var DataLen: Word;
+    pKeyBuf: Pointer;
+    KeyLen: Byte;
+    KeyNum: Shortint): integer; stdcall;
+
+function PdacRenameTable(
+    TableId: DRM_TABLEID;
+    const pNewName: PAnsiChar): DRM_ERR; stdcall;
+
+function PdacTruncateBlob(
+  TableId: DRM_TABLEID;
+  ColumnId: DRM_COLUMNID;
+  nNewSize: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetBlobSize(
+  TableId: DRM_TABLEID;
+  ColumnId: DRM_COLUMNID;
+  var nSize: DRM_UINT32): DRM_ERR; stdcall;
+
+function PdacGetTableOption(
+  TableId: DRM_TABLEID;
+  iOption: integer;
+  pOptionData: Pointer;
+  iOptionBufferLen: integer): DRM_ERR; stdcall;
+
+function PdacSetTableOption(
+  TableId: DRM_TABLEID;
+  iOption: integer;
+  pOptionData: Pointer): DRM_ERR; stdcall;
+
+function PdacSetOwnerOnTable(
+  TableId: DRM_TABLEID;
+  Owner: PAnsiChar;
+  AccessMode: integer): DRM_ERR; stdcall;
+
+function PdacFindPercentage(
+  TableId: DRM_TABLEID;
+  var Pos: Longint): DRM_ERR; stdcall;
+
+function PdacGetByPercentage(
+  TableId: DRM_TABLEID;
+  Pos: Longint): DRM_ERR; stdcall;
+
+function PdacGetRecordCount(
+  TableId: DRM_TABLEID;
+  var RecordCount: Longint): DRM_ERR; stdcall;
+
+function PdacIsDatabaseSecured(
+  DbsId: DRM_DBID;
+  var IsSecured: WordBool): DRM_ERR; stdcall;
+
+function PdacMakeFilterKey(
+  TableId: DRM_TABLEID;
+  ColumnId: DRM_COLUMNID;
+  nFilterType: DRM_INT32;
+  pData: Pointer;
+  nDataSize: DRM_UINT32;
+  GrBit: DRM_GRBIT): DRM_ERR; stdcall;
+
+function PdacCancelFilterKey(
+  TableId: DRM_TABLEID;
+  nFilterType: DRM_INT32): DRM_ERR; stdcall;
+
+function PdacIntPower10(var ll, lh, hl, hh: DRM_UINT16; Pow: integer): WordBool; stdcall;
+
+type
+  PSqlDbFlags = ^TSqlDbFlags;
+  TSqlDbFlags = packed array[0..9] of ByteBool;
+
+const
+  SQL_DB_NAME_SIZE = 20;
+
+  SQL_DATABASE_FLAGS_BOUND_OFFSET      = 0;
+  SQL_DATABASE_FLAGS_INTEGRITY_OFFSET  = 1;
+  SQL_DATABASE_FLAGS_CREATE_DDF_OFFSET = 2;
+
+  SQL_MAX_PATH_LEN = 512;
+
+function SQLAddDatabaseName(
+  DatabaseName: PChar;
+  DatabaseFlags: PSqlDbFlags;
+  DictionaryBufLen: Longint;
+  DictionaryPath: PChar;
+  DataPathBufLen: Longint;
+  DataPath: PChar;
+  CreateDDFFlag: ByteBool): integer; stdcall;
+
+function SQLDropDatabaseName(
+  DatabaseName: PChar;
+  Option: ByteBool): integer; stdcall;
+
+function SQLGetCountDatabaseNames(
+  var Count: LongInt): integer; stdcall;
+
+function SQLGetDatabaseNames(
+  var BufLen: longint;
+  bDataBuf: PChar): integer; stdcall;
+
+function SQLGetDatabaseInfo(
+  const DatabaseName: PChar;
+  var DatabaseFlags: TSqlDbFlags;
+  var DictionaryBufLen: Longint;
+  DictionaryPath: PChar;
+  var DataPathBufLen: Longint;
+  DataPath: PChar): integer; stdcall;
+
+function SQLModifyDatabaseInfo(
+  const OldDatabaseName: PChar;
+  const NewDatabaseName: PChar;
+  const DictionaryBufLen: Longint;
+  const DictionaryPath: PChar;
+  const DataPathBufLen: Longint;
+  const DataPath: PChar;
+  const DatabaseFlags: PSqlDbFlags): integer; stdcall;
+
+implementation

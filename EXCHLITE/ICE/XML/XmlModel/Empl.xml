@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:empl xmlns:val="urn:www-iris-co-uk:empl">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <emplrec>
+         <empcode/>    <!--:  string[6];     { employee code } -->
+         <supplier/>   <!--:  string[6];     { supplier code } -->
+         <empname><![CDATA[]]></empname>    <!--:  string[30];    { employee name } -->
+         <addr> <!--:  array[1..5] of { addr1-5 } string[30];-->
+           <addr1><![CDATA[]]></addr1>
+           <addr2><![CDATA[]]></addr2>
+           <addr3><![CDATA[]]></addr3>
+           <addr4><![CDATA[]]></addr4>
+           <addr5><![CDATA[]]></addr5>
+         </addr>
+         <phone/>      <!--:  string[20];    { telephone } -->
+         <fax/>        <!--:  string[20];    { fax } -->
+         <mobile/>     <!--:  string[20];    { mobile } -->
+         <emptype/>    <!--:  char;          { employee type p/s/o } -->
+         <payno/>      <!--:  string[10];    { payroll no } -->
+         <certno/>     <!--:  string[30];    { certificate no }-->
+         <certexpiry/> <!--:  string[8];     {     "      expiry date } -->
+         <useorate/>   <!--:  wordbool;      { use pay rates setup for employee only } -->
+         <userdef1/>   <!--:  string[20];    { user defined field 1 } -->
+         <userdef2/>   <!--:  string[20];    { user defined field 2 } -->
+         <cc/>         <!--:  string[3];     { default cost centre } -->
+         <dep/>        <!--:  string[3];     { default dept } -->
+         <selfbill/>   <!--:  wordbool;      -->
+         <groupcert/>  <!--:  wordbool;      {company group cis 6 certificate} -->
+         <certtype/>   <!--:  char;          {certificate type n, 4, 5, 6}-->
+         <userdef3/>   <!--:  string[20];    { user defined field 1 } -->
+         <userdef4/>   <!--:  string[20];    { user defined field 2 } -->
+         <enino/>      <!--:  string[10];    {national ins no uk/ serial no irl?} -->
+         <labourplonly/> <!--:  wordbool;    {no timesheets - labour costs through pl only}-->
+    </emplrec>
+</message>
+</val:empl>

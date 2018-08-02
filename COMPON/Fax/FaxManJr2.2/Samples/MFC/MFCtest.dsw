@@ -1,0 +1,33 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "MFCtest"=.\MFCtest.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+    {A5929EC5-74CF-11D2-BA5E-00002149093D}
+    {07728B50-6223-11D2-BA57-00002149093D}
+    {E3BDB1C4-49AA-11D2-B96B-00A0243D54A2}
+    {CE1191A2-543E-4E06-A9D1-ADCBFCD5D368}
+}}}
+
+###############################################################################
+

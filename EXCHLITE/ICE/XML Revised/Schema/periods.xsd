@@ -1,0 +1,61 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:periods"
+            targetNamespace="urn:www-iris-co-uk:periods">
+
+  <xsd:complexType name='period'>
+    <xsd:sequence>
+      <xsd:element name='id'   type='xsd:string' />
+      <xsd:element name='date' type='xsd:string' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='settings'>
+    <xsd:sequence>
+      <xsd:element name='useplugin' type='xsd:string' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='periodlist'>
+    <xsd:sequence>
+      <xsd:element name='period' type='tns:period' minOccurs='0' maxOccurs='unbounded' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='periodrec'>
+    <xsd:sequence>
+      <xsd:element name='settings'   type='tns:settings' />
+      <xsd:element name='periodlist' type='tns:periodlist' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='periodrec' type='tns:periodrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='periods'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='periods' type='tns:periods'/>
+
+</xsd:schema>

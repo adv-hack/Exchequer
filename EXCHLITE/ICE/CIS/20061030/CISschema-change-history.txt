@@ -1,0 +1,28 @@
+Changes log for CIS schemas form version 1.0 to version 1.1
+---------------------------------------------------------
+
+1.0 
+
+- Baselined schemas
+
+1.1
+
+- In CISrequest:
+ - Changed maximum number of subcontractors from unbounded to 100
+ - Move Action indicator to be part of Subcontractor rather than Contractor
+ - Added WorksRef to Subcontractor
+ - - Removed "2007" from schema name
+
+- In CISresponse
+ - Added WorksRef to Subcontractor
+- Removed "2007" from schema name
+
+- In CISreturn
+ - Removed "2007" from schema name
+
+
+
+
+
+
+Version 1.1                                                   dated 06/06/05

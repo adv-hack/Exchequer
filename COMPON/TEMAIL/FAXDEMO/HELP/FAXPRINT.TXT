@@ -1,0 +1,69 @@
+INSTALLING (RICH FAX PRINTERS)
+==============================
+
+*.rp1		ASSOCIATING FILE TYPES
+		----------------------
+
+		Windows Explorer - View - Options... - File Types (TAB)
+
+		Select New Type Button.
+
+		Description of type:  Rich Fax Printer - Letter 1
+		Associated extension: .rp1
+
+		(NEW)
+		ACTIONS:	Open, Print, Preview
+
+		OPEN ACTION:	Action:	
+					Open
+				Application used to perform action:
+					c:\faxdemo\faxptr\faxpage1.exe "%1"
+				Then OK button
+
+		PRINT ACTION:	Action:	
+					Print
+				Application used to perform action:
+					c:\faxdemo\faxptr\faxpage1.exe "%1" /p
+				Then OK button
+
+		PREVIEW ACTION:	Action:	
+					Preview
+				Application used to perform action:
+					c:\faxdemo\faxptr\faxpage1.exe "%1" /p
+				Then OK button
+
+		Select an Icon and close
+
+INSTALL MICROSOFT EXCHANGE
+==========================
+
+Create a New Profile Called - Letters
+
+1)	Right Click on the Inbox and select Properties
+
+2)	Select - Show Profiles... button
+
+3)	Add..
+
+4)	Information Services - Microsoft Fax
+                             - Microsoft Mail
+        Should be selected.
+
+5)	Profile Name - Letters
+
+6)	Select your Fax/Modem
+
+7)	Answer incoming calls? - No
+
+8)	Enter Details for your name etc..
+
+9)	Microsoft Mail - Select your postoffice path.
+
+	Select a name/password
+
+10)	Personal Address Book - Select yours
+
+11)	Personal Folders - Select Yours
+
+12)	Do not add Inbox to Startup group - Optional
+

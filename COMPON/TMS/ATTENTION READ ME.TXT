@@ -1,0 +1,18 @@
+/////////////////////////////////////////////////////////////////////////////////
+       A        TTTTTTTT  TTTTTTTT  EEEEEE  N     N  TTTTTTTT  II   OOOOOOO N    N
+      A  A           TT              TT        E           N N  N       TT         II   O           O N N  N
+     A     A         TT              TT        EEE        N  N N       TT        II   O           O N  N N
+    A AAA A       TT              TT        E            N   NN       TT        II   O           O N   NN
+   A          A      TT              TT        EEEEEE   N     N       TT        II   OOOOOOO N    N
+/////////////////////////////////////////////////////////////////////////////////
+
+We have a problem running the TMS components and the HTML help
+
+The HTML uses the screen variable to be work properly and the TMS components complain
+that the FONT are not the same when setting font.assing(screen.menufont).
+
+the work around is an unit (excreen.pas) which does the job and correct the problem.
+this unit MUST be added to the TMS components as the las unit name in the list to work properly
+
+The units that received the FIXSCREEN define are:
+Advmenus.pas

@@ -1,0 +1,39 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = WebRel.exe WebSec.dll SecAdmin.exe WRTransmit.exe WRListener.exe \
+  SecHammer.exe ShellTransmit.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+WebRel.exe: WebRel.dpr
+  $(DCC)
+
+WebSec.dll: ..\..\..\SQL\SECURITY\WebSec.dpr
+  $(DCC)
+
+SecAdmin.exe: ..\..\..\SQL\SecAdmin2\SecAdmin.dpr
+  $(DCC)
+
+WRTransmit.exe: ..\..\..\SQL\WRTransmit\WRTransmit.dpr
+  $(DCC)
+
+WRListener.exe: ..\..\..\SQL\WRListener\WRListener.dpr
+  $(DCC)
+
+SecHammer.exe: ..\..\..\SQL\SecHammer\SecHammer.dpr
+  $(DCC)
+
+ShellTransmit.exe: ..\..\..\SQL\WRTransmit\TransmitShell\ShellTransmit.dpr
+  $(DCC)
+
+

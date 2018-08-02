@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{c3aa5764-0b4b-4c0d-9502-0e0c3ececc82}</ProjectGuid>
+    <MainSource>RVPkgD2007.dpk</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>D:\VCL\RAD Studio\5.0\Bpl\RVPkgD2007.bpl</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>Package</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Compiler><Compiler Name="UsePackages">False</Compiler><Compiler Name="Packages"></Compiler></Compiler><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Package_Options><Package_Options Name="PackageDescription">TRichView for Delphi 2007</Package_Options><Package_Options Name="ImplicitBuild">False</Package_Options><Package_Options Name="DesigntimeOnly">True</Package_Options><Package_Options Name="RuntimeOnly">False</Package_Options></Package_Options><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1049</VersionInfo><VersionInfo Name="CodePage">1251</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">RVPkgD2007.dpk</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="RVPkgD2007.dpk">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="C:\Documents and Settings\SergeyXP\designide.dcp" />
+    <DCCReference Include="C:\Documents and Settings\SergeyXP\rtl.dcp" />
+    <DCCReference Include="C:\Documents and Settings\SergeyXP\vcl.dcp" />
+    <DCCReference Include="C:\Documents and Settings\SergeyXP\vclimg.dcp" />
+    <DCCReference Include="C:\Documents and Settings\SergeyXP\vcljpg.dcp" />
+    <DCCReference Include="CRVData.pas" />
+    <DCCReference Include="CRVFData.pas" />
+    <DCCReference Include="Crvpp.pas" />
+    <DCCReference Include="CtrlImg.pas" />
+    <DCCReference Include="DLines.pas" />
+    <DCCReference Include="PtblRV.pas" />
+    <DCCReference Include="PtRVData.pas" />
+    <DCCReference Include="RichView.pas" />
+    <DCCReference Include="RVAnimate.pas" />
+    <DCCReference Include="RVBack.pas" />
+    <DCCReference Include="RVClasses.pas" />
+    <DCCReference Include="RVCodePages.pas" />
+    <DCCReference Include="RVCtrlData.pas" />
+    <DCCReference Include="RVDataList.pas" />
+    <DCCReference Include="RVDocParams.pas" />
+    <DCCReference Include="RVDragDrop.pas" />
+    <DCCReference Include="RVDsgn.pas" />
+    <DCCReference Include="RVEdit.pas" />
+    <DCCReference Include="RVERVData.pas" />
+    <DCCReference Include="RVFMisc.pas" />
+    <DCCReference Include="RVFuncs.pas" />
+    <DCCReference Include="RVGetText.pas" />
+    <DCCReference Include="RVGetTextW.pas" />
+    <DCCReference Include="RVGifAnimate2007.pas" />
+    <DCCReference Include="RVGrIn.pas" />
+    <DCCReference Include="RVItem.pas" />
+    <DCCReference Include="RVLabelItem.pas" />
+    <DCCReference Include="RVLinear.pas" />
+    <DCCReference Include="RVMapWht.pas" />
+    <DCCReference Include="RVMarker.pas" />
+    <DCCReference Include="RVMisc.pas" />
+    <DCCReference Include="RVNote.pas" />
+    <DCCReference Include="RVOfficeCnv.pas" />
+    <DCCReference Include="RVPopup.pas" />
+    <DCCReference Include="Rvpp.pas" />
+    <DCCReference Include="RVReg.pas" />
+    <DCCReference Include="RVRegCool.dcr" />
+    <DCCReference Include="RVRegCool.dcr" />
+    <DCCReference Include="RVReport.pas" />
+    <DCCReference Include="RVResize.pas" />
+    <DCCReference Include="Rvrtf.pas" />
+    <DCCReference Include="RVRTFErr.pas" />
+    <DCCReference Include="RVRTFProps.pas" />
+    <DCCReference Include="RVRVData.pas" />
+    <DCCReference Include="RVScroll.pas" />
+    <DCCReference Include="RVSEdit.pas" />
+    <DCCReference Include="RVSeqItem.pas" />
+    <DCCReference Include="RVSer.pas" />
+    <DCCReference Include="RVStr.pas" />
+    <DCCReference Include="RVStyle.pas" />
+    <DCCReference Include="RVSubData.pas" />
+    <DCCReference Include="RVTable.pas" />
+    <DCCReference Include="RVThread.pas" />
+    <DCCReference Include="RVTInplace.pas" />
+    <DCCReference Include="RVTypes.pas" />
+    <DCCReference Include="RVUndo.pas" />
+    <DCCReference Include="RVUni.pas" />
+    <DCCReference Include="RVWinGrIn.pas" />
+    <DCCReference Include="RVWordPaint.pas" />
+    <DCCReference Include="RVXPTheme.pas" />
+  </ItemGroup>
+</Project>

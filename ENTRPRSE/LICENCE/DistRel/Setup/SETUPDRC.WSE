@@ -1,0 +1,700 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Title=Exchequer Distributor Release Code Utility
+  Title French= Installation
+  Flags=01010100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Copy Default=1
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000000010110000001000
+  Log Pathname=%MAINDIR%\INSTALL.LOG
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00001000010000100000000000000010
+  Extra Pages=00000000000000000000000000110000
+  Disk Label=Default
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Crystal Destination=00000000000000000000000000001011
+  Step View=&Properties
+  Variable Name1=_SYS_
+  Variable Default1=C:\WINNT\System32
+  Variable Flags1=00001000
+  Variable Name2=_WIN_
+  Variable Default2=C:\WINNT
+  Variable Flags2=00001000
+  Variable Name3=_WISE_
+  Variable Default3=D:\Program Files\WISE\Wise9
+  Variable Flags3=00001000
+  Variable Name4=_INIT_WINDOW_
+  Variable Default4=HIDE
+  Variable Flags4=00001000
+end
+item: Remark
+  Text=GROUP is the variable that holds the Program Files Group that shortcuts will be placed on the Windows Start Menu
+end
+item: Set Variable
+  Variable=GROUP
+  Value=Exchequer Distributor
+  Flags=10000000
+end
+item: Remark
+end
+item: Remark
+  Text=MAINDIR is the variable that holds the default destination directory
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=C:\EXCHEQR
+end
+item: Remark
+end
+item: Remark
+  Text=The Wizard Loop contains the dialog screens that the user sees in the installation
+end
+item: Remark
+  Text=If you would like to change the graphic on the dialog boxes, you need to change it by double-clicking on the Wizard Loop line and change the bitmap path.
+end
+item: Wizard Block
+  Direction Variable=DIRECTION
+  Display Variable=DISPLAY
+  X Position=0
+  Y Position=0
+  Filler Color=8421376
+  Flags=00000001
+end
+item: Remark
+  Text=If you need to change the size of your Custom Dialogs, you need only change the "Welcome" screen.  
+end
+item: Remark
+  Text=It's size is the template for all following dialogs within the Wizard Loop.
+end
+item: Custom Dialog Set
+  Name=Welcome
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Exchequer Distributor Release Code Utility
+    Width=290
+    Height=193
+    Font Name=Helv
+    Font Size=8
+    Flags=0000000100000000
+    item: Push Button
+      Rectangle=232 156 277 171
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Next >>
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 88 145
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=s:\master\single\setup\images\sidelogo.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 181 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Welcome!
+    end
+    item: Static
+      Rectangle=95 29 271 57
+      Create Flags=01010000000000000000000000000000
+      Text=The Exchequer Distributor Release Code Utility allows Exchequer Distributors to generate Enterprise System and User Count Release Codes for Exchequer and Exchequer Enterprise.
+    end
+    item: Static
+      Rectangle=7 152 278 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 94 271 130
+      Create Flags=01010000000000000000000000000000
+      Text=Press the Next button to start the installation. You can press the Exit Installation button now if you do not want to install it at this time.
+    end
+    item: Static
+      Rectangle=95 61 271 89
+      Create Flags=01010000000000000000000000000000
+      Text=This system is controlled by a licence file supplied separately by Exchequer Software Ltd, the licence file must be placed into the directory where you install this utility in order for it to work.
+    end
+  end
+end
+item: Custom Dialog Set
+  Name=Select Destination Directory
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Exchequer Distributor Release Code Utility
+    Title French=%APPTITLE%
+    Title German=%APPTITLE%
+    Title Portuguese=%APPTITLE%
+    Title Spanish=%APPTITLE%
+    Title Italian=%APPTITLE%
+    Title Danish=%APPTITLE%
+    Title Dutch=%APPTITLE%
+    Title Norwegian=%APPTITLE%
+    Title Swedish=%APPTITLE%
+    Width=290
+    Height=193
+    Font Name=Helv
+    Font Size=8
+    Flags=0000000100110011
+    item: Push Button
+      Rectangle=232 156 274 170
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Next >
+      Text French=&Suivant>
+      Text German=&Weiter>
+      Text Portuguese=&Próximo>
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+      Text Danish=&Næste>
+      Text Dutch=&Volgende>
+      Text Norwegian=&Neste>
+      Text Swedish=&Nästa >
+    end
+    item: Static
+      Rectangle=95 29 277 66
+      Create Flags=01010000000000000000000000000000
+      Text=Setup will install the utility in the following folder.
+      Text=
+      Text=To install into a different folder, click Browse, and select another folder. 
+      Text French=%APPTITLE% va être installé dans le répertoire ci-dessous.
+      Text French=
+      Text French=Pour l'installer dans un répertoire différent, cliquez sur Parcourir et sélectionnez un autre répertoire.
+      Text French=
+      Text French=Vous pouvez choisir de ne pas installer %APPTITLE% en cliquant sur Annuler pour quitter l'Installation.
+      Text German=Installation speichert %APPTITLE% im unten angegebenen Ordner:
+      Text German=
+      Text German=Zur Installation in einem anderen Ordner auf Blättern klicken und einen anderen Ordner wählen.
+      Text German=
+      Text German=Wenn Sie %APPTITLE% nicht installieren möchten, können Sie durch Klicken auf Abbrechen die Installation beenden.
+      Text Portuguese=Configuração instalará %APPTITLE% na seguinte pasta
+      Text Portuguese=
+      Text Portuguese=Para instalar numa pasta diferente, faça um clique sobre Procurar, e seleccione uma outra pasta.
+      Text Portuguese=
+      Text Portuguese=Pode escolher não instalar %APPTITLE% clicando no botão Cancelar para sair da Configuração
+      Text Spanish=El programa de Configuración instalará %APPTITLE% en la siguiente carpeta.
+      Text Spanish=
+      Text Spanish=Para instalar en una carpeta diferente, haga un clic en Visualizar, y seleccione otra carpeta.
+      Text Spanish=
+      Text Spanish=Puede elegir no instalar %APPTITLE% haciendo un clic en Cancelar para salir de Configuración.
+      Text Italian=Il programma di installazione installerà %APPTITLE% nella seguente cartella.
+      Text Italian=
+      Text Italian=Per effettuare l’installazione in una cartella diversa, fai clic su Sfoglia, e scegli un’altra cartella.
+      Text Italian=
+      Text Italian=Puoi scegliere di non installare %APPTITLE% facendo clic su Annulla per uscire dal programma di installazione
+      Text Danish=Installationsprogrammet installerer %APPTITLE% i denne mappe.
+      Text Danish=
+      Text Danish=Man installerer i en anden mappe ved at klikke på Browse og vælge en anden mappe.
+      Text Danish=
+      Text Danish=Man kan vælge ikke at installere %APPTITLE% ved at klikke på Slet og forlade installationsprogrammet.
+      Text Dutch=Het installatieprogramma installeert %APPTITLE% in de volgende directory.
+      Text Dutch=
+      Text Dutch=Als u het in een andere directory wilt installeren, klik dan op Bladeren en kies een andere locatie.
+      Text Dutch=
+      Text Dutch=U kunt ervoor kiezen om %APPTITLE% niet te installeren: klik op Annuleren om het installatieprogramma te verlaten.
+      Text Norwegian=Oppsett vil installere %APPTITLE% i følgende mappe.
+      Text Norwegian=
+      Text Norwegian=For å installere i en annen mappe, klikk Bla igjennom og velg en annen mappe.
+      Text Norwegian=
+      Text Norwegian=Du kan velge å ikke installere %APPTITLE% ved å velge Avbryt for å gå ut av Oppsett.
+      Text Swedish=Installationsprogrammet installerar %APPTITLE% i följande mapp.
+      Text Swedish=
+      Text Swedish=Om du vill att installationen ska göras i en annan mapp, klickar du på Bläddra och väljer en annan mapp.
+      Text Swedish=
+      Text Swedish=Du kan välja att inte installera %APPTITLE% genom att klicka på Avbryt för att lämna installationsprogrammet.
+    end
+    item: Static
+      Rectangle=95 72 277 98
+      Action=1
+      Create Flags=01010000000000000000000000000111
+      Text=Destination Folder
+      Text French=Répertoire de destination
+      Text German=Zielordner
+      Text Portuguese=Pasta de Destino
+      Text Spanish=Carpeta de Destino
+      Text Italian=Cartella di destinazione
+      Text Danish=Destinationsmappe
+      Text Dutch=Doeldirectory
+      Text Norwegian=Målmappe
+      Text Swedish=Destinationsmapp
+    end
+    item: Push Button
+      Rectangle=231 80 273 94
+      Variable=MAINDIR_SAVE
+      Value=%MAINDIR%
+      Destination Dialog=1
+      Action=2
+      Create Flags=01010000000000010000000000000000
+      Text=B&rowse...
+      Text French=P&arcourir
+      Text German=B&lättern...
+      Text Portuguese=P&rocurar
+      Text Spanish=V&isualizar...
+      Text Italian=Sfoglia...
+      Text Danish=&Gennemse...
+      Text Dutch=B&laderen...
+      Text Norwegian=Bla igjennom
+      Text Swedish=&Bläddra
+    end
+    item: Static
+      Rectangle=99 82 229 95
+      Destination Dialog=2
+      Create Flags=01010000000000000000000000000000
+      Text=%MAINDIR%
+      Text French=%MAINDIR%
+      Text German=%MAINDIR%
+      Text Portuguese=%MAINDIR%
+      Text Spanish=%MAINDIR%
+      Text Italian=%MAINDIR%
+      Text Danish=%MAINDIR%
+      Text Dutch=%MAINDIR%
+      Text Norwegian=%MAINDIR%
+      Text Swedish=%MAINDIR%
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 88 145
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=s:\master\single\setup\images\sidelogo.bmp
+    end
+    item: Static
+      Rectangle=95 6 277 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Select Destination Directory
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=7 151 278 152
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+  end
+  item: Dialog
+    Title=Select Destination Directory
+    Title French=Choisissez le répertoire de destination
+    Title German=Zielverzeichnis wählen
+    Title Portuguese=Seleccionar Directório de Destino
+    Title Spanish=Seleccione el Directorio de Destino
+    Title Italian=Seleziona Directory di destinazione
+    Title Danish=Vælg Destinationsbibliotek
+    Title Dutch=Kies doeldirectory
+    Title Norwegian=Velg målkatalog
+    Title Swedish=Välj destinationskalatog
+    Width=221
+    Height=173
+    Font Name=Helv
+    Font Size=8
+    item: Listbox
+      Rectangle=5 5 160 150
+      Variable=MAINDIR
+      Create Flags=01010000100000010000000101000001
+      Flags=0000110000000010
+      Text=%MAINDIR%
+      Text=
+      Text French=%MAINDIR%
+      Text German=%MAINDIR%
+      Text Portuguese=%MAINDIR%
+      Text Spanish=%MAINDIR%
+      Text Italian=%MAINDIR%
+      Text Danish=%MAINDIR%
+      Text Dutch=%MAINDIR%
+      Text Norwegian=%MAINDIR%
+      Text Swedish=%MAINDIR%
+    end
+    item: Push Button
+      Rectangle=167 5 212 20
+      Create Flags=01010000000000010000000000000001
+      Text=OK
+      Text French=OK
+      Text German=OK
+      Text Portuguese=OK
+      Text Spanish=ACEPTAR
+      Text Italian=OK
+      Text Danish=OK
+      Text Dutch=OK
+      Text Norwegian=OK
+      Text Swedish=OK
+    end
+    item: Push Button
+      Rectangle=167 25 212 40
+      Variable=MAINDIR
+      Value=%MAINDIR_SAVE%
+      Create Flags=01010000000000010000000000000000
+      Flags=0000000000000001
+      Text=Cancel
+      Text French=Annuler
+      Text German=Abbrechen 
+      Text Portuguese=Cancelar
+      Text Spanish=Cancelar
+      Text Italian=Annulla
+      Text Danish=Slet
+      Text Dutch=Annuleren
+      Text Norwegian=Avbryt
+      Text Swedish=Avbryt
+    end
+  end
+end
+item: Custom Dialog Set
+  Name=Select Program Manager Group
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Exchequer Distributor Release Code Utility
+    Title French=%APPTITLE%
+    Title German=%APPTITLE%
+    Title Portuguese=%APPTITLE%
+    Title Spanish=%APPTITLE%
+    Title Italian=%APPTITLE%
+    Title Danish=%APPTITLE%
+    Title Dutch=%APPTITLE%
+    Title Norwegian=%APPTITLE%
+    Title Swedish=%APPTITLE%
+    Width=290
+    Height=193
+    Font Name=Helv
+    Font Size=8
+    Flags=0000000100000000
+    item: Push Button
+      Rectangle=232 156 274 170
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=&Next >
+      Text French=&Suivant>
+      Text German=&Weiter>
+      Text Portuguese=&Próximo>
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+      Text Danish=&Næste>
+      Text Dutch=&Volgende>
+      Text Norwegian=&Neste>
+      Text Swedish=&Nästa >
+    end
+    item: Push Button
+      Rectangle=185 156 227 170
+      Variable=DIRECTION
+      Value=B
+      Create Flags=01010000000000010000000000000000
+      Flags=0000000000000001
+      Text=< &Back
+      Text French=<&Retour
+      Text German=<&Zurück
+      Text Portuguese=<&Retornar
+      Text Spanish=<&Retroceder
+      Text Italian=< &Indietro
+      Text Danish=<&Back
+      Text Dutch=<&Terug
+      Text Norwegian=<&Tilbake
+      Text Swedish=< &Tillbaka
+    end
+    item: Static
+      Rectangle=95 29 277 50
+      Create Flags=01010000000000000000000000000000
+      Text=Enter the name of the Folder within the Start Menu that you want to add the shortcut to the Utility in:
+      Text French=Entrez le nom du groupe du Gestionnaire de Programmes où placer les icônes %APPTITLE% à :
+      Text German=Den Namen der Programm-Managergruppe wählen, in der die %APPTITLE%-Symbole gespeichert werden sollen:
+      Text Portuguese=Introduzir o nome do Grupo Gestor de Programa para acrescentar os ícones %APPTITLE% para:
+      Text Spanish=Introduzca el nombre del grupo del Administrador del Programa para añadir los iconos %APPTITLE para:
+      Text Italian=Inserisci il nome del gruppo Program Manager per aggiungere le icone di %APPTITLE% a:
+      Text Danish=Indtast navnet på Programstyringsgruppen der skal tilføjes %APPTITLE% elementer:
+      Text Dutch=Breng de naam van de programmabeheergroep in waaraan u %APPTITLE%-pictogrammen wilt toevoegen.
+      Text Norwegian=Tast inn navnet på programbehandlingsgruppen for å legge %APPTITLE%-ikoner til:
+      Text Swedish=Skriv in namnet på den grupp i Programhanteraren där du vill ha ikonerna för %APPTITLE%:
+    end
+    item: Combobox
+      Rectangle=95 52 277 153
+      Variable=GROUP
+      Create Flags=01010000001000010000001100000001
+      Flags=0000000000000001
+      Text=%GROUP%
+      Text=
+      Text French=%GROUP%
+      Text French=
+      Text German=%GROUP%
+      Text German=
+      Text Portuguese=%GROUP%
+      Text Portuguese=
+      Text Spanish=%GROUP%
+      Text Spanish=
+      Text Italian=%GROUP%
+      Text Italian=
+      Text Danish=%GROUP%
+      Text Danish=
+      Text Dutch=%GROUP%
+      Text Dutch=
+      Text Norwegian=%GROUP%
+      Text Norwegian=
+      Text Swedish=%GROUP%
+      Text Swedish=
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 88 145
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=s:\master\single\setup\images\sidelogo.bmp
+    end
+    item: Static
+      Rectangle=95 6 281 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Select Program Manager Group
+    end
+    item: Static
+      Rectangle=7 152 278 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+  end
+end
+item: Custom Dialog Set
+  Name=Start Installation
+  Display Variable=DISPLAY
+  item: Dialog
+    Title=Exchequer Distributor Release Code Utility
+    Title French=%APPTITLE%
+    Title German=%APPTITLE%
+    Title Portuguese=%APPTITLE%
+    Title Spanish=%APPTITLE%
+    Title Italian=%APPTITLE%
+    Title Danish=%APPTITLE%
+    Title Dutch=%APPTITLE%
+    Title Norwegian=%APPTITLE%
+    Title Swedish=%APPTITLE%
+    Width=290
+    Height=193
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=232 156 274 170
+      Variable=DIRECTION
+      Value=N
+      Create Flags=01010000000000010000000000000001
+      Text=Install
+      Text French=&Suivant>
+      Text German=&Weiter>
+      Text Portuguese=&Próximo>
+      Text Spanish=&Siguiente >
+      Text Italian=&Avanti >
+      Text Danish=&Næste>
+      Text Dutch=&Volgende>
+      Text Norwegian=&Neste>
+      Text Swedish=&Nästa >
+    end
+    item: Push Button
+      Rectangle=186 156 228 170
+      Variable=DIRECTION
+      Value=B
+      Create Flags=01010000000000010000000000000000
+      Text=< &Back
+      Text French=<&Retour
+      Text German=<&Zurück
+      Text Portuguese=<&Retornar
+      Text Spanish=<&Retroceder
+      Text Italian=< &Indietro
+      Text Danish=<&Tilbage
+      Text Dutch=<&Terug
+      Text Norwegian=<&Tilbake
+      Text Swedish=< &Tillbaka
+    end
+    item: Static
+      Rectangle=95 30 278 89
+      Create Flags=01010000000000000000000000000000
+      Text=You are now ready to install %APPTITLE%.
+      Text=
+      Text=Press the Next button to begin the installation or the Back button to reenter the installation information.
+      Text French=Vous êtes maintenant prêt à installer %APPTITLE%.
+      Text French=
+      Text French=Cliquez sur Suivant pour commencer l'installation ou Retour pour entrer à nouveau les informations d'installation.
+      Text German=Sie sind jetzt zur Installation von %APPTITLE% bereit.
+      Text German=
+      Text German=Auf die Schaltfläche Weiter klicken, um mit dem Start der Installation zu beginnen, oder auf die Schaltfläche Zurück, um die Installationsinformationen nochmals aufzurufen.
+      Text Portuguese=Está agora pronto para instalar %APPTITLE%
+      Text Portuguese=
+      Text Portuguese=Pressione o botão Próximo para começar a instalação ou o botão Retornar para introduzir novamente a informação sobre a instalação
+      Text Spanish=Ahora estará listo para instalar %APPTITLE%.
+      Text Spanish=
+      Text Spanish=Pulse el botón de Siguiente para comenzar la instalación o el botón Retroceder para volver a introducir la información sobre la instalación.
+      Text Italian=Sei pronto ad installare %APPTITLE%.
+      Text Italian=
+      Text Italian=Premi il tasto Avanti per iniziare l’installazione o il tasto Indietro per rientrare nuovamente nei dati sull’installazione
+      Text Danish=Du er nu klar til at installere %APPTITLE%.
+      Text Danish=
+      Text Danish=Klik på Næste for at starte installationen eller på Tilbage for at ændre installationsoplysningerne.
+      Text Dutch=U bent nu klaar om %APPTITLE% te installeren.
+      Text Dutch=
+      Text Dutch=Druk op Volgende om met de installatie te beginnen of op Terug om de installatie-informatie opnieuw in te voeren.
+      Text Norwegian=Du er nå klar til å installere %APPTITLE%
+      Text Norwegian=
+      Text Norwegian=Trykk på Neste-tasten for å starte installeringen, eller Tilbake-tasten for å taste inn installasjonsinformasjonen på nytt.
+      Text Swedish=Du är nu redo att installera %APPTITLE%.
+      Text Swedish=
+      Text Swedish=Tryck på Nästa för att starta installationen eller på Tillbaka för att skriva in installationsinformationen på nytt.
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 88 145
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=s:\master\single\setup\images\sidelogo.bmp
+    end
+    item: Static
+      Rectangle=95 6 278 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Ready To Install
+    end
+    item: Static
+      Rectangle=7 152 278 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+  end
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=The following two lines reset COMMON and MAINDIR to short filesnames. This is for backwards compatibility.
+end
+item: Set Variable
+  Variable=COMMON
+  Value=%COMMON%
+  Flags=00010100
+end
+item: Set Variable
+  Variable=MAINDIR
+  Value=%MAINDIR%
+  Flags=00010100
+end
+item: Remark
+end
+item: Install File
+  Source=X:\ENTRPRSE\LICENCE\DISTREL\SETUP\Files\ENDISTRC.EXE
+  Destination=%MAINDIR%\ENDISTRC.EXE
+  Description=Distributor Release Code Utility
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\ENTRPRSE\LICENCE\DISTREL\SETUP\FILES\MSCOMXEN.DLL
+  Destination=%WIN%\MSCOMXEN.DLL
+  Description=Distributor Release Code Utility
+  Flags=0000000010100010
+end
+item: Remark
+end
+item: Remark
+  Text=This IF/THEN/ELSE reads the correct registry entries for shortcut/icon placement
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Get Registry Key Value
+  Variable=GROUPDIR
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Set Variable
+  Variable=GROUP
+  Value=%GROUPDIR%\%GROUP%
+end
+item: Remark
+end
+item: Remark
+  Text=Create shortcut for Utility
+end
+item: Create Shortcut
+  Source=%MAINDIR%\ENDISTRC.EXE
+  Destination=%GROUP%\Exchequer Distributor Release Code Utility.lnk
+  Working Directory=%MAINDIR%
+  Description=Exchequer Distributor Release Code Utility
+  Key Type=1536
+  Flags=00000001
+end
+item: End Block
+end
+item: Remark
+end
+item: Display Message
+  Title=Installation Complete
+  Text=The installation program for the Exchequer Distributor Release Code Utility has finished, you should now copy in the licence file (ENDISTRC.DRL) which was sent to you separately.
+  Flags=00100100
+end
+item: Remark
+end

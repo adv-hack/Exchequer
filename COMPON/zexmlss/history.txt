@@ -1,0 +1,102 @@
+История ZEXMLSS
+
+V 0.0.8 r3  	2015.05.02
+	_____________________________________
+  * Исправлен баг с чтением xlsx плохого форматирования (после экспорта из некоторых генераторов отчётов).
+  + Улучшено чтение индексированных цветов в xlsx.
+
+V 0.0.8 r2  	2015.04.04
+	_____________________________________
+  + Добавлена обёртка к KaZip для функций ReadXLSX, SaveXmlssToXLSX, 
+    SaveXmlssToODFS и ReadODFS (спасибо анониму!).
+
+V 0.0.8  	2015.03.22
+	_____________________________________
+  + Добавлено сохранение и загрузка размера бумаги, ориентации листа, масштаба,
+    колонтитулов для ODS.
+  * Исправлена ошибка со стилем в объединённой ячейке в xlsx.
+
+V 0.0.7  	2014.12.01
+	_____________________________________
+  + Улучшено чтение заливок ячеек из xlsx (thanks Tomasz Wieckowski).
+  + Перегружены функции SaveXmlssTo* - теперь они требуют меньше параметров.
+  + Добавлено чтение/запись условного форматирования для ODS. 
+    Добавлено частичное чтение условного форматирования для xlsx.
+  + Улучшено чтение типов ячеек в xlsx.
+  + Улучшено чтение кол-ва страниц в xlsx.
+  * Исправлена ошибка с чтением ширины объединённой области в ODS.
+  * Исправлена ошибка с чтением/записью пустых страниц в xlsx.  	 
+  * Исправлена ошибка с чтением ширины столбцов в xlsx.  
+  * Исправлена ошибка с чтением индексированных цветов в xlsx.
+  * Исправлен баг при записи в excel xml ячейки с html форматированием 
+    (https://github.com/Avemey/zexmlss/issues/5).
+
+V 0.0.6  	2013.02.23
+	_____________________________________
+  ! Переименование: zexslx.pas -> zexlsx.pas (Arioch).
+  + Добавлено Arioch (the_Arioch@nm.ru):
+    + zeZippy.pas: TZxZipGen класс для простого прикручивания различных zip
+      упаковщиков. Поддерживаются:
+        * zeZippyZipMaster.pas: TZipMaster by www.delphizip.org
+      	* zeZippyXE2.pas: Delphi XE2 (System.Zip TZipFile)
+        * zeZippyJCL7z.pas: www.7-zip.org DLL via wrapper by jcl.sf.net
+        * zeZippyLazip.pas: Lazarus TZipper
+        * zeZippyAB.pas: TurboPower Abbrevia http://sourceforge.net/projects/tpabbrevia/
+        * можно написать свою обёртку для любимого упаковщика
+    + функции для экспорта в запакованные ODS и XLSX с использованием
+      zeZippy: ExportXmlssToODFS и ExportXmlssToXLSX.
+    + zeSave.pas: IZXMLSSave/TZXMLSSave интерфейс для простого экспорта
+      в нужный формат (ods - zeSaveODS.pas; excel xml - zeSaveEXML.pas; 
+      xlsx - zeSaveXLSX.pas).
+    + Добавлены свойства в TZCell: AsDouble и AsInteger.
+    + Угол поворота ячейки не нужно учитывать для разных форматов (TZCellTextRotate от -180 до +359).
+    + разные правки.
+  + Добавлена возможность закрепления (freeze) и разделения (split/блокировки) 
+    строк/столбцов в листе (TZSheetOptions: свойства SplitVerticalMode, 
+    SplitHorizontalMode, SplitVerticalValue и SplitHorizontalValue).
+  + zearchhelper.pas - функции для нахождения темпа и создания временной 
+    директории.
+  + (по умолчанию не используется) Для Delphi: в /delphizip/нужный_упаковщик 
+    лежат inc-файлы для включения функций ReadXLSX, SaveXmlssToXLSX, 
+    SaveXmlssToODFS и ReadODFS. Пока поддерживаются TurboPower Abbrevia и Synzip http://synopse.info
+    (Synzip не протестирован).
+  + Исправлен баг с освобождением потока в ReadXLSXPath.
+  + Добавлены новые баги!
+
+V 0.0.5  	2012.08.12
+	_____________________________________
+  + Добавлены функции экспорта в xlsx: SaveXmlssToXLSXPath (Lazarus/Delphi) 
+    и SaveXmlssToXLSX (Lazarus).
+  + Исправлен баг с чтением повторяющихся строк/столбцов в ODS.
+  + Улучшено чтение цветов и заливок из xlsx.
+  + Исправлен баг с чтением xml нулевой длины (TZsspXMLReader).
+
+V 0.0.4  	2012.07.04
+	_____________________________________
+  + Добавлена частичная поддержка формата Office Open XML (xlsx) - пока только 
+    чтение (zexslx.pas).
+  + Добавлены функции перевода формул из стиля A1 в R1C1 и обратно (zeformula.pas).
+  + Добавились функции импорта из ODS.
+
+V 0.0.3  	2012.04.09
+	_____________________________________
+  + Убраны варнинги для Delphi >=2009.
+  + Добавлена частичная поддержка (пока только запись) OpenDocument Format (ODS).
+    См. модуль zeodfs.pas. Для Lazarus функции SaveXmlssToODFS и SaveXmlssToODFSPath, 
+    для Delphi и CBuilder-а только SaveXmlssToODFSPath.
+  
+
+V 0.0.2 r2 	2010.11.13
+	_____________________________________
+  + Исправлена ошибка чтения из файла в классе TZsspXMLReader (zsspxml.pas)
+
+
+V 0.0.2		2010.05.27
+	_____________________________________
+  + Добавлен класс TZsspXMLReader (zsspxml.pas)
+  + Добавлена функция чтения xml spreadsheet-ов ReadEXMLSS (zexmlssutils.pas)
+  + Добавлены новые баги
+
+V 0.0.1		2009.12.??
+	_____________________________________
+  + Первая версия

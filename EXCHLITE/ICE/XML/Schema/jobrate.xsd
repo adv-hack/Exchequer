@@ -1,0 +1,42 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:jobrate"
+            targetNamespace="urn:www-iris-co-uk:jobrate" >
+            
+  <xsd:complexType name="jobraterec">
+    <xsd:sequence>
+      <xsd:element name='jempcode' type='xsd:string'/>
+      <xsd:element name='jratecode' type='xsd:string'/>
+      <xsd:element name='jratedesc' type='xsd:string'/>
+      <xsd:element name='janalcode' type='xsd:string'/>
+      <xsd:element name='costcurr' type='xsd:integer'/>
+      <xsd:element name='cost' type='xsd:double'/>
+      <xsd:element name='chargecurr' type='xsd:integer'/>
+      <xsd:element name='chargerate' type='xsd:double'/>
+      <xsd:element name='payrollcode' type='xsd:integer'/>
+      <xsd:element name='payfactor' type='xsd:integer'/>
+      <xsd:element name='payrate' type='xsd:integer'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='jobraterec' type='tns:jobraterec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='jobrate'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='jobrate' type='tns:jobrate'/>
+
+</xsd:schema>

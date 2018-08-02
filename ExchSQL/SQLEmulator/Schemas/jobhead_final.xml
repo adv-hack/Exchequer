@@ -1,0 +1,101 @@
+<schemarecord tldformat="4" version="3" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="650" recordfieldname="">
+  <recordfields/>
+  <fixedfields>
+    <schemafield fieldname="job_code" fullfieldname="job_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="JobCode" collation="1"/>
+    <schemafield fieldname="job_desc" fullfieldname="job_desc" typename="DelphiString" size="31" elements="1" id="-1" columnname="JobDesc" collation="1"/>
+    <schemafield fieldname="job_folio" fullfieldname="job_folio" typename="long" size="4" elements="1" id="-1" columnname="JobFolio"/>
+    <schemafield fieldname="cust_code" fullfieldname="cust_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="CustCode" collation="1"/>
+	  <schemafield fieldname="job_cat" fullfieldname="job_cat" typename="DelphiString" size="11" elements="1" id="-1" columnname="JobCat" collation="1"/>
+    <schemafield fieldname="job_alt_code" fullfieldname="job_alt_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="JobAltCode"  collation="1"/>
+    <schemafield fieldname="completed" fullfieldname="completed" typename="long" size="4" elements="1" id="-1" columnname="Completed"/>
+    <schemafield fieldname="contact" fullfieldname="contact" typename="DelphiString" size="26" elements="1" id="-1" columnname="Contact"/>
+    <schemafield fieldname="job_man" fullfieldname="job_man" typename="DelphiString" size="26" elements="1" id="-1" columnname="JobMan"/>
+    <schemafield fieldname="charge_type" fullfieldname="charge_type" typename="int16" size="2" elements="1" id="-1" columnname="ChargeType"/>
+    <schemafield fieldname="spare" fullfieldname="spare" typename="DelphiString" size="11" elements="1" id="-1" columnname="Spare"/>
+    <schemafield fieldname="quote_price" fullfieldname="quote_price" typename="double" size="8" elements="1" id="-1" columnname="QuotePrice"/>
+    <schemafield fieldname="curr_price" fullfieldname="curr_price" typename="BYTE" size="1" elements="1" id="-1" columnname="CurrPrice"/>
+    <schemafield fieldname="start_date" fullfieldname="start_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="StartDate"/>
+    <schemafield fieldname="end_date" fullfieldname="end_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="EndDate"/>
+    <schemafield fieldname="rev_e_date" fullfieldname="rev_e_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="RevEDate"/>
+    <schemafield fieldname="sor_ref" fullfieldname="sor_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="SORRef" collation="1"/>
+    <schemafield fieldname="n_line_count" fullfieldname="n_line_count" typename="long" size="4" elements="1" id="-1" columnname="NLineCount"/>
+    <schemafield fieldname="a_line_count" fullfieldname="a_line_count" typename="long" size="4" elements="1" id="-1" columnname="ALineCount"/>
+    <schemafield fieldname="spare3" fullfieldname="spare3" typename="DelphiString" size="11" elements="1" id="-1" columnname="Spare3"/>
+    <schemafield fieldname="vat_code" fullfieldname="vat_code" typename="char" size="1" elements="1" id="-1" columnname="VATCode"/>
+    <schemafield fieldname="cc_dep_type1" fullfieldname="cc_dep_type1" typename="DelphiString" size="4" elements="1" id="-1" columnname="Department"/>
+    <schemafield fieldname="cc_dep_type2" fullfieldname="cc_dep_type2" typename="DelphiString" size="4" elements="1" id="-1" columnname="CostCentre"/>
+    <schemafield fieldname="job_anal" fullfieldname="job_anal" typename="DelphiString" size="4" elements="1" id="-1" columnname="JobAnal" collation="1"/>
+    <schemafield fieldname="job_type" fullfieldname="job_type" typename="char" size="1" elements="1" id="-1" columnname="JobType"/>
+    <schemafield fieldname="job_stat" fullfieldname="job_stat" typename="long" size="4" elements="1" id="-1" columnname="JobStat"/>
+    <schemafield fieldname="user_def1" fullfieldname="user_def1" typename="DelphiString" size="21" elements="1" id="-1" columnname="UserDef1"/>
+    <schemafield fieldname="user_def2" fullfieldname="user_def2" typename="DelphiString" size="21" elements="1" id="-1" columnname="UserDef2"/>
+    <schemafield fieldname="user_def3" fullfieldname="user_def3" typename="DelphiString" size="21" elements="1" id="-1" columnname="UserDef3"/>
+    <schemafield fieldname="user_def4" fullfieldname="user_def4" typename="DelphiString" size="21" elements="1" id="-1" columnname="UserDef4"/>
+    <schemafield fieldname="def_ret_curr" fullfieldname="def_ret_curr" typename="BYTE" size="1" elements="1" id="-1" columnname="DefRetCurr"/>
+    <schemafield fieldname="jpt_our_ref" fullfieldname="jpt_our_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="JPTOurRef" collation="1"/>
+    <schemafield fieldname="jst_our_ref" fullfieldname="jst_our_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="JSTOurRef" collation="1"/>
+    <schemafield fieldname="jqs_code" fullfieldname="jqs_code" typename="DelphiString" size="21" elements="1" id="-1" columnname="JQSCode"/>
+    <schemafield fieldname="user_def5"  fullfieldname="user_def5"  typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef5"/>
+    <schemafield fieldname="user_def6"  fullfieldname="user_def6"  typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef6"/>
+    <schemafield fieldname="user_def7"  fullfieldname="user_def7"  typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef7"/>
+    <schemafield fieldname="user_def8"  fullfieldname="user_def8"  typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef8"/>
+    <schemafield fieldname="user_def9"  fullfieldname="user_def9"  typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef9"/>
+    <schemafield fieldname="user_def10" fullfieldname="user_def10" typename="DelphiString" size="31" elements="1" id="-1" columnname="UserDef10"/>	
+	<schemafield fieldname="job_anonymised" fullfieldname="job_anonymised" typename="Bool1" size="1" elements="1" id="-1" columnname="jrAnonymised"/>
+	<schemafield fieldname="job_anonymised_date " fullfieldname="job_anonymised_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="jrAnonymisedDate"/>
+	<schemafield fieldname="job_anonymised_time" fullfieldname="job_anonymised_time" typename="DelphiString" size="7" elements="1" id="-1" columnname="jrAnonymisedTime"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes/>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="1">
+      <indexfields>
+        <item>job_code</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="1" isclustered="0" isunique="1">
+      <indexfields>
+        <item>job_folio</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="2" isclustered="0" isunique="1">
+      <indexfields>
+        <item>job_cat</item>
+        <item>job_code</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="3" isclustered="0" isunique="0">
+      <indexfields>
+        <item>job_desc</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="4" isclustered="0" isunique="0">
+      <indexfields>
+        <item>completed</item>
+        <item>job_code</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="5" isclustered="0" isunique="0">
+      <indexfields>
+        <item>completed</item>
+        <item>job_desc</item>
+      </indexfields>
+    </schemaindexes>
+
+    <schemaindexes indexnumber="6" isclustered="0" isunique="0">
+      <indexfields>
+        <item>job_alt_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="7" isclustered="0" isunique="0" nullablecharacter="00">
+      <indexfields>
+        <item>cust_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

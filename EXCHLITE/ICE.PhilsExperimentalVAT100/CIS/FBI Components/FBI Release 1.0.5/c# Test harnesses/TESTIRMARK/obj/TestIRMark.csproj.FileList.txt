@@ -1,0 +1,7 @@
+bin\Debug\TestIRMark.exe
+bin\Debug\TestIRMark.pdb
+bin\Debug\InternetFilingServer.dll
+bin\Debug\InternetFilingServer.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TestIRMark.exe
+obj\Debug\TestIRMark.pdb

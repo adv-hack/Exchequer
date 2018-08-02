@@ -1,0 +1,103 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="768">
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="NOMVIEW_FIXED" size="0" elements="1" id="-1" columnname="" />
+    <schemafield fieldname="var" fullfieldname="var" typename="NOMVIEW_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+    <schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix"/>
+    <schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+    <schemafield fieldname="nvc_code1" fullfieldname="vc_code1" typename="DelphiEmbeddedCaseSensitiveString" size="61" elements="1" id="-1" columnname="VCCode1"/>
+    <schemafield fieldname="nvc_code2" fullfieldname="vc_code2" typename="DelphiEmbeddedCaseSensitiveString" size="11" elements="1" id="-1" columnname="VCCode2"/>
+    <schemafield fieldname="nvc_code3" fullfieldname="vc_code3" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="VCCode3"/>
+    <schemafield fieldname="nvc_code4" fullfieldname="vc_code4" typename="DelphiEmbeddedCaseSensitiveString" size="61" elements="1" id="-1" columnname="VCCode4"/>
+    <schemafield fieldname="nom_view_no_index_lint" fullfieldname="nom_view_no" typename="long" size="4" elements="1" id="-1" columnname="NomViewNo"/>
+    <schemafield fieldname="nvc_code5" fullfieldname="nvc_code5" typename="DelphiString" size="101" elements="1" id="-1" columnname="nvc_code5"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="NomViewType" id="0" stringid="NV">
+      <schemafields>
+        <schemafield fieldname="view_code" fullfieldname="view_code" typename="DelphiString" size="51" elements="1" id="0" columnname="ViewCode"/>
+        <schemafield fieldname="view_idx" fullfieldname="view_idx" typename="long" size="4" elements="1" id="0" columnname="ViewIdx"/>				
+        <schemafield fieldname="view_cat" fullfieldname="view_cat" typename="long" size="4" elements="1" id="0" columnname="ViewCat"/>
+        <schemafield fieldname="view_type" fullfieldname="view_type" typename="char" size="1" elements="1" id="0" columnname="ViewType"/>
+        <schemafield fieldname="carry_f" fullfieldname="carry_f" typename="long" size="4" elements="1" id="0" columnname="CarryF"/>
+        <schemafield fieldname="alt_code" fullfieldname="alt_code" typename="DelphiString" size="51" elements="1" id="0" columnname="AltCode"/>
+        <schemafield fieldname="link_view" fullfieldname="link_view" typename="long" size="4" elements="1" id="0" columnname="LinkView"/>
+        <schemafield fieldname="link_gl" fullfieldname="link_gl" typename="long" size="4" elements="1" id="0" columnname="LinkGL"/>
+        <schemafield fieldname="link_cc_dep1" fullfieldname="link_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LinkDepartment"/>
+        <schemafield fieldname="link_cc_dep2" fullfieldname="link_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LinkCostCentre"/>
+        <schemafield fieldname="inc_budget" fullfieldname="inc_budget" typename="bool1" size="1" elements="1" id="0" columnname="IncBudget"/>
+        <schemafield fieldname="inc_commit" fullfieldname="inc_commit" typename="bool1" size="1" elements="1" id="0" columnname="IncCommit"/>
+        <schemafield fieldname="inc_unposted" fullfieldname="inc_unposted" typename="BYTE" size="1" elements="1" id="0" columnname="IncUnposted"/>
+        <schemafield fieldname="auto_desc" fullfieldname="auto_desc" typename="bool1" size="1" elements="1" id="0" columnname="AutoDesc"/>
+        <schemafield fieldname="link_type" fullfieldname="link_type" typename="char" size="1" elements="1" id="0" columnname="LinkType"/>
+        <schemafield fieldname="abs_view_idx" fullfieldname="abs_view_idx" typename="long" size="4" elements="1" id="0" columnname="ABSViewIdx"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="ViewCtrlType" id="1" stringid="NC">
+      <schemafields>				
+        <schemafield fieldname="def_curr" fullfieldname="def_curr" typename="BYTE" size="1" elements="1" id="0" columnname="DefCurr"/>
+        <schemafield fieldname="def_period" fullfieldname="def_period" typename="BYTE" size="1" elements="1" id="0" columnname="DefPeriod"/>
+        <schemafield fieldname="def_period_to" fullfieldname="def_period_to" typename="BYTE" size="1" elements="1" id="0" columnname="DefPeriodTo"/>
+        <schemafield fieldname="def_year" fullfieldname="def_year" typename="BYTE" size="1" elements="1" id="0" columnname="DefYear"/>
+        <schemafield fieldname="view_ctrl_no" fullfieldname="view_ctrl_no" typename="long" size="4" elements="1" id="0" columnname="ViewCtrlNo"/>
+        <schemafield fieldname="last_period" fullfieldname="last_period" typename="BYTE" size="1" elements="1" id="0" columnname="LastPeriod"/>
+        <schemafield fieldname="last_year" fullfieldname="last_year" typename="BYTE" size="1" elements="1" id="0" columnname="LastYear"/>
+        <schemafield fieldname="ctrl_cc_dep1" fullfieldname="ctrl_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="CtrlDepartment"/>
+        <schemafield fieldname="ctrl_cc_dep2" fullfieldname="ctrl_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="CtrlCostCentre"/>
+        <schemafield fieldname="ctrl_budget" fullfieldname="inc_budget" typename="bool1" size="1" elements="1" id="0" columnname="CtrlBudget"/>
+        <schemafield fieldname="ctrl_commit" fullfieldname="inc_commit" typename="bool1" size="1" elements="1" id="0" columnname="CtrlCommit"/>
+        <schemafield fieldname="ctrl_unposted" fullfieldname="inc_unposted" typename="BYTE" size="1" elements="1" id="0" columnname="CtrlUnposted"/>
+        <schemafield fieldname="auto_struct" fullfieldname="auto_struct" typename="bool1" size="1" elements="1" id="0" columnname="AutoStruct"/>
+        <schemafield fieldname="last_prun_no" fullfieldname="last_prun_no" typename="long" size="4" elements="1" id="0" columnname="LastPRunNo"/>
+        <schemafield fieldname="spare_pad" fullfieldname="spare_pad" typename="binary" size="29" elements="1" id="0" columnname="SparePad"/>				
+        <schemafield fieldname="last_update" fullfieldname="last_update" typename="DelphiString" size="9" elements="1" id="0" columnname="LastUpdate"/>
+        <schemafield fieldname="last_opo" fullfieldname="last_opo" typename="DelphiString" size="11" elements="1" id="0" columnname="LastOpo"/>
+        <schemafield fieldname="in_active" fullfieldname="in_active" typename="bool1" size="1" elements="1" id="0" columnname="InActive"/>
+        <schemafield fieldname="def_curr_tx" fullfieldname="def_curr_tx" typename="bool1" size="1" elements="1" id="0" columnname="DefCurrTx"/>
+        <schemafield fieldname="def_ytd" fullfieldname="def_ytd" typename="bool1" size="1" elements="1" id="0" columnname="DefYTD"/>
+        <schemafield fieldname="def_use_f6" fullfieldname="def_use_f6" typename="bool1" size="1" elements="1" id="0" columnname="DefUseF6"/>
+        <schemafield fieldname="loaded_ok" fullfieldname="loaded_ok" typename="bool1" size="1" elements="1" id="0" columnname="LoadedOk"/>
+      </schemafields>
+    </recordtype>
+  </recordtypes>
+	<indexes>
+	<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item computedcolumnname="nvcode1computed">nvc_code1</item>			
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item computedcolumnname="nvcode2computed">nvc_code2</item>			
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="2" isclustered="0" isunique="0">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item  computedcolumnname="nvcode3computed">nvc_code3</item>
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="3" isclustered="0" isunique="0">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item computedcolumnname="nvcode4computed">nvc_code4</item>
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="4" isclustered="0" isunique="0" nullablecharacter="00">
+		<indexfields>
+			<item>rec_pfix</item>
+			<item>sub_type</item>
+			<item>nom_view_no_index_lint</item>
+			<item>nvc_code5</item>
+		</indexfields>
+	</schemaindexes>
+	</indexes>
+</schemarecord>

@@ -1,0 +1,81 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="GYjYpqAKpsxreZPS4ZrjYw==" identitycol="PositionId" reclen="2917" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_svr_view_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svrViewId" collation="0"/>
+        <schemafield fieldname="f_svr_user_id" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="svrUserId" collation="1"/>
+        <schemafield fieldname="f_svr_list_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svrListType" collation="0"/>
+        <schemafield fieldname="f_svr_descr" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svrDescr" collation="1"/>
+        <schemafield fieldname="f_svs_enabled_1" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsEnabled01" collation="0"/>
+        <schemafield fieldname="f_svs_field_id_1" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svsFieldId01" collation="0"/>
+        <schemafield fieldname="f_svs_ascending_1" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsAscending01" collation="0"/>
+        <schemafield fieldname="f_svs_spare_1" fullfieldname="" typename="binary" size="50" elements="1" id="-1" columnname="svsSpare01" collation="0"/>
+        <schemafield fieldname="f_svs_enabled_2" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsEnabled02" collation="0"/>
+        <schemafield fieldname="f_svs_field_id_2" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svsFieldId02" collation="0"/>
+        <schemafield fieldname="f_svs_ascending_2" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsAscending02" collation="0"/>
+        <schemafield fieldname="f_svs_spare_2" fullfieldname="" typename="binary" size="50" elements="1" id="-1" columnname="svsSpare02" collation="0"/>
+        <schemafield fieldname="f_svs_enabled_3" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsEnabled03" collation="0"/>
+        <schemafield fieldname="f_svs_field_id_3" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svsFieldId03" collation="0"/>
+        <schemafield fieldname="f_svs_ascending_3" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsAscending03" collation="0"/>
+        <schemafield fieldname="f_svs_spare_3" fullfieldname="" typename="binary" size="50" elements="1" id="-1" columnname="svsSpare03" collation="0"/>
+        <schemafield fieldname="f_svs_enabled_4" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsEnabled04" collation="0"/>
+        <schemafield fieldname="f_svs_field_id_4" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svsFieldId04" collation="0"/>
+        <schemafield fieldname="f_svs_ascending_4" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svsAscending04" collation="0"/>
+        <schemafield fieldname="f_svs_spare_4" fullfieldname="" typename="binary" size="50" elements="1" id="-1" columnname="svsSpare04" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_1" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled01" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_1" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId01" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_1" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison01" collation="0"/>
+        <schemafield fieldname="f_svf_value_1" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue01" collation="1"/>
+        <schemafield fieldname="f_svf_spare_1" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare01" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_2" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled02" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_2" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId02" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_2" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison02" collation="0"/>
+        <schemafield fieldname="f_svf_value_2" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue02" collation="1"/>
+        <schemafield fieldname="f_svf_spare_2" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare02" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_3" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled03" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_3" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId03" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_3" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison03" collation="0"/>
+        <schemafield fieldname="f_svf_value_3" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue03" collation="1"/>
+        <schemafield fieldname="f_svf_spare_3" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare03" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_4" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled04" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_4" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId04" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_4" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison04" collation="0"/>
+        <schemafield fieldname="f_svf_value_4" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue04" collation="1"/>
+        <schemafield fieldname="f_svf_spare_4" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare04" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_5" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled05" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_5" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId05" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_5" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison05" collation="0"/>
+        <schemafield fieldname="f_svf_value_5" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue05" collation="1"/>
+        <schemafield fieldname="f_svf_spare_5" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare05" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_6" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled06" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_6" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId06" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_6" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison06" collation="0"/>
+        <schemafield fieldname="f_svf_value_6" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue06" collation="1"/>
+        <schemafield fieldname="f_svf_spare_6" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare06" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_7" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled07" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_7" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId07" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_7" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison07" collation="0"/>
+        <schemafield fieldname="f_svf_value_7" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue07" collation="1"/>
+        <schemafield fieldname="f_svf_spare_7" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare07" collation="0"/>
+        <schemafield fieldname="f_svf_enabled_8" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="svfEnabled08" collation="0"/>
+        <schemafield fieldname="f_svf_field_id_8" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="svfFieldId08" collation="0"/>
+        <schemafield fieldname="f_svf_comparison_8" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="svfComparison08" collation="0"/>
+        <schemafield fieldname="f_svf_value_8" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="svfValue08" collation="1"/>
+        <schemafield fieldname="f_svf_spare_8" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="svfSpare08" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_svr_view_id</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_svr_list_type</item>
+                <item size="-1" computedcolumnname="">f_svr_user_id</item>
+                <item size="-1" computedcolumnname="">f_svr_descr</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

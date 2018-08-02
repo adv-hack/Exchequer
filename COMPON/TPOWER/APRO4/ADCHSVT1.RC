@@ -1,0 +1,9 @@
+/********************************************************************
+ * Async Professional: AdChsVT1.rc                                   *
+ * Copyright (c) TurboPower Software Company 1996-2002              *
+ * All rights reserved.                                             *
+ ********************************************************************
+ * Terminal: Resource script for VT100 charset mappings             *
+ ********************************************************************/
+
+ADVT100CharSet RCDATA ADCHSVT1.BIN

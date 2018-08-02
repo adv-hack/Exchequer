@@ -1,0 +1,189 @@
+[Defaults]
+AccountsPackages=-1
+ResponsiblePosition=-1
+TurnoverCurrency=2
+TurnoverBands=0
+StaffBands=0
+Industry=0
+DistributorEmail=survey@exchequer.ie
+NetOs=1
+
+[Options]
+ShowSendCompanies=0
+
+[ContactMethods]
+0=Email
+1=Telephone
+2=Fax
+3=Post
+
+[ContactMethodValidation]
+ValidateEmail=0
+ValidatePhone=1
+ValidateFax=2
+ValidateAddress=3
+
+[AccountsPackages]
+0=None
+1=Access
+2=Accpac
+3=Computer Associates
+4=Goldcrest
+5=Great Plains
+6=Intuit
+7=Multisoft
+8=Navision
+9=Pegasus
+10=Quickbooks
+11=Sage Line 50
+12=Sage Line 100
+13=Sage Line 200
+14=Sage MMS
+15=Sage - Other
+16=Scala
+17=Sun
+18=TAS
+19=Tetra
+20=Bespoke
+21=Other
+
+[ResponsiblePosition]
+0=Financial Director
+1=Managing Director
+2=IT Manager
+3=Accountant
+4=Other
+
+[TurnoverCurrency]
+0=AUD
+1=CHF
+2=EUR
+3=GBP
+4=MTL
+5=NZD
+6=SGD
+7=USD      
+
+[TurnoverBands]
+0=0.5-1m
+1=1-5m
+2=5-10m
+3=10-20m
+4=20-50m
+5=50-100m
+6=100m+
+
+[StaffBands]
+0=1-19
+1=20-49 
+2=50-99
+3=100-249
+4=250-499
+5=500-999
+6=1000+
+
+[Industry]
+1=Accountancy
+2=Advertising/PR
+3=Agriculture
+4=Architects
+5=Association/Society
+6=Attraction
+7=Auto-Dealership
+8=Builders Merchants
+9=Chambers of Commerce
+10=Charities/Trusts
+11=Chemical/Oil
+12=Civil Engineering
+13=Construction
+14=Consultancy
+15=Craft
+16=Design
+17=Diocese
+18=Education/Training
+19=Electrical/Electronics
+20=Engineering
+21=Entertainment
+22=Estate Agents
+23=Facilities Management
+24=Finance/Banking
+25=Fire Service
+26=Food & Beverage
+27=Football Championship
+28=Football Premiership
+29=Health Service
+30=Holding Companies
+31=House Builder
+32=Housing Association
+33=Information Technology
+34=Institutes, Insurance
+35=Landed Estates
+36=Legal
+37=Leisure & Tourism
+38=Manufacturing
+39=Marine
+40=Marketing/Media
+41=Pharmaceutical
+42=Photographics
+43=Plant & Machinery
+44=Printers/Publishers
+45=Property
+46=Property Developer
+47=Public Sector/Government
+48=Recruitment
+49=Removals
+50=Research/Scientific
+51=Retail
+52=Rugby League
+53=Rugby Premiership
+54=Security/Safety
+55=Service Industry
+56=Shipping
+57=Stud Farms
+58=Students Union
+59=Surveyors
+60=Telecommunications
+61=Theatre
+62=Timber Merchants
+63=Travel/Transport
+64=Utilities
+65=Vets
+66=Wholesale/Distribution
+67=Other
+
+[NetOS]
+0=None
+1=Windows NT 3/4
+2=Windows 2000
+3=Small Business Server 2000
+4=Windows Server 2003
+5=Small Business Server 2003
+6=Terminal Server 2003
+7=Windows Server 2008
+8=Small Business Server 2008
+9=Terminal Server 2008
+10=Small Business Server 2011
+11=Windows Server 2012
+12=Netware v3.x
+13=Netware v4.x
+14=Netware v5.x
+15=Netware v6.x
+16=Other
+
+[CitrixOptions]
+0=No
+1=Yes
+2=Don't Know
+
+[ServicePacks]
+0=None Applied
+1=Service Pack 1
+2=Service Pack 2
+3=Service Pack 3
+4=Service Pack 4
+5=Service Pack 5
+6=Service Pack 6
+7=Service Pack 6a
+8=Service Pack 7
+9=Service Pack 8
+10=Unknown

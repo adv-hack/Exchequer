@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = BtrvSQL.dll SQLEmulatorTest.exe ENTERcs.exe BtrvSQLDual.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+BtrvSQL.dll: BtrvSQL.dpr
+  $(DCC)
+
+SQLEmulatorTest.exe: SQLEmulatorUnitTests\SQLEmulatorTest.dpr
+  $(DCC)
+
+ENTERcs.exe: ..\..\ENTRPRSE\R&D\ENTERcs.DPR
+  $(DCC)
+
+BtrvSQLDual.dll: ..\BtrvSQLDual\BtrvSQLDual.dpr
+  $(DCC)
+
+

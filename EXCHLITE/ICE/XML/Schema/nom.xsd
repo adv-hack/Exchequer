@@ -1,0 +1,51 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:nom"
+            targetNamespace="urn:www-iris-co-uk:nom" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="nomrec">
+    <xsd:sequence>
+      <xsd:element name='nomcode' type='xsd:integer'/>
+      <xsd:element name='desc' type='xsd:string'/>
+      <xsd:element name='cat' type='xsd:integer'/>
+      <xsd:element name='nomtype' type='xsd:string'/>
+      <xsd:element name='nompage' type='tns:boolean2'/>
+      <xsd:element name='subtype' type='tns:boolean2'/>
+      <xsd:element name='total' type='tns:boolean2'/>
+      <xsd:element name='carryf' type='xsd:integer'/>
+      <xsd:element name='revalue' type='tns:boolean2'/>
+      <xsd:element name='altcode' type='xsd:string'/>
+      <xsd:element name='defcurr' type='xsd:integer'/>
+      <xsd:element name='inactive' type='tns:boolean2'/>
+      <xsd:element name='longdesc' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='nomrec' type='tns:nomrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='nom'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='nom' type='tns:nom'/>
+
+</xsd:schema>

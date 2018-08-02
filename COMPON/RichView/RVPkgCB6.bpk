@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="RVPkgCB6.bpl"/>
+    <OBJFILES value="RVPkgCB6.obj RVUni.obj CRVFData.obj CRVPP.obj CtrlImg.obj DLines.obj 
+      PtblRV.obj PtRVData.obj RichView.obj RVBack.obj RVClasses.obj 
+      RVCodePages.obj RVCtrlData.obj RVDataList.obj RVDsgn.obj RVEdit.obj 
+      RVERVData.obj RVFMisc.obj RVFuncs.obj RVItem.obj RVMapWht.obj RVMisc.obj 
+      RVOfficeCnv.obj RVPP.obj RVReport.obj Rvrtf.obj RVRTFErr.obj 
+      RVRTFProps.obj RVRVData.obj RVScroll.obj RVSEdit.obj RVSer.obj RVStr.obj 
+      RVStyle.obj RVTable.obj RVTInplace.obj RVUndo.obj CRVData.obj RVReg.obj 
+      RVXPTheme.obj RVResize.obj RVDragDrop.obj RVLinear.obj RVGetText.obj 
+      RVThread.obj RVWordPaint.obj RVAnimate.obj RVGetTextW.obj RVPopup.obj 
+      RVNote.obj RVSeqItem.obj RVSubData.obj RVLabelItem.obj RVDocParams.obj 
+      RVTypes.obj RVWinGrIn.obj RVGrIn.obj"/>
+    <RESFILES value="RVPkgCB6.res RVReg.dcr"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) RVDsgn.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="rtl.lib"/>
+    <PACKAGES value="designide.bpi vcl.bpi vcljpg.bpi rtl.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="RVPkgCB6.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a8 -b- -k- -vi -c -tWM"/>
+    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M -LUDesignIde"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-D&quot;RichView&quot; -aa -Tpp -Gpd -x -Gn -Gl -Gi"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="RVPkgCB6.res" FORMNAME="" UNITNAME="RVPkgCB6.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVPkgCB6.cpp" FORMNAME="" UNITNAME="RVPkgCB6" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVUni.pas" FORMNAME="" UNITNAME="RVUni" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="CRVFData.pas" FORMNAME="" UNITNAME="CRVFData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="CRVPP.pas" FORMNAME="" UNITNAME="CRVPP" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="CtrlImg.pas" FORMNAME="" UNITNAME="CtrlImg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DLines.pas" FORMNAME="" UNITNAME="DLines" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PtblRV.pas" FORMNAME="" UNITNAME="PtblRV" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PtRVData.pas" FORMNAME="" UNITNAME="PtRVData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RichView.pas" FORMNAME="" UNITNAME="RichView" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVBack.pas" FORMNAME="" UNITNAME="RVBack" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVClasses.pas" FORMNAME="" UNITNAME="RVClasses" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVCodePages.pas" FORMNAME="" UNITNAME="RVCodePages" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVCtrlData.pas" FORMNAME="" UNITNAME="RVCtrlData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVDataList.pas" FORMNAME="" UNITNAME="RVDataList" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVDsgn.pas" FORMNAME="frmRVDesign" UNITNAME="RVDsgn" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVEdit.pas" FORMNAME="" UNITNAME="RVEdit" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVERVData.pas" FORMNAME="" UNITNAME="RVERVData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVFMisc.pas" FORMNAME="" UNITNAME="RVFMisc" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVFuncs.pas" FORMNAME="" UNITNAME="RVFuncs" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVItem.pas" FORMNAME="" UNITNAME="RVItem" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVMapWht.pas" FORMNAME="" UNITNAME="RVMapWht" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVMisc.pas" FORMNAME="" UNITNAME="RVMisc" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVOfficeCnv.pas" FORMNAME="" UNITNAME="RVOfficeCnv" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVPP.pas" FORMNAME="" UNITNAME="RVPP" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVReport.pas" FORMNAME="" UNITNAME="RVReport" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Rvrtf.pas" FORMNAME="" UNITNAME="RVRTF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVRTFErr.pas" FORMNAME="" UNITNAME="RVRTFErr" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVRTFProps.pas" FORMNAME="" UNITNAME="RVRTFProps" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVRVData.pas" FORMNAME="" UNITNAME="RVRVData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVScroll.pas" FORMNAME="" UNITNAME="RVScroll" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVSEdit.pas" FORMNAME="" UNITNAME="RVSEdit" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVSer.pas" FORMNAME="" UNITNAME="RVSer" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVStr.pas" FORMNAME="" UNITNAME="RVStr" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVStyle.pas" FORMNAME="" UNITNAME="RVStyle" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVTable.pas" FORMNAME="" UNITNAME="RVTable" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVTInplace.pas" FORMNAME="" UNITNAME="RVTInplace" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVUndo.pas" FORMNAME="" UNITNAME="RVUndo" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="CRVData.pas" FORMNAME="" UNITNAME="CRVData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="D:\Test\PrnTest\designide.bpi" FORMNAME="" UNITNAME="designide" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="D:\Test\PrnTest\vcl.bpi" FORMNAME="" UNITNAME="vcl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="D:\Test\PrnTest\vcljpg.bpi" FORMNAME="" UNITNAME="vcljpg" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="D:\Test\PrnTest\rtl.bpi" FORMNAME="" UNITNAME="rtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVReg.pas" FORMNAME="" UNITNAME="RVReg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVReg.dcr" FORMNAME="" UNITNAME="" CONTAINERID="DcrTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVXPTheme.pas" FORMNAME="" UNITNAME="RVXPTheme" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVResize.pas" FORMNAME="" UNITNAME="RVResize" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVDragDrop.pas" FORMNAME="" UNITNAME="RVDragDrop" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVLinear.pas" FORMNAME="" UNITNAME="RVLinear" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVGetText.pas" FORMNAME="" UNITNAME="RVGetText" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVThread.pas" FORMNAME="" UNITNAME="RVThread" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVWordPaint.pas" FORMNAME="" UNITNAME="RVWordPaint" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVAnimate.pas" FORMNAME="" UNITNAME="RVAnimate" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVGetTextW.pas" FORMNAME="" UNITNAME="RVGetTextW" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVPopup.pas" FORMNAME="" UNITNAME="RVPopup" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVNote.pas" FORMNAME="" UNITNAME="RVNote" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVSeqItem.pas" FORMNAME="" UNITNAME="RVSeqItem" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVSubData.pas" FORMNAME="" UNITNAME="RVSubData" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVLabelItem.pas" FORMNAME="" UNITNAME="RVLabelItem" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVDocParams.pas" FORMNAME="" UNITNAME="RVDocParams" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVTypes.pas" FORMNAME="" UNITNAME="RVTypes" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVWinGrIn.pas" FORMNAME="" UNITNAME="RVWinGrIn" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RVGrIn.pas" FORMNAME="" UNITNAME="RVGrIn" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=9
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1049
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=Sergey Tkachenko
+FileDescription=RichView Package for CBuilder 6
+FileVersion=1.9.0.0
+InternalName=RVPkgCB
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=RVPkgCB6
+ProductName=RichView
+ProductVersion=1.9.0.0
+
+[Excluded Packages]
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>

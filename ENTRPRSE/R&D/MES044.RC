@@ -1,0 +1,124 @@
+/****************************************************************************
+
+
+mes044.rc
+
+produced by Borland Resource Workshop
+
+
+*****************************************************************************/
+
+STRINGTABLE
+{
+ 1, "string"
+}
+
+STRINGTABLE
+{
+ 27001, "VAT"
+ 27002, "Value Added Tax Return"
+ 27031, "Sub"
+ 27048, "Profit & Loss A/C (Curr Year)"
+ 27051, "Posted"
+ 27052, "ReValued"
+ 27053, "External Doc"
+ 27054, "Printed"
+ 27055, "Allocated"
+ 27056, "On VAT Return!"
+ 27057, "Batch Document"
+ 27058, "In Ledger! "
+ 27059, "View Only"
+}
+
+STRINGTABLE
+{
+ 32001, "VAT"
+ 32002, "Value Added Tax Return"
+ 32003, "RCT"
+ 32004, "Certificate"
+ 32031, "Sub"
+ 32048, "Profit & Loss A/C (Curr Year)"
+ 32051, "Posted"
+ 32052, "ReValued"
+ 32053, "External Doc"
+ 32054, "Printed"
+ 32055, "Allocated"
+ 32056, "On VAT Return!"
+ 32057, "Batch Document"
+ 32058, "In Ledger! "
+ 32059, "View Only"
+}
+
+STRINGTABLE
+{
+ 28001, "VAT"
+ 28002, "Value Added Tax Return"
+ 28003, "CIS"
+ 28004, "Voucher"
+ 28031, "Sub"
+ 28048, "Profit & Loss A/C (Curr Year)"
+ 28051, "Posted"
+ 28052, "ReValued"
+ 28053, "External Doc"
+ 28054, "Printed"
+ 28055, "Allocated"
+ 28056, "On VAT Return!"
+ 28057, "Batch Document"
+ 28058, "In Ledger! "
+ 28059, "View Only"
+}
+
+STRINGTABLE
+{
+ 29001 "GST"
+ 29002 "GOODS AND SERVICES TAX RETURN"
+ 29031 "Sub"
+ 29048 "Profit & Loss A/C (Curr Year)"
+ 29049 "** Reserved for any more user prompts **"
+ 29051, "Posted"
+ 29052, "ReValued"
+ 29053, "External Doc"
+ 29054, "Printed"
+ 29055, "Allocated"
+ 29056, "On GST Return!"
+ 29057, "Batch Document"
+ 29058, "In Ledger! "
+ 29059, "View Only"
+}
+
+STRINGTABLE
+{
+ 30001 "GST"
+ 30002 "GOODS AND SERVICES TAX RETURN"
+ 30031 "Sub"
+ 30048 "Profit & Loss A/C (Curr Year)"
+ 30049 "** Reserved for any more user prompts **"
+ 30051, "Posted"
+ 30052, "ReValued"
+ 30053, "External Doc"
+ 30054, "Printed"
+ 30055, "Allocated"
+ 30056, "On GST Return!"
+ 30057, "Batch Document"
+ 30058, "In Ledger! "
+ 30059, "View Only"
+}
+
+STRINGTABLE
+{
+ 31001 "GST"
+ 31002 "GOODS AND SERVICES TAX RETURN"
+ 31031 "Sub"
+ 31048 "Profit & Loss A/C (Curr Year)"
+ 31049 "** Reserved for any more user prompts **"
+ 31051, "Posted"
+ 31052, "ReValued"
+ 31053, "External Doc"
+ 31054, "Printed"
+ 31055, "Allocated"
+ 31056, "On GST Return!"
+ 31057, "Batch Document"
+ 31058, "In Ledger! "
+ 31059, "View Only"
+}
+

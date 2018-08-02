@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:w = 
+"urn:schemas-microsoft-com:office:word"><HEAD><TITLE>NICK SUMMARY DOCUMENT</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content=Word.Document name=ProgId>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR>
+<META content="Microsoft Word 9" name=Originator><LINK 
+href="cid:filelist.xml@01C2DF45.5C566AE0" rel=File-List><!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>BestFit</w:Zoom>
+  <w:EnvelopeVis/>
+  <w:DoNotOptimizeForBrowser/>
+ </w:WordDocument>
+</xml><![endif]-->
+<STYLE>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:1725133600;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1179635502 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</STYLE>
+</HEAD>
+<BODY lang=EN-GB style="tab-interval: 36.0pt"><B>From:</B> Nick Shallish 
+[nshallish@exchequer.com]<BR><B>Sent:</B> 28 February 2003 16:21<BR><B>To:</B> 
+Mark Higginson<BR><B>Subject:</B> nick summary<BR>
+<DIV class=Section1>
+<H1><B style="mso-bidi-font-weight: normal"><FONT face="Times New Roman" 
+size=3><SPAN style="FONT-SIZE: 12pt">NICK SUMMARY 
+DOCUMENT</SPAN></FONT></B></H1>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<H1><B style="mso-bidi-font-weight: normal"><FONT face="Times New Roman" 
+size=3><SPAN style="FONT-SIZE: 12pt">Webrel ToDo List</SPAN></FONT></B></H1>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">WRListener needs a 30-second delay on startup to allow 
+the PSQL engines to initialise. It cannot query prior to this without generating 
+an error in the error log. The problem is harmless except for the error log 
+entry every time the machine boots up. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">WRListener needs all datasets and db connections to be 
+closed after each poll. These should be closed within try except statements. 
+This will avoid the occasional error on shutdown where the PSQL engines are 
+closing whilst WRListener tries to maintain comms. 1 hour 
+work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">When an ESN is specified in the Specify ESN page, an 
+email stub executes that is not yet implemented. An extra email recipient should 
+be added for this and the stub completed. The Email Recipients area in the Admin 
+area will need updating, and an extra record required for this in the Emails 
+table. 2 hours work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">ESN validation is incomplete in the customer ESN admin 
+area &#8211; does not check 0-255 units when an ESN is updated or created. The ESN is 
+validated correctly in the Specify New ESN page. Use the routine associated in 
+the Save Changes handler of the admin area. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">A checkbox would be nice next to the Change Password 
+button in the Users admin area. The checkbox would be unchecked by default. If a 
+user checks this, the email notification will not be sent when a users password 
+is changed. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">v5.50 CIS modules + others must be added. This can be 
+done from within Webrel. Check everything has functioned correctly, in 
+particular, new thresholds should become available for the modules, you should 
+be able to audit by the modules, they should be &#8216;releasable&#8217; in the internal 
+release code area etc. 1 hour work tops.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">The isNewerVersion function needs to be applied to 
+control whether the plugin and mcm password buttons are enabled for pre-version 
+5 ESNs. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">Using the same function, the plug-in tab should not be 
+displayed for pre-version 5 ESNs. This will need to be applied within in 
+internal pages. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">If a distributor is changed to a dealer, confirm there 
+are no dealers hanging off them otherwise dealers will belong to a dealer 
+violating one of the application rules. Implement like this: when a distributor 
+is altered to dealer in the edit dealer page and the user saves, check whether 
+the distributor is parent to any dealers. If so, prevent the update popping up a 
+dialog to explain that the dealers must be attached to HQ or another 
+distributor. 1 hour work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">WRListener handles dealer 
+and customer codes from the Message Book and the CD License Generator. These 
+codes should be displayed and edited in the dealer and customer admin areas, 2 
+hours work.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P><FONT 
+face="Times New Roman" size=3><SPAN 
+style="FONT-FAMILY: 'Times New Roman'; FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-GB; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><BR 
+clear=all style="PAGE-BREAK-BEFORE: always"></SPAN></FONT>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">User Names can be displayed 
+on all pages in the release code areas underneath version perhaps, templates 
+will need updating. 2 hours work. <o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">Currently there is no 
+auditing for email recipient changes in the emails admin area. This needs to be 
+applied. 2 hours work.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">The main site page may need 
+filters similar to those available in the admin area for large lists. These 
+should be tastefully displayed, probably for HQ and distributor users only. 2 
+hours work.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">If a user does not have an 
+email address or SMS phone number in their user account, disable the associated 
+checkbox in the release code areas. 1 hours work. <o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt; mso-bidi-font-size: 10.0pt">Distributors need to be able 
+to release modules for 30 days or full depending on their permissions. This is a 
+lot of work. Firstly, differentiate after login whether the user is a 
+distributor. A new permission is needed to control whether the distributor user 
+is handled differently to dealer users. If so, the Toolkit tab in the external 
+release code area will need to be a Modules tab. The code from the Modules 
+internal page will need to be blended with a standard external page. Consult 
+with Nick before commencing this work. 3 days work.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">Internal version templates prepared and implemented 
+using the Intraweb Template Processor control, 2 days work for release code 
+area, 5 for all pages.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<H1><B style="mso-bidi-font-weight: normal"><FONT face="Times New Roman" 
+size=3><SPAN style="FONT-SIZE: 12pt">DBMultiList To Do</SPAN></FONT></B></H1>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">Some very complex work on nulls, otherwise list will 
+have to sit on datasets that do not contain these. 4 days 
+work.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">Testing for table scans under v8. SQL Server is fully 
+optimised, we need to check v8 is performing as expected otherwise the component 
+will not handle filters without huge delays. Pervasive claimed they have fixed 
+these issues&#8230;2 days work if they have, otherwise we need to chase them up with 
+specifics.</SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<H1><B style="mso-bidi-font-weight: normal"><FONT face="Times New Roman" 
+size=3><SPAN style="FONT-SIZE: 12pt">Local Machine</SPAN></FONT></B></H1>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<UL style="mso-margin-top-alt: 0cm" type=disc>
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">Acrobat3 &#8211; there 
+  before I started.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">CrystalEL &#8211; a 
+  backup of Crystal I think, never used, could be cleared I think.</SPAN></FONT> 
+
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">Development &#8211; This 
+  folder is for development, designed to mirror the structure on the mobile 
+  desktop, needed for debugging and running these apps locally.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">EnBent03 &#8211; 
+  contains Bentley data and installs. Large datasets not used for ages, could be 
+  removed. There are routines in the DBTester app that may look here to port 
+  data into PSQL and SQL Server.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">Entrprse &#8211; my 
+  local Enterprise install, v5 just.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">MercExch &#8211; an 
+  Enterprise install. Didn&#8217;t even know it was there?!</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">MSSQL &#8211; SQLServer 
+  MSDE install. SQL Server is running on this machine, represented by the db 
+  icon in the tray.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">MSSQL7 &#8211; I think 
+  SQLServer 7 desktop edition was installed over top of the MSDE to provide a 
+  few extra components to interface with the MSDE from. Its contents went in 
+  here maybe.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">Nick &#8211; Junky kind 
+  of local store of mine.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">Postcode &#8211; Where 
+  AFDPostcode was installed.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">PSQLDataOld &#8211; 
+  Probably junk. Large Bentley files etc.</SPAN></FONT> 
+  <LI class=MsoNormal 
+  style="mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><FONT 
+  face="Times New Roman" size=3><SPAN style="FONT-SIZE: 12pt">PVSW &#8211; The local 
+  client-server engine. Needed for most development that required a Pervasive 
+  engine.</SPAN></FONT> </LI></UL>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt"><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal><FONT face="Times New Roman" size=3><SPAN 
+style="FONT-SIZE: 12pt">Other folders are of no importance or belong to the 
+OS.</SPAN></FONT></P></DIV></BODY></HTML>

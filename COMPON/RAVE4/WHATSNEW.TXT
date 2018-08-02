@@ -1,0 +1,84 @@
+The following is a list of all releases of Rave as well as the bugs that were
+fixed or features that were added in each release.  The most recent patch for
+Rave can always be found at the Nevrona Designs web page,
+
+                         http://www.nevrona.com
+
+4.05 - 8/14/01
+--------------
+- Fixed several bugs in scripting.  To use scripting follow these steps:
+
+  1: Select the component that you want to define an event for.  In this case,
+  select a TRaveText component.
+
+  2: Click on the Event Editor tab and select an event to define in the
+  Available Events drop down.  In this case select OnGetText.
+
+  3: In the editor panel, type the source code for your event.  In this case
+  type in "Value := 'Hello Printer';" without the double quotes.  When you are
+  done typing, press the Compile button and if everything compiled run your
+  report to see the results.
+
+- Fixed problems with the build process that was causing errors in the Rave
+  IDE during shutdown and when saving files (for version 4.04 only).
+
+4.04 - 7/19/01
+--------------
+- Added support for custom rendering components in the preview.  This will
+  change the standard behavior of the preview in that the HTML and PDF export
+  formats will no longer be available from the File | Save As... menu unless
+  you have the PDF or HTML components created somewhere within your
+  application.
+
+- Added TextRect() support for rendering
+
+- Added the FileExtension property to all render components
+
+- Fixed rendering problems with right and center justified text
+
+- Fixed problems with rotated text in PDF rendering
+
+- Fixed a problem with not initializing the correct printer driver upon
+  startup
+
+- Fixed stream positioning when an NDR was loaded into the standard print
+  preview
+
+- Fixed a problem that would occur when a TRaveDataMirror would mirror another
+  TRaveDataMirror component
+
+4.03b - 6/30/01
+---------------
+- Fixed several installtion problems
+
+4.03 - 6/29/01
+--------------
+- Included Delphi 6 support
+
+- Fixed problems with rendering reports to HTML/PDF from the TReportSystem
+  component.
+
+- Fixed problems with the SQLDataView parameters
+
+- Fixed problems with right justified formatted text not appearing properly in
+  the preview.
+
+- Fixed a problem with TRaveDataMirrorSection that would cause AVs when
+  closing the Rave designer in rare situations.
+
+4.02 - 5/18/01
+--------------
+- Fixed a problem with rendering more than one PDF in a row
+
+- Removed some debug code that was causing errors upon exiting with reports
+  using DirectDataViews.
+
+4.01 - 5/15/01
+--------------
+- Fixed a few problems with the end user designer DLLs
+
+- Fixed a few problems with the event editor interface
+
+4.00 - 4/3/01
+-------------
+- Initial release

@@ -1,0 +1,67 @@
+unit drmfiltertransform;
+
+
+interface
+
+uses DB, Classes, SysUtils, drm, drmmisc, pvparser, btvconst;
+
+const
+  WildCardSymbol: string = '*';
+
+type
+  TRetStructType = ( rstVariant, rstField, rstList, rstEQ, rstNE, rstGT, rstLT, rstGE, rstLE,
+    rstOR, rstAND, rstCompare, rstWildCard, rstBit, rstLocal );
+
+  TRetStruct = record
+    StType:     TRetStructType;
+    FactStType: TRetStructType;
+    v:          variant;
+    nodeClass:  tNODEClass;
+    DrmFilters: TList;
+    pLocal:     PCANExpr;
+  end;
+
+{ TParseTransformer }
+
+  TParseTransformer = class
+  private
+    FDataSet: TDataSet;
+    FColumns: TDRMColumnInfoCollection;
+    FLocalFilterParseData: PCANExpr;
+    FDRMFilters: PDRM_FilterStructArray;
+    pFilterArray: PDRM_FilterStructArray;
+    FDRMFilterCount: integer;
+    FCurFilter: integer;
+    FNodeCursor: integer;
+    FLiteralCursor: integer;
+    FParseData: PChar;
+    FLocal: PChar;
+    FPutFieldInBufferSrc: PChar;
+
+    // Task 1328 - shenders:
+    // Field to track recursion levels in ProceedNode()
+    FNodeLevel: integer;
+
+    procedure PutFieldInBuffer(Field: TField; Buffer: Pointer; var Continue: boolean);
+    procedure ProceedNode(Cursor: integer; var Result: TRetStruct);
+    procedure ProceedCompareNode(Cursor: integer; var Result: TRetStruct);
+    procedure ProceedConstNode(pNode: pCANConst; var Result: TRetStruct);
+    procedure ProceedFieldNode(pNode: pCANField; var Result: TRetStruct);
+    procedure MakeCANExpr(Cursor: integer; var pLocal: PCANExpr);
+    procedure MergeCANExpr(Expr1: PCANExpr; Expr2: PCANExpr; var pLocal: PCANExpr);
+    procedure MergeDRMFilters(DrmFilters1, DrmFilters2: TList; var ResultFilters: TList; Expr: byte);
+    procedure MergeAndOrExpr(Op1,Op2: TRetStruct; var Result: TRetStruct);
+    procedure ProceedNode1(Cursor: integer; pParseData: PChar);
+    procedure Transform(ParseData: PCANExpr);
+    procedure IncCurFilter;
+    procedure FreeDrmFilter(var pDrmFilters: PDRM_FilterStructArray; nDrmFiltersCount: integer);
+  public
+    constructor Create(DataSet: TDataSet; Columns: TDRMColumnInfoCollection;
+      ParseData: PCANExpr);
+    destructor Destroy; override;
+    property pLocalFilterParseData: PCANExpr read FLocalFilterParseData;
+    property pDRMFilters: PDRM_FilterStructArray read FDRMFilters;
+    property DRMFilterCount: integer read FDRMFilterCount;
+  end;
+
+implementation

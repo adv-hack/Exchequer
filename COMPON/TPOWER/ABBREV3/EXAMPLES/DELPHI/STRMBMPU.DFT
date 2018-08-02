@@ -1,0 +1,53 @@
+object Form1: TForm1
+  Left = 200
+  Top = 108
+  Width = 525
+  Height = 436
+  Caption = 'Stream Compression/Decompression Example'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 8
+    Top = 80
+    Width = 489
+    Height = 317
+    AutoSize = True
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 8
+    Width = 161
+    Height = 25
+    Caption = 'Compress/Decompress Bitmap'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 184
+    Top = 8
+    Width = 329
+    Height = 57
+    BorderStyle = bsNone
+    Color = clBtnFace
+    Ctl3D = False
+    Lines.Strings = (
+      
+        'To run this example, first load a bitmap into the image componen' +
+        't.'
+      
+        'Then run the program. When you click on the button, the image wi' +
+        'll'
+      'be compressed to a memory stream and decompressed again. You '
+      
+        'will see the image reposition after the decompressed data is loa' +
+        'ded.'
+      '')
+    ParentCtl3D = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+end

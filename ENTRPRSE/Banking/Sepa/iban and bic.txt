@@ -1,0 +1,3 @@
+IBAN - max 34 chars
+BIC - 8 or 11 chars
+

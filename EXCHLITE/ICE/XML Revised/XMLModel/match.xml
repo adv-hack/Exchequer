@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:match xmlns:val="urn:www-iris-co-uk:match">
+<message guid="" number="0" count="0" source="" destination="" flag="0" plugin="" datatype="0" desc="" xsl="" xsd="" startperiod="0" startyear="0" endperiod="0" endyear="0">
+  <matchrec>
+    <madocyourref><![CDATA[]]></madocyourref>
+    <madocref><![CDATA[]]></madocref>
+    <mapayref><![CDATA[]]></mapayref>
+    <matype/>
+    <madoccurrency/>
+    <madocvalue/>
+    <mapaycurrency/>
+    <mapayvalue/>
+    <mabasevalue/>
+  </matchrec>
+</message>
+</val:match>

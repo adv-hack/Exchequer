@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Test.exe pkDBMultiList.bpl pkEnt.bpl DBMBtrieve.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Test.exe: Test.dpr
+  $(DCC)
+
+pkDBMultiList.bpl: pkDBMultiList.dpk
+  $(DCC)
+
+pkEnt.bpl: pkEnt.dpk
+  $(DCC)
+
+DBMBtrieve.bpl: DBMBtrieve.dpk
+  $(DCC)
+
+

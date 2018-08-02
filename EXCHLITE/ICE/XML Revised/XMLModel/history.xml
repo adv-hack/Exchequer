@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:hist xmlns:val="urn:www-iris-co-uk:hist">
+<message guid="" number="0" count="0" source="" destination="" flag="0" plugin="" datatype="0" desc="" xsl="" xsd="" startperiod="0" startyear="0" endperiod="0" endyear="0">
+  <histrec>
+    <nhcode/>
+    <nhexclass/>
+    <nhcr/>
+    <nhyr/>
+    <nhpr/>
+    <nhsales/>
+    <nhpurchases/>
+    <nhbudget/>
+    <nhcleared/>
+    <nhbudget2/>
+    <nhvalue1/>
+    <nhvalue2/>
+    <nhvalue3/>
+  </histrec>
+</message>
+</val:hist>

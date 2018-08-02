@@ -1,0 +1,10 @@
+"Invalid Line Nominal Code",C:\ComTKExes\CTKT.exe,Y,Y,30104,N,30104
+"Invalid Line Cost Centre/Department Code",C:\ComTKExes\CTKT.exe,Y,Y,30105,N,30105
+"Invalid Line Stock Code",C:\ComTKExes\CTKT.exe,Y,Y,30106,N,30106
+"Invalid Line VAT Code",C:\ComTKExes\CTKT.exe,Y,Y,30107,N,30107
+"Invalid Line discount character",C:\ComTKExes\CTKT.exe,Y,Y,30108,N,30108
+"Line Totals do not balance with Transaction totals",C:\ComTKExes\CTKT.exe,Y,Y,30109,N,30109
+"Invalid Transaction Line Job Code",C:\ComTKExes\CTKT.exe,Y,Y,30111,N,30111
+"Invalid Stock Location Code",C:\ComTKExes\CTKT.exe,Y,Y,30115,N,30115
+"Lines total and Header total must be zero for NOM transaction",C:\ComTKExes\CTKT.exe,Y,Y,30121,N,30121
+"Transaction Line Job is closed",C:\ComTKExes\TimeSheetTest.exe,Y,Y,30126,N,30126

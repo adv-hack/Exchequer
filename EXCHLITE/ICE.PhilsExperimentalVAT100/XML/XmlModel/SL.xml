@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:sl xmlns:val="urn:www-iris-co-uk:sl">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <slrec>
+             <lsstkcode/>    <!--:  String[16];   { Stock Code } -->
+             <lsloccode/>    <!--:  String[3];    { Loc Code }  -->
+             <lsqtyinstock/> <!--:  Double;       { Actual Stock } -->
+             <lsqtyonorder/> <!--:  Double;       { OnOrder }  -->
+             <lsqtyalloc/>   <!--:  Double;       { Allocated } -->
+             <lsqtypicked/>  <!--:  Double;       { Picked } -->
+             <lsqtymin/>     <!--:  Double;       { Min    } -->
+             <lsqtymax/>     <!--:  Double;       { Max    } -->
+             <lsqtyfreeze/>  <!--:  Double;       { Freeze Qty } -->
+             <lsroqty/>      <!--:  Double;       { Re-Order Qty } -->
+             <lsrodate/>     <!--:  String[8];    { Re-Order Date }  -->
+             <lsrocc/>       <!--:  String[3];    { Re-Order CC} -->
+             <lsrodep/>      <!--:  String[3];    { Re-Order Dep} -->
+             <lscc/>        <!-- :  String[3];    { Default CC} -->
+             <lsdep/>        <!--:  String[3];    { Default Dep} -->
+             <lsbinloc/>     <!--:  String[10];   { Bin Location } -->
+             <lssalebands>  <!--:  TSaleBandAry; { Pricing }  -->
+                   <salebands1>
+                       <currency/>   <!-- :  SmallInt;  { Currency of Band } -->
+                       <salesprice/> <!--   Double;    { Price of Band    } -->
+                   </salebands1>
+                   <salebands2>
+                       <currency/>
+                       <salesprice/>
+                   </salebands2>
+                   <salebands3>
+                       <currency/>
+                       <salesprice/>
+                   </salebands3>
+                   <salebands4>
+                       <currency/>
+                       <salesprice/>
+                   </salebands4>
+                   <salebands5>
+                       <currency/>
+                       <salesprice/>
+                   </salebands5>
+                   <salebands6>
+                       <currency/>
+                       <salesprice/>
+                   </salebands6>
+                   <salebands7>
+                       <currency/>
+                       <salesprice/>
+                   </salebands7>
+                   <salebands8>
+                       <currency/>
+                       <salesprice/>
+                   </salebands8>
+             </lssalebands>
+             <lsroprice/>    <!--:  Double;       { Re-Order Price}  -->
+             <lsrocurrency/> <!--:  SmallInt;     {     "    Currency} -->
+             <lscostprice/>  <!--:  Double;       { Last Cost Price }-->
+             <lspcurrency/>  <!--:  SmallInt;     {     "     Currency} -->
+             <lsdefnom>     <!--:  Array[1..5]   { 1 Sales Nominal Code } -->
+               <lsdefnom1/>           <!--     Of LongInt; { 2 Cost of Sales Nominal }  -->
+               <lsdefnom2/>           <!--                 { 3 Profit & Loss Closing Stock } -->
+               <lsdefnom3/>           <!--                 { 4 Balance Sheet Nominal } -->
+               <lsdefnom4/>           <!--                 { 5 WIP Nominal Code } -->
+               <lsdefnom5/>
+             </lsdefnom>
+             <lsminflg/>     <!--:  WordBool;     { Below min Flg}  -->
+             <lstempsupp/>   <!--:  String[10];   { Temp Supplier } -->
+             <lssupplier/>   <!--:  String[10];   { Main Suppplier}  -->
+             <lslastused/>   <!--:  String[8];    { Read only - Last used date } -->
+             <lsqtyposted/>  <!--:  Double;       { Posted loc qty } -->
+             <lsqtytake/>    <!--:  Double;       { Stock Take Qty } -->
+             <lslasttime/>   <!--:  String[6];    { Read only - Last used time } -->
+
+             <lsqtyallocwor/> <!--:  Double;       { Allocated to WOR}  -->
+             <lsqtyissuewor/> <!--:   Double;       { Issued to WOR} -->
+             <lsqtypickwor/> <!--:  Double;       { Picked on WOR} -->
+             <lswopwipgl/>   <!--:  LongInt;      { WIPGLCode}  -->
+        </slrec>
+    </message>
+</val:sl>

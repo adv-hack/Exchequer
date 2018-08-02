@@ -1,0 +1,6 @@
+[Warning] BRWSEDIR.PAS(11): Unit 'FileCtrl' is specific to a platform
+[Warning] BRWSEDIR.PAS(73): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] BRWSEDIR.PAS(127): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] ABNCONFG.PAS(137): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] ABNCONFG.PAS(140): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Hint] ABNCONFG.PAS(181): Value assigned to 'TempI' never used

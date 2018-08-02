@@ -1,0 +1,34 @@
+<HTML><HEAD><META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0"><TITLE></TITLE><script>var aCars1 = new Array("BMW","320i",1998,12000);var aCars2 = new Array("BMW","Z3",1999,18000);var aCars3 = new Array("Nissan","Primera",1998,7000);var aCars4 = new Array("Ferrari","360 Modena",2000,95000);var aCars = new Array(aCars1,aCars2,aCars3,aCars4);
+// 1. create XML// 2. how many built in 1998?// 3. delete the most expensive car
+function AddCar(Doc, root, i){
+	eCar = Doc.createElement("Car");
+	eMake = Doc.createElement("Make");
+	eModel = Doc.createElement("Model");
+	ePrice = Doc.createElement("Price");
+	eYear = Doc.createElement("Year");	
+	root.appendChild(eCar);	eCar.appendChild(eMake);
+    eCar.appendChild(eModel);
+	eCar.appendChild(ePrice);
+	eCar.appendChild(eYear);	eText = Doc.createTextNode(aCars[i][0]);
+	eMake.appendChild(eText);
+	eText = Doc.createTextNode(aCars[i][1]);
+	eModel.appendChild(eText);
+	eText = Doc.createTextNode(aCars[i][2]);
+	eYear.appendChild(eText);
+	eText = Doc.createTextNode(aCars[i][3]);
+	ePrice.appendChild(eText);
+}
+
+
+function onLoad(){	
+	var XMLDoc = new ActiveXObject("Microsoft.XMLDOM");	XMLDoc.loadXML("<Cars></Cars>");		// Add root	var root = XMLDoc.documentElement;
+	for (i=0;i<4;i++)	  AddCar(XMLDoc, root, i);	answer1.innerText = XMLDoc.xml;	// add code here to set "count" to the correct value	count = 0;
+	for (i=0;i<root.getElementsByTagName("Year").length;i++)		if (root.getElementsByTagName("Year").item(i).text == "1998") count++;	answer2.innerText = count;
+	// add code here to delete the correct element
+	MaxPrice = 0;	count = 0;
+	for (i=0;i<root.getElementsByTagName("Price").length;i++)
+	{
+		price = root.getElementsByTagName("Price").item(i).text		if (price > MaxPrice) 		{			MaxPrice = price;			count = i;		}
+	}
+	root.removeChild(root.getElementsByTagName("Car").item(count));	answer3.innerText = XMLDoc.xml;}
+</script><style>	div {margin-top:24pt;}</style></HEAD><BODY onload="onLoad()"><div id="answer1"></div><div>The number of cars built in 1998 was <span id="answer2"></span></div><div id="answer3"></div></BODY></HTML>

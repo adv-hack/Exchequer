@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="F0+063v1JkPrC/AQym3big" identitycol="PositionId" recordfieldname="" reclen="128">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_gc_group_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="gcGroupCode" collation="1"/>
+    <schemafield fieldname="f_gc_company_code" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="gcCompanyCode" collation="1"/>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_gc_group_code</item>
+        <item>f_gc_company_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_gc_company_code</item>
+        <item>f_gc_group_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

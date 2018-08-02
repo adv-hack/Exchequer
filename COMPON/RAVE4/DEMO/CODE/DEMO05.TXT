@@ -1,0 +1,12 @@
+Dear %contact%,
+
+We would like to thank you and everyone at %company% for you business in the past.  However, we haven't heard from you since %lastdate%.  Our services over the past few years have been greatly expanded and we'd love to show you what we can do for you.
+
+Please call (999) 555-1234 and ask to speak to myself, John Smith or one of our other great sales representatives. Make sure to have your customer number %custno% handy so that we can look you up in our new computer system.
+
+Sincerely
+
+
+
+John Smith
+Sales Manager, ABC Manfacturers

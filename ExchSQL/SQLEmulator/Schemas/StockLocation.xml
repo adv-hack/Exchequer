@@ -1,0 +1,97 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="390">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="ls_stk_code" fullfieldname="ls_stk_code" typename="DelphiString" size="21" elements="1" id="0" columnname="LsStkCode" collation="1"/>
+    <schemafield fieldname="ls_stk_folio" fullfieldname="ls_stk_folio" typename="long" size="4" elements="1" id="0" columnname="LsStkFolio"/>
+    <schemafield fieldname="ls_loc_code" fullfieldname="ls_loc_code" typename="DelphiString" size="11" elements="1" id="0" columnname="LsLocCode" collation="1"/>
+    <schemafield fieldname="ls_qty_in_stock" fullfieldname="ls_qty_in_stock" typename="double" size="8" elements="1" id="0" columnname="LsQtyInStock"/>
+    <schemafield fieldname="ls_qty_on_order" fullfieldname="ls_qty_on_order" typename="double" size="8" elements="1" id="0" columnname="LsQtyOnOrder"/>
+    <schemafield fieldname="ls_qty_alloc" fullfieldname="ls_qty_alloc" typename="double" size="8" elements="1" id="0" columnname="LsQtyAlloc"/>
+    <schemafield fieldname="ls_qty_picked" fullfieldname="ls_qty_picked" typename="double" size="8" elements="1" id="0" columnname="LsQtyPicked"/>
+    <schemafield fieldname="ls_qty_min" fullfieldname="ls_qty_min" typename="double" size="8" elements="1" id="0" columnname="LsQtyMin"/>
+    <schemafield fieldname="ls_qty_max" fullfieldname="ls_qty_max" typename="double" size="8" elements="1" id="0" columnname="LsQtyMax"/>
+    <schemafield fieldname="ls_qty_freeze" fullfieldname="ls_qty_freeze" typename="double" size="8" elements="1" id="0" columnname="LsQtyFreeze"/>
+    <schemafield fieldname="ls_ro_qty" fullfieldname="ls_ro_qty" typename="double" size="8" elements="1" id="0" columnname="LsRoQty"/>
+    <schemafield fieldname="ls_ro_date" fullfieldname="ls_ro_date" typename="DelphiString" size="9" elements="1" id="0" columnname="LsRoDate"/>
+    <schemafield fieldname="ls_ro_cc_dep1" fullfieldname="ls_ro_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LsRoDepartment" collation="1"/>
+    <schemafield fieldname="ls_ro_cc_dep2" fullfieldname="ls_ro_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LsRoCostCentre" collation="1"/>
+    <schemafield fieldname="ls_cc_dep1" fullfieldname="ls_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LsDepartment" collation="1"/>
+    <schemafield fieldname="ls_cc_dep2" fullfieldname="ls_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LsCostCentre" collation="1"/>
+    <schemafield fieldname="ls_bin_loc" fullfieldname="ls_bin_loc" typename="DelphiString" size="11" elements="1" id="0" columnname="LsBinLoc"/>
+    <schemafield fieldname="currency1" fullfieldname="currency1" typename="BYTE" size="1" elements="1" id="0" columnname="Currency1"/>
+    <schemafield fieldname="sales_price1" fullfieldname="sales_price1" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice1"/>
+    <schemafield fieldname="currency2" fullfieldname="currency2" typename="BYTE" size="1" elements="1" id="0" columnname="Currency2"/>
+    <schemafield fieldname="sales_price2" fullfieldname="sales_price2" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice2"/>
+    <schemafield fieldname="currency3" fullfieldname="currency3" typename="BYTE" size="1" elements="1" id="0" columnname="Currency3"/>
+    <schemafield fieldname="sales_price3" fullfieldname="sales_price3" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice3"/>
+    <schemafield fieldname="currency4" fullfieldname="currency4" typename="BYTE" size="1" elements="1" id="0" columnname="Currency4"/>
+    <schemafield fieldname="sales_price4" fullfieldname="sales_price4" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice4"/>
+    <schemafield fieldname="currency5" fullfieldname="currency5" typename="BYTE" size="1" elements="1" id="0" columnname="Currency5"/>
+    <schemafield fieldname="sales_price5" fullfieldname="sales_price5" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice5"/>
+    <schemafield fieldname="currency6" fullfieldname="currency6" typename="BYTE" size="1" elements="1" id="0" columnname="Currency6"/>
+    <schemafield fieldname="sales_price6" fullfieldname="sales_price6" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice6"/>
+    <schemafield fieldname="currency7" fullfieldname="currency7" typename="BYTE" size="1" elements="1" id="0" columnname="Currency7"/>
+    <schemafield fieldname="sales_price7" fullfieldname="sales_price7" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice7"/>
+    <schemafield fieldname="currency8" fullfieldname="currency8" typename="BYTE" size="1" elements="1" id="0" columnname="Currency8"/>
+    <schemafield fieldname="sales_price8" fullfieldname="sales_price8" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice8"/>
+    <schemafield fieldname="currency9" fullfieldname="currency9" typename="BYTE" size="1" elements="1" id="0" columnname="Currency9"/>
+    <schemafield fieldname="sales_price9" fullfieldname="sales_price9" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice9"/>
+    <schemafield fieldname="currency10" fullfieldname="currency10" typename="BYTE" size="1" elements="1" id="0" columnname="Currency10"/>
+    <schemafield fieldname="sales_price10" fullfieldname="sales_price10" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice10"/>
+    <schemafield fieldname="ls_ro_price" fullfieldname="ls_ro_price" typename="double" size="8" elements="1" id="0" columnname="LsRoPrice"/>				
+    <schemafield fieldname="ls_ro_currency" fullfieldname="ls_ro_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LsRoCurrency"/>
+    <schemafield fieldname="ls_cost_price" fullfieldname="ls_cost_price" typename="double" size="8" elements="1" id="0" columnname="LsCostPrice"/>
+    <schemafield fieldname="ls_p_currency" fullfieldname="ls_p_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LsPCurrency"/>
+    <schemafield fieldname="ls_def_nom1" fullfieldname="ls_def_nom1" typename="long" size="4" elements="1" id="0" columnname="LsDefNom1"/>
+    <schemafield fieldname="ls_def_nom2" fullfieldname="ls_def_nom2" typename="long" size="4" elements="1" id="0" columnname="LsDefNom2"/>
+    <schemafield fieldname="ls_def_nom3" fullfieldname="ls_def_nom3" typename="long" size="4" elements="1" id="0" columnname="LsDefNom3"/>
+    <schemafield fieldname="ls_def_nom4" fullfieldname="ls_def_nom4" typename="long" size="4" elements="1" id="0" columnname="LsDefNom4"/>
+    <schemafield fieldname="ls_def_nom5" fullfieldname="ls_def_nom5" typename="long" size="4" elements="1" id="0" columnname="LsDefNom5"/>
+    <schemafield fieldname="ls_def_nom6" fullfieldname="ls_def_nom6" typename="long" size="4" elements="1" id="0" columnname="LsDefNom6"/>
+    <schemafield fieldname="ls_def_nom7" fullfieldname="ls_def_nom7" typename="long" size="4" elements="1" id="0" columnname="LsDefNom7"/>
+    <schemafield fieldname="ls_def_nom8" fullfieldname="ls_def_nom8" typename="long" size="4" elements="1" id="0" columnname="LsDefNom8"/>
+    <schemafield fieldname="ls_def_nom9" fullfieldname="ls_def_nom9" typename="long" size="4" elements="1" id="0" columnname="LsDefNom9"/>
+    <schemafield fieldname="ls_def_nom10" fullfieldname="ls_def_nom10" typename="long" size="4" elements="1" id="0" columnname="LsDefNom10"/>
+    <schemafield fieldname="ls_stk_flg" fullfieldname="ls_stk_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsStkFlg"/>
+    <schemafield fieldname="ls_min_flg" fullfieldname="ls_min_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsMinFlg"/>
+    <schemafield fieldname="ls_temp_supp" fullfieldname="ls_temp_supp" typename="DelphiString" size="11" elements="1" id="0" columnname="LsTempSupp"/>
+    <schemafield fieldname="ls_supplier" fullfieldname="ls_supplier" typename="DelphiString" size="11" elements="1" id="0" columnname="LsSupplier" collation="1"/>
+    <schemafield fieldname="ls_last_used" fullfieldname="ls_last_used" typename="DelphiString" size="9" elements="1" id="0" columnname="LsLastUsed"/>
+    <schemafield fieldname="ls_qty_posted" fullfieldname="ls_qty_posted" typename="double" size="8" elements="1" id="0" columnname="LsQtyPosted"/>
+    <schemafield fieldname="ls_qty_take" fullfieldname="ls_qty_take" typename="double" size="8" elements="1" id="0" columnname="LsQtyTake"/>
+    <schemafield fieldname="ls_ro_flg" fullfieldname="ls_ro_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsROFlg"/>
+    <schemafield fieldname="ls_last_time" fullfieldname="ls_last_time" typename="DelphiString" size="7" elements="1" id="0" columnname="LsLastTime"/>
+    <schemafield fieldname="ls_qty_alloc_wor" fullfieldname="ls_qty_alloc_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyAllocWOR"/>
+    <schemafield fieldname="ls_qty_issue_wor" fullfieldname="ls_qty_issue_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyIssueWOR"/>
+    <schemafield fieldname="ls_qty_pick_wor" fullfieldname="ls_qty_pick_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyPickWOR"/>
+    <schemafield fieldname="ls_wopwipgl" fullfieldname="ls_wopwipgl" typename="long" size="4" elements="1" id="0" columnname="LsWOPWIPGL"/>
+    <schemafield fieldname="ls_s_warranty" fullfieldname="ls_s_warranty" typename="BYTE" size="1" elements="1" id="0" columnname="LsSWarranty"/>
+    <schemafield fieldname="ls_s_warranty_type" fullfieldname="ls_s_warranty_type" typename="BYTE" size="1" elements="1" id="0" columnname="LsSWarrantyType"/>
+    <schemafield fieldname="ls_m_warranty" fullfieldname="ls_m_warranty" typename="BYTE" size="1" elements="1" id="0" columnname="LsMWarranty"/>
+    <schemafield fieldname="ls_m_warranty_type" fullfieldname="ls_m_warranty_type" typename="BYTE" size="1" elements="1" id="0" columnname="LsMWarrantyType"/>
+    <schemafield fieldname="ls_qty_p_return" fullfieldname="ls_qty_p_return" typename="double" size="8" elements="1" id="0" columnname="LsQtyPReturn"/>
+    <schemafield fieldname="ls_return_gl" fullfieldname="ls_return_gl" typename="long" size="4" elements="1" id="0" columnname="LsReturnGL"/>
+    <schemafield fieldname="ls_re_stock_pcnt" fullfieldname="ls_re_stock_pcnt" typename="double" size="8" elements="1" id="0" columnname="LsReStockPcnt"/>
+    <schemafield fieldname="ls_re_stock_gl" fullfieldname="ls_re_stock_gl" typename="long" size="4" elements="1" id="0" columnname="LsReStockGL"/>
+    <schemafield fieldname="ls_bom_ded_comp" fullfieldname="ls_bom_ded_comp" typename="bool1" size="1" elements="1" id="0" columnname="LsBOMDedComp"/>
+    <schemafield fieldname="ls_qty_return" fullfieldname="ls_qty_return" typename="double" size="8" elements="1" id="0" columnname="LsQtyReturn"/>
+    <schemafield fieldname="ls_p_return_gl" fullfieldname="ls_p_return_gl" typename="long" size="4" elements="1" id="0" columnname="LsPReturnGL"/>
+	</fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item size="16">ls_stk_code</item>
+				<item size="3">ls_loc_code</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item size="3">ls_loc_code</item>
+				<item size="16">ls_stk_code</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

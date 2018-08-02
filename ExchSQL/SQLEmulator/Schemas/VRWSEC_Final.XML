@@ -1,0 +1,26 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="191" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="rtstreecode" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="rtstreecode" collation="1"/>
+        <schemafield fieldname="rtsusercode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="rtsusercode" collation="1"/>
+        <schemafield fieldname="rtssecurity" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="rtssecurity" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>rtsusercode</item>
+				<item>rtstreecode</item>				
+			</indexfields>
+        </schemaindexes>
+		<schemaindexes indexnumber="1" isunique="1" isclustered="0" >
+			<indexfields>
+				<item>rtstreecode</item>
+				<item>rtsusercode</item>
+			</indexfields>
+		</schemaindexes>		
+	</indexes>
+</schemarecord>
+

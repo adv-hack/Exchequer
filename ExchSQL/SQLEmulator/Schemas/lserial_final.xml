@@ -1,0 +1,29 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="454" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="lsHeaderNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lsHeaderNo" />
+        <schemafield fieldname="lsLineNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lsLineNo" />
+        <schemafield fieldname="lsBatch" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="lsBatch" />
+        <schemafield fieldname="lsSerialNo" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="lsSerialNo" />
+        <schemafield fieldname="lsBatchNo" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="lsBatchNo" />
+        <schemafield fieldname="XlsUsedInBatch" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="XlsUsedInBatch" />        
+        <schemafield fieldname="XlsUsedInThisLine" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="XlsUsedInThisLine" />
+        <schemafield fieldname="XlsUsedElsewhere" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="XlsUsedElsewhere" />
+        <schemafield fieldname="lsDummyChar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lsDummyChar" collation="1"/>
+        <schemafield fieldname="lsUsedInBatch" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lsUsedInBatch" />
+        <schemafield fieldname="lsUsedInThisLine" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lsUsedInThisLine" />        
+        <schemafield fieldname="lsUsedElsewhere" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lsUsedElsewhere" />        
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>lsHeaderNo</item>
+                <item>lsLineNo</item>                
+				<item>lsDummyChar</item>                
+            </indexfields>
+        </schemaindexes>        
+    </indexes>
+</schemarecord>

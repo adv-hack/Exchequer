@@ -1,0 +1,216 @@
+Gnostice RaveRender - version history
+=====================================
+
+-------------------------------
+Version 1.2 - January 25, 2003
+-------------------------------
+
+Enhancements:
+
+	General/All:
+
+		Support for Rave 5.08 BE
+
+		Support for Rave 5.08 BEX
+		
+		Improved Excel output
+
+		Support for multiple page layouts in a single report
+	
+		Documentation updates
+
+Changes:
+
+	General/All:
+
+		Separate Setup program for registered version for Rave 4 & 5
+		
+--------------------------------
+Version 1.14 - October 21, 2002
+--------------------------------
+
+Enhancements:
+
+	General/All:
+
+		Support for Rave 5
+
+		Support for Delphi 7
+		
+		Documentation updates
+
+-------------------------------
+Version 1.13 - August 16, 2002
+-------------------------------
+
+Enhancements:
+
+	General/All:
+
+		Support for C++Builder 6
+
+		Support for Indy 9
+
+Changes:
+
+	General/All:
+
+		Support for Rave versions below 4.07
+
+---------------------------------
+Version 1.12 - February 20, 2002
+---------------------------------
+
+Enhancements:
+
+	PDF, HTML & RTF:
+
+		Subject and Title properties: Subject and Title can now be
+		set to include in the rendered document.
+
+		ImagePixelFormat property: Set pixel format for images based
+		on file size/quality requirements.
+
+	Excel:
+
+		OnEncodeText Event: Write handler for this event to specify a
+		cell type, for the text, different from the one that the component
+		decides to use. Currently string, integer and double types are
+		supported. Users can also change the Text that is encoded into
+		the Excel file.
+
+Fixes:
+
+	PDF, HTML & RTF:
+
+		Problem with using the ImageDPI property is fixed. You can now
+		set ImageDPI to -1 to render images with the same quality as
+		the original.
+
+	PDF:
+
+		Problem with RenderToPDFInStream routine is fixed.
+
+	RTF:
+
+		Problem of extra blank pages is fixed.
+
+		Problem with RenderToRTFInStream routine is fixed.
+
+---------------------------------
+Version 1.11 - December 26, 2001
+---------------------------------
+
+	Some fixes to the installer. Only change in code was to the
+	product version constant (cVersion). Compiled with Rave 4.08.
+
+--------------------------------
+Version 1.1 - December 12, 2001
+--------------------------------
+
+Enhancements:
+
+	General/All:
+
+		C++Builder 4 support.
+
+		Polyline and Polygon is now supported.
+
+		Batch files for easy compiling of packages.
+
+		Lots of new topics in the Help. Programmatic Rendering,
+		Rendering PDF, RTF to a Stream, Using RaveRender in a
+		Web Server application and more. The Help file now contains all
+		that is in the manual.
+
+	PDF:
+
+		Compressed Bitmap encoding! Set ExportImageFormat to ifBMP to save images
+		in a non-lossy format. Enabling the ZLib option in gtRPDefines.inc gives
+		an even smaller PDF file compared to JPEG encoding.
+
+		PDF now supports all types of fill styles for all kinds of shapes.
+
+		Image DPI is now a property. ImageDPI can be appropriately set to alter
+		image rendering quality. A greater value improves quality.
+
+		Extra characters are reduced to optimize file size.
+
+	HTML:
+
+		Floating Navigator! Navigator can now be fixed to screen even when the
+		document is scrolled. NavigatorType property determines this behavior.
+
+		Image DPI is now a property. ImageDPI can be appropriately set to alter
+		image rendering quality. A greater value improves quality.
+
+	RTF:
+
+		Image DPI is now a property. ImageDPI can be appropriately set to alter
+		image rendering quality. A greater value improves quality.
+
+		RTF can now be generated to a TMemoryStream object.
+		Makes Web Server application programming a breeze. The Report can
+		be exported to stream by using the routines provided in the
+		gtRPRoutines unit.
+
+	Excel:
+
+		Complete Re-Design to improve the rendering of text.
+
+		Excel now supports 4 different Fonts.
+
+		Excel now supports FontStyles like Bold, Italic, Underline, Strkeout.
+
+		Rendering of text is much better now. No more overlapping of text.
+
+Changes:
+
+	General/All
+
+		The Setup and Installation of RaveRender is more organized now.
+
+		EMailWithFastNet option is now enabled by default in gtRPDefines.inc.
+
+		Packages now contain compiler directives. Do NOT save packages in the IDE.
+
+	PDF:
+		Extra characters are reduced to optimize file size.
+
+	Excel:
+
+		Complete Re-Design to improve rendering of text.
+
+Fixes:
+
+	General/All:
+
+		Position of stretch drawn Images is now proper.
+
+		Rendering when Display is configured to Large Fonts is now fixed.
+
+	PDF:
+		Rendering of text when color value is negative. The text is now displayed in black.
+
+		LineStyles is now much better and consistent.
+
+	RTF:
+		Positioning of Lines is now correct.
+
+	Excel:
+		No more overlapping of text.
+
+----------------------------------
+Version 1.01 - September 27, 2001
+----------------------------------
+
+Enhancements:
+
+	General/All:
+		C++Builder 5 support.
+
+---------------------------------
+Version 1.0 - September 11, 2001
+---------------------------------
+
+	Released!

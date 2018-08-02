@@ -1,0 +1,7 @@
+"Invalid Discount Type",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30001,N,"1,30001"
+"Invalid Start Date",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30003,N,"1,30003"
+"Invalid End Date",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30004,N,"1,30004"
+"Buy Quantity must be positive",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30005,N,"1,30005"
+"Reward Value must be positive",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30006,N,"1,30006"
+"Invalid Stock Code",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30008,N,"1,30008"
+"Quantity Clash",C:\ComTKExes\MBDiscountTest.exe,Y,Y,30011,N,"1,30011"

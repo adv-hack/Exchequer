@@ -1,0 +1,44 @@
+package B302cr60;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TurboPower Abbrevia 3.02 CLX Run-time package - CLX60'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE UsingCLX}
+
+requires
+  rtl,
+  visualclx,
+  B302_r60;
+
+contains
+  AbQZpOut in 'AbQZpOut.pas',
+  AbQCmpnd in 'AbQCmpnd.pas',
+  AbQMeter in 'AbQMeter.pas',
+  AbQView in 'AbQView.pas',
+  AbBseCLX in 'AbBseCLX.pas',
+  AbQZView in 'AbQZView.pas',
+  AbQCView in 'AbQCView.pas';
+
+end.

@@ -1,0 +1,15 @@
+/********************************************************************
+ * Async Professional: Apro.rc                                       *
+ * Copyright (c) TurboPower Software Company 1996-2002              *
+ * All rights reserved.                                             *
+ ********************************************************************
+ * Terminal: Error strings resource                                 *
+ ********************************************************************/
+
+;win16 is defined in apd.mak when calling brcc
+
+#ifdef win16
+APRO_ERROR_STRINGS_ENGLISH RCDATA APRO.S16
+#else
+APRO_ERROR_STRINGS_ENGLISH RCDATA APRO.S32
+#endif

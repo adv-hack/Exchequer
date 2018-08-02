@@ -1,0 +1,899 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff1\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f35\froman\fcharset238\fprq2 Times New Roman CE;}{\f36\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f38\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f39\froman\fcharset162\fprq2 Times New Roman Tur;}{\f40\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f41\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f42\froman\fcharset186\fprq2 Times New Roman Baltic;}
+{\f43\fswiss\fcharset238\fprq2 Arial CE;}{\f44\fswiss\fcharset204\fprq2 Arial Cyr;}{\f46\fswiss\fcharset161\fprq2 Arial Greek;}{\f47\fswiss\fcharset162\fprq2 Arial Tur;}{\f48\fswiss\fcharset177\fprq2 Arial (Hebrew);}
+{\f49\fswiss\fcharset178\fprq2 Arial (Arabic);}{\f50\fswiss\fcharset186\fprq2 Arial Baltic;}{\f51\fmodern\fcharset238\fprq1 Courier New CE;}{\f52\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f54\fmodern\fcharset161\fprq1 Courier New Greek;}
+{\f55\fmodern\fcharset162\fprq1 Courier New Tur;}{\f56\fmodern\fcharset177\fprq1 Courier New (Hebrew);}{\f57\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f58\fmodern\fcharset186\fprq1 Courier New Baltic;}}{\colortbl;\red0\green0\blue0;
+\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;
+\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red255\green255\blue255;}{\stylesheet{\ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 
+\snext0 Normal;}{\s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext0 heading 1;}{
+\s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext0 heading 2;}{
+\s3\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\adjustright\rin0\lin0\itap0 \b\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext0 heading 3;}{\*\cs10 \additive Default Paragraph Font;}{
+\s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext15 Code;}{\s16\ql \li567\ri0\widctlpar\faauto\adjustright\rin0\lin567\itap0 
+\f2\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext16 Body Text 2;}{\s17\qc \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \b\f1\fs52\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext17 Title;}{
+\s18\ql \li0\ri0\widctlpar\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext18 header;}{\s19\ql \li0\ri0\widctlpar
+\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 \sbasedon0 \snext19 footer;}{\*\cs20 \additive \sbasedon10 page number;}}{\info{\title Report Printer Pro}{\author Exchequer Software Ltd}
+{\operator Exchequer Software Ltd}{\creatim\yr1999\mo3\dy23\hr14\min56}{\revtim\yr2003\mo1\dy7\hr11\min19}{\printim\yr2003\mo1\dy7\hr11\min15}{\version35}{\edmins276}{\nofpages19}{\nofwords4844}{\nofchars27613}{\*\company -SBS-}{\nofcharsws33910}
+{\vern8269}}\paperw11907\paperh16840\margl1797\margr1797 \widowctrl\ftnbj\aendnotes\aftnstart0\hyphhotz0\aftnnar\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\lytprtmet\hyphcaps0\horzdoc\dghspace120\dgvspace120\dghorigin1701\dgvorigin1984
+\dghshow0\dgvshow3\jcompress\viewkind1\viewscale100\pgbrdrhead\pgbrdrfoot\nolnhtadjtbl \fet0\sectd \psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl {\footer \pard\plain \s19\qc \li0\ri0\widctlpar
+\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\fs16 Copyright \'a9 1999-2003 Exchequer Software Ltd
+\par }}{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}
+{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \s17\qc \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 
+\b\f1\fs52\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par 
+\par 
+\par 
+\par 
+\par 
+\par 
+\par Report Printer Pro / Rave
+\par }\pard\plain \qc \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\b\fs52 
+\par 
+\par 
+\par Overview and Modifications
+\par }\pard \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 {
+\par 
+\par 
+\par }{\b\fs32\ul \sect }\sectd \psz9\pgnrestart\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl {\header \pard\plain \s18\ql \li0\ri0\widctlpar\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0\itap0 
+\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par }}{\footer \trowd \trgaph108\trleft-108\trbrdrt\brdrs\brdrw10 \trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 \cellx2735
+\clvertalt\clbrdrt\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 \cellx5578\clvertalt\clbrdrt\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 
+\cellx8421\pard\plain \s19\ql \li0\ri0\widctlpar\intbl\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Report Printer Mods\cell }\pard \s19\qc \li0\ri0\widctlpar\intbl
+\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0 {\field{\*\fldinst { DATE \\@ "dd/MM/yy" }}{\fldrslt {\lang1024\langfe1024\noproof 07/01/03}}}{\cell }\pard \s19\qr \li0\ri0\widctlpar\intbl\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0 
+{\field{\*\fldinst {\cs20  PAGE }}{\fldrslt {\cs20\lang1024\langfe1024\noproof 7}}}{\cell }\pard\plain \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\trowd 
+\trgaph108\trleft-108\trbrdrt\brdrs\brdrw10 \trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 \cellx2735\clvertalt\clbrdrt
+\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 \cellx5578\clvertalt\clbrdrt\brdrs\brdrw10 \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2843 \cellx8421\row 
+}\pard\plain \s19\ql \li0\ri0\widctlpar\tqc\tx4153\tqr\tx8306\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\fs12 X:\\entrprse\\docs\\ravemods.doc
+\par }}\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Introduction
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {What is Report Printer Pro
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+Report Printer Pro is a 100% VCL reporting library bought in from Nevrona Designs in Arizona, USA, from Delphi 4 onwards it has been renamed to RAVE as it now contains a visual report designer.
+\par 
+\par It gives us a code based interface onto a highly sophisticated reporting tool, and because we have the source we can (and do) customise it for our own requirements.
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Where Is Report Printer Pro
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {We currently have
+ 4 versions of Report Printer Pro installed on the network, representing the 4 major versions of report printer itself.
+\par 
+\par }\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl
+\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\pard \ql \li284\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin284 {Version 1.1e\cell }\pard \ql \li0\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin0 {X:\\SBSLIB
+\\WIN\\WIN32\\RPRINTER\cell }\pard \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb
+\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\row }\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone 
+\clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\pard \ql \li284\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin284 {Version 2.0n\cell }\pard \ql \li0\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin0 {X:\\SBSLIB\\WIN\\
+WIN32\\RPRINT2\\32\cell }\pard \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone 
+\clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\row }\pard 
+\ql \li284\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin284 {Version 3.0 Beta\cell }\pard \ql \li0\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin0 {X:\\SBSLIB\\WIN\\WIN32\\RPRINT3\\D2\cell }\pard 
+\ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone 
+\cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\row }\trowd 
+\trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone 
+\clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\pard \ql \li284\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin284 {Rave 4.05\cell }\pard \ql \li0\ri0\widctlpar\intbl\faauto\adjustright\rin0\lin0 {X:\\COMPON\\RAVE4\cell 
+}\pard \ql \li0\ri0\widctlpar\intbl\aspalpha\aspnum\faauto\adjustright\rin0\lin0 {\trowd \trgaph108\trleft-108\trftsWidth1\trpaddl108\trpaddr108\trpaddfl3\trpaddfr3 \clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone 
+\cltxlrtb\clftsWidth3\clwWidth2235 \cellx2127\clvertalt\clbrdrt\brdrnone \clbrdrl\brdrnone \clbrdrb\brdrnone \clbrdrr\brdrnone \cltxlrtb\clftsWidth3\clwWidth6293 \cellx8420\row }\pard \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 {
+\par Enterprise v5.X currently uses the v4.05 components.
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {What is this Document
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {This document details the changes we make to the standard components for additional or modified functionality.
+\par 
+\par Whenever a new version of the components are being updated the code should be copied from the existing components and not this document, just in case this document hasn\rquote t been updated for changes (which is quite likely).
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Change History
+\par }\pard\plain \s3\ql \li0\ri0\sb120\sa60\keepn\widctlpar\faauto\outlinelevel2\adjustright\rin0\lin0\itap0 \b\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {28/11/02 \endash  Mark Higginson
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Updated existing changes and added new details for Drill-Down.
+\par 
+\par }{\b 07/01/03 \endash  Mark Higginson
+\par }{Renamed document to RaveMods.Doc to make the name clearer and updated the Drill-Down details for changes made in Dec/Jan to allow the Drill-Down area to be highlighted in the preview window.
+\par 
+\par Added Drill-Down Overview.
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {\page Drill-Down Overview
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {This section attempts to explain how the Drill-Down system works.
+\par 
+\par The core of the system is a series of sub-components hanging of the TFilePreview component in Rpreview.Pas.
+\par 
+\par Firstly the component has been modified so that instead of using a standard Delphi Timage component to display the preview image it uses a TDrillControl component.  
+\par 
+\par TDrillControl is a bespoke component that descends from TCustomControl and is used to detect mouse movements so that the mouse 
+cursor can be changed when it is over a Drill-Down area.  It contains a TDrillImage component aligned to the client area for the visual display of the preview image and a TDrillHighlightImage component to allow the Drill-Down areas to be highlighted.  To 
+minimise changes to the TFilePreview component a number of the TDrillImage properties, Canvas, OnDrillClick and Picture, are passed through as properties of TDrillControl.
+\par 
+\par TDrillImage is a descendant of TImage that has been modified to provide an OnDrillCl
+ick event that contains the co-ordinates of the mouse click, the standard Delphi components do not provide this information.  This event is then handled by the ImageDrillClick method on TFilePreview.
+\par 
+\par TDrillHighlightImage is a descendant of TGraphicControl
+ and is used to highlight the text in the Drill-Down area under the mouse cursor by displaying a copy of the underlying bitmap with the colour black replaced by Blue.  When the mouse cursor is not over a Drill-Down area this component is not visible.  Thi
+s component also has an OnDrillClick event which is handled by the ImageDrillClick method on TFilePreview.
+\par 
+\par Secondly TFilePreview also has a new private property FDrillList : TDrillDownAreaList which is used to store the list of Drill-Down areas.  The Drill
+-Down areas are added from the DrillDownArea method and the object is used in the CheckForDrillArea and ImageDrillClick event handlers to check for Drill-Down areas and extract the data about the Drill-Down area.
+\par }\pard\plain \s2\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel1\adjustright\rin0\lin0\itap0 \b\f1\fs24\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {How It Works At Runtime
+\par }\pard\plain \s3\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel2\adjustright\rin0\lin0\itap0 \b\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Page Display & Zooming
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {When RAVE displays a page in the preview component it runs through all the Macro\rquote 
+s for the page in question and executes them, this results in it painting on the canvas of the TDrillImage component within TDrillControl.  
+\par 
+\par Additionally as this process is done it is also building up the list of Drill-Down areas within the FDrillList sub-object, this list is built up fresh each time as the co-ordinates change depending on the zooming.
+\par 
+\par The end result of this process is that the Bitmap property within the 
+TDrillImage within the TDrillControl contains an image of the page which is displayed on screen, and the FDrillList sub-object contains a list of rectangles on that image which support Drill-Down.
+\par }\pard\plain \s3\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel2\adjustright\rin0\lin0\itap0 \b\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Mouse Movement
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {As the user moves the mouse over the preview
+ image the TDrillControl component is receiving a series of WM_NCHITTEST and WM_SETCURSOR messages from Windows.  
+\par 
+\par The handler for WM_NCHITTEST receives the current mouse cursor co-ordinates and converts them for the client-area and stores them in a local property.
+\par 
+\par The handler for WM_SETCURSOR checks those stored properties and executes the OnDrillAvailable event, which maps onto the CheckForDrillArea method of TFilePreview, to determine whether those co-ordinates are within a Drill-Down Area.
+\par 
+\par The CheckF
+orDrillArea method uses the FDrillList sub-object to determine whether the mouse co-ordinates are within a Drill-Area and if so returns True as its result and sets the dimension parameters to the Drill-Down Area, if not in a Drill-Down area CheckForDrillA
+rea returns False.
+\par 
+\par If CheckForDrillArea returns True then the handler for WM_SETCURSOR will change the mouse cursor to the correct one for the operating system and move the highlight control to the returned co-ordinates and make it visible, if CheckForDril
+lArea returns False then the highlight control is hidden and the default VCL processing is executed.
+\par }\pard\plain \s3\ql \li0\ri0\sb240\sa60\keepn\widctlpar\faauto\outlinelevel2\adjustright\rin0\lin0\itap0 \b\f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Mouse Clicks
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+When the user clicks the mouse the TDrillImage component intercepts this and executes the OnDrillClick event which maps down to TFilePreview.ImageDrillClick.
+\par 
+\par TFilePreview.ImageDrillClick checks that the click co-ordinates are within a Drill-Down area and, if so, calls the OnDrillDown event on TFilePrinter, this is then handled within the client application.
+\par 
+\par The same process occurs if the user clicks on the highlight image within the preview window.
+\par 
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {\page Bespoke Macro Support
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {One of the historical problems with adding new Macro\rquote 
+s into RAVE has been that it instantly makes all the existing EDF Viewers obsolete as they don\rquote t understand the new macro and will crash with a horrible error message.
+\par 
+\par During the development of the Drill-Down support a Bespoke Macro system has been added to try and prevent this in future.
+\par 
+\par It works by encapsulating the new macro within a standard Bespoke Macro wrapper which contains the }{\i rpcBespoke}{ code, the size of the bespoke data in bytes and the bespoke data code, e.g. }{\i rpcDrillDown}{.
+\par 
+\par When the EDF file is being processed the TFilePrinter component will come to the }{\i rpcBespoke}{ code and extract the data size and data code.  If it recognizes the data code it will handle it as required, but if it doesn\rquote 
+t recognize the code it will move the stream pointer on by the specified number of bytes causing the unrecognised macro to be skipped.
+\par 
+\par This means that the full file can still be processed without problems, but that the unrecognised macro\rquote s will be ignored.
+\par 
+\par See TReportFiler.DrillDownArea for an example of how to code a Bespoke Data Macro and the handling of }{\i rpcBespoke}{ within TFilePrinter.PrintPage for an example of extracting it.
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {\page Component Changes \endash  RPDEFINE.PAS
+
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\fs18 The module RPDEFINE.PAS contains the global type and constants used by RPrinter.
+\par 
+\par We append our own Id to the end of the version, this allows us to easily check at design time that Delphi is using our components by looking at the version in the properties window.  At runtime you can click on the Page number i
+n the Print Preview window to see the component version.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par RPVersion = '4.05 (' + CompVer + RunMode + ') (ESL/DD)'; \{ Current revision number \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\fs18 
+\par }{The following constants have been added for our user defined functions.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User defined functions \}
+\par rpcJustText  = rpcUser + 1;
+\par rpcTextRect2 = rpcUser + 2;
+\par rpcPrintBitmapRect2 = rpcUser + 3;
+\par }\pard \s15\ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 {\f1 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+From Enterprise v5.50 we have added Drill-Down support as well, this is done through the rpcBespoke macro to provide a level of future proofing:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par rpcDrillDown = rpcUser + 4;
+\par // RPDD - HM 27/11/02: Added generic bespoke support
+\par rpcBespoke = rpcUser + 5;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par 
+\par 
+\par \sect }\sectd \psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPBASE.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {This module contains the basic abstract class, TBaseReport, from which the Report Printer Classes are derived.
+\par 
+\par Add the abstract definitions for our functions and procedures into the public section of the TBaseReport class.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User Defined \}
+\par procedure ExtTextRect(      Rect : TRect;
+\par                             Just : Byte;
+\par                       const Text : string); virtual; abstract;
+\par 
+\par procedure TextRect2(      Rect: TRect;
+\par                            X,Y: double;
+\par                           Just: Byte;
+\par                     const Text: string); virtual; abstract;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par From Enterprise v5.50 we have added Drill-Down support as well:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                          Const LevelNo        : Byte;
+\par                          Const DDS1           : ShortString;
+\par                          Const DDI1, DDI2     : SmallInt;
+\par                          Const DDB1           : Byte); virtual; abstract;
+\par 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Remember, as these functions are Abstract there is no implementation for them in 
+\par 
+\par Additionally Eduardo has added the following function:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// EL 19/12/02
+\par function GetTabCount  :  Integer;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par This function isn\rquote t abstract and is implemented directly:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {function TBaseReport.GetTabCount  :  Integer;
+\par var
+\par   Tab: PTab;
+\par begin \{ GetTabCount \}
+\par   Tab:=TabHead;
+\par   Result :=0;
+\par   While Assigned(Tab) do
+\par   begin
+\par     Inc(Result);
+\par     Tab:= Tab^.Next;
+\par   end; \{ while \}
+\par end;  \{ GetTabCount \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par 
+\par \sect }\sectd \psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPCANVAS.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {RPCanvas contains the TReportCanvas class, which is derived from TBaseReport and provi
+des the basic implementation of the printing routines.
+\par 
+\par Override the abstract functions and procedures added into TBaseReport with printing procedures.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User Defined \}
+\par procedure ExtTextRect(      Rect : TRect;
+\par                             Just : Byte;
+\par                       const Text : string); override;
+\par 
+\par procedure TextRect2(      Rect: TRect;
+\par                            X,Y: double;
+\par                           Just: Byte;
+\par                     const Text: string); override;
+\par 
+\par procedure PrintBitmapRect2(X1,Y1,X2,Y2: double;
+\par                               Bitmap: TBitmap); override;
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                          Const LevelNo        : Byte;
+\par                          Const DDS1           : ShortString;
+\par                          Const DDI1, DDI2     : SmallInt;
+\par                          Const DDB1           : Byte); override;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Add the implementation for the functions:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {procedure TCanvasReport.ExtTextRect(      Rect : TRect;
+\par                                           Just : Byte;
+\par                                     const Text : string);
+\par Var
+\par   Flags  : Word;
+\par   TheStr : PChar;
+\par Begin \{ ExtTextRect \}
+\par   CheckPrinting;
+\par   If OutputInvalid then Exit;
+\par 
+\par   With Canvas do begin
+\par     SelectRPFont;
+\par 
+\par     TheStr := StrAlloc (Length (Text) + 1);
+\par     StrPCopy (TheStr, Text);
+\par     Flags := Just Or DT_VCENTER Or DT_EXPANDTABS Or DT_WORDBREAK Or DT_NOPREFIX ;
+\par     DrawText (Canvas.Handle, TheStr, Length(TheStr), Rect, Flags);
+\par     StrDispose (TheStr);
+\par 
+\par     SelectCanvasFont;
+\par   End; \{ With \}
+\par End;  \{ ExtTextRect \}
+\par 
+\par 
+\par procedure TCanvasReport.TextRect2(      Rect : TRect;
+\par                                         X,Y  : double;
+\par                                         Just : Byte;
+\par                                   const Text : string);
+\par var
+\par   Options: word;
+\par begin \{ TextRect \}
+\par   CheckPrinting;
+\par   If OutputInvalid then Exit;
+\par 
+\par   With Canvas do begin
+\par     SelectRPFont;
+\par 
+\par     If ((Just And DT_LEFT)   = DT_LEFT)   Then SetTextAlign(Handle,TA_LEFT or TA_BOTTOM);
+\par     If ((Just And DT_CENTER) = DT_CENTER) Then SetTextAlign(Handle,TA_CENTER or TA_BOTTOM);
+\par     If ((Just And DT_RIGHT)  = DT_RIGHT)  Then SetTextAlign(Handle,TA_RIGHT or TA_BOTTOM);
+\par 
+\par     Options := ETO_CLIPPED;
+\par     If Brush.Style <> bsClear then begin
+\par       Options := Options or ETO_OPAQUE;
+\par     end; \{ if \}
+\par 
+\par     WinProcs.ExtTextOut(Handle,XU2D(X),YU2D(Y),Options,@Rect,@Text[1],
+\par     Length(Text),nil);
+\par 
+\par     SelectCanvasFont;
+\par   end; \{ with \}
+\par End; \{ TextRect2 \}
+\par 
+\par 
+\par procedure TCanvasReport.PrintBitmapRect2(X1,Y1,X2,Y2: double;
+\par                                          Bitmap: TBitmap);
+\par Begin \{ PrintBitmapRect2 \}
+\par   \{ Redirect to normal bitmap printing routine \}
+\par   PrintBitmapRect(X1,Y1,X2,Y2,Bitmap);
+\par End; \{ PrintBitmapRect2 \}
+\par 
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure TCanvasReport.DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                                        Const LevelNo        : Byte;
+\par                                        Const DDS1           : ShortString;
+\par                                        Const DDI1, DDI2     : SmallInt;
+\par                                        Const DDB1           : Byte); 
+\par Begin \{ DrillDownArea \}
+\par   // No Implementation - This code will only be used when printing direct
+\par   // to printer - in which case you don't need drill-down support.  
+\par End; \{ DrillDownArea \}
+\par 
+\par 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\sect }\sectd \psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain 
+\s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPFILER.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {RPFiler contains the TReportFiler class, which is derived from TBaseReport and implements the routines to print to file.
+
+\par 
+\par Override abstract function procedures with procedures to store details to a file.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User Defined \}
+\par procedure ExtTextRect(      Rect : TRect;
+\par                             Just : Byte;
+\par                       const Text : string); override;
+\par 
+\par procedure TextRect2(      Rect: TRect;
+\par                            X,Y: double;
+\par                           Just: Byte;
+\par                     const Text: string); override;
+\par 
+\par procedure PrintBitmapRect2(X1,Y1,X2,Y2: double;
+\par                           Bitmap: TBitmap); override;
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                          Const LevelNo        : Byte;
+\par                          Const DDS1           : ShortString;
+\par                          Const DDI1, DDI2     : SmallInt;
+\par                          Const DDB1           : Byte); override;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Implement the functions:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {  \{ User Defined \}
+\par   procedure TReportFiler.ExtTextRect(      Rect : TRect;
+\par                                            Just : Byte;
+\par                                      const Text : string);
+\par   Begin \{ ExtTextRect \}
+\par     CheckPrinting;
+\par     If OutputInvalid then Exit;
+\par 
+\par     WriteByte(rpcJustText);
+\par     WriteRect(Rect);
+\par     WriteByte(Just);
+\par     WriteText(Text);
+\par     Application.ProcessMessages;
+\par   End;  \{ ExtTextRect \}
+\par 
+\par   procedure TReportFiler.TextRect2(      Rect : TRect;
+\par                                          X,Y  : double;
+\par                                          Just : Byte;
+\par                                    const Text : string);
+\par   Begin \{ TextRect2 \}
+\par     CheckPrinting;
+\par     If OutputInvalid then Exit;
+\par 
+\par     WriteByte(rpcTextRect2);
+\par     WriteRect(Rect);
+\par     WriteXY(X,Y);
+\par     WriteByte(Just);
+\par     WriteText(Text);
+\par     Application.ProcessMessages;
+\par   End;  \{ TextRect2 \}
+\par 
+\par 
+\par   procedure TReportFiler.PrintBitmapRect2(X1,Y1,X2,Y2: double;
+\par                               Bitmap: TBitmap);
+\par   Begin \{ PrintBitmapRect2 \}
+\par     \{ Copied from normal PrintBitmapRect handler and modified to \}
+\par     \{ specify as PrintBitmapRect2                                \}
+\par     CheckPrinting;
+\par     If OutputInvalid then Exit;
+\par 
+\par     WriteByte(rpcTransBitmap);
+\par     WriteByte(Ord(TransparentBitmaps));
+\par 
+\par     WriteByte(rpcPrintBitmapRect2);
+\par     WriteGraphic(Bitmap);
+\par     WriteXY(X1,Y1);
+\par     WriteXY(X2,Y2);
+\par     Application.ProcessMessages;
+\par   End; \{ PrintBitmapRect2 \}
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure TReportFiler.DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                                       Const LevelNo        : Byte;
+\par                                       Const DDS1           : ShortString;
+\par                                       Const DDI1, DDI2     : SmallInt;
+\par                                       Const DDB1           : Byte);
+\par Var
+\par   BespokeData  : TMemoryStream;
+\par   ReportStream : TStream;
+\par Begin \{ DrillDownArea \}
+\par   CheckPrinting;
+\par   If OutputInvalid then Exit;
+\par 
+\par   BespokeData := TMemoryStream.Create;
+\par   Try
+\par     // Force any cached commands to be written to the report stream before we
+\par     // switch them out
+\par     Flush;
+\par 
+\par     // Replace the standard output stream with a temporary memory stream to create
+\par     // the data block for the bespoke function using the standard functions
+\par     ReportStream := OutputStream;
+\par     OutputStream := BespokeData;
+\par     Try
+\par       // Use the standard RPPro streaming functions to write the bespoke data to
+\par       // the local stream
+\par       WriteByte(rpcDrillDown);
+\par       WriteXY(X1,Y1);
+\par       WriteXY(X2,Y2);
+\par       WriteByte(LevelNo);
+\par       WriteText(DDS1);
+\par       WriteInteger(DDI1);
+\par       WriteInteger(DDI2);
+\par       WriteByte(DDB1);
+\par 
+\par       // Force bespoke data commands to be written to the BespokeData stream before
+\par       // restoring the proper Report Stream
+\par       Flush;
+\par     Finally
+\par       // Restore the correct report stream
+\par       OutputStream := ReportStream;
+\par     End;
+\par 
+\par     // Check the bespoke data has been written successfully
+\par     If (BespokeData.Size > 0) Then Begin
+\par       // Write bespoke data header to report stream
+\par       WriteByte(rpcBespoke);
+\par 
+\par       // Write bespoke despoke data length to report stream
+\par       WriteLongint(BespokeData.Size);
+\par 
+\par       // Write bespoke data section  to report stream
+\par       WriteBuf(BespokeData.Memory^,BespokeData.Size);
+\par     End; \{ If (BespokeData.Size > 0) \}
+\par   Finally
+\par     FreeAndNIL(BespokeData);
+\par   End; \{ try \}
+\par 
+\par   (**
+\par   // Drill-Down Data Block
+\par   WriteByte(rpcDrillDown);
+\par   WriteXY(X1,Y1);
+\par   WriteXY(X2,Y2);
+\par   WriteByte(LevelNo);
+\par   WriteText(DrillDownKey);
+\par   **)
+\par 
+\par   ProcessMessages;
+\par End; \{ DrillDownArea \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\f2\fs16 
+\par }{
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {\sect }\sectd 
+\psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPFPRINT.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+RPFPrint contains the TFilePrinter class, which is derived from TCanvasReport and allows the files created with TReportFiler to be printed.
+\par 
+\par Code to read in the data for our user defined functions must be added into the case statement in TFilePrinter.PrintPage, but first we need to add a new variable:-
+\par }\pard\plain \s18\ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {B1, }{\b B2}{: byte;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Then we can add our custom reporting macros:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User Defined \}
+\par rpcJustText  : Begin
+\par                  \{ read details out of stream \}
+\par                  Rect1 := ReadRect;
+\par                  B1 := ReadByte;
+\par                  S1 := ReadText;
+\par 
+\par                  \{ Draw text \}
+\par                  ExtTextRect(Rect1,B1,S1);
+\par                End;
+\par rpcTextRect2 : Begin
+\par                  Rect1 := ReadRect;
+\par                  X1 := ReadFloat;
+\par                  Y1 := ReadFloat;
+\par                  B1 := ReadByte;
+\par                  S1 := ReadText;
+\par                  TextRect2(Rect1,X1,Y1,B1,S1);
+\par                End;
+\par 
+\par rpcPrintBitmapRect2 : begin
+\par                         // Copied from PrintBitmapRect and mod'd to stop printing 
+\par                         // in preview window 
+\par                         CreateGraphic(Graphic);
+\par                         X1 := ReadFloat;
+\par                         Y1 := ReadFloat;
+\par                         X2 := ReadFloat;
+\par                         Y2 := ReadFloat;
+\par                         PrintBitmapRect2(X1,Y1,X2,Y2,Graphic as TBitmap);
+\par                         Graphic.Free;
+\par                       End;
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par rpcBespoke    : Begin
+\par                   // Read Bespoke Data Length and command
+\par                   L1 := ReadLongint;
+\par                   B1 := ReadByte;
+\par 
+\par                   If (B1 = rpcDrillDown) Then Begin
+\par                     X1 := ReadFloat;
+\par                     Y1 := ReadFloat;
+\par                     X2 := ReadFloat;
+\par                     Y2 := ReadFloat;
+\par                     B1 := ReadByte;    // Level No
+\par                     S1 := ReadText;    // DDS1
+\par                     I1 := ReadInteger; // DDI1
+\par                     I2 := ReadInteger; // DDI2
+\par                     B2 := ReadByte;    // DDB1
+\par 
+\par                     DrillDownArea(X1,Y1,X2,Y2,B1,S1,I1,I2,B2);
+\par                   End \{ If (B1 = rpcDrillDown) \}
+\par                   Else
+\par                     // Unknown command - Move stream forward the specified length
+\par                     // less the size of the command value to skip the unknown
+\par                     // command
+\par                     FStream.Position := FStream.Position + L1 - SizeOf(B1);
+\par                   End; \{ rpcBespoke \}
+\par 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {Add the PrintTitle property and FprintTitle variable.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {FPrintTitle : TTitleString
+\par 
+\par property PrintTitle : TTitleString Read FPrintTitle Write FPrintTitle;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Modify the Execute method to change the title to PrintTitle when set.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {NextPagePos := InputStream.Position;
+\par 
+\par }{\b \{ HM 23/03/99: Modified for Enterprise Faxing \}
+\par If (Trim(FPrintTitle) <> '') Then
+\par   FTitle := FPrintTitle;
+\par }{RPDev.Title := FTitle;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par \sect }\sectd \psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPREVIEW.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {RPreview contains the TFilePreview class, which is deriv
+ed from the TfilePrinter class and allows the files created with TReportFiler to be printed to a preview window.  For v5.50 this has been customised for Drill-Down.
+\par 
+\par Firstly we need to add two new units into the Uses clause in the Interface section, these contain support classes for the Drill-Down:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par DrillImage, DrillList,
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Next we need to add a new type for the Drill-Down event:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {TDrillDownEvent = procedure (      Sender     : TObject;
+\par                              Const LevelNo    : Byte;
+\par                              Const DDS1       : ShortString;
+\par                              Const DDI1, DDI2 : SmallInt;
+\par                              Const DDB1       : Byte) of object;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Next we need to change the type of the existing FImage private variable and add new private variables to store the Drill-Down information and the Drill-Down Event handler:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par //FImage: TImage; \{ Image that contains FBitmap \}
+\par FImage: TDrillControl; \{ Image that contains FBitmap \}
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par FDrillList : TDrillDownAreaList;
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par FOnDrillDown : TDrillDownEvent;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par We are also going to provide a flag to allow the Highlighting to be controlled through the TfilePreviewComponent, firstly we need to add the provate variable:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par FHighlight : Boolean;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par And then the Published property:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par Property Highlight : Boolean Read FHighlight Write FHighlight Default False;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Then in the Public section of TFilePreview add the following methods:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure ImageDrillClick (Sender : TObject; Const X, Y : Integer);
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par procedure DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                          Const LevelNo        : Byte;
+\par                          Const DDS1           : ShortString;
+\par                          Const DDI1, DDI2     : SmallInt;
+\par                          Const DDB1           : Byte); override;
+\par 
+\par // RPDD - HM 02/01/03: Extended Drill-Down support
+\par Function CheckForDrillArea (      Sender : TObject;
+\par                             Const X, Y   : Integer;
+\par                             Var   dLeft, dTop, dWidth, dHeight : Integer) : Boolean;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\f2\fs16 
+\par }{Also change the type of the existing Image property from TImage to TDrillControl:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par property Image: TDrillControl read FImage;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par And then in the Published section of the object add the OnDrillDown property for the event:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par property OnDrillDown : TDrillDownEvent Read FOnDrillDown write FOnDrillDown;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Modify the Create to create the FDrillList sub-object:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {  // RPDD - HM 27/11/02: Added Drill-Down support
+\par   FDrillList := TDrillDownAreaList.Create;
+\par end;  \{ Create \}
+\par 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {And modify the Destroy to kill it:-
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par   // RPDD - HM 27/11/02: Added Drill-Down support
+\par   FreeAndNIL(FDrillList);
+\par 
+\par   inherited;
+\par end;  \{ Destroy \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Change TFilePreview.PrintPage to call FDrillList.Clear to remove any previous Drill-Down Areas:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {    // RPDD - HM 27/11/02: Added Drill-Down support
+\par     FDrillList.Clear;
+\par 
+\par     inherited PrintPage(PageNum); \{ Draw page \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Change TFilePreview.Start to firstly create FImage as a TDrillControl and not a TImage and secondly to link the event handlers of TDrillControl to the ImageDrillClick and CheckForDrillArea methods we are adding next:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {  // RPDD - HM 27/11/02: Added Drill-Down support
+\par   FImage := }{\b TDrillControl}{.Create(FScrollBox.Owner);
+\par   With FImage do begin
+\par     Parent := FScrollBox;
+\par     Align := alNone;
+\par     Top := 0;
+\par     Left := 0;
+\par     Width := 100;
+\par     Height := 100;
+\par }{\b     FImage.Highlight := Self.FHighlight;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\b\f2\fs16 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\b     // RPDD - HM 27/11/02: Added Drill-Down support
+\par     If Assigned(FOnDrillDown) Then Begin
+\par       // Don't bother doing anything if the OnDrillDown event isn't handled
+\par       OnDrillAvailable := CheckForDrillArea;
+\par       OnDrillClick     := ImageDrillClick;
+\par     End; \{ If Assigned(FOnDrillDown) \}
+\par }{  end; \{ with \}}{\b 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par And lastly add the implementation for the ImageDrillClick, CheckForDrillArea and DrillDownArea methods:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {// RPDD - HM 27/11/02: Added Drill-Down support
+\par // Called by TFilePrinter to record the Drill-Down area details in the
+\par // internal list
+\par procedure TFilePreview.DrillDownArea (Const X1, Y1, X2, Y2 : Double;
+\par                                       Const LevelNo        : Byte;
+\par                                       Const DDS1           : ShortString;
+\par                                       Const DDI1, DDI2     : SmallInt;
+\par                                       Const DDB1           : Byte);
+\par Begin \{ DrillDownArea \}
+\par   // Don't bother doing anything if the OnDrillDown event isn't handled
+\par   If Assigned(FOnDrillDown) Then
+\par     // Add Drill-Down details into the Drill-Down list
+\par     FDrillList.AddDrillDown (XU2D(X1), YU2D(Y1), XU2D(X2), YU2D(Y2),
+\par                              LevelNo, DDS1, DDI1, DDI2, DDB1);
+\par End; \{ DrillDownArea \}
+\par 
+\par 
+\par // RPDD - HM 02/01/03: Extended Drill-Down support
+\par // Called by the FImage : TDrillControl component to determine whether the
+\par // mouse pointer is currently positioned on a Drill-Down area
+\par Function TFilePreview.CheckForDrillArea (      Sender : TObject;
+\par                                          Const X, Y   : Integer;
+\par                                          Var   dLeft, dTop, dWidth, dHeight : Integer) : Boolean;
+\par Var
+\par   DrillDets : TDrillDownArea;
+\par Begin \{ CheckForDrillArea \}
+\par   // Don't bother doing anything if the OnDrillDown event isn't handled
+\par   If Assigned(FOnDrillDown) Then Begin
+\par     // Check the Drill-Down list for areas matching the co-ordinates - not
+\par     // interested in using the parameters
+\par     Result := FDrillList.GotDrillDown (X, Y, DrillDets);
+\par     If Result And FHighlight Then Begin
+\par       // Return Co-ords for highlight box
+\par       dLeft   := DrillDets.daX1;
+\par       dTop    := DrillDets.daY1 + 1;
+\par       dWidth  := DrillDets.daX2 - dLeft + 1;
+\par       dHeight := DrillDets.daY2 - dTop + 1;
+\par     End \{ If Result And FHighlight \}
+\par     Else Begin
+\par       dLeft   := 0;
+\par       dTop    := 0;
+\par       dWidth  := 0;
+\par       dHeight := 0;
+\par     End; \{ Else \}
+\par   End \{ If Assigned(FOnDrillDown) \}
+\par   Else
+\par     Result := False;
+\par End; \{ CheckForDrillArea \}
+\par 
+\par 
+\par // RPDD - HM 27/11/02: Added Drill-Down support
+\par // Called by the FImage : TDrillControl component whenever a click event
+\par // occurs
+\par procedure TFilePreview.ImageDrillClick (Sender : TObject; Const X, Y : Integer);
+\par Var
+\par   DrillDets : TDrillDownArea;
+\par Begin \{ ImageDrillClick \}
+\par   // Don't bother doing anything if the OnDrillDown event isn't handled
+\par   If Assigned(FOnDrillDown) Then
+\par     // Check the Drill-Down list for areas matching the co-ordinates
+\par     If FDrillList.GotDrillDown (X, Y, DrillDets) Then
+\par       // Got an area - generate the event to the client application
+\par       With DrillDets Do
+\par         FOnDrillDown (Self, daLevelNo, daString1, daInt1, daInt2, daByte1);
+\par End; \{ ImageDrillClick \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par 
+\par }\pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 \b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {\sect }\sectd 
+\psz9\linex0\headery709\footery709\colsx709\endnhere\sectdefaultcl \pard\plain \s1\ql \li0\ri0\sb240\sa60\keepn\widctlpar\brdrb\brdrs\brdrw10\brsp20 \faauto\outlinelevel0\adjustright\rin0\lin0\itap0 
+\b\f1\fs28\lang2057\langfe1033\kerning28\cgrid\langnp2057\langfenp1033 {Component Changes \endash  RPDEVICE.PAS
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+The RPDevice module contains the global RPDev class that interfaces to the Windows Printing, it also contains our global printing info structure as well as various routines and mods to make the system work.
+\par 
+\par Add our record structure into the interface section.
+\par 
+\par }{\f2\fs16 Const
+\par   feType_Printer = 1;
+\par   feType_Fax     = 2;
+\par   feType_Email   = 4;
+\par 
+\par type
+\par   \{$H+\}
+\par 
+\par   TSBSPrintSetupInfo = Record
+\par     DevIdx    : Integer;       \{ DeviceIndex in RpDev \}
+\par 
+\par     FormNo    : Integer;       \{ Windows Form Id \}
+\par     FormName  : String;        \{ Windows Form Description \}
+\par     \{FormName  : ShortString;        \{ Windows Form Description \}
+\par 
+\par     BinNo     : Integer;       \{ Windows Bin Id \}
+\par     BinName   : String;        \{ Windows Bin Description \}
+\par     \{BinName   : ShortString;        \{ Windows Bin Description \}
+\par 
+\par     \{ Vars used internally in printing routines - not part of RpDev \}
+\par     Preview    : Boolean;       \{ True = Preview, False = Print \}
+\par     NoCopies   : SmallInt;      \{ Copies of form to print \}
+\par     pbLabel1   : SmallInt;      \{ Start of Label 1 Pos \}
+\par     TestMode   : Boolean;       \{ Indicates test mode \}
+\par     LabelMode  : Boolean;       \{ Tells PrntFrm Label Mode \}
+\par     ChequeMode : Boolean;       \{ Enables Cheque No processing fields \}
+\par     \{$IFNDEF DBD\}
+\par       Spare      : Array[0..18] of Byte;
+\par     \{$ELSE\}
+\par       fePrintMethod   : Byte;         \{ Flag: 0=Printer, 1=Fax, 2=Email \}
+\par       feBatch         : Boolean;      \{ Flag: Printing a batch - disable To details as specified later \}
+\par       feTypes         : LongInt;      \{ Flag: 2=Allow Fax, 4=AllowEmail \}
+\par 
+\par       feCoverSheet    : String[8];    \{ Cover Sheet \}
+\par 
+\par       feFaxMethod     : Byte;         \{ Fax: Send method:- 0=Enterprise, 1=MAPI,  \}
+\par       feFaxPrinter    : SmallInt;     \{ Fax: Selected Printer \}
+\par       feFaxFrom       : String[50];   \{ Fax: From Name \}
+\par       feFaxFromNo     : String[30];   \{ Fax: From Fax Number \}
+\par       feFaxTo         : String[50];   \{ Fax: To Name \}
+\par       feFaxToNo       : String[30];   \{ Fax: To Fax Number \}
+\par       feFaxMsg        : AnsiString;   \{ Fax: Message (max 255) \}
+\par 
+\par       feEmailMAPI     : Boolean;      \{ Email: Send using MAPI \}
+\par       feEmailFrom     : String[50];   \{ Email: From Name \}
+\par       feEmailFromAd   : String[50];   \{ Email: From Address \}
+\par       feEmailTo       : AnsiString;   \{ Email: Name \}
+\par       feEmailToAddr   : AnsiString;   \{ Email: Addr\}
+\par       feEmailCc       : AnsiString;
+\par       feEmailBcc      : AnsiString;
+\par       feEmailSubj     : AnsiString;   \{ Email: Subject \}
+\par       feEmailMsg      : AnsiString;   \{ Email: Message (max 255) \}
+\par       feEmailAttach   : AnsiString;   \{ Email: Attachments (for future use - maybe) \}
+\par       feEmailPriority : Byte;         \{ Email: Priority - 0=Low, 1=Normal, 2=High \}
+\par       feEmailReader   : Boolean;      \{ Email: Attach Acrobat/Exchequer Reader \}
+\par       feEmailZIP      : Boolean;      \{ Email: ZIP Attachment as self-extracting .EXE \}
+\par       feEmailAtType   : Byte;         \{ Email: Attachment methodology:- 0-RPPro, 1-Adobe \}
+\par 
+\par       feJobtitle      : String[80];   \{ Job title for Enterprise Faxing \}
+\par 
+\par       feFaxPriority   : Byte;         \{ Fax: Priority:- 0=Urgent, 1=Normal, 2=OffPeak \}
+\par 
+\par       Spare : Array [1..17] Of Byte;
+\par     \{$ENDIF\}
+\par   End; \{ TSBSPrintSetupInfo \}
+\par   PSBSPrintSetupInfo = ^TSBSPrintSetupInfo;
+\par 
+\par }{
+\par Next add our routines into the public section of TRPDevice:-
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {\{ User-Defined methods \}
+\par function SBSSetupInfo : TSBSPrintSetupInfo;
+\par procedure SetPrnSetup(PrnSetup : TSBSPrintSetupInfo);
+\par Function WalkList (TheList : TStrings; ReqNum : Integer) : String;
+\par function CheckForDriver(SearchDriver : string) : boolean;
+\par 
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Then add the implementation of those routines:-
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Function TRPDevice.WalkList (TheList : TStrings; ReqNum : Integer) : String;
+\par   Var
+\par     I : Integer;
+\par   Begin
+\par     Result := '';
+\par 
+\par     If (TheList.Count > 0) Then
+\par       For I := 0 To Pred (TheList.Count) Do
+\par         If (LongInt(TheList.Objects[I]) = ReqNum) Then Begin
+\par           \{ Found it \}
+\par           Result := TheList[I];
+\par           Break;
+\par         End; \{ If \}
+\par   End;
+\par 
+\par   function TRPDevice.SBSSetupInfo : TSBSPrintSetupInfo;
+\par   begin
+\par     FillChar (Result, SizeOf (Result), #0);
+\par     With Result Do Begin
+\par       DevIdx := DeviceIndex;
+\par 
+\par       FormNo   := DevMode^.dmPaperSize;
+\par       FormName := WalkList(RpDev.Papers, FormNo);
+\par 
+\par       BinNo    := DevMode.dmDefaultSource;
+\par       BinName  := WalkList(RpDev.Bins, BinNo);
+\par 
+\par       \{ .. \}
+\par     End; \{ With \}
+\par   end;
+\par 
+\par   procedure TRPDevice.SetPrnSetup(PrnSetup : TSBSPrintSetupInfo);
+\par   Begin
+\par     \{ Device Index \}
+\par     DeviceIndex := PrnSetup.DevIdx;
+\par 
+\par     \{ Form \}
+\par     If (Trim (PrnSetup.FormName) <> '') Then SelectPaper (PrnSetup.FormName, True);
+\par 
+\par     \{ Bin \}
+\par     If (Trim (PrnSetup.BinName) <> '') Then SelectBin (PrnSetup.BinName, True);
+\par   End;
+\par 
+\par   function TRPDevice.CheckForDriver(SearchDriver : string) : boolean;
+\par   // Pre  : SearchDriver = name of the print driver to check for
+\par   // Post : Returns true if found
+\par   var
+\par     i : integer;
+\par   begin
+\par     Result := false;
+\par     for i := 0 to Printers.Count -1 do
+\par       Result := Result or ((Printers.Objects[i] as TRPDeviceItem).FDriverName = SearchDriver);
+\par   end;
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par Modify the function TRPDevice.GetPrinters to allow the filtering out the printer \lquote Rendering Subsystem on PUB:\rquote  when it builds the list of printers to be disabled. This is required for the Exchequer EDF Reader.
+\par 
+\par }\pard\plain \s15\ql \li170\ri0\widctlpar\faauto\adjustright\rin0\lin170\itap0 \f2\fs16\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {While Assigned(OutputName) do begin
+\par   \{$IFNDEF EDFR\}
+\par   If StrPas(DeviceName) <> 'Rendering Subsystem' then begin
+\par   \{$ELSE\}
+\par   Begin
+\par   \{$ENDIF\}
+\par     FPrinterList.AddObject(Format('%s on %s',[DeviceName,OutputName]),
+\par       TRPDeviceItem.Create(DeviceName,DriverName,OutputName));
+\par   end; \{ if \}
+\par   OutputName := GetWord(DriverPtr);
+\par end; \{ while \}
+\par }\pard\plain \ql \li0\ri0\widctlpar\faauto\adjustright\rin0\lin0\itap0 \f1\fs20\lang2057\langfe1033\cgrid\langnp2057\langfenp1033 {
+\par }}

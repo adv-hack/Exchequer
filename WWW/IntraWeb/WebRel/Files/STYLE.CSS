@@ -1,0 +1,107 @@
+.welcome {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #336699;
+	text-decoration : none;
+}
+.welcome A {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #336699;
+	text-decoration : none;
+}
+.welcome A:HOVER {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #336699;
+	text-decoration : underline;
+}
+.menu A{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color : #336699;
+	text-decoration: none;
+	background-color: EEEEEE;
+	background-repeat: repeat-x;
+}
+.menu A:HOVER {
+    font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : #eeeeee;
+	background-color: #336699;
+	text-decoration: none;
+	background-repeat: repeat-x;
+}
+.searchBox {
+	color: #999999;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	width : 150px;
+}
+.bodycopy {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : 666666;
+
+}
+
+.bodycopy A {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : 336699;
+	text-decoration: none;
+}
+
+.bodycopy A:HOVER {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : 336699;
+	text-decoration: underline;
+}
+
+
+.copyright {  
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 9px; 
+	color: #999999
+}
+
+.copyright A{  
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 9px; 
+	color: #999999;
+	text-decoration: underline;
+}
+
+.SubNav {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : 999999;
+}
+
+.SubNav A {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : 336699;
+	text-decoration: none;
+}
+
+.SubNav A:HOVER {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : 336699;
+	text-decoration: underline;
+}
+
+.title {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : 336699;
+; font-weight: bold
+}
+
+INPUT, SELECT, TEXTAREA {
+color : 666666;
+}.reference { font-family : Arial, Helvetica, sans-serif; font-size : 12px; color : #CCCCCC; }
+.bodycopyCopy { font-family : Arial, Helvetica, sans-serif; font-size : 12px; color : 666666; }
+.titleCopy { font-family : Arial, Helvetica, sans-serif; font-size : 12px; color : 336699; ; font-weight: bold }

@@ -1,0 +1,16 @@
+<!ELEMENT Parts (Part*)>
+<!ELEMENT Part (Code, Description, Stock?, Price?, Categories)>
+<!ELEMENT Code (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Stock (Quantity, StockUnit)>
+<!ATTLIST Stock HideStock CDATA #REQUIRED>
+<!ELEMENT Quantity (#PCDATA)>
+<!ELEMENT StockUnit (#PCDATA)>
+<!ELEMENT Price (Value, Currency, PriceUnit)>
+<!ELEMENT Value (#PCDATA)>
+<!ELEMENT Currency (#PCDATA)>
+<!ELEMENT PriceUnit (#PCDATA)>
+<!ELEMENT Categories (MainCat, SubCat1, SubCat2)>
+<!ELEMENT MainCat (#PCDATA)>
+<!ELEMENT SubCat1 (#PCDATA)>
+<!ELEMENT SubCat2 (#PCDATA)>

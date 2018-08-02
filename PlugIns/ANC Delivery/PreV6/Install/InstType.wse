@@ -1,0 +1,201 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....InstType.WSE - Ask Install Type
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=030
+end
+item: Remark
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\ENANCADM.EXE
+  Flags=01000100
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_BACK
+  Value=020
+end
+item: Set Variable
+  Variable=DLG_FWD
+  Value=040
+end
+item: Remark
+end
+item: Remark
+  Text=....Show Licence Agreement
+end
+item: Custom Dialog Set
+  Name=Install Type
+  item: Dialog
+    Title=Exchequer Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=MS Sans Serif
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=&Next  >>
+    end
+    item: Push Button
+      Rectangle=163 156 208 171
+      Variable=DIALOG
+      Value=%DLG_BACK%
+      Create Flags=01010000000000010000000000000000
+      Text=<<  &Previous
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 88 145
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=s:\master\single\setup\images\sidelogo.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=8 1 78 9
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=%D_ENTVER%
+    end
+    item: Radio Button
+      Rectangle=105 32 182 130
+      Variable=INSTTYPE
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000010000000000001001
+      Text=Upgrade / Repair
+      Text=Add icon only
+      Text=
+    end
+    item: Static
+      Rectangle=95 6 216 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Installation Type
+    end
+    item: Static
+      Rectangle=95 30 251 48
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=This Plug-In is already installed on your Exchequer system. The following options are now available to you :
+    end
+    item: Static
+      Rectangle=115 65 254 93
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=This will upgrade your existing version of this Plug-In to the lastest version (leaving your data files intact).
+    end
+    item: Static
+      Rectangle=115 113 254 141
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Only the Icon required to configure the existing version of this Plug-In, will be installed onto your machine
+    end
+  end
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=INSTTYPE
+  Value=B
+end
+item: Set Variable
+  Variable=ICONSTOOLS
+  Value=A
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=ICONSTOOLS
+end
+item: End Block
+end
+item: Remark
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=INSTTYPE
+  Value=I
+end
+item: If/While Statement
+  Variable=DLG_BACK
+  Value=010
+end
+item: Set Variable
+  Variable=DIALOG
+  Value=040
+end
+item: Else Statement
+end
+item: Set Variable
+  Variable=DIALOG
+  Value=020
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end

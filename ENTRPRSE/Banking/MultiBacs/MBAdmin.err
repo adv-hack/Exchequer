@@ -1,0 +1,10 @@
+[Warning] BACCONST.PAS(44): String constant truncated to fit STRING[8]
+[Warning] CONFIGF.PAS(75): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Hint] AUCONFIG.PAS(40): Variable 'i' is declared but never used in 'TfrmAutopayConfig.edtValChange'
+[Warning] BRWSEDIR.PAS(11): Unit 'FileCtrl' is specific to a platform
+[Warning] BRWSEDIR.PAS(73): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] BRWSEDIR.PAS(127): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] ABNCONFG.PAS(137): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] ABNCONFG.PAS(140): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Hint] ABNCONFG.PAS(181): Value assigned to 'TempI' never used
+[Hint] AdmninF.pas(291): Value assigned to 'i' never used

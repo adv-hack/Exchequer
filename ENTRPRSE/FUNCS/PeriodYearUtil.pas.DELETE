@@ -1,0 +1,64 @@
+unit PeriodYearUtil;
+
+interface
+
+type
+  TLocalPeriod =  Record
+    CPr  :  Byte;
+    CYr  :  Byte;
+    DispPrAsMonths : Boolean;
+  end;
+
+implementation
+
+Function GetLocalPr(Mode  :  Byte)  :  tLocalPeriod;
+// Copy of Function GetLocalPr in R&D\SysU1
+// Function GetLocalPr(Mode  :  Byte)  :  tLocalPeriod;
+Begin
+  FillChar(Result,Sizeof(Result),#0);
+
+  With UserProfile^ do
+    If (Mode=0) then
+    Begin
+      If (UCPr=0) or (UCYr=0) then
+      Begin
+        Result.CPr:=Syss.CPr;
+        Result.CYr:=Syss.CYr;
+        Result.DispPrAsMonths:=Syss.DispPrAsMonths;
+      end
+      else
+      Begin
+        Result.CPr:=UCPr;
+        Result.CYr:=UCYr;
+        Result.DispPrAsMonths:=UDispPrMnth;
+      end;
+    end {With..}
+    else
+    Begin
+      UCPr:=Syss.CPr;
+      UCYr:=Syss.CYr;
+      UDispPrMnth:=Syss.DispPrAsMonths;
+    end;
+end;
+
+Function PPR_Pr(Period  :  Byte)  :  String;
+// Copy of Function PPR_Pr(Period  :  Byte)  :  String; in R&D\ComnU2
+// Function PPR_Pr(Period  :  Byte)  :  String;
+Var
+  GenStr  :  String;
+Begin
+  GenStr:='';
+
+  Begin
+    If (Not GetLocalPr(0).DispPrAsMonths) then
+      GenStr:=SetN(Period)
+    else
+      GenStr:=LJVar(MonthAry[Pr2Mnth(Period)],3);
+
+  end; {with..}
+  PPR_Pr:=GenStr;
+end; {Func..}
+
+
+
+end.

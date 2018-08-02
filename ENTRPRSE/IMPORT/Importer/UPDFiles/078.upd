@@ -1,0 +1,9 @@
+[Version]
+Version=6.00.092.078
+
+[Auto Bank]
+F010=BR.MatchDate                 0095    W 0002 O   Match Date                                         default=N                                                                                                    comment=Y/N
+F011=BR.Spare                     0097    C 0179 N   Padding                                            default=                                                                                                     comment=
+F012=BR.LastChar                  0276    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+

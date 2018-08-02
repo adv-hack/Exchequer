@@ -1,0 +1,30 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="75"  >
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="doc_ref" fullfieldname="doc_ref" typename="DelphiString" size="10" elements="1" id="0" columnname="DocRef"  collation="1"/>
+    <schemafield fieldname="pay_ref" fullfieldname="pay_ref" typename="DelphiString" size="10" elements="1" id="0" columnname="PayRef"  collation="1"/>
+    <schemafield fieldname="settled_val" fullfieldname="settled_val" typename="double" size="8" elements="1" id="0" columnname="SettledVal"/>
+    <schemafield fieldname="own_c_val" fullfieldname="own_c_val" typename="double" size="8" elements="1" id="0" columnname="OwnCVal"/>
+    <schemafield fieldname="m_currency" fullfieldname="m_currency" typename="BYTE" size="1" elements="1" id="0" columnname="MCurrency"/>
+    <schemafield fieldname="match_type" fullfieldname="match_type" typename="char" size="1" elements="1" id="0" columnname="MatchType"  />
+    <schemafield fieldname="old_alt_ref" fullfieldname="old_alt_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="OldAltRef"  collation="1"/>
+    <schemafield fieldname="r_currency" fullfieldname="r_currency" typename="BYTE" size="1" elements="1" id="0" columnname="RCurrency"/>
+    <schemafield fieldname="rec_own_c_val" fullfieldname="rec_own_c_val" typename="double" size="8" elements="1" id="0" columnname="RecOwnCVal"/>
+    <schemafield fieldname="alt_ref" fullfieldname="alt_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="AltRef"  collation="1"/>
+  </fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="0">
+      <indexfields>
+        <item>doc_ref</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isclustered="0" isunique="0">
+      <indexfields>
+        <item>pay_ref</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>
+

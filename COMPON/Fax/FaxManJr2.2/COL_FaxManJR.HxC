@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE HelpCollection>
+<HelpCollection DTDVersion="1.0" Title="FaxMan Jr">
+
+  <TOCDef File="COL_FaxManJr.HxT"/>
+
+  <KeywordIndexDef File="COL_FaxManJr_K.HxK"/>
+  <KeywordIndexDef File="COL_FaxManJr_F.HxK"/>
+  <KeywordIndexDef File="COL_FaxManJr_N.HxK"/>
+  <KeywordIndexDef File="COL_FaxManJr_A.HxK"/>
+  <KeywordIndexDef File="COL_FaxManJr_D.HxK"/>
+
+  <ItemMoniker Name="!DefaultFullTextSearch" ProgId="HxDs.HxFullTextSearch" InitData="FTS"/>
+  <ItemMoniker Name="!DefaultTOC" ProgId="HxDs.HxHierarchy" InitData="COL_FaxManJr"/>
+  <ItemMoniker Name="!DefaultKeywordIndex" ProgId="HxDs.HxIndex" InitData="K"/>
+  <ItemMoniker Name="!DefaultAssociativeIndex" ProgId="HxDs.HxIndex" InitData="A"/>
+  <ItemMoniker Name="!DefaultContextWindowIndex" ProgId="HxDs.HxIndex" InitData="F"/>
+  <ItemMoniker Name="!DefaultDynamicLinkIndex" ProgId="HxDs.HxIndex" InitData="D"/>
+  <ItemMoniker Name="!DefaultNamedUrlIndex" ProgId="HxDs.HxIndex" InitData="NamedUrlIndex"/>
+
+</HelpCollection>

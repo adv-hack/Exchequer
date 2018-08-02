@@ -1,0 +1,35 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = TestApp.exe SQLHelpr.exe SETUPSQL.dll ENTCOMP2.dll SETUP.dll SetHelpr.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+TestApp.exe: TestApp.dpr
+  $(DCC)
+
+SQLHelpr.exe: SQLHelpr.dpr
+  $(DCC)
+
+SETUPSQL.dll: ..\..\SETUP\SETUPSQL.DPR
+  $(DCC)
+
+ENTCOMP2.dll: ..\ENTCOMP2.DPR
+  $(DCC)
+
+SETUP.dll: ..\..\SETUP\SETUP.DPR
+  $(DCC)
+
+SetHelpr.exe: SetHelpr.dpr
+  $(DCC)
+
+

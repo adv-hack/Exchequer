@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:cust xmlns:val="urn:www-iris-co-uk:cust">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <custrec>
+                <custcode/>   <!--: string[6];     (*  customer code , must not be blank *)  -->
+                <custsupp/>   <!--: Char;          {*  Must be C or S *} -->
+                <company><![CDATA[]]></company>    <!--: string[45];    (***  Company Name *) -->
+                <areacode/>   <!--: String[4];     {* Free Type Sort Field *} -->
+                <repcode/>    <!--: String[4];     {*   "   "    "     "   *} -->
+                <remitcode/>  <!--: String[10];    {* Account Code of Remit Account *} -->
+                <vatregno><![CDATA[]]></vatregno>   <!--: String[30];    {* VAT Registration No.  *} -->
+                <addr>      <!-- Array[1..5] of String[30];  {* Addr1-5 *} -->
+                      <addr1><![CDATA[]]></addr1>
+                      <addr2><![CDATA[]]></addr2>
+                      <addr3><![CDATA[]]></addr3>
+                      <addr4><![CDATA[]]></addr4>
+                      <addr5><![CDATA[]]></addr5>
+                </addr>
+
+                <despaddr/>   <!--: Boolean;      {* Despatch Address *} -->
+
+                <daddr>          <!--: Array[1..5] of String[30];  {* Despatch Addr1-5 *} -->
+                    <daddr1><![CDATA[]]></daddr1>
+                    <daddr2><![CDATA[]]></daddr2>
+                    <daddr3><![CDATA[]]></daddr3>
+                    <daddr4><![CDATA[]]></daddr4>
+                    <daddr5><![CDATA[]]></daddr5>
+                </daddr>
+
+                <contact><![CDATA[]]></contact>    <!--: String[25];    {* Contact Name *} -->
+                <phone><![CDATA[]]></phone>      <!--: string[30];    {*** Phone No. *} -->
+                <fax><![CDATA[]]></fax>        <!--: string[30];    {*** Fax No. *} -->
+                <refno/>      <!--: String[10];    {* Our Code with them *} -->
+                <tradterm/>   <!--: Boolean;      {* Special Terms *} -->
+
+                <sterms> <!--: Array[1..2] of String[60];  {* 2 Lines of Terms *}-->
+                    <sterms1><![CDATA[]]></sterms1>
+                    <sterms2><![CDATA[]]></sterms2>
+                </sterms>
+
+                <currency/>   <!--: SmallInt; -->
+                <vatcode/>    <!--: Char; -->
+                <payterms/>   <!--: SmallInt;      {* Number of days, 0-30, 999... *} -->
+                <creditlimit/> <!--:  Double; -->
+                <discount/>   <!--: Double; -->
+                <creditstatus/> <!--: SmallInt; -->
+                <custcc/>     <!--: String[3]; -->
+                <cdiscch/>    <!--: Char; -->
+                <custdep/>    <!--: String[3]; -->
+                <eecmember/>  <!--: Boolean;      {* VAT Inclusion for EEC *} -->
+                <incstat/>    <!--: Boolean;      {* Include in Statement  *} -->
+                <defnomcode/> <!--: LongInt;       {* Default Sales Nominal Code  *} -->
+                <defmlocstk/> <!--: String[3];     {* Default Multi Loc Stock *} -->
+                <accstatus/>  <!--: SmallInt;      {* On Hold, Closed, See notes *} -->
+                <paytype/>    <!--: Char;          {* [B]acs,[C]ash *} -->
+                <banksort><![CDATA[]]></banksort>   <!--: String[15];    {*** Bank Sort Code *} -->
+                <bankacc><![CDATA[]]></bankacc>    <!--: String[20];    {*** Bank Account No. *} -->
+                <bankref><![CDATA[]]></bankref>   <!-- : String[28];    {*** Bank additional ref, ie Build Soc.Acc *} -->
+                <lastused/>  <!--: String[8];     {* ReadOnly - Date last updated *} -->
+
+                <phone2><![CDATA[]]></phone2>     <!--: String[30];    {*** Second Phone No. *} -->
+                <userdef1><![CDATA[]]></userdef1>
+                <userdef2><![CDATA[]]></userdef2>   <!--: String[20];    {* User Definable strings *} -->
+                <sopinvcode/> <!--: String[6];     {* Ent SOP Invoice Code *} -->
+                <sopautowoff/> <!--: Boolean;      {* Auto write off Sales Order *} -->
+                <bordval/>    <!--: Double;        {* Book order value *} -->
+
+                <defcosnom/>  <!--: LongInt;       {* Cost of Sales Nominal Code *} -->
+                <defctrlnom/> <!--: LongInt;       {* Default Control Nominal Code *} -->
+
+                <dirdeb/>     <!--: SmallInt;      {* Current Direct Debit Mode *} -->
+                <ccdsdate/>   <!--: String[8];     {*** Credit Card Start Date *} -->
+                <ccdedate/>   <!--: String[8];     {*** Credit Card End Date *} -->
+                <ccdname><![CDATA[]]></ccdname>    <!--: String[50];    {*** Name on Credit Card *} -->
+                <ccdcardno/>  <!--: String[30];    {*** Credit Card No *} -->
+                <ccdsaref/>   <!--: String[4];     {* Credit Card Switch Ref *} -->
+
+                <defsetddays/> <!--: SmallInt;      {* Default Sett.Discount Days *} -->
+
+                <defsetdisc/> <!--: Double;        {* Default Sett.Discount % *} -->
+                <fdefpageno/>  <!--: SmallInt;      {* Default Form Set No., 0-99, default 0 *} -->
+
+                <statdmode/>  <!--: SmallInt;      {* Statement/Remittance delivery mode.
+                                             0 = Printed. 1 = Fax  2 = email *} -->
+                <emailaddr><![CDATA[]]></emailaddr>  <!--: String[100];    {* Email address for Statment/ Remittance *} -->
+
+                <emlsndrdr/>  <!--: Boolean;      {* On next email transmnision, send reader & reset *} -->
+                <ebuspwrd><![CDATA[]]></ebuspwrd>   <!--: String[20];    {* ebusiness module web password *} -->
+                <postcode><![CDATA[]]></postcode>   <!--: String[20];    {* Seperate postcode ** Add index *} -->
+                <custcode2><![CDATA[]]></custcode2>  <!--: String[20];    {* Alternative look up code, can be blank *} -->
+
+                <allowweb/>   <!--: SmallInt;      {* Allow upload to Web *} -->
+                <emlzipatc/>  <!--: Boolean;      {* Default Zip attachement *} -->
+                <userdef3><![CDATA[]]></userdef3>   <!--: String[30];    {* User Defined 3 *} -->
+                <userdef4><![CDATA[]]></userdef4>   <!--: String[30];    {* User Defined 4 *} -->
+                <timechange/> <!--: String[6];     {* ReadOnly - Time stamp for record Change *} -->
+                <ssddelterms/> <!--: String[5];     {*     "     Delivery Terms } -->
+                <cvatincflg/> <!--: Char; -->
+                <ssdmodetr/>  <!--: SmallInt; -->
+                <lastopo/>    <!--: String[10]; -->
+
+                <invdmode/>   <!--: SmallInt;      {* Invoice delivery mode *} -->
+                <emlsndhtml/> <!--: Boolean;      {* When sending XML, send HTML *} -->
+                <weblivecat><![CDATA[]]></weblivecat> <!--: String[20];    {Read Only - Web current catalogue entry} -->
+                <webprevcat><![CDATA[]]></webprevcat> <!--: String[20];    {Web previous catalogue entry} -->
+
+                <sopconsho/>  <!--: SmallInt;    { Consolidate Committed Balance. 0 or 1 only } -->
+
+                <deftagno/>   <!--: SmallInt; -->
+
+                <ordconsmode/> <!--: SmallInt; -->
+                
+                <nlinecount/> <!--: Integer; -->
+                <avepay/> <!--: SmallInt; -->
+                <balance/> <!--: Real48; -->
+                <vatretregc><![CDATA[]]></vatretregc>  <!--: String[5]; -->
+                <privaterec/> <!--: Boolean; -->
+                <spare><![CDATA[]]></spare> <!--: string[109]; -->
+                <spare2><![CDATA[]]></spare2> <!--: string[50]; -->
+                <spare51/> <!--: Byte; -->
+                <spare52/> <!--: Byte; -->
+
+        </custrec>
+    </message>
+</val:cust>

@@ -1,0 +1,975 @@
+EXTENDED DOCUMENT OBJECT MODEL REVISION HISTORY
+
+04.02.2001
+TdomCustomContentHandler.ignorableWhitespace removed.
+TdomStandardDocBuilder.ignorableWhitespace removed.
+Release of "Extended Document Object Model 2.3.7".
+
+03.02.2001
+protected function TdomEntityReference.expand added.
+TdomElement.resolveEntityReferences internally modified.
+TdomDocument.duplicateNode modified.
+TdomText.isWhitespaceInElementContent added.
+
+31.01.2001
+TdomDocument.duplicateNode modified.
+TdomDocument.importNode modified.
+TdomNode.cloneNode modified.
+
+30.01.2001
+TdomNode (and derived classes): appendChild() modified: EHierarchy_Request_Err is raised on an attempt to append a node to itself. ENot_Supported_Err is raised, if 'newChild' is nil.
+TdomCMNode (and derived classes): appendChild() modified: EHierarchy_Request_Err is raised on an attempt to append a node to itself. ENot_Supported_Err is raised, if 'newChild' is nil.
+TdomNode (and derived classes): insertBefore() modified: EHierarchy_Request_Err is raised on an attempt to insert a node into itself or to insert a node before itself. ENot_Supported_Err is raised, if 'newChild' is nil.
+TdomCMNode (and derived classes): insertBefore() modified: EHierarchy_Request_Err is raised on an attempt to insert a node into itself or to insert a node before itself. ENot_Supported_Err is raised, if 'newChild' is nil.
+TdomNode (and derived classes): removeChild() modified: ENot_Supported_Err is raised, if 'oldChild' is nil.
+TdomCMNode (and derived classes): removeChild() modified: ENot_Supported_Err is raised, if 'oldChild' is nil.
+TdomNode (and derived classes): replaceChild() modified: EHierarchy_Request_Err is raised on an attempt to insert the node itself as its child. ENot_Supported_Err is raised, if 'oldChild' or 'newChild' is nil.
+TdomCMNode (and derived classes): replaceChild() modified: EHierarchy_Request_Err is raised on an attempt to insert the node itself as its child. ENot_Supported_Err is raised, if 'oldChild' or 'newChild' is nil.
+TdomDocument.importNode: ENot_Supported_Err is raised, if 'importedNode' is nil.
+
+29.01.2001
+TDomImplementation: freeCMExternalObject, freeCMInternalObject, freeCMObject, freeDocument, freeDocumentType, freeAllNodes, freeTreeWalker: parameters changed from 'const' to 'var' and returning nil now.
+TdomCustomCMObject.freeAllCMNodes: parameters changed from 'const' to 'var' and returning nil now.
+TXmlToDomParser.docStreamToDom internally modified.
+TdomNode.clear internally modified.
+TdomCMNode.clear internally modified.
+TdomDocument.adoptNode removed:  Too many problems are involved in implementing this method, e.g. readonly node, readonly maps, lists where the source node was attached to ...  Use cloneNode as a workaround.
+
+26.01.2001
+Release of "Extended Document Object Model 2.3.6".
+
+25.01.2001
+TdomTreeWalker.FindFirstChild and TdomTreeWalker.FindLastChild modified: TdomTreeWalker now implements the expandEntityReferences option.
+TdomDocument.validate modified: parameter 'opt: TdomEntityResolveOption' added.
+
+24.01.2001
+TdomNodeIterator.FindNextNode modified: TdomNodeIterator now implements the expandEntityReferences option.
+
+23.01.2001
+TdomElement.validate modified: VC: Element Valid (XML 1.0, § 3) implemented.
+
+21.01.2001
+Declaration of TdomNodeFilter.acceptnode changed: parameter 'node' renamed into 'n' in conformance with the DOM 2 spec.
+TdomTreeWalker: FindFirstChild() and FindLastChild() internally modified to increase performance.  The previous version let to a very bad performance if a filter was used which skipped all nodes of the respective node tree.  Thanks to Eric Zurcher for notification.
+
+20.01.2001
+Global function xmlReplaceQuotes added.
+TdomStandardExtSubsetXMLReader.parse modified.
+
+16.01.2001
+TXmlParserError: getEnglishErrorStr, getFrenchErrorStr, getGermanErrorStr,
+getItalianErrorStr, getPolishErrorStr, getSpanishErrorStr modified, so getErrorStr now returns a correct UTF-16 wideString for every supported language. -- Hint: To use this UTF-16 wideString in Delphi's VCL components, you must convert it from UTF-16 to the code page used on your system; this usually is Windows-cp1250 for Polish resp. Latin-1 for the other supported languages.
+The constants defined in TXmlParserLanguage have all been changed; they are now defined as following: TXmlParserLanguage = (iso639_de, iso639_en, iso639_es, iso639_fr, iso639_it, iso639_pl);
+TdomStandardExtSubsetXMLReader.parse modified to support parameter entity references.
+EParserMissingParameterEntityDecl_Err replaced by EParserUnresolvable_Parameter_Entity_Reference_Err.
+TdomStandardIntSubsetBuilder.startDtd modified.
+TdomStandardExtSubsetBuilder.startDtd modified.
+TdomStandardIntSubsetBuilder.referenceContentModel removed.
+TdomStandardExtSubsetBuilder.referenceContentModel removed.
+Multiple Parser methods internally modified to compute parameter entity references correctly.
+TdomImplementation.FreeAllUnassociatedCMExternalObjects removed.
+TdomCMExternalObject.hasAssociatedContentModels removed.
+TdomCMExternalObject.associatedContentModels removed; use associatedContentModel instead.
+
+15.01.2001
+TdomStandardIntSubsetBuilder.entityDeclaration internally modified.
+TdomStandardIntSubsetBuilder.parameterEntityDeclaration internally modified.
+TdomCustomCMIEObject and derived classes: properties attributeLists, entityDeclarations, notationDeclarations, and parameterEntityDeclarations removed.
+TdomStandardExtSubsetBuilder.parameterEntityDeclaration added.
+TdomStandardExtSubsetBuilder.parameterEntityRef modified.
+EParserMissing_Parameter_Entity_Decl_Err renamed to EParserMissingParameterEntityDecl_Err.
+TdomCustomCMIEObject.publicId added.
+TdomCustomCMIEObject.systemId added.
+TdomCMExternalObject.create modified.
+TdomCMInternalObject.create modified.
+TdomImplementation.createCMExternalObject modified.
+TdomImplementation.createCMInternalObject modified.
+TdomCustomDTDHandler and derived classes: startDtd modified.
+TdomStandardIntSubsetXMLReader.parse internally modified.
+
+14.01.2001
+TdomStandardDocBuilder.startElement internally modified.
+TdomStandardDocXMLReader.WriteEndElement internally modified.
+
+13.01.2001
+IsXmlQName, XMLExtractPrefix and XMLExtractLocalName internally optimized.  Thanks to Marco Cantu'.
+TXmlParserError.GetPolishErrorStr added.  Thanks to Piotr Kuczynski for his translation. 
+TXmlParserLanguage updated to accept 'pl' for Polish.
+TXmlParserError.GetErrorStr modified to accept Polish.
+TdomCMObject.validate: Bug fixed which caused false "invalid"-message on enumaration content attributes with no default value.
+TdomNodeList and derived classes: getLength moved from private to protected.
+TdomNameValueList added.
+xmlAnalyseElement added.
+TdomCustomContentHandler and derived classes: procedure startElement modified: attributes changed from wideString to TdomNameValueList.
+
+28.12.2000
+TXmlParserAction added.
+TParserEvent replaced by TXmlParserEvent.
+EParserExternalSubsetNotFound_Err = class(EParserError) added.
+EParserExternalEntityNotFound_Err = class(EParserError) added.
+TXmlToDomParser.parseDtd modified.
+TdomCMObject.validate bug fixed: Internal subset is now parsed before the external.
+TdomCMObject.prepareCM internally modified.
+TDomImplementation.OnExternalParsedEntity added.
+TdomDTDContentModelHandler.entityDeclaration modified.
+TdomDTDContentModelHandler.parameterEntityDeclaration modified.
+TdomDocument.systemId added.
+TdomDocument.filename removed. Use TdomDocument.systemId instead.
+TdomCustomContentHandler and derived class: 'locator' parameter added to 'startDocument' procedure.
+TXmlToDomParser.FileToDom internally modified.
+TXmlParserError.GetItalianErrorStr added.  Thanks to Massimo Maria Ghisalberti for his translation. 
+TXmlParserLanguage updated to accept 'it' for Italian.
+TXmlParserError.GetErrorStr modified to accept Italian.
+Release of "Extended Document Object Model 2.3.5".
+
+27.12.2000
+TdomStandardDocBuilder.charRef internally modified.
+TUTF16BEToUTF8Stream.ExpandLF moved from protected to public.
+Release of "Extended Document Object Model 2.3.4b".
+
+23.12.2000
+Thanks to Karl Waclawek for the following bug fixes (nil pointers are now allowed, Cardinals are declared as Longint):
+UTF16BEToUTF8Str bug fixed.
+writeWideString bug fixed.
+writeWideStrings bug fixed.
+TdomWideStringStream.CreateFromString bug fixed.
+TdomWideStringStream.GetDataString bug fixed.
+TdomWideStringStream.ReadString bug fixed.
+TdomWideStringStream.WriteString bug fixed.
+TdomWideStringStream.Capacity: Changed from cardinal to longint.
+TdomWideStringStream.Size: Changed from cardinal to longint.
+TdomWideStringStream.SetCapacity modified.
+TdomWideStringStream.SetSize internally modified.
+
+22.12.2000
+TXmlParserError.GetSpanishErrorStr updated.  Thanks to Pedro de Paz for his translation. 
+TXmlParserError.GetEnglishErrorStr spelling errors corrected.  Thanks to Dieter Goebel for notification.
+TdomAttr.specified: declaration changed: there is no longer a default value declared.
+TdomElement.validate added: now, validation adds attributes with default values to elements.
+
+19.12.2000
+TdomDocument.codeAsString internally modified.
+TdomDocument.codeAsWideString internally modified.
+TXmlParserError.GetSpanishErrorStr added.  Thanks to Pedro de Paz for his translation.
+TXmlParserLanguage updated to accept 'es' for Spanish.
+TXmlParserError.GetErrorStr modified to accept Spanish.
+Release of "Extended Document Object Model 2.3.4".
+Moved all previously private validate functions to protected.
+TdomNode and and derived classes: procedure validate: parameter 'opt' removed.
+Release of "Extended Document Object Model 2.3.4a".
+
+18.12.2000
+TdomEncodingType: etcp1250 added.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in cp1250, too.
+cp1250ToUTF16Char and cp1250ToUTF16Str added.  Thanks to Miloslav Skacel who provided it.
+TdomEntityReference.refersToPredefinedEntity added.
+TdomEntityReference.refersToUnparsedEntity internally modified.
+TdomEntityReference.validate internally modified.
+
+The following new classes and modifications of existing classes were provided by
+Karl Waclawek:
+TdomWideStringStream added.
+EConversionStream added.
+TConversionStream added.
+procedure WriteWideString added.
+procedure WriteWideStrings added.
+procedure WriteWideChars added.
+Local class PLongint added.
+TUTF16BEToUTF8Stream added.
+UTF16BEToUTF8Str internally modified.
+TdomNode and derived classes: procedure getCode modified.
+TdomNode and derived classes: procedure writeCode added.
+TdomDocument.WriteCodeAsUTF8 added.
+TdomDocument.WriteCodeAsUTF16 added.
+TdomCMNode and derived classes: procedure getCode modified.
+TdomCMNode and derived classes: procedure writeCode added.
+TdomCMElementTypeDeclaration: protected procedure writeContentspec added.
+
+17.12.2000
+TdomEntityResolveOption class added.
+TdomEntityReference: property correspondingCMEntity added.
+TdomEntityReference.validate internally modifyed
+TdomNode and derived classes: procedure validate: parameter opt added.
+EParserUnresolvable_Entity_Reference_Err added.
+TdomCMEntity.appendLiteralValueAsDomtree removed. Use TdomNode.resolveEntityReferences instead.
+
+16.12.2000
+TdomNamedCMEntityMap.appendNamedItem bug fixed which alterd the ownerCMObject property of the appended TdomCMEntity.
+TdomNamedCMEntityMap.removeLastItem bug fixed which alterd the ownerCMObject property of the removed TdomCMEntity.
+TdomNamedCMEntityMap.removeLastItem bug fixed.
+TdomCMObject.prepareCM internally modified.
+TdomCMObject: protected procedure detectUnusableEntities() removed.
+TdomCMEntity: protected function refersTo() removed.
+TdomCMEntity: protected procedure testForCircularReference() added.
+TdomCMEntity: property resolvedValue added.
+
+15.12.2000
+TdomCMEntity: most methods internally rewritten.  Bug fixed, which caused false results when using "&#38;" in entity declarations.
+TdomCMEntity: property 'literalValueAsCdata' renamed to 'normalizedValue'.
+
+14.12.2000
+TdomCMEntity.getReplacementText added.
+
+13.12.2000
+Release of "Extended Document Object Model 2.3.3".
+TdomCMObject.validate bug fixed.  Thanks to Eric H. Johnson for notification.
+Bug fixed: predefined entities are now considered by the following modified functions of the TdomCMEntity class: refersTo, refersToExternalEntity, refersToUnparsedEntity, refersToUnusableEntity.  Thanks to Eric H. Johnson for notification.
+Release of "Extended Document Object Model 2.3.3a".
+TdomAttr.GetValue modified to resolve predefined entities, even if there are other validity constraints violated.  Thanks to Eric H. Johnson for notification.
+
+12.12.2000
+TdomDocument.IDs property added.
+EParserDuplicate_ID_Value_Err added.
+EParserTarget_ID_Value_Not_Found_Err added.
+EParserTarget_Unparsed_Entity_Not_Found_Err added.
+EParserWrong_Declaration_Of_Predefined_Entity_Err added.
+TdomAttr.validate modified.
+protected validateIDREFS function added to TdomNode and its derived classes.
+TXmlToDomParser.parseDtd modified: now it considers the standalone declaration, too.
+TdomStandardDocBuilder.doctype modified: now it considers the standalone declaration, too.
+TXmlParserError.getEnglishErrorStr modified.
+TXmlParserError.getGermanErrorStr modified.
+TXmlParserError.getFrenchErrorStr modified.
+
+11.12.2000
+TdomCMEntity.isParsedEntity property added.
+TdomCMEntityDeclaration.isParsedEntity property added.
+TdomEntityReference.validate modified.
+EParserReferenceToUnparsedEntity_Err added.
+TdomCMEntity.literalValueAsCdata now raises an exception too, if the literal value has an entity reference which points to an unparsed entity.
+EParserNoProperMarkupReferenced_Err added.
+EParserRequired_Attribute_Not_Found_Err added.
+EParserFixed_Attribute_Mismatch_Err added.
+EParserAttribute_Default_Type_Mismatch_Err added.
+TdomElement.validate modified.
+TdomCMObject.validate modified.
+TdomAttr.validate modified.
+
+10.12.2000
+TdomEntityReference.validate added.
+TdomAttr.validate modified.
+TdomElement.validate modified.
+TdomStandardDocBuilder.doctype internally modified.
+TdomCMObject.DuplicateCMNode bug fixed, which caused the literal value not to be duplicated when duplicating a TdomCMEntity node.
+function TdomNamedCMEntityMap.appendNamedItem bug fixed, which caused recursive entity declarations to go through undetected.
+TdomDTDContentModelHandler.attributeDefinition modified.
+
+09.12.2000
+TdomCMObject.validate modified.
+EParserAttribute_Definition_Not_Found_Err added.
+TdomStandardDocXMLReader.parse modified:  EParserInvalidDoctype_Err will no longer submit the text of the DTD's internal subset to the Error Handler.  Minor bug fixed.
+TdomStandardIntSubsetXMLReader.parse minor bug fixed.
+TdomStandardExtSubsetXMLReader.parse minor bug fixed.
+TdomAttr.GetValue "incorrect normalization"-bug fixed.
+TdomCMAttribute.create "incorrect normalization"-bug fixed.
+function XMLTruncSpace optimized.
+EParserLtInAttributeValue_Err added.
+protected procedure TdomDocumentType.detectUnusableEntities removed.
+TdomEntity.isUnusable removed.  Use TdomCMEntity if you need this feature.
+TdomNode.RefersToExternalEntity internally modified.
+TdomCMObject.detectUnusableEntities modified.
+EParserAttributeValueRefersToExternalEntity_Err added.
+
+08.12.2000
+TdomCMElementTypeDeclaration.Create bug fixed:  ctElementParticle is no longer allowed as child node type for TdomCMElementTypeDeclaration of ContspecType ctChildren.
+TdomStandardDocBuilder.startElement internally modified.
+TdomDocument.validate added.
+TdomCMPcdataChoiceParticle.elementDefined added.
+EParserWrong_Root_Element_Type_Err added.
+EParserElement_Type_Declaration_Not_Found_Err added.
+EParserElement_Declared_Empty_Has_Content_Err added.
+EParserElement_With_Illegal_Mixed_Content_Err added.
+EParserElement_With_Illegal_Element_Content_Err added.
+EParserNondeterministic_Element_Content_Model_Err added.
+EParserDouble_Notation_Decl_Warning removed.
+EParserDuplicate_Notation_Decl_Err added.
+TdomDTDContentModelHandler.notationDeclaration modified.
+
+07.12.2000
+TdomDtdAnalyzer.ErrorHandler modified.
+TdomCMObject.prepare internally modified.
+TdomCMObject.prepareCM added.
+TdomDTDContentModelHandler.attributeDefinition modified.
+TdomCMAttribute.create modified: AttValue is normalized, if attribute type is not CDATA (see XML 1.0, §3.3.3).
+
+06.12.2000
+EParserDuplicate_ID_On_Element_Type_Err added.
+EParserUndeclared_Notation_Name_Err added.
+EParserDuplicate_Notation_On_Element_Type_Err added.
+EParserNotation_On_Empty_Element_Err added.
+EParserAttribute_Type_Mismatch_Err added.
+EParserDuplicate_Tokens_Err added.
+EParserId_Neither_Implied_Nor_Required_Err added.
+TdomCMObject.validate modified.
+Release of "Extended Document Object Model 2.3.2".
+
+05.12.2000
+TdomCMText class removed.
+ctText removed from TDomCMNodeType.
+TdomCustomCMObject.CreateCMText removed.
+TdomCMCharacterData removed.
+TdomCMComment is directly derived from TdomCMNode, now.
+TdomCMAttrDefinition.name removed.  Use the NodeName property instead.
+TdomCMNametoken class removed.  Use the TdomCMElementParticle class instead.
+ctNametoken removed from TDomCMNodeType.
+TdomCustomCMObject.CreateCMNametoken removed.
+TdomCMAttrDefinition.Create internally modified.
+TdomDTDContentModelHandler.InsertNotationTypeContent renamed to InsertNotationOrEnumerationContent.
+TdomStandardIntSubsetBuilder.InsertNotationTypeContent renamed to InsertNotationOrEnumerationContent.
+TdomDTDContentModelHandler.InsertEnumerationContent removed.  Use InsertNotationOrEnumerationContent instead.
+TdomStandardIntSubsetBuilder.InsertEnumerationContent removed.  Use InsertNotationOrEnumerationContent instead.
+
+04.12.2000
+protected function TdomCMNode.validate added.
+protected function TdomCMSequenceParticle.validate added.
+protected function TdomCMChoiceParticle.validate added.
+protected function TdomCMPcdataChoiceParticle.validate added.
+protected function TdomCMElementParticle.validate added.
+EParserDuplicate_Name_In_Mixed_Content_Err added.
+
+29.11.2000
+TdomCMAttrList, TdomCMElementTypeDeclaration and TdomCustomCMEntity which has been renamed to TdomCustomCMEntDecl are no longer derived from TdomCustomCMDeclaration; instead they are now derived from TdomCMNode.
+The TdomCustomCMDeclaration class has been removed.
+EParserDouble_Element_Type_Declaration_Err added.
+TdomCMObject.elementTypes added.
+TdomCMObject.prepare modified: Prepares now also a list of element type declarations, and a bug concerning predefined entity has been fixed.
+TdomDTDContentModelHandler.elementTypeDeclaration modified.
+CMEntityDeclaration objects are now readonly.
+CMParameterEntityDeclaration objects are now readonly.
+CMElementTypeDeclaration.nodeValue is now always an empty wideString.
+property TdomCMElementTypeDeclaration.Contentspec renamed to ContentspecType.
+New property TdomCMElementTypeDeclaration.Contentspec: wideString added.
+Several methods and properties moved from TdomCustomCMObject to TdomCustomCMIEObject.
+TdomStandardExtSubsetBuilder internally modified.
+TdomStandardIntSubsetBuilder internally modified.
+TdomCMExternalObject.ReferenceNode: new exception on setting.
+TdomCMInternalObject.ReferenceNode: new exception on setting.
+
+28.11.2000
+Release of "Extended Document Object Model 2.3.1".  This is a completely redesigned XDOM version.  To document each modification from 2.2.12a to 2.3.1 in detail would be too laborious.  So the following is only a summary and should be accompanied by a thorough reading of the new manual, especially the chapters "The XDOM Structure Model", "The Class Hierarchy of the XDOM Core Nodes", "TdomImplementation", "TdomNode", "TdomDocument", "TdomDocumentType", and "TdomEntity".
+
+The main difference between 2.3.1 and previous XDOM versions is, that the DTD of an XML document is now represented by a node hierarchy independent from the node tree which models the document itself.  Many nodes previously inherited from TdomNode are now derived from the new TdomCMNode class.  For details, see the "Content Model" chapter in the manual.  
+
+The link between the document and its content model is modeled by a TdomCMObject which can be attached to the document by using the TdomDocument.setcontentmodel() function.  The TdomCMObject itself is linked to content models of the internal and external subset of a DTD.  The most powerful method of the TdomCMObject class is the prepare() procedure, which parses the DTD-subsets to provide access to the attributes, entities, notations, and parameterEntities declared in its associated content models.
+
+The TXmlToDomParser class has been internally modified, to process the DTD into the new content model objects.  Therefore the TdomStandardExtSubsetBuilder and TdomStandardIntSubsetBuilder have been totally re-written.  A new TdomDTDContentModelHandler has been introduced, which is specialized in processing the content model information for a TdomCMObject object while handling DTD related event calls from a Reader. 
+
+The TdomXMLDeclaration and TdomTextDeclaration classes have been dropped.  The information of an entities version and encoding (and standalone declaration) can now be stored at the respective node itself by using the version and encoding (resp. and standalone) property of the TdomDocument, TdomEntity, TdomCMEntity, and TdomParameterEntity class.
+
+There is also a new adoptNode() function on the TdomDocument class, which effectively allows moving a subtree from one document to another. 
+
+The old version "Extended Document Object Model 2.2.12a" is declared an "interim version", which means that it will still be available on the web-site and serious bugs will be fixed.  So it may be used as a stable point of reference for tutorials, how-tos, etc. while the versions proceeding from 2.3.1 will be subject to heavy modifications.
+
+14.11.2000
+TdomCharacterData bug fixed: no child nodes allowed, now.
+TdomText bug fixed: no child nodes allowed, now.
+TdomCustomStr.create bug fixed: constructor calls inherited constructor, now.
+TXmlInputSource.getRootName internally modified: bug fixed.
+UTF16BEToUTF8Str bug fixed: Converting an empty wideString will no longer raise an exception.
+TdomDocument.domImplementation added, which has been mentioned in the manual, but was left out in the source code.
+
+31.10.2000
+Release of "Extended Document Object Model 2.2.12".
+
+30.10.2000
+TXmlToDomParser.DocStreamToDom internally modified.
+TXmlToDomParser.DocMemoryToDom internally modified.
+TXmlToDomParser.DocStringToDom internally modified.
+TXmlToDomParser.FileToDom internally modified.
+TXmlToDomParser.memoryToDom internally modified.
+TXmlToDomParser.streamToDom internally modified.
+TXmlToDomParser.stringToDom internally modified.
+TXmlToDomParser.wideStringToDom internally modified.
+TdomStandardDocBuilder.startDocument internally modified.
+TdomCustomContentHandler.startDocument: defaultRoot parameter added.
+TdomStandardDocBuilder.startDocument: defaultRoot parameter added.
+TdomImplementation.RegisterDocumentFormat modified: An EInvalid_Access_Err will be raised if the qualified name 'default', which is now reserved for internal use in XDOM, is specified.
+TXmlInputSource.RootName added.
+TXmlInputSource.getEncodingType added.
+TXmlInputSource.getRootName added.
+
+20.10.2000
+TdomEncodingType: etcp1251 added.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in cp1251, too.
+cp1251ToUTF16Char and cp1251ToUTF16Str added.
+
+17.10.2000
+TXmlToDomParser: Now, some private variables have been declared protected to allow derived parser classes to use them.
+Release of "Extended Document Object Model 2.2.11a".
+
+14.10.2000
+Bug fixed in XMLAnalyseAttrSequence, TdomStandardDocBuilder.charRef, TdomStandardDocBuilder.PCDATA, which caused white space appearing after the closing of a CDATA section to be included in the TdomCDATASection node's data.  Thanks to Mauricio Longo for notification.
+
+03.10.2000
+TdomEncodingType: etKOI8R, etcp10000_MacRoman added.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in KOI8-R and cp10000_MacRoman, too.
+KOI8_RToUTF16Char and KOI8_RToUTF16Str added.
+cp10000_MacRomanToUTF16Char and cp10000_MacRomanToUTF16Str added.
+Release of "Extended Document Object Model 2.2.11".
+
+02.10.2000
+TXmlToDomParser.memoryToDom added.
+TXmlToDomParser.sourceCodeToDom added.
+TXmlToDomParser.streamToDom added.
+TXmlToDomParser.stringToDom added.
+TXmlToDomParser.wideStringToDom added.
+
+01.10.2000
+UTF8ToUTF16BEStr modified: The resulting wideString no longer starts with a Byte Order Mark, according to Unicode 3 spec. § 13.6 (p. 325): "... where Unicode text has known byte order, inital U+FEFF characters are ... not required ... For example, for strings in an API, the memory architecture of the processor provides the explicit byte order."
+The following function for ISO-8859 conversion have been added: Iso8859_1ToUTF16Char, Iso8859_2ToUTF16Char, Iso8859_3ToUTF16Char, Iso8859_4ToUTF16Char, Iso8859_5ToUTF16Char, Iso8859_6ToUTF16Char, Iso8859_7ToUTF16Char, Iso8859_8ToUTF16Char, Iso8859_9ToUTF16Char, Iso8859_10ToUTF16Char, Iso8859_13ToUTF16Char, Iso8859_14ToUTF16Char, Iso8859_15ToUTF16Char, Iso8859_1ToUTF16Str, Iso8859_2ToUTF16Str, Iso8859_3ToUTF16Str, Iso8859_4ToUTF16Str, Iso8859_5ToUTF16Str, Iso8859_6ToUTF16Str, Iso8859_7ToUTF16Str, Iso8859_8ToUTF16Str, Iso8859_9ToUTF16Str, Iso8859_10ToUTF16Str, Iso8859_13ToUTF16Str, Iso8859_14ToUTF16Str, Iso8859_15ToUTF16Str.
+
+30.09.2000
+Encoding bugs fixed:
+Latin-2: $b0 mapped to $00b0 (DEGREE SIGN) instead of $02da (RING ABOVE).
+Latin-3: $b0 mapped to $00b0 (DEGREE SIGN) instead of $02da (RING ABOVE).
+Latin-4: $b0 mapped to $00b0 (DEGREE SIGN) instead of $02da (RING ABOVE).
+         $b7 mapped to $02c7 (CARON) instead of $00b7 (MIDDLE DOT).
+         $b8 mapped to $00b8 (CEDILLA) instead of $02c7 (CARON).
+         $d5 mapped to $00d5 (LATIN CAPITAL LETTER O WITH TILDE) instead of $0136 (LATIN CAPITAL LETTER K WITH CEDILLA).
+         $d3 mapped to $0136 (LATIN CAPITAL LETTER K WITH CEDILLA) instead of $00d3 (LATIN CAPITAL LETTER O WITH ACUTE).
+         $f5 mapped to $00f5 (LATIN SMALL LETTER O WITH TILDE) instead of $0137 (LATIN SMALL LETTER K WITH CEDILLA).
+         $f3 mapped to $0137 (LATIN SMALL LETTER K WITH CEDILLA) instead of $00f3 (LATIN SMALL LETTER O WITH ACUTE).
+Cyrillic: Incorrect mapping of $a1, $a2, and $f0 fixed.
+Greek: Incorrect mapping of $a1, $a2, $af, and $b7 fixed.
+Hebrew: Incorrect mapping of $af, $bb, and $df fixed.
+TdomEncodingType: etLatin7, etLatin8 added.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in Latin-7 (ISO-8859-13), Latin-8 (ISO-8859-14), too.
+
+29.09.2000
+TdomEncodingType: etLatin4, etCyrillic, etLatin5, etLatin6 added.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in Latin-4 (ISO-8859-4), Cyrillic (ISO-8859-5), Latin-5 (ISO-8859-9), Latin-6 (ISO-8859-10), too.
+
+28.09.2000
+TdomEncodingType: etLatin1, etLatin2,etLatin3,etArabic,etGreek,etHebrew added.
+TXmlInputSource.create internally modified.
+TXmlInputSource.getNextWideChar internally modified, so the parser will parse now files encoded in Latin-1 (ISO-8859-1), Latin-2 (ISO-8859-2), Latin-3 (ISO-8859-3), Arabic (ISO-8859-6), Modern Greek (ISO-8859-7) and Hebrew (ISO-8859-8), too.
+Release of "Extended Document Object Model 2.2.10".
+
+26.09.2000
+TdomDocument.DefaultView added.
+TdomAbstractView added.
+TdomImplementation.HasFeature modified.
+TdomDocument.IsHTML removed.
+
+25.09.2000
+TXmlInputSource.getNextWideChar added.
+TXmlInputSource.reset added.
+TXMLInputSource.create internally modified.
+TdomStandardDocXMLReader.parse internally modified to improve performance.
+TdomStandardIntSubsetXMLReader.parse internally modified to improve performance.
+TdomStandardExtSubsetXMLReader.parse internally modified to improve performance.
+
+23.09.2000
+Compiler directives added to the declaration of TXmlSourceCode.clear necessary because of VCL differences in different versions of Delphi.
+
+22.09.2000
+Release of "Extended Document Object Model 2.2.9".
+
+20.09.2000
+The 'readonly' parameter has been removed from the following methods TXmlToDomParser class: DocMemoryToDom, DocSourceCodeToDom, DocStreamToDom, DocStringToDom, DocWideStringToDom, ExtDtdSourceCodeToDom, ExtDtdStreamToDom, ExtDtdStringToDom, ExtDtdWideStringToDom, IntDtdMemoryToDom, IntDtdSourceCodeToDom, IntDtdStreamToDom, IntDtdStringToDom, IntDtdWideStringToDom.
+TdomImplementation.createDocumentType() and TdomImplementation.createDocumentTypeNS() have been removed.
+
+19.08.2000
+TXmlToDomParser.DocSourceCodeToDom modified.
+TXmlToDomParser.ExtDtdSourceCodeToDom modified.
+TXmlToDomParser.IntDtdSourceCodeToDom modified.
+
+18.08.2000
+TDomNodeType: order of the constants changed in order to correspond to the DOM specification when considering the byte values of the enumeration.  Thanks to Jeff Rafter who suggested this improvement.
+
+17.08.2000
+TdomDocument.createText renamed to TdomDocument.createTextNode in compliance with the DOM specification.  Thanks to Jeff Rafter who noticed the mistake.
+TdomAttr.GetValue internally modified to increase parsing speed.
+function UTF16BEToUTF8Str: boolean parameter 'expandLF' added.
+TdomDocument.GetElementsById renamed to GetElementById.
+
+15.08.2000
+EParserUnusable_Entity_Decl_Warning added.
+TdomDocumentType.detectUnusableEntities added.
+Private function TdomNode.RefersToExternalEntity: bug fixed.
+Private function TdomNode.RefersToUnusableEntity added.
+function ResolveCharRefs(const S: WideString): wideString;
+TdomStandardIntSubsetBuilder.entityDeclaration modified.
+Bug in several methods fixed: when comparing a quotation mark with a wideString or a wideChar the quotation mark must always be indicated as being of type wideString or of type wideChar, because Delphi otherwise identifies all unknown characters with quotation marks leading to false results.
+
+12.08.2000
+Included French language extension to error strings, provided by Bernard Eblin.  The following classes and methods have been added or modified: TXmlParserLanguage, TXmlParserError.GetFrenchErrorStr, TXmlParserError.GetErrorStr.
+TdomEntity.isUnusable added.
+
+10.08.2000
+EIllegal_Entity_Reference_Err renamed into EInvalid_Entity_Reference_Err.
+TdomAttr.value modified: If an attempt is made to retrive the value of an Attribute containing an entity reference whoes replace value cannot be determined, an EInvalid_Entity_Reference_Err is being raised.
+Bug fix: TdomEntityReference.nodeValue and TdomParameterEntityReference.nodeValue is now always an empty wideString.
+TdomAttr.getValue and setValue modified to match the DOM specification requirements.
+When creating an TdomDocumentType its entities map now automatically contains the XML default entities.
+
+07.08.2000
+TXmlToDomParser.FileToDom and TXmlToDomParser.parseDtd have been internally modified, all other TXmlToDomParser methods got two new parameters: 'pubId' and 'sysId'.
+
+04.08.2000
+Release of "Extended Document Object Model 2.2.8".
+
+22.06.2000 - 04.08.2000
+Totally re-designing the parser classes:
+TCustomParser removed.
+TdomCustomParser added.
+TXmlToDomParser modified.
+TParserEvent modified.
+TdomStandardLocator added.
+TdomCustomContentHandler added.
+TdomCustomDTDHandler added.
+TdomCustomErrorHandler added.
+TdomCustomXMLReader added.
+TdomStandardDocXMLReader added.
+TdomStandardIntSubsetXMLReader added.
+TdomStandardExtSubsetXMLReader added.
+TdomStandardDocBuilder added.
+TdomStandardIntSubsetBuilder added.
+TdomStandardExtSubsetBuilder added.
+TdomStandardErrorHandler added.
+TXmlErrorType added;
+EParserFatalError added; 
+EParserError added; 
+EParserWarning added; 
+Several parser exceptions modified to be derived from EParserFatalError.
+TXMLParserError modified.
+TdomPieceType: xmlCharacterError renamed into xmlUnknown.
+IsXmlCData added.
+IsXmlVersionNum: bug fixed.
+EParserInvalidDeclaration_Err added.
+XmlCharRefToInt/XmlCharRefToStr: bug fixed concerning character references to values reserved for Unicode surrogates.
+Error strings (such as XmlStrError1En, etc.) removed.
+EParserDouble_Entity_Decl_Warning added.
+EParserDouble_Parameter_Entity_Decl_Warning added.
+EParserDouble_Notation_Decl_Warning added.
+
+21.06.2000
+Release of "Extended Document Object Model 2.2.7".
+
+18.06.2000
+EParserCharactersNotFound_Err removed.
+Thanks to Ernst van der Pols, who provided most of todays improvements:
+UTF8ToUTF16BEStr() added.
+UTF16BEToUTF8Str() added.
+TdomDocument.GetCodeAsString modified.
+TCustomParser.DocToXmlSourceCode modified.
+TCustomParser.ExtDtdToXmlSourceCode modified.
+TCustomParser.IntDtdToXmlSourceCode modified.
+
+15.06.2000
+XmlAnalyseTag() modified: It no longer raises an exception if the tag to be analyzed is an empty wideString. Instead it returns empty wideStrings for 'tagname' and 'AttribSequence'.  Thanks to Ebo Dieben for notification.
+
+10.06.2000
+TdomDocument.FreeAllNodes(const Node: TdomNode) modified: Now, no exception will be raised, if 'Node' is nil.
+TdomDocument.FreeTreeWalker added.
+
+08.06.2000
+Bug in several parser functions fixed, which caused memory allocation problems if an error in the parsed XML document was found.
+
+31.05.2000
+Bug in TdomCustomStr.AddWideString fixed.  Thanks to Dirk Speidel sending the fix.
+Release of "Extended Document Object Model 2.2.6a".
+
+29.05.2000
+Release of "Extended Document Object Model 2.2.6".
+
+24.05.2000
+TXmlSourceCode.ClearAndFree added.
+TCustomParser.DocToXmlSourceCode modified.
+TCustomParser.ExtDtdToXmlSourceCode modified.
+TCustomParser.IntDtdToXmlSourceCode modified.
+TXmlToDomParser.FileToDom modified.
+
+23.05.2000
+New class TXmlInputSource added.
+TCustomParser.DocStreamToDom modified.
+TCustomParser.ExtDtdStreamToDom modified.
+TCustomParser.IntDtdStreamToDom modified.
+TCustomParser.DocMemoryToDom modified.
+TCustomParser.ExtMemoryToDom modified.
+TCustomParser.IntMemoryToDom modified.
+
+20.05.2000
+TdomExternalSubset.entities removed.
+TdomInternalSubset.entities removed.
+TdomConditionalSection.entities removed.
+TdomCustomDocumentType.entities moved to TdomDocumentType.
+TdomExternalSubset.notations removed.
+TdomInternalSubset.notations removed.
+TdomConditionalSection.notations removed.
+TdomCustomDocumentType.notations moved to TdomDocumentType.
+
+19.05.2000
+TdomTreeWalker.destroy removed.  Thanks to Li Ling for bug notification.
+TdomNodeIterator.destroy removed.  Thanks to Li Ling for bug notification.
+
+17.05.2000
+TdomCustomStr added.
+Several parser function had been internally modified to improve performance.  Thanks to Hans-Eric Grönlund and David Butler for their suggestions and code examples.
+
+14.05.2000
+Allowed child node types of TdomEntityReference modified.
+Several private functions added to support entity and entity reference expansion.
+
+09.05.2000
+TdomElement.GetCode internally modified.
+New parameter "readonly: boolean" added to the following procedures of TCustomParser: DocMemoryToDom, DocSourceCodeToDom, DocStreamToDom, DocStringToDom, DocWideStringToDom, ExtDtdMemoryToDom, ExtDtdSourceCodeToDom, ExtDtdStreamToDom, ExtDtdStringToDom, ExtDtdWideStringToDom, IntDtdMemoryToDom, IntDtdSourceCodeToDom, IntDtdStreamToDom, IntDtdStringToDom, IntDtdWideStringToDom.
+TXmlToDomParser.FileToDom modified: All parsed nodes of an external subset are now readonly.
+
+08.05.2000
+TCustomParser.DocStreamToDom internally modified.
+TCustomParser.ExtDtdStreamToDom internally modified.
+TCustomParser.IntDtdStreamToDom internally modified.
+TXmlToDomParser.FileToDom internally modified.
+TCustomParser.WriteParameterEntityRef internally modified.
+Allowed node types of child nodes of TdomParameterEntityReference nodes modified.
+
+07.05.2000
+TdomCustomDocumentType.AttributeLists changed from TdomSpecialNodeList into TdomNamedNodeMap.
+TdomCustomDocumentType.Entities changed from TdomSpecialNodeList into TdomNamedNodeMap.
+TdomCustomDocumentType.Notations changed from TdomSpecialNodeList into TdomNamedNodeMap.
+TdomCustomDocumentType.ParameterEntities changed from TdomSpecialNodeList into TdomNamedNodeMap.
+TdomCustomDocumentType.Create modified.
+TdomCustomDocumentType.Destroy modified.
+TXmlToDomParser.FileToDom modified.
+
+06.05.2000
+Release of "Extended Document Object Model 2.2.5".
+TCustomParser.WriteStartTag modified.
+TCustomParser.WriteEntityDeclaration modified.
+
+05.05.2000
+Bug in TCustomParser.WriteConditionalSection fixed.
+TCustomParser.ExtDtdToXmlSourceCode optimized.
+TCustomParser.IntDtdToXmlSourceCode optimized.
+TCustomParser.WriteEndTag modified.
+TCustomParser.XMLAnalyseAttrSequence modified.
+XMLTrunc modified.
+XmlAnalyseTag modified.
+WritePCDATA modified.  Text and character references are now automatically being normalized when parsing a document.
+
+04.05.2000
+Bug in TdomAttr.normalize fixed.  Thanks to Ernst van der Pols for sending the fix.
+Bug in TdomElement.normalize fixed.  Thanks to Ernst van der Pols for sending the fix.
+TdomXMLDeclaration.GetCode modified.
+TdomTextDeclaration.GetCode modified.
+  
+03.05.2000
+Bug in TdomCustomDocumentType.GetAttributeLists fixed.  Thanks to Diego Novati for notification.
+Release of "Extended Document Object Model 2.2.4a".
+Bug in TCustomParser.DocToXmlSourceCode fixed.
+
+27.04.2000
+Bugs in TdomNodeIterator.NextNode and TdomNodeIterator.PreviousNode removed which made it impossible to access the root element.
+Bug in TdomElementsNodeList.GetLength fixed which made it impossible to evaluate the root element of the list.
+Release of "Extended Document Object Model 2.2.4".
+
+26.04.2000
+TdomElement.GetElementsByTagName modified.
+TdomElement.GetElementsByTagNameNS modified.
+TdomDocument.GetElementsByTagName modified.
+TdomDocument.GetElementsByTagNameNS modified.
+
+2000-04-24
+TdomDocument.GetCodeAsString bug fixed.  Thanks to Vladimir Buzuev for notification.
+TdomDocument.GetCodeAsWideString bug fixed.  Thanks to Vladimir Buzuev for notification.
+
+2000-04-21
+TdomDocument.InitDoc added.
+TdomDocument.InitDocNS added.
+TdomImplementation.createDocument modified.
+TdomImplementation.createDocumentNS modified.
+
+2000-04-20
+TCustomParser.DocSourcCodeToDom added.
+TCustomParser.ExtDtdSourcCodeToDom added.
+TCustomParser.IntDtdSourcCodeToDom added.
+TCustomParser.DocStreamToDom modified.
+TCustomParser.ExtDtdStreamToDom modified.
+TCustomParser.IntDtdStreamToDom modified.
+TXmlSourceCode.NameOfFirstTag added.
+TXmlToDomParser.FileToDom modified.
+TdomSpecialNodeList.GetNamedIndex moved from private to protected.
+TdomSpecialNodeList.GetNamedItem moved from private to protected.
+
+2000-04-19
+Several Document format classes added (see sec. 2.3.4. of the manual).
+EDocumentFormatUnknown exception added.
+TdomImplementation.GetDocumentClass added.
+TdomImplementation.RegisterDocumentFormat added.
+TdomImplementation.UnregisterDocumentClass added.
+TdomImplementation.SupportsDocumentFormat added.
+TdomImplementation.createDocument modified.
+TdomImplementation.createDocumentNS modified
+
+2000-04-14
+Some parser methods internally modified.
+Some iterator methods internally modified for reason of performance.
+Bugs of incomplete destroy methods in some classes fixed.
+Prodected function TCustomParser.NormalizeLineBreaks added.
+Thanks to David Burridge who made very useful contributions causing todays modifications.
+
+2000-04-11
+Bug in TdomTreeWalker and TdomNodeIterator fixed.  Thanks to Lijun Qin for notification.
+Release of "Extended Document Object Model 2.2.3a".
+
+2000-04-11
+Some bugs in TdomTreeWalker and TdomNodeIterator filter treatment fixed.  Thanks to Charlie Calvert for notification.
+TdomDocument.Clear internally modified to speed it up.  Thanks to John Romedahl for sending the new code.
+TdomTreeWalker and TdomNodeIterator: Now destroy is overridden and not free.  Thanks to John Romedahl for notification.
+Release of "Extended Document Object Model 2.2.3".
+
+2000-04-10
+Bug in TdomTreeWalker.FindNextNode and TdomNodeIterator.FindNextNode fixed.  Thanks to Charlie Calvert for notification. 
+xmlEof removed from TdomPieceType.
+xmlError of TdomPieceType renamed into xmlCharacterError.
+Release of "Extended Document Object Model 2.2.2".
+
+2000-04-06
+TXmlSourceCode added.
+TXmlSourceCodePiece added.
+Several TCustomParser private functions modified.
+
+2000-04-04
+TdomDocument.Filename added.
+TXmlToDomParser.FileToDom modified to support TdomDocument.Filename.
+Release of "Extended Document Object Model 2.2.1".
+
+2000-04-03
+TdomEncodingType = (etUTF8,etUTF16); changed to TdomEncodingType = (etUTF8,etUTF16BE,etUTF16LE);
+Parser support of little endian UTF-16 added.
+TdomDocument.CodeAsString added.
+TdomDocument.CodeAsWideString added.
+
+2000-04-02
+TdomExternalParameterEntity.Create bug fixed.
+TdomExternalParsedEntity.Create bug fixed.
+TdomExternalSubset.Create bug fixed.
+
+2000-04-01
+TCustomParser.Notification added. Thanks to Matthew Peebles for bug notification.
+TCustomParser.Notification added. Thanks to Matthew Peebles for bug notification.
+TXmlToDomParser modified from procedure to function.
+Release of "Extended Document Object Model 2.2.0".
+
+2000-03-31
+TDocumentObjectModel removed.
+TdomImplementation changed into a component.
+TdomNodeList.create status changed from virtual into static.
+TdomNode.create status changed from virtual into static.
+TdomCharacterData.create status changed from override into virtual.
+TdomCustomDocumentType.create status changed from override into static.
+TdomExternalParsedEntity.create status changed from override into virtual.
+TdomDocumentFragment.create status changed from override into virtual.
+TdomExternalParameterEntity.create status changed from override into virtual.
+TdomExternalSubset.create status changed from override into virtual.
+TdomInternalSubset.create status changed from override into virtual.
+TdomCustomDeclaration.create status changed from virtual into static.
+TdomAttrList.create status changed from override into virtual.
+TdomParticle.create status changed from virtual into static.
+TdomSequenceParticle.create status changed from override into virtual.
+TdomChoiceParticle.create status changed from override into virtual.
+TdomPcdataChoiceParticle.create status changed from override into virtual.
+TdomCustomEntity.create status changed from virtual into static.
+TdomParameterEntity.create status changed from override into virtual.
+
+2000-03-30
+TCustomParser.WriteCharRef modified to conform to UTF16.
+TCustomParser.XMLAnalyseAttrSequence modified to conform to UTF16.
+function XmlCharRefToInt(const S: WideString): integer; modified.
+Following global functions added:
+function XmlIntToCharRef(const value: integer): wideString;
+function XmlCharRefToStr(const S: WideString): WideString;
+function XmlStrToCharRef(const S: WideString): WideString;
+function Utf16HighSurrogate(const value: integer): WideChar;
+function Utf16LowSurrogate(const value: integer): WideChar;
+function Utf16SurrogateToInt(const highSurrogate, lowSurrogate: WideChar): integer;
+function IsUtf16HighSurrogate(const S: WideChar): boolean;
+function IsUtf16LowSurrogate(const S: WideChar): boolean;
+
+
+2000-03-29
+TdomNode.AppendChild modified to fix a bug in the DOM2 draft according to NO_MODIFICATION_ALLOWED_ERR.
+TdomNode.insertBefore modified to fix a bug in the DOM2 draft according to NO_MODIFICATION_ALLOWED_ERR.
+TdomNode.removeChild modified to fix a bug in the DOM2 draft according to NO_MODIFICATION_ALLOWED_ERR.
+TdomNode.replaceChild modified to fix a bug in the DOM2 draft according to NO_MODIFICATION_ALLOWED_ERR.
+
+2000-03-28
+TdomDocument.ClearInvalidNodeIterators bug fixed.
+TdomAttrDefinition.Create bug fixed.
+TdomPCDataChoiceParticle added and tree model changed for TdomElementTypeDeclaration, TdomChoiceParticle, TdomSequenceParticle and TdomElementParticle.
+
+2000-03-27
+TdomTreeWalker.free added;
+TdomNodeIterator.free added;
+TdomDocumentType.GetInternalSubset modified.
+TdomDocumentType.GetCode modified.
+TdomDocumentType.Data removed.
+TParserEvent added.
+TXmlToDomParser.OnExternalSubset added.
+
+2000-03-26
+TdomDocument.FindNewReferenceNodes bug fixed.
+xmlXmlDeclaration and xmlTextDeclaration added to TdomPieceType.
+TCustomParser.WriteTextDeclaration modified.
+TCustomParser.WriteXmlDeclaration modified.
+
+2000-03-25
+TdomExternalSubset added.
+TdomInternalSubset added.
+TdomConditionalSection modified.
+The structure model had been changed: Now, allowed node types as child nodes in TdomDocumentType are only TdomExternalSubset and TdomInternalSubset.
+ENo_Modification_Allowed_Err behavior changed according to DOM2 in the following methods of TdomNode: AppendChild, RemoveChild, ReplaceChild, and InsertBefore.
+Bug in TdomDocumentType.GetInternalSubset corrected.
+TdomDocument.FreeNode deleted.
+EInuse_AttributeList_Err renamed to EInuse_AttributeDefinition_Err.
+EInuse_Entity_Err removed.
+EInuse_Notation_Err removed.
+TdomDocument.FreeAllNodes changed.
+TdomNode.Clear modified.
+Structure model in respect to TdomNotation modified.
+TdomNotationDeclaration added.
+
+2000-03-24
+Release of "Extended Document Object Model 2.1.0".
+
+2000-03-23
+Behavior of TdomTreeWalker changed. All TdomTreeWalker methods are being affected.
+Behavior of TdomNodeIterator changed. All TdomNodeIterator methods are being affected.
+TdomCustomNodeIterator removed.
+TdomDocument.CreateNodeIterator added.
+TdomDocument.CreateTreeWalker added. 
+TdomDocument.ClearInvalidNodeIterators added.
+Private method TdomDocument.FindNewReferenceNodes added. 
+TdomNode.removeChild modified to support NodeIterators.
+
+2000-03-20
+TdomNode.GetEscapedValue removed.
+TdomCDATASection.GetEscapedValue removed.
+Thanks to Marco Wobben for bug notification.
+
+2000-03-16
+Release of "Extended Document Object Model 2.0".
+"procedure register;" had been changed to "procedure Register;" in order to get it registered in Delphi 4.  Thanks to Marco Wobben for notification.  
+Release of "Extended Document Object Model 2.0.1".
+
+2000-03-15
+Bug in TCustomDtdParser.InsertMixedContent and TdomElementTypeDeclaration.GetCode corrected.  Thanks to Marco Wobben for notification.
+TdomNamedNodeMap.namespaceAware added.
+TdomNamedNodeMap.GetNamedIndex modified.
+TdomNamedNodeMap.GetNamedItem modified.
+TdomNamedNodeMap.SetNamedItem modified.
+TdomNamedNodeMap.RemoveNamedItem modified.
+TdomNamedNodeMap.GetNamedItemNS modified.
+TdomNamedNodeMap.SetNamedItemNS modified.
+TdomNamedNodeMap.RemoveNamedItemNS modified.
+TdomElement.GetAttribute modified.
+TdomElement.SetAttribute modified.
+TdomElement.RemoveAttribute modified.
+TdomElement.GetAttributeNode modified.
+TdomElement.SetAttributeNode modified.
+TdomElement.GetElementsByTagName modified.
+TdomElement.GetAttributeNS modified.
+TdomElement.SetAttributeNS modified.
+TdomElement.RemoveAttributeNS modified.
+TdomElement.GetAttributeNodeNS modified.
+TdomElement.SetAttributeNodeNS modified.
+TdomElement.GetElementsByTagNameNS modified.
+TdomElement.hasAttribute added.
+TdomElement.hasAttributeNS added.
+TdomDocument.GetElementsById added.
+
+2000-03-06
+XMLExtractPrefix added.
+XMLExtractLocalName added.
+TdomElementsNodeListNS added.
+TdomElement.GetAttributeNS added.
+TdomElement.SetAttributeNS added.
+TdomElement.RemoveAttributeNS added.
+TdomElement.GetAttributeNodeNS added.
+TdomElement.SetAttributeNodeNS added.
+TdomElement.GetElementsByTagNameNS added.
+TdomDocumentType.InternalSubset added.
+TdomDocument.GetElementsByTagNameNS added.
+
+2000-03-05
+TdomNamedNodeMap.GetNamedItemNS added.
+TdomNamedNodeMap.SetNamedItemNS added.
+TdomNamedNodeMap.RemoveNamedItemNS added.
+TdomNamedNodeMap.ownerNode added.
+
+2000-03-04
+TdomNode.normalize added.
+TdomElement.normalize added.
+TdomAttr.normalize added.
+TdomNode.supports added.
+
+2000-03-02
+TdomDocument.CreateElementNS added.
+TdomDocument.CreateAttributeNS added.
+
+2000-02-27
+function IsXmlNCNameChar added.
+function IsXmlNCName added.
+function IsXmlDefaultAttName added.
+function IsXmlPrefixedAttName added.
+function IsXmlNSAttName added.
+function IsXmlLocalPart added.
+function IsXmlPrefix added.
+function IsXmlQName added.
+function TdomNode.GetLocalName added.
+function TdomNode.GetNamespaceURI added.
+function TdomNode.GetPrefix added.
+procedure TdomNode.SetPrefix added.
+
+2000-02-26
+TdomTreeWalker modified.
+TdomCustomNodeIterator modified.
+EInvalid_State_Err added.
+ESyntax_Err added.
+EInvalid_Modification_Err added.
+ENamespace_Err added.
+EInvalid_Access_Err added.
+TdomImplementation.HasFeature modified.
+TdomDocument.importNode added.
+
+1999-09-01
+TdomFilterResult added.
+TdomWhatToShow added.
+Show_all added.
+TdomNodeFilter added.
+TdomTreeWalker added.
+TdomCustomNodeIterator added.
+The name of 'TdomAttr.ParentElement' changed to 'TdomAttr.OwnerElement' (according to the DOM 2 draft).
+TdomMediaList added.
+TdomStyleSheet added.
+TdomStyleSheetList added.
+TdomDocumentStyle added.
+
+1999-08-31
+The name of the parser procedures 'ParseFile' changed to 'FileToDom'.
+The name of the parser procedures 'ParseStream' changed to 'StreamToDom'.
+The name of the parser procedures 'ParseMemory' changed to 'MemoryToDom'.
+The name of the parser procedures 'ParseString' changed to 'StringToDom'.
+The name of the parser procedures 'ParseWideString' changed to 'WideStringToDom'.
+TdomExternalParsedEntity added.
+TdomExternalParameterEntity added.
+TdomTextDeclaration added.
+The Documentation updated.
+Release of "Extended Document Object Model 1.1".
+
+1999-08-27
+TdomXmlDeclaration: The name of the property VersionInfo has been changed to VersionNumber.
+TdomElement bug fixed: ntParameter_Entity_Reference_Node is no longer an allowed child type.
+procedure TdomDocument.NormalizeDoctype droped.
+procedure TdomDocument.NormalizeEntities droped.
+
+1999-08-26
+TdomConditionalSection completely implemented.
+TdomEntityDeclaration added.
+TdomParameterEntityDeclaration added.
+TdomEntity modified.
+TdomParameterEntity modified.
+
+1999-08-17
+Release of "Extended Document Object Model 1.0".

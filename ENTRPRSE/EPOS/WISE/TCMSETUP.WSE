@@ -1,0 +1,392 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Title=Setup
+  Flags=00000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=235 235 235
+  End Gradient=235 235 235
+  Windows Flags=00000100000000000011110001001000
+  Message Font=Arial
+  Font Size=8
+  Pages Modified=00111000001000000000000000000000
+  Extra Pages=00000000000000000000000000010000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+end
+item: Remark
+end
+item: Remark
+  Text=....TCMSetup.Wse - Installation script for the Trade Counter System
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PASSWORD
+  Value=1967
+end
+item: Remark
+end
+item: Custom Graphic
+  Y Position=5
+  Width=636
+  Height=68
+  Flags=0000000010101000
+  item: Text
+    Text=Trade Counter Module
+    Rectangle=0 0 636 68
+    Pen Color=345308
+    Pen Style=6
+    Pen Width=1
+    Name=Arial
+    Font Style=-37 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Custom Graphic
+  Y Position=16389
+  Width=636
+  Height=28
+  Flags=0000000000101000
+  item: Text
+    Text=Copyright © Advanced Business Software & Solutions Limited 2018
+    Rectangle=0 2 636 28
+    Pen Color=345308
+    Pen Style=6
+    Pen Width=1
+    Name=Arial
+    Font Style=-19 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Remark
+end
+item: Remark
+  Text=....Initialise Variables
+end
+item: Set Variable
+  Variable=HELPFILE
+  Value=%INST%\TRADE.HLP
+end
+item: Set Variable
+  Variable=DLGSTART
+  Value=020
+end
+item: Set Variable
+  Variable=DIALOG
+  Value=%DLGSTART%
+end
+item: Set Variable
+  Variable=PROGGROUP
+  Value=Exchequer Trade Counter
+end
+item: Set Variable
+  Variable=INSTALLTO
+  Value=C:\Excheqr\Trade
+end
+item: Set Variable
+  Variable=TILLNO
+  Value=0
+end
+item: Set Variable
+  Variable=DEMOCOPY
+  Value=FALSE
+end
+remarked item: Set Variable
+  Variable=BTDONE
+  Value=FALSE
+end
+item: Set Variable
+  Variable=TILLDESC
+end
+item: Set Variable
+  Variable=LICRESULT
+  Value=FALSE
+end
+item: Set Variable
+  Variable=NEWTRADEEXE
+end
+item: Remark
+end
+item: Call DLL Function
+  Pathname=%INST%\TCMSETUP.DLL
+  Function Name=CheckSecurity
+  Return Variable=0
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=LICRESULT
+  Value=TRUE
+end
+item: Remark
+end
+item: Check if File/Dir Exists
+  Pathname=%INST%\TRADE.EXE
+  Flags=01000100
+end
+item: Remark
+end
+item: Remark
+  Text=....Valid Installation Dir
+end
+remarked item: Set Variable
+  Variable=ENTERDIR
+  Value=%INST%\..\
+end
+item: Parse String
+  Source=%INST%
+  Pattern=\
+  Variable1=ENTERDIR
+  Flags=00000101
+end
+item: Set Variable
+  Variable=ENTERDIR
+  Value=%ENTERDIR%\
+end
+item: Remark
+end
+item: Remark
+  Text=....Main Wizard Loop
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=950
+  Flags=00010001
+end
+item: Remark
+end
+item: Remark
+  Text=....Show Welcome.............................................020
+end
+item: Include Script
+  Pathname=Welcome.wse
+end
+item: Remark
+end
+remarked item: If/While Statement
+  Variable=BTDONE
+  Value=FALSE
+end
+item: Remark
+end
+item: Remark
+  Text=....PV Workgroup Stuff - REMOVED FOR V6
+end
+remarked item: Include Script
+  Pathname=WGroup.wse
+end
+remarked item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Ask Install Directory.......................................060
+end
+item: Include Script
+  Pathname=InsDir.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Ask for Tills Description..................................080
+end
+item: Include Script
+  Pathname=TillDesc.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Ask Program Group........................................100
+end
+item: Include Script
+  Pathname=PGroup.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Ready To Install.............................................900
+end
+item: Include Script
+  Pathname=Ready.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Exit Installation
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=999
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Adds new tillname into Btrieve File
+end
+item: Call DLL Function
+  Pathname=%INST%\TCMSETUP.DLL
+  Function Name=AddTillName
+  Return Variable=0
+end
+item: Remark
+end
+item: Remark
+  Text=....Installs Files
+end
+item: Include Script
+  Pathname=Files.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Register COM Objects in the exe - so Vista doesn't get upset
+end
+item: Remark
+  Text=....Note the "Convert to Long Filename"
+end
+item: Set Variable
+  Variable=NEWTRADEEXE
+  Value=%INSTALLTO%TRADE.EXE
+  Flags=00010000
+end
+item: Call DLL Function
+  Pathname=%INST%\TCMSETUP.DLL
+  Function Name=RegisterCustomisation
+  Return Variable=0
+end
+item: Remark
+end
+item: Remark
+  Text=....Create Program Group and Icons
+end
+item: Include Script
+  Pathname=Icons.wse
+end
+item: Remark
+end
+item: Remark
+  Text=MH 21/03/2012 ABSEXCH-????? v6.10: Installation of Fonts removed as breaking Windows 7
+end
+item: Remark
+  Text=....Register Fonts
+end
+remarked item: Register Font
+  Filename=Arialn.ttf
+  Font name=Arial Narrow
+end
+remarked item: Register Font
+  Filename=Arialnb.ttf
+  Font name=Arial Narrow Bold
+end
+item: Remark
+end
+item: Remark
+  Text=....Finished
+end
+item: Custom Dialog Set
+  Name=All Done
+  item: Dialog
+    Title=Exchequer Trade Counter Module Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=&Finish
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=4
+      Help Context=46
+      Create Flags=01010000000000010000000000000000
+      Text=&Help
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 260 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Setup Complete
+    end
+    item: Static
+      Rectangle=95 30 259 116
+      Create Flags=01010000000000000000000000000000
+      Text=The Setup has been completed successfully. Click on Finish to run the administration program.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+end
+item: Remark
+end
+item: Remark
+  Text=....Runs the configuration program
+end
+item: Execute Program
+  Pathname=%INSTALLTO%POSSETUP.EXE
+  Default Directory=%INSTALLTO%
+end
+item: Else Statement
+end
+item: Remark
+  Text=....Not a valid installation dir
+end
+item: Display Message
+  Title=Installation Error
+  Text=The path you are trying to install from is not a valid installation path.
+  Flags=00110000
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+end
+item: Remark
+end
+item: Remark
+end

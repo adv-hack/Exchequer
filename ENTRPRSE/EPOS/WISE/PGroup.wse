@@ -1,0 +1,147 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....PGroup.WSE - Program Group Selection
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_CURRENT
+  Value=100
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=%DLG_CURRENT%
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_BACK
+  Value=080
+end
+item: Set Variable
+  Variable=DLG_FWD
+  Value=900
+end
+item: Remark
+end
+item: Remark
+  Text=....Show Dialog asking for the program group to put icons into
+end
+item: Custom Dialog Set
+  Name=Program Group
+  item: Dialog
+    Title=Exchequer Trade Counter Module Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Combobox
+      Rectangle=103 47 256 145
+      Variable=PROGGROUP
+      Create Flags=01010000001000010000001100000001
+      Flags=0000000000000001
+      Text=%PROGGROUP%
+      Text=
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=4
+      Help Context=44
+      Create Flags=01010000000000010000000000000000
+      Text=&Help
+    end
+    item: Push Button
+      Rectangle=56 156 101 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Push Button
+      Rectangle=163 156 208 171
+      Variable=DIALOG
+      Value=%DLG_BACK%
+      Action=1
+      Create Flags=01010000000000010000000000000000
+      Text=<< &Back
+    end
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Action=1
+      Create Flags=01010000000000010000000000000001
+      Text=&Next >>
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\SIDELOGO.bmp
+    end
+    item: Static
+      Rectangle=95 6 253 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Program Group
+    end
+    item: Static
+      Rectangle=95 30 251 42
+      Create Flags=01010000000000000000000000000000
+      Text=Please select the group you want the icons to appear in:
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PREVDIALOG
+  Value=%DLG_CURRENT%
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end

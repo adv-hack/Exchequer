@@ -1,0 +1,12 @@
+SSL_set_app_data_indy                   246	EXIST::FUNCTION:
+SSL_get_app_data_indy                   247	EXIST::FUNCTION:
+SSL_CTX_set_info_callback_indy          248	EXIST::FUNCTION:
+X509_STORE_CTX_get_app_data_indy        249	EXIST::FUNCTION:
+X509_get_notBefore_indy                 250	EXIST::FUNCTION:
+X509_get_notAfter_indy                  251	EXIST::FUNCTION:
+UCTTimeDecode_indy                      252	EXIST::FUNCTION:
+SSL_SESSION_get_id_indy                 253	EXIST::FUNCTION:
+SSL_SESSION_get_id_ctx_indy             254	EXIST::FUNCTION:
+SSL_CTX_get_version_indy                255	EXIST::FUNCTION:
+SSL_CTX_set_options_indy                256	EXIST::FUNCTION:
+

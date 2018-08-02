@@ -1,0 +1,36 @@
+:Base MULTIBAC.HLP
+:Title 
+1 Multi-BACS Plug-In
+2 Multi-BACS Plug-In Setup=Multi_BacsPlug_In
+2 Support BACS Formats
+3 ABN AMRO
+4 AMRO Electronic Payment Setup=AMROElectronicPaymentHook
+4 Generating a Domestic payment file=GeneratingaDomesticpayment
+4 Importing a Domestic payment file into OfficeNet v2.0=ImportingaDomesticpaymentf
+4 Generating a Foreign payment file=GeneratingaForeignpaymentf
+4 Importing a Foreign payment file into OfficeNet v2.0=ImportingaForeignpaymentfi
+4 Editing a payment instruction from inside OfficeNet=Editingapaymentinstruction
+; next level + 1
+2 Allied Irish Bank=AlliedIrishBankEFTFilefor
+3 BACSees Format=BACSeesFormat
+3 Bank of Ireland=BankofIrelandEFTFileforma
+3 Bank of Scotland=BankofScotlandHOBSPlug_In
+3 Barclays Bacstel=BarclaysBacstelformatPlug_I
+3 Barclays BusinessMaster=BarclaysBusinessMasterPlug_i
+3 Co-op Financial Director=Co_opFinancialDirectorForma
+3 Coutts Crownline=CouttsCrownlineFormatPlug_i
+3 DBS Ideal=DBSIdealIBGFormatPlug_In
+3 Den Danske Bank=DenDanskeBankPlug_In
+3 HSBC Hexagon=HSBCHexagonformatPlug_In
+3 Lloyds TSB PC Pay ASCII=LloydsTSBPCPayASCIIFormat
+3 Lloyds TSB PC Pay CSV=LloydsTSBPCPayCSVFormatP
+3 NatWest Autopay=NatWestAutopayPlug_In
+3 NatWest PayAway=NatWestPayAwayPlug_In
+3 RBS RoyLine (Bulk Domestic)=RBSRoyLine_BulkDomestic_
+3 RBS RoyLine (Standard Domestic)=RBSRoyLine_StandardDomestic
+3 RBS RoyLine Cash Management=RBSRoyLineCashManagementPl
+3 SHB London=SHBLondon
+3 SHB London International=SHBLondonInternational
+3 Ulster Bank Anytime=UlsterBankAnytimePlug_In
+3 Unity Bank 'Microbank/BACS Connect'=UnityBank_MicrobankBACSCon
+3 Yorkshire Bank=YorkshireBankBACSPlug_in

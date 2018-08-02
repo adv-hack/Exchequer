@@ -1,0 +1,1658 @@
+unit BANKRS2U;
+
+interface
+
+{$I DEFOVR.Inc}
+
+uses
+  SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, Dialogs,
+  ComCtrls, StdCtrls, Mask, TEditVal, ExtCtrls, SBSPanel, Buttons,
+  GlobVar,VarConst,BtrvU2,BTSupU1,ExWrap1U, BTSupU3, BorBtns,SupListU,
+
+  Recon3U,
+
+  PostingU;
+
+
+Type
+
+TBankMatch      =  Object(TEntPost)
+
+                     private
+                       BankMCtrl  :  PassWordRec;
+                       GetENom    :  GetNomMode3Cid;
+                       NomERec    :  ExtNomRecPtr;
+                       CallBackH  :  THandle;
+                       SMemo      :  TStringList;
+                       ManMode    :  Boolean;
+
+
+                       Procedure Post_MatchClear(Fnum,
+                                                 Keypath
+                                                       :  Integer;
+                                                 LVal  :  Real;
+                                                 PostC :  Boolean);
+
+
+                       Procedure Set_PayInCleared(Fnum,
+                                                  Keypath,
+                                                  Keypath2 :  Integer);
+
+                       Procedure Clear_Match(Fnum,
+                                             Keypath  :  Integer;
+                                             Mode     :  Byte;
+                                         Var ProFail  :  Boolean);
+
+                       Procedure Match_PayIn(Fnum,
+                                             Keypath  :  Integer;
+                                         Var FoundOk  :  Boolean;
+                                             ThisRun  :  LongInt;
+                                             Mode     :  Byte);
+
+                       Function Check_UsedFolio(FolioMatch  :  LongInt;
+                                                MatchValue  :  Double;
+                                                Fnum,
+                                                Keypath     :  Integer;
+                                                KeyChk      :  Str255)  :  Boolean;
+
+                       Procedure Match_Bank(Fnum,
+                                            Keypath,
+                                            BMFnum,
+                                            BMKeypath
+                                                     :  Integer;
+                                            ThisRun  :  LongInt;
+                                            MatchK   :  Str255;
+                                            Mode     :  Byte);
+
+                       Procedure UpdateMLine(Fnum,Keypath  :  Integer);
+
+                       Procedure Process_BankMatch(Fnum,
+                                                   Keypath  :  Integer;
+                                                   KeyChk   :  Str255;
+                                                   Mode     :  Byte);
+
+                     public
+                       SPMode     :  Byte;
+                       CtrlNom    :  LongInt;
+                       CtrlCr     :  Byte;
+                       KeyRef     :  Str255;
+
+                       RFormRep   :  PFormRepPtr;
+
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       Function Start(BCtrl    :  PassWordRec;
+                                      SMode    :  Byte;
+                                      InpWinH  :  THandle)  :  Boolean;
+
+                   end; {Class..}
+
+
+Procedure AddBankMatch2Thread(AOwner   :  TObject;
+                              BCtrl    :  PassWordRec;
+                              SMode    :  Byte;
+                              CNom     :  LongInt;
+                              CCr      :  Byte;
+                              KRef     :  Str255;
+                              FormRep  :  PFormRepPtr;
+                              MyHandle :  THandle);
+
+
+type
+
+TMBankMatch      =  Object(TBankMatch)
+
+                     private
+                       GetENom32  :  GetNomMode32Cid;
+
+
+                       Procedure Build_ManualRec(Fnum,
+                                                 Keypath,
+                                                 Fnum2,
+                                                 KeyPath2 :  Integer;
+                                                 Mode     :  Byte);
+
+                       Procedure Process_ManMatch(Fnum,
+                                                  Keypath  :  Integer;
+                                                  Mode     :  Byte);
+
+
+                     public
+
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                   end; {Class..}
+
+
+Procedure AddMBankMatch2Thread(AOwner   :  TObject;
+                               BCtrl    :  PassWordRec;
+                               SMode    :  Byte;
+                               CNom     :  LongInt;
+                               CCr      :  Byte;
+                               KRef     :  Str255;
+                               FormRep  :  PFormRepPtr;
+                               MyHandle :  THandle);
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Uses
+  ETStrU,
+  ETMiscU,
+  ETDateU,
+  BTSupU2,
+  BTKeys1U,
+  ComnUnit,
+  ComnU2,
+  CurrncyU,
+
+  SysU1,
+  SysU2,
+
+  {$IFDEF Rp}
+    ReportHU,
+  {$ENDIF}
+
+  {$IFDEF EXSQL}
+    SQLUtils,
+  {$ENDIF}
+
+  BankRcSU,
+  SalTxl1U,
+  ExBtTh1U,
+  ExThrd2U;
+
+
+
+
+
+
+  { ========== TBankMatch methods =========== }
+
+  Constructor TBankMatch.Create(AOwner  :  TObject);
+
+  Begin
+    Inherited Create(AOwner);
+
+    ManModE:=BOff;
+
+    fTQNo:=1;
+    fCanAbort:=BOn;
+
+    fPriority:=tpHigher;
+    fSetPriority:=BOn;
+
+    IsParentTo:=BOn;
+
+    New(GetENom,Init);
+    New(NomERec);
+
+    FillChar(NomERec^,Sizeof(NomERec^),0);
+
+    SMemo:=TStringList.Create;
+
+    New(RFormRep);
+
+  end;
+
+  Destructor TBankMatch.Destroy;
+
+  Begin
+    Dispose(GetENom,Done);
+    Dispose(NomERec);
+
+    Dispose(RFormRep);
+
+    {Free possibly causing application error when this finishes?}
+    {SMemo.Free;}
+
+    Inherited Destroy;
+  end;
+
+
+
+
+  { ====== Procedure to Post cleared Balance =======}
+
+
+Procedure TBankMatch.Post_MatchClear(Fnum,
+                                     Keypath
+                                           :  Integer;
+                                     LVal  :  Real;
+                                     PostC :  Boolean);
+
+
+
+Var
+  TNCode  :  LongInt;
+  PBal    :  Double;
+  KeyS    :  Str255;
+
+  LOk,
+  Locked  :  Boolean;
+
+
+
+Begin
+
+  TNCode:=0;
+
+  PBal:=0;
+
+  Locked:=BOff;
+
+  With MTExLocal^ do
+  Begin
+
+    LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,Keypath,Fnum,BOn,Locked);
+
+    If (LOk) and (Locked) then
+    With LId do
+    Begin
+
+       LGetRecAddr(Fnum);
+
+      {$IFDEF Post}
+
+        With LMiscRecs^.BankMRec do
+        If (PostC) then
+          LPost_To_Nominal(FullNomKey(BankNom),0,0,LVal,BankCr,PYr,PPr,1,BOff,BOn,BOff,CXrate,PBal,TNCode,UseORate);
+
+      {$ENDIF}
+
+      Reconcile:=ReconC;
+      ReconDate:=Today;
+
+      LStatus:=LPut_Rec(Fnum,KeyPath);
+
+      LReport_BError(Fnum,LStatus);
+
+      LStatus:=LUnLockMLock(Fnum);
+
+    end;
+  end; {With..}
+end;
+
+
+
+
+{ ============ Payin In Status Controller =========== }
+
+Procedure TBankMatch.Set_PayInCleared(Fnum,
+                                      Keypath,
+                                      Keypath2 :  Integer);
+
+
+Var
+
+  KeyS,
+  KeyChk  :  Str255;
+
+  PayId   :  Idetail;
+
+  RecAddr :  LongInt;
+
+  LVal    :  Real;
+
+
+Begin
+  LVal := 0;
+  With MTExLocal^ do
+  Begin
+    PayId:=LId;
+
+    RecAddr:=0;
+
+    If (PayId.PostedRun=PayInRunNo) then
+    With LMiscRecs^.BankMRec do
+    Begin
+
+      LStatus:=LGetPos(Fnum,RecAddr);  {* Preserve Posn of Invoice Line *}
+
+
+      If (LStatusOk) then
+      Begin
+
+        KeyChk:=Full_PostPayInKey(PayInCode,BankNom,BankCr,BankRef);
+
+        KeyS:=KeyChk;
+
+        LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath2,KeyS);
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+        Begin
+
+          LVal:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0),2);
+
+          Post_MatchClear(Fnum,Keypath2,LVal,BOn);
+
+          LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath2,KeyS);
+
+        end; {While..}
+
+
+      end;
+
+
+    end
+    else
+      Post_MatchClear(Fnum,Keypath,LVal,BOn);
+  end;
+end; {Proc..}
+
+
+
+
+Procedure TBankMatch.Clear_Match(Fnum,
+                                 Keypath  :  Integer;
+                                 Mode     :  Byte;
+                             Var ProFail  :  Boolean);
+
+
+
+Var
+  KeyS   :  Str255;
+  LVal   :  Real;
+
+  Locked,
+  ChkRec :  Boolean;
+
+  Tch    :  Char;
+
+
+Begin
+
+  KeyS:='';
+
+  Tch:=ResetKey;
+
+  Locked:=BOff;
+
+  ProFail:=BOff;
+
+  With MTExLocal^,LMiscRecs^.BankMRec do
+  Begin
+
+    LVal:=0;
+
+    With LId do
+    Begin
+
+      LSetDataRecOfs(Fnum,MatchAddr);
+
+      LStatus:=LGetDirect(Fnum,Keypath,0); {* Re-Establish Position *}
+
+      LVal:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0),2);
+
+      If (UsePayIn) then
+        ChkRec:=(LCheck_PayInStatus(LId)=0)
+      else
+        ChkRec:=(Reconcile=0);
+
+      {* Perform one final check *}
+
+      If (LStatusOk) and (ChkRec) and ((Round_Up(LVal*DocNotCnst,2))=Round_Up(BankValue,2))
+         and ((CheckKey(BankRef,Desc,Length(BankRef),BOff)) or (Mode=2)) then
+      Begin
+
+        If (UsePayIn) then
+          Set_PayInCleared(Fnum,Keypath,IdStkK)
+        else
+          Post_MatchClear(Fnum,Keypath,LVal,BOn);
+
+      end
+      else
+      With SMemo do
+      Begin
+        Add('');
+        Add(BankRef+' : '+Form_Real(BankValue,0,2));
+        Add('This item was not matched correctly. Please re-enter and check status.');
+        Add('');
+        Add(ConstStr('-',100));
+
+
+        ProFail:=BOn;
+      end;
+
+    end; {If Using Paying in}
+
+  end; {With..}
+
+end; {Proc..}
+
+
+
+
+
+{ ======= Procedures to Control Bank Match ========= }
+
+
+Procedure TBankMatch.Match_PayIn(Fnum,
+                                 Keypath  :  Integer;
+                             Var FoundOk  :  Boolean;
+                                 ThisRun  :  LongInt;
+                                 Mode     :  Byte);
+
+
+
+Var
+  KeyS    :  Str255;
+
+  RecAddr :  LongInt;
+
+
+Begin
+
+  FoundOk:=BOff;
+
+  RecAddr:=0;
+
+  With MTExLocal^,LMiscRecs^.BankMRec do
+  Begin
+
+    KeyS:=Full_PostPayInKey(PayOutCode,BankNom,BankCr,BankRef);
+
+    LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyS);
+
+
+    If (LStatusOk) then
+    With LId do
+    Begin
+
+
+      FoundOk:=BOn;
+
+      If (LCheck_PayInStatus(LId)<>0) then
+        EntryStat:=4
+      else
+        If (Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2) <> Round_Up(BankValue,2)) then
+          EntryStat:=3
+        else
+          EntryStat:=1;
+
+
+      MatchDoc:=BankRef;
+
+      MatchFolio:=LId.FolioRef;
+      MatchLine:=LId.LineNo;
+
+      MatchABSLine:=LId.ABSLineNo;
+
+      MatchRunNo:=ThisRun;
+
+      UsePayIn:=BOn;
+
+      LStatus:=LGetPos(Fnum,RecAddr);
+
+      If (LStatusOk) then
+        MatchAddr:=RecAddr;
+
+    end; {If Found Match..}
+
+  end; {With..}
+
+
+end; {Proc..}
+
+
+
+
+
+{ ===== Function to scan backwards thru bank list and check for existing match ===== }
+
+
+Function TBankMatch.Check_UsedFolio(FolioMatch  :  LongInt;
+                                    MatchValue  :  Double;
+                                    Fnum,
+                                    Keypath     :  Integer;
+                                    KeyChk      :  Str255)  :  Boolean;
+
+
+Var
+  FoundOk    :  Boolean;
+
+  TmpRecAddr :  LongInt;
+
+  TmpMiscRec :  MiscRec;
+
+  KeyS       :  Str255;
+
+
+Begin
+
+  FoundOk:=BOff;
+
+  KeyS:=KeyChk;
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=LPresrv_BTPos(Fnum,Keypath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+    TmpMiscRec:=LMiscRecs^;
+
+    LStatus:=LFind_Rec(B_GetPrev,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not FoundOk) and (Not ThreadRec^.THAbort) do
+    With LMiscRecs^.BankMRec do
+    Begin
+
+      FoundOk:=((MatchFolio=FolioMatch) and (EntryStat=1) and (Round_Up(MatchValue,2)=Round_Up(BankValue,2)))
+        and (MatchABSLine=TmpMiscRec.BankMRec.MatchABSLine)
+;
+
+      If (Not FoundOk) then
+        LStatus:=LFind_Rec(B_GetPrev,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+
+
+    LStatus:=LPresrv_BTPos(Fnum,Keypath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+
+    LMiscRecs^:=TmpMiscRec;
+
+    Check_UsedFolio:=FoundOk;
+
+  end; {With..}
+end;
+
+
+{ ======= Procedures to Control Bank Match ========= }
+
+
+Procedure TBankMatch.Match_Bank(Fnum,
+                                Keypath,
+                                BMFnum,
+                                BMKeypath
+                                         :  Integer;
+                                ThisRun  :  LongInt;
+                                MatchK   :  Str255;
+                                Mode     :  Byte);
+
+
+Var
+  KeyS,
+  KeyChk,
+  KeyI    :  Str255;
+
+  NoGoes  :  Byte;
+  Fnum2,
+  Keypath2
+          :  Integer;
+
+  FoundOk,
+  WasClrd :  Boolean;
+
+  CheckValue
+          :  Double;
+
+  RecAddr :  LongInt;
+
+
+Begin
+
+  FoundOk:=BOff;
+
+  RecAddr:=0;
+
+  CheckValue:=0;
+
+  Fnum2:=InvF;
+  Keypath2:=InvFolioK;
+
+
+  With NomERec^ do
+  Begin
+    KeyChk:=FullNomKey(FNomCode)+Chr(FNomMode)+Chr(FCr);
+
+    KeyS:=KeyChk+NdxWeight+NdxWeight;
+
+
+  end;
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=GetExtBankMCid(NomERec,GetENom,Fnum,Keypath,B_GetLessEq,0,KeyS);
+
+    NoGoes:=0;
+
+    WasClrd:=BOff;
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not FoundOk) and (Not ThreadRec^.THAbort) do
+    With LId do
+    With LMiscRecs^.BankMRec do
+    Begin
+
+      FoundOk:=BOff;
+
+
+      If (ExtBankFiltCid(0,NomERec,GetENom)) then
+      Begin
+
+        Inc(NoGoes);
+
+        FoundOk:=BOn;
+
+        CheckValue:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2);
+
+        If (Reconcile<>0) and (Round_Up(CheckValue,2)=Round_Up(BankValue,2)) then {* Found a match, but keep
+                                                             checking *}
+        Begin
+          EntryStat:=4;
+          FoundOk:=BOff;
+        end
+        else
+          If (Round_Up(CheckValue,2) <> Round_Up(BankValue,2)) then
+          Begin
+            EntryStat:=3;
+            FoundOk:=BOff;
+          end
+          else
+            EntryStat:=1;
+
+
+
+        If (NoGoes=1) or (EntryStat<>3) or (WasClrd) then
+        Begin
+
+
+          WasClrd:=((EntryStat<>4) and (Reconcile<>0));  {* Wrong Value, but cleared *}
+
+          KeyI:=FullNomKey(FolioRef);
+
+          LStatus:=LFind_Rec(B_GetEq,Fnum2,KeyPath2,KeyI);
+
+          If (LStatusOk) then
+            MatchDoc:=LInv.OurRef;
+
+          MatchFolio:=LId.FolioRef;
+          MatchLine:=LId.LineNo;
+
+          MatchABSLine:=LId.ABSLineNo;
+
+          UsePayIn:=BOff;
+          MatchRunNo:=ThisRun;
+
+          LStatus:=LGetPos(Fnum,RecAddr);
+
+          If (LStatusOk) then
+            MatchAddr:=RecAddr;
+        end;
+
+      end;
+
+      {If (EntryStat=1) and (FoundOk) and (MatchDate) then {* Perform an additonal match on date
+      v4.31.005, check for match on date moved to ExtBankFiltCid
+      Begin
+        FoundOk:=(EntryDate=LId.PDate);
+
+      end;}
+
+      If (EntryStat=1) and (FoundOk) then {* Check if record already matched *}
+      Begin
+
+        FoundOk:=(Not Check_UsedFolio(MatchFolio,BankValue,BMFnum,BMKeypath,MatchK));
+
+      end;
+
+
+      If (Not FoundOk) then
+        LStatus:=GetExtBankMCid(NomERec,GetENom,Fnum,Keypath,B_GetPrev,0,KeyS);
+
+    end; {While..}
+
+    If (Not FoundOk) and (NoGoes=0) then
+    With LMiscRecs^.BankMRec do
+    Begin
+      EntryStat:=2;
+      MatchDoc:='';
+      MatchFolio:=0;
+      MatchLine:=0;
+
+      MatchABSLine:=0;
+
+      MatchAddr:=0;
+    end;
+  end;
+end; {Proc..}
+
+
+
+
+Procedure TBankMatch.UpdateMLine(Fnum,Keypath  :  Integer);
+
+Begin
+  With MTExLocal^ do
+  Begin
+    LastMisc^:=LMiscRecs^;
+
+    LSetDataRecOfs(FNum,LastRecAddr[FNum]); {* Retrieve record by address Preserve position *}
+
+    LStatus:=LGetDirect(FNum,Keypath,0); {* Re-Establish Position *}
+
+    LMiscRecs^:=LastMisc^;
+
+    LStatus:=LPut_Rec(Fnum,KeyPath);
+
+    LStatus:=LUnLockMLock(Fnum);
+  end;
+end;
+
+
+
+Procedure TBankMatch.Process_BankMatch(Fnum,
+                                       Keypath  :  Integer;
+                                       KeyChk   :  Str255;
+                                       Mode     :  Byte);
+
+
+Var
+  KeyS    :  Str255;
+
+
+  B_Func  :  Integer;
+
+  LOk,
+  Locked,
+  AllGood,
+  TryAgain,
+  ProFail
+          :  Boolean;
+
+
+  PurgeCount,
+  ThisRun
+          :  LongInt;
+
+
+
+Begin
+
+  KeyS:=KeyChk;
+
+  Locked:=BOff;
+
+  ProFail:=BOff;
+
+
+  InitProgress(BANKMCtrl.BankCRec.MatchCount);
+  PurgeCount:=0;
+
+  ThisRun:=BANKMCtrl.BankCRec.TagRunNo;
+
+  TryAgain:=BOff;
+
+  AllGood:=(BANKMCtrl.BankCRec.MatchCount>0);
+
+  B_Func:=B_GetNext;
+
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+    With LMiscRecs^.BankMRec do
+    Begin
+
+      Inc(PurgeCount);
+
+      UpdateProgress(PurgeCount);
+
+      ShowStatus(2,'Checking Bank Entry '+BankRef);
+
+      TryAgain:=((Mode=0) and (EntryStat>1) and (MatchRunNo<>ThisRun));
+
+      If (EntryStat=Mode) or (TryAgain) then
+      Begin
+
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,Keypath,Fnum,BOn,Locked);
+
+        If (LOk) and (Locked) then
+        With NomERec^ do
+        Begin
+          LGetRecAddr(Fnum);
+
+          FNomCode:=CtrlNom;
+
+          FCr:=CtrlCr;
+
+          FDesc:=BankRef;
+
+          FrDate:=EntryDate;
+          fMatchDate:=MatchDate;
+
+
+          If (Mode=0) then
+          Begin
+
+            If (Not EmptyKey(BankRef,BankMLen)) then
+            Begin
+
+              {* Atempt to match by paying in first *}
+
+              Match_PayIn(IdetailF,IdStkK,Locked,ThisRun,Mode);
+
+              {* Then match by individual reference *}
+
+              If (Not Locked) then  {* Locked used as a flag to show payin was matched *}
+                Match_Bank(IdetailF,IdNomK,Fnum,Keypath,ThisRun,KeyChk,Mode);
+
+            end
+            else
+              EntryStat:=2;
+
+            B_Func:=B_GetNext;
+
+            UpdateMLine(Fnum,Keypath);
+          end
+          else
+          Begin
+
+            Clear_Match(IDetailF,IdNomK,0,ProFail);
+
+            B_Func:=B_GetNext;
+
+            If (Not ProFail) then
+            Begin
+
+              LSetDataRecOfs(FNum,LastRecAddr[FNum]); {* Retrieve record by address Preserve position *}
+
+              LStatus:=LGetDirect(FNum,Keypath,0); {* Re-Establish Position *}
+
+              LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+              BankM_CtrlCalc(PWrdF,PWK,CtrlNom,CtrlCr,BankValue,BOn,BOff,BOff,BankMCtrl,MTExLocal);
+
+            end
+            else
+            Begin
+
+              EntryStat:=2;
+              MatchDoc:='';
+              MatchFolio:=0;
+              MatchLine:=0;
+
+              MatchABSLine:=0;
+
+              MatchAddr:=0;
+              MatchRunNo:=0;
+
+              UpdateMLine(Fnum,Keypath);
+
+            end;
+
+
+          end;
+
+          LReport_BError(Fnum,LStatus);
+
+        end; {If Locked..}
+      end
+      else
+        B_Func:=B_GetNext;
+
+      If (AllGood) and (Mode=0) then
+        AllGood:=(EntryStat=1);
+
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+
+    If (Mode In [0,1]) then {* Update main flag that all matches were ok *}
+    Begin
+
+      Case Mode of
+
+        0  :  Begin
+
+                BankMCtrl.BankCRec.AllMatchOk:=AllGood;
+
+                BankMCtrl.BankCRec.ManChange:=BOn;
+
+                BankM_CtrlPut(PWrdF,PWK,CtrlNom,CtrlCr,BankMCtrl,MTExLocal);
+
+              end;
+
+        1  :  Begin
+
+                BankM_CtrlPut(PWrdF,PWK,CtrlNom,CtrlCr,BankMCtrl,MTExLocal);
+
+                If (BankMCtrl.BankCRec.AllMatchOk) then {* Delete Header *}
+                Begin
+
+                  BankM_CtrlGet(PWrdF,PWK,CtrlNom,CtrlCr,BankMCtrl,MTExLocal);
+
+                  LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,PWK,PWrdF,BOn,Locked);
+
+                  If (LOk) and (Locked) then
+                    LStatus:=LDelete_Rec(PWrdF,PWK);
+
+                  LReport_BError(Fnum,LStatus);
+                end;
+
+              end;
+
+
+      end; {Case..}
+
+    end;
+  end; {With..}
+
+
+end; {Proc..}
+
+
+
+
+  Procedure TBankMatch.Process;
+
+  Const
+    RunMsg  :  Array[0..1] of Str10 = ('Match','Process');
+
+  Begin
+    InMainThread:=BOn;
+
+    Inherited Process;
+
+
+    If (Not ManMode) then
+    Begin
+      ShowStatus(0,RunMsg[SPMode]+' Bank Entries');
+
+      With MTExLocal^ do
+      Begin
+
+        GetENom.MTExLocal:=MTExLocal;
+
+        Process_BankMatch(MiscF,MIK,KeyRef,SPMode);
+
+      end;
+    end;
+  end;
+
+
+
+
+
+
+  Procedure TBankMatch.Finish;
+
+  Var
+    MsgMode  :  Byte;
+
+  Begin
+    MsgMode := 0;
+    If (Not ManMode) then
+    Begin
+
+      {$IFDEF Rp}
+        If (SMemo.Count>0) then
+          AddMemoRep2Thread(RFormRep^.PParam.PDevRec,SMemo,'Process Bank Matching Entries. Status Report',Application.MainForm);
+      {$ENDIF}
+
+      Inherited Finish;
+
+      {Overridable method}
+
+      InMainThread:=BOff;
+
+      {* Inform input window batch has been calculated *}
+
+      Case SPMode of
+        0  :  MsgMode:=55;
+        1  :  MsgMode:=55+Ord(BankMCtrl.BankCRec.AllMatchOK);
+      end; {Case..}
+
+      SendMessage(CallBackH,WM_CustGetRec,MsgMode,0);
+    end
+    else
+      Inherited Finish;
+
+
+  end;
+
+
+
+  Function TBankMatch.Start(BCtrl    :  PassWordRec;
+                            SMode    :  Byte;
+                            InpWinH  :  THandle)  :  Boolean;
+
+  Var
+    mbRet  :  Word;
+    KeyS   :  Str255;
+
+  Begin
+    Result:=BOn;
+
+    Begin
+      {$IFDEF EXSQL}
+      if SQLUtils.UsingSQL then
+      begin
+        // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+        if (not Assigned(LPostLocal)) then
+          Result := Create_LocalThreadFiles;
+
+        If (Result) then
+          MTExLocal := LPostLocal;
+
+      end
+      else
+    {$ENDIF}
+      If (Not Assigned(PostExLocal)) then { Open up files here }
+        Result:=Create_ThreadFiles;
+
+
+      If (Result) then
+      Begin
+        if not SQLUtils.UsingSQL then
+          MTExLocal:=PostExLocal;
+        BankMCtrl:=BCtrl;
+
+        SPMode:=SMode;
+
+        CallBackH:=InpWinH;
+      end;
+      {$IFDEF EXSQL}
+      if Result and SQLUtils.UsingSQL then
+      begin
+        MTExLocal^.Close_Files;
+        CloseClientIdSession(MTExLocal^.ExClientID, False);
+      end;
+      {$ENDIF}
+    end;
+  end;
+
+
+{ ============== }
+
+Procedure AddBankMatch2Thread(AOwner   :  TObject;
+                              BCtrl    :  PassWordRec;
+                              SMode    :  Byte;
+                              CNom     :  LongInt;
+                              CCr      :  Byte;
+                              KRef     :  Str255;
+                              FormRep  :  PFormRepPtr;
+                              MyHandle :  THandle);
+
+
+  Var
+    LCheck_Batch :  ^TBankMatch;
+
+  Begin
+
+    If (Create_BackThread) then
+    Begin
+      New(LCheck_Batch,Create(AOwner));
+
+      try
+        With LCheck_Batch^ do
+        Begin
+          RFormRep^:=FormRep^;
+
+          If (Start(BCtrl,SMode,MyHandle)) and (Create_BackThread) then
+          Begin
+            CtrlNom:=CNom;
+            CtrlCr:=CCr;
+            KeyRef:=KRef;
+
+            With BackThread do
+              AddTask(LCheck_Batch,'Bank Match');
+          end
+          else
+          Begin
+            Set_BackThreadFlip(BOff);
+            Dispose(LCheck_Batch,Destroy);
+          end;
+        end; {with..}
+
+      except
+        Dispose(LCheck_Batch,Destroy);
+
+      end; {try..}
+    end; {If process got ok..}
+
+  end;
+
+
+
+
+  { ========== TBankMMatch methods =========== }
+
+  Constructor TMBankMatch.Create(AOwner  :  TObject);
+
+  Begin
+    Inherited Create(AOwner);
+
+    ManMode:=BOn;
+
+    New(GetENom32,Init);
+
+  end;
+
+  Destructor TMBankMatch.Destroy;
+
+  Begin
+    Dispose(GetENom32,Done);
+
+    Inherited Destroy;
+  end;
+
+
+
+
+  Procedure TMBankMatch.Build_ManualRec(Fnum,
+                                        Keypath,
+                                        Fnum2,
+                                        KeyPath2 :  Integer;
+                                        Mode     :  Byte);
+
+
+  Var
+    KeyI,
+    KeyChk,
+    KeyS    :  Str255;
+
+    FoundOk :  Boolean;
+
+    TmpStat :  Integer;
+
+    ICount,
+    RecAddr :  LongInt;
+
+    CrDr    :  DrCrType;
+
+    TmpMisc :  MiscRec;
+
+
+
+  Begin
+    ICount:=0;
+
+    With MTExLocal^, BankMCtrl.BankCRec do
+    Begin
+
+
+      FoundOk:=((ManChange) or (ManRunNo<>TagRunNo) or (Mode=1));
+
+      If (FoundOk) then
+      Begin
+
+        ManCount:=0;
+
+        ManChange:=BOff;
+        ManRunNo:=TagRunNo;
+
+        BankM_CtrlPut(PWrdF,PWK,CtrlNom,CtrlCr,BankMCtrl,MTExLocal);
+      end;
+
+    end; {With..}
+
+    With MTExLocal^ do
+    If (FoundOk) then
+    Begin
+
+      Blank(CrDr,Sizeof(CrDr));
+
+      ShowStatus(2,'Building Manual Reconciliation List');
+
+      InitProgress(Used_RecsCId(LocalF^[Fnum2],Fnum2,ExCLientId));
+
+      FillChar(NomERec^,Sizeof(NomERec^),0);
+
+      KeyChk:=FullBankMKey(MBankHed,MBankMSub,CtrlNom,CtrlCr);
+
+      KeyChk:=Copy(KeyChk,1,Pred(Length(KeyChk)));  {* EX600. Strip out the last NDXWeight to catch all entries *}
+
+      {* Delete any exisiting entries *}
+
+      LDeleteLinks(KeyChk,Fnum2,Length(KeyChk),Keypath2,BOff);
+
+
+      With NomERec^ do
+      Begin
+        FNomCode:=CtrlNom;
+        FCr:=CtrlCr;
+
+        FRecon:=0;
+
+        KeyChk:=FullNomKey(FNomCode)+Chr(FNomMode)+Chr(FCr);
+
+        KeyS:=KeyChk+NdxWeight+NdxWeight;
+
+      end;
+
+      FoundOk:=BOff;
+
+      LStatus:=LFind_Rec(B_GetLessEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+      With LId do
+      Begin
+        Inc(ICount);
+
+        UpdateProgress(ICount);
+
+        If (ExtBankRFilt(0,NomERec,GetENom32)) then
+        With LMiscRecs^ do
+        Begin
+
+          FoundOk:=BOn;
+
+          LStatus:=LGetPos(Fnum,RecAddr);
+
+
+          LResetRec(Fnum2);
+
+          RecMfix:=MBankHed;
+          SubType:=MBankMSub;
+
+
+          With BankMRec do
+          Begin
+
+            BankNom:=CtrlNom;
+            BankCr:=CtrlCr;
+
+            EntryOpo:=EntryRec^.Login;
+
+            EntryDate:=PDate;
+
+            BankMatch:=PartBankManKey(BankNom,BankCr,EntryDate);
+
+            BankRef:=Desc;
+
+            BankValue:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2);
+
+            MatchFolio:=LId.FolioRef;
+
+            MatchLine:=LineNo;
+
+            MatchABSLine:=ABSLineNo;
+
+            MatchAddr:=RecAddr;
+
+            EntryStat:=1;
+
+            MatchRunNo:=BankMCtrl.BankCRec.TagRunNo;
+
+            KeyI:=FullNomKey(MatchFolio);
+
+            If (LInv.FolioNum<>FolioRef) then
+              LStatus:=LFind_Rec(B_GetEq,InvF,InvFolioK,KeyI);
+
+            If (LStatusOk) then
+              MatchDoc:=LInv.OurRef;
+
+          end; {With.}
+
+          LStatus:=LAdd_Rec(Fnum2,KeyPath2);
+
+          Inc(BankMCtrl.BankCRec.ManCount);
+
+        end; {If Matches filter..}
+
+
+        LStatus:=GetExtBankR(NomERec,GetENom32,Fnum,Keypath,B_GetPrev,0,KeyS);
+
+      end; {While..}
+
+
+      If (FoundOk) then {* Add Auto Statement entries to recon list *}
+      Begin
+
+        KeyChk:=FullBankMKey(MBankHed,MBankSub,CtrlNom,CtrlCr);
+
+        KeyS:=KeyChk;
+
+        LStatus:=LFind_Rec(B_GetGEq,Fnum2,KeyPath2,KeyS);
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+
+        Begin
+
+          If (LMiscRecs^.BankMRec.EntryStat In [2..4]) then {* Unmatched therefore add to list *}
+          With LMiscRecs^ do
+          Begin
+
+            TmpStat:=LPresrv_BTPos(Fnum2,Keypath2,LocalF^[Fnum2],RecAddr,BOff,BOff);
+
+            SubType:=MBankMSub;
+
+
+            With BankMRec do
+            Begin
+
+              BankMatch:=PartBankManKey(CtrlNom,CtrlCr,EntryDate);
+
+              MatchDoc:='';
+
+              MatchFolio:=0;
+
+              MatchLine:=0;
+
+              MatchABSLine:=0;
+
+              MatchAddr:=RecAddr;
+
+              MatchRunNo:=BankMCtrl.BankCRec.TagRunNo;
+
+              EntryStat:=2;
+
+
+            end; {With.}
+
+            LStatus:=LAdd_Rec(Fnum2,KeyPath2);
+
+            Inc(BankMCtrl.BankCRec.ManCount);
+
+            TmpStat:=LPresrv_BTPos(Fnum2,Keypath2,LocalF^[Fnum2],RecAddr,BOn,BOff);
+
+          end; {If Matches filter..}
+
+
+          LStatus:=LFind_Rec(B_GetNext,Fnum2,KeyPath2,KeyS);
+
+        end; {While..}
+      end;
+
+
+      BankM_ManCalc(PWrdF,PWK,CtrlNom,CtrlCr,CrDr,BOff,BOn,bOn,BankMCtrl,MTExLocal);
+    end;
+
+
+  end; {Proc..}
+
+
+
+
+Procedure TMBankMatch.Process_ManMatch(Fnum,
+                                       Keypath  :  Integer;
+                                       Mode     :  Byte);
+
+
+Var
+  KeyS,
+  KeyI    :  Str255;
+
+
+  B_Func  :  Integer;
+
+  LOk,
+  Locked,
+  AllGood,
+  ProFail
+          :  Boolean;
+
+
+  PurgeTotal,
+  PurgeCount
+          :  LongInt;
+
+
+  CrDr    :  DrCrType;
+
+
+
+Begin
+
+  KeyS:=KeyRef;
+
+  Locked:=BOff;
+
+
+  With MTExLocal^ do
+  Begin
+    PurgeTotal:=BANKMCtrl.BankCRec.ManCount;
+
+    InitProgress(PurgeTotal);
+
+    PurgeCount:=0;
+
+    AllGood:=BOff;
+
+    ProFail:=BOff;
+
+    B_Func:=B_GetNext;
+
+    ShowStatus(2,'Processing Manual Entries');
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyRef,KeyS,Pred(Length(KeyRef)),BOn)) and (Not ThreadRec^.THAbort) do
+    With LMiscRecs^.BankMRec do
+    Begin
+
+      If (PurgeCount<PurgeTotal) then
+        Inc(PurgeCount);
+
+      UpdateProgress(PurgeCount);
+
+      If (Tagged) then
+      Begin
+
+
+        AllGood:=BOn;
+
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,Keypath,Fnum,BOn,Locked);
+
+        If (LOk) and (Locked) then
+        Begin
+          LGetRecAddr(Fnum);
+
+
+          If (EntryStat=1) then
+            Clear_Match(IDetailF,IdNomK,2,ProFail);
+
+          If (Not ProFail) then
+          Begin
+            B_Func:=B_GetGEq;
+
+            LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+            Blank(CrDr,Sizeof(CrDr));
+
+            CrDr[(EntryStat=2)]:=BankValue;
+
+            BankM_ManCalc(PWrdF,PWK,CtrlNom,CtrlCr,CrDr,BOn,BOff,BOff,BankMCtrl,MTExLocal);
+
+            Dec(BankMCtrl.BankCRec.ManCount);
+          end
+          else
+          Begin
+            B_Func:=B_GetNext;
+
+
+            EntryStat:=2;
+            MatchDoc:='';
+            MatchFolio:=0;
+            MatchLine:=0;
+
+            MatchABSLine:=0;
+
+            MatchAddr:=0;
+            MatchRunNo:=0;
+
+
+            LStatus:=LPut_Rec(Fnum,KeyPath);
+
+            LStatus:=LUnLockMLock(Fnum);
+          end;
+
+          LReport_BError(Fnum,LStatus);
+
+          If (EntryStat=2) then {* Remove from auto *}
+          Begin
+
+            LStatus:=LPresrv_BTPos(Fnum,Keypath,LocalF^[Fnum],MatchAddr,BOn,BOn);
+
+            LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyI,Keypath,Fnum,BOn,Locked);
+
+            If (LOk) and (Locked) then
+            Begin
+
+              LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+              LReport_BError(Fnum,LStatus);
+
+            end;
+
+            BankM_CtrlCalc(PWrdF,PWK,CtrlNom,CtrlCr,BankValue,BOn,BOff,BOff,BankMCtrl,MTExLocal);
+
+          end;
+
+        end; {If Locked..}
+      end
+      else
+        B_Func:=B_GetNext;
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+
+    If (AllGood) then
+    With BankMCtrl.BankCRec do
+    Begin
+      ManChange:=BOn;
+
+      BankM_CtrlPut(PWrdF,PWK,CtrlNom,CtrlCr,BankMCtrl,MTExLocal);
+
+    end;
+
+  end;
+end; {Proc..}
+
+
+
+
+  Procedure TMBankMatch.Process;
+
+  Const
+    RunMsg  :  Array[0..2] of Str10 = ('Build','Refresh','Process');
+
+  Begin
+    InMainThread:=BOn;
+
+    Inherited Process;
+
+    ShowStatus(0,RunMsg[SPMode]+' Manual Bank Entries');
+
+    With MTExLocal^ do
+    Begin
+
+      GetENom32.MTExLocal:=MTExLocal;
+
+      Case SPMode of
+        0,1 :  Build_ManualRec(IdetailF,IdNomK,MiscF,MIK,SPMode);
+
+        2 :    Process_ManMatch(MiscF,MIK,0);
+
+      end; {Case..}
+
+    end;
+
+  end;
+
+
+
+
+
+
+  Procedure TMBankMatch.Finish;
+
+  Var
+    MsgMode  :  Byte;
+
+  Begin
+    MsgMode := 0;
+    Inherited Finish;
+
+    {Overridable method}
+
+    InMainThread:=BOff;
+
+    {* Inform input window batch has been calculated *}
+
+    Case SPMode of
+      0..2
+         :  MsgMode:=65;
+    end; {Case..}
+
+    SendMessage(CallBackH,WM_CustGetRec,MsgMode,0);
+
+  end;
+
+
+
+Procedure AddMBankMatch2Thread(AOwner   :  TObject;
+                               BCtrl    :  PassWordRec;
+                               SMode    :  Byte;
+                               CNom     :  LongInt;
+                               CCr      :  Byte;
+                               KRef     :  Str255;
+                               FormRep  :  PFormRepPtr;
+                               MyHandle :  THandle);
+
+
+  Var
+    LCheck_Batch :  ^TMBankMatch;
+
+  Begin
+
+    If (Create_BackThread) then
+    Begin
+      New(LCheck_Batch,Create(AOwner));
+
+      try
+        With LCheck_Batch^ do
+        Begin
+          If (Assigned(FormRep)) then
+            RFormRep^:=FormRep^;
+
+          If (Start(BCtrl,SMode,MyHandle)) and (Create_BackThread) then
+          Begin
+            CtrlNom:=CNom;
+            CtrlCr:=CCr;
+            KeyRef:=KRef;
+
+            With BackThread do
+              AddTask(LCheck_Batch,'Bank Match');
+          end
+          else
+          Begin
+            Set_BackThreadFlip(BOff);
+            Dispose(LCheck_Batch,Destroy);
+          end;
+        end; {with..}
+
+      except
+        Dispose(LCheck_Batch,Destroy);
+
+      end; {try..}
+    end; {If process got ok..}
+
+  end;
+
+
+
+
+end.

@@ -1,0 +1,58 @@
+﻿<schemarecord version="2" tldformat="3" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="1635" >
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="Prefix" fullfieldname="Prefix" typename="char" size="1" elements="1" id="-1" columnname="Prefix"/>
+    <schemafield fieldname="UserId" fullfieldname="UserId" typename="DelphiString" size="11" elements="1" id="-1" columnname="UserId" />
+    <schemafield fieldname="Name" fullfieldname="Name" typename="DelphiString" size="31" elements="1" id="-1" columnname="Name" />
+    <schemafield fieldname="Instance" fullfieldname="Instance" typename="int16" size="2" elements="1" id="-1" columnname="Instance" />
+    <schemafield fieldname="OutputType" fullfieldname="OutputType" typename="char" size="1" elements="1" id="-1" columnname="OutputType" />
+    <schemafield fieldname="LineNumber" fullfieldname="LineNumber" typename="int16" size="2" elements="1" id="-1" columnname="LineNumber" />
+    <schemafield fieldname="DummyLineNumber" fullfieldname="DummyLineNumber" typename="long" size="4" elements="1" id="-1" columnname="DummyLineNumber" />
+    <schemafield fieldname="TermChar" fullfieldname="TermChar" typename="char" size="1" elements="1" id="-1" columnname="TermChar" />
+    <schemafield fieldname="ID" fullfieldname="ID" typename="DelphiString" size="61" elements="1" id="-1" columnname="ID" />
+    <schemafield fieldname="OutputLines" fullfieldname="OutputLines" typename="binary" size="358" elements="1" id="0" columnname="OutputLines" />
+    <schemafield fieldname="MsgInstance" fullfieldname="MsgInstance" typename="int16" size="2" elements="1" id="0" columnname="MsgInstance" />
+  </fixedfields>
+  <defaultrecordtype>
+    <schemafield fieldname="image" fullfieldname="image" typename="image" size="1161" elements="1" id="0" columnname="image_0" />
+  </defaultrecordtype>
+  <recordtypes/>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="0">
+      <indexfields>
+        <item>Prefix</item>
+        <item>UserId</item>
+        <item>Name</item>
+        <item>Instance</item>
+        <item>OutputType</item>
+        <item>MsgInstance</item>
+        <item>LineNumber</item>
+        <item>TermChar</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isclustered="0" isunique="0">
+      <indexfields>
+        <item>Prefix</item>
+        <item>UserId</item>
+        <item>Name</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isclustered="0" isunique="0">
+      <indexfields>
+        <item>UserId</item>
+        <item>Name</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="3" isclustered="0" isunique="0">
+      <indexfields>
+        <item>Prefix</item>
+        <item>UserId</item>
+        <item>Name</item>
+        <item>ID</item>
+        <item>DummyLineNumber</item>
+        <item>TermChar</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>
+

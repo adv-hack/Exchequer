@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRIS.ICE.Common", "IRIS.ICE.Common\IRIS.ICE.Common.csproj", "{7982DD1A-3019-403B-9E84-238A3DFC03BB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://bmtdevtfs1:8080/tfs/exchequer
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IRIS.ICE.Common\\IRIS.ICE.Common.csproj
+		SccProjectName1 = IRIS.ICE.Common
+		SccLocalPath1 = IRIS.ICE.Common
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7982DD1A-3019-403B-9E84-238A3DFC03BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7982DD1A-3019-403B-9E84-238A3DFC03BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7982DD1A-3019-403B-9E84-238A3DFC03BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7982DD1A-3019-403B-9E84-238A3DFC03BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

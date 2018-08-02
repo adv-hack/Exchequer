@@ -1,0 +1,60 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="405" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="cmFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="cmFolioNo" />
+        <schemafield fieldname="cmSalesCodeFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="cmSalesCodeFolioNo" />
+        <schemafield fieldname="cmBy" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="cmBy" />
+        <schemafield fieldname="cmCustCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" collation="1" columnname="cmCustCode" />
+        <schemafield fieldname="cmProductCode" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" collation="1" columnname="cmProductCode" />
+        <schemafield fieldname="cmPGroupCode" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" collation="1" columnname="cmPGroupCode" />
+        <schemafield fieldname="cmByQty" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="cmByQty" />
+        <schemafield fieldname="cmQtyFrom" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="cmQtyFrom" />
+        <schemafield fieldname="cmQtyTo" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="cmQtyTo" />
+        <schemafield fieldname="cmByCurrency" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="cmByCurrency" />
+        <schemafield fieldname="cmCurrency" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="cmCurrency" />
+        <schemafield fieldname="cmByDate" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="cmByDate" />
+        <schemafield fieldname="cmStartDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="cmStartDate" />
+        <schemafield fieldname="cmEndDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="cmEndDate" />
+        <schemafield fieldname="cmCommissionBasis" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="cmCommissionBasis" />
+        <schemafield fieldname="cmCommission" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="cmCommission" />
+        <schemafield fieldname="cmCommissionType" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="cmCommissionType" />
+        <schemafield fieldname="cmDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="cmDummyChar" />
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0">
+            <indexfields>
+                <item>cmFolioNo</item>
+                <item>cmDummyChar</item>		
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>cmSalesCodeFolioNo</item>
+                <item>cmBy</item>
+                <item>cmCustCode</item>
+                <item>cmProductCode</item>
+                <item>cmPGroupCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>cmCustCode</item>
+                <item>cmProductCode</item>
+                <item>cmPGroupCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="3" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>cmProductCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="4" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>cmPGroupCode</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

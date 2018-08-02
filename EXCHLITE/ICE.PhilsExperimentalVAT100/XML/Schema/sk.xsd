@@ -1,0 +1,233 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:sk"
+            targetNamespace="urn:www-iris-co-uk:sk" >
+            
+            
+  <xsd:complexType name="salebands1">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands2">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands3">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands4">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands5">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands6">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands7">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands8">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="sbands">
+    <xsd:sequence>
+      <xsd:element name='salebands1' type='tns:salebands1' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands2' type='tns:salebands2' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands3' type='tns:salebands3' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands4' type='tns:salebands4' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands5' type='tns:salebands5' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands6' type='tns:salebands6' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands7' type='tns:salebands7' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands8' type='tns:salebands8' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="desc">
+    <xsd:sequence>
+      <xsd:element name='desc1' type='xsd:string'/>
+      <xsd:element name='desc2' type='xsd:string'/>
+      <xsd:element name='desc3' type='xsd:string'/>
+      <xsd:element name='desc4' type='xsd:string'/>
+      <xsd:element name='desc5' type='xsd:string'/>
+      <xsd:element name='desc6' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="nomcodes">
+    <xsd:sequence>
+      <xsd:element name='nomcodes1' type='xsd:integer'/>
+      <xsd:element name='nomcodes2' type='xsd:integer'/>
+      <xsd:element name='nomcodes3' type='xsd:integer'/>
+      <xsd:element name='nomcodes4' type='xsd:integer'/>
+      <xsd:element name='nomcodes5' type='xsd:integer'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="skrec">
+    <xsd:sequence>
+      <xsd:element name='stockcode' type='xsd:string'/>
+      <xsd:element name='desc' type='tns:desc' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='altcode' type='xsd:string'/>
+      <xsd:element name='supptemp' type='xsd:string'/>
+      <xsd:element name='nomcodes' type='tns:nomcodes' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='minflg' type='tns:boolean2'/>
+      <xsd:element name='stockfolio' type='xsd:integer'/>
+      <xsd:element name='stockcat' type='xsd:string'/>
+      <xsd:element name='stocktype' type='xsd:string'/>
+
+      <xsd:element name='unitk' type='xsd:string'/>
+      <xsd:element name='units' type='xsd:string'/>
+      <xsd:element name='unitp' type='xsd:string'/>
+      <xsd:element name='pcurrency' type='xsd:integer'/>
+
+      <xsd:element name='costprice' type='xsd:double'/>
+      <xsd:element name='sbands' type='tns:sbands' minOccurs='1' maxOccurs='1' />
+
+
+      <xsd:element name='sellunit' type='xsd:double'/>
+      <xsd:element name='buyunit' type='xsd:double'/>
+      <xsd:element name='vatcode' type='xsd:string'/>
+      <xsd:element name='cc' type='xsd:string'/>
+      <xsd:element name='dep' type='xsd:string'/>
+      <xsd:element name='qtyinstock' type='xsd:double'/>
+      <xsd:element name='qtyposted' type='xsd:double'/>
+      <xsd:element name='qtyallocated' type='xsd:double'/>
+      <xsd:element name='qtyonorder' type='xsd:double'/>
+      <xsd:element name='qtymin' type='xsd:double'/>
+      <xsd:element name='qtymax' type='xsd:double'/>
+      <xsd:element name='roqty' type='xsd:double'/>
+      <xsd:element name='commodcode' type='xsd:string'/>
+      <xsd:element name='sweight' type='xsd:double'/>
+      <xsd:element name='pweight' type='xsd:double'/>
+      <xsd:element name='unitsupp' type='xsd:string'/>
+      <xsd:element name='suppsunit' type='xsd:double'/>
+      <xsd:element name='binloc' type='xsd:string'/>
+      <xsd:element name='covpr' type='xsd:integer'/>
+      <xsd:element name='covprunit' type='xsd:string'/>
+      <xsd:element name='covminpr' type='xsd:integer'/>
+      <xsd:element name='covminunit' type='xsd:string'/>
+      <xsd:element name='supplier' type='xsd:string'/>
+      <xsd:element name='covsold' type='xsd:double'/>
+      <xsd:element name='usecover' type='tns:boolean2'/>
+      <xsd:element name='covmaxpr' type='xsd:integer'/>
+      <xsd:element name='covmaxunit' type='xsd:string'/>
+      <xsd:element name='rocurrency' type='xsd:integer'/>
+      <xsd:element name='rocprice' type='xsd:double'/>
+      <xsd:element name='rodate' type='xsd:string'/>
+      <xsd:element name='stkvaltype' type='xsd:string'/>
+      <xsd:element name='qtypicked' type='xsd:double'/>
+      <xsd:element name='lastused' type='xsd:string'/>
+      <xsd:element name='stbarcode' type='xsd:string'/>
+      <xsd:element name='strocostcentre' type='xsd:string'/>
+      <xsd:element name='strodepartment' type='xsd:string'/>
+      <xsd:element name='stlocation' type='xsd:string'/>
+      <xsd:element name='stpricepack' type='tns:boolean2'/>
+      <xsd:element name='stdpackqty' type='tns:boolean2'/>
+      <xsd:element name='stkitprice' type='tns:boolean2'/>
+      <xsd:element name='stkitonpurch' type='tns:boolean2'/>
+
+      <xsd:element name='ststkuser1' type='xsd:string'/>
+      <xsd:element name='ststkuser2' type='xsd:string'/>
+
+      <xsd:element name='janalcode' type='xsd:string'/>
+
+      <xsd:element name='webinclude' type='xsd:integer'/>
+      <xsd:element name='weblivecat' type='xsd:string'/>
+      <xsd:element name='stkuser3' type='xsd:string'/>
+      <xsd:element name='stkuser4' type='xsd:string'/>
+      <xsd:element name='sernowavg' type='xsd:integer'/>
+      <xsd:element name='ssdduplift' type='xsd:double'/>
+      <xsd:element name='timechange' type='xsd:string'/>
+      <xsd:element name='svatincflg' type='xsd:string'/>
+      <xsd:element name='lastopo' type='xsd:string'/>
+      <xsd:element name='imagefile' type='xsd:string'/>
+      <xsd:element name='webprevcat' type='xsd:string'/>
+      <xsd:element name='ssdcountry' type='xsd:string'/>
+      <xsd:element name='stklinklt' type='xsd:integer'/>
+
+      <xsd:element name='pricebystkunit' type='tns:boolean2'/>
+
+      <xsd:element name='showaskit' type='tns:boolean2'/>
+
+      <xsd:element name='qtypickwor' type='xsd:double'/>
+
+      <xsd:element name='usesbins' type='tns:boolean2'/>
+
+      <xsd:element name='ssdauplift' type='xsd:double'/>
+      <xsd:element name='bomprodtime' type='xsd:integer'/>
+      <xsd:element name='wopprodtimedays' type='xsd:integer'/>
+      <xsd:element name='wopprodtimehours' type='xsd:integer'/>
+      <xsd:element name='wopprodtimemins' type='xsd:integer'/>
+      <xsd:element name='wopleadtime' type='xsd:integer'/>
+      <xsd:element name='wopcalcprodtime' type='tns:boolean2'/>
+      <xsd:element name='wopminecqty' type='xsd:double'/>
+      <xsd:element name='wopissuedwipgl' type='xsd:integer'/>
+      <xsd:element name='qtyallocwor' type='xsd:double'/>
+      <xsd:element name='qtyissuewor' type='xsd:double'/>
+      <xsd:element name='qtystocktake' type='xsd:double'/>
+      <xsd:element name='qtystocktakechanged' type='tns:boolean2'/>
+      <xsd:element name='qtyfreeze' type='xsd:double'/>
+      <xsd:element name='binloc10' type='xsd:string'/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='skrec' type='tns:skrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='sk'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='sk' type='tns:sk'/>
+
+</xsd:schema>

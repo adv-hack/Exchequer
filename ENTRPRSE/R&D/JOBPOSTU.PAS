@@ -1,0 +1,8624 @@
+unit JobPostU;
+
+interface
+
+{$I DEFOVR.Inc}
+
+uses
+  SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, Dialogs,
+  ComCtrls, StdCtrls, Mask, TEditVal, ExtCtrls, SBSPanel, Buttons,
+  GlobVar,VarConst,VarRec2U,BtrvU2,BTSupU1,ExWrap1U, BTSupU3, BorBtns,SupListU,
+
+  {$IFDEF FRM}
+    RPDevice,
+    FrmThrdU,
+  {$ENDIF}
+  JobSup1U,
+
+  JChkUseU,
+
+  // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+  EntLoggerClass,
+
+  PostingU;
+
+{
+    Modes for LAdd_StockValue and LAdd_StockValueEx AMode parameter
+    ---------------------------------------------------------------
+    M_TIMESHEET    : 0 : Create Timesheet line
+    M_WIP          : 1 : Create WIP Closure line in NOM
+    M_STOCK_VAL    : 2 : Create Stock valuation line from ADJ
+    M_WIP_UPLIFT   : 3 : Create WIP Job Uplift reversal line in NOM
+    M_WIP_DISCOUNT : 4 : Create WIP Discount line in NOM
+}
+const
+  M_TIMESHEET    = 0;
+  M_WIP          = 1;
+  M_STOCK_VAL    = 2;
+  M_WIP_UPLIFT   = 3;
+  M_WIP_DISCOUNT = 4;
+
+Type
+
+
+
+JInvRetRec   =  Record
+                  WasAborted  :  Boolean;
+                  RetInv      :  InvRec;
+                  RTotCost,
+                  RTagCost,
+                  RTagCharge  :  Double;
+                end;
+
+
+
+TPostJob      =  Object(TEntPost)
+                     private
+                       RemoveBudget
+                                  :  Boolean;
+
+                       JInvRetPtr :  ^JInvRetRec;
+
+                       // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+                       oPerformanceLogger : TEntSQLProcessLogger;
+
+                       Procedure Make_AnalBudg(JDetl  :  JobDetlRec;
+                                               JCode  :  Str10;
+                                               Fnum,
+                                               Keypath:  Integer;
+                                               Mode   :  Byte);
+
+                       Procedure Post_Act2Hist(Var JDetl  :  JobDetlRec;
+                                                   JCode  :  Str10;
+                                                   P2WIP,
+                                                   P2Emp,
+                                                   PCommit  :  Boolean);
+
+                       Function Loop_PostAct2Hist(Var JDetl  :  JobDetlRec;
+                                                      JCode  :  Str10;
+                                                      Level  :  LongInt;
+                                                      P2WIP,
+                                                      PCommit,
+                                                      Up1Job,
+                                                      UnPost :  Boolean)  :  Boolean;
+
+
+                       Procedure Maintain_PSOP;
+
+                       Procedure LReset_Apps(ACode  :  LongInt;
+                                             JCode,
+                                             JUPCode:  Str10;
+                                             UnPost :  Boolean);
+
+
+                       Procedure Maintain_Apps(UnPost  :  Boolean;
+                                               JUPCode :  Str10);
+
+                       Function LineActFullRef  :  Str255;
+
+                       Function Include_JobActual  :  Boolean;
+
+                       Procedure Post_Actuals(UnPost     :  Boolean;
+                                              JUPCode    :  Str10;
+                                          Var TTEnabled  :  Boolean);
+
+                       Procedure LSet_JMajorHed(JobR     :  JobRecType;
+                                                n        :  LongInt;
+                                                Fnum     :  Integer);
+
+                       Procedure LCheck_JMajorHed(JobR     :  JobRecType);
+
+                       Procedure Check_AllJob_MHed(KillBudg  :  Boolean);
+
+                       Procedure LReset_JobHistory(Const FJCode         :  Str20;
+                                                   Const FJTYpe         :  Char;
+                                                         Fnum,Keypath   :  Integer);
+
+                       Procedure Check_AllJobs;
+
+                       Procedure Check_OneJob;
+
+                       Procedure Check_SelectedJobs(Level  :  LongInt);
+
+                       Procedure Reset_JobActual;
+
+                       
+                       Procedure LCreate_JNomTxfrLines(Var   Idr  :  IDetail;
+                                                       Const LCr  :  Byte;
+                                                       Const ADIR :  Boolean);
+
+                       Procedure LAdd_SelfBillLine(BSNCode:  LongInt;
+                                                   STKValue
+                                                          :  Real;
+                                                   JCode,
+                                                   ACode,
+                                                   ECode,
+                                                   OCode  :  Str10;
+                                                   EName  :  Str30;
+                                                   TSDate :  LongDate;
+                                                   TSDesc :  Str255;
+                                                   AQty   :  Real;
+                                                   AsDIR,
+                                                   NewEmpl:  Boolean;
+                                                   ACr,
+                                                   AMode  :  Byte;
+                                                   ACCDep :  CCDepType;
+                                                   RevRate:  CurrTypes;
+                                              Var  Abort  :  Boolean);
+
+
+
+
+
+                       Procedure LAdd_StockValue(BSNCode,
+                                                 PLNCode:  LongInt;
+                                                 STKValue
+                                                        :  Real;
+                                                 JCode,
+                                                 ACode,
+                                                 ECode,
+                                                 OCode  :  Str10;
+
+                                                 AsDIR  :  Boolean;
+                                                 ACr,
+                                                 AMode  :  Byte;
+                                                 ACCDep :  CCDepType;
+                                                 RevRate:  CurrTypes;
+                                            Var  Abort  :  Boolean);
+
+                       Procedure LAdd_SplitDiscountStockValue(BSNCode,
+                                                   PLNCode:  LongInt;
+                                                   STKValue, StkNetValue, StkDiscount
+                                                          :  Real;
+                                                   JCode,
+                                                   ACode,
+                                                   ECode,
+                                                   OCode  :  Str10;
+                                                   ACr,
+                                                   AMode  :  Byte;
+                                                   ACCDep :  CCDepType;
+                                                   RevRate:  CurrTypes;
+                                                   Staged :  Boolean;
+                                              Var  Abort  :  Boolean);
+
+                       Procedure LGen_InvHed(CCode  :  Str30;
+                                             RNo    :  LongInt;
+                                             TDate,
+                                             DDate  :  Str8;
+                                             RCr    :  Byte;
+                                             JCode,
+                                             ACode,
+                                             RDoc   :  Str10;
+                                         Var Ignore :  Boolean;
+                                             Mode   :  Byte);
+
+                       Procedure LStore_InvHed(Mode  :  Byte;
+                                         RKeypath    :  Integer;
+                                   Const TTEnabled   :  Boolean);
+
+                       Procedure Copy_Inv(Const  Fnum,
+                                                 Keypath  :  Integer;
+                                          Const  ExDate   :  Str8);
+
+                       Procedure Copy_InvDetails(Const SFolio  :  LongInt;
+                                                       Fnum,
+                                                       Keypath :  Integer;
+                                                 Const TTEnabled
+                                                               :  Boolean);
+
+                       Procedure Expire_Ret(Const  Fnum,
+                                                   Keypath  :  Integer;
+                                            Var    B_Func   :  Integer;
+                                            Const TTEnabled :  Boolean);
+
+                       Procedure Process_Ret(Const  Fnum,
+                                                    Keypath  :  Integer;
+                                             Var   TTEnabled :  Boolean);
+
+                       Function EmpNomTx(E  :  Integer)  :  Integer;
+
+
+
+                       Function LFind_CISEmployee(EmplCode  :  Str20;
+                                                  ViaSupp   :  Boolean)  :  taCISFind;
+
+
+                       Function LCheck_CISEmployee(EmplCode  :  Str20;
+                                               Var Taxable   :  Boolean)  :  Str20;
+
+                       Function LGet_SubRec(EmplCode  :  Str20)  :  EmplType;
+
+                       {$IFDEF EX603}
+                         Procedure LCalc_RCTReverseVAT(Var BInv    :   InvRec;
+                                                           UpLine  :   Boolean);
+                       {$ENDIF}
+
+                       // CJS 2014-03-18 - ABSEXCH-14289 - incorrect CIS Calculation when CITB Deduction is set to 1.5%
+                       Procedure LCalculateCISTax(var BInv: InvRec; UpdateLine: Boolean);
+
+                       Procedure LCalc_CISTax(Var BInv    :   InvRec;
+                                              Var Materials,
+                                                  Taxable,
+                                                  TaxValue:   Double;
+                                                  UpLine  :   Boolean;
+                                                  CMode   :   Byte);
+
+
+                       procedure LCalc_CISTaxInv(var BInv: InvRec; UpDate: Boolean);
+
+                       Function Gen_SelfBillHed(CCode  :  Str10)  :  Boolean;
+
+                       Procedure Calc_SelfBillHed(Var TTEnabled :  Boolean);
+
+                       Procedure Post_SBDetails(BInv          :  InvRec;
+                                            Var GotHed        :  Boolean;
+                                            Var NInv          :  InvRec;
+                                         Const  TTEnabled     :  Boolean);
+
+
+                       Procedure Post_TSHDetails(BInv          :  InvRec;
+                                             Var GotHed,
+                                                 RecoverMode   :  Boolean;
+                                             Var NInv          :  InvRec;
+                                          Const  TTEnabled,
+                                                 PostUpliftOnly:  Boolean);
+
+
+                       Procedure Post_TSBatch(Manual  :  Boolean;
+                                        Var TTEnabled :  Boolean);
+
+                       Procedure Execute_MultiTag(Opt      :  Byte;
+                                                  Fnum,
+                                                  Keypath  :  Integer;
+                                                  JCode    :  Str10);
+
+
+                       Function FullIANKey(JC,AC    :  Str10;
+                                           FullKey  :  Boolean)  :  Str255;
+
+                       Function IS_IAN(JC,AC  :  Str10) :  Boolean;
+
+                       Procedure Update_IAN(JC,AC    :  Str10;
+                                            Value1,
+                                            Value2   :  Double);
+
+                       Procedure  Gen_JobInv(Const  Mode,
+                                                    ICurr,
+                                                    DetLev  :  Byte;
+                                             Const  ICCDep  :  CCDepType;
+                                             Const  IJACode :  Str10;
+                                             Const  Fnum,
+                                                    Keypath :  Integer;
+                                             Var    NeedHed :  Boolean;
+                                                    GenWIP,
+                                                    UseOrigCCDep
+                                                            :  Boolean;
+                                             Const  KeyChk  :  Str255;
+                                             Const  TTEnabled
+                                                            :  Boolean);
+
+                       Procedure Gen_CloseJobNom(Const JCode,
+                                                       ACode    :  Str10;
+                                                 Const StageOn,
+                                                       WIPOnly  :  Boolean;
+                                                 Const Fnum,
+                                                       Keypath  :  Integer;
+                                                 Const TTEnabled:  Boolean);
+
+
+
+
+                     public
+                       {$IFDEF FRM}
+                         PDevRec    :  TSBSPrintSetupInfo;
+                         DefForm    :  Str10;
+                         ThisFList :  TPFormList;
+                       {$ENDIF}
+
+                       CallBackH  :  THandle;
+
+                       SPMode       :  Byte;
+
+                       ThisJobCode  :  Str10;
+
+                       ItemCount    :  Integer;
+
+                       JCloseCtrlRec
+                                    :  ^JInvHedRec;
+
+
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Function LGet_NextJAFolio(JCode  :  Str10;
+                                                 Update :  Boolean)  :  LongInt;
+
+                       Function LJob_WIPNom(Const NCode  :  LongInt;
+                                            Const JCode,
+                                                  ACode  :  Str10;
+                                            Const SCode  :  Str20;
+                                            Const LCode,
+                                                  CCode  :  Str10)  :  LongInt;
+
+
+                       Procedure LDelete_JobAct(Idr    :  IDetail);
+
+                       // HM - Duplicated in X:\entrprse\ole\OLEBtrO.Pas - duplicate changes there
+                       Procedure LUpdate_JobAct(Idr    :  IDetail;
+                                                InvR   :  InvRec);
+
+
+                       Procedure Gen_RetSCR(Var CrDocNo  :  Str10);
+
+                       Function LGetJobMisc(ACode  :  Str10;
+                                            GMode  :  Byte)  :  Boolean;
+
+                       Function Include_TimeSheet  :  Boolean;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       // CJS 2015-03-06 - ABSEXCH-16133 - include option to run original routine
+                       Function Start(SMode    :  Byte;
+                                      InpWinH  :  THandle;
+                                      Confirm  :  Boolean = True;
+                                      ConfirmRecreate: Boolean = True): Boolean;
+
+                   end; {Class..}
+
+
+// CJS 2015-03-06 - ABSEXCH-16133 - include option to run original routine
+//
+// If Confirm and ConfirmRecreate are both True (the default), the user will
+// be asked first to confirm that they want to run the routine, and then will
+// be asked if they want to recreate the Analysis Control records.
+//
+// If these are both False the routine will not display these confirmation
+// options, but will run as if the user said 'yes' to both of them.
+//
+// If the Confirm option is False, but the ConfirmRecreate option is True,
+// the user will not be asked if they want to run the routine (it's assumed
+// that they have already confirmed this), but will be asked if they want to
+// recreate the Analysis records.
+Procedure AddJobPost2Thread(AOwner   :  TObject;
+                            SMode    :  Byte;
+                            JCode    :  Str10;
+                            JCRPtr   :  Pointer;
+                            MyHandle :  THandle;
+                            Confirm  :  Boolean = True;
+                            ConfirmRecreate: Boolean = True);
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Uses
+  ETStrU,
+  ETMiscU,
+  ETDateU,
+  BTSupU2,
+  BTKeys1U,
+  VarJCstU,
+  ComnUnit,
+  ComnU2,
+  CurrncyU,
+  ExBtTh1U,
+  SysU1,
+  SysU2,
+  SysU3,
+
+  {$IFDEF Inv}
+    MiscU,
+
+  {$ENDIF}
+
+
+  ReValU2U,
+
+  {$IFDEF Rp}
+    {$IFDEF STK}
+      Report6U,
+    {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF FRM}
+     PrintFrm,
+
+     RPDefine,
+  {$ENDIF}
+
+  InvLst2U,
+
+  {$IFDEF EXSQL}
+    SQLUtils,
+  {$ENDIF}
+
+  GenWarnU,
+  Excep2U,
+  ExThrd2U,
+
+  { CJS - 2013-10-25 - MRD2.6 - Transaction Originator }
+  TransactionOriginator,
+
+  // MH 23/02/2015 v7.0.13 ABSEXCH-15298: Settlement Discount withdrawn from 01/04/2015
+  TransactionHelperU,
+
+  // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+  SQLRep_Config,
+  DB,
+  ADODB,
+  SQLCallerU,
+  SQLCheckAllJobsFrmU,
+
+  ADOConnect,
+
+  AuditNotes,
+
+  oProcessLock;
+
+
+  { ========== TPostJob methods =========== }
+
+  Constructor TPostJob.Create(AOwner  :  TObject);
+
+  Begin
+    Inherited Create(AOwner);
+
+    fTQNo:=1;
+    fCanAbort:=BOn;
+
+    fPriority:=tpHigher;
+    fSetPriority:=BOn;
+    ItemCount:=0;
+    IsParentTo:=BOn;
+    ThisJobCode:='';
+
+    {$IFDEF FRM}
+      FillChar(PDevRec,Sizeof(PDevRec),0);
+      DefForm:='';
+    {$ENDIF}
+
+    New(JCloseCtrlRec);
+
+    FillChar(JCloseCtrlRec^,Sizeof(JCloseCtrlRec^),0);
+
+    JInvRetPtr:=nil;
+
+    {$IFDEF FRM}
+      ThisFList:=nil;
+
+    {$ENDIF}
+
+    RemoveBudget:=BOff;
+  end;
+
+  Destructor TPostJob.Destroy;
+
+  Begin
+    Dispose(JCloseCtrlRec);
+
+    Inherited Destroy;
+  end;
+
+{ == Similar routine available for reports in Report1U; LRepGetJobMisc == }
+
+  Function TPostJob.LGetJobMisc(ACode  :  Str10;
+                                GMode  :  Byte)  :  Boolean;
+
+  Const
+    Fnum     = JMiscF;
+    Keypath  = JMK;
+
+
+  Var
+    KeyChk  :  Str255;
+
+
+  Begin
+    KeyChk:=FullJAKey(JARCode,JASubAry[GMode],ACode);
+
+    With MTExLocal^ do
+    Begin
+      LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyChk);
+
+      Result:=LStatusOk;
+    end;
+
+  end;
+
+
+
+{== Reproduced in JobBdI3U == }
+
+Function TPostJob.LGet_NextJAFolio(JCode  :  Str10;
+                                   Update :  Boolean)  :  LongInt;
+
+Const
+
+  Fnum      =  JobF;
+  Keypath   =  JobCodeK;
+
+
+Var
+  LOk,
+  Locked:  Boolean;
+
+  Lnum  :  Longint;
+
+  KeyS  :  Str255;
+
+
+Begin
+
+  With MTExLocal^ do
+  Begin
+    Lnum:=0;
+
+    KeyS:=FullJobCode(JCode);
+
+    LStatus:=LFind_Rec(B_GetEq,Fnum,Keypath,KeyS);
+
+
+    If (LStatusOk) then
+    With LJobRec^ do
+    Begin
+
+      Locked:=Not Update;
+
+      LOk:=Not Update;
+
+      If (Not LOk) then
+      Begin
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOn,Locked);
+        LGetRecAddr(Fnum);
+      end;
+
+      If (LOk) And (Locked) then
+      Begin
+
+        Lnum:=ALineCount;
+
+        {* Update NexFolio *}
+
+        If (Update) then
+        Begin
+          Inc(ALineCount);
+
+          LStatus:=LPut_Rec(Fnum,KeyPAth);
+
+          LReport_Berror(Fnum,LStatus);
+
+          LStatus:=LUnLockMLock(Fnum);
+        end;
+
+      end;
+
+    end;
+
+    LGet_NextJAFolio:=Lnum;
+  end; {With..}
+end;
+
+
+  { ======== Make JobBudg record ====== }
+
+Procedure TPostJob.Make_AnalBudg(JDetl  :  JobDetlRec;
+                                 JCode  :  Str10;
+                                 Fnum,
+                                 Keypath:  Integer;
+                                 Mode   :  Byte);
+
+
+Var
+  KeyS  :  Str255;
+
+Begin
+
+  With MTExLocal^, LJobCtrl^,JobBudg do
+  Begin
+
+    LResetRec(Fnum);
+
+    RecPFix:=JBRCode;
+
+    SubType:=JBSubAry[Mode];
+
+    JobCode:=JCode;
+
+    AnalCode:=JDetl.JobActual.AnalCode;
+
+    BudgetCode:=FullJBCode(JobCode,CurrBudg,AnalCode);
+
+    HistFolio:=LGet_NextJAFolio(JobCode,BOn);
+
+    KeyS:='';
+
+    LGetJobMisc(AnalCode,2);
+
+    BType:=LJobMisc^.JobAnalRec.JAType;
+
+    If (JCode<>LJobRec^.JobCode) then
+      LGetMainRec(JobF,JCode);
+
+    ReCharge:=(LJobRec^.ChargeType In [CPChargeType,TMChargeType]);
+
+
+
+    AnalHed:=LJobMisc^.JobAnalRec.AnalHed;
+
+    Code2NDX:=FullJBDDKey(JobCode,AnalHed); {* To enable Drill down to analysis level *}
+
+    LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+    LReport_BError(Fnum,LStatus);
+
+
+  end; {With..}
+
+end;
+
+
+
+Function TPostJob.LJob_WIPNom(Const NCode  :  LongInt;
+                              Const JCode,
+                                    ACode  :  Str10;
+                              Const SCode  :  Str20;
+                              Const LCode,
+                                    CCode  :  Str10)  :  LongInt;
+
+
+    Var
+      KeyS    : Str255;
+
+      StkKeyF : Str20;
+
+      UseWIP,
+      LOk     : Boolean;
+
+      IsSubCon
+            : Boolean;
+      TmpJMisc
+            : JobMiscRec;
+
+
+
+    Begin
+      UseWIP:=BOff;
+
+      KeyS:='';
+
+      Result:=NCode;
+
+      IsSubCon:=BOff;
+
+      Blank(TmpJMisc,Sizeof(TmpJMisc));
+
+
+      If (Not EmptyKey(ACode,AnalKeyLen)) and (Not EmptyKey(JCode,JobKeyLen)) and (JBCostOn) then
+      With MTExLocal^ do
+      Begin
+
+        If (LJobRec^.JobCode<>JCode) then
+          LOk:=LGetMainRec(JobF,JCode)
+        else
+          LOk:=BOn;
+
+
+        If (LOk) then
+        Begin
+
+
+            With LJobMisc^.JobAnalRec do
+            Begin
+
+              If (JAnalCode<>ACode) then
+                LOk:=LGetJobMisc(ACode,2)
+              else
+                LOk:=BOn;
+
+              If (LOk) then {* Set nom code dependant on Closed status *}
+              Begin
+                UseWIP:=(LJobRec^.JobStat In [JobClosed,JobCompl]);
+
+                If (LJobMisc^.JobAnalRec.JAType=JobXLab) then {* We need to check for sub contract status *}
+                Begin
+                  TmpJMisc:=LJobMisc^;
+                  {$B-}
+
+                  {v5.6. Only take G/L code from SS Sub contract if entering timesheets}
+
+                  IsSubCon:=LCheckRecExsists(PartCCKey(JARCode,JAECode)+CCode,JMiscF,JMTrdK) and (Not LJobMisc^.EmplRec.LabPLOnly);
+                  {$B+}
+
+                  LJobMisc^:=TmpJMisc;
+
+                  If (IsSubCon) then
+                  Begin  {* If also setup as an emloyee then always post direct to sub-contract control *}
+                    Result:=SyssJob^.JobSetup.EmployeeNom[3,BOff];
+                  end
+                  else
+                    Result:=WIPNom[UseWIP];
+
+                end
+                else
+                  Result:=WIPNom[UseWIP];
+
+
+              end;
+            end;
+
+        end; {If Job found ok..}
+
+      end;
+
+      LJob_WIPNom:=Result;
+
+    end;
+
+
+
+{ ======== Procedure to Recursivley to Job Tree History ======== }
+
+
+Procedure TPostJob.Post_Act2Hist(Var JDetl  :  JobDetlRec;
+                                     JCode  :  Str10;
+                                     P2WIP,
+                                     P2Emp,
+                                     PCommit  :  Boolean);
+
+
+
+Const
+  Fnum       =  JCtrlF;
+  Keypath    =  JCK;
+
+
+
+Var
+
+  KeyChk,
+  KeyS,
+  KeyI       :  Str255;
+
+
+  HistAry    :  Array[1..5] of LongInt;
+
+  PostDSApp,
+  PostDPApp,
+  PostD2WIP,
+  Post2Rev,
+  TreeLoop,
+  FoundOk    :  Boolean;
+
+  n,LZCurr,
+  CnvCr      :  Byte;
+
+  CrDr       :  DrCrType;
+
+  HistPCode  :  Char;
+
+  Rnum,
+  Rate       :  Real;
+  PrevBal    :  Double;
+
+  PostQty    :  Double;
+
+
+Begin
+
+  Blank(HistAry,Sizeof(HistAry));
+
+
+  Rate:=1; Rnum:=0; CnvCr:=0; PostQty:=0.0;
+
+  PostDSApp:=BOff;
+
+  PostDPApp:=BOff;  PostD2WIP:=BOff;
+
+
+  With MTExLocal^, JDetl.JobActual do
+  Begin
+
+
+    If (PCommit) then
+      HistPCode:=CommitHCode
+    else
+      HistPCode:=LJobRec^.JobType;
+
+    If (Not (JDDT In JAPJAPSplit)) then
+    Begin
+      If (LJobMisc^.JobAnalRec.JAnalCode<>AnalCode) then
+        LGetJobMisc(AnalCode,2);
+
+      PostD2WIP:=(LJobMisc^.JobAnalRec.AnalHed=SysAnlsWIP);
+    end
+    else
+    Begin
+      LResetRec(JMiscF);
+      PostDSApp:=(JAType=SysAppSal);
+      PostDPApp:=(JAType=SysAppPur);
+    end;
+
+    If (Not PostD2WIP) and (Not PostDPApp) and (Not PostDSApp) then
+    Begin
+      KeyChk:=PartCCKey(JBRCode,JBBCode)+FullJDAnalKey(JCode,AnalCode);
+
+      KeyS:=KeyChk;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      {* Create budget actual if not present *}
+      If (Not LStatusOk) or (Not CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) then
+        Make_AnalBudg(JDetl,JCode,Fnum,Keypath,1);
+
+    end;
+
+    If (Not PostDPApp) and (Not PostDSApp) then
+      HistAry[1]:=HFolio_TxLate(LJobMisc^.JobAnalRec.AnalHed) {* Post to major parent code *}
+    else
+      HistAry[1]:=HFolio_TxLate(JAType);
+
+    Post2Rev:=(LJobMisc^.JobAnalRec.AnalHed=SysAnlsRev) or (PostDSApp);
+
+    If (Not PostD2WIP) and (Not PostDPApp) and (Not PostDSApp) then
+      HistAry[2]:=LJobCtrl^.JobBudg.HistFolio;  {* Post to Analysis Code *}
+
+    FoundOk:=BOff;
+
+    TreeLoop:=BOff;
+
+    PrevBal:=0;
+
+    {$IFDEF STK}
+
+      If (Not PostD2WIP) and (Not PostDPApp) and (Not PostDSApp) then
+      Begin
+
+        KeyChk:=PartCCKey(JBRCode,JBSCode)+FullJDStkKey(JCode,StockCode);
+
+        KeyS:=KeyChk;
+
+        LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+        FoundOk:=((LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)));
+
+        {* Cannot post to any matching stock groups, as other wise DD will not
+           show lines where a stock line is missing *}
+
+        {If (Not FoundOk) and (JDDT<>TSH) then {* If its a stockcode type,
+                                                 search for any groups
+        Begin
+
+          GetStock(StockCode,KeyI,-1);
+
+          Repeat
+            TreeLoop:=Get_DiscTree(Stock.StockCat);
+
+            If (TreeLoop) then
+            Begin
+              KeyChk:=PartCCKey(JBRCode,JBSCode)+FullJDStkKey(JCode,StockCode);
+
+              KeyS:=KeyChk;
+
+              Status:=Find_Rec(B_GetGEq,F[Fnum],Fnum,RecPtr[Fnum]^,KeyPath,KeyS);
+
+              FoundOk:=((StatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),On)));
+
+            end;
+
+          Until (Not TreeLoop) or (FoundOk);
+
+        end; *}
+
+        If (FoundOk) then
+        Begin
+          HistAry[3]:=LJobCtrl^.JobBudg.HistFolio;  {* Post to Stock/Payrate Code *}
+          Post2Stk:=BOn;
+        end;
+
+      end;
+
+    {$ENDIF}
+
+    If (JDDT In JAPSplit) then
+      Rnum:=Round_Up(Round_Up(Cost,2)*DocCnst[JDDT],2)
+    else
+      Rnum:=Round_Up(Round_Up(Qty*Cost,2)*DocCnst[JDDT],2);
+
+    If (Post2Rev) then
+      Rnum:=Rnum*DocNotCnst;
+
+    ShowDrCr(Rnum,CrDr);
+
+    {* Also post to profit if a JC contributor *}
+
+    If (HistAry[1]<=HFolio_Txlate(SysDeductPurch )) and (Not PCommit) and (Not PostD2WIP) and (Not PostDPApp) and (Not PostDSApp) then
+      HistAry[5]:=HFolio_Txlate(SysAnlsProfit);
+
+    {* Post all non revenue/OH expenses to WIP providing job is not closed *}
+
+    If (HistAry[1]<HFolio_Txlate(SysAnlsEnd)) and (HistAry[1]<>HFolio_Txlate(SysAnlsRev))
+
+    and (HistAry[1]<>HFolio_Txlate(SysAppSal)) and (HistAry[1]<>HFolio_Txlate(SysDeductSales))
+    and (P2WIP) and (Not PostD2WIP) and (Not PostDPApp) and (Not PostDSApp) then
+    Begin
+      HistAry[4]:=HFolio_Txlate(SysAnlsWIP);
+
+      Reverse:=BOn; {* This is posting to WIP, so needs to be reversed *}
+    end;
+
+    If (Not (JDDT In NomSplit+JAPSplit)) then
+    Begin
+      PostQty:=Qty*DocCnst[JDDT];
+
+      If (JDDT In SalesSplit) then
+        PostQty:=PostQty*DocNotCnst;
+    end
+    else
+      PostQty:=0.0;
+
+
+    For n:=1 to 5 do
+    Begin
+
+      If (HistAry[n]<>0) then
+      Begin
+
+        If (n=5) and (Not Post2Rev) then  {* Reverse Sign of profit, unless it is a revenue line *}
+        Begin
+          Rnum:=CrDr[BOff];
+          CrDr[BOff]:=CrDr[BOn];
+
+          CrDr[BOn]:=Rnum;
+        end;
+
+
+        TreeLoop:=BOff;
+
+        LZCurr:=ActCurr;
+
+        Rate:=1; CnvCr:=0;
+
+        Repeat
+
+          If (ThreadRec^.ThAbort) then
+            ShowStatus(3,'Aborting...');
+
+          LPost_To_Hist(HistPCode,FullJDHistKey(JCode,HistAry[n]),
+                       Conv_TCurr(CrDr[BOff],Rate,CnvCr,JUseORate,BOff),
+                       Conv_TCurr(CrDr[BOn],Rate,CnvCr,JUseORate,BOff),
+                       PostQty,LZCurr,ActYr,ActPr,PrevBal);
+
+          LPost_To_CYTDHist(HistPCode,FullJDHistKey(JCode,HistAry[n]),
+                           Conv_TCurr(CrDr[BOff],Rate,CnvCr,JUseORate,BOff),
+                           Conv_TCurr(CrDr[BOn],Rate,CnvCr,JUseORate,BOff),
+                           PostQty,LZCurr,ActYr,YTD);
+
+
+          TreeLoop:=Not TreeLoop;
+
+          LZCurr:=0;  CnvCr:=ActCurr;
+
+
+          Rate:=XRate(PCRates,BOff,ActCurr);
+
+
+        Until (Not TreeLoop) or (ActCurr=0);
+      end;
+
+    end; {Loop..}
+
+    If (P2Emp) and (JDDT=TSH) then {* Post to Employee History also *}
+    Begin
+
+      LPost_To_Hist(EmpHistCode,FullEmpKey(EmplCode),
+                   Conv_TCurr(CrDr[BOff],Rate,CnvCr,JUseORate,BOff),
+                   Conv_TCurr(CrDr[BOn],Rate,CnvCr,JUseORate,BOff),
+                   0,0,ActYr,ActPr,PrevBal);
+
+      LPost_To_CYTDHist(EmpHistCode,FullEmpKey(EmplCode),
+                       Conv_TCurr(CrDr[BOff],Rate,CnvCr,JUseORate,BOff),
+                       Conv_TCurr(CrDr[BOn],Rate,CnvCr,JUseORate,BOff),
+                       0,0,ActYr,YTD);
+
+
+
+    end;
+
+
+  end; {With..}
+
+end; {Proc..}
+
+
+{ ======== Surrogate routine to minimise stack during recursive calls ====== }
+
+
+Function TPostJob.Loop_PostAct2Hist(Var JDetl  :  JobDetlRec;
+                                        JCode  :  Str10;
+                                        Level  :  LongInt;
+                                        P2WIP,
+                                        PCommit,
+                                        UP1Job,
+                                        UnPost :  Boolean)  :  Boolean;
+
+
+Var
+  KeyS    :  Str255;
+
+  LOk,
+  P2Emp   :  Boolean;
+
+Begin
+  KeyS:='';
+
+  P2Emp:=BOff;
+
+  With MTExLocal^ do
+  Begin
+    LOk:=LGetMainRec(JobF,JCode);
+
+    Result:=(LOk or (Level>0));
+
+    If (LOk) then
+    Begin
+      If (Level=0) then {* Set to WIP if job not closed *}
+      Begin
+        P2WIP:=((((Not (LJobRec^.JobStat In [4,5])) or ((UnPost) and JDetl.JobActual.Reversed and JDetl.JobActual.Reverse)))  and (Not PCommit));
+
+        With JDetl.JobActual do {*EX440}
+          P2Emp:=(JDDT=TSH) and (Not UP1Job);
+      end;
+
+
+      Post_Act2Hist(JDetl,JCode,P2WIP,P2Emp,PCommit);
+
+      With LJobRec^ do
+      If (Not EmptyKey(JobCat,JobKeyLen)) and (Not UP1Job) then {* Post to parent level *}
+        Result:=(Loop_PostAct2Hist(JDetl,JobCat,Succ(Level),P2WIP,PCommit,Up1Job,UnPost) or (Level>0));
+
+    end;
+  end; {With..}
+end;
+
+
+{ ========= Proc to Control Resetting of Apps Values ========= }
+
+Procedure TPostJob.LReset_Apps(ACode  :  LongInt;
+                               JCode,
+                               JUPCode:  Str10;
+                               UnPost :  Boolean);
+
+Const
+  Fnum      =  JobF;
+  Keypath   =  JobCodeK;
+
+Var
+
+  KeyChk,
+  KeyS      :  Str255;
+
+
+Begin
+  With MTExLocal^ do
+  Begin
+    If (LJobRec^.JobCode<>JCode) then
+    Begin
+      KeyS:=FullJobCode(JCode);
+
+      LStatus:=LFind_Rec(B_GetEq,Fnum,keypath,KeyS);
+    end
+    else
+      LStatus:=0;
+
+    If (LStatusOk) then
+    With LJobRec^ do
+    Begin
+      LReset_JobHistory(FullJDHistKey(JobCode,HFolio_TxLate(ACode)),JobType,NHistF,NHK);
+
+      If (JobCat<>'') and ((Not UnPost) or (EmptyKey(JUPCode,JobKeyLen))) then
+        LReset_Apps(ACode,JobCat,JUPCode,UnPost);
+    end;
+
+
+  end; {With..}
+end;
+
+{ ========= Proc to Control Re Posting of Apps Values ========= }
+
+Procedure TPostJob.Maintain_Apps(UnPost  :  Boolean;
+                                 JUPCode :  Str10);
+
+
+Const
+  Fnum      =  JDetlF;
+  Keypath   =  JDPostedK;
+
+  Fnum2     =  InvF;
+  Keypath2  =  InvRNoK;
+
+
+Var
+  KeyChk,
+  KeyS      :  Str255;
+
+  Loop,
+  PostOk
+            :  Boolean;
+
+  DocHed    :  DocTypes;
+
+
+Procedure Split_AppsContract;
+
+Const
+  Fnum3     =  IDetailF;
+  Keypath3  =  IdFolioK;
+
+Var
+  KeyChk2,
+  KeyS2     :  Str255;
+
+
+Begin
+  With MTExLocal^,LInv do
+  Begin
+    KeyChk2:=FullNomKey(FolioNum);
+
+    KeyS2:=FullIdKey(FolioNum,JALRetLineNo);
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum3,KeyPath3,KeyS2);
+
+    While (LStatusOk) and (CheckKey(KeyChk2,KeyS2,Length(KeyChk2),BOn)) and (Not ThreadRec^.THAbort) do
+    With LId do
+    Begin
+      LUpdate_JobAct(Make_JAPDetl(LInv,LId,1),LInv);
+
+      LStatus:=LFind_Rec(B_GetNext,Fnum3,KeyPath3,KeyS2);
+    end;
+
+
+  end {With..}
+end;
+
+
+
+Begin
+  With MTExLocal^ do
+  Begin
+
+    KeyChk:=PartCCKey(JBRCode,JBECode)+FullNomKey(JPAPRunNo);
+
+
+    If (UnPost) and (Not EmptyKey(JUPCode,JobKeyLen)) then
+    Begin
+      KeyChk:=KeyChk+FullJobCode(JUPCode);
+    end;
+
+    KeyS:=KeyChk;
+
+    PostOk:=BOff;  Loop:=BOff;
+
+    ShowStatus(2,'Reversing Certified Entries');
+
+    {* Reverse out exisiting entries *}
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+    With LJobDetl^.JobActual do
+    Begin
+      LReset_Apps(JAType,JobCode,JUPCode,UnPost);
+
+      LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+    {* Delete all current Applied Actuals *}
+
+
+    If (Not UnPost) then {* Re manufacture application lines *}
+    Begin
+      LDeleteLinks(KeyChk,Fnum,Length(KeyChk),Keypath,BOff);
+
+      DocHed:=JPA;
+
+      ShowStatus(2,'Creating Certified Entries');
+
+      Repeat
+        KeyChk:=FullDayBkKey(Set_JAPRunNo(DocHed,BOff,BOff),FirstAddrd,DocCodes[DocHed]);
+
+        KeyS:=KeyChk;
+
+        LStatus:=LFind_Rec(B_GetGEq,Fnum2,KeyPath2,KeyS);
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,5,BOn)) and (Not ThreadRec^.THAbort) do
+        With LInv do
+        Begin
+          If (LJobRec^.JobCode<>DJobCode) then
+            LGetMainRecPos(JobF,DJobCode);
+
+          If (LJobRec^.JobType<>JobGrpCode) then
+            LUpdate_JobAct(Make_JAPDetl(LInv,LId,0),LInv)
+          else
+            Split_AppsContract;
+
+          LStatus:=LFind_Rec(B_GetNext,Fnum2,KeyPath2,KeyS);
+        end; {While..}
+
+
+        Loop:=Not Loop;
+
+        DocHed:=JSA;
+
+      Until (Not Loop) or (ThreadRec^.THAbort);
+
+    end;
+
+  end; {With..}
+end; {Proc..}
+
+
+
+{ ========= Proc to Control Re Posting of PSOP Values ========= }
+
+Procedure TPostJob.Maintain_PSOP;
+
+
+Const
+  Fnum      =  JDetlF;
+  Keypath   =  JDPostedK;
+
+  Fnum2     =  NHistF;
+  Keypath2  =  NHK;
+
+  Fnum3     =  InvF;
+  Keypath3  =  InvOurRefK;
+
+
+
+Var
+
+  TmpKPath,
+  TmpStat
+            :  Integer;
+
+  TmpRecAddr
+            :  LongInt;
+
+  B_Func    :  Integer;
+
+  NewHedKey,
+  NewAnalKey,
+  NewStkKey,
+  NewRunKey,
+  KeyI,
+  KeyChk,
+  KeyS      :  Str255;
+
+  UpdateOk,
+  PostOk
+            :  Boolean;
+{$IFDEF EXSQL}
+  Outlog: TStringList;
+
+  // CJS 2015-04-24 - ABSEXCH-16352 - Job Posting doubling committed balances.
+  // Internal procedure to delete History records, replacing call to
+  // Emulator so that we can set our own time-out (the Emulator time-out is
+  // only 30 seconds, which is not long enough for some datasets, and cannot
+  // be changed without modifying the Emulator itself).
+  procedure DeleteHistory;
+  var
+    CompanyCode: ANSIString;
+    Qry: ANSIString;
+    SQLCaller: TSQLCaller;
+    PreviousTimeout: Integer;
+    PreviousCursor: TCursorLocation;
+  begin
+    CompanyCode := GetCompanyCode(SetDrive);
+    // Prepare a query to delete all History records with a class of '['
+    // (i.e. commitment accounting history).
+    Qry := 'DELETE FROM [COMPANY].HISTORY WHERE ' +
+           '(' + GetDBColumnName('HISTORY.DAT', 'f_ex_class', '') + ' = ' + IntToStr( Ord('[') ) + ')';
+    SQLCaller := TSQLCaller.Create(GlobalADOConnection);
+    try
+      // Preserve the original connection values, and set new ones
+      PreviousTimeout := GlobalADOConnection.CommandTimeout;
+      PreviousCursor  := GlobalADOConnection.CursorLocation;
+      GlobalADOConnection.CommandTimeout := SQLReportsConfiguration.DeleteCommitmentHistoryTimeoutInSeconds;
+      GlobalADOConnection.CursorLocation := clUseServer;
+      // Execute the delete query
+      SQLCaller.ExecSQL(Qry, CompanyCode);
+    finally
+      // Restore the original connection values
+      GlobalADOConnection.CursorLocation := PreviousCursor;
+      GlobalADOConnection.CommandTimeout := PreviousTimeout;
+      SQLCaller.Free;
+    end;
+  end;
+{$ENDIF}
+
+Begin
+  With MTExLocal^ do
+  Begin
+
+    KeyChk:=PartCCKey(JBRCode,JBECode)+FullNomKey(OrdPPRunNo);
+
+    KeyS:=KeyChk; TmpRecAddr:=0;   TmpKPath:=Keypath;
+
+    PostOk:=BOff;  UpdateOk:=BOff;
+
+    ShowStatus(2,'Reposting Commitment Entries');
+
+    {* Delete all current SPOP Commitment history *}
+{$IFDEF EXSQL}
+    if SQLUtils.UsingSQLAlternateFuncs then
+    begin
+      // CJS 2015-04-24 - ABSEXCH-16352 - Job Posting doubling committed balances.
+      DeleteHistory;
+    end
+    else
+{$ENDIF}
+    LDeleteLinks(CommitHCode,Fnum2,1,Keypath2,BOff);
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+    With LJobDetl^.JobActual do
+    Begin
+      B_Func:=B_GetNext;
+
+
+
+      If (Not (JDDT In PSOPSet)) and (JCloseCtrlRec^.PostJD) then {* Reset artificial PIN's now posted acting for committed *}
+      Begin
+        UpdateOk:=BOff;
+
+        If (LInv.OurRef<>LineORef) then
+        Begin
+          KeyI:=LineORef;
+
+          LStatus:=LFind_Rec(B_GetEq,Fnum3,KeyPath3,KeyI);
+
+        end
+        else
+          LStatus:=0;
+
+        If (LInv.RunNo>0) then
+        Begin
+          PostedRun:=0;
+          PostOk:=BOn;
+
+
+        end
+        else
+          UpdateOk:=BOn;
+
+      end
+      else
+        UpdateOk:=BOn;
+
+      If (UpdateOk) then
+        PostOk:=(Loop_PostAct2Hist(LJobDetl^,LJobDetl^.JobActual.JobCode,0,BOff,BOn,BOff,BOff));
+
+      If (PostOk) then
+      Begin
+        NewHedKey:=FullJDHedKey(JobCode,JAType);
+        NewAnalKey:=FullJDAnalKey(JobCode,AnalCode);
+
+        NewStkKey:=FullJDStkKey(JobCode,StockCode);
+        NewRunKey:=FullJDRunKey(JobCode,PostedRun,JDate);
+
+
+        If (Not CheckKey(HedKey,NewHedKey,Length(HedKey),BOn)) or
+           (Not CheckKey(AnalKey,NewAnalKey,Length(AnalKey),BOn)) or
+           (Not CheckKey(RunKey,NewRunKey,Length(RunKey),BOn)) or
+           (Not CheckKey(StockKey,NewStkKey,Length(StockKey),BOn)) then {Refresh DD Link}
+        Begin
+          HedKey:=FullJDHedKey(JobCode,JAType);
+
+          AnalKey:=FullJDAnalKey(JobCode,AnalCode);
+
+          StockKey:=FullJDStkKey(JobCode,StockCode);
+
+          If (PostedRun=0) then
+            RunKey:=FullJDRunKey(JobCode,PostedRun,JDate);
+
+          LStatus:=LPut_Rec(Fnum,KeyPAth);
+
+{$IFDEF EXSQL}
+          if (LStatus = 43) then
+          begin
+            Outlog := TStringList.Create;
+            try
+              Outlog.Add('Job Posting - LPutRec returned error #43');
+              Outlog.Add('');
+              Outlog.Add('JobActual Details');
+              Outlog.Add('=================');
+              Outlog.Add('LedgerCode=' + LedgerCode + '(' + StringToHex(LedgerCode) + ')');
+              Outlog.Add('AnalKey=' + AnalKey + '(' + StringToHex(AnalKey) + ')');
+              Outlog.Add('StockKey=' + StockKey + '(' + StringToHex(StockKey) + ')');
+              Outlog.Add('AnalCode=' + AnalCode + '(' + StringToHex(AnalCode) + ')');
+              Outlog.Add('EmplKey=' + EmplKey + '(' + StringToHex(EmplKey) + ')');
+              Outlog.Add('RunKey=' + RunKey + '(' + StringToHex(RunKey) + ')');
+              Outlog.Add('LookKey=' + LookKey + '(' + StringToHex(LookKey) + ')');
+              Outlog.Add('HedKey=' + HedKey + '(' + StringToHex(HedKey) + ')');
+              Outlog.Add('ActCurr=' + IntToStr(ActCurr));
+              Outlog.Add('ActYr=' + IntToStr(ActYr));
+              Outlog.Add('ActPr=' + IntToStr(ActPr));
+              Outlog.SaveToFile(SetDrive + 'LOGS\TPostJob_Maintain_PSOP_Error.log');
+            finally
+              Outlog.Free;
+            end;
+          end;
+{$ENDIF}
+
+          LReport_Berror(Fnum,LStatus);
+        end;
+
+        
+      end;
+
+      If (Not UpdateOk) and (TmpRecAddr<>0) then {* Restore prev non invoice position *}
+        TmpStat:=LPresrv_BTPos(Fnum,TmpKpath,LocalF^[Fnum],TmpRecAddr,BOn,BOff)
+      else
+      Begin
+
+        If (Not UpdateOK) and (TmpRecAddr=0) then {* The first one we got was a Psuedo Pin, so restart the search as afterwards, the run no and hence rec pos will not be valid *}
+        Begin
+          KeyS:=KeyChk;
+          B_Func:=B_GetGEq;
+        end
+        else
+          TmpStat:=LPresrv_BTPos(Fnum,TmpKpath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+      end;
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+
+    end; {While..}
+  end; {With..}
+end; {Proc..}
+
+
+Function TPostJob.LineActFullRef  :  Str255;
+
+Begin
+  With MTExLocal^,LJobDetl^.JobActual do
+    Result:=LineORef+'. Line '+Form_Int(LineNo,0)+'. Job : '+JobCode+' - ';
+
+end;
+
+Function TPostJob.Include_JobActual  :  Boolean;
+
+
+Var
+  TInc         :  Boolean;
+
+
+Begin
+  Result:=BOff;
+
+  With MTExLocal^,LJobDetl^.JobActual do
+  Begin
+    {$B-}
+
+
+
+    TInc:=(Not OnHold(HoldFlg));
+
+    Result:=TInc;
+
+    If (SuspendDoc(HoldFlg)) then
+      Write_PostLogDD(LineActFullRef+' not posted due to the posting run being suspended at this point. Any transactions after this one will not be posted either.',BOn,LineActFullRef,0)
+    else
+      If (Not TInc) then
+      Begin
+        Write_PostLogDD(LineActFullRef+' not posted due to it being on hold.',BOn,LineORef,0);
+
+      end;
+
+    {
+      CJS 31/01/2011 - ABSEXCH-10751 - Amended this check so that Job
+      Application transactions are always included, regardless of the setting
+      of the 'Disable posting into previous periods' flag, because this flag is
+      not relevant to Apps&Vals.
+      --------------------------------------------------------------------------
+      CJS 21/03/2011 - ABSEXCH-10819 - Included JPAs in check.
+    }
+    TInc:=(((Pr2Fig(ActYr,ActPr)<=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Not Syss.PrevPrOff))
+           or ((Pr2Fig(ActYr,ActPr)=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Syss.PrevPrOff)))
+           or (JDDT in [JSA, JPA])
+           or ((JDDT In JAPSplit) and (LineNo=0)); {* v5.70.001 Force through hidden tree lines *}
+
+    Result:=(TInc and Result);
+
+    If (Not TInc) then
+    Begin
+      If (Syss.PrevPrOff) then
+        Write_PostLogDD(LineActFullRef+' not posted as it is either to future period, or to a past period, and posting to previous periods is not allowed.',BOn,LineORef,0)
+      else
+        Write_PostLogDD(LineActFullRef+' not posted as it is for a future period to the current period.',BOn,LineORef,0);
+
+    end;
+
+    TInc:=(JDate<=Today);
+
+    Result:=(TInc and Result);
+
+    If (Not TInc) then
+      Write_PostLogDD(LineActFullRef+' not posted due to the transaction date being in the future. ('+PoutDate(JDate)+')',BOn,LineORef,0);
+
+
+
+  end; {With..}
+
+  {$B+}
+end;
+
+
+
+{ ========= Proc to Control Job Posting ========= }
+
+Procedure TPostJob.Post_Actuals(UnPost     :  Boolean;
+                                JUPCode    :  Str10;
+                            Var TTEnabled  :  Boolean);
+
+Const
+  Fnum      =  JDetlF;
+  Keypath1  =  JDPostedK;
+  Keypath4  =  JDLedgerK;
+
+
+  Fnum2     =  InvF;
+  Keypath2  =  InvOurRefK;
+
+  Fnum3     =  IdetailF;
+  Keypath3  =  IdLinkK;
+
+
+Var
+  TTMsg     :  Str20;
+  KeyChk,
+  KeyS,
+  KeyI      :  Str255;
+
+  Keypath,
+  B_Func    :  Integer;
+
+  LOk,
+  Locked,
+  AbortLoop,
+  PostOk,
+  SubConFlg,
+  PostCommit,
+  PostPINCommit,
+
+  PostApps,
+  UP1Job,
+  Unlock_JobActual,
+  NeedPRNo
+            :  Boolean;
+
+  UpLift    :  Double;
+
+  JobPostRunNo
+            :  LongInt;
+
+  PrevJM    :  JobMiscRec;
+
+
+Begin
+  KeyPath:=KeyPath1;
+
+  Blank(PrevJM,Sizeof(PrevJM));
+
+  With MTExLocal^ do
+  Begin
+    InitProgress(Used_RecsCId(LocalF^[JDetlF],JDetlF,ExCLientId));
+
+    ItemCount:=0;
+
+    UP1Job:=BOff;
+
+    
+
+    If (Unpost) then
+    Begin
+      If (EmptyKey(JUPCode,JobKeyLen)) then
+      Begin
+
+        KeyChk:=PartCCKey(JBRCode,JBECode);
+
+        KeyS:=KeyChk+#0#0#0#1; {* v5.61.001 We cannot use FullNomkey(1) here as this is just an ASCII key, not numerically sequenced so we have to use ASCII values *}
+      end
+      else {* EX440}
+      Begin
+        KeyPath:=KeyPath4;
+
+        KeyChk:=PartCCKey(JBRCode,JBECode)+FullJobCode(JUPCode)+#1;
+        KeyS:=KeyChk;
+        UP1Job:=BOn;
+      end;
+
+    end
+    else
+    Begin
+      KeyChk:=PartCCKey(JBRCode,JBECode)+FullNomKey(0);
+
+      KeyS:=KeyChk;
+    end;
+
+    TTMsg:='';
+
+    AbortLoop:=BOff;
+    Locked:=BOff;
+    TTEnabled:=BOff;
+    Unlock_JobActual:=BOff;
+
+    PostOk:=BOff;
+    PostCommit:=BOff;
+
+    NeedPRNo:=BOn;
+
+    JobPostRunNo:=0;
+
+    PostApps:=BOff;
+
+    If (TranOk2Run) then {* Have another go at setting up transaction *}
+    Begin
+      LStatus:=LCtrl_BTrans(1);
+
+      TranOk2Run:=LStatusOk;
+
+      If (Not TranOk2Run) then
+      Begin
+        AddErrorLog('Job Posting Run. Protected Mode could not be started. (Error '+Form_Int(LStatus,0)+')','',4);
+
+        LReport_BError(InvF,LStatus);
+      end;
+
+      LStatus:=LCtrl_BTrans(0);
+    end;
+
+    {* Reset & Repost all current PSOP entries *}
+
+    {* No need to protect this, as it reverses it all out in each case anyway... *}
+    If (Not UnPost) and (JCloseCtrlRec^.ChkComm) then {* Otherwise they will be calculated twice *}
+      Maintain_PSOP;
+
+    If (JCloseCtrlRec^.PostJD) or (UnPost) then
+    Begin
+      Maintain_Apps(UnPost,JUPCode);
+
+      SubConFlg:=BOff;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not AbortLoop) and (Not ThreadRec^.THAbort) do
+      With LJobDetl^.JobActual do
+      Begin
+        {If (LineORef='PIN000502') and Debug then
+          Beep;}
+
+
+        PostPINCommit:=BOff;
+
+        B_Func:=B_GetNext;
+
+        ShowStatus(2,'Checking '+Trim(JobCode)+', '+LineORef);
+
+        Inc(ItemCount);
+
+        UpdateProgress(ItemCount);
+
+        {$IFDEF DBD}
+          {If (Debug) and (LInv.OurRef='PIN010698') then
+            MessageBeep(0);}
+
+        {$ENDIF}
+
+        {$B-}
+        If (UnPost) or ((Include_JobActual) and ((Not (JDDT In PSOPSet+JAPOrdSplit )) or (JCloseCtrlRec^.ChkComm)))  then {* Item not on hold, dates ok *}
+        {$B+}
+        Begin
+
+
+          If (LInv.OurRef<>LineORef) then
+          Begin
+            KeyI:=LineORef;
+
+            LStatus:=LFind_Rec(B_GetEq,Fnum2,KeyPath2,KeyI);
+
+          end
+          else
+            LStatus:=0;
+
+          If (Not UnPost) then
+          With LInv do
+          Begin
+
+            If (Not LStatusOk) then
+              Write_PostLogDD(LineActFullRef+' not posted as the source transaction no longer exists!',BOn,LineORef,0)
+            else
+            Begin
+              If ((RunNo<=0) and (RunNo<>StkAdjRunNo) and (RunNo<>TSTPostRunNo) and
+                 (Not (InvDocHed In PSOPSet+QuotesSet +JAPSplit   {$IFDEF STK} -StkExcSet {$ENDIF}))) then
+              Begin
+
+                PostPINCommit:=(JDDT In PurchSplit-PSOPSet-[PBT]-RecieptSet) and (JCloseCtrlRec^.ChkComm) and (SyssJob^.JobSetup.JCCommitPin);
+
+                If (PostPINCommit) then
+                  Write_PostLogDD(LineActFullRef+' has been included in the committed figure as the source transaction has not been posted yet.',BOn,LineORef,0)
+                else
+                  Write_PostLogDD(LineActFullRef+' not posted as the source transaction has not been posted yet from the '+DocGroup[GetDocGroup(InvDocHed)]+' Daybook.',BOn,LineORef,0);
+
+              end;
+
+            end;
+
+          end
+          else
+            PostPINCommit:=((PostedRun=OrdPPRunNo) and (JDDT In PurchSplit-PSOPSet-[PBT]-RecieptSet));
+
+          With LInv do                                                            {*** set correctly}
+            If (LStatusOk) and (((RunNo>0) or (RunNo=StkAdjRunNo) or (RunNo=TSTPostRunNo) or
+              (PostPINCommit) or
+               (InvDocHed In PSOPSet+QuotesSet +JAPSplit   {$IFDEF STK} -StkExcSet {$ENDIF})) or (UnPost))   then
+            Begin {* Parent posted *}
+              LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyChk,KeyPath,Fnum,BOff,Locked);
+
+              If (LOk) and (Locked) then
+              Begin
+                LGetRecAddr(Fnum);
+
+                ShowStatus(2,'Processing '+Trim(JobCode)+', '+LineORef+TTMsg);
+
+                KeyI:=FullRunNoKey(LineFolio,LineNo);
+
+                If (KeyI<>FullRunNoKey(LId.FolioRef,LId.ABSLineNo)) then {* Get corresponding line *}
+                Begin
+
+                  LStatus:=LFind_Rec(B_GetEq,Fnum3,KeyPath3,KeyI);
+
+                  If (LStatusOk) then {*EX440}
+                  Begin
+                    {v5.00 Only re-synch exchange rate for non ADJ transactions to avoid euro
+                     converted adj's going out of synch with the transactions}
+
+                    If (InvDocHed<>ADJ) or (PCRates[UseCodayRate]=0.0) then
+                    Begin
+                      PCRates:=LId.CXRate;
+                      PCtriR:=LId.CurrTriR;
+                    end;
+                  end
+                  else
+                  Begin {* Can't find, so do not use *}
+                    LResetRec(IDetailF);
+                  end;
+                end;
+
+                PostCommit:=(InvDocHed In PSOPSet+QuotesSet +JAPOrdSplit   {$IFDEF STK} -StkExcSet {$ENDIF}) or (PostPinCommit);
+
+                PostApps:=(InvDocHed In JAPJAPSplit);
+
+                SubConFlg:=BOff;
+
+                {* Check if we need to delete this entry if it
+                   is for sub-contract labour *}
+                {* Do not bother if unpost, as line was not deleted for some reason in the first
+                   place *}
+
+                If (JDDT In PurchSplit-([PPY]+PSOPSet+QuotesSet {$IFDEF STK} -StkExcSet {$ENDIF})) and (Not UnPost)
+                  {and (Not PostPinCommit)}
+                then
+
+                Begin
+                  {* Check for any Subcontractor postings who are also employees *}
+
+                  PrevJM:=LJobMisc^;
+
+                  SubConFlg:=LCheckRecExsists(PartCCKey(JARCode,JAECode)+LId.CustCode,JMiscF,JMTrdK);
+
+                  SubConFlg:=(SubConFlg and (Not LJobMisc^.EmplRec.LabPLOnly));
+
+                  LJobMisc^:=PrevJM;
+
+                  If (SubConFlg) then {* Check Analysis codes is a labour type *}
+                  Begin
+
+                    SubConFlg:=((LGetJobMisc(AnalCode,2)) and (LJobMisc^.JobAnalRec.JAType=JobXLab));
+                  end;
+
+                end;
+
+                If (TranOk2Run) then
+                Begin
+                  LStatus:=LCtrl_BTrans(1);
+
+                  TTEnabled:=LStatusOk;
+
+                  {* Wait until All clear b4 continuing *}
+                  If (TTEnabled) then
+                    WaitForHistLock;
+                end;
+
+                If (TTEnabled) and (TTMsg='') then
+                  TTMsg:='. Protected Mode.';
+
+
+                If (SubConFlg) and (Not PostPinCommit) then {* Destroy this actual, as already on time sheet, or just ignore for pin commit update *}
+                Begin
+
+                  LStatus:=LDelete_Rec(Fnum,Keypath);
+
+
+                  LReport_BError(Fnum,LStatus);
+
+                  If (LStatusOk) then
+                    B_Func:=B_GetGEq;
+
+                end
+                else
+                Begin
+                  If (Not SubConFlg) then
+                  Begin
+
+                    PostOk:=(Loop_PostAct2Hist(LJobDetl^,LJobDetl^.JobActual.JobCode,0,BOn,PostCommit,Up1Job,UnPost));
+
+                    {* Only update if not an unpost *}
+
+                    If (PostOk) and (Not UnPost) then
+                    Begin
+                      If (NeedPRNo) and (Not PostCommit) and (Not PostApps)  then
+                      Begin
+
+                        If (PostRepCtrl^.LastRunNo=0) then {* It is a new post *}
+                        Begin
+                          JobPostRunNo:=GetNextCount(JRN,BOn,BOff,0);
+                          PostUnLock(JobPostRunNo);
+                        end
+                        else
+                          JobPostRunNo:=PostRepCtrl^.LastRunNo;
+
+                        NeedPRNo:=BOff;
+
+                      end;
+
+
+                      If (PostCommit) then
+                        PostedRun:=OrdPPRunNo  {* Set to Count *}
+                      else
+                        If (PostApps) then
+                          PostedRun:=JPAPRunNo {* Set to Count *}
+                      else
+                        PostedRun:=JobPostRunNo;
+
+                      Posted:=BOn;
+
+                      UpLift:=0;
+
+
+                      RunKey:=FullJDRunKey(JobCode,PostedRun,JDate);
+
+                      LedgerCode:=FullJDLedgerKey(JobCode,Posted,Invoiced,ActCurr,JDate);
+
+
+                      {* Only show these once posted, otherwise drill down shows them all the time *}
+
+                      AnalKey:=FullJDAnalKey(JobCode,AnalCode);
+
+                      StockKey:=FullJDStkKey(JobCode,StockCode);
+
+
+                      If (JDDT=TSH) then
+                        EmplKey:=FullJDEmplKey(JobCode,EmplCode,ReconTS);
+
+                      HedKey:=FullJDHedKey(JobCode,JAType);
+
+
+                      LStatus:=LPut_Rec(Fnum,KeyPath);
+
+                      LReport_BError(Fnum,LStatus);
+
+                      If (Not AbortTran) then
+                        AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+
+                      B_Func:=B_GetGEq;
+                    end;
+                  end; {If we are in PIN commit mode, but for sub contractor}
+
+                  If (Not TTEnabled) then {Defer unlocking until after protcted mode posting as unlock gets corrupted
+                                           under c/s if done inside the transaction when lock initilay applied
+                                           outside the transaction}
+                    LStatus:=LUnLockMLock(Fnum)
+                  else
+                    Unlock_JobActual:=BOn;
+
+                end; {If dealing with  sub contract labour}
+
+                If (TTEnabled) and (Syss.ProtectPost) then
+                With MTExLocal^ do
+                Begin
+                  UnLockHistLock;
+
+                  LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+                  LReport_BError(JDetlF,LStatus);
+
+                  If (Unlock_JobActual) then {Apply unlock here after pm completed}
+                    LStatus:=LUnLockMLock(Fnum)
+
+                end;
+
+              end {If Locked Ok..}
+              else
+                If (LOk) then
+                  Write_PostLogDD(LineORef+' not posted due to record being locked.',BOn,LineORef,0);
+
+
+            end; {If Parent found ok}
+
+        end {If Held..}
+        else
+          AbortLoop:=(SuspendDoc(HoldFlg)); {*If Suspended, stop here *}
+
+
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+      end; {While..}
+
+      UpdateProgress(ThreadRec^.PTotal);
+
+    end; {If actuals not selected..}
+
+  end; {With..}
+
+end; {Proc..}
+
+
+
+{ Reproduced in JobSup1U for Global operation }
+{ Reproduced in OLEBtrO for thread safe operation in the OLE Server }
+
+
+Procedure TPostJob.LSet_JMajorHed(JobR     :  JobRecType;
+                                  n        :  LongInt;
+                                  Fnum     :  Integer);
+
+
+
+Begin
+  With MTExLocal^,LJobCtrl^,JobBudg do
+  Begin
+
+    LResetRec(Fnum);
+
+    RecPFix:=JBRCode;
+    SubType:=JBMCode;
+
+    JobCode:=JobR.JobCode;
+
+    HistFolio:=HFolio_Txlate(n);
+
+    If (n<>0) then
+      AnalHed:=n
+    else
+      AnalHed:=SysAnlsProfit;
+
+    BudgetCode:=FullJBCode(JobCode,CurrBudg,FullNomKey(HistFolio));
+
+  end; {If Ok..}
+end; {Proc..}
+
+
+{ ====== Proc to Generate a jobs major Heading Lines ======= }
+{ Reproduced in JobSup1U for Global operation }
+{ Reproduced in OLEBtrO for thread safe operation in the OLE Server }
+
+
+Procedure TPostJob.LCheck_JMajorHed(JobR     :  JobRecType);
+
+
+Const
+  Fnum      =  JCtrlF;
+  Keypath   =  JCK;
+
+
+
+Var
+  KeyChk,
+  KeyS      :  Str255;
+
+  n         :  LongInt;
+
+
+
+Begin
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=0;
+
+    For n:=0 to NofSysAnals do
+    Begin
+
+      If (LStatusOk) then
+      With LJobCtrl^,JobBudg do
+      Begin
+
+        LSet_JMajorHed(JobR,n,Fnum);
+
+        KeyChk:=PartCCKey(JBRCode,JBMCode)+BudgetCode;
+
+        KeyS:=KeyChk;
+
+        LStatus:=LFind_Rec(B_GetEq,Fnum,keypath,KeyS);
+
+        If (Not LStatusOk) then
+        Begin
+          LSet_JMajorHed(JobR,n,Fnum);
+
+          LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+        end;
+
+      end; {If Ok..}
+
+    end; {Loop..}
+  end; {With..}
+end; {Proc..}
+
+
+
+{ === Proc to scan all jobs and check if main heading ok === }
+
+
+Procedure TPostJob.Check_AllJob_MHed(KillBudg  :  Boolean);
+
+
+Const
+  Fnum     =  JobF;
+  Keypath  =  JobCodeK;
+
+
+Var
+  KeyS,Keychk  :  Str255;
+
+
+
+Begin
+  KeyS:='';
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=LFind_Rec(B_StepFirst,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (Not ThreadRec^.THAbort) do
+    Begin
+      If (KillBudg) then
+      Begin
+        LJobRec^.ALineCount:=1000;
+
+        LStatus:=LPut_Rec(Fnum,Keypath);
+
+        LReport_Berror(Fnum,LStatus);
+
+      end;
+
+      LCheck_JMajorHed(LJobRec^);
+
+      LStatus:=LFind_Rec(B_StepNext,Fnum,KeyPath,KeyS);
+
+
+    end;
+  end; {With..}
+end;
+
+
+{ ======= Reset Job History for Budgets ======== }
+
+Procedure TPostJob.LReset_JobHistory(Const FJCode         :  Str20;
+                                     Const FJTYpe         :  Char;
+                                           Fnum,Keypath   :  Integer);
+
+Var
+  KeyChk, KeyS :  Str255;
+  // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+  ExecPerv : Boolean;
+  oSQLCaller : TSQLCaller;
+  sSubProcessName, sCompanyCode, sConnectionString, sQuery, lPassword : WideString;  //VA:27/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+  lStatus, iUpdCount : Integer;
+Begin
+  // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added performance logging into SQL side of Check All Job Totals
+  If Assigned(oPerformanceLogger) Then
+  Begin
+    sSubProcessName := 'LReset_JobHistory (FJType=' + FJType + ' / FJCode=' + StringToHex(FJCode) + ')';
+    oPerformanceLogger.StartSubProcess (sSubProcessName);
+  End; // If Assigned(oPerformanceLogger)
+  Try
+    // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+    If SQLUtils.UsingSQL And SQLReportsConfiguration.UseCheckAllJobTotals Then
+    Begin
+      // Get Company Admin Connection String - Read-Only doesn't have rights to run this
+      sCompanyCode := GetCompanyCode(SetDrive);
+      //If (GetConnectionString(sCompanyCode, False, sConnectionString) = 0) Then
+      //VA:27/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+      If (GetConnectionStringWOPass(sCompanyCode, False, sConnectionString, lPassword) = 0) then
+      Begin
+        //RB 06/07/2017 2017-R2 ABSEXCH-18944: Use Global SQL Connection for SQLCaller
+        oSQLCaller := TSQLCaller.Create(GlobalAdoConnection);
+        Try
+          oSQLCaller.Query.CommandTimeout := 15 * 60; // 15 mins - should use a SQLReportsConfiguration property
+          //oSQLCaller.Records.CommandTimeout := 15 * 60; // 15 mins - should use a SQLReportsConfiguration property
+
+          sQuery := 'UPDATE [COMPANY].History ' +
+                       'SET hiSales=0, hiPurchases=0, hiCleared=0 ' +
+                     'WHERE (hiExClass = ' + IntToStr(Ord(FJType)) + ')';
+
+          If (FJCode <> '') Then
+          Begin
+            sQuery := sQuery + ' AND (SUBSTRING(hiCode, 2, ' + IntToStr(Length(FJCode)) + ') = ' + StringToHex(FJCode) + ')';
+          End; // If (FJCode <> '')
+
+          If Assigned(oPerformanceLogger) Then
+            oPerformanceLogger.StartQuery(sQuery);
+          lStatus := oSQLCaller.ExecSQL(sQuery, sCompanyCode);
+          If Assigned(oPerformanceLogger) Then
+            oPerformanceLogger.FinishQuery;
+
+          // Returns -1 if an error occurred, otherwise the number of rows affected by the UPDATE command - if an
+          // error occurs then run the Pervasive code
+          ExecPerv := lStatus < 0;
+
+          If Assigned(oPerformanceLogger) Then
+            oPerformanceLogger.QueryRowCount(oSQLCaller.LastRecordCount);
+        Finally
+          oSQLCaller.Free;
+        End; // Try..Finally
+      End // If (GetConnectionString(sCompanyCode, False, sConnectionString) = 0)
+      Else
+        // Fallback to Pervasive code
+        ExecPerv := True;
+    End // If SQLUtils.UsingSQL And SQLReportsConfiguration.UseCheckAllJobTotals
+    Else
+      // Fallback to Pervasive code
+      ExecPerv := True;
+
+    If ExecPerv Then
+    Begin
+      With MTExLocal^ do
+      Begin
+
+        KeyChk:=FJType+FJCode;
+
+        KeyS:=KeyChk;
+
+        iUpdCount := 0;
+        LStatus:=LFind_Rec(B_GetGEq,Fnum,keypath,KeyS);
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+          With LNHist do
+          Begin
+            Sales:=0;
+            Purchases:=0;
+            Cleared:=0;
+
+            LStatus:=LPut_Rec(Fnum,KeyPath);
+            Inc(iUpdCount);
+
+            LReport_BError(Fnum,LStatus);
+
+            LStatus:=LFind_Rec(B_GetNext,Fnum,keypath,KeyS);
+          end; {While..}
+
+        If Assigned(oPerformanceLogger) Then
+          oPerformanceLogger.LogInfo('Executing Non-SQL Updates: ' + IntToStr(iUpdCount) + ' rows updated');
+      end; {With..}
+    End; // If ExecPerv
+  Finally
+    If Assigned(oPerformanceLogger) Then
+      oPerformanceLogger.FinishSubProcess (sSubProcessName);
+  End; // Try..Finally
+end; {Proc..}
+
+
+Procedure TPostJob.Check_AllJobs;
+
+
+Const
+  Fnum     =  NHistF;
+  Keypath  =  NHK;
+
+  NofJTypes      =  03;
+
+  JobTypeCode    :  Array[0..NofJTypes] of Char = (#0,JobJobCode,JobPhzCode,JobGrpCode);
+
+
+
+Var
+  n            :  Byte;
+  TTEnabled    :  Boolean;
+  KeyChk       :  Str255;
+  sSubProcessName : ShortString;
+
+  //PR: 06/05/2016 ABSEXCH-17343 procedure to delete analysis code budgets avoiding emulator
+  procedure DeleteBudgetRecords(const FileName : string);
+  var
+    CompanyCode: ANSIString;
+    Qry: ANSIString;
+    SQLCaller: TSQLCaller;
+    PreviousTimeout: Integer;
+    PreviousCursor: TCursorLocation;
+    ConnectionString,
+    lPassword: WideString;  //VA:27/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+
+  begin
+    CompanyCode := GetCompanyCode(SetDrive);
+
+    //GetConnectionString(CompanyCode, False, ConnectionString);
+    //VA:27/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+    GetConnectionStringWOPass(CompanyCode, False, ConnectionString, lPassword);
+
+    //Delete all records
+    Qry := 'DELETE FROM [COMPANY].' + Filename;
+    SQLCaller := TSQLCaller.Create;
+    try
+      SQLCaller.ConnectionString := ConnectionString;
+      SQLCaller.Connection.Password := lPassword;
+      SQLCaller.Connection.CommandTimeout := SQLReportsConfiguration.GetRollupGLBudgetsTimeoutInSeconds;
+      // Execute the delete query
+      SQLCaller.ExecSQL(Qry, CompanyCode);
+    finally
+      SQLCaller.Free;
+    end;
+  end;
+
+Begin
+  // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added performance logging into SQL Check All Job Totals
+  If Assigned(oPerformanceLogger) Then
+    oPerformanceLogger.StartProcess;
+  Try
+    TTEnabled:=BOff;
+
+    With MTExLocal^ do
+    Begin
+      ShowStatus(2,'Resetting current balances.');
+
+      If (RemoveBudget) then
+      Begin
+      {* Delete all current Job history *}
+        For n:=1 to NofJTypes do
+          If (Not ThreadRec^.THAbort) then
+            LDeleteLinks(JobTypeCode[n],Fnum,1,Keypath,BOff);
+
+        {* Delete all current Employee history *}
+
+        If (Not ThreadRec^.THAbort) then
+          LDeleteLinks(EmpHistCode,Fnum,1,Keypath,BOff);
+
+        {* Delete all current SPOP Commitment history *}
+
+        If (Not ThreadRec^.THAbort) then
+          LDeleteLinks(CommitHCode,Fnum,1,Keypath,BOff);
+
+         {* Delete Anal Budget Entries *}
+
+        if SQLUtils.UsingSQL then
+        begin
+          //PR: 06/05/2016 ABSEXCH-17343 call procedure to delete analysis code budgets avoiding emulator
+          DeleteBudgetRecords('AnalysisCodeBudget');
+        end
+        else
+        begin
+          KeyChk:=PartCCKey(JBRCode,JBBCode);
+
+          LDeleteLinks(KeyChk,JCtrlF,Length(KeyChk),JCK,BOff);
+        end;
+
+        {* Delete Stk/Payrate Anal Budget Entries *}
+
+        KeyChk:=PartCCKey(JBRCode,JBSCode);
+
+        LDeleteLinks(KeyChk,JCtrlF,Length(KeyChk),JCK,BOff);
+
+
+      end
+      else
+      Begin
+        {* Reset all current Job history *}
+         For n:=1 to NofJTypes do
+         begin
+           LReset_JobHistory('',JobTypeCode[n],Fnum,Keypath);
+         end;
+
+       {* Reset all current Employee history *}
+
+        LReset_JobHistory('',EmpHistCode,Fnum,Keypath);
+
+       {* Reset all current SPOP Commitment history *}
+
+        LReset_JobHistory('',CommitHCode,Fnum,Keypath);
+      end;
+
+      // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added performance logging into SQL side of Check All Job Totals
+      If Assigned(oPerformanceLogger) Then
+      Begin
+        sSubProcessName := 'Check_AllJob_MHed (RemoveBudget=' + BoolToStr(RemoveBudget, True) + ')';
+        oPerformanceLogger.StartSubProcess (sSubProcessName);
+      End; // If Assigned(oPerformanceLogger)
+      If (Not ThreadRec^.THAbort) then
+        Check_AllJob_MHed(RemoveBudget);
+      If Assigned(oPerformanceLogger) Then
+        oPerformanceLogger.FinishSubProcess (sSubProcessName);
+
+      If Assigned(oPerformanceLogger) Then
+      Begin
+        sSubProcessName := 'Post_Actuals';
+        oPerformanceLogger.StartSubProcess (sSubProcessName);
+      End; // If Assigned(oPerformanceLogger)
+      If (Not ThreadRec^.THAbort) then
+        Post_Actuals(BOn,'',TTEnabled);
+      If Assigned(oPerformanceLogger) Then
+        oPerformanceLogger.FinishSubProcess (sSubProcessName);
+    end;
+  Finally
+    If Assigned(oPerformanceLogger) Then
+      oPerformanceLogger.FinishProcess;
+  End; // Try..Finally
+end; {Proc..}
+
+
+Procedure TPostJob.Check_OneJob;
+
+
+Const
+  Fnum     =  NHistF;
+  Keypath  =  NHK;
+
+
+Var
+  n  :  Byte;
+
+  LOk,
+  KillBudg,
+  Locked,
+  TTEnabled  :  Boolean;
+
+  KeyChk
+     :  Str255;
+
+
+Begin
+  LOK:=BOff; Locked:=BOff;  TTEnabled:=BOff;
+
+  KeyChk:=FullJobCode(ThisJobCode);
+
+  With MTExLocal^ do
+  Begin
+    LOk:=LGetMultiRec(B_GetEq,B_MultLock,KeyChk,JobCodeK,JobF,BOff,Locked);
+
+    If (LOk) and (Locked) and (LJobRec^.JobCode=ThisJobCode) then
+    Begin
+      LGetRecAddr(JobF);
+
+      With LJobRec^ do
+      Begin
+
+        ShowStatus(2,'Please Wait, Resetting current balances.');
+
+
+        If (RemoveBudget) then
+        Begin
+          {* Delete all current Job history *}
+
+          KeyChk:=JobType+JobCode;
+
+          LDeleteLinks(KeyChk,Fnum,Length(KeyChk),Keypath,BOff);
+
+          {* Delete all current SPOP Commitment history *}
+
+          KeyChk:=CommitHCode+JobCode;
+
+          LDeleteLinks(KeyChk,Fnum,Length(KeyChk),Keypath,BOff);
+
+          {* Delete Anal Budget Entries *}
+
+          KeyChk:=PartCCKey(JBRCode,JBBCode)+JobCode;
+
+          LDeleteLinks(KeyChk,JCtrlF,Length(KeyChk),JCK,BOff);
+
+          {* Delete Stk/Payrate Anal Budget Entries *}
+
+          KeyChk:=PartCCKey(JBRCode,JBSCode)+JobCode;
+
+          LDeleteLinks(KeyChk,JCtrlF,Length(KeyChk),JCK,BOff);
+
+
+          {* Reset ALineCount to start again *}
+
+          LJobRec^.ALineCount:=1000;
+
+        end
+        else
+        Begin
+          {* Reset all current Job history *}
+
+          LReset_JobHistory(JobCode,JobType,Fnum,Keypath);
+
+          {* Reset all current SPOP Commitment history *}
+
+          LReset_JobHistory(JobCode,CommitHCode,Fnum,Keypath);
+        end;
+
+
+        LStatus:=LPut_Rec(JobF,JobCodeK);
+
+        LReport_Berror(JobF,LStatus);
+
+        LStatus:=LUnLockMLock(JobF);
+
+        Post_Actuals(BOn,JobCode,TTEnabled);
+      end;
+    end;
+  end; {With..}
+end; {Proc..}
+
+
+  Procedure TPostJob.Check_SelectedJobs(Level  :  LongInt);
+
+  Const
+    Fnum     =  JobF;
+    Keypath  =  JobCatK;
+
+
+Var
+  n  :  Byte;
+
+  TmpKPath,
+  TmpStat
+     :  Integer;
+
+  TmpRecAddr
+     :  LongInt;
+
+  KeyChk,
+  KeyS
+     :  Str255;
+
+
+  Begin
+    With MTExLocal^ do
+    Begin
+      KeyChk:=FullJobCode(ThisJobCode);
+      KeyS:=KeyChk;
+
+      LStatus:=LFind_Rec(B_GetEq,Fnum,JobCodeK,KeyS);
+
+      If (LStatusOk) then
+      With LJobRec^ do
+      Begin
+        If (JobType=JobJobCode) and (Level=0) then
+        Begin
+          Check_OneJob;
+        end
+        else
+        If (JobType=JobGrpCode) then
+        Begin
+          TmpKPath:=Keypath;
+
+          LStatus:=LFind_Rec(B_GetGEq,Fnum,Keypath,KeyS);
+
+          While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not ThreadRec^.THAbort) do
+          Begin
+            ThisJobCode:=FullJobCode(JobCode);
+
+            TmpStat:=LPresrv_BTPos(Fnum,TmpKpath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+            If (JobType=JobJobCode) then
+              Check_OneJob
+            else
+              Check_SelectedJobs(Succ(Level));
+
+            TmpStat:=LPresrv_BTPos(Fnum,TmpKpath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+            LStatus:=LFind_Rec(B_GetNext,Fnum,Keypath,KeyS);
+          end;
+        end;
+      end;
+
+    end;
+  end;
+
+
+
+
+  { ====== Proc to Generate Job Actual Record ======== }
+
+  // HM - Duplicated in X:\entrprse\ole\OLEBtrO.Pas - duplicate changes there
+  Procedure TPostJob.LUpdate_JobAct(Idr    :  IDetail;
+                                    InvR   :  InvRec);
+
+  Const
+    Fnum      =  JDetlF;
+    Keypath   =  JDLookK;
+
+
+  Var
+    KeyChk  :  Str255;
+
+    cuTBo,
+    FoundOk,
+    NewRec,
+    LOk,
+    Locked  :  Boolean;
+
+    ConvChargeCurr
+            :  Byte;
+
+    CostUp,
+    TmpQ,
+    TmpQM,
+    UpLift  :  Double;
+
+
+
+    QPrice,
+    QDisc   :  Real;
+
+    CHDisc  :  Char;
+
+    StkKeyF,
+    TmpKey  :  Str20;
+
+    OldCust :  CustRec;
+
+    OStat   :  Integer;
+
+    {$IFDEF Rp}
+      {$IFDEF STK}
+        ShareRep    :  ^TStkReport;
+      {$ENDIF}
+    {$ENDIF}
+
+
+  Begin
+    cuTBO:=BOff;
+
+    With MTExLocal^ do
+    Begin
+
+      Locked:=BOff;
+
+      OldCust:=LCust;
+
+      QPrice:=0;
+      QDisc:=0;
+      CHDisc:=#0;
+
+      CostUp:=0.0;  ConvChargeCurr:=0;
+
+      OStat:=LStatus;
+      LOk:=BOff;
+
+      TmpKey:='';
+
+      With IdR do                                      {* JA_X Replace with dedicated job code *}
+        KeyChk:=PartCCKey(JBRCode,JBECode)+FullJDLookKey(FolioRef,ABSLineNo);
+
+      LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyChk);
+
+      NewRec:=(LStatus=4);
+
+      If (Not EmptyKey(IdR.JobCode,JobKeyLen)) and (InvR.NomAuto)
+      and ((IdR.LineNo>=0) or (Not (InvR.InvDocHed In JAPSplit)))  and (InvR.InvDocHed<>JPT)
+      and ((InvR.InvDocHed<>JST) or (EmptyKey(InvR.DeliverRef,DocKeyLen)))
+     and ((Not (InvR.InvDocHed In JAPJAPSplit)) or (IdR.LineNo=0))
+     and (Not (InvR.InvDocHed In StkRetSplit))  
+     then
+      Begin
+
+        If ((LStatusOk) or (NewRec))  then
+        Begin
+
+
+          If (NewRec) then
+          With LJobDetl^,JobActual do
+          Begin
+
+            LOk:=BOn;
+            Locked:=BOn;
+
+            LResetRec(Fnum);
+
+            RecPFix:=JBRCode;
+
+            SubType:=JBECode;
+
+          end
+          else
+          Begin
+            LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyChk,KeyPath,Fnum,BOn,Locked);
+            LGetRecAddr(Fnum);
+          end;
+
+          If (LOk) and (Locked) then
+          With LJobDetl^,JobActual do
+          Begin
+
+
+            JobCode:=IdR.JobCode;  {* JA_X Replace with proper job code *}
+
+            ActCurr:=IdR.Currency;
+            ActYr:=IdR.PYr;
+            ActPr:=IdR.PPr;
+            LineFolio:=IdR.FolioRef;
+            LineNo:=IdR.ABSLineNo;
+            LineORef:=InvR.OurRef;
+            StockCode:=IdR.StockCode;
+            JDate:=InvR.TransDate;
+            OrigNCode:=IdR.NomCode;
+
+            JUseORate:=IdR.UseORate;
+            JPriceMulX:=IdR.PriceMulX;
+
+            If (IdR.IdDocHed=TSH) then
+            Begin
+              Qty:=Round_Up(IdR.Qty,Syss.NoQtyDec);
+
+              Cost:=Round_up(IdR.NetValue,Syss.NoCosDec);
+
+              {TmpQ:=IdR.Qty;
+              TmpQM:=IdR.QtyMul;
+
+              IdR.Qty:=1; IdR.QtyMul:=1;
+
+
+              IdR.Qty:=TmpQ;
+              IdR.QtyMul:=TmpQM;}
+
+
+            end
+            else
+            If (IdR.IdDocHed In JAPSplit) then
+            Begin
+              Qty:=Round_Up(IdR.Qty,Syss.NoQtyDec);
+
+              Case IdR.IdDocHed of
+                JCT,JST  :  With IdR do
+                              Cost:=Round_Up(CostPrice-QtyPWOff,Syss.NoCosDec);
+                JPA,JSA  :  Cost:=Round_up(IdR.NetValue,2);
+              end; {Case..}
+            end
+            else
+            Begin
+
+              {$IFDEF SOP}
+
+                Qty:=Round_Up(Qty_OS(IdR),Syss.NoQtyDec);
+
+              {$ELSE}
+
+                Qty:=Round_Up(IdR.Qty,Syss.NoQtyDec);
+
+              {$ENDIF}
+
+
+              If (IdR.IdDocHed In StkADJSplit) then {* Reverse affect on Job *}
+                Qty:=Qty*DocNotCnst;
+
+
+              With IdR do
+              Begin
+
+                TmpQ:=Qty;
+                TmpQM:=QtyMul;
+
+                Qty:=1; QtyMul:=1;
+
+                If (IdDocHed<>ADJ) then
+                  Cost:=DetLTotalND(Idr,BOn,BOff,BOn,InvR.DiscSetl)*LineCnst(Payment)
+                else
+                  Cost:=CostPrice;
+
+                Qty:=TmpQ;
+                QtyMul:=TmpQM;
+
+
+              end;
+
+            end;
+
+
+            JDDT:=InvR.InvDocHed;
+
+
+
+            ActCCode:=IdR.CustCode;
+
+            UpLift:=0;
+
+            If (JDDT=TSH) then
+              EmplCode:=InvR.BatchLink;
+                                         {*Refresh Job Misc if uplift already there as we will need the record loaded*}
+            If (AnalCode<>IdR.AnalCode)  or (UpliftTotal<>0.0) or (Idr.IdDocHed In JAPJAPSplit) then {* JA_X Replace with dedicated Analcode *}
+            Begin
+              If (Idr.IdDocHed In JAPJAPSplit) then
+              Begin
+                If (IdR.IdDocHed=JPA) then
+                  JAType:=SysAppPur
+                else
+                  JAType:=SysAppSal;
+              end
+              else
+              Begin
+
+                AnalCode:=IdR.AnalCode;  {* JA_X Replace with dedicated Analcode *}
+
+                If (LJobMisc^.JobAnalRec.JAnalCode<>IdR.AnalCode) then
+                  LOk:=LGetJobMisc(AnalCode,2)
+                else
+                  LOk:=BOn;
+
+                If (LOk) then
+                  JAType:=LJobMisc^.JobAnalRec.AnalHed;
+              end;
+            end;
+
+
+
+
+            {$B-}
+
+            If (Not (JDDT In SalesSplit+QuotesSet+PSOPSet+ JAPSPlit )) and
+               (LGet_BudgMUp(JobCode,AnalCode,StockCode,ActCurr,UpLift,CostUp,1)) then {* Recharge set *}
+
+            Begin
+
+
+            {$B+}
+
+              ConvChargeCurr:=ActCurr;
+
+              If (LJobRec^.JobCode<>JobCode) then
+                LGetMainRec(JobF,JobCode);
+
+              Case LJobRec^.ChargeType of
+
+                CPChargeType  :  Charge:=Round_Up(Round_Up(Cost+(Cost*Pcnt(UpLift)),2)*Qty,2);
+
+                TMChargeType  :  Begin
+                                   If (JDDT=TSH) then
+                                   Begin
+                                     Charge:=Round_up(Round_Up(IdR.CostPrice,Syss.NoNetDec)*Round_Up(Qty,Syss.NoQtyDec),2);
+
+                                     ConvChargeCurr:=IdR.Reconcile;
+                                 end
+
+
+
+                                   {.$IFNDEF JC}
+
+                                     else
+                                     Begin
+
+                                       {$IFDEF STK}
+
+                                         {$IFDEF PF_On}
+
+                                           If (Is_FullStkCode(StockCode)) then
+                                           Begin
+
+                                             If (StockCode<>Stock.StockCode) then
+                                               LGetMainRec(StockF,StockCode);
+
+                                             If (LJobRec^.CustCode<>Cust.CustCode) then
+                                               LGetMainRec(CustF,LJobRec^.CustCode);
+
+                                             FoundOk:=BOn;
+
+                                             {$IFDEF Rp}
+
+                                               New(ShareRep,Create(Self.fMyOwner));
+
+                                               try
+                                                 ShareRep^.MTExLocal:=Self.MTExLocal;
+
+                                                 ShareRep^.Calc_StockPrice(LStock,LCust,ActCurr,Calc_IdQty(Qty,Idr.QtyMul,Not LStock.DPackQty),InvR.TransDate,QPrice,QDisc,CHDisc,IdR.MLocStk,FoundOk);
+                                               finally
+
+                                                 Dispose(ShareRep,Destroy);
+
+                                               end; {try..}
+                                             {$ENDIF}
+
+                                             Charge:=Round_Up(Round_Up(QPrice-Calc_PAmount(QPrice,QDisc,CHDisc),Syss.NoNetDec)*Round_Up(Calc_IdQty(Qty,Idr.QtyMul,Not LStock.DPackQty),Syss.NoQtyDec),2);
+
+                                           end;
+
+                                         {$ENDIF}
+                                       {$ENDIF}
+
+                                     end;
+
+                                   {.$ELSE}
+
+                                    ;
+
+                                   {.$ENDIF}
+                                 end;
+
+              end; {Case.}
+
+
+              If (JDDT=TSH) then
+                CurrCharge:=IdR.Reconcile
+              else
+                CurrCharge:=LJobRec^.CurrPrice;
+
+
+              {$IFDEF CU}
+                If (LHaveHookEvent(5000,60,cuTBo)) then {We should apply extra rules}
+                With LJobMisc^.JobAnalRec do
+                Begin
+                  Case JLinkLT of
+                    1  :  Begin
+                            Charge:=Round_Up(Cost*Qty,2);
+                          end;
+
+                  end; {Case..}
+                end;
+
+              {$ENDIF}
+
+              {* Calculate charge in charge currency v4.32.002 *}
+              {* v5.52. Do not use Actcurr if coming directly from a cost plus timesheet as this would already be in charge currency *}
+
+              Charge:=Currency_ConvFT(Charge,ConvChargeCurr,CurrCharge,UseCoDayRate);
+
+            end;
+
+
+            If (CostUp=0.0) and (Not (IdR.IdDocHed In JAPSplit))  then {* If budget uplift not set, use analysis records *}
+            Begin
+              If (LJobMisc^.JobAnalRec.JAnalCode<>IdR.AnalCode) then
+                LOk:=LGetJobMisc(AnalCode,2)
+              else
+                LOk:=BOn;
+
+              If (LOk) then
+                CostUp:=LJobMisc^.JobAnalRec.UpliftP;
+
+            end;
+
+            If (CostUp<>0.0) and (Cost<>0.0) then {* Inflate Cost by uplift amount *}
+            Begin
+              UpliftTotal:=Round_Up(Cost*CostUp,Syss.NoCosDec);
+
+              Cost:=Round_Up(Cost+UpliftTotal,Syss.NoCosDec);
+
+              UpliftGL:=LJobMisc^.JobAnalRec.UpliftGL;
+            end;
+
+
+            LedgerCode:=FullJDLedgerKey(JobCode,Posted,Invoiced,ActCurr,JDate);
+
+            {* Only show these once posted, otherwise drill down shows them all *}
+
+            RunKey:=FullJDRunKey(JobCode,PostedRun,JDate);
+
+            LookKey:=FullJDLookKey(LineFolio,LineNo);
+
+            If (JDDT=TSH) then
+              EmplKey:=FullJDEmplKey(JobCode,EmplCode,ReconTS);
+
+            If ((Qty=0) and (IdR.IdDocHed In PSOPSet+QuotesSet)) or
+               ((Cost=0) and (IdR.IdDocHed In JAPSplit)) or
+
+             ((Qty=0) and (Cost=0)) or ((IdR.LineNo=RecieptCode) and (IdR.IdDocHed In PurchSet)) then {* Remove actual record *}
+            Begin
+
+              If (Not NewRec) then
+                LStatus:=LDelete_Rec(Fnum,Keypath)
+              else
+                LStatus:=0;
+
+            end
+            else
+            Begin
+              If (NewRec) then
+                LStatus:=LAdd_Rec(Fnum,KeyPath)
+              else
+              Begin
+                LStatus:=LPut_Rec(Fnum,KeyPath);
+
+                LStatus:=LUnLockMLock(Fnum);
+              end;
+
+            end;
+
+            LReport_BError(Fnum,LStatus);
+
+
+          end; {If Found and Locked}
+
+        end {If Ok, or new}
+        else
+          LReport_BError(Fnum,LStatus);
+      end
+      else
+        If (Not NewRec) then {* It used to have a job code, now been deleted *}
+        Begin
+
+          LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyChk,KeyPath,Fnum,BOn,Locked);
+
+          If (LOk) and (Locked) then
+            LStatus:=LDelete_Rec(Fnum,Keypath)
+
+        end;
+
+
+      LStatus:=OStat;
+
+      LCust:=OldCust;
+    end; {with..}
+  end;
+
+
+  { ====== Proc to Generate Job Actual Record ======== }
+
+
+  Procedure TPostJob.LDelete_JobAct(Idr    :  IDetail);
+
+  Const
+    Fnum      =  JDetlF;
+    Keypath   =  JDLookK;
+
+
+  Var
+    KeyChk  :  Str255;
+
+    LOk,
+    Locked  :  Boolean;
+
+
+  Begin
+
+    LOk:=BOff;
+    Locked:=BOff;
+
+    With IdR do
+      KeyChk:=PArtCCKey(JBRCode,JBECode)+FullJDLookKey(FolioRef,ABSLineNo);  {* JA_X Replace with dedicated job code *}
+
+    With MTExLocal^ do
+    Begin
+
+      LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyChk);
+
+      If (LStatusOk) then
+      Begin
+
+
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyChk,KeyPath,Fnum,BOn,Locked);
+
+        If (LOk) and (Locked) then
+        Begin
+
+
+          LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+
+
+        end; {If Found and Locked}
+
+      end; {If Ok, or new}
+    end; {With..}
+  end;
+
+
+
+  { ======== Create De_fault Nominal Txfr Lines  ======== }
+
+
+Procedure TPostJob.LCreate_JNomTxfrLines(Var   Idr  :  IDetail;
+                                         Const LCr  :  Byte;
+                                         Const ADIR :  Boolean);
+
+
+
+Begin
+  With MTExLocal^ do
+  Begin
+
+    LResetRec(IDetailF);
+
+    With Idr do
+    Begin
+
+      FolioRef:=LInv.FolioNum;
+
+      DocPRef:=LInv.OurRef;
+
+      If (ADIR) then {* Set first part to normal part *}
+      Begin
+        LineNo:=LInv.ILineCount;
+
+        Inc(LInv.ILineCount);
+
+        VATCode:=VATZCode;
+
+        Currency:=LInv.Currency;
+
+        CXRate:=LInv.CXRate;
+        CurrTriR:=LInv.CurrTriR;
+
+      end
+      else
+      Begin
+        LineNo:=RecieptCode;
+
+        Currency:=LCr;
+
+        CXrate:=SyssCurr^.Currencies[Currency].CRates;
+        SetTriRec(Currency,UseORate,CurrTriR);
+
+      end;
+
+
+      ABSLineNo:=LInv.ILineCount;
+
+      Qty:=1;
+      QtyMul:=1;
+
+      PriceMulX:=1.0;
+
+      PYr:=LInv.ACYr;
+      PPr:=LInv.AcPr;
+
+      IDDocHed:=LInv.InvDocHed;
+
+      If (LineNo=RecieptCode) then
+      Begin
+        Payment:=SetRPayment(IdDocHed);
+
+        If (Syss.AutoClearPay) then
+          Reconcile:=ReconC;
+      end
+      else
+        Payment:=DocPayType[IdDocHed];
+
+
+
+      CustCode:=LInv.CustCode;
+
+      PDate:=LInv.TransDate;
+    end; {With..}
+  end;{With..}
+end; {Proc..}
+
+
+
+  { ========================= Store Valuation Lines  ===================== }
+
+  Procedure TPostJob.LAdd_SelfBillLine(BSNCode:  LongInt;
+                                       STKValue
+                                              :  Real;
+                                       JCode,
+                                       ACode,
+                                       ECode,
+                                       OCode  :  Str10;
+                                       EName  :  Str30;
+                                       TSDate :  LongDate;
+                                       TSDesc :  Str255;
+                                       AQty   :  Real;
+                                       AsDIR,
+                                       NewEmpl:  Boolean;
+                                       ACr,
+                                       AMode  :  Byte;
+                                       ACCDep :  CCDepType;
+                                       RevRate:  CurrTypes;
+                                  Var  Abort  :  Boolean);
+
+  Const
+    Fnum    =  IDetailF;
+    Keypath =  IdRunK;
+
+
+  Var
+    DescLoop,
+    FoundOk:  Boolean;
+
+    KeyChk,
+    KeyS   :  Str255;
+
+    TNCode :  LongInt;
+
+
+  Begin
+    With MTExLocal^ do
+    Begin
+
+      FoundOk:=BOff;
+
+      TNCode:=BSNCode;
+
+
+      LCreate_JNomTxfrLines(LId,ACr,BOn);
+
+      DescLoop:=(LId.LineNo=1);
+
+      If (NewEmpl) then {Prime top line with employee details}
+      With LId do
+      Begin
+        Repeat
+          Qty:=0;
+
+          If (DescLoop) then {Else leave a gap of one line}
+            Desc:=Copy(OCode+'. '+POutDate(TSDate)+': '+Strip('R',[#32],ECode)+'. '+Trim(EName),1,50);
+
+          LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+          Inc(LInv.ILineCount);
+
+          LReport_BError(Fnum,LStatus);
+
+
+          Abort:=Not LStatusOk;
+
+          LCreate_JNomTxfrLines(LId,ACr,BOn);
+
+          DescLoop:=Not DescLoop;
+
+        Until (Abort) or (Not DescLoop);
+
+      end;
+
+
+      If (Not Abort) then
+      With LId do
+      Begin
+        NomCode:=TNCode;
+
+        Desc:=Copy(TSDesc,1,50);
+
+        PostedRun:=LInv.RunNo;
+
+        NetValue:=StkValue;
+
+        JobCode:=JCode;
+        AnalCode:=ACode;
+
+        CCDep:=ACCDep;
+
+        VATCode:=LCust.VATCode;
+        VATIncFlg:=LCust.CVATIncFlg;
+
+        Qty:=AQty;
+
+        LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+        {$IFDEF CU}
+          If (AMode In [0]) then
+          Begin
+            LCtrlStr:=OCode;
+
+            LBuildHookEvent(5000,100,MTExLocal^);
+
+          end;
+        {$ENDIF}
+
+
+        LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+        Inc(LInv.ILineCount);
+
+      end; {With..}
+
+      LReport_BError(Fnum,LStatus);
+
+
+      Abort:=Not LStatusOk;
+
+
+    end; {With..}
+  end; {Proc..}
+
+
+{ ========================= Store Valuation Lines  ===================== }
+
+Procedure TPostJob.LAdd_StockValue(BSNCode,
+                                   PLNCode:  LongInt;
+                                   STKValue
+                                          :  Real;
+                                   JCode,
+                                   ACode,
+                                   ECode,
+                                   OCode  :  Str10;
+                                   AsDIR  :  Boolean;
+                                   ACr,
+                                   AMode  :  Byte;
+                                   ACCDep :  CCDepType;
+                                   RevRate:  CurrTypes;
+                              Var  Abort  :  Boolean);
+Const
+  Fnum    =  IDetailF;
+  Keypath =  IdRunK;
+
+
+Var
+  FoundOk,
+  Done   :  Boolean;
+
+  KeyChk,
+  KeyS   :  Str255;
+
+  TNCode :  LongInt;
+
+
+Begin
+  With MTExLocal^ do
+  Begin
+
+    Done:=BOn;
+
+    FoundOk:=BOff;
+
+    TNCode:=BSNCode;
+
+    Repeat
+      FoundOk:=BOff;
+
+      KeyChk:=Strip('R',[#0],FullRunNoKey(StkValVRunNo,TNCode));
+
+      KeyS:=FullRunNoKey(StkValVRunNo,TNCode);
+
+      LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyS);
+
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not FoundOk) and (Not Syss.SepRunPost)  do
+      With LId do
+      Begin
+        FoundOk:=((AsDir) or (Currency=ACr));
+
+        If (FoundOk) then
+          FoundOk:=CCDepMatch(BOn,ACCDep);
+
+        {$IFDEF MC_On}
+          If (UseCoDayRate) and (AMode In [1,3]) and (Not AsDir) and (FoundOk) then {* If Daily rate use original line rate to convert}
+            FoundOk:=(CXRate[UseCoDayRate]=RevRate[UseCoDayRate]);
+
+        {$ENDIF}
+
+        If (Not FoundOk) then
+          LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+      end;
+
+
+      If (FoundOk) then
+      Begin
+
+        LId.NetValue:=LId.NetValue+StkValue;
+
+
+        LStatus:=LPut_Rec(Fnum,KeyPath);
+
+      end
+      else
+      Begin
+
+        LCreate_JNomTxfrLines(LId,ACr,(ASDir and Done));
+
+        With LId do
+        Begin
+
+          NomCode:=TNCode;
+
+          If (Syss.SepRunPost) then
+          Begin
+            Case AMode of
+              3  :  Desc:=Trim(JCode)+'. Uplift Reversal.';
+
+              else  Desc:=Trim(JCode)+'.'+Copy(OCode+': '+Strip('R',[#32],ECode)+'. '+LInv.TransDesc,1,50);
+            end; {Case..}
+          end
+          else
+          Begin
+            Case AMode of
+              3  :  Desc:=Trim(JCode)+'. Uplift Reversal.';
+              else  Desc:=Trim(JCode)+'.'+LInv.TransDesc;
+            end; {Case..}
+          end;
+
+          {$IFDEF MC_On}
+
+            If (Not AsDir) then {* Show which currency is being reversed out *}
+            Begin
+              Desc:=PSymb(Currency)+' '+Desc;
+
+              If (UseCoDayRate) and (AMode In [1,3]) then {* If Daily rate use original line rate to convert}
+              Begin
+                CXRate:=RevRate;
+
+                If (LInv.FolioNum=FolioRef) then
+                  CurrTriR:=LInv.CurrTriR;
+
+              end;
+            end;
+
+          {$ENDIF}
+
+
+          Case AMode of
+            0  :  PostedRun:=TSTTempRunNo;
+            1,3
+               :  PostedRun:=CloseJobRunNo;
+            else  PostedRun:=StkValVRunNo;
+          end; {Case..}
+
+          NetValue:=StkValue;
+
+          If (AMode<>2) and (Not Done) then
+          Begin
+
+            JobCode:=JCode;
+            AnalCode:=ACode;
+
+          end;
+
+          CCDep:=ACCDep;
+
+          {$IFDEF CU}
+            If (AMode In [0,1,3]) then
+            Begin
+              LCtrlStr:=OCode;
+              LBuildHookEvent(5000,100+AMode,MTExLocal^);
+
+            end;
+          {$ENDIF}
+
+          LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+          Inc(LInv.ILineCount);
+
+        end; {With..}
+
+      end; {If Add needed}
+
+
+      LReport_BError(Fnum,LStatus);
+
+
+      Abort:=Not LStatusOk;
+
+      {* Generate a reversing actual to cancel out the value of WIP *}
+
+      If (AMode<>2) and (Not Done) and (Not Abort) then
+        LUpdate_JobAct(LId,LInv);
+
+      Done:=Not Done;
+
+      TNCode:=PLNCode;
+
+      If (Not AsDir) then
+        StkValue:=StkValue*DocNotCnst;
+
+    Until (Done) or (Abort);
+  end; {With..}
+end;
+
+// CJS 2012-02-29 - ABSEXCH-12425 - Removed extraneous code for clarity
+Procedure TPostJob.LAdd_SplitDiscountStockValue(BSNCode,
+                                      PLNCode:  LongInt;
+                                      StkValue, StkNetValue, StkDiscount: Real;
+                                      JCode,
+                                      ACode,
+                                      ECode,
+                                      OCode  :  Str10;
+                                      ACr,
+                                      AMode  :  Byte;
+                                      ACCDep :  CCDepType;
+                                      RevRate:  CurrTypes;
+                                      Staged :  Boolean;
+                                 Var  Abort  :  Boolean);
+
+Const
+  Fnum    =  IDetailF;
+  Keypath =  IdRunK;
+Var
+  FoundOk: Boolean;
+  KeyChk : Str255;
+  KeyS   : Str255;
+  TNCode : LongInt;
+  Pass   : Byte;
+begin
+  With MTExLocal^ do
+  Begin
+    { The 'repeat' loop below is traversed either once or twice (based on the
+      mode). Set a counter to indicate which pass we are on. We are not using
+      a For loop because the counter value might be modified inside the loop. }
+    Pass    := 1;
+    FoundOk := BOff;
+    TNCode  := BSNCode;
+    repeat
+      if (AMode = M_WIP_DISCOUNT) and (Pass = 1) then
+      begin
+        { Calculate the actual discount amount, and use it instead of the
+          supplied stock value. }
+        StkValue := (StkNetValue * StkDiscount) * DocNotCnst;
+        { Skip to the second pass. For Discounts, only a single line is
+          created. }
+        Pass := 2;
+      end
+      else
+      begin
+        { Find the Stock Valuation Run transaction line for the supplied G/L
+          code. This looks for a temporary Run Number which only exists while
+          Adjustments are being posted, so it should never be found under other
+          circumstances. }
+        FoundOk := BOff;
+        KeyChk  := Strip('R', [#0], FullRunNoKey(StkValVRunNo, TNCode));
+        KeyS    := FullRunNoKey(StkValVRunNo, TNCode);
+        LStatus := LFind_Rec(B_GetEq, Fnum, KeyPath, KeyS);
+        { Keep searching until we either run out of transaction lines, or we
+          find a Stock Valuation Run line. }
+        While LStatusOk and CheckKey(KeyChk, KeyS, Length(KeyChk), BOn) and
+              (not FoundOk) and (not Syss.SepRunPost) do
+        With LId do
+        Begin
+          { Only consider lines in the requested currency. }
+          FoundOk := (Currency = ACr);
+          { If Cost Centres/Departments are in use, only consider lines which
+            match with the requested Cost Centre/Department. }
+          If (FoundOk) then
+            FoundOk := CCDepMatch(BOn, ACCDep);
+          {$IFDEF MC_On}
+          { If Daily Rate is in use, read the original line rate to get the
+            exchange rate values, and check that they match with the requested
+            rates. }
+          If (UseCoDayRate) and (AMode = M_WIP) and (FoundOk) then
+            FoundOk := (CXRate[UseCoDayRate] = RevRate[UseCoDayRate]);
+          {$ENDIF}
+          If (Not FoundOk) then
+            LStatus := LFind_Rec(B_GetNext, Fnum, KeyPath, KeyS);
+        end;
+        { If we found a Stock Valuation Run line... }
+        If (FoundOk) then
+        Begin
+          { ...update the NetValue. }
+          LId.NetValue := LId.NetValue + StkValue;
+          LStatus := LPut_Rec(Fnum, KeyPath);
+        end
+        else
+        Begin
+          { There is no Stock Valuation Run line. Create one. }
+          LCreate_JNomTxfrLines(LId, ACr, False);
+          With LId do
+          Begin
+            { Use the supplied nominal code. }
+            NomCode := TNCode;
+            { Build an appropriate description for the line. }
+            If (Syss.SepRunPost) then
+            Begin
+              if AMode = M_WIP_DISCOUNT then
+                Desc := 'Disc.Value ' + '.' + Copy(OCode + ': ' + Strip('R', [#32], ECode) + '. ' + LInv.TransDesc, 1, 50)
+              else
+                Desc := Trim(JCode) + '.' + Copy(OCode + ': ' + Strip('R', [#32], ECode) + '. ' + LInv.TransDesc, 1, 50);
+            end
+            else
+            Begin
+              if AMode = M_WIP_DISCOUNT then
+                Desc := 'Disc.Value ' + Trim(JCode) + '.' + LInv.TransDesc
+              else
+                Desc := Trim(JCode) + '.' + LInv.TransDesc;
+            end;
+
+            {$IFDEF MC_On}
+            Desc := PSymb(Currency) + ' ' + Desc;
+            { If Daily rate is in use, assign the supplied exchange rates. }
+            If (UseCoDayRate) then
+            Begin
+              CXRate := RevRate;
+              If (LInv.FolioNum = FolioRef) then
+                CurrTriR := LInv.CurrTriR;
+            end;
+            {$ENDIF}
+
+            { Mark this line as a 'Close Job Run' line }
+            PostedRun := CloseJobRunNo;
+
+            if (AMode = M_WIP) and (Pass = 1) then
+            begin
+              { For normal Work-in-Progress, create a line against the net
+                value. }
+              NetValue := StkNetValue
+            end
+            else
+              { For Discount lines, the Net value will be the same as the
+                value (the sign will be flipped -- this happens towards the
+                end of the loop below). }
+              NetValue := StkValue;
+
+            If (Pass = 2) then
+            Begin
+              JobCode  := JCode;
+              AnalCode := ACode;
+            end;
+
+            CCDep := ACCDep;
+
+            {$IFDEF CU}
+            If (AMode = M_WIP) then
+            Begin
+              LCtrlStr := OCode;
+              LBuildHookEvent(5000, 100 + AMode, MTExLocal^);
+            end;
+            {$ENDIF}
+
+            LStatus := LAdd_Rec(Fnum, KeyPath);
+
+            Inc(LInv.ILineCount);
+
+          end; {With..}
+
+        end; {If Add needed}
+
+        LReport_BError(Fnum, LStatus);
+        Abort := not LStatusOk;
+
+        { Generate a reversing actual to cancel out the value of WIP }
+        If (Pass = 2) and (Not Abort) then
+          LUpdate_JobAct(LId,LInv);
+
+        { On the next pass (if any), use the Profit & Loss nominal code and
+          reverse the value. }
+        TNCode := PLNCode;
+        StkValue := StkValue * DocNotCnst;
+        StkNetValue := StkNetValue * DocNotCnst;
+
+        Pass := Pass + 1;
+      end;
+
+    until (Pass > 2) or (Abort);
+  end; {With..}
+end;
+
+Procedure TPostJob.LGen_InvHed(CCode  :  Str30;
+                               RNo    :  LongInt;
+                               TDate,
+                               DDate  :  Str8;
+                               RCr    :  Byte;
+                               JCode,
+                               ACode,
+                               RDoc   :  Str10;
+                           Var Ignore :  Boolean;
+                               Mode   :  Byte);
+
+
+
+
+  Const
+    Fnum     =  InvF;
+    Keypath  =  InvOurRefK;
+
+
+
+
+  Var
+    KeyC  :  Str255;
+    LOk   :  Boolean;
+
+
+  Begin
+
+    With MTExLocal^ do
+    Begin
+      {$IFDEF Inv}
+
+        Ignore:=BOff;
+
+        If (Mode In [0..4]) then
+        Begin
+          LOk:=LGetMainRec(CustF,CCode);
+
+          If (Mode=3) then
+            RCr:=LCust.Currency;
+        end;
+
+        If (Mode<>0) or (LOk) then
+        With LInv do
+        Begin
+
+          LResetRec(Fnum);
+
+          NomAuto:=BOn;
+
+          TransDate:=TDate;
+
+          AcPr:=GetLocalPr(0).CPr; AcYr:=GetLocalPr(0).CYr;
+
+          If (Syss.AutoPrCalc) then
+            LDate2Pr(TransDate,AcPr,AcYr,MTExLocal);
+
+          If (Not (Mode In [0,4])) then
+            DueDate:=CalcDueDate(TransDate,LCust.PayTerms)
+          else
+            DueDate:=DDate;
+
+          ILineCount:=1;
+
+          NLineCount:=1;
+
+          RunNo:=RNo;
+
+          // MH 23/02/2015 v7.0.13 ABSEXCH-15298: Settlement Discount withdrawn from 01/04/2015
+          If (Mode In [1,3]) And TransactionHelper(@LInv).SettlementDiscountSupported then
+          Begin
+            DiscSetl:=Pcnt(LCust.DefSetDisc);
+            DiscDays:=LCust.DefSetDDays;
+          end;
+
+          {$IFDEF SOP}
+            DelTerms:=LCust.SSDDelTerms;
+            TransMode:=LCust.SSDModeTr;
+
+          {$ENDIF}
+
+
+
+        {$IFDEF MC_On}
+
+          Currency:=RCr;
+
+          CXrate[BOn]:=SyssCurr^.Currencies[Currency].CRates[BOn];
+
+        {$ELSE}
+
+          Currency:=0;
+
+          CXrate:=SyssCurr^.Currencies[Currency].CRates;
+
+
+        {$ENDIF}
+
+
+          VATCRate:=SyssCurr^.Currencies[Syss.VATCurr].CRates;
+
+          OrigRates:=SyssCurr^.Currencies[Currency].CRates;
+
+          SetTriRec(Currency,UseORate,CurrTriR);
+          SetTriRec(Syss.VATCurr,UseORate,VATTriR);
+          SetTriRec(Currency,UseORate,OrigTriR);
+
+
+          OpName:=EntryRec^.LogIn;
+
+          { CJS - 2013-10-25 - MRD2.6.02 - Transaction Originator }
+          TransactionOriginator.SetOriginator(LInv);
+
+          Case Mode of
+            0..4
+               :  Begin
+
+                    CustCode:=LCust.CustCode;
+
+                    CustSupp:=LCust.CustSupp;
+
+                    CtrlNom:=LCust.DefCtrlNom;
+
+                    Case Mode of
+
+                      0  :  If (CustSupp=TradeCode[BOn]) then
+                              InvDocHed:=SCR
+                            else
+                              InvDocHeD:=PCR;
+
+                      1  :  InvDocHed:=SIN;
+
+                      2  :  InvDocHed:=PPI;
+
+                      3  :  Begin
+                              InvDocHed:=PJI;
+                              RunNo:=JCSelfBillRunNo;
+
+                            end;
+
+                      4  :  If (CustSupp=TradeCode[BOn]) then
+                              InvDocHed:=SIN
+                            else
+                              InvDocHeD:=PIN;
+
+
+                    end; {Case..}
+
+
+                    YourRef:=RDoc;
+
+                    If (InvDocHed In PSOPSet) then {* Set a separator in ledger *}
+                      CustSupp:=Chr(Succ(Ord(CustSupp)));
+
+
+                    TransNat:=SetTransNat(InvDocHed);
+
+                    TransMode:=1;
+
+                    DJobCode:=JCode;
+                    DJobAnal:=ACode;
+
+
+                  end;
+
+
+          end; {Case..}
+
+          LSetNextDocNos(LInv,BOn);
+
+        end
+        else
+        Begin
+
+          Ignore:=BOn;
+
+        end;
+
+      {$ENDIF}
+    end; {With..}
+  end; {Proc..}
+
+
+
+  
+{ ============ Store Header ============ }
+
+Procedure TPostJob.LStore_InvHed(Mode        :  Byte;
+                                 RKeypath    :  Integer;
+                           Const TTEnabled   :  Boolean);
+
+Const
+
+  Fnum     =  InvF;
+
+  Keypath  =  InvOurRefK;
+
+
+Var
+  LRunNo,
+  RecAddr   :  LongInt;
+
+  OInv      :  InvRec;  
+Begin
+
+  Blank(OInv,Sizeof(OInv));
+
+  LRunNo:=0;
+
+  With MTExLocal^ do
+  Begin
+    LCalcInvTotals(LInv,MTExLocal,BOn,BOn); {* Calculate Invoice Total *}
+
+    If (Mode In [0,10]) then
+    With LInv do
+    Begin
+
+      If (Mode=0) then
+      Begin
+        Settled:=BaseTotalOS(LInv);
+
+
+        {$IFDEF MC_On}
+
+          CurrSettled:=CurrencyOS(LInv,BOn,BOff,BOff);
+
+        {$ELSE}
+
+          CurrSettled:=Settled;
+
+        {$ENDIF}
+      end;
+
+      If (InvDocHed In DirectSet) then
+      Begin
+
+        TotalInvoiced:=InvNetVal;
+
+      end;
+
+    end;
+
+    LRunNo:=LInv.RunNo;
+
+    LInv.RunNo:=0; {Reset run no so allocation gets set}
+
+    Set_DocAlcStat(LInv);
+
+    LInv.RunNo:=LRunNo;
+
+    If (VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) and (Mode In [0,10]) then  {* Cash Accounting set VATdate to Current
+                                                                                              With Inv do VATPeriod *}
+    With LInv do
+    Begin
+
+      // VATPostDate:=SyssVAT^.VATRates.CurrPeriod;
+
+        VATPostDate:=CalcVATDate(TransDate);  {v5.71. CA Allows jump to future period, set from period of self date}
+      
+      UntilDate:=Today;
+
+    end;
+
+
+    If (RKeypath>=0) then
+    begin
+      LStatus:=LPut_Rec(Fnum,RKeyPath);
+      //GS 03/11/2011 added audit notes to transactions created by the job invoice wizard
+      if LStatus = 0 then
+      begin
+        TAuditNote.WriteAuditNote(anTransaction, anEdit, TdMTExLocalPtr(MTExLocal)^);
+      end;
+    end
+    else
+    begin
+      LStatus:=LAdd_Rec(Fnum,KeyPath);
+      //GS 03/11/2011 added audit notes to transactions created by the job invoice wizard
+      if LStatus = 0 then
+      begin
+        TAuditNote.WriteAuditNote(anTransaction, anCreate, TdMTExLocalPtr(MTExLocal)^);
+      end;
+    end;
+
+    LReport_BError(Fnum,LStatus);
+
+    If (Not AbortTran) and (TTEnabled) then
+      AbortTran:=(Not LStatusOk);
+
+    If (LStatusOk) and (Not Syss.UpBalOnPost) and (Not AbortTran) then
+    With LInv do
+      LUpdateBal(LInv,BaseTotalOS(LInv),
+                 (ConvCurrICost(LINV,BOff,BOn)*DocCnst[InvDocHed]*DocNotCnst),
+                 (ConvCurrINet(LINV,BOff,BOn)*DocCnst[InvDocHed]*DocNotCnst),
+                 BOff,2);
+
+  end; {With..}
+end; {Proc..}
+
+
+
+
+{ ============ Generate Retention Transaction =========== }
+
+Procedure TPostJob.Gen_RetSCR(Var CrDocNo  :  Str10);
+
+
+Const
+  Fnum     =  IdetailF;
+  Keypath  =  IdFolioK;
+
+  //SS:06/12/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT
+  // Extract NetValue and Materials to calculate the CIS tax.
+  function GetTransactionOwnerNetValue(aLineORef : string; var aMaterials : Double) : Double;
+  var
+    lStatus : Smallint;
+    KeyS : Str255;
+    ExLocal : TdExLocal;
+
+    lMaterials,
+    lTaxable,
+    lTaxValue  :   Double;
+  begin
+    Result := 0; // Default return value.
+
+    // Lookup the transaction
+    ExLocal.Create;
+    try
+      KeyS := aLineORef;
+      lStatus := Find_Rec(B_GetEq, F[InvF], InvF, ExLocal.LRecPtr[InvF]^, InvOurRefK, KeyS);
+      if (lStatus = 0) then
+      begin
+        // Get the User Name (OpName) field
+        Result := Exlocal.LInv.InvNetVal;
+        CalculateCISTax(Exlocal.linv,lMaterials,lTaxable,lTaxValue,True);
+        aMaterials := lMaterials;
+      end;
+    finally
+      FreeAndNil(ExLocal);
+    end;
+  end;
+
+
+
+Var
+  LOk,
+  StoreCISLine,
+  Locked,
+  TTEnabled,
+  Ignore,CalcTax  :  Boolean;
+
+  CopyReten
+          :  JobRetType;
+
+  IStoreMode,
+  Loop    :  Byte;
+
+  GenStr  :  Str255;
+  DocNow,
+  DocThen :  Real;
+
+  TmpInv  :  InvRec;
+  lCopyInv :  InvRec;
+  lCISRate,lRetCISTax : Double;
+
+  lMaterials,
+  lTaxable,
+  lJPANetValue  :   Double;
+  lCISRateType: CISTaxType;
+  CISRateCodeToUse: Char;
+
+  {$IFDEF Inv}
+
+
+  Begin
+    lMaterials:=0.0; lTaxable:=0.0; lJPANetValue := 0.0;
+    //SS:11/12/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT.
+    //Set default value for lCISRateType "Construct" because before ABSEXCH-19443 implementation "Construct" rate type is used for all cases.
+    lCISRateType := Construct;
+
+    Ignore:=BOff;
+
+    Loop:=0;   StoreCISLine:=BOff;
+
+    TTEnabled:=BOff;
+
+    CopyReten:=MTExLocal^.LJobDetl^.JobReten;
+
+
+    //SS:06/12/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT
+    //Calculate Taxable amount by excluding Materials.
+    lTaxable := CopyReten.RetValue;
+    if CopyReten.RetAppMode = 1 then
+    begin
+      lJPANetValue  :=  GetTransactionOwnerNetValue(MTExLocal.linv.YourRef,lMaterials);
+
+      if lJPANetValue  <> 0 then
+        lTaxable :=  (CopyReten.RetValue*(lJPANetValue - lMaterials))/lJPANetValue;    
+    end;
+
+    With MTExLocal^,CopyReten do
+    Begin    
+
+      IStoreMode:=(10*Ord(RetAppMode=1))+(2*Ord(RetAppMode=2));
+
+      If (TranOk2Run) then
+      Begin
+        LStatus:=LCtrl_BTrans(1);
+
+        TTEnabled:=LStatusOk;
+
+        {* Wait until All clear b4 continuing *}
+        If (TTEnabled) then
+          WaitForHistLock;
+
+      end;
+
+      LGen_InvHed(RetCustCode,
+                 0,
+                 OrigDate,RetDate,
+                 RetCurr,
+                 JobCode,AnalCode,
+                 RetDoc,
+                 Ignore,0+(4*Ord(RetAppMode=1)));
+
+      If (Not Ignore) then
+      Begin
+        
+        //SS:11/12/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT.
+        //Fetch employee record to get CIS Rate Code.
+        if (RetAppMode=1)  and  (LInv.CISEmpl = '') then
+        begin
+          LInv.CISEmpl := LCheck_CISEmployee(LInv.CustCode ,CalcTax);
+
+          // Is the Employee CIS-Taxable?
+          CalcTax := (LJobMisc^.EmplRec.CISType In [1, 4]);
+        end;
+
+        if (LInv.CISEmpl <> '') then
+        begin
+          // Locate the employee record...
+          with LGet_SubRec(LInv.CISEmpl) do
+          begin
+            // Determine the CIS rate type for the employee (High, Low, or none)
+            case CISType of
+              1  :  CISRateCodeToUse := 'T';
+              4  :  CISRateCodeToUse := 'C';
+              else CISRateCodeToUse  := #0;
+            end; {Case..}
+          end;
+
+          lCISRateType := GetCISCType(CISRateCodeToUse);
+        end;
+
+
+
+
+        {$B-}
+        If (RetAppMode=2) or (LGetJobMisc(AnalCode,2)) then
+        {$B+}
+        With LId do
+        Begin
+
+          Repeat
+            LResetRec(Fnum);
+
+            FolioRef:=LInv.FolioNum;
+
+            DocPRef:=LInv.OurRef;
+
+            IdDocHed:=LInv.InvDocHed;
+
+            PDate:=LInv.TransDate;
+
+            CustCode:=LInv.CustCode;
+
+            LineNo:=LInv.ILineCount;
+
+            ABSLineNo:=LineNo;
+
+            Currency:=LInv.Currency;
+
+            CXRate:=LInv.CXRate;
+
+            CurrTriR:=LInv.CurrTriR;
+
+            PYr:=LInv.ACYr;
+            PPr:=LInv.AcPr;
+
+            Payment:=DocPayType[IdDocHed];
+
+            PriceMulX:=1.0;
+
+            {$IFDEF STK}
+
+              LineType:=StkLineType[IdDocHed];
+
+            {$ENDIF}
+
+            Case Loop of
+              0  :  Begin
+                      Case RetAppMode of
+                        1  :  Desc:='Retention expiry '+PoutDate(LInv.DueDate);
+                        2  :  Desc:=CCVATName^+' Deferment Retention. Expires '+PoutDate(LInv.DueDate);
+                        else  Desc:='Retention Credit. Expires '+PoutDate(LInv.DueDate);
+                      end; {Case..}
+                    end;
+
+              1  :  Begin
+
+                      Qty:=1;
+
+                      QtyMul:=1;
+
+                      Desc:='for '+RetDoc;
+
+                      VATCode:=DefVATCode;
+
+                      If (RetAppMode<>2) then
+                      Begin
+                        NetValue:=RetValue;
+                        LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+                        NomCode:=LJobMisc^.JobAnalRec.WIPNom[BOff];
+                      end
+                      else
+                      Begin
+                        VAT:=RetValue;
+                        LInv.ManVat:=BOn;
+                      end;
+
+                      {VATCode:=LCust.VATCode;}
+
+
+
+                      CCDep:=RetCCDep;
+
+                      JobCode:=LInv.DJobCode;
+                      AnalCode:=LInv.DJobAnal;
+
+
+                      If (Syss.AutoClearPay) then
+                        Reconcile:=ReconC;
+                    end;
+
+              //SS:29/11/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT.
+              // Add CIS tax line item for one off retention type.
+              2  :  If ((RetCISEmpl<>'') and (RetAppMode<>1)) or  ((RetAppMode=1) and (CalcTax)) then
+                    Begin
+                      {StoreCISLine:=BOn; Don't generate a line for a retention as otherwise, the overall value of the
+                                          retention will reduce and the amount of tax declared on the original invoice
+                                          will not equal the retention tax}
+
+                      //SS:06/12/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT
+                      Qty:=1;
+                      QtyMul:=1;
+                      Desc:= 'CIS tax withheld from '+ FloatToStr(lTaxable) +' liable for deduction. ';
+
+
+                      lCISRate := SyssCIS^.CISRates.CISRate[lCISRateType].Rate;
+                      lRetCISTax := Round_Up(lTaxable*lCISRate,2);
+
+                      NetValue:= lRetCISTax * -1;
+
+                      VATCode:=VATZCode;
+
+                      With SyssCIS^.CISRates.CISRate[Construct] do
+                      Begin
+                        NomCode:=GLCode;
+                        CCDep:=RCCDep;
+                      end;
+
+                      With LInv do
+                      Begin
+                        //SS:29/11/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT.
+                        //CISTax:=RetCISTax;
+                        //CISGross:=RetCISGross;
+
+                        CISTax:=lRetCISTax;
+                        CISGross:=lTaxable ;
+
+                        CISManualTax:=BOn;
+                        if (RetAppMode <>1) then
+                          CISHolder:=1
+                        else
+                          CISHolder:=3;
+
+                        CISEmpl:=RetCISEmpl;
+                      end;
+
+                    end
+            end; {Case..}
+
+            If (StoreCISLine) or (Loop<3) then
+            Begin
+              LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+              {Delibrately output to main screen as this will not be called from inside a thread}
+
+              Report_BError(Fnum,LStatus);
+
+              Inc(LInv.ILineCount);
+            end;
+
+            Inc(Loop);
+
+            Application.ProcessMessages;
+
+            If (Not AbortTran) and (TTEnabled) then
+              AbortTran:=(Not LStatusOk);
+
+          Until (Loop>2) or (Not LStatusOk);
+
+
+
+          If (LStatusOk) then
+          Begin
+            //SS:29/11/2017:2018-R1:ABSEXCH-19443:Issue with CIS Tax on JPA linked to JCT.
+            //Store CIS Employee Reference for One off retention.
+            if (RetAppMode=1)  and  (LInv.CISEmpl = '') then
+            begin
+              LInv.CISEmpl := LCheck_CISEmployee(LInv.CustCode ,CalcTax);
+            end;
+
+            LStore_InvHed(IStoreMode,-1,BOff);
+
+
+            CrDocNo:=LInv.OurRef;
+
+            DocThen:=LInv.Settled*DocNotCnst;
+
+            DocNow:=Currency_ConvFT(LInv.CurrSettled,RetCurr,OrgCurr,UseCoDayRate)*DocNotCnst;
+
+            GenStr:=RetDoc;
+
+            {* Generate Job Actual Record *}
+
+            LUpdate_JobAct(LId,LInv);
+
+            If (Not (RetAppMode In [1,2])) then
+            Begin
+              TmpInv:=LInv;
+
+              LOk:=LGetMultiRec(B_GetEq,B_MultLock,GenStr,InvOurRefK,InvF,BOn,Locked);
+
+              If (LOk) and (Locked) then
+              With LInv do
+              Begin
+
+                LGetRecAddr(InvF);
+
+                Settled:=Settled+DocThen;
+
+                CurrSettled:=CurrSettled+DocNow;
+
+                Set_DocAlcStat(LInv);
+
+                RemitNo:=CrDocNo;
+
+                {$IFDEF JC}
+                  Set_DocCISDate(LInv,BOff);
+                {$ENDIF}
+
+                If (VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) and (IStoreMode In [0,10]) then  {* Added v5.71 as invoice part not being factored into Cash Accounting *}
+                With LInv do
+                Begin
+
+                  VATPostDate:=CalcVATDate(TmpInv.TransDate);  {v5.71. CA Allows jump to future period, set from period of receipt allocated against}
+
+                  If (AllocStat=#0) then {* Only set date if fully allocated *}
+                    UntilDate:=Today;
+
+                end;
+
+                LStatus:=LPut_Rec(InvF,InvOurRefK);
+
+                Report_BError(InvF,LStatus);
+
+                If (Not AbortTran) and (TTEnabled) then
+                  AbortTran:=(Not LStatusOk);
+
+                LStatus:=LUnLockMLock(InvF);
+
+                {$IFDEF MC_On}
+
+                   LMatch_Payment(LInv,DocThen,DocNow,3);
+
+                {$ELSE}  {* Just in case AddNow causes problems on SC *}
+
+                   LMatch_Payment(LInv,DocThen,DocThen,3);
+
+                {$ENDIF}
+
+              end; {If Locked..}
+
+              LInv:=TmpInv;
+            end; {If Free standing}
+          end;
+        end; {If Anal found ok..}
+
+
+      end; {If Ignore ok..}
+
+
+      If (TTEnabled) and (Syss.ProtectPost) then
+      With MTExLocal^ do
+      Begin
+        UnLockHistLock;
+
+        LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+        LReport_BError(InvF,LStatus);
+      end;
+
+    end; {With..}
+
+
+  {$ELSE}
+
+    Begin
+
+  {$ENDIF}
+
+end; {Proc..}
+
+
+{ =================== Process Retentions =================== }
+
+
+{ === Procedure to Generate the reverse of a retention === }
+
+Procedure TPostJob.Copy_Inv(Const  Fnum,
+                                   Keypath  :  Integer;
+                            Const  ExDate   :  Str8);
+
+
+Begin
+
+  With MTExLocal^,LInv do
+  Begin
+
+    If (InvDocHed In SalesSplit) then
+      InvDocHed:=SIN
+    else
+      InvDocHed:=PIN;
+
+    TransDesc:=YourRef;
+    YourRef:=OurRef;
+
+    LSetNextDocNos(LInv,BOn);
+
+    TransDate:=ExDate;
+    DueDate:=TransDate;
+
+    AcPr:=GetLocalPr(0).CPr; AcYr:=GetLocalPr(0).CYr;
+
+    RunNo:=0;
+
+    Settled:=0;
+
+    CurrSettled:=0;
+
+    Blank(VATPostDate,Sizeof(VATPostDate));
+
+    If (InvDocHed In CISDocSet) then
+    Begin
+      CISDeclared:=0.0;
+
+      Blank(CISDate,Sizeof(CISDate));
+    end;
+
+  end; {With..}
+
+end; {Proc..}
+
+
+Procedure TPostJob.Copy_InvDetails(Const SFolio  :  LongInt;
+                                         Fnum,
+                                         Keypath :  Integer;
+                                   Const TTEnabled
+                                                 :  Boolean);
+
+Var
+  KeyS,
+  KeyChk  :  Str255;
+
+  TmpStat :  Integer;
+
+  TmpRecAddr
+          :  LongInt;
+
+
+Begin
+
+  With MTExlocal^ do
+  Begin
+    KeyChk:=FullNomKey(SFolio);
+
+    KeyS:=FullRunNoKey(SFolio,StkLineNo);
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+    With LId do
+    Begin
+
+      If (ThreadRec^.ThAbort) then
+        ShowStatus(3,'Aborting...');
+
+      TmpStat:=LPresrv_BTPos(Fnum,Keypath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+      FolioRef:=LInv.FolioNum;
+
+      DocPRef:=LInv.OurRef;
+
+      PostedRun:=0;
+
+      IdDocHed:=LInv.InvDocHed;
+
+      PDate:=LInv.TransDate;
+
+      If (LineNo=1) then
+        Desc:='Cancellation of Retention '+LInv.YourRef;
+
+
+      {$IFDEF STK}
+
+        LineType:=StkLineType[IdDocHed];
+
+      {$ENDIF}
+
+      PYr:=LInv.ACYr;
+
+      PPr:=LInv.AcPr;
+
+      {$IFDEF Inv}
+        If (LJobDetl^.JobReten.RetAppMode<>2) then
+          LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+      {$ENDIF}
+
+
+      Payment:=DocPayType[IdDocHed];
+
+      LStatus:=LAdd_Rec(Fnum,KeyPath);
+
+      LReport_BError(Fnum,LStatus);
+
+      If (Not AbortTran) then
+        AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+      LUpdate_JobAct(LId,LInv);
+
+      TmpStat:=LPresrv_BTPos(Fnum,Keypath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+
+      LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+  end; {With..}
+
+end; {Proc..}
+
+
+Procedure TPostJob.Expire_Ret(Const  Fnum,
+                                     Keypath  :  Integer;
+                              Var    B_Func   :  Integer;
+                              Const TTEnabled :  Boolean);
+
+
+Var
+  SFolio  :  LongInt;
+
+  LOk,
+  Locked  :  Boolean;
+
+  KeyS    :  Str255;
+
+  RForm   :  Str10;
+  RMode   :  Byte;
+
+
+
+
+Begin
+
+  With MTExLocal^ do
+  Begin
+
+    SFolio:=0;
+
+    Locked:=BOff;
+
+    B_Func:=B_GetNext;
+
+    LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyF,KeyPath,Fnum,BOn,Locked);
+
+    If (LOk) and (Locked) then
+    With LJobDetl^.JobReten do
+    Begin
+      LGetRecAddr(Fnum);
+
+      KeyS:=RetCrDoc;
+
+      LStatus:=LFind_Rec(B_GetEq,InvF,InvOurRefK,KeyS);
+
+
+      If (LStatusOk) then
+      Begin
+
+        LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+        LReport_BError(Fnum,LStatus);
+
+        If (Not AbortTran) then
+          AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+        If (LStatusOk) then
+        Begin
+
+          SFolio:=LInv.FolioNum;
+
+          If (RetAppMode<>1) then
+          Begin
+            Copy_Inv(InvF,InvOurRefK,Today);
+
+            Copy_InvDetails(SFolio,IdetailF,IdFolioK,TTEnabled);
+
+            LStore_InvHed(1,-1,TTEnabled);
+          end
+          else
+            Gen_RetSCR(RetCrDoc);
+
+          If (RetAppMode<>2) then
+          With LInv do
+          Begin
+            RMode:=EntDefPrnMode[InvDocHed];
+
+            If (LCust.CustCode<>CustCode) then {* Get Cust record for form def switch over *}
+              LGetMainRec(CustF,CustCode);
+
+
+            {$IFDEF FRM}
+
+              RForm:=pfGetMultiFrmDefs(LCust.FDefPageNo).FormDefs.PrimaryForm[RMode];
+
+              Try
+                If (Assigned(ThisFList)) then {* Add to batch list *}
+                  With ThisFList do
+                  Begin
+                    AddVisiRec(PDevRec,DEFDEFMode[InvDocHed],RForm,InvF,InvOurRefK,IdetailF,IdFolioK,
+                              OurRef,FullNomKey(FolioNum));
+                  end;
+
+              except
+                ThisFList.Free;
+                ThisFList:=nil;
+              end; {try..}
+            {$ENDIF}
+
+          end;
+
+          B_Func:=B_GetGEq;
+
+        end;
+
+      end; {If found doc ok..}
+
+    end; {If Locked Ret Rec ok..}
+  end; {With..}
+end; {Proc..}
+
+
+Procedure TPostJob.Process_Ret(Const  Fnum,
+                                      Keypath  :  Integer;
+                               Var   TTEnabled :  Boolean);
+
+
+Var
+  KeyChk,
+  KeyS    :  Str255;
+
+  P2SOn,
+  Loop,
+  FoundOk :  Boolean;
+
+  B_Func  :  Integer;
+
+
+{* == Check on settled status of invoice == *}
+
+Function RetInvSettled  :  Boolean;
+
+Var
+  KeyI  :  Str255;
+Begin
+  With MTExLocal^,LJobDetl^.JobReten do
+  Begin
+    KeyI:=RetDoc;
+
+    LStatus:=LFind_Rec(B_GetEq,InvF,InvOurRefK,KeyI);
+
+    Result:=(LStatusOk) and (BaseTotalOS(LInv)=0.0);
+  end;
+end;
+
+Begin
+
+  With MTExLocal^ do
+  Begin
+
+    Loop:=BOff;
+
+    {$IFDEF FRM}
+      ThisFList:=TPFormList.Create;
+    {$ENDIF}
+
+    Repeat
+
+      FoundOk:=BOff;
+
+      KeyChk:=PartCCKey(JBRCode,JBPCode)+TradeCode[Loop];
+      KeyS:=KeyChk;
+
+      ShowStatus(2,'Checking due Retentions.');
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not FoundOk) and (Not ThreadRec^.THAbort) do
+      With LJobDetl^.JobReten do
+      Begin
+
+        {$B-}
+          FoundOk:=((RetDate>Today) and (RetAppMode<>2)) or ((RetAppMode=2) and (Not RetInvSettled));
+        {$B+}
+
+        If (Not FoundOk) then
+        Begin
+          If (TranOk2Run) then
+          Begin
+            LStatus:=LCtrl_BTrans(1);
+
+            TTEnabled:=LStatusOk;
+
+            {* Wait until All clear b4 continuing *}
+            If (TTEnabled) then
+              WaitForHistLock;
+
+          end;
+
+
+          Expire_Ret(Fnum,Keypath,B_Func,TTEnabled);
+
+          If (TTEnabled) and (Syss.ProtectPost) then
+          With MTExLocal^ do
+          Begin
+            UnLockHistLock;
+
+            LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+            LReport_BError(InvF,LStatus);
+          end;
+
+        end
+        else
+          B_Func:=B_GetNext;
+
+        If (Not FoundOk) then
+          LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+      end; {While..}
+
+      Loop:=Not Loop; {* Go round again to get Sales *}
+
+    Until (Not Loop) or (ThreadRec^.THAbort);
+
+    {$IFDEF FRM}
+      If (Assigned(ThisFList)) then
+        With ThisFList do
+          If (HasItems) then
+            Print_BatchList(Application.MainForm,ThisFList);
+    {$ENDIF}
+  end; {With..}
+
+end; {PRoc..}
+
+
+
+   { ===== Function to Txlate Emp nom type ===== }
+
+ Function TPostJob.EmpNomTx(E  :  Integer)  :  Integer;
+   Const
+     Tx  :  Array[0..3] of Byte = (1,2,3,1);
+
+ Begin
+   EmpNomTx:=Tx[E];
+ end;
+
+
+
+
+{ == These rotuines replicated in JCHKUseU for thread safe operation == }
+
+Function TPostJob.LFind_CISEmployee(EmplCode  :  Str20;
+                                    ViaSupp   :  Boolean)  :  taCISFind;
+
+
+Const
+  Fnum     =  JMiscF;
+  Keypath  =  JMTrdK;
+
+Var
+  n          : Byte;
+  TmpStat,
+  TmpKPath   : Integer;
+  TmpRecAddr : LongInt;
+
+  KeyChk,
+  KeyS       : Str255;
+
+  LOk        : Boolean;
+
+  CISFind    : taCISFind;
+
+
+Begin
+  FillChar(Result,Sizeof(Result),#0);
+  FillChar(CISFind,Sizeof(CISFind),#0);
+
+  KeyS:=''; KeyChk:='';
+
+  TmpKPath:=GetPosKey;
+
+  With MTExLocal^ do
+  Begin
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+    If (ViaSupp) then
+    Begin
+      KeyChk:=PartCCKey(JARCode,JASubAry[3])+FullCustCode(EmplCode);
+      KeyS:=KeyChk;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,keypath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOff)) and (Not Result[4].Found) do
+      With LJobMisc^,EmplRec do
+      Begin
+        CISFind:=LFind_CISEmployee(EmpCode,BOff);
+
+        For n:=Low(CISFind) to High(CISFind) do
+          If (Not Result[n].Found) and (CISFind[n].Found) then
+            Result[n]:=CISFind[n];
+
+        If (Not Result[4].Found) then
+          LStatus:=LFind_Rec(B_GetNext,Fnum,keypath,KeyS);
+
+      end;
+
+    end
+    else
+    With LJobMisc^,EmplRec do
+    Begin
+      KeyS:=Strip('R',[#0],PartCCKey(JARCode,JASubAry[3])+FullEmpCode(EmplCode));
+
+      If (EmplCode<>EmpCode) then
+        LOk:=LCheckRecExsists(KeyS,Fnum,JMK)
+      else
+        LOk:=BOn;
+
+      If (LOk) then
+      Begin
+        Case CISType of
+
+          1,4  :  With Result[4] do
+                  Begin
+                    Found:=BOn;
+                    ECode:=EmpCode;
+                  end;
+
+          2,5  :  With Result[5] do
+                  Begin
+                    Found:=BOn;
+                    ECode:=EmpCode;
+                  end;
+
+          3    :  With Result[6] do
+                  Begin
+                    Found:=BOn;
+                    ECode:=EmpCode;
+                  end;
+        end; {Case..}
+      end;
+
+
+    end;
+
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOn,BOn);
+  end; {With..}
+end;
+
+
+{ == From three poss cases, return code in order of priority == }
+
+Function TPostJob.LCheck_CISEmployee(EmplCode  :  Str20;
+                                 Var Taxable   :  Boolean)  :  Str20;
+
+Var
+  n          : Byte;
+
+  CISFind    : taCISFind;
+
+Begin
+  Result:=''; Taxable:=BOff;
+
+  CISFind:=LFind_CISEmployee(EmplCode,BOn);
+
+  For n:=Low(CISFind) to High(CISFind) do
+  If (CISFInd[n].Found) then
+  Begin
+    Result:=CISFind[n].ECode;
+
+    Taxable:=(n=Low(CISFind));
+
+    Break;
+  end;
+end;
+
+
+Function TPostJob.LGet_SubRec(EmplCode  :  Str20)  :  EmplType;
+
+
+Const
+  Fnum     =  JMiscF;
+  Keypath  =  JMTrdK;
+
+Var
+  TmpStat,
+  TmpKPath   : Integer;
+  TmpRecAddr : LongInt;
+
+  KeyChk,
+  KeyS       : Str255;
+
+  LOk        : Boolean;
+
+
+Begin
+  Blank(Result,Sizeof(Result));
+
+  LOk:=BOff;
+
+  KeyS:=''; KeyChk:='';
+
+  With MTExLocal^ do
+  Begin
+
+    TmpKPath:=GetPosKey;
+
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+
+    With LJobMisc^,EmplRec do
+    Begin
+      KeyS:=Strip('R',[#0],PartCCKey(JARCode,JASubAry[3])+FullEmpCode(EmplCode));
+
+      If (EmplCode<>EmpCode) then
+        LOk:=LCheckRecExsists(KeyS,Fnum,JMK)
+      else
+        LOk:=BOn;
+
+      If (LOk) then
+      Begin
+        Result:=EmplRec;
+      end;
+
+    end;
+
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOn,BOn);
+  end; {With..}
+end;
+
+
+{$IFDEF EX603}
+
+    { == Proc to scan Lines to work out Irish Reverse Charge VAT == }
+    { == Reproduced inside JChkUseU.pas == }
+
+  Procedure TPostJob.LCalc_RCTReverseVAT(Var BInv    :   InvRec;
+                                             UpLine  :   Boolean);
+
+  Const
+    Fnum     =  IDetailF;
+    Keypath  =  IDFolioK;
+
+  Var
+    LOk,CalcTax,
+    DLineOk,
+    ResetCIS
+               : Boolean;
+    B_Func,
+    TmpStat,
+    TmpKPath   : Integer;
+
+    AGLCode,
+    TmpRecAddr : LongInt;
+
+    VATRate    : VATType;
+
+
+    LineVAT,
+    VATRatio,
+    LineTaxValue,
+    VATRateLine,
+    LineTotal  : Double;
+
+    FoundCode  : Str20;
+
+    KeyChk,
+    KeyS       : Str255;
+
+    AutoLine,
+    TmpId      : IDetail;
+
+    ProcessCISDoc
+               : Boolean;
+
+    Function Calc_RCTVATTotal(IdR    :  IDetail;
+                              tMode  :  Byte)  :  Double;
+
+    Begin
+      With IdR do
+        Result:=Round_Up(VAT,2);
+    end;
+
+
+
+  Begin
+    LineTotal:=0.0; LineVAT:=0.0;  VATRatio:=0.0; ResetCIS:=(UpLine and (BInv.CISHolder=0));
+
+    LineTaxValue:=0.0; VATRateLine:=0.0;
+
+    ProcessCISDoc:=BOff;
+
+    DLineOk:=BOff;
+
+    AGLCode:=0;
+
+    B_Func:=B_GetNext;
+
+    With BInv do
+    If (InvDocHed In CISDocSet+JAPJAPSplit-JAPSalesSplit) and (CISOn) and (JBCostOn) and ((Not CISManualTax) or (CISHolder<>3))
+       and (CurrentCountry=IECCode) and (SyssCIS^.CISRates.RCTUseRCV) then
+    With MTExLocal^ do
+    Begin
+      Begin
+
+        If (CISEmpl='') then
+          CISEmpl:=LCheck_CISEmployee(CustCode,CalcTax)
+        else
+        Begin
+          KeyS:=Strip('R',[#0],PartCCKey(JARCode,JASubAry[3])+FullEmpCode(CISEmpl));
+
+
+          LOk:=LCheckRecExsists(KeyS,JMiscF,JMK);
+
+
+          {$B-}
+            If (LOk) then
+              CalcTax:=(Not (LJobMisc^.EmplRec.CISType In [0]))
+            else
+            Begin
+              CISEmpl:=LCheck_CISEmployee(CustCode,CalcTax);
+
+              CalcTax:=(CISEmpl<>'') and (Not (LJobMisc^.EmplRec.CISType In [0]));
+            end;
+          {$B+}
+
+        end;
+      end;
+
+      If ((CISEmpl<>'') or (ProcessCISDoc)) or (UpLine) then {* We have a CIS situation *}
+      Begin
+        Begin
+          TmpId:=LId;
+          TmpKPath:=GetPosKey;
+
+          TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+          KeyChk:=FullNomKey(FolioNum);
+
+            If (InvDocHed In JAPSplit) then
+              KeyS:=FullIdKey(FolioNum,JALRetLineNo)
+            else
+              KeyS:=FullIdKey(FolioNum,1);
+
+
+          LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+          While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+          With LId do
+          Begin
+            B_Func:=B_GetNext;
+
+            {$B-}
+            If ((CISEmpl<>'') or (ProcessCISDoc) ) {and (Not EmptyKey(AnalCode,AnalKeyLen)) and (Not EmptyKey(JobCode,JobKeyLen))
+               and (LGetJobMisc(AnalCode,2))} and (AutoLineType<2) then
+            {$B+}
+            {With LJobMisc^,JobAnalRec do
+            If ((JAType>=2) and (CISTaxRate<>C0))
+              or ((LineNo=JALDedLineNo) and (CISTaxRate<>C0))
+              or (RevenueType>=2)  then}
+            {Its overhead, material or labour}
+            Begin
+              LineTotal:=0.0;
+
+              If (UpLine) then
+              Begin
+                {If (CISTaxRate<>C0) then}
+                Begin
+
+                  If (CalcTax) then
+                  Begin
+                    CISRateCode:=C0;
+                    CISRate:=0.0;
+
+                    Begin
+                      AGLCode:=Syss.NomCtrlCodes[INVat];
+                    end;
+
+                    AutoLine:=Id;
+                  end;
+
+                  {Status:=Put_Rec(F[Fnum],Fnum,RecPtr[Fnum]^,KeyPAth);
+
+                  Report_BError(Fnum,Status);}
+
+                end;
+              end;
+
+              If (CalcTax) then
+              Begin
+
+                Begin
+                  If (Not ManVAT) then
+                  Begin
+                    LineTaxValue:=LineTaxValue+Round_Up((VAT*(1+(-2*Ord(LineNo<0)))),2);
+                  end
+                  else
+                  Begin
+                    LDef_InvCalc(MTExLocal); {Work out goods vat split}
+
+
+                    VATRate:=GetVAtNo(VATcode,VATIncFlg);
+
+                    VATRatio:=DivWChk(LineTotal,InvNetAnal[VATRate]);
+
+                    LineVAT:=Round_Up((InvVATAnal[VATRate]*VatRatio),2);
+
+                    LineTaxValue:=LineTaxValue+Round_Up((LineVAT),2);
+                  end;
+                end;
+
+              end;
+
+
+              ResetCIS:=BOff;
+
+            end;
+
+
+            If (UpLine) and (AutoLineType=3) then {* Delete any auto manufactured Reverse Charge lines *}
+            Begin
+              {* Check a new line is required before auto deleting *}
+              DLineOk:=((Round_Up(NetValue,2)=Round_Up(LineTaxValue,2)) or (CISManualTax))
+                       and (Round_Up(CISTax,2)=Round_Up(NetValue,2))
+
+                       and (JobCode='') and (AnalCode='') and ((VATCode=VATZCode))
+
+                       and (Qty=-1.0) and (QtyMul=1.0);
+
+              If (Not DLineOk) then
+              Begin
+                AutoLine:=Id;
+
+                LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+                LReport_BError(Fnum,LStatus);
+
+                If (IdDocHed In JAPSplit) then
+                  B_Func:=B_GetNext
+                else
+                  B_Func:=B_GetGEq;
+              end;
+            end;
+
+            LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+          end; {While..}
+
+
+          If (UpLine) then
+          Begin
+
+            If (LineTaxValue<>0.0) and (AutoLine.FolioRef=FolioNum) and (Not DLineOk) then {Decrease value of transaction by Tax amount}
+            With LId do
+            Begin
+              LResetRec(Fnum);
+
+              FolioRef:=FolioNum;
+
+              IdDocHed:=InvDocHed;
+
+              AutoLineType:=3;
+
+              If (IdDocHed In JAPSplit) then
+              Begin
+                LineNo:=JALDedLineNo;
+                Payment:=DocPayType[SIN];
+                Reconcile:=1;
+              end
+              else
+              Begin
+                LineNo:=ILineCount;
+                Payment:=DocPayType[InvDocHed];
+              end;
+
+              ABSLineNo:=LineNo;
+
+              ILineCount:=ILineCount+2;
+
+              {If (AGLCode<>0) then
+                NomCode:=AGLCode
+              else
+                NomCode:=AutoLine.NomCode;}
+
+              NetValue:=0.0;
+
+              VAT:=LineTaxValue;
+
+              If (Not (IdDocHed In JAPJAPSplit-JAPSalesSplit)) then
+                VAT:=VAT*DocNotCnst;
+
+
+              With SyssCIS^.CISRates do
+              If (RCTRCV1 In VATSet) then
+                VATCode:=RCTRCV1
+              else
+                VATCode:=VATZCode;
+
+              Qty:=1.0; QtyMul:=1.0;
+
+              CCDep:=AutoLine.CCDep;
+
+              Desc:=CCVATName^+' Automatic RCT Reverse Charge deduction.';
+
+
+              PriceMulX:=1.0;
+
+              CustCode:=BInv.CustCode;
+
+              Currency:=BInv.Currency;
+
+              CXRate:=BInv.CXRate;
+
+              CurrTriR:=BInv.CurrTriR;
+
+              PYr:=BInv.ACYr;
+              PPr:=BInv.AcPr;
+
+              {$IFDEF STK}
+                LineType:=StkLineType[IdDocHed];
+              {$ENDIF}
+
+              DocPRef:=OurRef;
+
+              LStatus:=LAdd_Rec(Fnum,KeyPAth);
+
+              LReport_BError(Fnum,LStatus);
+            end;
+          end;
+
+          TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+          LId:=TmpId;
+        end; {If..}
+      end; {If..GL Codes OK}
+    end; {If..}
+  end; {Proc..}
+
+{$ENDIF}
+
+
+// CJS 2014-03-18 - ABSEXCH-14289 - incorrect CIS Calculation when CITB Deduction is set to 1.5%
+// Heavily-amended version of LCalc_CISTax(), to correct the calculations for
+// CITB deductions
+Procedure TPostJob.LCalculateCISTax(var BInv: InvRec; UpdateLine: Boolean);
+var
+  LOk,CalcTax,
+  DLineOk,
+  ResetCIS
+             : Boolean;
+  B_Func,
+  TmpStat,
+  TmpKPath   : Integer;
+
+  AGLCode,
+  TmpRecAddr : LongInt;
+
+  VATRate    : VATType;
+
+  CISLoop,
+  CISRateType: CISTaxType;
+
+  LineVAT,
+  LineNV,
+  VATRatio,
+  LineTaxValue,
+  VATRateLine: Double;
+
+  ACCDep     : CCDepType;
+
+  FoundCode  : Str20;
+
+  KeyChk,
+  KeyS       : Str255;
+
+  AutoLine,
+  TmpId      : IDetail;
+
+  TJobAnal   : JobMiscRec;
+  TaxableLineTotal: Double;
+  TaxableGross: Double;
+  CISRateCodeToUse: Char;
+
+  // -------------------------------------------------------------------------
+  // Line Validation routines
+  // -------------------------------------------------------------------------
+  function TaxIsOk: Boolean;
+  begin
+    Result := ((Round_Up(BInv.CISTax,2)=Round_Up(LineTaxValue,2)) or (BInv.CISManualTax));
+  end;
+  // -------------------------------------------------------------------------
+  function ValueIsOk: Boolean;
+  begin
+    Result := ((Round_Up(BInv.CISTax,2)=Round_Up(MTExLocal^.LId.NetValue,2)) or MTExLocal^.LId.LiveUplift);
+  end;
+  // -------------------------------------------------------------------------
+  function JobCodeIsOk: Boolean;
+  begin
+    Result := (Trim(MTExLocal^.LId.JobCode) = '') and (Trim(MTExLocal^.LId.AnalCode) = '');
+  end;
+  // -------------------------------------------------------------------------
+  function VATCodeIsOk: Boolean;
+  begin
+    Result := ((MTExLocal^.LId.VATCode=VATZCode) or (MTExLocal^.LId.VATCode=SyssCIS^.CISRates.CISVATCode))
+  end;
+  // -------------------------------------------------------------------------
+  function LineNoIsOk: Boolean;
+  begin
+    {$IFDEF EX603} // Due to reverse VAT we cannot guarantee line no, and AutoLineType should be enough
+    Result := ((MTExLocal^.LId.LineNo=(BInv.ILineCount-2)) or (MTExLocal^.LId.LineNo=JALDedLineNo) or (CurrentCountry=IECCode));
+    {$ELSE}
+    Result := ((MTExLocal^.LId.LineNo=(BInv.ILineCount-2)) or (MTExLocal^.LId.LineNo=JALDedLineNo));
+    {$ENDIF}
+  end;
+  // -------------------------------------------------------------------------
+  function QtyIsOk: Boolean;
+  begin
+    Result := (MTExLocal^.LId.Qty=-1.0) and (MTExLocal^.LId.QtyMul=1.0);
+  end;
+  // -------------------------------------------------------------------------
+
+Begin
+
+  LineVAT          := 0.0;
+  VATRatio         := 0.0;
+  LineNV           := 0.0;
+  LineTaxValue     := 0.0;
+  VATRateLine      := 0.0;
+  TaxableGross     := 0.0;
+  TaxableLineTotal := 0.0;
+  DLineOk          := BOff;
+  CISRateType      := Construct;
+  AGLCode          := 0;
+  CalcTax          := False;
+  ResetCIS         := (UpdateLine and (BInv.CISHolder=0));
+
+  Blank(ACCDep,Sizeof(ACCDep));
+
+  B_Func:=B_GetNext;
+
+  With BInv do
+  If (InvDocHed In CISDocSet) and (CISOn) and (JBCostOn)  and ((Not CISManualTax) or (CISHolder<>3)) then
+  With MTExLocal^ do
+  Begin
+    If (CISEmpl = '') then
+      // There is no CIS Employee against this Purchase Application, so
+      // search via the Supplier instead
+      CISEmpl := LCheck_CISEmployee(CustCode, CalcTax)
+    else
+    Begin
+      // Search for the Employee record
+      KeyS := Strip('R', [#0], PartCCKey(JARCode, JASubAry[3]) + FullEmpCode(CISEmpl));
+      LOk  := LCheckRecExsists(KeyS, JMiscF, JMK);
+
+      {$B-}
+      If (LOk) then
+        // Is the Employee CIS-Taxable?
+        CalcTax := (LJobMisc^.EmplRec.CISType In [1, 4])
+      else
+      Begin
+        // If no Employee was found, search for the Employee via the
+        // Supplier code instead
+        CISEmpl := LCheck_CISEmployee(CustCode, CalcTax);
+
+        // Is the Employee CIS-Taxable?
+        CalcTax := (LJobMisc^.EmplRec.CISType In [1, 4]);
+      end;
+      {$B+}
+    end;
+
+    if (CISEmpl <> '') then
+    begin
+      // Locate the employee record...
+      with LGet_SubRec(CISEmpl) do
+      begin
+        // Determine the CIS rate type for the employee (High, Low, or none)
+        case CISType of
+          1  :  CISRateCodeToUse := 'T';
+          4  :  CISRateCodeToUse := 'C';
+          else CISRateCodeToUse  := #0;
+        end; {Case..}
+      end;
+      CISRateType := GetCISCType(CISRateCodeToUse);
+    end;
+
+    If (CISEmpl<>'') or (UpdateLine) then {* We have a CIS situation *}
+    Begin
+
+      TmpId:=LId;
+      TmpKPath:=GetPosKey;
+
+      TmpStat:=LPresrv_BTPos(IDetailF,TmpKPath,LocalF^[IDetailF],TmpRecAddr,BOff,BOff);
+
+      KeyChk:=FullNomKey(FolioNum);
+
+      KeyS:=FullIdKey(FolioNum,1);
+
+
+      LStatus:=LFind_Rec(B_GetGEq,IDetailF,IDFolioK,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+      With LId do
+      Begin
+
+        B_Func:=B_GetNext;
+
+        // Default to no CIS Tax. If CIS Tax is required, the next section
+        // will set it up.
+        CISRateCode := C0;
+        CISRate     := 0.0;
+
+        {$B-}
+        If (CISEmpl<>'') and (Not EmptyKey(AnalCode,AnalKeyLen)) and (Not EmptyKey(JobCode,JobKeyLen))
+           and (LGetJobMisc(AnalCode,2)) and (AutoLineType<>2) then
+        {$B+}
+        Begin
+          With LJobMisc^,JobAnalRec do
+          If (JAType>=2) or ((Not UpdateLine) and (CISRateCode<>C0)) then {Its overhead, material or labour}
+          Begin
+            TaxableLineTotal:=Round_Up(InvLTotal(LId,BOn,0),2);
+
+            If (UpdateLine) then
+            Begin
+              // If the Analysis Code is CIS-applicable...
+              If (CISTaxRate <> #0) then
+              Begin
+                // ...and if the company or employee is CIS-taxable...
+                If (CalcTax) then
+                Begin
+                  // ...copy the CIS Rate details to the transaction line
+                  CISRateCode := CISTaxRate;
+
+                  // Look up the CIS Rates matching the rate code, from system
+                  // settings
+                  With SyssCIS^.CISRates.CISRate[CISRateType] do
+                  Begin
+                    CISRate := Rate;
+                    AGLCode := GLCode;
+                    ACCDep  := RCCDep;
+                  end;
+
+                  AutoLine:=LId;
+                end
+                else
+                Begin
+                  // Not CIS-taxable
+                  CISRateCode := #0;
+                  CISRate     := 0.0;
+                end;
+
+                Blank(JobCode,Sizeof(JobCode));
+                Blank(AnalCode,Sizeof(AnalCode));
+
+                LStatus:=LPut_Rec(IDetailF,IDFolioK);
+
+                LReport_BError(IDetailF,LStatus);
+              end;
+            end;
+
+            // If this line attracts CIS tax...
+            If (CISRateCode <> #0) then
+            Begin
+              // ...add it to the totals
+              TaxableGross := TaxableGross + TaxableLineTotal;
+              LineTaxValue := LineTaxValue + Round_Up(TaxableLineTotal * CISRate, 2);
+            end;
+
+            ResetCIS := False;
+
+          end;
+
+          // Delete any auto manufactured CIS lines
+          If (UpdateLine) and (AutoLineType = 2) then
+          Begin
+            // Check that a new line is required before auto deleting
+            {$B-}
+            DLineOk := TaxIsOk     and
+                       ValueIsOk   and
+                       JobCodeIsOk and
+                       VATCodeIsOk and
+                       LineNoIsOk  and
+                       QtyIsOk;
+            {$B+}
+            If (Not DLineOk) then
+            Begin
+              AutoLine := Id;
+
+            LStatus:=LDelete_Rec(IDetailF,IDFolioK);
+
+            LReport_BError(IDetailF,LStatus);
+
+              // Go back to the start of the transaction lines and work through
+              // them again
+              B_Func := B_GetGEq;
+            end;
+          end;
+        end
+        else
+          If (UpdateLine) and ((JobCode<>'') or (AnalCode<>'')) then
+          { Remove JC + JA codes, as only used to work out CIS }
+          Begin
+            Blank(JobCode,Sizeof(JobCode));
+            Blank(AnalCode,Sizeof(AnalCode));
+
+            LStatus:=LPut_Rec(IDetailF,IDFolioK);
+
+            LReport_BError(IDetailF,LStatus);
+
+          end;
+
+        LStatus:=LFind_Rec(B_Func,IDetailF,IDFolioK,KeyS);
+
+      end; {While..}
+
+      If (UpdateLine) then
+      Begin
+        CISGross     := TaxableGross;
+        CISTax       := Round_Up(CISGross * SyssCIS^.CISRates.CISRate[CISRateType].Rate, 2);
+        CISManualTax := (CISTax <> 0.0);
+        CISHolder    := 2;
+
+        If (CISTax<>0.0) and (AutoLine.FolioRef=FolioNum) and (Not DLineOk) then {Decrease value of transaction by Tax amount}
+        With LId do
+        Begin
+          LResetRec(IDetailF);
+
+          FolioRef:=FolioNum;
+
+          IdDocHed:=InvDocHed;
+
+          AutoLineType:=2;
+
+          LineNo:=ILineCount;
+          ABSLineNo:=LineNo;
+
+          ILineCount:=ILineCount+2;
+
+          If (AGLCode<>0) then
+            NomCode:=AGLCode
+          else
+            NomCode:=AutoLine.NomCode;
+
+          NetValue:=CISTax;
+
+          With SyssCIS^.CISRates do
+          If (CISVATCode In VATSet) then
+            VATCode:=CISVATCode
+          else
+            VATCode:=VATZCode;
+
+          Qty:=-1.0; QtyMul:=1.0;
+
+          If (ACCDep[BOff]<>'') then
+            CCDep:=ACCDep
+          else
+            CCDep:=AutoLine.CCDep;
+
+          Desc:=CCCISName^+' tax withheld from '+Form_Real(CISGross,0,2)+' liable for deduction.';
+
+          Payment:=DocPayType[IdDocHed];
+
+          PriceMulX:=1.0;
+
+          CustCode:=LInv.CustCode;
+
+          Currency:=LInv.Currency;
+
+          CXRate:=LInv.CXRate;
+
+          CurrTriR:=LInv.CurrTriR;
+
+          PYr:=LInv.ACYr;
+          PPr:=LInv.AcPr;
+
+
+          {$IFDEF STK}
+
+            LineType:=StkLineType[IdDocHed];
+
+          {$ENDIF}
+
+          DocPRef:=OurRef;
+
+          LStatus:=LAdd_Rec(IDetailF,IDFolioK);
+
+          LReport_BError(IDetailF,LStatus);
+        end;
+      end;
+
+      TmpStat:=LPresrv_BTPos(IDetailF,TmpKPath,LocalF^[IDetailF],TmpRecAddr,BOn,BOff);
+      LId:=TmpId;
+    end; {If..}
+
+    If (ResetCIS) then
+      Reset_DOCCIS(BInv,BOff);
+  end; {If..}
+
+  {$IFDEF EX603} {* Apply Reverse Charge Lines *}
+    LCalc_RCTReverseVAT(BInv,UpdateLine);
+  {$ENDIF}
+
+end; {Proc..}
+
+{ == Proc to scan Lines to work out materials and taxables == }
+{ == Reproduced inside JChkUseU.pas == }
+
+Procedure TPostJob.LCalc_CISTax(Var BInv    :   InvRec;
+                                Var Materials,
+                                    Taxable,
+                                    TaxValue:   Double;
+                                    UpLine  :   Boolean;
+                                    CMode   :   Byte);
+
+Const
+  Fnum     =  IDetailF;
+  Keypath  =  IDFolioK;
+
+Var
+  LOk,CalcTax,
+  DLineOk,
+  ResetCIS
+             : Boolean;
+  B_Func,
+  TmpStat,
+  TmpKPath   : Integer;
+
+  AGLCode,
+  TmpRecAddr : LongInt;
+
+  VATRate    : VATType;
+
+  CISLoop,
+  CISRateType: CISTaxType;
+
+  CISGrossTotal
+             : Array[CISTaxType] of Double;
+
+  LineTaxValue,
+  LineVAT,
+  VATRatio,
+  LineGExclude,
+  LineTotal  : Double;
+
+  ACCDep     : CCDepType;
+
+  FoundCode  : Str20;
+
+  KeyChk,
+  KeyS       : Str255;
+
+  AutoLine,
+  TmpId      : IDetail;
+
+  TJobAnal   : JobMiscRec;
+
+  // -------------------------------------------------------------------------
+  // CJS 10/11/2010 - Line Validation routines (to replace a convoluted
+  // Boolean expression and make it easier to trace any problems).
+  // -------------------------------------------------------------------------
+  function TaxIsOk: Boolean;
+  begin
+    Result := ((Round_Up(BInv.CISTax,2)=Round_Up(LineTaxValue,2)) or (BInv.CISManualTax));
+  end;
+  // -------------------------------------------------------------------------
+  function ValueIsOk: Boolean;
+  begin
+    Result := ((Round_Up(BInv.CISTax,2)=Round_Up(MTExLocal^.LId.NetValue,2)) or MTExLocal^.LId.LiveUplift);
+  end;
+  // -------------------------------------------------------------------------
+  function JobCodeIsOk: Boolean;
+  begin
+    Result := (Trim(MTExLocal^.LId.JobCode) = '') and (Trim(MTExLocal^.LId.AnalCode) = '');
+  end;
+  // -------------------------------------------------------------------------
+  function VATCodeIsOk: Boolean;
+  begin
+    Result := ((MTExLocal^.LId.VATCode=VATZCode) or (MTExLocal^.LId.VATCode=SyssCIS^.CISRates.CISVATCode))
+  end;
+  // -------------------------------------------------------------------------
+  function LineNoIsOk: Boolean;
+  begin
+    {$IFDEF EX603} // Due to reverse VAT we cannot guarantee line no, and AutoLineType should be enough
+    Result := ((MTExLocal^.LId.LineNo=(BInv.ILineCount-2)) or (MTExLocal^.LId.LineNo=JALDedLineNo) or (CurrentCountry=IECCode));
+    {$ELSE}
+    Result := ((MTExLocal^.LId.LineNo=(BInv.ILineCount-2)) or (MTExLocal^.LId.LineNo=JALDedLineNo));
+    {$ENDIF}
+  end;
+  // -------------------------------------------------------------------------
+  function QtyIsOk: Boolean;
+  begin
+    Result := (MTExLocal^.LId.Qty=-1.0) and (MTExLocal^.LId.QtyMul=1.0);
+  end;
+  // -------------------------------------------------------------------------
+
+Begin
+  Materials:=0.0; Taxable:=0.0; TaxValue:=0.0;  LineTotal:=0.0; LineVAT:=0.0;  VATRatio:=0.0;
+  LineTaxValue:=0.0; LineGExclude:=0.0;
+
+  ResetCIS:=(UpLine and (BInv.CISHolder=0));
+
+  DLineOk:=BOff;
+
+  Blank(CISGrossTotal,Sizeof(CISGrossTotal));
+
+  CISRateType:=Construct;  AGLCode:=0; Blank(ACCDep,Sizeof(ACCDep));
+
+  B_Func:=B_GetNext;
+
+  With BInv do
+  If (InvDocHed In CISDocSet) and (CISOn) and (JBCostOn)  and ((Not CISManualTax) or (CISHolder<>3)) then
+  With MTExLocal^ do
+  Begin
+    If (CISEmpl='') then
+      CISEmpl:=LCheck_CISEmployee(CustCode,CalcTax)
+    else
+    Begin
+      KeyS:=Strip('R',[#0],PartCCKey(JARCode,JASubAry[3])+FullEmpCode(CISEmpl));
+
+
+      LOk:=LCheckRecExsists(KeyS,JMiscF,JMK);
+
+
+      {$B-}
+        If (LOk) then
+          CalcTax:=(LJobMisc^.EmplRec.CISType In [1,4])
+        else
+        Begin
+          CISEmpl:=LCheck_CISEmployee(CustCode,CalcTax);
+
+          CalcTax:=(LJobMisc^.EmplRec.CISType In [1,4]);
+        end;
+      {$B+}
+
+    end;
+
+    If (CISEmpl<>'') or (UpLine) then {* We have a CIS situation *}
+    Begin
+
+      TmpId:=LId;
+      TmpKPath:=GetPosKey;
+
+      TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+      KeyChk:=FullNomKey(FolioNum);
+
+      KeyS:=FullIdKey(FolioNum,1);
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+      With LId do
+      Begin
+
+        B_Func:=B_GetNext;
+
+        // CJS 2014-02-19 - ABSEXCH-13900 - resetting CIS Tax on footer tab.
+        // Default to no CIS Tax. If CIS Tax is required, the next section
+        // will set it up.
+        CISRateCode := C0;
+        CISRate     := 0.0;
+
+        {$B-}
+        If (CISEmpl<>'') and (Not EmptyKey(AnalCode,AnalKeyLen)) and (Not EmptyKey(JobCode,JobKeyLen))
+           and (LGetJobMisc(AnalCode,2)) and (AutoLineType<>2) then
+        {$B+}
+        Begin
+          With LJobMisc^,JobAnalRec do
+          If (JAType>=2) or ((Not UpLine) and (CISRateCode<>C0)) then {Its overhead, material or labour}
+          Begin
+            LineTotal:=Round_Up(InvLTotal(LId,BOn,0),2);
+
+            If (UpLine) then
+            Begin
+              If (CISTaxRate<>C0) then
+              Begin
+                If (CalcTax) then
+                Begin
+                  CISRateCode:=CISTaxRate;
+
+
+                  If (CurrentCountry<>IECCode) and (CIS340) then {* Use new CIS340 UK rules *}
+                  Begin
+                    TJobAnal:=LJobMisc^;
+
+                    With LGet_SubRec(CISEmpl) do
+                      If (EmpCode=CISEmpl) then
+                      Begin
+                        LJobMisc^:=TJobAnal;
+
+                        CISRateCode:=Resolve_CISTaxCode(CISType,CISTaxRate);
+                      end;
+                  end;
+
+                  CISRateType:=GetCISCType(CISRateCode);
+
+                  With SyssCIS^.CISRates.CISRate[CISRateType] do
+                  Begin
+                    CISRate:=Rate;
+                    AGLCode:=GLCode;
+                    ACCDep:=RCCDep;
+                  end;
+
+                  AutoLine:=LId;
+                end
+                else
+                Begin
+                  CISRateCode:=C0;
+                  CISRate:=0.0;
+                end;
+
+                If (CMode=1) then {Its being called from a self biling run so remove JC + JA codes, as only used to work out CIS}
+                Begin
+                  Blank(JobCode,Sizeof(JobCode));
+                  Blank(AnalCode,Sizeof(AnalCode));
+                end;
+
+                LStatus:=LPut_Rec(Fnum,KeyPAth);
+
+                LReport_BError(Fnum,LStatus);
+              end;
+            end;
+
+            If (CISRateCode<>C0) then
+            Begin
+              Taxable:=Taxable+LineTotal;
+
+              {$IFDEF EX603}
+                  If (True=False) then {* Do not work out RCT with VAT from v6.03 onwards *}
+                {$ELSE}
+
+                If (CurrentCountry=IECCode) then
+
+                {$ENDIF}
+              Begin
+                If (Not ManVAT) then
+                Begin
+                  LineTaxValue:=LineTaxValue+Round_Up((LineTotal+VAT)*CISRate,2);
+                  CISGrossTotal[CISRateType]:=CISGrossTotal[CISRateType]+Round_Up((LineTotal+VAT),2);
+                end
+                else
+                Begin
+                  LDef_InvCalc(MTExLocal); {Work out goods vat split}
+
+                  VATRate:=GetVAtNo(VATcode,VATIncFlg);
+
+                  VATRatio:=DivWChk(LineTotal,LInvNetAnal[VATRate]);
+
+                  LineVAT:=Round_Up((InvVATAnal[VATRate]*VatRatio),2);
+
+                  LineTaxValue:=LineTaxValue+Round_Up((LineTotal+LineVAT)*CISRate,2);
+                  CISGrossTotal[CISRateType]:=CISGrossTotal[CISRateType]+Round_Up((LineTotal+VAT),2);
+                end;
+              end
+              else
+              Begin
+                // CJS 2014-03-04 - ABSEXCH-11892 - CIS Rounding - do not
+                // truncate at this point
+                LineTaxValue:=LineTaxValue+Round_Up(LineTotal*CISRate,2);
+                CISGrossTotal[CISRateType]:=CISGrossTotal[CISRateType]+Round_Up((LineTotal),2);
+              end;
+
+            end
+            else
+            Begin
+              If (AnalHed=13) {and (Not CalcTax)} then {For all CIS types, exclude Overhead2 type analysis lines with no CIS implications}
+                LineGExclude:=LineGExclude+LineTotal
+              else
+                Materials:=Materials+LineTotal;
+            end;
+
+
+            ResetCIS:=BOff;
+
+          end;
+        end;
+
+        If (UpLine) and (AutoLineType=2) then {* Delete any auto manufactured CIS lines *}
+        Begin
+          {* Check a new line is required before auto deleting *}
+          (*
+          DLineOk:=((Round_Up(CISTax,2)=Round_Up(LineTaxValue,2)) or (CISManualTax))
+                   and (Round_Up(CISTax,2)=Round_Up(NetValue,2))
+
+                   and (JobCode='') and (AnalCode='') and ((VATCode=VATZCode) or (VATCode=SyssCIS^.CISRates.CISVATCode))
+                                                         {* Due to reverse VAT we cannot gurantee line no, and AutoLineType should be enough *}
+                   and ((LineNo=(ILineCount-2)) {$IFDEF EX603} or (CurrentCountry=IECCode) {$ENDIF} )
+
+                   and (Qty=-1.0)and (QtyMul=1.0);
+          *)
+          // CJS 10/11/2010 - Replaced line validation expression with
+          // function calls, for clarity.
+          DLineOk := TaxIsOk     and
+                     ValueIsOk   and
+                     JobCodeIsOk and
+                     VATCodeIsOk and
+                     LineNoIsOk  and
+                     QtyIsOk;
+
+          If (Not DLineOk) then
+          Begin
+            AutoLine:=LId;
+
+            LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+            LReport_BError(Fnum,LStatus);
+
+            B_Func:=B_GetGEq;
+          end;
+        end
+        else
+          If (UpLine) and (CMode=1) and ((JobCode<>'') or (AnalCode<>'')) then
+          {Its being called from a self biling run so remove JC + JA codes, as only used to work out CIS}
+          Begin
+            Blank(JobCode,Sizeof(JobCode));
+            Blank(AnalCode,Sizeof(AnalCode));
+
+            LStatus:=LPut_Rec(Fnum,KeyPAth);
+
+            LReport_BError(Fnum,LStatus);
+
+          end;
+
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+      end; {While..}
+
+      For CISLoop:=Low(CISGrossTotal) to High(CISGrossTotal) do
+      Begin
+        // CJS 2014-03-04 - ABSEXCH-11892 - CIS Rounding - do not
+        // truncate at this point
+        TaxValue:=TaxValue+Round_Up(CISGrossTotal[CISLoop]*SyssCIS^.CISRates.CISRate[CISLoop].Rate,2)
+      end; {Loop..}
+
+      If (UpLine) then
+      Begin
+        Case CMode of
+          1  :  Begin
+                  CISTax:=TaxValue;
+                  CISManualTax:=(CISTax<>0.0);
+                  CISHolder:=2;
+                  CISGross:=Taxable;
+                end;
+
+          else  If (Not CISManualTax) then
+                  CISTax:=TaxValue;
+        end; {Case..}
+
+        If (CISHolder=0) then
+        Begin
+          CISGross:=Taxable;
+
+          CISGExclude:=LineGExclude;
+
+        end;
+
+        If (CISTax<>0.0) and (AutoLine.FolioRef=FolioNum) and (Not DLineOk) then {Decrease value of transaction by Tax amount}
+        With LId do
+        Begin
+          LResetRec(Fnum);
+
+          FolioRef:=FolioNum;
+
+          IdDocHed:=InvDocHed;
+
+          AutoLineType:=2;
+
+          LineNo:=ILineCount;
+          ABSLineNo:=LineNo;
+
+          ILineCount:=ILineCount+2;
+
+          If (AGLCode<>0) then
+            NomCode:=AGLCode
+          else
+            NomCode:=AutoLine.NomCode;
+
+          NetValue:=CISTax;
+
+          With SyssCIS^.CISRates do
+          If (CISVATCode In VATSet) then
+            VATCode:=CISVATCode
+          else
+            VATCode:=VATZCode;
+
+          Qty:=-1.0; QtyMul:=1.0;
+
+          If (ACCDep[BOff]<>'') then
+            CCDep:=ACCDep
+          else
+            CCDep:=AutoLine.CCDep;
+
+          Desc:=CCCISName^+' tax withheld from '+Form_Real(CISGross,0,2)+' liable for deduction.';
+
+          Payment:=DocPayType[IdDocHed];
+
+          PriceMulX:=1.0;
+
+          CustCode:=LInv.CustCode;
+
+          Currency:=LInv.Currency;
+
+          CXRate:=LInv.CXRate;
+
+          CurrTriR:=LInv.CurrTriR;
+
+          PYr:=LInv.ACYr;
+          PPr:=LInv.AcPr;
+
+
+          {$IFDEF STK}
+
+            LineType:=StkLineType[IdDocHed];
+
+          {$ENDIF}
+
+          DocPRef:=OurRef;
+
+          LStatus:=LAdd_Rec(Fnum,KeyPAth);
+
+          LReport_BError(Fnum,LStatus);
+        end;
+      end;
+
+      TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+      LId:=TmpId;
+    end; {If..}
+
+    If (ResetCIS) then
+      Reset_DOCCIS(BInv,BOff);
+  end; {If..}
+
+  {$IFDEF EX603} {* Apply Reverse Charge Lines *}
+    LCalc_RCTReverseVAT(BInv,UpLine);
+  {$ENDIF}
+
+end; {Proc..}
+
+
+{ == Procedure to Intercept CIS Tax Calculation == }
+
+// CJS 2014-03-18 - ABSEXCH-14289 - incorrect CIS Calculation when CITB Deduction is set to 1.5%
+// Removed redundant CMode parameter, and removed redundant parameters in the
+// call to calculate the CIS Tax
+procedure TPostJob.LCalc_CISTaxInv(Var BInv: InvRec; UpDate: Boolean);
+Begin
+  LCalculateCISTax(BInv,UpDate);
+end;
+
+
+ { =========== Procedure to Scan for existing Self Billing Invoices ========= }
+
+ Function TPostJob.Gen_SelfBillHed(CCode  :  Str10)  :  Boolean;
+
+ Const
+   Fnum     =  InvF;
+   Keypath  =  InvRNoK;
+
+
+ Var
+   KeyChk,
+   KeyR  :  Str255;
+
+
+ Begin
+   Result:=BOff;
+
+   With MTExlocal^ do
+   Begin
+     KeyChk:=FullNomKey(JCSelfBillRunNo)+DocCodes[PIN][1];
+     KeyR:=KeyChk;
+
+     LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyR);
+
+     While (LStatusOk) and (CheckKey(KeyChk,KeyR,Length(KeyChk),BOff)) and (Not Result) do
+     With LInv do
+     Begin
+       Result:=CheckKey(CCode,CustCode,Length(CCode),BOff);
+
+       If (Result) then
+       Begin
+         If (LCust.CustCode<>CCode) then
+           Result:=LGetMainRec(CustF,CCode);
+       end;
+
+       If (Not Result) then
+         LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyR);
+
+
+     end; {While..}
+
+
+   end ;{With..}
+
+ end; {Func..}
+
+
+
+  { =========== Procedure to Scan Adjustment Documents and Adjust posted stock ========= }
+
+ Procedure TPostJob.Post_SBDetails(BInv          :  InvRec;
+                               Var GotHed        :  Boolean;
+                               Var NInv          :  InvRec;
+                            Const  TTEnabled     :  Boolean);
+
+
+ Const
+    Fnum     =  IDetailF;
+
+    KeyPath  =  IdFolioK;
+
+
+
+  Var
+    UOR      :  Byte;
+
+    SCode    :  Str10;
+    KeyS,
+    KeyI,
+    KeyChk   :  Str255;
+
+    UpNom,
+    RecAddr  :  LongInt;
+
+    LOk,
+    Locked,
+    TmpBo,
+    NewEmpl,
+    RecoverMode,
+    GotUplift,
+    Abort    :  Boolean;
+
+    LineCost :  Real;
+
+    UpVal    :  Double;
+
+    DedCnst  :  Integer;
+
+    RevRate  :  CurrTypes;
+
+    LJC,LJA  :  Str20;
+    PINDesc  :  Str255;
+
+    TmpInv   :  InvRec;
+
+
+  Begin
+    With MTExLocal^ do
+    Begin
+
+      RecAddr:=0;
+
+      Abort:=BOff; Locked:=BOff; RecoverMode:=BOff;
+
+      LineCost:=0.0; UpVal:=0.0; UpNom:=0; GotUplift:=BOff;
+
+      UOR:=0;  PINDesc:='';  LJC:=''; LJA:='';
+
+      DedCnst:=1;  NewEmpl:=BOn;
+
+      FillChar(TmpInv,Sizeof(TmpInv),#0);
+
+      Blank(KeyI,Sizeof(KeyI));
+
+      Blank(RevRate,Sizeof(RevRate));
+
+      LOk:=LGetJobMisc(FullEmpCode(BInv.BatchLink),3);
+
+      SCode:=FullCustCode(LJobMisc^.EmplRec.Supplier);
+
+      GotHed:=Gen_SelfBillHed(SCode);
+
+      If (Not GotHed) then
+      Begin
+        If (Not ADJPartPosted(BInv,LInv,Fnum,Keypath)) then
+        Begin
+          {Create hed moved to inside loop, so empty timesheets have no effect}
+
+        end
+        else
+        Begin
+          GotHed:=BOn;
+          RecoverMode:=BOn;
+        end;
+
+
+
+      end;
+
+      NInv:=LInv;
+
+      KeyChk:=FullNomKey(Binv.FolioNum);
+
+      KeyS:=FullIdKey(BInv.FolioNum,StkLineNo);
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+      With LId do
+      Begin
+
+        If (ThreadRec^.ThAbort) then
+          ShowStatus(3,'Aborting...');
+
+        If (B2BLink=0) or (B2BLink=FolioRef) then {* It has not already been posted *}
+        Begin
+
+          LOK:=LGetMainRec(JobF,JobCode);
+
+          If (Not GotHed) and (LOk) and (LJobRec^.JobStat<JobClosed) then {Time to create header}
+          Begin
+            {$IFDEF Inv}
+
+              LGen_InvHed(Scode,0,Today,'',0,'','','',TmpBo,3);
+
+              LInv.TransDesc:=AutoNomHedTit[8];
+
+              GotHed:=Not TmpBo;
+
+              If (GotHed) then
+              Begin
+                LStatus:=LAdd_Rec(InvF,InvRNoK);
+
+                LReport_BError(InvF,LStatus);
+
+                GotHed:=LStatusOk;
+
+              end;
+
+              NInv:=LInv;
+
+            {$ENDIF}
+          end;
+
+          {* Generate Nom Txfr Valuation, exclude Sub contract Lines *}
+
+          If ((GotHed) and (LOk)) and (LJobRec^.JobStat<JobClosed) then
+          Begin
+
+            LStatus:=LGetPos(Fnum,RecAddr);
+
+            If (AnalCode<>LJobMisc^.JobAnalRec.JAnalCode) then
+              LGetJobMisc(AnalCode,2) {* Pick up Anal WIP Noms *}
+            else
+              LOk:=BOn;
+
+
+            If (LOk) then
+            Begin
+
+              LInv:=NInv;
+
+              DedCnst:=1;
+
+              LineCost:=Round_Up(NetValue*DedCnst,2);
+
+              RevRate:=SyssCurr^.Currencies[LCust.Currency].CRates;
+
+              {$IFDEF MC_On}
+                If (Currency<>LCust.Currency) then {* Convert to currency of supplier *}
+                Begin
+                  LineCost:=Currency_ConvFT(LineCost,Currency,LCust.Currency,UseCoDayRate);
+                end;
+              {$ENDIF}
+
+              With LJobMisc^.JobAnalRec do
+                PINDesc:=Trim(dbFormatName(JAnalCode,Desc));
+
+              If (Not GotUplift) then {* Check for any uplift which needs applying for a seperate journal entry *}
+                GotUplift:=JCHasUplift(LId,UPVal,0,UPNom);
+
+              If (CISOn) then
+              Begin
+                LJC:=JobCode;
+                LJA:=AnalCode;
+
+              end;
+
+              LAdd_SelfBillLine(LJobMisc^.JobAnalRec.WIPNom[Not (LJobRec^.JobStat<JobCompl)],LineCost,LJC,LJA,BInv.BatchLink,BInv.OurRef,
+                              BInv.TransDesc,BInv.TransDate,PINDesc,Qty,
+                              BOff,NewEmpl,LCust.Currency,0,CCDep,RevRate,Abort);
+
+              NInv:=LInv;
+
+              NewEmpl:=BOff;
+
+            end;
+
+            LSetDataRecOfs(Fnum,RecAddr);
+
+            LStatus:=LGetDirect(Fnum,KeyPath,0);
+
+            {* Temp set nominal code here, so job actual picks it up *}
+
+            {Id.NomCode:=WOFFNom;}
+
+            {^^^^ 11/12/95 commented out, as when a job is closed, you do not want a straight reversal, but
+                           a transfer  between WIP & P&L ?*}
+
+
+
+            LSetDataRecOfs(Fnum,RecAddr);
+
+            LStatus:=LGetDirect(Fnum,KeyPath,0);
+
+            LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyI,KeyPath,Fnum,BOn,Locked);
+
+            If (LOk) and (Locked) then
+            Begin
+              LGetRecAddr(Fnum);
+
+              B2BLink:=NInv.FolioNum;
+
+              LStatus:=LPut_Rec(Fnum,Keypath);
+
+              LReport_BError(Fnum,LStatus);
+
+
+              LStatus:=LUnLockMLock(Fnum);
+
+            end;
+
+          end;
+        end; {If Posted..}
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+
+      end; {While..}
+
+      If (Not Abort) and (GotHed) then {Update header as we go}
+      Begin
+        LInv:=NInv;
+
+        If (Not RecoverMode) then
+        Begin
+
+
+          If (CISOn) then {* Ensure correct employee is used from timesheet *}
+            LInv.CISEmpl:=BInv.BatchLink;
+
+          LStatus:=LPut_Rec(InvF,InvRNoK);
+
+          LReport_BError(Fnum,LStatus);
+
+          With NInv do
+          Begin
+            RemitNo:=BInv.OurRef;
+
+            MTExLocal^.LMatch_Payment(NInv,BInv.InvNetVal,BInv.InvNetVal,23);
+            RemitNo:='';
+          end;
+        end;  
+
+        If (GotUplift) then {* We need to post uplift value through via a sperate journal *}
+        Begin
+          TmpBO:=BOff; GotUplift:=BOff;
+
+          Post_TSHDetails(BInv,TmpBo,GotUpLift,TmpInv,TTEnabled,BOn);
+        end;
+
+      end;
+
+    end; {With..}
+
+  end; {Proc..}
+
+
+
+   { =========== Procedure to Scan for existing Self Billing Invoices and calculate the totals ========= }
+
+ Procedure TPostJob.Calc_SelfBillHed(Var TTEnabled :  Boolean);
+
+ Const
+   Fnum     =  InvF;
+   Keypath  =  InvRNoK;
+
+
+ Var
+   GotSome
+         :  Boolean;
+
+   KeyChk,
+   KeyR  :  Str255;
+
+   {$IFDEF FRM}
+     FormRep    :  PFormRepPtr;
+
+   {$ENDIF}
+
+
+ Begin
+   GotSome:=BOff;
+
+   With MTExlocal^ do
+   Begin
+     KeyChk:=FullNomKey(JCSelfBillRunNo)+DocCodes[PIN][1];
+     KeyR:=KeyChk;
+
+     LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyR);
+
+     While (LStatusOk) and (CheckKey(KeyChk,KeyR,Length(KeyChk),BOff)) do
+     With LInv do
+     Begin
+       If (TranOk2Run) then
+       Begin
+         LStatus:=LCtrl_BTrans(1);
+
+         TTEnabled:=LStatusOk;
+
+         {* Wait until All clear b4 continuing *}
+         If (TTEnabled) then
+           WaitForHistLock;
+
+       end;
+
+       { Work out any CIS Implications }
+       // CJS 2014-03-20 - ABSEXCH-14289 - incorrect CIS Calculation when CITB
+       // Deduction is set to 1.5%. Removed redundant Mode parameter
+       LCalc_CISTaxInv(LInv, BOn);
+
+       {$IFDEF Inv}
+         LStore_InvHed(1,KeyPath,TTEnabled);
+       {$ENDIF}
+
+       If (Not GotSome) then
+         GotSome:=BOn;
+
+       If (TTEnabled) and (Syss.ProtectPost) then
+       With MTExLocal^ do
+       Begin
+         UnLockHistLock;
+
+         LStatus:=LCtrl_BTrans(0);
+
+         LReport_BError(InvF,LStatus);
+       end;
+
+       LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyR);
+     end; {While..}
+
+
+   end ;{With..}
+
+   {$IFDEF FRM}
+     If (GotSome) then
+     Begin
+       New(FormRep);
+
+       Blank(FormRep^,Sizeof(FormRep^));
+
+       With FormRep^,PParam do
+       Begin
+         RForm:=SyssForms.FormDefs.PrimaryForm[47];
+
+         If (RForm='') then
+           RForm:=Self.DefForm;
+           
+         PDevRec.feBatch:=BOn;
+         PBatch:=BOn;
+       end;
+
+       FormRep^.PParam.PDevRec:=Self.PDevRec;
+
+       Start_JCSBThread(Application.MainForm,FormRep);
+
+       Dispose(FormRep);
+
+     end;
+   {$ENDIF}
+
+
+ end; {Func..}
+
+
+
+
+    { =========== Procedure to Scan Adjustment Documents and Adjust posted stock ========= }
+
+ Procedure TPostJob.Post_TSHDetails(BInv          :  InvRec;
+                                Var GotHed,
+                                    RecoverMode   :  Boolean;
+                                Var NInv          :  InvRec;
+                             Const  TTEnabled,
+                                    PostUpliftOnly:  Boolean);
+
+
+ Const
+    Fnum     =  IDetailF;
+
+    KeyPath  =  IdFolioK;
+
+
+
+  Var
+    UOR      :  Byte;
+
+    KeyS,
+    KeyI,
+    KeyChk   :  Str255;
+
+    RecAddr  :  LongInt;
+
+    LOk,
+    SubConFlg,
+    Locked,
+    TmpBo,
+    Abort    :  Boolean;
+
+    UPNom,
+    WOFFNom  :  LongInt;
+
+    LineCost :  Real;
+
+    UPVal    :  Double;
+
+    DedCnst,
+    TmpLCount :  Integer;  //AP 14/09/2016 2016-R3 ABSEXCH-17276 : MSSQL - Nominals being created with duplicate tlABSLineNo. Affecting posting to Jobs
+
+    RevRate  :  CurrTypes;
+
+    TmpId    :  IDetail;
+
+
+  Begin
+    With MTExLocal^ do
+    Begin
+
+      RecAddr:=0;
+
+      Abort:=BOff;
+
+      WOFFNom:=0;  UPNom:=0; UPVal:=0.0;
+
+      LineCost:=0;  UOR:=0;
+
+      DedCnst:=1;  Locked:=BOff;
+
+      Blank(RevRate,Sizeof(RevRate));
+
+      Blank(KeyI,Sizeof(KeyI));
+
+      LOk:=LGetJobMisc(FullEmpCode(BInv.BatchLink),3);
+
+      If (Not GotHed) and (LOk) then  {* Generate Nom Txfr Header *}
+      Begin
+        If (Not ADJPartPosted(BInv,LInv,Fnum,Keypath)) then
+        Begin
+          {Create hed moved to inside loop, so empty timesheets have no effect}
+
+        end
+        else
+        Begin
+          GotHed:=BOn;
+          RecoverMode:=BOn;
+        end;
+
+        NInv:=LInv;
+
+      end;
+
+
+      KeyChk:=FullNomKey(Binv.FolioNum);
+
+      KeyS:=FullIdKey(BInv.FolioNum,StkLineNo);
+
+      {* Get Employee Record *}
+
+
+      With LJobMisc^.EmplRec do
+      Begin
+
+        SubConFlg:=Not (EmptyKey(Supplier,CustKeyLen));
+
+        {* Take WIP nominal code from System set up *}
+
+        WOffNom:=SyssJob^.JobSetup.EmployeeNom[EmpNomTx(EType),BOff];
+
+      end;
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+      With LId do
+      Begin
+
+        If (ThreadRec^.ThAbort) then
+          ShowStatus(3,'Aborting...');
+
+        If (B2BLink=0) or (B2BLink=FolioRef) or (PostUpliftOnly) then {* It has not already been posted, or we are genearting an uplift movement *}
+        Begin
+
+          LOK:=LGetMainRec(JobF,JobCode);
+
+          If (Not GotHed) and (LOk) and ((Not SubConFlg) or (LJobRec^.JobStat<JobClosed)) then {Create timesheet header}
+          Begin
+            With SyssJob^.JobSetUp do
+            If (GenPPI) then
+            Begin
+              {$IFDEF Inv}
+
+                LGen_InvHed(PPIAcCode,0,Today,'',1,'','','',TmpBo,2);
+
+                LInv.TransDesc:=AutoNomHedTit[5];
+
+                GotHed:=Not TmpBo;
+
+              {$ENDIF}
+
+            end
+            else
+              Create_NTHed(Abort,GotHed,'',5,MTExLocal);
+
+            NInv:=LInv;
+
+          end;
+
+
+          {* Generate Nom Txfr Valuation, exclude Sub contract Lines *}
+
+          If ((GotHed) and (LOk)) and ((Not SubConFlg) or (LJobRec^.JobStat<JobClosed)) then
+          Begin
+
+            LStatus:=LGetPos(Fnum,RecAddr);
+
+            If (AnalCode<>LJobMisc^.JobAnalRec.JAnalCode) then
+              LGetJobMisc(AnalCode,2) {* Pick up Anal WIP Noms *}
+            else
+              LOk:=BOn;
+
+
+            If (LOk) then
+            Begin
+              //AP 14/09/2016 2016-R3 ABSEXCH-17276 : Line count is stored in temp variable and restored it after initialing NInv
+              TmpLCount := LInv.ILineCount;
+              LInv:=NInv;
+              LInv.ILineCount := TmpLCount;
+
+              {* WIP taken from system setup depending on employee type *}
+
+              {WOFFNom:=JobMisc^.JobAnalRec.WIPNom[Off];}
+
+              DedCnst:=1;
+
+              LineCost:=Round_Up(DetLTotal(LId,BOn,BOff,0.0)*DedCnst,2);
+
+              //LineCost:=Round_Up(Qty*NetValue*DedCnst,2);
+
+
+              If (SyssJob^.JobSetUp.GenPPI) then {* Convert to level 0/1 value, as PPI always currency 1*}
+              Begin
+                UOR:=fxUseORate(BOff,BOn,CXRate,UseORate,Currency,0);
+
+                LineCost:=Conv_TCurr(LineCost,XRate(CXRate,BOff,Currency),Currency,UOR,BOff);
+
+              end;
+
+              RevRate:=SyssCurr^.Currencies[Currency].CRates;
+              
+              TmpId:=LId;
+
+              If (Not PostUpliftOnly) then
+                LAdd_StockValue(LJobMisc^.JobAnalRec.WIPNom[Not (LJobRec^.JobStat<JobCompl)],WOffNom,LineCost,'','',BInv.BatchLink,BInv.OurRef,
+                                SyssJob^.JobSetUp.GenPPI,Currency,M_TIMESHEET,CCDep,RevRate,Abort);
+
+              LId:=TmpId;
+
+              If (JCHasUplift(LId,UPVal,0,UPNom)) then {Post supplemental uplift cost}
+                LAdd_StockValue(LJobMisc^.JobAnalRec.WIPNom[Not (LJobRec^.JobStat<JobCompl)],UpNOM,UpVal,'','',BInv.BatchLink,BInv.OurRef,
+                                SyssJob^.JobSetUp.GenPPI,Currency,M_TIMESHEET,CCDep,RevRate,Abort);
+
+
+
+            end;
+
+            LSetDataRecOfs(Fnum,RecAddr);
+
+            LStatus:=LGetDirect(Fnum,KeyPath,0);
+
+            If (Not PostUpliftOnly) then
+            Begin
+
+              LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyI,KeyPath,Fnum,BOn,Locked);
+
+              If (LOk) and (Locked) then
+              Begin
+                LGetRecAddr(Fnum);
+
+
+                B2BLink:=NInv.FolioNum;
+
+                LStatus:=LPut_Rec(Fnum,Keypath);
+
+                LReport_BError(Fnum,LStatus);
+
+                LStatus:=LUnLockMLock(Fnum);
+              end;
+            end;
+
+
+            {* Temp set nominal code here, so job actual picks it up *}
+
+            {Id.NomCode:=WOFFNom;}
+
+            {^^^^ 11/12/95 commented out, as when a job is closed, you do not want a straight reversal, but
+                           a transfer  between WIP & P&L ?*}
+
+
+            LUpdate_JobAct(LId,BInv);
+          end;
+        end; {If already posted..}
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+
+      end; {While..}
+
+      If (GotHed) then
+      With NInv do
+      Begin
+        RemitNo:=BInv.OurRef;
+
+        MTExLocal^.LMatch_Payment(NInv,BInv.InvNetVal,BInv.InvNetVal,23);
+        RemitNo:='';
+      end;
+    end; {With..}
+
+  end; {Proc..}
+
+
+
+ {============ Procedure to Scan TimSheet Daybooks and Post all time sheets, adding contents to Daybooks ========= }
+
+
+ Function TPostJob.Include_TimeSheet  :  Boolean;
+
+
+Var
+  TInc         :  Boolean;
+
+
+Begin
+  Result:=BOff;
+
+  With MTExLocal^,LInv do
+  Begin
+    {$B-}
+    TInc:=(Not OnHold(HoldFlg));
+
+    Result:=TInc;
+
+    If (Not TInc) then
+    Begin
+      If (SuspendDoc(HoldFlg)) then
+         // MH 30/07/2015 2015-R1 ABSEXCH-11984: Corrected spelling of suspended
+         Write_PostLogDD(OurRef+' not posted due to the posting run being suspended at this point. Any transactions after this one will not be posted either.',BOn,OurRef,0)
+       else
+         Write_PostLogDD(OurRef+' not posted due to it being on hold.',BOn,OurRef,0);
+
+    end;
+
+    TInc:=(((Pr2Fig(AcYr,AcPr)<=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Not Syss.PrevPrOff))
+           or ((Pr2Fig(AcYr,AcPr)=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Syss.PrevPrOff)));
+
+    Result:=(TInc and Result);
+
+    If (Not TInc) then
+    Begin
+      If (Syss.PrevPrOff) then
+        Write_PostLogDD(OurRef+' not posted as it is either to future period, or to a past period, and posting to previous periods is not allowed.',BOn,OurRef,0)
+      else
+        Write_PostLogDD(OurRef+' not posted as it is for a future period to the current period.',BOn,OurRef,0);
+
+    end;
+
+    TInc:=(TransDate<=Today);
+
+    Result:=(TInc and Result);
+
+    If (Not TInc) then
+      Write_PostLogDD(OurRef+' not posted due to the transaction date being in the future. ('+PoutDate(TransDate)+')',BOn,OurRef,0);
+
+
+
+  end; {With..}
+
+  {$B+}
+end;
+
+
+  Procedure TPostJob.Post_TSBatch(Manual    :  Boolean;
+                              Var TTEnabled :  Boolean);
+
+  Const
+    Fnum    =  InvF;
+    KeyPath =  InvRnoK;
+
+
+  Var
+    TTMsg    :  Str20;
+
+    DocKey   :  Str255;
+
+    AutoAddr :  LongInt;
+
+    B_Func,
+    TmpLCount :  Integer;  //AP 14/09/2016 2016-R3 ABSEXCH-17276 : MSSQL - Nominals being created with duplicate tlABSLineNo. Affecting posting to Jobs
+
+    NInv,
+    SBInv    :  InvRec;
+
+    Abort,
+    LOk,
+    Locked,
+    GotSBill,
+    ShouldGH,
+    ShouldSB,
+    RecoverMode,
+    GotHed   :  Boolean;
+
+
+
+  Begin
+    TTMsg:='';
+    TmpLCount:=0;
+    Abort:=BOff;
+
+    B_Func:=B_GetNext;
+
+    Addch:=ResetKey;
+
+    Fillchar(DocKey,Sizeof(DocKey),0);
+
+    GotHed:=BOff;  TTEnabled:=BOff;
+
+    GotSBill:=BOff; ShouldGH:=BOff; ShouldSB:=BOff;  RecoverMode:=BOff;
+
+
+    With MTExLocal^ do
+    Begin
+
+      ShowStatus(2,'Checking Time Sheets');
+
+      InitProgress(Used_RecsCId(LocalF^[InvF],InvF,ExCLientId));
+
+      ItemCount:=0;
+
+      DocKey:=FullDayBkKey(0,FirstAddrD,DocCodes[TSH])+NdxWeight;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,DocKey);
+
+      While (LStatusOk) and (LInv.RunNo=0) and (Not Abort) and (Not ThreadRec^.THAbort) do
+      With LInv do
+      Begin
+        //AP 14/09/2016 2016-R3 ABSEXCH-17276 : MSSQL - Nominals being created with duplicate tlABSLineNo. Affecting posting to Jobs
+        if TmpLCount <>0 then
+          ILineCount :=  TmpLCount;
+        Inc(ItemCount);
+
+        UpdateProgress(ItemCount);
+
+        {$B-}
+
+        {If (Not OnHold(HoldFlg))
+          and (InvDocHed In TSTSplit)
+          and (((Pr2Fig(AcYr,AcPr)<=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Not Syss.PrevPrOff))
+                or ((Pr2Fig(AcYr,AcPr)=Pr2Fig(GetLocalPr(0).CYr,GetLocalPr(0).CPr)) and (Syss.PrevPrOff)))
+           and (TransDate<=Today) then}
+
+          If (InvDocHed In TSTSplit) and (Include_TimeSheet) then
+
+        {$B+}
+
+        Begin
+
+
+          If (TranOk2Run) then
+          Begin
+            LStatus:=LCtrl_BTrans(1);
+
+            TTEnabled:=LStatusOk;
+
+            {* Wait until All clear b4 continuing *}
+            If (TTEnabled) then
+              WaitForHistLock;
+
+          end;
+
+          If (TTEnabled) then
+            TTMsg:='. Protected Mode.';
+
+          ShowStatus(2,'Processing '+OurRef+TTMsg);
+
+          LStatus:=LGetPos(Fnum,AutoAddr);
+
+          If (LStatusOk) then
+          Begin
+
+            Case InvDocHed of
+
+
+              TSH  :  Begin
+                          If (LJobMisc^.EmplRec.EmpCode<>LInv.BatchLink) then
+                            LOk:=LGetJobMisc(FullEmpCode(LInv.BatchLink),3)
+                          else
+                            LOk:=BOn;
+
+                          With LJobMisc^.EmplRec do
+                            If (LOk) and (GSelfBill) and (Not (EmptyKey(Supplier,CustKeyLen))) then
+                            Begin
+                              Post_SBDetails(LInv,GotSBill,SBInv,TTEnabled);
+
+                              If (Not ShouldSB) then
+                                ShouldSB:=GotSBill;
+                            end
+                            else
+                              Begin           
+                                Post_TSHDetails(LInv,GotHed,RecoverMode,NInv,TTEnabled,BOff);
+
+                                If (Not ShouldGH) then
+                                  ShouldGH:=GotHed;
+                              end;
+
+                      end;
+
+
+            end; {Case..}
+
+            //AP 14/09/2016 2016-R3 ABSEXCH-17276 : MSSQL - Nominals being created with duplicate tlABSLineNo. Affecting posting to Jobs
+            TmpLCount := LInv.ILineCount;
+
+            LSetDataRecOfs(Fnum,AutoAddr);
+
+            LStatus:=LGetDirect(Fnum,KeyPath,0);
+
+            LOk:=LGetMultiRec(B_GetDirect,B_MultLock,DocKey,KeyPath,Fnum,BOn,Locked);
+
+            If (LOk) and (Locked) {and (GotHed or GotSBill)} then
+            Begin
+              LGetRecAddr(Fnum);
+
+              Case InvDocHed of
+
+                TSH  :  RunNo:=TSTPostRunNo;
+
+              end; {Case..}
+
+
+              LStatus:=LPut_Rec(Fnum,Keypath);
+
+              LReport_BError(Fnum,LStatus);
+
+              If (Not AbortTran) then
+                AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+              LStatus:=LUnLockMLock(Fnum);
+
+              B_Func:=B_GetGEq;
+
+            end
+            else
+              B_Func:=B_GetNext;
+
+          end; {If Address found ok..}
+
+          If (TTEnabled) and (Syss.ProtectPost) then
+          With MTExLocal^ do
+          Begin
+            UnLockHistLock;
+
+            If (Not AbortTran) then
+              AbortTran:=((Not GotHed) and ShouldGH) or ((Not GotSBill) and ShouldSB);
+
+            LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+            ThreadRec^.THAbort:=AbortTran;
+
+            LReport_BError(InvF,LStatus);
+          end;
+        end {If Document ready to post..}
+        else
+        Begin
+          B_Func:=B_GetNext;
+
+          Abort:=(SuspendDoc(HoldFlg)); {*If Suspended, stop here *}
+        end;
+
+
+
+
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,DocKey);
+
+      end; {While..}
+
+      If (TranOk2Run) then
+      Begin
+        LStatus:=LCtrl_BTrans(1);
+
+        TTEnabled:=LStatusOk;
+
+        {* Wait until All clear b4 continuing *}
+        If (TTEnabled) then
+          WaitForHistLock;
+
+      end;
+
+      If (GotHed) and (SyssJob^.JobSetUp.GenPPI) and (Not RecoverMode) then
+      Begin
+
+        {$IFDEF Inv}
+          LInv:=NInv;
+
+          LStore_InvHed(0,-1,TTEnabled);
+
+        {$ENDIF}
+
+      end;
+
+      If (ShouldGH) then
+        Reset_NomTxfrLines(NInv,MTExLocal);
+
+
+      If (TTEnabled) and (Syss.ProtectPost) then
+      With MTExLocal^ do
+      Begin
+        UnLockHistLock;
+
+        LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+        LReport_BError(InvF,LStatus);
+      end;
+
+      If (ShouldSB) and (Not AbortTran) then {Calc all totals}
+      Begin
+        Calc_SelfBillHed(TTEnabled);
+
+      end;
+
+
+      If (SPMode=2) then
+        UpdateProgress(ThreadRec^.PTotal)
+      else
+        UpdateProgress(0);
+
+    end;
+
+
+  end; {Proc..}
+
+
+
+   {== Proc to control Multi Tag/Untag Modes ==}
+ { Modes,
+          12 Tag All
+          13 UnTag All
+          14 Invert Tag
+          15 Tag all with Charges
+          16 Tag all Materials
+          17 Tag all Materials with Charges
+          18 Tag all Labour
+          19 Tag all Labour with Charges }
+
+Procedure TPostJob.Execute_MultiTag(Opt      :  Byte;
+                                    Fnum,
+                                    Keypath  :  Integer;
+                                    JCode    :  Str10);
+
+
+Var
+  KeyChk,
+  KeyS     :   Str255;
+
+  LOK,Locked,
+  GotAnalOk
+           :   Boolean;
+
+  UseJType :   SmallInt;
+
+
+{ == Sub filter for custom tag == }
+
+Function Check_CustomTag  :  Boolean;
+
+Var
+  WIPP  :  Double;
+
+Begin
+  Result:=(Opt<>23);
+
+  If (Not Result) then
+  With MTExLocal^,JCloseCtrlRec^, LJobDetl^.JobActual do
+  Begin
+    Result:=((JDate>=WIPSDate) and (JDate<=WIPEDate)) and (CheckKey(WIPEmpFilt,EmplCode,Length(WIPEmpFilt),BOff))
+    and (CheckKey(WIPAccFilt,ActCCode,Length(WIPAccFilt),BOff));
+
+    If (Result) and (WIPPTarget<>0.0) then
+    Begin
+      WIPP:=DivWchk(TagCost,TotCost)*100;
+
+      Result:=(WIPP<WIPPTarget) or (WIPPTarget=0.0);
+    end;
+  end;
+end;
+
+
+Begin
+
+
+  KeyChk:=PartCCKey(JBRCode,JBECode)+JobRec^.JobCode+#1;
+  KeyS:=KeyChk;
+
+  With MTExLocal^ do
+  Begin
+    With JCloseCtrlRec^ do
+    Begin
+      TagCost:=0.0; TagCharge:=0.0;
+
+      If (Opt=22) then
+        TotCost:=0.0
+      else
+        If (Opt=23) and (WIPReset) then {* Reset First *}
+          Execute_MultiTag(13,Fnum,Keypath,JCode);
+    end;
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+    With LJobDetl^.JobActual do
+    Begin
+      ShowStatus(2,'Checking '+LineORef);
+
+      UseJType:=1;
+
+      GotAnalOk:=LGetJobMisc(AnalCode,2);
+
+      If (GotAnalOk) then {* Link to Analysis type for tag *}
+        UseJType:=LJobMisc^.JobAnalRec.JAType;
+
+      {$B-}
+      If (Not Invoiced) and  (Posted) and (GotAnalOk) and ((Tagged and (Opt In [13,14,22])) or (Not Tagged and (Opt In [12,14..19,22,23]) and Check_CustomTag))
+      and (Not (JDDT In PsopSet+QuotesSet + JAPSplit {$IFDEF STK} -StkExcSet {$ENDIF})) and
+      ((HFolio_Txlate(JAType)<=HFolio_Txlate(SysAnlsEnd)) and (JAType>SysAnlsRev)) then
+      {$B+}
+      Begin
+
+        If (Opt<>22) then
+        Begin
+          ShowStatus(2,'Processing '+LineORef);
+
+          LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,Keypath,Fnum,BOn,Locked);
+
+          If (LOk) and (Locked) then
+          Begin
+            LGetRecAddr(Fnum);
+
+            Case Opt of
+
+              12,13,23
+                     :  Tagged:=(Opt<>13);
+              14     :  Tagged:=Not Tagged;
+              15     :  Tagged:=(Charge<>0);
+              16,17  :  Tagged:=((UseJType=3) and ((Charge<>0) or (Opt=16)));
+              18,19  :  Tagged:=((UseJType=4) and ((Charge<>0) or (Opt=18)));
+            end; {Case..}
+
+
+            LStatus:=LPut_Rec(Fnum,KeyPath);
+
+            LReport_BError(Fnum,LStatus);
+
+            LStatus:=LUnLockMLock(Fnum);
+          end;
+        end;
+        
+        Update_TaggedWIPBal(JCloseCtrlRec^,LJobDetl^,Opt,BOff);
+
+      end;
+
+      
+      LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+  end; {With..}
+
+
+end; {Proc..}
+
+
+
+Function TPostJob.FullIANKey(JC,AC    :  Str10;
+                             FullKey  :  Boolean)  :  Str255;
+
+
+Begin
+  If (FullKey) then
+    Result:=PartCCKey(MatchTCode,MFIFOCode)+FullJDAnalKey(JC,AC)
+  else
+    Result:=PartCCKey(MatchTCode,MFIFOCode)+FullJobCode(JC);
+end;
+
+Function TPostJob.IS_IAN(JC,AC  :  Str10) :  Boolean;
+
+Const
+  Fnum     =  MiscF;
+  Keypath  =  MIK;
+
+Var
+  KeyChk,
+  KeyS     :  Str255;
+
+  B_Func   :  Integer;
+
+Begin
+
+  With MTExLocal^ do
+  Begin
+    KeyChk:=FullIANKey(JC,AC,BOn);
+    KeyS:=KeyChk;
+
+    B_Func:=B_GetEq;
+
+    LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+    IS_IAN:=(LStatusOk and CheckKey(KeyChk,KeyS,Length(KeyChk),BOn));
+  end;
+end;
+
+
+{ ============ Procedures to Control Multi Dr/Cr revaluation =========== }
+
+Procedure TPostJob.Update_IAN(JC,AC    :  Str10;
+                              Value1,
+                              Value2   :  Double);
+
+Const
+  Fnum     =  MiscF;
+  Keypath  =  MIK;
+
+Var
+  FoundRec,
+  NewRec   :  Boolean;
+
+
+Begin
+  With MTExLocal^, LMiscRecs^,CustDiscRec do
+  Begin
+
+    FoundRec:=IS_IAN(JC,AC);
+
+    NewRec:=(LStatus=4);
+
+    If (NewRec) then
+    Begin
+      LResetRec(Fnum);
+
+      RecMFix:=MatchTCode;
+
+      SubType:=MFIFOCode;
+
+      DiscCode:=FullJDAnalKey(JC,AC);
+
+      DCCode:=AC;
+    end;
+
+    QSPrice:=QSPrice+Value1;
+    QDiscP:=QDiscP+Value2;
+
+    If (NewRec) then
+      LStatus:=LAdd_Rec(Fnum,KeyPath)
+    else
+      If (FoundRec) then
+        LStatus:=LPut_Rec(Fnum,KeyPath);
+
+    LReport_BError(Fnum,LStatus);
+
+  end; {With..}
+
+end; {Proc..}
+
+
+
+
+
+
+{ ======== Procedure to Control the Creating of Job Invoices ======= }
+Procedure TPostJob.Gen_JobInv(Const  Mode,
+                                     ICurr,
+                                     DetLev  :  Byte;
+                              Const  ICCDep  :  CCDepType;
+                              Const  IJACode :  Str10;
+                              Const  Fnum,
+                                     Keypath :  Integer;
+                              Var    NeedHed :  Boolean;
+                                     GenWIP,
+                                     UseOrigCCDep
+                                             :  Boolean;
+                              Const  KeyChk  :  Str255;
+                              Const  TTEnabled
+                                             :  Boolean);
+
+ Const
+   Fnum2      =  IdetailF;
+   Keypath2   =  IdFolioK;
+   Fnum3      =  MiscF;
+   Keypath3   =  MIK;
+
+  JobInvType  :  Array[1..2] of String[10] = ('Stage','Final');
+
+
+ Var
+   Ignore,
+   NeedL1,
+   LOk,
+   Locked    :  Boolean;
+
+   JInvTot   :  Array[1..4] of Double;
+   JInvCost  :  Array[1..4] of Double;
+
+   JActCharge,
+   JActCost  :  Double;
+
+   TmpStat,
+   TmpKPath  :  Integer;
+   TmpRecAddr:  LongInt;
+
+   GenStr,
+   KeyChk2,
+   KeyS      :  Str255;
+
+   n         :  Byte;
+
+   NewInv    :  InvRec;
+
+   TmpJDetl  :  JobDetlRec;
+
+
+
+ Procedure Prime_LineRec;
+
+
+ Begin
+   With MTExLocal^,LId do
+   Begin
+     LResetRec(Fnum2);
+
+     FolioRef:=LInv.FolioNum;
+
+     DocPRef:=LInv.OurRef;
+
+     IdDocHed:=LInv.InvDocHed;
+
+     PDate:=LInv.TransDate;
+
+     CustCode:=LInv.CustCode;
+
+     JobCode:=LInv.DJobCode;
+     AnalCode:=LInv.DJobAnal;
+
+     LineNo:=LInv.ILineCount;
+
+     ABSLineNo:=LineNo;
+
+     {$IFDEF STK}
+
+       LineType:=StkLineType[IdDocHed];
+
+     {$ENDIF}
+
+     PriceMulX:=1.0;
+
+     Currency:=LInv.Currency;
+
+     CXRate:=LInv.CXRate;
+     CurrTriR:=LInv.CurrTriR;
+
+
+     If (Not UseOrigCCDep) or (DetLev<>2) then
+       CCDep:=ICCDep;
+
+
+     PYr:=LInv.ACYr;
+     PPr:=LInv.AcPr;
+
+     Payment:=DocPayType[IdDocHed];
+
+     If (Syss.AutoClearPay) then
+       Reconcile:=ReconC;
+
+   end; {With..}
+
+ end;
+
+ Function Finish_Line  :  Boolean;
+
+ Begin
+   With MTExLocal^ do
+   Begin
+     {$IFDEF CU} {Allow override of G/L code}
+       LBuildHookEvent(5000,80,MTExLocal^);
+     {$ENDIF}
+
+     LStatus:=LAdd_Rec(Fnum2,KeyPath2);
+
+     LReport_BError(Fnum2,LStatus);
+
+     Finish_Line:=LStatusOk;
+
+     If (LStatusOk) then
+     Begin
+       Inc(LInv.ILineCount);
+
+       {* Generate Job Actual Record *}
+
+       If (LId.NetValue<>0) then
+         LUpdate_JobAct(LId,LInv);
+     end;
+   end;
+
+ end;
+
+ Procedure Add_DetLine(Charge,Cost  :  Double);
+
+ Var
+   LineDesc  :  Str80;
+   LineCCDep :  CCDepType;
+
+ Begin
+   Blank(LineCCDep,Sizeof(LineCCDep));
+
+   With MTExLocal^,LId do
+   Begin
+     With LJobDetl^.JobActual do {* Link back to line for description *}
+     Begin
+       GenStr:=FullRunNoKey(LineFolio,LineNo);
+
+       LStatus:=LFind_Rec(B_GetEq,Fnum2,IdLinkK,GenStr);
+
+       If (LStatusOk) then
+       Begin
+         LineDesc:=Trim(Desc);
+
+         {$B-}
+         If (LineDesc='') and (JDDT=ADJ) and (LGetMainRecPos(StockF,StockCode)) then
+         {$B+}
+             LineDesc:=Trim(LStock.Desc[1]);
+
+         LineCCDep:=LId.CCDep;
+       end
+       else
+         LineDesc:='';
+
+     end;
+
+     Prime_LineRec;
+
+     If (NeedL1) then
+     Begin
+
+       Desc:=JobInvType[Mode]+' Invoice for Job: '+JobCode;
+
+       NeedL1:=Not Finish_Line;
+
+       {* Inc line no as line been used twice... *}
+
+       LineNo:=LInv.ILineCount;
+
+       ABSLineNo:=LineNo;
+
+     end;
+
+     Qty:=1;
+
+     QtyMul:=1;
+
+     If (LineDesc<>'') then
+       Desc:=LineDesc+'/'+LJobMisc^.JobAnalRec.JAnalName
+     else
+       Desc:=LJobMisc^.JobAnalRec.JAnalName;
+
+     If (LJobMisc^.JobAnalRec.JLinkLT<Low(JALTypes^)) then
+       DocLTLink:=LJobMisc^.JobAnalRec.JLinkLT;
+
+     If (UseOrigCCDep) and (DetLev=2) and (LineCCDep[BOff]<>'') and (LineCCDep[BOn]<>'') then
+       CCDep:=LineCCDep
+     else
+       CCDep:=ICCDep;
+
+
+     NetValue:=Charge;
+     CostPrice:=Cost;
+
+     VATCode:=LCust.VATCode;
+
+     LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+     LGetJobMisc(IJACode,2);
+
+     NomCode:=LJobMisc^.JobAnalRec.WIPNom[BOn];
+
+
+     If Finish_Line then;
+
+   end;
+ end;
+
+
+
+ Begin
+
+   Blank(JInvTot,Sizeof(JInvTot));
+
+   Blank(JInvCost,Sizeof(JInvCost));
+
+   Ignore:=BOff;
+
+   GenStr:='';
+   Locked:=BOff;
+
+   KeyS:=KeyChk;
+
+   TmpKPath:=Keypath;
+
+   JActCharge:=0.0; JActCost:=0.0;
+
+   NeedL1:=BOn;
+
+   With MTExLocal^ do
+   Begin
+     KeyChk2:=FullJobCode(ThisJobCode);
+
+     {* Lock Job Here *}
+
+     LOk:=LGetMultiRec(B_GetEq,B_MultLock,KeyChk2,JobCodeK,JobF,BOn,Locked);
+
+
+     If (LOk) and (Locked) then
+     Begin
+       Try
+
+         LGetRecAddr(JobF);
+
+
+         With LJobRec^ do
+         Begin
+           LGen_InvHed(LJobRec^.CustCode,
+                  0,
+                  Today,'',
+                  ICurr,
+                  JobCode,IJACode,
+                  '',
+                  Ignore,1);
+
+           NeedHed:=Ignore;
+
+           NewInv:=LInv;
+
+         end;
+
+
+         ShowStatus(1,'Generating Invoice for Job : '+LJobRec^.JobCode);
+
+
+         If (DetLev=1) then {* Clean up temp databse first*}
+         Begin
+           GenStr:=FullIANKey(LJobRec^.JobCode,'',BOff);
+
+           LDeleteLinks(GenStr,MiscF,Length(GenStr),MIK,BOff);
+
+         end;
+
+
+         LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+         While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not Ignore) and (Not ThreadRec^.THAbort) do
+         With LJobDetl^.JobActual do
+         Begin
+                                   {Allow fixe price jobs to tag 0 charge}
+           If (Not Invoiced) and ((Charge<>0) or (LJobRec^.ChargeType=2)) then
+           Begin
+
+             LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,Keypath,Fnum,BOn,Locked);
+
+             If (LOk) and (Locked) then
+             Begin
+               LGetRecAddr(Fnum);
+
+               If (Tagged or (Mode=2)) and (Not Ignore) then
+               Begin
+
+                 If (LGetJobMisc(AnalCode,2)) then
+                 With LJobMisc^.JobAnalRec do
+                 Begin
+
+                   If ((JAType >JobXRev) and (JAType<=JobXLab)) and (LJobDetl^.JobActual.JAType<>Pred(SysAnlsSRet)) then
+                   Begin
+                     {* Preserv Pos *}
+
+                     TmpJDetl:=LJobDetl^;
+
+                     TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOff,BOff);
+
+
+                     JActCharge:=(Currency_ConvFT(Charge,CurrCharge,ICurr,UseCoDayRate)*DocCnst[JDDT]);
+                     JActCost:=(Currency_ConvFT(Round_Up(Qty*Cost,2),ActCurr,ICurr,UseCoDayRate)*DocCnst[JDDT]);
+
+                     Case DetLev of
+                       0  :  Begin
+                               JInvTot[JAType]:=JInvTot[JAType]+JActCharge;
+                               JInvCost[JAType]:=JInvCost[JAType]+JActCost;
+                             end;
+
+                       1  :  Begin
+                               Update_IAN(LJobRec^.JobCode,AnalCode,JActCharge,JActCost);
+                             end;
+
+
+                       2  :  Begin
+                               Add_DetLine(JActCharge,JActCost);
+
+                             end;
+
+                     end; {Case..}
+
+                     TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],TmpRecAddr,BOn,BOff);
+
+                     LJobDetl^:=TmpJDetl;
+
+                   end;
+
+
+                   Invoiced:=BOn;
+
+                   InvRef:=LInv.OurRef;
+                 end;
+
+                 Tagged:=BOff;
+
+                 LStatus:=LPut_Rec(Fnum,KeyPath);
+
+                 LReport_BError(Fnum,LStatus);
+
+               end;
+
+               LStatus:=LUnLockMLock(Fnum);
+
+             end; {If Locked..}
+
+           end; {If not correct line type }
+
+           If (Not Ignore) then
+             LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+         end; {While..}
+
+
+         If (Not NeedHed) then
+         Begin
+
+           Case DetLev of
+
+             0  :  Begin
+                     If (LGetJobMisc(IJACode,2)) then
+                     Begin
+                       For n:=JobXRev to JobXLab do
+                       If (JInvTot[n]<>0) or (n=1) then
+                       With LId do
+                       Begin
+
+                         Prime_LineRec;
+
+                         If (n>JobXRev) then
+                         Begin
+
+                           Qty:=1;
+
+                           QtyMul:=1;
+
+                           Desc:=JobXDesc^[n]+' charge.';
+
+                           NetValue:=JInvTot[n];
+                           CostPrice:=JInvCost[n];
+
+                           VATCode:=LCust.VATCode;
+
+                           LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+                           NomCode:=LJobMisc^.JobAnalRec.WIPNom[BOn];
+
+                         end
+                         else
+                         Begin
+                           Desc:=JobInvType[Mode]+' Invoice for Job: '+JobCode
+                         end;
+
+                         If Finish_Line then;
+
+                       end; {Loop..}
+                     end; {If Anal OK..}
+                   end; {DetLev 0}
+
+
+             1  :  Begin
+                     KeyChk2:=FullIANKey(LJobRec^.JobCode,'',BOff);
+                     KeyS:=KeyChk2;
+
+                     LStatus:=LFind_Rec(B_GetGEq,Fnum3,KeyPath3,KeyS);
+
+                     While (LStatusOk) and (CheckKey(KeyChk2,KeyS,Length(KeyChk2),BOn)) and (Not Ignore) do
+                     With LId, LMiscRecs^,CustDiscRec do
+                     Begin
+                       Prime_LineRec;
+
+                       If (NeedL1) then
+                       Begin
+
+                         Desc:=JobInvType[Mode]+' Invoice for Job: '+JobCode;
+
+                         NeedL1:=Not Finish_Line;
+
+                         {* Inc line no as line been used twice... *}
+
+                         LineNo:=LInv.ILineCount;
+
+                         ABSLineNo:=LineNo;
+
+                       end;
+
+
+                       LGetJobMisc(DCCode,2);
+
+                       Qty:=1;
+
+                       QtyMul:=1;
+
+                       Desc:=LJobMisc^.JobAnalRec.JAnalName;
+
+                       If (LJobMisc^.JobAnalRec.JLinkLT<Low(JALTypes^)) then
+                         DocLTLink:=LJobMisc^.JobAnalRec.JLinkLT;
+
+                       NetValue:=QSPrice;
+                       CostPrice:=QDiscP;
+
+                       VATCode:=LCust.VATCode;
+
+                       LCalcThVat(LId,LInv.DiscSetl,MTExLocal^);
+
+
+                       LGetJobMisc(IJACode,2);
+
+
+                       NomCode:=LJobMisc^.JobAnalRec.WIPNom[BOn];
+
+                       If Finish_Line then
+                       Begin
+                         LStatus:=LDelete_Rec(Fnum3,KeyPath3);
+                       end;
+
+                       LStatus:=LFind_Rec(B_GetNext,Fnum3,KeyPath3,KeyS);
+
+                     end;
+                   end;
+           end; {Case..}
+
+           LStore_InvHed(1,-1,TTEnabled);
+
+
+         end; {If Inv header created ok..}
+
+       Finally
+         LStatus:=LUnLockMLock(JobF);
+
+         {$IFDEF CU}
+           If (Not NeedHed) then {Execute hook which allows examination of generated invoice}
+             LBuildHookEvent(5000,70,MTExLocal^);
+         {$ENDIF}
+
+       end; {try..}
+     end {If Locked..}
+   end; {With..}
+
+ end; {Proc..}
+
+
+
+   { ===== Procedure to Generate job closure nominal ===== }
+
+ Procedure TPostJob.Gen_CloseJobNom(Const JCode,
+                                          ACode    :  Str10;
+                                    Const StageOn,
+                                          WIPOnly  :  Boolean;
+                                    Const Fnum,
+                                          Keypath  :  Integer;
+                                    Const TTEnabled:  Boolean);
+
+  Const
+   Fnum2      =  IdetailF;
+   Keypath2   =  IdLinkK;
+
+   StageTitle :  Array[BOff..BOn] of Str20 = ('','StageInv');
+
+
+
+  Var
+    KeyI,
+    KeyS,
+    KeyChk   :  Str255;
+
+    LOk,
+    Locked,
+    GotHed,
+    Abort    :  Boolean;
+
+    RecAddr,
+    WOFFNom  :  LongInt;
+
+    ACCDep,
+    UCCDep   :  CCDepType;
+
+    LineCost :  Real;
+
+    RevRate  :  CurrTypes;
+
+    CopyJDetl:  JobDetlRec;
+
+    NetValue: double;
+    UpliftedNetValue: double;
+    Discount: double;
+
+    // CJS 2012-02-29 - ABSEXCH-12425 - G/L Codes
+    GL_WIP: LongInt;
+    GL_Uplift: LongInt;
+    GL_ProfitLoss: LongInt;
+
+  Begin
+
+    With MTExLocal^ do
+    Begin
+
+      Abort:=BOff;
+      GotHed:=BOff;
+
+      Locked:=BOff;
+
+      WOFFNom:=0;
+
+      LineCost:=0;
+
+      If (JCode<>LJobRec^.JobCode) then
+        LGetMainRec(JobF,JCode);
+
+      Blank(ACCDep,Sizeof(ACCDep));
+
+      Blank(UCCDep,Sizeof(UCCDep));
+
+      Blank(RevRate,Sizeof(RevRate));
+
+
+      ShowStatus(0,'Transfer work in progress.');
+
+      ShowStatus(1,'Generating WIP Nominal Journal for '+LJobRec^.JobCode);
+
+      KeyChk:=PartCCKey(JBRCode,JBECode)+JCode+#1;
+      KeyS:=KeyChk;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not Abort) and (Not ThreadRec^.THAbort) do
+      With LJobDetl^.JobActual do
+      Begin
+
+        If (Reverse) and (Not Reversed) and (Posted) and ((Tagged) or (Not StageOn)) then
+        Begin
+
+          CopyJDetl:=LJobDetl^;
+
+          If (AnalCode<>LJobMisc^.JobAnalRec.JAnalCode) then
+            LOK:=LGetJobMisc(AnalCode,2)
+          else
+            LOk:=BOn;
+
+          If (LOk) then
+          Begin
+            If (Not GotHed) then
+              Create_NTHed(Abort,GotHed,JCode+'. '+StageTitle[StageOn],3,MTExLocal);
+
+
+            If (GotHed) then
+            Begin
+
+              WOFFNom:=OrigNCode;
+
+              If (WOFFNom=0) then
+                WOFFNom:=LJobMisc^.JobAnalRec.WIPNom[BOff];
+
+              // CJS 2012-02-29 - ABSEXCH-12425 - store the various G/L codes,
+              // so that we always have a reference to the original ones.
+              GL_WIP        := WOffNom;
+              GL_Uplift     := LJobMisc^.JobAnalRec.UpLiftGL;
+              GL_ProfitLoss := LJobMisc^.JobAnalRec.WIPNom[BOn];
+
+              LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOn,Locked);
+
+              If (LOk) and (Locked) then
+              Begin
+                LGetRecAddr(Fnum);
+
+                Reversed:=BOn;
+
+                If (StageOn) and (WIPOnly) then
+                Begin
+                  Invoiced:=BOn; Tagged:=BOff;
+                end;
+
+                LStatus:=LPut_Rec(Fnum,KeyPath);
+
+                LReport_BError(Fnum,LStatus);
+
+                LStatus:=LUnLockMLock(Fnum);
+
+
+                If (LStatusOk) then
+                Begin
+
+                  LineCost:=Round_Up((Round_Up(Qty*Cost,2))*DocCnst[JDDT],2);
+
+                  LStatus:=LGetPos(Fnum,RecAddr);
+
+                  {* Link back to line to get CC/Dep *}
+
+                  KeyI:=FullRunNoKey(LineFolio,LineNo);
+
+                  LStatus:=LFind_Rec(B_GetEq,Fnum2,KeyPath2,KeyI);
+
+                  If (LStatusOk) then
+                  Begin
+                    ACCDep   := LId.CCDep;
+                    RevRate  := LId.CXRate;
+                    NetValue := LId.NetValue * Qty;
+                    // CJS 2012-02-29 - ABSEXCH-12425 - Take uplift into account
+                    if (CopyJDetl.JobActual.UpliftTotal <> 0.0) then
+                      UpliftedNetValue := NetValue + CopyJDetl.JobActual.UpliftTotal
+                    else
+                      UpliftedNetValue := NetValue;
+                    Discount := LId.Discount;
+                  end
+                  else
+                    RevRate:=SyssCurr^.Currencies[ActCurr].CRates;
+
+                  if (Syss.SepDiscounts) then
+                    // CJS 2012-02-29 - ABSEXCH-12425 - use uplifted Net Value
+                    LAdd_SplitDiscountStockValue(LJobMisc^.JobAnalRec.WIPNom[BOn],WOffNom,LineCost, UpliftedNetValue, Discount,JCode,ACode,'',LineORef,
+                              ActCurr,M_WIP,ACCDep,RevRate,StageOn,Abort)
+                  else
+                    LAdd_StockValue(LJobMisc^.JobAnalRec.WIPNom[BOn],WOffNom,LineCost,JCode,ACode,'',LineORef,
+                              BOff,ActCurr,1,ACCDep,RevRate,Abort);
+
+                  { Reverse out any Uplift }
+                  If (CopyJDetl.JobActual.UpliftTotal<>0.0) then
+                  With CopyJDetl.JobActual do
+                  Begin
+                    { Read the Uplift G/L Code from the Job Actual record. If
+                      this has not been set, use the Uplift G/L Code from the
+                      Job Analysis record instead. }
+                    WOFFNom := UpLiftGL;
+                    if (WOFFNom = 0) then
+                      WOFFNom := GL_Uplift;
+
+                    With SyssCIS^.CISRates.CISRate[Construct] do
+                    Begin
+                      UCCDep:=RCCDep;
+                    end;
+
+                    If (UCCDep[BOff]='') or (UCCDep[BOn]='') then
+                      UCCDep:=ACCDep;
+
+                    LineCost:=Round_Up((Round_Up(Qty*UpliftTotal,2))*DocCnst[JDDT],2);
+
+                    LAdd_StockValue(WOffNom,GL_ProfitLoss,LineCost,'','','',LineORef,
+                          BOff,ActCurr,M_WIP_UPLIFT,UCCDep,RevRate,Abort);
+
+                  end;
+
+                  { Reverse out any discount }
+                  If (Discount<>0.0) and Syss.SepDiscounts then
+                  With CopyJDetl.JobActual do
+                  Begin
+                    With SyssCIS^.CISRates.CISRate[Construct] do
+                    Begin
+                      UCCDep:=RCCDep;
+                    end;
+
+                    If (UCCDep[BOff]='') or (UCCDep[BOn]='') then
+                      UCCDep:=ACCDep;
+
+                    { CJS 2012-02-29 - ABSEXCH-12425 - Post the discount to the
+                      Work-in-Progress G/L, using the non-uplifted Net Value }
+                    LineCost := NetValue * Discount;
+                    LAdd_SplitDiscountStockValue(GL_WIP, GL_ProfitLoss,
+                                                 LineCost, NetValue, Discount,
+                                                 '', '', '', LineORef, ActCurr,
+                                                 M_WIP_DISCOUNT, UCCDep,
+                                                 RevRate, False, Abort);
+
+                  end;
+
+                  LSetDataRecOfs(Fnum,RecAddr);
+
+                  LStatus:=LGetDirect(Fnum,KeyPath,0);
+                end;
+
+              end;
+
+            end; {If header generated ok..}
+
+          end; {If analcode found ok..}
+
+        end; {If line not reversable.}
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+
+      end; {While..}
+
+
+      If (GotHed) then {* Update nominal line count *}
+      Begin
+
+        RecAddr:=LInv.ILineCount;
+
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,InvFolioK,InvF,BOn,Locked);
+
+        If (LOk) and (Locked) then
+        With LInv do
+        Begin
+          LGetRecAddr(InvF);
+
+          ILineCount:=RecAddr;
+
+          LStatus:=LPut_Rec(InvF,InvFolioK);
+
+          LReport_BError(InvF,LStatus);
+
+          LStatus:=LUnLockMLock(InvF);
+        end;
+
+        Reset_NomTxfrLines(LInv,MTExLocal);
+
+      end; {If header generated ok..}
+    end; {With..}
+
+  end; {Proc..}
+
+
+Procedure TPostJob.Reset_JobActual;
+
+Const
+  Fnum     = IdetailF;
+  Keypath  = IdFolioK;
+  Fnum2    = InvF;
+  Keypath2 = InvFolioK;
+
+  ThCaption :  Array[BOff..BOn] of Str20 = ('Reset','Verify');
+
+Var
+  KeyChk,
+  KeyS     :  Str255;
+
+  PurgeCount,
+  PurgeTotal
+           :  LongInt;
+
+  InvOK,
+  Ok2Cont  :  Boolean;
+
+
+Begin
+  With MTExLocal^ do
+  Begin
+
+    InitProgress(Used_RecsCId(LocalF^[Fnum],Fnum,ExCLientId));
+
+    ItemCount:=0;
+
+
+    Ok2Cont:=BOn;
+
+      ShowStatus(1,ThCaption[SPMode=43]+' Job Actual Data');
+
+      ShowStatus(2,'Please Wait... '+ThCaption[SPMode=43]+'ing actual entries.');
+
+
+    KeyChk:=PartCCKey(JBRCode,JBECode);
+
+    If (Not EmptyKey(ThisJobCode,JobCodeLen)) then
+      KeyChk:=KeyChk+FullJobCode(ThisJobCode);
+
+    If (SPMode<>43) then {* Do not delete for a verify *}
+      LDeleteLinks(KeyChk,JDetlF,Length(KeyChk),JdLedgerK,BOff);
+
+    KeyChk:=FullNomKey(1);
+
+
+    LStatus:=LFind_Rec(B_StepFirst,Fnum,KeyPath,KeyChk);
+
+    While (LStatusOk) and  (Not ThreadRec^.THAbort)  do
+    With LId do
+    Begin
+
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+
+      If (JobCode<>'') and (AnalCode<>'') and
+
+      (CheckKey(ThisJobCode,JobCode,Length(ThisJobCode),BOff) or (EmptyKey(ThisJobCode,JobCodeLen)))
+
+      then
+      Begin
+
+
+        If (LInv.FolioNum<>FolioRef) then
+        Begin
+          KeyS:=FullNomKey(FolioRef);
+
+          LStatus:=LFind_Rec(B_GetEq,Fnum2,KeyPath2,KeyS);
+
+          InvOK:=LStatusOk;
+        end
+        else
+          InvOK:=BOn;
+
+
+
+
+        If (InvOk) then
+        Begin
+          ShowStatus(2,'Entry for Job '+Trim(JobCode)+', '+LInv.OurRef);
+
+
+          LUpDate_JobAct(LId,LInv);
+        end;
+      end;
+
+
+
+      LStatus:=LFind_Rec(B_StepNext,Fnum,KeyPath,KeyChk);
+
+    end;
+
+    UpdateProgress(ThreadRec^.PTotal);
+
+  end; {If confirmed }
+
+end; {Proc..}
+
+
+
+  {* 1 = Post JC Daybbok only *}
+  {* 2 = Post TS Daybbok only *}
+  {* 3 = Post JC+TS Daybbok  *}
+  {* 4 = *}
+  {* 12-19 Global Tagging *}
+  {* 20 = Produce Invoice *}
+  {* 21 = Transfer WIP *}
+  {* 22 = Add up value of tagged items *}
+  {* 23 = Apply Custom Tag to WIP items *}
+  {* 30 = Update Budget Headings From Analysis up*}
+  {* 31 = Update Budget Headings From PayRates up*}
+  {* 32 = Update Contracts *}
+  {* 35 = Update Contracts Silently *}
+  {* 37 = Update Contract budgets from this level only *}
+  {* 38 as 37 but silent, run from delete job *}
+  {* 40 = Check all jobs *}
+  {* 41 = Check one job *}
+  {* 42 = Recreate all job actuals *}
+  {* 43 = Verify Job Actuals *}
+  {* 45 = Check all jobs silently *}
+  {* 46 = Check all jobs from job tree position *}
+  {* 50 = Post Certified applications *}
+  {* 51 = Post Single Certified applications *}
+  {* 52 = Apply Contract level valuations to lower levels *}
+  {* 98 = Test Rig *}
+  {* 99 = Non thread control *}
+
+
+  Procedure TPostJob.Process;
+
+  Var
+    TTEnabled  :  Boolean;
+
+  Begin
+    InMainThread:=BOn;
+
+    TTenabled:=BOff;
+
+    Inherited Process;
+
+    If (SPMode<>22) then
+      SendMessage(CallBackH,WM_FormCloseMsg,84,0);
+
+    If (SPMode In [2,3]) then
+    Begin
+      {*Post Time Sheets*}
+      ShowStatus(0,'Post Time Sheets');
+
+      Post_TSBatch((SPMode=2),TTEnabled);
+    end;
+
+
+    If (SPMode In [1,3]) and (Not ThreadRec^.ThAbort) and (Not AbortTran) then
+    Begin
+      ShowStatus(0,'Post Job Costing');
+
+      Post_Actuals(BOff,'',TTEnabled);
+
+      If (Not ThreadRec^.ThAbort) and (Not AbortTran) and (JCloseCtrlRec^.ChkExpRet) then
+        Process_Ret(JDetlF,JDAnalK,TTEnabled);
+    end;
+
+    {$IFDEF Rp}
+      {$IFDEF FRM}
+        If (Assigned(PostLog)) and (SPMode In [1..3]) then
+          PostLog.PrintLog(PostRepCtrl,'Job Costing Posting run omissions and exception log. '+PoutDate(Today));
+
+      {$ENDIF}
+    {$ENDIF}
+
+
+    If (SPMode In [12..19,22,23]) then
+    Begin
+      ShowStatus(0,'Tag Job Actuals');
+
+      Execute_MultiTag(SPMode,JDetlF,JDLedgerK,ThisJobCode);
+
+      New(JInvRetPtr);
+
+      FillChar(JInvRetPtr^,Sizeof(JInvRetPtr^),0);
+
+      With JInvRetPtr^ do
+      Begin
+        RTagCost:=JCloseCtrlRec^.TagCost;
+        RTotCost:=JCloseCtrlRec^.TotCost;
+        RTagCharge:=JCloseCtrlRec^.TagCharge;
+
+      end;
+
+      SendMessage(CallBackH,WM_CustGetRec,77,LongInt(JInvRetPtr));
+    end;
+
+    If (SPMode In [20,21]) then
+    With JCloseCtrlRec^ do
+    Begin
+      If (UseWIP) then
+        Gen_CloseJobNom(ThisJobCode,WJACode,Not FinalInv,WIPOnly,JdetlF,JDLedgerK,TTEnabled);
+
+      If (SPMode=20) then
+      Begin
+        If (Not WIPOnly) then
+        Begin
+          ShowStatus(0,'Invoice Job '+Trim(ThisJobCode));
+
+          Gen_JobInv(1+Ord(FinalInv),
+                     InCurr,DetLev,
+                     ICCDep,
+                     IJACode,
+                     JDetlF,JDLedgerK,
+                     WantHed,
+                     UseWIP,
+                     UseOrigCCDep,
+                     PartCCKey(JBRCode,JBECode)+ThisJobCode+#1,
+                     TTEnabled);
+
+          If (Not WantHed) then {* Send Message to say invoice raised... *}
+          Begin
+            New(JInvRetPtr);
+
+            FillChar(JInvRetPtr^,Sizeof(JInvRetPtr^),0);
+
+            With JInvRetPtr^ do
+            Begin
+              WasAborted:=ThreadRec^.ThAbort;
+              RetInv:=MTExLocal^.LInv;
+
+            end;
+
+            SendMessage(CallBackH,WM_CustGetRec,75,LongInt(JInvRetPtr));
+          end;
+        end
+        else
+          SendMessage(CallBackH,WM_CustGetRec,76,0);
+      end;
+    end;
+
+    If (SPMode In [40..43,45,46]) then
+    Begin
+      ShowStatus(0,'Recalculate Job Totals');
+
+      // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+      If (SPMode=40) And SQLUtils.UsingSQL Then
+      Begin
+        // Check all Job Totals
+        oPerformanceLogger := TEntSQLProcessLogger.Create('CheckAllJobTotals');
+      End; // If (SPMode=40) And SQLUtils.UsingSQL
+
+      Case SPMode of
+        40,45
+            :  Check_AllJobs;
+        41  :  Check_OneJob;
+
+          46  :  Check_SelectedJobs(0);
+
+        42,43
+            :  Begin
+                 ShowStatus(0,'Recreate Job Actual records');
+                 Reset_JobActual;
+               end;
+      end; {Case..}
+
+      PostUnLock(0);
+
+      // MH 03/02/2014 v7.0.9 ABSEXCH-15005: Added SQL improvements into Check All Job Totals
+      If Assigned(oPerformanceLogger) Then
+      Begin
+        // Check all Job Totals
+        FreeandNIL(oPerformanceLogger);
+      End; // If Assigned(oPerformanceLogger)
+    end;
+
+
+  end;
+
+
+
+
+
+
+  Procedure TPostJob.Finish;
+
+  Var
+    MsgMode  :  Word;
+
+  Begin
+
+
+    Inherited Finish;
+
+    {Overridable method}
+
+    InMainThread:=BOff;
+
+
+    MsgMode:=74;
+
+    If (SPMode<>20) and (Not (SPMode In [22,40..43,45])) then
+      PostMessage(CallBackH,WM_CustGetRec,MsgMode,0);
+
+  end;
+
+
+
+  // CJS 2015-03-06 - ABSEXCH-16133 - include option to run original routine
+  Function TPostJob.Start(SMode    :  Byte;
+                          InpWinH  :  THandle;
+                          Confirm  :  Boolean = True;
+                          ConfirmRecreate: Boolean = True): Boolean;
+
+  Var
+    mbRet  :  Word;
+    KeyS   :  Str255;
+    RForm  :  Str10;
+    UFont  :  TFont;
+
+    {$IFDEF FRM}
+      Orient :  TOrientation;
+    {$ENDIF}
+
+  Begin
+
+    Result:=BOn;  UFont:=nil;
+
+
+    If (Not (SMode In [12..19,21..23,35,38,45,99])) then
+    Begin
+
+      Begin
+        Set_BackThreadMVisible(BOn);
+
+        Case SMode of
+
+          20    :  If (Not JCloseCtrlRec^.WIPOnly) then
+                     KeyS:='Please confirm you wish to generate the invoice.'
+                   else
+                     KeyS:='Please confirm you wish to transfer the work in progress.';
+
+          30,31
+                :  KeyS:='Please confirm you wish to update the category budgets.';
+          32
+                :  KeyS:='Please confirm you wish to update all contracts.';
+          37
+                :  KeyS:='Please confirm you wish to update this contract.';
+
+          40    :  KeyS:='Please confirm you wish to recalculate the entire Job Tree.';
+
+          41,46
+                :  KeyS:='Please confirm you wish to recalculate the Job Totals for '+ThisJobCode+'.';
+
+          42,43 :  KeyS:='All existing Job Costing Actual data will be reset. Continue?';
+
+          else     KeyS:='Please Confirm you wish to Post.'
+
+        end; {Case..}
+
+        If Confirm and (SMode In [20,30..32,37,40..41,43,46]) then {Don't prompt for any mode which also prompts for a printer}
+          mbRet:=MessageDlg(KeyS,mtConfirmation,[mbYes,mbNo],0)
+        else
+          mbRet:=mrYes;
+
+        Result:=(mbRet=mrYes);
+
+
+
+        If (SMode=42) then
+        Begin
+          Result:=(CustomDlg(Application.MainForm,'WARNING!','Reset Job Actuals',
+                               'This procedure will destroy any existing Job Actual records, and replace them'+
+                               ' with new records based on the transaction lines now present in the system.'+#13+
+                               'Any current Job Actual lines marked as invoiced or recorded with Work in Progress'+
+                               ' transferred will be reset.  This will affect Jobs which are still open with some'+
+                               ' WIP transferred.'+#13+
+                               'Do you wish to continue?',
+                               mtWarning,
+                               [mbYes,mbNo])=mrOk);
+
+
+        end;
+
+
+
+        // CJS 2015-03-06 - ABSEXCH-16133 - include option to run original routine
+        // PR: 29/09/2016 ABSEXCH-17343 If running SQL and ConfirmRecreate is False then the user has
+        //                              already specified that Analyis records should be recreated
+        //                              (otherwise we wouldn't have got here); however,
+        //                              RemoveBudget wasn't getting set.
+        If (Result) and (SMode In [40,41,46]) then
+        Begin
+          if ConfirmRecreate then
+            RemoveBudget:=(MessageDlg('Do you wish to recreate the Analysis control records?',mtConfirmation,[mbYes,mbNo],0)=mrYes)
+          else  //If SQL then RemoveBudget = not ConfirmRecreate
+            RemoveBudget := SQLUtils.UsingSQLAlternateFuncs And SQLReportsConfiguration.UseSQLCheckAllJobs;
+        end;
+
+        Set_BackThreadMVisible(BOff);
+      end;
+
+    {$IFDEF FRM}
+      If (Result) and (Not (SMode In [20,22,23,30..32,35,37,38,40..43,45,46,51..54])) then
+      Begin
+        Orient:=poPortrait;
+
+        Set_BackThreadMVisible(BOn);
+
+        RForm:=pfGetMultiFrmDefs(0).FormDefs.PrimaryForm[EntDefPrnMode[SIN]];
+
+        Result:=pfSelectFormPrinter(PDevRec,BOn,RForm,UFont,Orient);
+
+        DefForm:=RForm;
+
+        Set_BackThreadMVisible(BOff);
+      end;
+
+    {$ENDIF}
+      if Result then
+      begin
+        Case SMode of
+          1..3 : ProcessLockType := plPostJobDaybook;
+         40,
+         41,
+         46 : ProcessLockType := plCheckJobs;
+
+        end;
+        if not GetProcessLock(ProcessLockType) then
+        begin
+          Result := False;
+          EXIT;
+        end;
+      end;
+    end;
+
+    If (Result) then
+    Begin
+    {$IFDEF EXSQL}
+    if SQLUtils.UsingSQL then
+    begin
+      // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+      if (not Assigned(LPostLocal)) then
+        Result := Create_LocalThreadFiles;
+
+      If (Result) then
+      begin
+        MTExLocal := LPostLocal;
+
+        SPMode:=SMode;
+
+        CallBackH:=InpWinH;
+      end;
+
+    end
+    else
+    {$ENDIF}
+    begin
+      If (Not Assigned(PostExLocal)) then { Open up files here }
+        Result:=Create_ThreadFiles;
+
+
+      If (Result) then
+      Begin
+        MTExLocal:=PostExLocal;
+
+        SPMode:=SMode;
+
+        CallBackH:=InpWinH;
+      end;
+    end;
+
+      If (SMode In [1..3,40..43,45,46,99]) then {* Atempt to lock this run *}
+      With MTExLocal^, PostRepCtrl^ do
+      Begin
+        PostMode:=9;
+
+        Result:=PostLockCtrl(PostMode);
+
+        If (Result) then
+          LastRunNo:=CheckAbortedRun;
+
+        If (LastRunNo<>0) and (Syss.ProtectPost) and (Result) then
+        With LMiscRecs^,MultiLocRec do
+        Begin
+          ShowMessage('Job Posting Run '+Form_Int(LastRunNo,0)+' did not finish correctly.'+#13+
+                      'The job posting run was started by user '+Trim(LOCDESC)+' on '+LOCFDESC+#13+#13+
+                      'Attempting to continue this posting run now.');
+
+          AddErrorLog('Job Posting Run '+Form_Int(LastRunNo,0)+' did not finish correctly.'+#13+
+                      'The job posting run was started by user '+Trim(LOCDESC)+' on '+LOCFDESC,'',4);
+        end;
+
+
+        If  (Result) then
+        Begin
+          If (Syss.ProtectPost) and (BTFileVer>=6) then
+          Begin
+            If (Not AlreadyInPost) then
+              LStatus:=LCtrl_BTrans(1)
+            else
+              LStatus:=0;
+
+            TranOk2Run:=LStatusOk or (LStatus=37) {* Is already running *};
+
+            If (Not TranOk2Run) then
+            Begin
+               AddErrorLog('Job Posting Run. Protected Mode could not be started. (Error '+Form_Int(LStatus,0)+')','',4);
+
+               LReport_BError(InvF,LStatus);
+
+               Result:=(CustomDlg(Application.MainForm,'WARNING!','Posting Job Transactions',
+                               'It was not possible to start Protected Mode Job Posting due to an error. '+
+                               Form_Int(LStatus,0)+'.'#13+
+                               'Do you wish to continue posting without Protected Mode?',
+                               mtWarning,
+                               [mbYes,mbNo]
+                               )=mrOk);
+
+
+            end;
+
+            If (LStatusOk) and (Not AlreadyInPost) then
+              LStatus:=LCtrl_BTrans(0);
+
+          end;
+
+        end;
+
+        If (Result) then {* Check for valid NCC *}
+        Begin
+          Result:=CheckValidNCC(CommitAct);
+
+          If (Not Result) then
+          Begin
+            AddErrorLog('Job Costing. Post Transactions. One or more of the General Ledger Control Codes is not valid, or missing.','',4);
+
+            CustomDlg(Application.MainForm,'WARNING!','Invalid G/L Control Codes',
+                           'One or more of the General Ledger Control Codes is not valid, or missing.'+#13+
+                           'Posting cannot continue until this problem has been rectified.'+#13+#13+
+                           'Correct the Control Codes via Utilities/System Setup/Control Codes, then try again.',
+                           mtError,
+                           [mbOk]);
+
+
+          end;
+
+        end;
+
+
+        If (Not Result) then {* Remove lock... *}
+          PostUnLock(0);
+
+      end;
+    end
+    else
+      SendMessage(InpWinH,WM_CustGetRec,74,0);
+
+    {$IFDEF EXSQL}
+    if Result and SQLUtils.UsingSQL then
+    begin
+      MTExLocal^.Close_Files;
+      CloseClientIdSession(MTExLocal^.ExClientID, False);
+    end;
+    {$ENDIF}
+
+  end;
+
+
+{ ============== }
+
+Procedure AddJobPost2Thread(AOwner   :  TObject;
+                            SMode    :  Byte;
+                            JCode    :  Str10;
+                            JCRPtr   :  Pointer;
+                            MyHandle :  THandle;
+                            Confirm  :  Boolean = True;
+                            ConfirmRecreate: Boolean = True);
+
+
+  Var
+    LCheck_Batch :  ^TPostJob;
+
+  Begin
+
+    If (Create_BackThread) then
+    Begin
+      New(LCheck_Batch,Create(AOwner));
+
+      try
+        With LCheck_Batch^ do
+        Begin
+          If (Assigned(JCRPtr)) then
+            JCloseCtrlRec^:=JInvHedRec(JCRPtr^);
+
+          ThisJobCode:=JCode;
+
+          If (Start(SMode,MyHandle,Confirm,ConfirmRecreate)) and (Create_BackThread) then
+          Begin
+
+            
+            
+            With BackThread do
+              AddTask(LCheck_Batch,'Job Post');
+          end
+          else
+          Begin
+            Set_BackThreadFlip(BOff);
+            Dispose(LCheck_Batch,Destroy);
+          end;
+        end; {with..}
+
+      except
+        Dispose(LCheck_Batch,Destroy);
+
+      end; {try..}
+    end; {If process got ok..}
+
+  end;
+
+// -----------------------------------------------------------------------------
+
+end.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:srlines xmlns:val="urn:www-iris-co-uk:srlines">
+    <message guid="" number="" count="" source="" destination="" flag="">
+       <srrec>
+             <serialno/>   <!--:  String[20]; {  Actual Serial No. }  -->
+             <batchno/>    <!--:  String[10]; {  Seperate Batch No.} -->
+             <dateout/>    <!--:  String[8];  {  Date Out } -->
+             <sercost/>    <!--:  Double;     {  CostPrice } -->
+             <sersell/>    <!--:  Double;     {  Selling Price } -->
+             <curcost/>    <!--:  SmallInt;   {  Currency of Cost Price } -->
+             <cursell/>    <!--:  SmallInt;   {  Currency of Selling Price } -->
+             <inmloc/>     <!--:  String[10]; {  Location Filter }  -->
+             <outmloc/>    <!--:  String[10]; {  Location Filter } -->
+             <buyqty/>     <!--:  Double; -->
+             <qtyused/>    <!--:  Double;-->
+             <sold/>       <!--:  WordBool; -->
+       </srrec>
+    </message>
+</val:srlines>

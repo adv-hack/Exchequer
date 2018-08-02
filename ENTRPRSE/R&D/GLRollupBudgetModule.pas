@@ -1,0 +1,226 @@
+// CJS 2016-04-19 - ABSEXCH-17431 - additional UI mods for SQL GL Budget changes
+unit GLRollupBudgetModule;
+
+interface
+
+uses
+  Dialogs, Forms, SysUtils, Classes, VarConst, GlobVar, IndeterminateProgressF;
+
+type
+  // Thread class for handling the call to the Roll-Up Budgets stored
+  // procedure
+  TRollupBudgetThread = class(TThread)
+  private
+    // Roll-up Basis, either 'C' (Cost Centre), 'D' (Department), 'C+D' (Cost
+    // Centre/Department combined) or 'G' (G/L Only)
+    FBasis: String;
+
+    // Company Code -- required for calling stored procedures
+    FCompanyCode: string;
+
+    // Any errors will be stored here and can be read when the thread has
+    // finished
+    FErrorMsg: string;
+
+  public
+    // -------------------------------------------------------------------------
+    // Main processing routines
+    // -------------------------------------------------------------------------
+    // Initialises the system
+    procedure Prepare(Basis: String; OnTerminateHandler: TNotifyEvent);
+
+    // Main thread-execution routine
+    procedure Execute; override;
+
+    // -------------------------------------------------------------------------
+    // Properties
+    // -------------------------------------------------------------------------
+    // Roll-up Basis, either 'C' (Cost Centre), 'D' (Department), 'C+D' (Cost
+    // Centre/Department combined), or 'G' (G/L only)
+    property Basis: String read FBasis write FBasis;
+
+    // Error message
+    property ErrorMsg: string read FErrorMsg;
+  end;
+
+  TRollupBudgetModule = class(TDataModule)
+  private
+    { Private declarations }
+    FProgressFrm: TIndeterminateProgressFrm;
+    FThreadActive: Boolean;
+    function Confirm(Basis: String): Boolean;
+    procedure ThreadTerminated(Sender: TObject);
+  public
+    { Public declarations }
+    procedure RollupBudgets(Basis: String);
+  end;
+
+// Main entry point for calling the Roll Up Budgets routine. Requires the
+// Summarisation Basis, which should be 'C' (Cost Centre), 'D' (Department),
+// 'C+D' (Cost Centre/Department combined), or 'G' (G/L Only).
+procedure RollupBudgets(Basis: String);
+
+implementation
+
+{$R *.dfm}
+
+uses Controls, GenWarnU, SQLCallerU, SQLUtils, ADOConnect, ExThrd2U, SQLRep_Config,
+  oProcessLock, BtSupU1, Windows;
+
+procedure RollupBudgets(Basis: String);
+var
+  Rollup: TRollupBudgetModule;
+  ProgressFrm: TIndeterminateProgressFrm;
+begin
+  // Create the thread, suspended
+  Rollup := TRollupBudgetModule.Create(Application.MainForm);
+  try
+    Rollup.RollupBudgets(Basis);
+  finally
+    Rollup.Free;
+  end;
+end;
+
+// =============================================================================
+// TRollupBudgetThread
+// =============================================================================
+procedure TRollupBudgetThread.Prepare(Basis: String; OnTerminateHandler: TNotifyEvent);
+begin
+  FErrorMsg := '';
+  FBasis := Basis;
+  OnTerminate := OnTerminateHandler;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TRollupBudgetThread.Execute;
+var
+  Query: string;
+  ConnectionString,
+  lPassword: WideString;  //SS:01/02/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+  SQLCaller: TSQLCaller;
+  CompanyCode: string;
+  lRes: Integer;
+begin
+  try
+    // Create the SQL Caller instance
+    SQLCaller := TSQLCaller.Create(nil);
+    try
+      // Determine the company code
+      CompanyCode := SQLUtils.GetCompanyCode(SetDrive);
+
+      // Set up the ADO Connection for the SQL Caller
+      //SQLUtils.GetConnectionString(CompanyCode, False, ConnectionString);
+      //SS:01/02/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+      lRes := SQLUtils.GetConnectionStringWOPass(CompanyCode, False, ConnectionString, lPassword);
+      SQLCaller.ConnectionString := ConnectionString;
+      SQLCaller.Connection.Password := lPassword;
+      // Set the time-outs to 60 minutes
+      SQLCaller.Connection.CommandTimeout := SQLReportsConfiguration.RollupGLBudgetsTimeoutInSeconds;
+      SQLCaller.Query.CommandTimeout := SQLReportsConfiguration.RollupGLBudgetsTimeoutInSeconds;
+      SQLCaller.Records.CommandTimeout := SQLReportsConfiguration.RollupGLBudgetsTimeoutInSeconds;
+
+      // Prepare the query
+      Query := Format('EXEC esp_RollupGLBudgets ''%s''', [Basis]);
+
+      // Execute the stored procedure
+      SQLCaller.ExecSQL(Query, CompanyCode);
+      if (SQLCaller.ErrorMsg <> '') then
+        FErrorMsg := 'Error rolling up budgets: ' + SQLCaller.ErrorMsg;
+
+    finally
+      SQLCaller.Free;
+    end;
+  except
+    on E:Exception do
+    begin
+      // Report the error and return False to indicate the failure
+      FErrorMsg := 'Error rolling up budgets: ' + E.Message;
+    end;
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+// =============================================================================
+// TGLRollupBudgetModule
+// =============================================================================
+
+function TRollupBudgetModule.Confirm(Basis: String): Boolean;
+var
+  Title: string;
+begin
+  // Set the Summarisation Title
+  if Basis = 'C' then
+    Title := 'Roll Up Cost Centre Budgets'
+  else if Basis = 'D' then
+    Title := 'Roll Up Department Budgets'
+  else if Basis = 'C+D' then
+    Title := 'Roll Up CC/Dept Budgets'
+  else
+    Title := 'Roll Up G/L Budgets';
+
+  Result := (CustomDlg(Application.MainForm,'Please Confirm!', Title,
+                       'Please confirm you wish to roll up the budgets into the main G/L Code budget.',
+                       mtConfirmation,
+                       [mbYes, mbNo]) = mrOk);
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TRollupBudgetModule.RollupBudgets(Basis: String);
+var
+  Rollup: TRollupBudgetThread;
+  ProgressFrm: TIndeterminateProgressFrm;
+begin
+  if Confirm(Basis) then
+  begin
+    //PR: 01/06/2017 ABSEXCH-18683 v2017 R1 Try for process lock
+    if not GetProcessLock(plRollUpGLBudgets) then
+      EXIT;
+    // Create the thread, suspended
+    Rollup := TRollupBudgetThread.Create(True);
+
+    // Create the progress bar form
+    ProgressFrm := TIndeterminateProgressFrm.Create(Application.MainForm);
+    ProgressFrm.Start('Roll Up Budgets', 'Recalculating budget values');
+
+    try
+      // Set up the thread
+      Rollup.Prepare(Basis, ThreadTerminated);
+
+      // Start the thread
+      FThreadActive := True;
+      Rollup.Resume;
+
+      // Wait for the thread to finish.
+      while FThreadActive do
+        Application.ProcessMessages;
+
+    finally
+      if Rollup.ErrorMsg <> '' then
+        // Display the message to the user
+        ShowMessage(Rollup.ErrorMsg);
+
+      // Stop the progress bar (the Progress Form will automatically close and
+      // free itself), and free the thread.
+      ProgressFrm.Stop;
+      Rollup.Free;
+
+      //PR: 01/06/2017 ABSEXCH-18683 v2017 R1 Release process lock
+      if Assigned(Application.Mainform) then
+        SendMessage(Application.MainForm.Handle, WM_LOCKEDPROCESSFINISHED, Ord(plRollUpGLBudgets), 0);
+    end;
+  end; // if Confirm(Basis)...
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TRollupBudgetModule.ThreadTerminated(Sender: TObject);
+begin
+  FThreadActive := False;
+end;
+
+// -----------------------------------------------------------------------------
+
+end.

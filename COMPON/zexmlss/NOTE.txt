@@ -1,0 +1,11 @@
+http://neborak.org/files.php?lang=en
+
+Please note that these components are a hybrid of version 0.0.8 Beta and 0.0.10 Alpha.
+
+The 0.0.8 Beta was modified for REAL48 compatibility and the date/number formatting support was copied back from 0.0.10.
+
+
+Support can be done via email - support@avemey.com - the guy responded overnight when I contacted him.
+
+Mark H.
+07/01/2016

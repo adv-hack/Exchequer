@@ -1,0 +1,22 @@
+<!DOCTYPE Parts SYSTEM "parts.xdr">
+
+<Parts>
+	<Part>
+		<Code>123456</Code>
+		<Description>HSS Drill Bit</Description>
+		<Stock HideStock = "FALSE">
+			<Quantity>50</Quantity>
+			<StockUnit>Box of 10</StockUnit>	
+		</Stock>
+		<Price>
+			<Value>17.00</Value>
+			<Currency>GBP</Currency>
+			<PriceUnit>Box of 10</PriceUnit>
+		</Price>
+		<Categories>
+			<MainCat>Engineering</MainCat>
+			<SubCat1>Machining</SubCat1>
+			<SubCat2>Drill Parts</SubCat2>
+		</Categories>
+	</Part>
+</Parts>

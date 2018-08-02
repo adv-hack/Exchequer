@@ -1,0 +1,39 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="RXzl7xGAfVly/Eq5CVfflg==" identitycol="PositionId" reclen="339" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_owner_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="mbdOwnerType" collation="1"/>
+        <schemafield fieldname="f_accode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="mbdAcCode" collation="1"/>
+        <schemafield fieldname="f_stk_code" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" columnname="mbdStockCode" collation="1"/>
+        <schemafield fieldname="f_buy_qty_string" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="mbdBuyQtyString" collation="1"/>
+        <schemafield fieldname="f_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="mbdCurrency" collation="0"/>
+        <schemafield fieldname="f_discount_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="mbdDiscountType" collation="0"/>
+        <schemafield fieldname="f_start_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="mbdStartDate" collation="1"/>
+        <schemafield fieldname="f_end_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="mbdEndDate" collation="1"/>
+        <schemafield fieldname="f_use_dates" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="mbdUseDates" collation="0"/>
+        <schemafield fieldname="f_buy_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="mbdBuyQty" collation="0"/>
+        <schemafield fieldname="f_reward_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="mbdRewardValue" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item>f_accode</item>
+                <item>f_stk_code</item>
+                <item>f_buy_qty_string</item>
+                <item>f_currency</item>
+                <item>f_discount_type</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item>f_start_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item>f_end_date</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

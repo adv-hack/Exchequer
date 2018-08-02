@@ -1,0 +1,6 @@
+The ini file is HSBCAustralia.ini and contains the company's user id (which is all numbers):
+
+[Settings]
+UserID=
+
+The company bank account code is 9 characters, so should be stored in the System Setup Bank Reference field.

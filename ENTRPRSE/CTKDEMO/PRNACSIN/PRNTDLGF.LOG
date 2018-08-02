@@ -1,0 +1,12 @@
+Line 515: Class MSComctlLib.ListView of control lvRecipients was not a loaded control class.
+Line 521: The property name _ExtentX in lvRecipients is invalid.
+Line 522: The property name _ExtentY in lvRecipients is invalid.
+Line 523: The property name View in lvRecipients is invalid.
+Line 524: The property name LabelWrap in lvRecipients is invalid.
+Line 525: The property name HideSelection in lvRecipients is invalid.
+Line 526: The property name FullRowSelect in lvRecipients is invalid.
+Line 527: The property name _Version in lvRecipients is invalid.
+Line 532: The property name NumItems in lvRecipients is invalid.
+Line 535: The property name ColumnHeader(1) in lvRecipients is invalid.
+Line 540: The property name ColumnHeader(2) in lvRecipients is invalid.
+Line 545: The property name ColumnHeader(3) in lvRecipients is invalid.

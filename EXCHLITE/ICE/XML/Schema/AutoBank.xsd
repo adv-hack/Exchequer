@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:autobank"
+            targetNamespace="urn:www-iris-co-uk:autobank" >
+
+  <xsd:complexType name="autobankrec">
+    <xsd:sequence>
+      <xsd:element name='bankref' type='xsd:string'/>
+      <xsd:element name='bankvalue' type='xsd:double'/>
+      <xsd:element name='banknom' type='xsd:integer'/>
+      <xsd:element name='bankcr' type='xsd:integer'/>
+      <xsd:element name='entryopo' type='xsd:string'/>
+      <xsd:element name='entrydate' type='xsd:string'/>
+      <xsd:element name='accountcode' type='xsd:string'/>
+      <xsd:element name='sortcode' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='autobankrec' type='tns:autobankrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='autobank'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='autobank' type='tns:autobank'/>
+
+</xsd:schema>

@@ -1,0 +1,116 @@
+[OPTIONS]
+DefLicPath=x:\Entrprse\Licence\PiThird\
+
+[DEALERS]
+1=EXCH01
+2=COMT01
+3=EXCH02
+4=EXCH04
+5=COOP01
+
+[PLUGINS]
+1=MASTERLINK000012
+2=EXCEL_____000013
+3=EXCHUSERPI000001
+4=EXCHAUTHWF000002
+5=EXCHPURCHF000003
+6=EXCHCNTACT000004
+7=EXCHPERIOD000005
+8=EXCHCCDEPT000006
+9=EXCHCARRGE000007
+10=EXWAFFLEMA001056
+11=COOPWIDGET100001
+12=COOPTIMESH100002
+
+[COMT01_PLUGINS]
+1=MASTERLINK000012
+2=EXCEL_____000013
+
+[COMT01]
+Name=COMTEK ACCOUNTS LTD...
+Contact=SAM SMITH
+Phone=01202 298008
+Email=SAM@COMTEKACCOUNTS.COM
+LicenceExpiry=12/02/2005
+Comments=
+
+[MASTERLINK000012]
+Name=MasterLink
+PlugInExpiry=12/06/2005
+
+[EXCEL_____000013]
+Name=Excel Functions
+PlugInExpiry=12/06/2005
+
+[EXCH01]
+Name=Exchequer Software Ltd
+Contact=Colette Dewey
+Phone=01202 298008
+Email=Info@Exchequer.Com
+LicenceExpiry=10/03/2009
+Comments=
+
+[EXCH02]
+Name=Exchequer Software Ireland Ltd
+Contact=Alan Connor
+Phone=01202 298008
+Email=Info@Exchequer.IE
+LicenceExpiry=05/09/04
+
+[EXCH04]
+Name=Exch NZ
+Contact=Jolyon
+Phone=long number - too expensive
+Email=jolyon@exchequer.nz
+LicenceExpiry=14/01/2003
+Comments=Dodgy Blokes
+
+[EXCH01_PLUGINS]
+1=EXCHUSERPI000001
+2=EXCHAUTHWF000002
+3=EXCHPURCHF000003
+4=EXCHCNTACT000004
+5=EXCHPERIOD000005
+6=EXCHCCDEPT000006
+7=EXCHCARRGE000007
+8=EXWAFFLEMA001056
+[EXCHUSERPI000001]
+Name=Enterprise User Defined Field Plug-In
+PlugInExpiry=04/03/2003
+[EXCHAUTHWF000002]
+Name=Enterprise Authoris-e Plug-In
+PlugInExpiry=08/03/2003
+[EXCHPURCHF000003]
+Name=Enterprise Purchase Freight Plug-In
+PlugInExpiry=04/03/2003
+[EXCHCNTACT000004]
+Name=Enterprise Contacts Plug-In
+PlugInExpiry=04/03/2003
+[EXCHPERIOD000005]
+Name=Enterprise User Defined Period Plug-In
+PlugInExpiry=04/03/2003
+[EXCHCCDEPT000006]
+Name=Enterprise CC / Dept Validation Plug-In
+PlugInExpiry=04/03/2003
+[EXCHCARRGE000007]
+Name=Enterprise Carriage Charges
+PlugInExpiry=04/03/2003
+[EXWAFFLEMA001056]
+Name=Exchequer Waffle Maker for Enterprise
+PlugInExpiry=04/03/2003
+[COOP01]
+Name=Cooper Parry
+Contact=Ian Randle
+Phone=120391239
+Email=Ian@CooperParry.Com
+LicenceExpiry=04/01/2005
+Comments=
+[COOP01_PLUGINS]
+1=COOPWIDGET100001
+2=COOPTIMESH100002
+[COOPWIDGET100001]
+Name=Cooper-Parry Widget Counter Plug-In
+PlugInExpiry=04/10/2005
+[COOPTIMESH100002]
+Name=Cooper-Parry Timesheet Plug-In
+PlugInExpiry=04/10/2005

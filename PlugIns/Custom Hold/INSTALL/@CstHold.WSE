@@ -1,0 +1,310 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Title=Setup
+  Flags=01000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=235 235 235
+  End Gradient=235 235 235
+  Windows Flags=00000100000000000000110001001000
+  Message Font=Arial
+  Font Size=8
+  Pages Modified=00101000001000100000000000000000
+  Extra Pages=00000000000000000000000000110000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+end
+item: Remark
+end
+item: Remark
+  Text=....Setup.Wse - Installation script for Plug-In :           / /   C u s t o m   H o l d   / / 
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PASSWORD
+  Value=1967
+end
+item: Remark
+end
+item: Remark
+  Text=....Initialise Variables
+end
+item: Set Variable
+  Variable=PLUGINDESC
+  Value=Exchequer Custom Hold Plug-In
+end
+item: Set Variable
+  Variable=DIALOG
+  Value=010
+end
+item: Set Variable
+  Variable=ENTDIR
+end
+item: Set Variable
+  Variable=FUNCRES
+end
+item: Set Variable
+  Variable=DLG_FWD
+end
+item: Set Variable
+  Variable=DLG_BACK
+end
+item: Remark
+end
+item: Custom Graphic
+  Y Position=5
+  Width=633
+  Height=68
+  Flags=0000000000101000
+  item: Text
+    Text=Exchequer Custom Hold Plug-In
+    Rectangle=0 0 633 68
+    Pen Color=345308
+    Pen Style=6
+    Pen Width=1
+    Name=Arial
+    Font Style=-37 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Custom Graphic
+  Y Position=16389
+  Width=625
+  Height=22
+  Flags=0000000000101000
+  item: Text
+    Text=Copyright © Advanced Business Software & Solutions Limited 2018
+    Rectangle=3 1 625 22
+    Pen Color=345308
+    Pen Style=6
+    Pen Width=1
+    Name=Arial
+    Font Style=-19 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Remark
+end
+item: Remark
+  Text=....Get Enterprise Dir
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTDIRS.DLL
+  Function Name=Wise7_GetEnterpriseDir
+  Variables Added=ENTERDIR FUNCRES
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function OK
+end
+item: Else Statement
+end
+item: Display Message
+  Title=Wise7_GetEnterpriseDir Error
+  Text=Wise7_GetEnterpriseDir returned a value of %FUNCRES%
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Main Wizard Loop
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=000
+  Flags=00010001
+end
+item: Remark
+end
+item: Remark
+  Text=....Show Welcome.............................................010
+end
+item: Include Script
+  Pathname=Welcome.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Licence Agreement........................................020
+end
+item: Include Script
+  Pathname=Agree.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Ready To Install.............................................100
+end
+item: Include Script
+  Pathname=Ready.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Exit Installation
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=999
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Installs Files
+end
+item: Include Script
+  Pathname=Files.wse
+end
+item: Remark
+end
+item: Remark
+  Text=Add LST file to REPLFILE.LST
+end
+item: Set Variable
+  Variable=LSTFILE
+  Value=CustHold.Lst
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddLSTFileToReplFile
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling Wise7_AddLSTFileToReplFile :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=Update IniFile for DLL Plug-In
+end
+item: Set Variable
+  Variable=DLLNAME
+  Value=CUSTHOLD
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddDLLPlugIn
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling Wise7_AddDLLPlugIn :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Finished
+end
+item: Custom Dialog Set
+  Name=All Done
+  item: Dialog
+    Title=Exchequer Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=&Finish
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=7 10 89 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=X:\PlugIns\Graphics\sidelogo.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 195 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Setup Complete
+    end
+    item: Static
+      Rectangle=95 30 251 50
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=The Setup has been completed successfully. Click on "Finish" to exit this installation.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+end

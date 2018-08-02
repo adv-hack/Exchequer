@@ -1,0 +1,96 @@
+package RVPkgD2009;
+
+{$R *.res}
+{$R 'rvregcool.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TRichView for Delphi 2009'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclimg,
+  designide;
+
+contains
+  CRVData in 'CRVData.pas',
+  CRVFData in 'CRVFData.pas',
+  CRVPP in 'CRVPP.pas',
+  CtrlImg in 'CtrlImg.pas',
+  DLines in 'DLines.pas',
+  PtblRV in 'PtblRV.pas',
+  PtRVData in 'PtRVData.pas',
+  RichView in 'RichView.pas',
+  RVAnimate in 'RVAnimate.pas',
+  RVBack in 'RVBack.pas',
+  RVClasses in 'RVClasses.pas',
+  RVCodePages in 'RVCodePages.pas',
+  RVCtrlData in 'RVCtrlData.pas',
+  RVDataList in 'RVDataList.pas',
+  RVDocParams in 'RVDocParams.pas',
+  RVDragDrop in 'RVDragDrop.pas',
+  RVDsgn in 'RVDsgn.pas' {frmRVDesign},
+  RVEdit in 'RVEdit.pas',
+  RVERVData in 'RVERVData.pas',
+  RVFMisc in 'RVFMisc.pas',
+  RVFuncs in 'RVFuncs.pas',
+  RVGetText in 'RVGetText.pas',
+  RVGetTextW in 'RVGetTextW.pas',
+  RVGifAnimate2007 in 'RVGifAnimate2007.pas',
+  RVItem in 'RVItem.pas',
+  RVLabelItem in 'RVLabelItem.pas',
+  RVLinear in 'RVLinear.pas',
+  RVMapWht in 'RVMapWht.pas',
+  RVMarker in 'RVMarker.pas',
+  RVMisc in 'RVMisc.pas',
+  RVNote in 'RVNote.pas',
+  RVOfficeCnv in 'RVOfficeCnv.pas',
+  RVPopup in 'RVPopup.pas',
+  RVPP in 'RVPP.pas',
+  RVReg in 'RVReg.pas',
+  RVReport in 'RVReport.pas',
+  RVResize in 'RVResize.pas',
+  RVRTF in 'RVRTF.pas',
+  RVRTFErr in 'RVRTFErr.pas',
+  RVRTFProps in 'RVRTFProps.pas',
+  RVRVData in 'RVRVData.pas',
+  RVScroll in 'RVScroll.pas',
+  RVSEdit in 'RVSEdit.pas',
+  RVSeqItem in 'RVSeqItem.pas',
+  RVSer in 'RVSer.pas',
+  RVStr in 'RVStr.pas',
+  RVStyle in 'RVStyle.pas',
+  RVSubData in 'RVSubData.pas',
+  RVTable in 'RVTable.pas',
+  RVThread in 'RVThread.pas',
+  RVTInplace in 'RVTInplace.pas',
+  RVTypes in 'RVTypes.pas',
+  RVUndo in 'RVUndo.pas',
+  RVUni in 'RVUni.pas',
+  RVWordPaint in 'RVWordPaint.pas',
+  RVXPTheme in 'RVXPTheme.pas',
+  RVGrIn in 'RVGrIn.pas',
+  RVWinGrIn in 'RVWinGrIn.pas';
+
+end.

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?> 
+<HMRCSubmissionSettings xmlns="HMRCSubmissionSettings">
+
+	<GOVLINK_LIVE>
+		<Link>https://transaction-engine.tax.service.gov.uk/submission</Link>  <!-- URL for GovLink Live submission-->
+	</GOVLINK_LIVE>
+
+	<GOVLINK_TEST>	
+		<Link>https://test-transaction-engine.tax.service.gov.uk/submission</Link>   <!-- URL for GovLink Test submission-->
+	</GOVLINK_TEST>
+
+	<VAT100_LIVE>
+		<Link>https://transaction-engine.tax.service.gov.uk/submission</Link>   <!-- URL for VAT100 Live submission-->
+	</VAT100_LIVE>	
+	
+	<VAT100_TEST> 
+		<Link>https://test-transaction-engine.tax.service.gov.uk/submission</Link> <!-- URL for VAT100 Test submission-->
+	</VAT100_TEST>
+
+</HMRCSubmissionSettings >
+
+

@@ -1,0 +1,35 @@
+Please see the Single User License Agreement and Limited Warranty in the
+printed manual for more information on the acceptable use of Rave 4.0. The
+following Agreement applies to redistributable files and the end-user
+distribution license.
+
+Corporate Distribution License Agreement
+----------------------------------------
+
+The following applies only to those who purchased the Corporate Distribution
+License with Rave 4.0.
+
+If you have purchased the Corporate Distribution License with Rave 4.0, you
+can include and interface with the end-user visual report designer files
+(located in \RAVE4\REDIST) with your application.  Except for the files in the
+\RAVE4\REDIST directory, no other files in the \RAVE4 directory (or its
+subdirectories) may be distributed with your application.
+
+THE END-USER VISUAL DESIGNER MAY NOT BE DISTRIBUTED, IN MODIFIED OR UNMODIFIED
+FORM, AS PART OF ANY APPLICATION PROGRAM OR OTHER SOFTWARE THAT IS A
+LIBRARY-TYPE PRODUCT, DEVELOPMENT TOOL OR OPERATING SYSTEM, OR THAT MAY BE
+COMPETITIVE WITH OR USED IN LIEU OF RAVE, WITHOUT THE EXPRESS WRITTEN
+PERMISSION OF NEVRONA DESIGNS.
+
+The end-user visual report designer is intended to be used with a specific
+application and that application's specific data.  The end-user visual
+report designer must be included with an application in such a way that it
+CANNOT BE USED AS A GENERIC VISUAL REPORT DESIGNER on data that is not
+actively, purposefully and specifically used by that application.
+
+There is no runtime royalty charge for including the end-user visual report
+designer with applications beyond the initial purchase price of the Corporate
+Distribution License.  The end-user visual report designer may be distributed
+with any application that is owned or maintained by the holder of the
+Corporate Distribution License and may be distributed with unlimited
+quantities of those applications.

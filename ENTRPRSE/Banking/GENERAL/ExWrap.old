@@ -1,0 +1,528 @@
+unit ExWrap;
+
+{ prutherford440 15:10 08/01/2002: Disabled Byte Alignment in Delphi 6.0 }
+{$ALIGN 1}  { Variable Alignment Disabled }
+
+
+interface
+
+{$H-}
+
+uses
+  ExpObj, CustAbsU, Classes, BacConst;
+
+
+
+type
+
+  TExportWrapper = Class
+    Exporter    : TExportObject;
+    constructor Create(const EventData : TAbsEnterpriseSystem; WhichObject : Byte);
+    destructor Destroy; override;
+    function StartUp(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function CreateFile(const EventData : TAbsEnterpriseSystem;
+                        const AFileName : String) : Boolean;
+    function Validate(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Write(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Contra(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Close(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Reject(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Erase(const EventData : TAbsEnterpriseSystem) : Boolean;
+    function Complete(const EventData : TAbsEnterpriseSystem) : Boolean;
+  end;
+
+  function HandleBatchHooks(const EventData : TAbsEnterpriseSystem;
+                                   HID : longint;
+                                 WhichObject : integer;
+                              FileTypesAllowed : Byte;
+                            const PayFile, RecFile : string) : Boolean;
+
+  function HookIsLicenced(WhichBacs : integer) : Boolean;
+  procedure MakeBacsAboutText(WhichBacs : integer);
+
+var
+  ExportWrapper : TExportWrapper;
+  Count : integer;
+  BankDetFromIni : Boolean;
+
+  IniBankSort,
+  IniBankAc,
+  IniBankRef,
+  IniPayFile,
+  IniDDFile : string;
+
+  BacsType : integer;
+
+  AboutText : TStringList;
+  
+
+implementation
+
+uses
+  Bacs00, AibObj, BankIObj, HexObj, Bacstobj, NatWObj, IdealObj, Dialogs,
+  BacNcObj, PcCsvObj, CouttObj, BMastObj, PaywayOb, HobsObj, {CheckSec,} PISecure, ChainU,
+  SysUtils, PIMisc, ActiveX, RbsObj{$IFDEF BBM}, BbmObj{$ENDIF},
+  CoopObj, YorkObj, CashMObj, UlstrObj, DanskObj, RbsBulkO, UnityObj, BacssObj, ShbBObj, ShbIObj;
+
+var
+  HookLicenced : Boolean;
+
+constructor TExportWrapper.Create(const EventData : TAbsEnterpriseSystem; WhichObject : Byte);
+begin
+  inherited Create;
+  with EventData do
+  begin
+  {Don't want a try/except block here as any exception will be handled by
+  the lines below where exportwrapper itself is created}
+      case WhichObject of
+        exBacs1   : Exporter := TBacs1Obj.Create;
+        exAIB     : Exporter := TAibEftObj.Create(EventData);
+        exBnkIre  : Exporter := TBankIrExportObject.Create(EventData);
+        exIdeal   : Exporter := TIdealExportObject.Create(EventData);
+        exHex     : Exporter := THexagonExportObject.Create(EventData);
+        exBacstel : begin
+                      {$IFNDEF Multibacs}
+                        CoInitialize(nil);
+                      {$ENDIF}
+                       Exporter := TBacstelExportObject.Create(EventData.Setup.ssDataPath);
+                    end;
+        exNatwest : Exporter := TNatWestExportObject.Create;
+        exBacsNc  : Exporter := TBacsNcExportObject.Create;
+        exPcPayCsv : Exporter := TPcPayCsvExportObject.Create;
+        exPcPayAsc : Exporter := TBacsNcExportObject.Create; {re-use of bacsnc}
+        exCoutts   : Exporter := TCouttsExportObject.Create(EventData);
+        exBusMaster : begin
+                      {$IFNDEF Multibacs}
+                        CoInitialize(nil);
+                      {$ENDIF}
+                        Exporter := TBusinessMasterExportObject.Create(EventData.Setup.ssDataPath);//TBacsNcExportObject.Create; {re-use of bacsnc}
+                      end;
+        exPayaway   : Exporter := TPayawayExportObject.Create;
+        exBankScot  : Exporter := TBankScotHobsExportObject.Create(EventData);
+        exRBS       : Exporter := TRoyLineExportObject.Create;
+        {$IFDEF BBM}
+        exBBMInt    : Exporter := TBBMObject.Create;
+        {$ENDIF}
+        exCoop      : Exporter := TCoopExportObject.Create;
+        exYorkBank  : Exporter := TYorkBankExportObject.Create;
+        exRbsCashM  : Exporter := TRoylineCashManObject.Create;
+        exUlsterBank: Exporter := TUlsterBankExportObject.Create(EventData);
+        exDanske    : Exporter := TDanskeExportObject.Create;
+        exRbsBulk   : Exporter := TRBSBulkExportObject.Create;
+        exUnity     : Exporter := TUnityExportObject.Create;
+        exBACSess   : Exporter := TBacsessExportObject.Create;
+        exSHBBacs   : Exporter := TShbBacsExporter.Create;
+        exSHBIntl   : begin
+                      {$IFNDEF Multibacs}
+                        CoInitialize(nil);
+                      {$ENDIF}
+                        Exporter := TShbIntExporter.Create(EventData);
+                      end;
+      end; {case}
+      BoResult := True;
+      with Exporter do
+      begin
+        RequiredPath := CheckPath(EventData.Setup.ssDataPath);
+        Hookname := BacsDescriptions[WhichObject];
+        if BankDetFromIni then
+        begin
+          UserBankSort := IniBankSort;
+          UserBankAcc  := IniBankAc;
+          UserBankRef  := IniBankRef;
+        end
+        else {take from system}
+        begin
+          UserBankSort := EventData.Setup.ssUserSort;
+          UserBankAcc  := EventData.Setup.ssUserAcc;
+          UserBankRef  := EventData.Setup.ssUserRef;
+        end;
+
+        BoResult := ValidateSystem(EventData);
+        if Failed > 0 then
+           BoResult := False;
+        if not BoResult then
+        begin
+          Case Failed of
+            flBank :
+             ShowExportMessage('Error','Check system bank details','Run aborted');
+            flUserID :
+             ShowExportMessage('Error','Invalid User ID','Run aborted');
+            flCurrency :
+                 ShowExportMessage('Warning', QuotedStr(ProcControl.PayCurr) +
+                                      ' is not a valid ISO currency code',
+                            'Run aborted');
+
+          end;
+        end;
+
+      end;
+
+  end;
+end;
+
+destructor TExportWrapper.Destroy;
+begin
+  FreeAndNil(Exporter);
+  inherited Destroy;
+end;
+
+function TExportWrapper.StartUp(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := True;
+end;
+
+function TExportWrapper.CreateFile(const EventData : TAbsEnterpriseSystem;
+                                   const AFileName : String) : Boolean;
+begin
+  Result := False;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+    if Failed = 0 then
+    begin
+     Result := (CreateOutFile(RequiredPath + AFileName,
+                  EventData) = 0);
+     if not Result then
+           Failed := flFile;
+    end;
+  end;
+end;
+
+function TExportWrapper.Validate(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := False;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+   begin
+     Result := ValidateRec(EventData);
+     if not Result then
+        Failed := flBank;
+   end;
+  end;
+end;
+
+function TExportWrapper.Write(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := False;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+   begin
+     Result := WriteRec(EventData, wrPayline);
+     if not Result then
+        Failed := flRec;
+   end;
+  end;
+end;
+
+function TExportWrapper.Contra(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := False;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+   begin
+     Result := WriteRec(EventData, wrContra);
+     if not Result then
+        Failed := flRec;
+   end;
+  end;
+end;
+
+function TExportWrapper.Close(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := False;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+     Result := (CloseOutFile = 0);
+     if FileRejected then
+       ErrorReport(EventData, 0);
+     if not Result then
+        Failed := flFile
+     else
+     if TransactionsWritten = 0 then
+        Failed := flNoRecs;
+  end;
+end;
+
+function TExportWrapper.Reject(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := True;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+    RejectRecord(EventData);
+  end;
+end;
+
+function TExportWrapper.Erase(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := True;
+  if Exporter <> nil then
+  with Exporter, EventData do
+  begin
+     BoResult := EraseOutFile;
+     Result := BoResult;
+  end;
+end;
+
+function TExportWrapper.Complete(const EventData : TAbsEnterpriseSystem) : Boolean;
+begin
+  Result := True;
+  if Exporter <> nil then
+  with Exporter do
+    CompletionMessage(EventData);
+end;
+
+
+{--------------------------------------------------------------------------------------------}
+//Security functions
+
+function BacsSysCode(WhichBacs : integer) : string;
+begin
+  Result := 'EXCHBACSPI000' + IntToStr(100 + WhichBacs);
+end;
+
+function BacsSecCode(WhichBacs : integer) : String;
+var
+  i : integer;
+begin
+  Result := 'Dkdje*_RuUBIF' + IntToStr(100 + WhichBacs);
+end;
+
+function BacsDesc(WhichBacs : integer) : string;
+begin
+  Result := BacsShortDescriptions[WhichBacs] + ' Plug-In';
+end;
+
+function BacsVersion(WhichBacs : integer) : string;
+begin
+
+  Case WhichBacs of
+    exBacs1     : Result := EntVer +  '002';
+    exAIB       : Result := EntVer +  '004';
+    exBnkIre    : Result := EntVer +  '003';
+    exIdeal     : Result := EntVer +  '002';
+    exHex       : Result := EntVer +  '005';
+    exBacstel   : Result := EntVer +  '004';
+    exNatwest   : Result := EntVer +  '002';
+    exBacsNc    : Result := EntVer +  '002';
+    exPcPayCsv  : Result := EntVer +  '002';
+    exPcPayAsc  : Result := EntVer +  '002';
+    exCoutts    : Result := EntVer +  '004';
+    exBusMaster : Result := EntVer +  '003';
+    exPayaway   : Result := EntVer +  '002';
+    exAbnAmro   : Result := EntVer +  '002';
+    exBankScot  : Result := EntVer +  '002';
+    exMultiBacs : Result := EntVer +  '007';
+    exRBS       : Result := EntVer +  '007';
+    exBBMInt    : Result := EntVer +  '015';
+    exCoop      : Result := EntVer +  '003';
+    exYorkBank  : Result := EntVer +  '002';
+    exRBSCashM  : Result := EntVer +  '004';
+    exUlsterBank: Result := EntVer +  '003';
+    exDanske    : Result := EntVer +  '003';
+    exRBSBulk   : Result := EntVer +  '003';
+    exUnity     : Result := EntVer +  '002';
+    exBACSess   : Result := EntVer +  '003';
+    exSHBBacs   : Result := EntVer +  '002';
+    exSHBIntl   : Result := EntVer +  '002';
+  end;
+
+  Result := Result + ' (DLL)';
+end;
+
+
+
+function HookIsLicenced(WhichBacs : integer) : Boolean;
+begin
+{$IFDEF BBM} //Don't check licence for Bilbrough
+   Result := True;
+{$ELSE}
+  if WhichBacs >= 0 then
+{  Result := CheckHookSecurity (BacsIDs[WhichBacs], 1000 + WhichBacs,
+                                BacsDescriptions[WhichBacs] +
+                                ' batch transaction') {CheckSec.pas}
+
+   Result := PICheckSecurity(BacsSysCode(WhichBacs), BacsSecCode(WhichBacs),
+                             BacsDesc(WhichBacs), BacsVersion(WhichBacs),
+                             stSystemOnly, ptDLL, DllChain.ModuleName)
+  else
+    Result := False;
+{$ENDIF}
+
+  HookLicenced := Result;
+
+end;
+
+procedure MakeBacsAboutText(WhichBacs : integer);
+begin
+  AboutText := TStringList.Create;
+  PIMakeAboutText(BacsDesc(WhichBacs), BacsVersion(WhichBacs), AboutText);
+end;
+
+
+
+{--------------------------------------------------------------------------------------------}
+
+
+function HandleBatchHooks(const EventData : TAbsEnterpriseSystem;
+                                 HID : longint;
+                                 WhichObject : integer;
+                              FileTypesAllowed : Byte;
+                          const PayFile, RecFile : string) : Boolean;
+var
+  DefaultOutFileName : string;
+Begin
+  { Handle Hook Events here }
+  with EventData do
+  begin
+   Case  HID of
+      1   :  begin
+               Try
+               //Put security check here
+               {$IFDEF Multibacs}
+                 CoInitialize(nil);
+                 if HookIsLicenced(WhichObject) then
+               {$ELSE}
+                 if HookLicenced then
+               {$ENDIF}
+                   ExportWrapper := TExportWrapper.Create(EventData, WhichObject)
+                 else
+                 begin
+                  {do something}
+{                   if WhichObject >= 0 then
+                     ShowMessage('Invalid licence for ' +
+                               BacsDescriptions[WhichObject] + ' batch transactions' +
+                               #13#10'Batch transaction will revert to default BACS format');}
+
+                   BoResult := False;
+                 end;
+               {$IFDEF Multibacs}
+                 //CoUninitialize;
+               {$ENDIF}
+                 
+               Except
+                 ShowMessage('Unable to create EFT process. Run aborted');
+                 Raise;
+                 BoResult := False;
+               End;
+             end;
+     10   :  begin
+               if ExportWrapper <> nil then
+                with ExportWrapper, ExportWrapper.Exporter do
+                begin
+                  GetEventData(EventData);
+                  Case FileTypesAllowed of
+                    ftaCreditOnly    :  begin
+                                          if ProcControl.SalesPurch then
+                                          begin
+                                            BoResult := False;
+                                            FreeAndNil(ExportWrapper);
+                                          end
+                                          else
+                                          begin
+                                            DefaultOutFileName := PayFile;
+                                            BoResult := CreateFile(EventData,
+                                                 DefaultOutFileName);
+                                          end;
+                                        end;
+                    ftaDebitOnly     :  begin {not needed yet but worth doing?}
+                                          if not ProcControl.SalesPurch then
+                                          begin
+                                            BoResult := False;
+                                            FreeAndNil(ExportWrapper);
+                                          end
+                                          else
+                                          begin
+                                            DefaultOutFileName := RecFile;
+                                            BoResult := CreateFile(EventData,
+                                                 DefaultOutFileName);
+                                          end;
+                                        end;
+                    ftaBoth          :  begin
+                                          if ProcControl.SalesPurch then
+                                            DefaultOutFileName := RecFile
+                                          else
+                                            DefaultOutFileName := PayFile;
+                                          BoResult := CreateFile(EventData, DefaultOutFileName);
+                                        end;
+                    end;{case}
+                end;
+             end;
+     20   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 BoResult := Validate(EventData);
+               end;
+             end;
+     30   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 BoResult := Write(EventData);
+               end;
+             end;
+     31   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 BoResult := Contra(EventData);
+               end;
+             end;
+     50   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 Close(EventData);
+                 BoResult := True;
+               end;
+             end;
+     60   :  begin
+              {reject epf file - what do we need to do here? May as well tell user}
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 Reject(EventData);
+               end;
+             end;
+     70   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                Erase(EventData);
+               end;
+             end;
+     80   :  begin
+               if ExportWrapper <> nil then
+               with ExportWrapper do
+               begin
+                 Complete(EventData);
+                 ExportWrapper.Free;
+               end;
+             end;
+     end; {case}
+
+     Result := BoResult;
+  end; {if winid...}
+end;
+
+
+
+Initialization
+
+  Count := 1;
+  ExportWrapper := nil;
+  BankDetFromIni := False;
+
+  AboutText := nil;
+
+Finalization
+  if Assigned(AboutText) then
+    AboutText.Free;
+
+
+end.

@@ -1,0 +1,170 @@
+[FileVersion]
+Version=6.0
+[Compiler]
+A=1
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=1
+K=0
+L=1
+M=0
+N=1
+O=0
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=1
+V=0
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=
+[Directories]
+OutputDir=F:\EXCHEQR\ENTRPRSE
+UnitOutputDir=f:\compiled\dcu
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2;X:\BESPOKE\FUNCS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\MULTCOMP;X:\SBSLIB\WIN\EXCOMMON
+Packages=VCL50;VCLX50;VCLSMP50;QRPT50;VCLDB50;VCLBDE50;ibevnt50;VCLDBX50;TEEUI50;TEEDB50;TEE50;TEEQR50;VCLIB50;VCLIE50;INETDB50;INET50;NMFAST50;dclocx50;dclaxserver50;JFESL1;B202_R50;RPRV30D5;RPRT30D5;exchequerLstView
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=/DIR: f:\excheqr\entrprse\
+HostApplication=
+Launcher=
+UseLauncher=0
+DebugCWD=
+[Language]
+ActiveLang=
+ProjectLang=$00000809
+RootDir=X:\ENTRPRSE\SENTMAIL\SENTINEL\
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=2057
+CodePage=1252
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+[Excluded Packages]
+f:\program files\borland\delphi6\Bin\dclqrt60.bpl=QuickReport Components
+f:\program files\borland\delphi6\Bin\dclie60.bpl=Internet Explorer Components
+f:\program files\borland\delphi6\Bin\dcloffice2k60.bpl=Microsoft Office 2000 Sample Automation Server Wrapper Components
+f:\program files\borland\delphi6\Bin\dclnet60.bpl=Borland Internet Components
+f:\program files\borland\delphi6\Bin\dclsoap60.bpl=Borland Soap Components
+f:\program files\borland\delphi6\Bin\dclindy60.bpl=Internet Direct (Indy) for D6 Property and Component Editors
+F:\Program Files\Borland\Delphi6\Bin\dclclxstd60.bpl=Borland CLX Standard Components
+F:\Program Files\Borland\Delphi6\Bin\dbx60.bpl=Borland SQL Explorer UI Package
+C:\WINNT\System32\ibevnt60.bpl=Borland Interbase Event Alerter Component
+f:\program files\borland\delphi6\Bin\dclado60.bpl=Borland ADO DB Components
+F:\Program Files\Borland\Delphi6\Bin\dcldb60.bpl=Borland Database Components
+f:\program files\borland\delphi6\Bin\DCLIB60.bpl=InterBase Data Access Components
+f:\program files\borland\delphi6\Bin\dclcds60.bpl=Borland Base Cached ClientDataset Component
+F:\Program Files\Borland\Delphi6\Bin\dclmid60.bpl=Borland MyBase DataAccess Components
+f:\program files\borland\delphi6\Bin\dclbdecds60.bpl=Borland Local BDE ClientDataset Components
+f:\program files\borland\delphi6\Bin\dclclxdb60.bpl=Borland CLX Database Components
+f:\program files\borland\delphi6\Bin\dclmcn60.bpl=Borland DataSnap Connection Components
+f:\program files\borland\delphi6\Bin\dclwbm60.bpl=Borland InternetExpress Components
+f:\program files\borland\delphi6\Bin\dclwebsnap60.bpl=Borland WebSnap Components
+f:\program files\borland\delphi6\Bin\dcldbx60.bpl=Borland dbExpress Components
+f:\program files\borland\delphi6\Bin\dcldbxcds60.bpl=Borland Local DBX ClientDataset Components
+f:\program files\borland\delphi6\Bin\dclbde60.bpl=Borland BDE DB Components
+f:\program files\borland\delphi6\Bin\dcltee60.bpl=TeeChart Components
+f:\program files\borland\delphi6\Bin\dcldss60.bpl=Borland Decision Cube Components
+f:\program files\borland\delphi6\Bin\dcltqr60.bpl=TeeChart for QuickReport Components
+f:\program files\borland\delphi6\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
+X:\COMPON\RAVE4\D6\RPDT40.BPL=Rave Reports 4.0 Design-Time Package
+f:\program files\borland\delphi6\Projects\Bpl\B301VD60.bpl=Abbrevia Components
+f:\program files\borland\delphi6\Projects\Bpl\vba5.bpl=(untitled)
+[HistoryLists\hlConditionals]
+Count=5
+Item0=EXWIN;RW;WSJ;THREDZ;MH;STK;MC_On;PF_On;SOP;BCS;DEBUGON;DBD;FD;SENT;CENTRE
+Item1=ERM;Debug;Debug
+Item2=COMHOOK
+Item3=ERM
+Item4=DllHook
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlSearchPath]
+Count=30
+Item0=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2;X:\BESPOKE\FUNCS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\MULTCOMP;X:\SBSLIB\WIN\EXCOMMON
+Item1=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2;X:\BESPOKE\FUNCS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\MULTCOMP
+Item2=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2;X:\BESPOKE\FUNCS;X:\ENTRPRSE\FUNCS
+Item3=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2;X:\BESPOKE\FUNCS
+Item4=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM;X:\ENTRPRSE\FORMDES2
+Item5=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK;X:\BESPOKE\EXCHEQR\PURAUTH\ERM
+Item6=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\BESPOKE\EXCHEQR\PURAUTH\HOOK
+Item7=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK
+Item8=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON;X:\ENTRPRSE\ENTCOMMS
+Item9=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211;X:\COMPON\TEMAIL\COMPON
+Item10=X:\BESPOKE\EXCHEQR\PURAUTH\BASE;X:\COMPON\IMS211
+Item11=X:\BESPOKE\EXCHEQR\PURAUTH\BASE
+Item12=X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\hook;X:\Compon\TEMAIL\COMPON;X:\Compon\IMS2.01;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\ENTCOMMS;X:\BESPOKE\FUNCS;X:\ENTRPRSE\MULTCOMP;X:\SBSLIB\WIN\EXCOMMON
+Item13=X:\ENTRPRSE\dlltk;X:\Bespoke\Excheqr\PurAuth\BASE;X:\COMPON\IMS211;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\Bespoke\Excheqr\PurAuth\Hook;X:\Compon\TEMAIL\COMPON;X:\BESPOKE\FUNCS;X:\ENTRPRSE\MULTCOMP;X:\SBSLIB\WIN\EXCOMMON
+Item14=X:\ENTRPRSE\dlltk;X:\ENTRPRSE\R&D;X:\bespoke\excheqr\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON;X:\ENTRPRSE\FUNCS;X:\BESPOKE\FUNCS;X:\SBSLIB\WIN\EXCOMMON;X:\ENTRPRSE\MULTCOMP
+Item15=X:\ENTRPRSE\dlltk;X:\ENTRPRSE\R&D;X:\bespoke\excheqr\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON;X:\ENTRPRSE\FUNCS;X:\BESPOKE\FUNCS;X:\SBSLIB\WIN\EXCOMMON
+Item16=X:\Compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\Hook;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON;X:\BESPOKE\FUNCS;X:\ENTRPRSE\MULTCOMP;X:\SBSLIB\WIN\EXCOMMON
+Item17=X:\ENTRPRSE\dlltk;X:\Bespoke\Excheqr\PurAuth\BASE;X:\COMPON\IMS211;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\Bespoke\Excheqr\PurAuth\Hook;X:\Compon\TEMAIL\COMPON;X:\BESPOKE\FUNCS
+Item18=X:\ENTRPRSE\dlltk;X:\ENTRPRSE\R&D;X:\bespoke\excheqr\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON;X:\ENTRPRSE\FUNCS
+Item19=X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\hook;X:\Compon\TEMAIL\COMPON;X:\Compon\IMS2.01;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\ENTCOMMS;X:\BESPOKE\FUNCS
+Item20=X:\Compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\Hook;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON;X:\BESPOKE\FUNCS
+Item21=X:\ENTRPRSE\dlltk;X:\Bespoke\Excheqr\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\Bespoke\Excheqr\PurAuth\Hook;X:\Compon\TEMAIL\COMPON;X:\BESPOKE\FUNCS
+Item22=X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\hook;X:\Compon\TEMAIL\COMPON;X:\Compon\IMS2.01;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\ENTCOMMS;X:\BESPOKE\EXCHEQR\USERDEF
+Item23=X:\Compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\Hook;X:\ENTRPRSE\FORMDES2;X:\Compon\TEMAIL\COMPON
+Item24=X:\Bespoke\Excheqr\PurAuth\BASE;X:\Bespoke\Excheqr\PurAuth\hook;X:\Compon\TEMAIL\COMPON;X:\Compon\IMS2.01;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\ENTCOMMS
+Item25=X:\ENTRPRSE\dlltk;X:\Bespoke\Excheqr\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\Bespoke\Excheqr\PurAuth\Hook;X:\Compon\TEMAIL\COMPON
+Item26=X:\ENTRPRSE\dlltk;X:\ENTRPRSE\CUSTOM\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\CUSTOM\PurAuth\Hook;X:\Compon\TEMAIL\COMPON
+Item27=X:\ENTRPRSE\dlltk;X:\ENTRPRSE\CUSTOM\PurAuth\BASE;X:\compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\FUNCS;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\CUSTOM\PurAuth\Hook;X:\ENTRPRSE\CUSTOM\COM\DELPHI5;X:\Compon\TEMAIL\COMPON
+Item28=X:\ENTRPRSE\CUSTOM\PurAuth\BASE;X:\Compon\IMS2.01;X:\ENTRPRSE\ENTCOMMS;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\CUSTOM\STANDARD;X:\Compon\TEMAIL\COMPON;X:\ENTRPRSE\CUSTOM\ENTCUSTM;X:\ENTRPRSE\CUSTOM\COMMON.ENT
+Item29=X:\ENTRPRSE\CUSTOM\PurAuth\BASE;X:\ENTRPRSE\CUSTOM\PurAuth\hook;X:\Compon\TEMAIL\COMPON;X:\Compon\IMS2.01;X:\ENTRPRSE\DLLTK;X:\ENTRPRSE\FORMDES2;X:\ENTRPRSE\ENTCOMMS
+[HistoryLists\hlUnitOutputDirectory]
+Count=2
+Item0=F:\Compiled\Dcu
+Item1=f:\compiled\dcu6
+[HistoryLists\hlOutputDirectorry]
+Count=5
+Item0=F:\EXCHEQR\ENTRPRSE
+Item1=H:\ACCOUNTS\EXCH
+Item2=e:\ent432\
+Item3=f:\ent432\
+Item4=d:\ent431

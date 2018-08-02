@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = AddNom.dll ExternalAddNom.exe LocalComps.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+AddNom.dll: AddNom.dpr
+  $(DCC)
+
+ExternalAddNom.exe: ExternalAddNom.dpr
+  $(DCC)
+
+LocalComps.bpl: C:\DEVELOP\LocalComps\LocalComps.dpk
+  $(DCC)
+
+

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Bespoke>
+  <Pervasive>
+    <ServerName>127.0.0.1\IRISEXCHEQUER</ServerName>
+  </Pervasive>
+  <PlugIns>
+    <PlugIn>
+      <Code>EXCHUSERPI000001</Code>
+      <Description>User Defined Field Plug-In</Description>
+      <SQLDatabase>
+        <Name>ExchBespoke_EXCHUSERPI000001</Name>
+      </SQLDatabase>
+    </PlugIn>
+  </PlugIns>
+</Bespoke>

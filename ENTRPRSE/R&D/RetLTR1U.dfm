@@ -1,0 +1,141 @@
+object RetLineType: TRetLineType
+  Left = 265
+  Top = 257
+  ActiveControl = SCDescF
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Return Line Reason Record'
+  ClientHeight = 129
+  ClientWidth = 282
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clBlack
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDefault
+  Scaled = False
+  Visible = True
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 14
+  object SBSBackGroup1: TSBSBackGroup
+    Left = 7
+    Top = 8
+    Width = 268
+    Height = 82
+    TextId = 0
+  end
+  object Label82: Label8
+    Left = 49
+    Top = 59
+    Width = 69
+    Height = 14
+    Caption = 'Reason Text : '
+    FocusControl = NNumF
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label81: Label8
+    Left = 20
+    Top = 26
+    Width = 100
+    Height = 14
+    Caption = 'Return Reason No. : '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object OkCP1Btn: TButton
+    Tag = 1
+    Left = 61
+    Top = 99
+    Width = 80
+    Height = 22
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 2
+    OnClick = CanCP1BtnClick
+  end
+  object CanCP1Btn: TButton
+    Tag = 1
+    Left = 146
+    Top = 99
+    Width = 80
+    Height = 22
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 3
+    OnClick = CanCP1BtnClick
+  end
+  object NNumF: TCurrencyEdit
+    Tag = 1
+    Left = 128
+    Top = 22
+    Width = 38
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'ARIAL'
+    Font.Style = []
+    HideSelection = False
+    Lines.Strings = (
+      '0 ')
+    MaxLength = 2
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 0
+    WantReturns = False
+    WordWrap = False
+    OnEnter = NNumFEnter
+    AutoSize = False
+    BlockNegative = False
+    BlankOnZero = False
+    DisplayFormat = '###,###,##0 ;###,###,##0-'
+    DecPlaces = 0
+    ShowCurrency = False
+    TextId = 0
+    Value = 1E-10
+  end
+  object SCDescF: Text8Pt
+    Tag = 1
+    Left = 128
+    Top = 54
+    Width = 138
+    Height = 22
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 35
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    TextId = 0
+    ViaSBtn = False
+  end
+end

@@ -1,0 +1,57 @@
+package DBMBtrieve;
+
+{$R *.res}
+{$R 'uDBMultiList.dcr'}
+{$R 'uMultiList.dcr'}
+{$R 'ExDatasets\uBtrieveDataset.dcr'}
+{$R 'ExDatasets\uSQLDatasets.dcr'}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'DBMultiList Navigational Package'}
+{$IMPLICITBUILD OFF}
+{$DEFINE EXWIN}
+
+requires
+  rtl,
+  vcl,
+  vcljpg,
+  vclx,
+  EnCommon,
+  dbrtl,
+  adortl;
+
+contains
+  uScrollBar in 'uScrollBar.pas',
+  uBtrv in 'uBtrv.pas',
+  uDBMColumns in 'uDBMColumns.pas',
+  uDBMultiList in 'uDBMultiList.pas',
+  uMultiList in 'uMultiList.pas',
+  uBTRecords in 'uBTRecords.pas',
+  uExDatasets in 'ExDatasets\uExDatasets.pas',
+  uComTKDataset in 'ExDatasets\uComTKDataset.pas',
+  uBTGlobalDataset in 'ExDatasets\uBTGlobalDataset.pas',
+  uBtrieveDataset in 'ExDatasets\uBtrieveDataset.pas',
+  TKPICKLIST in '..\..\..\ENTRPRSE\FUNCS\TKPickList.pas',
+  uSQLDatasets in 'ExDatasets\uSQLDatasets.pas',
+  uSettings in 'Settings\uSettings.pas';
+
+end.

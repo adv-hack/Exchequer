@@ -1,0 +1,65 @@
+Setup.Dll Version History
+===========================
+
+25/01/99  HM   Added MemoryMapping functions for new Single CD
+   -           licencing.
+
+26/11/98  HM   Modified to use the NT friendly registry object
+               in the SetScalableSQL and GetLastEntDir functions.
+
+16/09/98  HM   Added SetScalableSQL function for ODBC Setup to
+               initialize the Scalable SQL Settings for ODBC. 
+
+14/08/98  MH   Modified the directory dialog so that when adding a
+               new company it doesn't check for MCOMPMAN.SYS. This 
+               will now be added as required by the setup program.
+
+06/08/98  MH   Modified the directory dialog to have a Find button
+               on various options which pops up a dialog allowing
+               a specified drive to be searched for Enterprise 
+               systems.
+
+               Added an GetLastEntDir function for the Setup
+               Programs which reads the LastDir from the
+               Registry and returns it after checking its a 
+               valid directory.
+
+24/06/98  MH   Added Workstation Configuration dialog as it was the
+               only place to put it. 32-bit dLL only.
+
+27/11/97  MH   Modifed GetEnterDir for mode 'v' - Customisation - 
+               Enterprise Installation.
+
+13/11/97  MH   Modifed GetEnterDir to stop people selecting the root
+               directory (eg. C: or C:\). This caused Enterprise to
+               crash because Btrieve doesn't seem to like it.
+
+25/09/97  MH   Modifed GetEnterDir for the Connectivity Kit.
+
+09/09/97  MH   Modified GetEnterDir to check the currency version
+               of the destination system is correct for the CD.
+               Affects Upgrades, Add Company, Register, Workstation
+               Installs.
+
+27/06/97  MH   Modified function declaration for WISE from CDECL to
+               STDCALL on advicce of Wise Tech support. This was 
+               because they were crashing the While loop in the setup
+               script.
+
+23/05/97  MH   Modified ValidOK on TDirectoryDialog because it wasn't
+               checking for an existing system when doing an install.
+               Changed to ask for confirmation if it detects data.
+
+19/03/97  MH   Moved from C:\Develop\Install to X:\Entrprse\Setup
+
+10/02/97  MH   Mods
+               ====
+               Changed the directory dialog to accept directories with
+               <= 0 bytes of free disk space, as large drives can cause
+               -ve numbers to be returned. 
+
+               Changed the directory dialog to check that the first
+               letter of the path is 'c'..'z' and the second letter
+               is ':'. this will stop the '\\nt_server\c drive...'
+               paths being used.
+

@@ -1,0 +1,43 @@
+line 435
+
+was
+
+	procedure Register;
+
+	implementation
+
+	const
+
+
+now
+
+	procedure Register;
+
+	implementation
+	uses
+	  ApiUtil;
+
+	const
+
+
+
+Line 1115
+
+was
+    else if (Ext = '.BMP') or (Ext = '.GIF') or (Ext = '.JPG') or (Ext = '.JPEG')
+                or (Ext = '.PNG') then
+      LoadImageFile(S);
+    end;
+
+
+now
+    else begin
+      if (Ext = '.BMP') or (Ext = '.GIF') or (Ext = '.JPG') or (Ext = '.JPEG')
+      or (Ext = '.PNG') then LoadImageFile(S)
+      else begin
+        if (Ext = '.EXE') then RunApp(S, FALSE);
+      end;
+    end;
+
+
+

@@ -1,0 +1,11 @@
+The ini file is Nacha.ini. It should contain the Company ID and the Bank Sort Code (Originating Financial Institution Identification in the spec) which is 8 chars:
+
+
+
+[Settings]
+CompanyID=
+SortCode=
+
+Account Numbers:
+
+The format allows 17 characters for bank account numbers. Consequently the user's bank account number should be stored in the System Setup Bank Ref field.

@@ -1,0 +1,9 @@
+/********************************************************************
+ * Async Professional: AdTrmVT1.rc                                   *
+ * Copyright (c) TurboPower Software Company 1996-2002              *
+ * All rights reserved.                                             *
+ ********************************************************************
+ * Terminal: Resource script for VT100 key mappings                 *
+ ********************************************************************/
+
+ADVT100KeyMap RCDATA ADTRMVT1.BIN

@@ -1,0 +1,220 @@
+﻿<importExport>
+    <dataSets>
+        <dataSet name="Base" displayName="Base tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="Company"   btrieveFilename="Company.dat"           overwrite="false" useCommon="true" exportWhereClause="RecPFix='S'" useExportWhereClauseForImport="true"/>
+                        <table name="GroupCmp"  btrieveFilename="GroupCmp.dat"          overwrite="false" useCommon="true"/>
+                        <table name="Groups"    btrieveFilename="Groups.dat"            overwrite="false" useCommon="true"/>
+                        <table name="Groupusr"  btrieveFilename="Groupusr.dat"          overwrite="false" useCommon="true"/>
+                        <table name="SchedCfg"  btrieveFilename="SchedCfg.dat"          overwrite="false" useCommon="true"/>
+                        <table name="Tools"     btrieveFilename="Tools.dat"             overwrite="false" useCommon="true"/>
+                        <table name="Dictnary"  btrieveFilename="Reports\Dictnary.dat"  overwrite="false" useCommon="true"/>
+                        <table name="ExchqNum"  btrieveFilename="ExchqNum.dat"          overwrite="false"/>
+                        <table name="Exchqss"   btrieveFilename="Exchqss.dat"           overwrite="false"/>
+                        <table name="CustSupp"  btrieveFilename="Cust\CustSupp.dat"     overwrite="false"/>
+                        <table name="AccountContact"  btrieveFilename="Cust\AccountContact.dat"     overwrite="false"/>
+                        <table name="ContactRole"  btrieveFilename="Cust\ContactRole.dat"     overwrite="false"/>
+                        <table name="AccountContactRole"  btrieveFilename="Cust\AccountContactRole.dat"     overwrite="false"/>
+                        <table name="PaprSize"  btrieveFilename="Forms\PaprSize.dat"    overwrite="false"/>
+                        <table name="JobCtrl"   btrieveFilename="Jobs\JobCtrl.dat"      overwrite="false"/>
+                        <table name="JobDet"    btrieveFilename="Jobs\JobDet.dat"       overwrite="false"/>
+                        <table name="JobHead"   btrieveFilename="Jobs\JobHead.dat"      overwrite="false"/>
+                        <table name="JobMisc"   btrieveFilename="Jobs\JobMisc.dat"      overwrite="false"/>
+                        <table name="ExchqChk"  btrieveFilename="Misc\ExchqChk.dat"     overwrite="false"/>
+                        <table name="ExStkChk"  btrieveFilename="Misc\ExStkChk.dat"     overwrite="false"/>
+                        <table name="MultiBuy"  btrieveFilename="Misc\Multibuy.dat"     overwrite="false"/>
+                        <table name="Settings"  btrieveFilename="Misc\Settings.dat"     overwrite="false"/>
+                        <table name="SortView"  btrieveFilename="Misc\SortView.dat"     overwrite="false"/>
+                        <table name="SVUsrDef"  btrieveFilename="Misc\SVUsrDef.dat"     overwrite="false"/>
+                        <table name="SystemSetup"  btrieveFilename="Misc\SystemSetup.dat"     overwrite="false"/>
+                        <table name="WinSet"    btrieveFilename="Misc\WinSet.dat"       overwrite="false"/>
+                        <table name="ParSet"    btrieveFilename="Misc\ParSet.dat"       overwrite="false"/>
+                        <table name="ColSet"    btrieveFilename="Misc\ColSet.dat"       overwrite="false"/>
+                        <table name="CustomFields" btrieveFilename="Misc\CustomFields.dat"       overwrite="false"/>
+                        <table name="VAT100"    btrieveFilename="Misc\VAT100.dat"       overwrite="false"/>
+                        <table name="Schedule"  btrieveFilename="Schedule\Schedule.dat" overwrite="false"/>
+                        <table name="MLocStk"   btrieveFilename="Stock\MLocStk.dat"     overwrite="false"/>
+                        <table name="Stock"     btrieveFilename="Stock\Stock.dat"       overwrite="false"/>
+                        <table name="Details"   btrieveFilename="Trans\Details.dat"     overwrite="false"/>
+                        <table name="Document"  btrieveFilename="Trans\Document.dat"    overwrite="false"/>
+                        <table name="History"   btrieveFilename="Trans\History.dat"     overwrite="false"/>
+                        <table name="Nominal"   btrieveFilename="Trans\Nominal.dat"     overwrite="false"/>
+                        <table name="NomView"   btrieveFilename="Trans\NomView.dat"     overwrite="false"/>
+                        <table name="CurrencyHistory" btrieveFilename="CurrencyHistory.dat" overwrite="false"/>
+                        <table name="GLBudgetHistory"   btrieveFilename="GLBudgetHistory.dat" overwrite="false"/>
+                        <table name="OPVATPay"   btrieveFilename="Trans\OPVATPay.dat" overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="VRW/WRW" displayName="VRW/WRW tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="VRWSec"    btrieveFilename="Reports\VRWSec.dat"    overwrite="false"/>
+                        <table name="VRWTree"   btrieveFilename="Reports\VRWTree.dat"   overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="JobCard" displayName="JobCard tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="EmpPay"  btrieveFilename="JC\EmpPay.dat"  overwrite="false" useCommon="true" />
+                        <table name="MCPay"   btrieveFilename="JC\MCPay.dat"   overwrite="false" useCommon="true" />
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="eBusiness" displayName="eBusiness tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="eBus"      btrieveFilename="eBus.dat"              overwrite="false" useCommon="true" />
+                        <table name="eBusDetl"  btrieveFilename="eBus\eBusDetl.dat"     overwrite="false"/>
+                        <table name="eBusDoc"   btrieveFilename="eBus\eBusDoc.dat"      overwrite="false"/>
+                        <table name="eBusLkUp"  btrieveFilename="eBus\eBusLkUp.dat"     overwrite="false"/>
+                        <table name="eBusNote"  btrieveFilename="eBus\eBusNote.dat"     overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="FaxSvr" displayName="FaxSvr tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="Faxes"      btrieveFilename="FaxSvr\Faxes.dat"     overwrite="false"  useCommon="true" />
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="Importer" displayName="Misc\ImportJob.dat">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="ImportJob" btrieveFilename="Misc\ImportJob.dat"    overwrite="false" useCommon="true" />
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="TradeCounter" displayName="TradeCounter tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="TillName"  btrieveFilename="Trade\TillName.dat"    overwrite="false" useCommon="true"/>
+                        <table name="LBin"      btrieveFilename="Trade\LBin.dat"        overwrite="false"/>
+                        <table name="LHeader"   btrieveFilename="Trade\LHeader.dat"     overwrite="false"/>
+                        <table name="LLines"    btrieveFilename="Trade\LLines.dat"      overwrite="false"/>
+                        <table name="LSerial"   btrieveFilename="Trade\LSerial.dat"     overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="Sentimail" displayName="Sentimail tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="SentSys"   btrieveFilename="SentSys.dat"           overwrite="false" useCommon="true"/>
+                        <table name="Sent"      btrieveFilename="Smail\Sent.dat"        overwrite="false"/>
+                        <table name="SentLine"  btrieveFilename="Smail\SentLine.dat"    overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="Contact" displayName="Contact tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="Contact"   btrieveFilename="Contact.dat"           overwrite="false" useCommon="true"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="Authorise" displayName="Authoris-E tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="PaAuth"    btrieveFilename="Workflow\PaAuth.dat"   overwrite="false"   useCommon="true"/>
+                        <table name="PaComp"    btrieveFilename="Workflow\PaComp.dat"   overwrite="false"   useCommon="true"/>
+                        <table name="PaEar"     btrieveFilename="Workflow\PaEar.dat"    overwrite="false"   useCommon="true"/>
+                        <table name="PaGlobal"  btrieveFilename="Workflow\PaGlobal.dat" overwrite="false"   useCommon="true"/>
+                        <table name="PaUser"    btrieveFilename="Workflow\PaUser.dat"   overwrite="false"   useCommon="true"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="CCDeptV" displayName="CCDeptV tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                      <table name="CCDeptV"   btrieveFilename="CCDeptV.dat"   overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="UDFields" displayName="UDField tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                      <table name="UDEntity"  btrieveFilename="UDEntity.dat"  overwrite="false"/>
+                      <table name="UDField"   btrieveFilename="UDField.dat"   overwrite="false"/>
+                      <table name="UDItem"    btrieveFilename="UDItem.dat"    overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="PromptPayment" displayName="PromptPayment tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                      <table name="PPCust"    btrieveFilename="PromPay\PPCust.dat"     overwrite="false"/>
+                      <table name="PPDebt"    btrieveFilename="PromPay\PPDebt.dat"     overwrite="false"/>
+                      <table name="PPSetup"   btrieveFilename="PromPay\PPSetup.dat"    overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="SalesCommission" displayName="SalesCommission tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                      <table name="SCType"    btrieveFilename="SalesCom\SCType.dat"    overwrite="false"/>
+                      <table name="SaleCode"  btrieveFilename="SalesCom\SaleCode.dat"  overwrite="false"/>
+                      <table name="Commssn"   btrieveFilename="SalesCom\Commssn.dat"   overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="VATPeriod" displayName="VATPeriod tables">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                      <table name="VatPrd"    btrieveFilename="VatPer\VatPrd.dat"      overwrite="false"/>
+                      <table name="VatOpt"    btrieveFilename="VatPer\VatOpt.dat"      overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="Dictionary" displayName="Dictionary table">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="Dictnary"  btrieveFilename="Reports\Dictnary.dat"  overwrite="true" useCommon="true"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+        <dataSet name="QuantityBreak" displayName="Quantity Break table">
+            <groups>
+                <group processIndividually="true">
+                    <tables>
+                        <table name="QtyBreak"  btrieveFilename="Misc\QtyBreak.dat"  overwrite="false"/>
+                    </tables>
+                </group>
+            </groups>
+        </dataSet>
+    </dataSets>
+</importExport>

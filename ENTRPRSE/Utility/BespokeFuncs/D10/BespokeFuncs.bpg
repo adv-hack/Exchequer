@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = BespokeFuncs.dll LoginPassword.exe BespokeSQLAdmin.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+BespokeFuncs.dll: DLL\BespokeFuncs.dpr
+  $(DCC)
+
+LoginPassword.exe: LoginPassword\LoginPassword.dpr
+  $(DCC)
+
+BespokeSQLAdmin.exe: SQLAdmin\BespokeSQLAdmin.dpr
+  $(DCC)
+
+

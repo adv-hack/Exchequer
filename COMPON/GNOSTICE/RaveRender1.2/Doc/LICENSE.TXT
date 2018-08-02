@@ -1,0 +1,23 @@
+Gnostice RaveRender - WYSIWYG Renders for Rave Reports BE (Borland Edition)
+for Borland Delphi & C++Builder.
+NONTRANSFERABLE -WITH SOURCE- SOFTWARE LICENSE AND LIMITED WARRANTY
+
+IMPORTANT - THIS IS A LEGAL AGREEMENT BETWEEN YOU (EITHER AN INDIVIDUAL OR AN ENTITY) AND GNOSTICE (THE COMPANY). BY INSTALLING AND/OR USING THE SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS LICENSE AGREEMENT, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS. YOU FURTHER AGREE THAT IT IS THE FULL AND COMPLETE AGREEMENT BETWEEN US, SUPERSEDING ALL PRIOR WRITTEN OR VERBAL AGREEMENTS OF ANY KIND. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, YOU MUST CEASE USING THIS PRODUCT IMMEDIATELY.
+
+At all times Gnostice Information Technologies retains full title to the software.
+
+GRANT OF LICENSE
+
+You may install and use the software for the purpose of developing application software. You may deploy the software you develop on any number of computers, ROYALTY FREE, provided you agree with all terms of this LICENSE AGREEMENT.
+
+a) You agree to use the software, for the purpose of application development, only on the number of computers you have purchased licenses for. You require ONE License per developer.
+b) You may modify the software for the purpose of developing and integrating into your own software ONLY.
+
+You are NOT licensed to (a) use this software or any part of the source code contained in it to develop or assist in the development of a general purpose software product(s) or an integrated work(s) or product suite(s) whose sole purpose is to generate or convert documents to PDF, HTML, RTF, Excel, Text or other formats supported by the software, or (b) distribute modified or unmodified versions of any files contained in this software, including but not limited to .dcu, .dcp, .bpl, .pas files. You may, however, distribute the run-time library .bpl file, or (c) sell any portion of the software on its own or with other software, without integrating it into your applications as executable code, or (d) Rent or lease the software.
+
+Further you agree NOT to use this software or any part of the source code contained in it to convert or assist in the conversion of data from other Component(s) or Reporting Tool(s). You may use this software in conjunction with the Rave Reports reporting software ONLY.
+
+LIMITED WARRANTY/LIMITATION OF REMEDIES
+
+
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION. IN NO EVENT WILL THE COMPANY OR ANY OTHER PARTY WHO MAY HAVE DISTRIBUTED THE SOFTWARE AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.

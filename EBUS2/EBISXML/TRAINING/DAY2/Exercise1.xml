@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Order>
+	<OrderDate>27-07-2000</OrderDate>
+	<Supplier ID="">
+		<SupplierReferences>
+			<TaxNumber>546231</TaxNumber>
+			<GLN></GLN>
+		</SupplierReferences>
+		<Address ID="">
+			<Name></Name>
+			<AddressLine>102</AddressLine>
+			<Street>Regents St</Street>
+			<City>London</City>
+			<State></State>
+			<PostCode></PostCode>
+			<Country>UK</Country>
+		</Address>
+		<Contact ID="">
+			<Name>Gareth</Name>
+			<Department>Chairman</Department>
+			<Switchboard></Switchboard>
+			<Fax></Fax>
+			<Email>Gareth@Basda.org</Email>
+		</Contact>
+	</Supplier>
+</Order>
+

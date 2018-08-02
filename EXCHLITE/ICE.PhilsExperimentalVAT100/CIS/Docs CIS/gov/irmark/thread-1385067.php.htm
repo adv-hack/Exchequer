@@ -1,0 +1,1227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en"><head><title>Canonicalize and signing in C#</title>
+
+
+	
+<meta name="keywords" content="Canonicalize and signing in C#, pc, review, computers, pc review, hardware, software, forums, uk, monitors, processors, gadgets, spyware, networking">
+<meta name="description" content="Canonicalize and signing in C#- microsoft.public.dotnet.languages.csharp. Visit our forum to discuss Canonicalize and signing in C#"><!-- CSS Stylesheet -->
+	
+
+
+<link rel="stylesheet" type="text/css" href="thread-1385067.php_files/vbulletin.css">
+<link rel="stylesheet" type="text/css" href="thread-1385067.php_files/pcreview.css"><!-- / CSS Stylesheet -->
+
+
+
+
+<script type="text/javascript">
+<!--
+var SESSIONURL = "";
+var IMGDIR_MISC = "http://www.pcreview.co.uk/images/misc";
+// -->
+</script>
+
+
+
+<script type="text/javascript" src="thread-1385067.php_files/dropdown.js"></script>
+<script type="text/javascript" src="thread-1385067.php_files/vbulletin_global.js"></script>
+<script type="text/javascript" src="thread-1385067.php_files/vbulletin_menu.js"></script>
+<script type="text/javascript" src="thread-1385067.php_files/vbulletin_chgclass.js"></script></head><body onload="">
+<a name="top"></a>
+<div id="container">
+<div id="titlebar" style=""><img alt="" src="thread-1385067.php_files/Top_Title.jpg" height="80" width="300"><span class="topadvert">
+
+<script language="JavaScript" type="text/javascript">
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.pcreview.co.uk/adverts/adjs.php?n=" + phpAds_random);
+   document.write ("&what=zone:1&target=_blank");
+   document.write ("&exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><script language="JavaScript" type="text/javascript" src="thread-1385067.php_files/adjs_002.js"></script><script language="javascript">
+var uri = 'http://impgb.tradedoubler.com/imp/img/15551384/1078739?' + new String (Math.random()).substring (2, 11);
+document.write('<a href="http://clkuk.tradedoubler.com/click?p=19115&a=1078739&g=15551384" target="_blank"><img src="'+uri+'" border=0></a>');
+</script><a href="http://clkuk.tradedoubler.com/click?p=19115&amp;a=1078739&amp;g=15551384" target="_blank"><img src="thread-1385067.php_files/1078739.gif" border="0"></a><div id="beacon_53" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="thread-1385067.php_files/adlog_002.gif" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div><noscript><a
+href='http://www.pcreview.co.uk/adverts/adclick.php?n=ae58e4e8'
+target='_blank'><img
+src='http://www.pcreview.co.uk/adverts/adview.php?what=zone:1&n=ae58e4e8'
+border='0' alt=''></a></noscript>
+</span></div> 
+
+<div id="menubar" style="">
+<ul id="nav">
+
+
+
+<li><a href="http://www.pcreview.co.uk/" class="topmenu"><img alt="" src="thread-1385067.php_files/Home.gif" border="0" height="20" width="100"></a>
+  <ul><li><a href="http://www.pcreview.co.uk/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Main Page </a></li><li><a class="last" href="http://www.pcreview.co.uk/news/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">News Editions</a></li></ul>
+ 
+ 
+</li><li><a href="http://www.pcreview.co.uk/reviews/" class="topmenu"><img alt="" src="thread-1385067.php_files/Reviews.gif" border="0" height="20" width="100"></a>
+  <ul><li><a href="http://www.pcreview.co.uk/reviews/Audio/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Audio</a></li><li><a href="http://www.pcreview.co.uk/reviews/Cases/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Cases</a></li><li><a href="http://www.pcreview.co.uk/reviews/Cooling/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Cooling</a></li><li><a href="http://www.pcreview.co.uk/reviews/Digital_Cameras/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Digital Cameras</a></li><li><a href="http://www.pcreview.co.uk/reviews/Graphics_Cards/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Graphics Cards</a></li><li><a href="http://www.pcreview.co.uk/reviews/Input_Devices/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Input Devices</a></li><li><a href="http://www.pcreview.co.uk/reviews/Memory/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Memory</a></li><li><a href="http://www.pcreview.co.uk/reviews/Miscellaneous/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Miscellaneous</a></li><li><a href="http://www.pcreview.co.uk/reviews/Mobile/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Mobile</a></li><li><a href="http://www.pcreview.co.uk/reviews/Monitors/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Monitors</a></li><li><a href="http://www.pcreview.co.uk/reviews/Motherboards/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Motherboards</a></li><li><a href="http://www.pcreview.co.uk/reviews/Networking/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Networking</a></li><li><a href="http://www.pcreview.co.uk/reviews/Printers/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Printers</a></li><li><a href="http://www.pcreview.co.uk/reviews/Processors/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Processors</a></li><li><a href="http://www.pcreview.co.uk/reviews/Scanners/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Scanners</a></li><li><a href="http://www.pcreview.co.uk/reviews/Software/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Software</a></li><li><a href="http://www.pcreview.co.uk/reviews/Storage/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Storage</a></li><li><a href="http://www.pcreview.co.uk/reviews/Systems/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Systems</a></li><li><a class="last" href="http://www.pcreview.co.uk/reviews/Gaming/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Gaming</a></li>
+</ul>
+  </li><li><a href="http://www.pcreview.co.uk/articles/" class="topmenu"><img alt="" src="thread-1385067.php_files/Articles.gif" border="0" height="20" width="100"></a>
+    <ul><li><a href="http://www.pcreview.co.uk/articles/Windows/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Windows Tips </a></li><li><a href="http://www.pcreview.co.uk/articles/Events/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Events</a></li><li><a href="http://www.pcreview.co.uk/articles/Interviews/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Interviews</a></li><li><a href="http://www.pcreview.co.uk/articles/Hardware/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Hardware</a></li><li><a href="http://www.pcreview.co.uk/articles/Electronics/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Electronics</a></li><li><a href="http://www.pcreview.co.uk/articles/Programming/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Programming</a></li><li><a href="http://www.pcreview.co.uk/articles/Internet/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Internet</a></li><li><a href="http://www.pcreview.co.uk/articles/Consumer_Advice/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Consumer Advice</a></li><li><a href="http://www.pcreview.co.uk/articles/Digital_Photography/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Digital &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Photography </a></li><li><a class="last" href="http://www.pcreview.co.uk/articles/Editorials/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Editorials</a></li></ul>
+    </li><li><a href="http://www.pcreview.co.uk/forums" class="topmenu"><img alt="" src="thread-1385067.php_files/Forums.gif" border="0" height="20" width="100"></a>  
+          		<ul class="menucontent"><li><a href="http://www.pcreview.co.uk/forums"><img alt="" src="thread-1385067.php_files/YellowArrow.gif">Forums</a>
+						<ul><li><a href="http://www.pcreview.co.uk/forums"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Main Index </a></li><li><a href="http://www.pcreview.co.uk/forums/search.php?do=getnew"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">New Posts </a></li><li><a href="http://www.pcreview.co.uk/forums/search.php?do=getdaily"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Todays Posts</a></li><li><a href="http://www.pcreview.co.uk/forums/search.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Search</a></li><li><a href="http://www.pcreview.co.uk/forums/subscription.php?do=viewsubscription"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Subscribed Threads</a></li><li><a class="last" href="http://www.pcreview.co.uk/forums/usercp.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Options</a></li></ul>
+					</li><li><a href="http://www.pcreview.co.uk/forums/private.php"><img alt="" src="thread-1385067.php_files/YellowArrow.gif">Messaging</a>
+						<ul><li><a href="http://www.pcreview.co.uk/forums/private.php?do=newpm"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">New Message</a></li><li><a href="http://www.pcreview.co.uk/forums/private.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Inbox</a></li><li><a class="last" href="http://www.pcreview.co.uk/forums/private.php?s=&amp;pp=50&amp;folderid=-1"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Sent Items</a></li></ul>
+					</li><li><a href="http://www.pcreview.co.uk/forums/memberlist.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Member List </a></li>
+<li><a class="last" href="http://www.pcreview.co.uk/guidelines.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Forum Guidelines</a></li></ul>
+            </li><li><a href="http://www.pcreview.co.uk/features.php" class="topmenu"><img alt="" src="thread-1385067.php_files/Features.gif" border="0" height="20" width="100"></a>
+				<ul><li><a href="http://www.pcreview.co.uk/retailers"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Retailer Ratings </a></li><li><a href="http://www.pcreview.co.uk/broadband/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Broadband Offers</a></li><li><a href="http://www.pcreview.co.uk/traders"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">User Feedback</a></li><li><a href="http://www.pcreview.co.uk/arcade"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Arcade</a></li><li><a href="http://www.pcreview.co.uk/gallery"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Gallery</a></li><li><a href="http://www.pcreview.co.uk/forums/forum-102.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">For Sale / Wanted </a></li><li><a href="http://www.pcreview.co.uk/forums/forum-150.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Newsgroups</a></li><li><a href="http://www.pcreview.co.uk/startup"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Startup Database</a></li>
+<li><a href="http://www.pcreview.co.uk/antivirus"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Online Antivirus</a></li>
+<li><a href="http://pcreview.pgpartner.co.uk/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">UK Price Grabber</a></li>
+<li><a href="http://pcreview.pgpartner.com/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">US Price Grabber</a></li>
+<li><a class="last" href="http://www.pcreview.co.uk/forums/archive/"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Sitemap</a></li></ul>
+			</li>
+						<li><a href="http://www.pcreview.co.uk/about.php" class="topmenu"><img alt="" src="thread-1385067.php_files/About.gif" border="0" height="20" width="102"></a>
+				<ul><li><a href="http://www.pcreview.co.uk/about.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">About Us </a></li><li><a href="http://www.pcreview.co.uk/contact.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Contact Us </a></li><li><a href="http://www.pcreview.co.uk/advertising.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Advertising</a></li><li><a href="http://www.pcreview.co.uk/reviewsamples.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Review Samples</a></li><li><a href="http://www.pcreview.co.uk/privacy.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Privacy Policy</a></li><li><a href="http://www.pcreview.co.uk/disclaimer.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Disclaimer</a></li><li><a class="last" href="http://www.pcreview.co.uk/copyright.php"><img alt="" src="thread-1385067.php_files/Menu_Bullet.gif">Copyright</a></li></ul>
+  </li>
+
+</ul>   
+</div>
+<div id="menuspacer"></div>
+<div id="rightbar">
+<div id="leftbar">
+<div id="contentwrap"> 
+<div id="left">
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_User.jpg" height="20" width="140"></div>
+<div class="menutext">
+  <div align="center">
+    <br>
+
+
+
+Please <a href="http://www.pcreview.co.uk/forums/register.php"> Register</a> or login below:
+<br><br>
+		<form action="http://www.pcreview.co.uk/forums/login.php" method="post" onsubmit="md5hash(vb_login_password,vb_login_md5password)">
+		<script type="text/javascript" src="thread-1385067.php_files/vbulletin_md5.js"></script>
+
+			<strong>Username:</strong><br>			  <input class="button" name="vb_login_username" id="navbar_username" size="15" accesskey="u" tabindex="1" onfocus="if (this.value == 'User Name') this.value = '';" type="text">
+			<strong>Password:</strong><br>			  <input class="button" name="vb_login_password" size="15" accesskey="p" tabindex="2" type="password">
+		  <p><span class="smallfont">
+		    <input name="cookieuser" value="1" tabindex="3" id="cookieuser" accesskey="c" checked="checked" type="checkbox">
+		    Remember Me?<br>
+		  </span><input name="submit" class="button" accesskey="s" tabindex="4" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." value="Log in" type="submit">
+		  <input name="s" value="" type="hidden">
+		  <input name="do" value="login" type="hidden">
+		  <input name="forceredirect" value="1" type="hidden">			
+		  <input name="vb_login_md5password" type="hidden">
+	</p>
+	  </form>
+
+
+
+</div>
+</div>
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Latest.jpg" height="20" width="140"></div>
+<div class="menubuttons"><div class="leftsidemenu">
+<a href="http://www.pcreview.co.uk/reviews/Monitors/Philips_170B6CB_LCD_Monitor/">Philips 170B6CB LCD Monitor</a><a href="http://www.pcreview.co.uk/reviews/Gaming/Age_of_Empires_III/">Age of Empires III</a><a href="http://www.pcreview.co.uk/reviews/Gaming/Command_and_Conquer:_The_First_Decade/">Command and Conquer: The First Decade</a><a href="http://www.pcreview.co.uk/reviews/Gaming/Civilization_IV/">Civilization IV</a><a href="http://www.pcreview.co.uk/articles/Hardware/What_is_a_Motherboard/">What is a Motherboard</a><a href="http://www.pcreview.co.uk/reviews/Gaming/Call_of_Duty_II/">Call of Duty II</a><a href="http://www.pcreview.co.uk/reviews/Miscellaneous/AC_Ryan_UV_Kit/">AC Ryan UV Kit</a><a href="http://www.pcreview.co.uk/reviews/Gaming/FIFA_06/">FIFA 06</a><a href="http://www.pcreview.co.uk/reviews/Input_Devices/Joytech_Neo_S_PC_Gamepad/">Joytech Neo S PC Gamepad</a><a href="http://www.pcreview.co.uk/reviews/Gaming/Fable:_The_Lost_Chapters/">Fable: The Lost Chapters</a>
+</div></div>
+
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Newsgroups.jpg" height="20" width="140"></div>
+<div class="menubuttons"><div class="leftsidemenu">
+<a href="http://www.pcreview.co.uk/forums/forum-151.php">Windows XP</a>
+<a href="http://www.pcreview.co.uk/forums/forum-186.php">Microsoft Office</a>
+<a href="http://www.pcreview.co.uk/forums/forum-201.php">Microsoft DotNet</a>
+<a href="http://www.pcreview.co.uk/forums/forum-211.php">Windows 2000</a>
+<a href="http://www.pcreview.co.uk/forums/forum-259.php">AntiSpyware</a>
+<a href="http://www.pcreview.co.uk/forums/forum-250.php">Microsoft Access</a>
+<a href="http://www.pcreview.co.uk/forums/forum-270.php">Microsoft Excel</a>
+<a href="http://www.pcreview.co.uk/forums/forum-276.php">Microsoft Outlook</a>
+<a href="http://www.pcreview.co.uk/forums/forum-292.php">Hardware</a>
+<a href="http://www.pcreview.co.uk/forums/archive/forum-150.php">Newsgroup Sitemap</a>
+</div></div>
+
+</div>
+<div id="innercontent"> 
+<div id="content">
+
+
+<a href="http://www.pcreview.co.uk/">PC Review</a> 
+
+
+
+
+
+
+
+
+
+	<img src="thread-1385067.php_files/YellowArrow.gif">  <a href="http://www.pcreview.co.uk/forums/">Forums</a>
+
+
+	<img src="thread-1385067.php_files/YellowArrow.gif">  <a href="http://www.pcreview.co.uk/forums/forum-150.php">Newsgroups</a>
+
+
+	<img src="thread-1385067.php_files/YellowArrow.gif">  <a href="http://www.pcreview.co.uk/forums/forum-201.php">Microsoft DotNet</a>
+
+
+	<img src="thread-1385067.php_files/YellowArrow.gif">  <a href="http://www.pcreview.co.uk/forums/forum-208.php">microsoft.public.dotnet.languages.csharp</a>
+
+
+
+
+
+<img src="thread-1385067.php_files/YellowArrow.gif"> 
+
+	Canonicalize and signing in C#
+
+
+
+
+<br><br>
+
+
+
+
+
+
+
+<!-- google_ad_section_start -->
+
+<h1>microsoft.public.dotnet.languages.csharp - Canonicalize and signing in C#</h1>
+
+<!-- google_ad_section_end -->
+
+
+<a name="poststop" id="poststop"></a>
+
+<!-- controls above postbits -->
+<table style="margin-bottom: 3px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="bottom">
+	
+		<td class="smallfont"><a rel="nofollow" href="http://www.pcreview.co.uk/forums/newreply.php?do=newreply&amp;noquote=1&amp;p=4151270"><img title="Reply" src="thread-1385067.php_files/reply.gif" alt="Reply" border="0"></a></td>
+	
+	
+</tr>
+</tbody></table>
+<!-- / controls above postbits -->
+
+<!-- toolbar -->
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="100%">
+<tbody><tr>
+	<td class="tcat" width="100%">
+		<div class="smallfont">
+		
+		&nbsp;
+		</div>
+	</td>
+	<td style="cursor: pointer;" class="vbmenu_control" id="threadtools">
+		<a href="#goto_threadtools">Thread Tools</a>
+		<script type="text/javascript"> vbmenu_register("threadtools"); </script><img src="thread-1385067.php_files/menu_open.gif" alt="" border="0">
+	</td>
+	
+		<td style="cursor: pointer;" class="vbmenu_control" id="threadsearch">
+			<a href="#goto_threadsearch">Search this Thread</a>
+			<script type="text/javascript"> vbmenu_register("threadsearch"); </script><img src="thread-1385067.php_files/menu_open.gif" alt="" border="0">
+		</td>
+	
+	
+		<td style="cursor: pointer;" class="vbmenu_control" id="threadrating">
+			<a href="#goto_threadrating">Rate Thread</a>
+			<script type="text/javascript"> vbmenu_register("threadrating"); </script><img src="thread-1385067.php_files/menu_open.gif" alt="" border="0">
+		</td>
+	
+	
+</tr>
+</tbody></table>
+<!-- / toolbar -->
+
+
+
+
+<!-- google_ad_section_start -->
+<div id="posts"><!-- post #4151270 -->
+
+<table class="tborder" align="center" border="0" cellpadding="6" cellspacing="0" width="100%">
+<tbody><tr>
+	
+		<td class="thead" style="font-weight: normal;">		
+			<!-- status icon and date -->
+			<a name="post4151270"><img title="Old" class="inlineimg" src="thread-1385067.php_files/post_old.gif" alt="Old" border="0"></a>
+			19-01-2005, 07:31 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+		<td class="thead" style="font-weight: normal;" align="right">
+			&nbsp;
+			#<a href="http://www.pcreview.co.uk/forums/showpost.php?p=4151270&amp;postcount=1" target="new" rel="nofollow"><strong>1</strong></a>
+		</td>
+	
+</tr>
+<tr valign="top">
+	<td class="alt2" width="175">
+			
+			<div id="postmenu_4151270">
+				
+				Pollux
+				
+			</div>
+			
+			<div class="smallfont">Guest</div>
+			
+		
+			
+			
+			<div class="smallfont">
+				&nbsp;<br>
+				
+				
+				
+				<div>
+					Posts: n/a
+				</div>
+				
+				<div>   </div>
+				
+			</div>					
+		
+	</td>
+	<td class="alt1">
+	
+		
+			<!-- icon and title -->
+			<div class="smallfont">
+				<img title="Default" class="inlineimg" src="thread-1385067.php_files/icon1.gif" alt="Default" border="0">
+				<strong>Canonicalize and signing in C#</strong>
+			</div>
+			<hr style="color: rgb(195, 211, 227);" size="1">
+			<!-- / icon and title -->
+		
+		
+		<!-- message -->
+		<div>Hi,<br>
+<br>
+I'm having a problem canonicalizing an xml document and getting a hash<br>
+that matches that of an existing document so I was wondering if somebody<br>
+knew what I was doing wrong.<br>
+<br>
+I generate an XML document and need to do the following:<br>
+- Canonicalize (14n) the XML Document<br>
+- Generate a 160-bit binary secure has from the canonicalized XML using<br>
+SHA-1 algorithm<br>
+- Encode the binary data using base-64 to produce a 28 characters string<br>
+- Encode the binary data using base-32 to produce an easily human<br>
+readable 32 characters string<br>
+<br>
+I've included an example of a typical XML file below. The part that<br>
+needs to be canonicalized and hashed is the Body element. Within &lt;Body&gt;,<br>
+you'll notice an IRmark element. This element should not be there for<br>
+the process of canonicalization and hashing. It is in fact the hash of<br>
+the &lt;body&gt; element in base-64.<br>
+<br>
+The code simply tries to do all the steps taking, a file called irmark-<br>
+canonical.xml which is identical to the one pasted below bar the IRmark<br>
+element not being there. I try to retrieve the &lt;Body&gt; element,<br>
+canonicalize it and hash it. I then retrieve the IRmark element in<br>
+irmark-example.xml (the file pasted below) and display the values on<br>
+screen. Well, they never match! I guess the biggest problem here is that<br>
+I'm just not very familiar with all these processes and I'm unsure which<br>
+functions to use.<br>
+<br>
+I also attached a java code snippet which was provided by the<br>
+organization that is at the receiving end of the document. Maybe this<br>
+will help figuring out what I'm doing wrong? I haven't been<br>
+able to figure out how to get the<br>
+base-32 requirement either.<br>
+<br>
+Any help will be greatly appreciated.<br>
+<br>
+Pollux<br>
+<br>
+XML File<br>
+++++++++<br>
+&lt;?xml version="1.0"?&gt;<br>
+&lt;!-- Generic IRmark example instance - supplied credentials are not to<br>
+be used for any other purpose --&gt; &lt;GovTalkMessage<br>
+xmlns="http://www.govtalk.gov.uk/CM/envelope"&gt;<br>
+&lt;EnvelopeVersion&gt;2.0&lt;/EnvelopeVersion&gt;<br>
+&lt;Header&gt;<br>
+&lt;MessageDetails&gt;<br>
+&lt;Class&gt;IR-SA-SA100&lt;/Class&gt;<br>
+&lt;Qualifier&gt;request&lt;/Qualifier&gt;<br>
+&lt;Function&gt;submit&lt;/Function&gt;<br>
+&lt;CorrelationID&gt;&lt;/CorrelationID&gt;<br>
+&lt;Transformation&gt;XML&lt;/Transformation&gt;<br>
+&lt;GatewayTest&gt;1&lt;/GatewayTest&gt;<br>
+&lt;GatewayTimestamp&gt;&lt;/GatewayTimestamp&gt;<br>
+&lt;/MessageDetails&gt;<br>
+&lt;SenderDetails&gt;<br>
+&lt;IDAuthentication&gt;<br>
+&lt;SenderID&gt;SA0154&lt;/SenderID&gt;<br>
+&lt;Authentication&gt;<br>
+&lt;Method&gt;clear&lt;/Method&gt;<br>
+&lt;Role&gt;principal&lt;/Role&gt;<br>
+&lt;Value&gt;testing1&lt;/Value&gt;<br>
+&lt;/Authentication&gt;<br>
+&lt;/IDAuthentication&gt;<br>
+&lt;/SenderDetails&gt;<br>
+&lt;/Header&gt;<br>
+&lt;GovTalkDetails&gt;<br>
+&lt;Keys&gt;<br>
+&lt;Key Type="UTR"&gt;1000000154&lt;/Key&gt;<br>
+&lt;/Keys&gt;<br>
+&lt;TargetDetails&gt;<br>
+&lt;Organisation&gt;IR&lt;/Organisation&gt;<br>
+&lt;/TargetDetails&gt;<br>
+&lt;ChannelRouting&gt;<br>
+&lt;Channel&gt;<br>
+&lt;URI&gt;9999&lt;/URI&gt;<br>
+&lt;Product&gt;Generic IRmark&lt;/Product&gt;<br>
+&lt;Version&gt;1.0&lt;/Version&gt;<br>
+&lt;/Channel&gt;<br>
+&lt;/ChannelRouting&gt;<br>
+&lt;/GovTalkDetails&gt;<br>
+&lt;Body&gt;<br>
+&lt;IRenvelope xmlns="http://www.govtalk.gov.uk/taxation/SA"&gt;<br>
+&lt;IRheader&gt;<br>
+&lt;TestMessage&gt;0&lt;/TestMessage&gt;<br>
+&lt;Keys&gt;<br>
+&lt;Key Type="UTR"&gt;1000000154&lt;/Key&gt;<br>
+&lt;/Keys&gt;<br>
+&lt;PeriodEnd&gt;2004-04-05&lt;/PeriodEnd&gt;<br>
+&lt;Manifest&gt;<br>
+&lt;Contains&gt;<br>
+&lt;Reference&gt;<br>
+&lt;Namespace&gt;<br>
+http://www.inlandrevenue.gov.uk&lt;/Namespace&gt;<br>
+&lt;SchemaVersion&gt;2004-v1.0<br>
+&lt;/SchemaVersion&gt;<br>
+&lt;TopElementName&gt;SA100<br>
+&lt;/TopElementName&gt;<br>
+&lt;/Reference&gt;<br>
+&lt;/Contains&gt;<br>
+&lt;/Manifest&gt;<br>
+&lt;IRmark Type="generic"&gt;<br>
+v0wMpG9kYq0AJzQG4/rXQu/wejE=&lt;/IRmark&gt;<br>
+&lt;Sender&gt;Individual&lt;/Sender&gt;<br>
+&lt;/IRheader&gt;<br>
+&lt;SA100&gt;&lt;MainReturn&gt;&lt;FullName&gt;Case 1&lt;/FullName&gt;<br>
+&lt;SelfEmployment&gt;yes&lt;/SelfEmployment&gt;<br>
+&lt;StudentLoanLiable&gt;no<br>
+&lt;/StudentLoanLiable&gt;<br>
+&lt;TaxCalculation&gt;&lt;CalculateOwnTax&gt;yes<br>
+&lt;/CalculateOwnTax&gt;<br>
+&lt;Class4NICdue&gt;9.36<br>
+&lt;/Class4NICdue&gt;<br>
+&lt;TotalTaxDue&gt;21.06<br>
+&lt;/TotalTaxDue&gt;<br>
+<br>
+&lt;ClaimToReduceYourPaymentsOnAccount&gt;no<br>
+&lt;/ClaimToReduceYourPaymentsOnAccount&gt;<br>
+&lt;/TaxCalculation&gt;<br>
+&lt;ClaimRepayment&gt;&lt;Claim&gt;no&lt;/Claim&gt;<br>
+&lt;/ClaimRepayment&gt;<br>
+&lt;OtherPersonalDetails&gt;&lt;Forename&gt;John<br>
+&lt;/Forename&gt;<br>
+&lt;MaritalStatus&gt;S<br>
+&lt;/MaritalStatus&gt;<br>
+&lt;NINO&gt;YY672978C&lt;/NINO&gt;<br>
+&lt;/OtherPersonalDetails&gt;<br>
+<br>
+&lt;FurtherInformation&gt;&lt;DoNotWantToPayThroughTaxCoding&gt;no<br>
+&lt;/DoNotWantToPayThroug<br>
+hTaxCoding&gt;<br>
+<br>
+&lt;TaxReturnContainsProvisionalFigures&gt;no<br>
+&lt;/TaxReturnContainsProvisionalFigures<font color="blue"><br>
+&gt;</font><br>
+<br>
+&lt;ReliefClaimedNowForCertainLosses&gt;no&lt;/ReliefClaimedNowForCertainLosses&gt;<br>
+&lt;PostCessationReceiptsEtc&gt;no<br>
+&lt;/PostCessationReceiptsEtc&gt;<br>
+&lt;/FurtherInformation&gt;<br>
+&lt;/MainReturn&gt;<br>
+<br>
+&lt;SelfEmployments&gt;&lt;SelfEmployment&gt;&lt;BusinessDetails&gt;&lt;NameOfBusiness&gt;B<br>
+&lt;/NameOfB<br>
+usiness&gt;<br>
+&lt;Description&gt;Plumber<br>
+&lt;/Description&gt;<br>
+&lt;Address&gt;&lt;Line&gt;Address<br>
+&lt;/Line&gt;<br>
+&lt;/Address&gt;<br>
+&lt;AccountingPeriodStart&gt;<br>
+2003-01-01&lt;/AccountingPeriodStart&gt;<br>
+&lt;AccountingPeriodEnd&gt;<br>
+2003-08-31&lt;/AccountingPeriodEnd&gt;<br>
+&lt;DetailsChanged&gt;no<br>
+&lt;/DetailsChanged&gt;<br>
+&lt;DateOfCessation&gt;2003-<br>
+08-31&lt;/DateOfCessation&gt;<br>
+&lt;SpecialArrangements&gt;no<br>
+&lt;/SpecialArrangements&gt;<br>
+<br>
+&lt;EnteredDetailsElsewhere&gt;no&lt;/EnteredDetailsElsewhere&gt;<br>
+&lt;DoNotCover&gt;no<br>
+&lt;/DoNotCover&gt;<br>
+&lt;DateHasChanged&gt;no<br>
+&lt;/DateHasChanged&gt;<br>
+&lt;FurtherChange&gt;no<br>
+&lt;/FurtherChange&gt;<br>
+&lt;/BusinessDetails&gt;<br>
+&lt;CapitalAllowancesSummary&gt;<br>
+&lt;Cars&gt;1161.00&lt;/Cars&gt;<br>
+&lt;TotalAllowances&gt;1161.00<br>
+&lt;/TotalAllowances&gt;<br>
+<br>
+&lt;EnhancedCapitalAllowances&gt;no&lt;/EnhancedCapitalAllowances&gt;<br>
+&lt;/CapitalAllowancesSummary&gt;<br>
+&lt;IncomeAndExpenses&gt;&lt;IncludeVAT&gt;<br>
+no&lt;/IncludeVAT&gt;<br>
+&lt;SalesBusinessIncome&gt;<br>
+16788.00&lt;/SalesBusinessIncome&gt;<br>
+<br>
+&lt;DisallowableSubContractorCosts&gt;270.00&lt;/DisallowableSubContractorCosts&gt;<br>
+<br>
+&lt;DisallowableEmployeeCosts&gt;212.00&lt;/DisallowableEmployeeCosts&gt;<br>
+<br>
+&lt;DisallowableMotorExpenses&gt;143.00&lt;/DisallowableMotorExpenses&gt;<br>
+&lt;DisallowableTravel&gt;<br>
+62.00&lt;/DisallowableTravel&gt;<br>
+&lt;GrossProfitLoss&gt;<br>
+16788.00&lt;/GrossProfitLoss&gt;<br>
+&lt;EmployeeCosts&gt;1500.00<br>
+&lt;/EmployeeCosts&gt;<br>
+&lt;PremisesCosts&gt;1252.00<br>
+&lt;/PremisesCosts&gt;<br>
+<br>
+&lt;GeneralAdministrativeExpenses&gt;961.00<br>
+&lt;/GeneralAdministrativeExpenses&gt;<br>
+&lt;MotorExpenses&gt;3133.00<br>
+&lt;/MotorExpenses&gt;<br>
+&lt;Travel&gt;545.00&lt;/Travel&gt;<br>
+&lt;LegalCosts&gt;2150.00<br>
+&lt;/LegalCosts&gt;<br>
+&lt;OtherExpenses&gt;59.00<br>
+&lt;/OtherExpenses&gt;<br>
+&lt;TotalExpenses&gt;9600.00<br>
+&lt;/TotalExpenses&gt;<br>
+&lt;NetProfitOrLoss&gt;7188.00<br>
+&lt;/NetProfitOrLoss&gt;<br>
+&lt;/IncomeAndExpenses&gt;<br>
+&lt;TaxAdjustments&gt;<br>
+&lt;DisallowableExpenses&gt;687.00&lt;/DisallowableExpenses&gt;<br>
+<br>
+&lt;TotalAdditionsToNetProfit&gt;687.00&lt;/TotalAdditionsToNetProfit&gt;<br>
+&lt;CapitalAllowances&gt;<br>
+1161.00&lt;/CapitalAllowances&gt;<br>
+<br>
+&lt;DeductionsFromNetProfit&gt;1161.00&lt;/DeductionsFromNetProfit&gt;<br>
+&lt;NetProfitLoss&gt;6714.00<br>
+&lt;/NetProfitLoss&gt;<br>
+&lt;/TaxAdjustments&gt;<br>
+<br>
+&lt;AdjustmentsForTaxableProfitOrLoss&gt;&lt;BasisPeriodBegins&gt;2003-01-01<br>
+&lt;/BasisPerio<br>
+dBegins&gt;<br>
+&lt;BasisPeriodEnds&gt;2003-<br>
+08-31&lt;/BasisPeriodEnds&gt;<br>
+&lt;ProfitFromOtherBoxes&gt;<br>
+6714.00&lt;/ProfitFromOtherBoxes&gt;<br>
+<br>
+&lt;OverlapProfitBroughtForward&gt;1982.00&lt;/OverlapProfitBroughtForward&gt;<br>
+&lt;ReliefUsedThisYear&gt;<br>
+1982.00&lt;/ReliefUsedThisYear&gt;<br>
+&lt;NetProfit&gt;4732.00<br>
+&lt;/NetProfit&gt;<br>
+<br>
+&lt;TaxableProfitAfterBroughtForward&gt;4732.00<br>
+&lt;/TaxableProfitAfterBroughtForward&gt;<br>
+&lt;TotalTaxableProfits&gt;<br>
+4732.00&lt;/TotalTaxableProfits&gt;<br>
+&lt;Provisional&gt;no<br>
+&lt;/Provisional&gt;<br>
+<br>
+&lt;/AdjustmentsForTaxableProfitOrLoss&gt;<br>
+<br>
+&lt;SummaryOfBalanceSheet&gt;&lt;Assets&gt;&lt;StockAndWorkInProgress&gt;250.00<br>
+&lt;/StockAndWorkI<br>
+nProgress&gt;<br>
+&lt;BankEtcBalances&gt;<br>
+2591.00&lt;/BankEtcBalances&gt;<br>
+&lt;TotalAssets&gt;<br>
+2841.00&lt;/TotalAssets&gt;<br>
+&lt;/Assets&gt;<br>
+&lt;NetBusinessAssets&gt;<br>
+2841.00&lt;/NetBusinessAssets&gt;<br>
+<br>
+&lt;CapitalAccount&gt;&lt;BalanceAtStartOfPeriod&gt;2403.00&lt;/BalanceAtStartOfPeriod&gt;<br>
+&lt;NetProfitLoss&gt;<br>
+7188.00&lt;/NetProfitLoss&gt;<br>
+&lt;Drawings&gt;6750.00<br>
+&lt;/Drawings&gt;<br>
+<br>
+&lt;CapitalAccountBalanceAtEndOfPeriod&gt;2841.00<br>
+&lt;/CapitalAccountBalanceAtEndOfPer<br>
+iod&gt;<br>
+&lt;/CapitalAccount&gt;<br>
+&lt;/SummaryOfBalanceSheet&gt;<br>
+&lt;/SelfEmployment&gt;<br>
+&lt;/SelfEmployments&gt;<br>
+&lt;/SA100&gt;<br>
+&lt;/IRenvelope&gt;<br>
+&lt;/Body&gt;<br>
+&lt;/GovTalkMessage&gt;<br>
+<br>
+C# Code<br>
+++++<br>
+using System;<br>
+using System.Xml;<br>
+using System.Security;<br>
+using System.Security.Cryptography;<br>
+using System.Security.Cryptography.Xml;<br>
+using System.Windows.Forms;<br>
+using System.IO;<br>
+using System.Text;<br>
+<br>
+namespace irmark<br>
+{<br>
+/// &lt;summary&gt;<br>
+/// Summary description for Class1.<br>
+/// &lt;/summary&gt;<br>
+class Class1<br>
+{<br>
+/// &lt;summary&gt;<br>
+/// The main entry point for the application.<br>
+/// &lt;/summary&gt;<br>
+[STAThread]<br>
+static void Main(string[] args)<br>
+{<br>
+XmlDocument docStripped = new XmlDocument();<br>
+docStripped.Load("irmark-canonical.xml");<br>
+XmlNamespaceManager nsmgr = new<br>
+XmlNamespaceManager(docStripped.NameTable);<br>
+<br>
+// The default namespace has been changed. We need<br>
+to create a prefix for it<br>
+nsmgr.AddNamespace("tax",<br>
+"http://www.govtalk.gov.uk/taxation/SA" );<br>
+nsmgr.AddNamespace("env",<br>
+"http://www.govtalk.gov.uk/CM/envelope" );<br>
+<br>
+XmlNode strippedNode = docStripped.SelectSingleNode<br>
+("//env:Body", nsmgr);<br>
+XmlDocument myDoc = new XmlDocument();<br>
+myDoc.LoadXml(strippedNode.OuterXml);<br>
+<br>
+XmlDocument docOriginal = new XmlDocument();<br>
+docOriginal.Load("irmark-example.xml");<br>
+XmlNode currentNode =<br>
+docOriginal.DocumentElement.SelectSingleNode("//tax:IRmark", nsmgr);<br>
+string correctIRmark = currentNode.InnerText;<br>
+<br>
+XmlDsigC14NTransform t = new XmlDsigC14NTransform();<br>
+t.LoadInput (myDoc);<br>
+Stream s = (Stream) t.GetOutput(typeof(Stream));<br>
+SHA1 sha1 = SHA1.Create();<br>
+<br>
+byte[] hash = sha1.ComputeHash(s);<br>
+Console.WriteLine("Original IRmark: " +<br>
+correctIRmark);<br>
+string base64String = Convert.ToBase64String(hash);<br>
+Console.WriteLine("My IRmark: " + base64String);<br>
+}<br>
+}<br>
+}<br>
+<br>
+Java Code<br>
++++++++++<br>
+<br>
+import java.io.*;<br>
+import javax.xml.parsers.*;<br>
+import java.security.*;<br>
+<br>
+import org.w3c.dom.*;<br>
+<br>
+import org.apache.xml.security.signature.*;<br>
+import org.apache.xml.security.transforms.*;<br>
+import org.apache.xml.security.Init;<br>
+<br>
+import org.bouncycastle.util.encoders.Base64;<br>
+<br>
+/**<br>
+* This code generates an IRmark value for an input document.<br>
+* The value is a base64 encoded SHA1 digest of a signature<br>
+* transform over a certain style of document. The value has<br>
+* to be placed inside documents to be signed by the XPE when<br>
+* used in a EDS/IR deployment.<br>
+*<br>
+* The code has a number of jar dependencies:-<br>
+* 	xmlsec.jar - The Apache XML Security Library<br>
+* 	log4j-1.2.5.jar - The Apache Log utility<br>
+*  xalan.jar - Apache XSLT/XPath processor<br>
+*  xercesImpl.jar - Apache XML processor<br>
+*  bc-jce-jdk13-114.jar - Bouncy Castle JCE library<br>
+*<br>
+*  The Bouncy Castle JCE provider is automatically downloaded<br>
+*  by the Apache XML sec library build so you may already have<br>
+*  that.<br>
+*/<br>
+public class IRMark {<br>
+<br>
+/**<br>
+* Generate and print the IRmark.<br>
+*<br>
+* @param args - Pass the filename of the input document<br>
+* @throws Exception<br>
+*/<br>
+public static void main(String args[]) throws Exception {<br>
+<br>
+// Init the Apache XML security library<br>
+Init.init();<br>
+<br>
+// Check we are given a file to work with<br>
+if (args.length!=1) {<br>
+System.out.println("Use: IRmark &lt;file&gt; ");<br>
+return;<br>
+}<br>
+<br>
+// Open the input file<br>
+FileInputStream fis=null;<br>
+try {<br>
+fis=new FileInputStream(args[0]);<br>
+} catch (FileNotFoundException e) {<br>
+System.out.println("The file " + args[0] + " could<br>
+not be opened.");<br>
+return;<br>
+}<br>
+<br>
+// Load file into a byte array<br>
+byte[] data=null;<br>
+try {<br>
+int bytes=fis.available();<br>
+data=new byte[bytes];<br>
+fis.read(data);<br>
+} catch (IOException e) {<br>
+System.out.println("Error reading file.");<br>
+e.printStackTrace();<br>
+}<br>
+<br>
+// First part is to run the a transform over the input to<br>
+extract the<br>
+// fragment to be digested. This is done by setting up a<br>
+Transforms<br>
+// object from a Template and then executing against the<br>
+input document<br>
+<br>
+// The transforms to be performed are specified by using<br>
+the template XML below.<br>
+String transformStr =<br>
+"&lt;?xml version='1.0'?&gt;\n"<br>
++ "&lt;dsig:Transforms<br>
+xmlns:dsig='http://www.w3.org/2000/09/xmldsig#'<br>
+xmlns:gt='http://www.govtalk.gov.uk/CM/envelope'<br>
+xmlns:ir='http://www.govtalk.gov.uk/taxation/SA'&gt;\n"<br>
++ "&lt;dsig:Transform<br>
+Algorithm='http://www.w3.org/TR/1999/REC-xpath-19991116'&gt;\n"<br>
++ "&lt;dsig:XPath&gt;\n"<br>
++<br>
+"count(ancestor-or-self::node()|/gt:GovTalkMessage/gt:Body)=count<br>
+(ancestor-o<br>
+r-self::node())\n"<br>
++ " and count(self::ir:IRmark)=0 \n"<br>
++ " and count(../self::ir:IRmark)=0 \n"<br>
++ "&lt;/dsig:XPath&gt;\n"<br>
++ "&lt;/dsig:Transform&gt;\n"<br>
++ "&lt;dsig:Transform<br>
+Algorithm='http://www.w3.org/TR/2001/REC-xml-c14n-20010315<br>
+#WithComments'/&gt;\n<br>
+"<br>
++ "&lt;/dsig:Transforms&gt;\n"<br>
+;<br>
+<br>
+// Parse the transform details to create a document<br>
+DocumentBuilderFactory<br>
+dbf=DocumentBuilderFactory.newInstance();<br>
+dbf.setNamespaceAware(true);<br>
+DocumentBuilder db=dbf.newDocumentBuilder();<br>
+Document doc=db.parse(new ByteArrayInputStream<br>
+(transformStr.getBytes()));<br>
+<br>
+// Construct a Apache security Transforms object from that<br>
+document<br>
+Transforms transforms = new Transforms<br>
+(doc.getDocumentElement(), null);<br>
+<br>
+// Now perform the transform on the input to get the<br>
+results.<br>
+XMLSignatureInput input = new XMLSignatureInput(data);<br>
+XMLSignatureInput result = transforms.performTransforms(input);<br>
+<br>
+// Uncomment this line to see transform output<br>
+// System.out.println(new String(result.getBytes()));<br>
+<br>
+// Second part is to run output via SHA1 digest<br>
+// This is done via the standard java.security API<br>
+MessageDigest md = MessageDigest.getInstance("SHA");<br>
+md.update(result.getBytes());<br>
+byte[] digest=md.digest();<br>
+<br>
+// And finally print a Base64 of the digest with<br>
+// The help of the BouncyCastle JCE library<br>
+System.out.println("IRmark: " + new String(Base64.encode<br>
+(digest)));<br>
+}<br>
+}<br>
+</div>
+		<!-- / message -->
+	
+		
+		
+		
+		
+		
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+		
+		
+		
+		
+		&nbsp;
+	</td>
+	<td class="alt1" align="right">
+		<!-- controls -->
+		
+		
+		
+			<a href="http://www.pcreview.co.uk/forums/newreply.php?do=newreply&amp;p=4151270"><img title="Reply With Quote" src="thread-1385067.php_files/quote.gif" alt="Reply With Quote" border="0"></a>
+		
+		
+		<!-- / controls -->
+	</td>
+</tr>
+</tbody></table>
+
+<!-- post 4151270 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4151270_menu" style="display: none;">
+	<table border="0" cellpadding="4" cellspacing="1">
+	<tbody><tr>
+		<td class="thead">Pollux</td>
+	</tr>
+	
+	
+	
+	
+	
+	
+	</tbody></table>
+</div>
+<!-- / post 4151270 popup menu -->
+
+<!-- / post #4151270 --><table class="tborder" align="center" border="0" cellpadding="6" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td colspan="2" class="thead" style="font-weight: normal;">
+      <!-- status icon and date -->
+      Advertisement</td>
+  </tr>
+  <tr valign="top">
+    <td class="alt2" align="left" width="175">
+	<div>Ad Robot </div>
+			<div class="smallfont">Advertisment</div>
+</td>
+    <td class="alt1" align="left"><script type="text/javascript"><!--
+google_ad_client = "pub-9482258749662266";
+google_alternate_ad_url = "http://www.pcreview.co.uk/google_adsense_script.htm";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_format = "336x280_as";
+google_ad_type = "text";
+google_ad_channel ="4980597412";
+google_color_border = "E0E9F1";
+google_color_bg = "E0E9F1";
+google_color_link = "000000";
+google_color_url = "22229C";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="thread-1385067.php_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="thread-1385067.php_files/ads.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="280" scrolling="no" width="336"></iframe> </td>
+  </tr>
+</tbody></table>
+</div>
+<!-- google_ad_section_end -->
+
+
+<!-- controls below postbits -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+	
+		<td class="smallfont" width="33%"><a rel="nofollow" href="http://www.pcreview.co.uk/forums/newreply.php?do=newreply&amp;noquote=1&amp;p=4151270"><img title="Reply" src="thread-1385067.php_files/reply.gif" alt="Reply" border="0"></a></td>
+
+		<td class="smallfont" width="33%"><div align="center"><a href="http://www.pcreview.co.uk/forums/archive/forum-208.php"><strong>Archive</strong></a></div></td>
+		
+	<td align="right" width="33%"></td>
+	
+</tr>
+</tbody></table>
+<!-- / controls below postbits -->
+
+<br><center>
+<script language="JavaScript" type="text/javascript">
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.pcreview.co.uk/adverts/adjs.php?n=" + phpAds_random);
+   document.write ("&what=zone:12");
+   document.write ("&exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><script language="JavaScript" type="text/javascript" src="thread-1385067.php_files/adjs.js"></script><script type="text/javascript"><!--
+google_ad_client = "pub-9482258749662266";
+google_alternate_color = "FFFFFF";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="5291810159";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "0033FF";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript" src="thread-1385067.php_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="thread-1385067.php_files/ads_002.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="60" scrolling="no" width="468"></iframe><div id="beacon_24" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="thread-1385067.php_files/adlog_003.gif" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div><noscript><a
+href='http://www.pcreview.co.uk/adverts/adclick.php?n=a932e069'
+target='_blank'><img
+src='http://www.pcreview.co.uk/adverts/adview.php?what=zone:12&n=a932e069'
+border='0' alt=''></a></noscript>
+
+</center>
+<br>
+
+
+
+
+<!-- currently active users -->
+
+<!-- currently active users -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- popup menu contents -->
+<br>
+
+<!-- thread tools menu -->
+<div class="vbmenu_popup" id="threadtools_menu" style="display: none; position: absolute; left: 0px; top: 0px;">
+<form action="http://www.pcreview.co.uk/forums/postings.php" method="post" name="threadadminform">
+	<table border="0" cellpadding="4" cellspacing="1" width="">
+	<tbody><tr>
+		<td class="thead">Thread Tools<a name="goto_threadtools"></a></td>
+	</tr>
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option"><img title="Show Printable Version" class="inlineimg" src="thread-1385067.php_files/printer.gif" alt="Show Printable Version"> <a href="http://www.pcreview.co.uk/forums/printthread.php?t=1385067" accesskey="3">Show Printable Version</a></td>
+	</tr>
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option"><img title="Email this Page" class="inlineimg" src="thread-1385067.php_files/sendtofriend.gif" alt="Email this Page"> <a href="http://www.pcreview.co.uk/forums/sendmessage.php?do=sendtofriend&amp;t=1385067">Email this Page</a></td>
+	</tr>
+	
+	
+	
+	</tbody></table>
+</form>
+</div>
+<!-- / thread tools menu -->
+
+<!-- **************************************************** -->
+
+<!-- thread display mode menu -->
+<div class="vbmenu_popup" id="displaymodes_menu" style="display: none;">
+	<table border="0" cellpadding="4" cellspacing="1">
+	<tbody><tr>
+		<td class="thead">Display Modes<a name="goto_displaymodes"></a></td>
+	</tr>
+	<tr>
+	
+		<td class="vbmenu_option" title="nohilite"><img title="Linear Mode" class="inlineimg" src="thread-1385067.php_files/mode_linear.gif" alt="Linear Mode"> <strong>Linear Mode</strong></td>
+	
+	</tr>
+	<tr>
+	
+		<td class="vbmenu_option"><img title="Hybrid Mode" class="inlineimg" src="thread-1385067.php_files/mode_hybrid.gif" alt="Hybrid Mode"> <a href="http://www.pcreview.co.uk/forums/showthread.php?mode=hybrid&amp;t=1385067">Switch to Hybrid Mode</a></td>
+	
+	</tr>
+	<tr>
+	
+		<td class="vbmenu_option"><img title="Threaded Mode" class="inlineimg" src="thread-1385067.php_files/mode_threaded.gif" alt="Threaded Mode"> <a rel="nofollow" href="http://www.pcreview.co.uk/forums/showthread.php?p=4151270&amp;mode=threaded#post4151270">Switch to Threaded Mode</a></td>
+	
+	</tr>
+	</tbody></table>
+</div>
+<!-- / thread display mode menu -->
+
+<!-- **************************************************** -->
+
+
+<!-- thread search menu -->
+<div class="vbmenu_popup" id="threadsearch_menu" style="display: none; position: absolute; left: 0px; top: 0px;">
+<form action="http://www.pcreview.co.uk/forums/search.php" method="post">
+	<table border="0" cellpadding="4" cellspacing="1" width="">
+	<tbody><tr>
+		<td class="thead">Search this Thread<a name="goto_threadsearch"></a></td>
+	</tr>
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option" title="">
+			<input name="s" value="" type="hidden">
+			<input name="do" value="process" type="hidden">
+			<input name="searchthread" value="1" type="hidden">
+			<input name="showposts" value="1" type="hidden">
+			<input name="searchthreadid" value="1385067" type="hidden">
+			<input class="bginput" name="query" size="20" type="text"><!-- go button -->
+<input class="button" value="Go" type="submit"><br>
+		</td>
+	</tr>
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option"><a href="http://www.pcreview.co.uk/forums/search.php?">Advanced Search</a></td>
+	</tr>
+	</tbody></table>
+</form>
+</div>
+<!-- / thread search menu -->
+
+
+<!-- **************************************************** -->
+
+<!-- thread rating menu -->
+<div class="vbmenu_popup" id="threadrating_menu" style="display: none; position: absolute; left: 0px; top: 0px;">
+<form action="http://www.pcreview.co.uk/forums/threadrate.php" method="post">
+	<table border="0" cellpadding="4" cellspacing="1" width="">
+	<tbody><tr>
+		<td class="thead">Rate This Thread<a name="goto_threadrating"></a></td>
+	</tr>
+	
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option" title="">
+		<div><img title="Excellent" class="inlineimg" src="thread-1385067.php_files/rating_5.gif" alt="Excellent"><label for="vote5"><input name="vote" id="vote5" value="5" type="radio">Excellent</label></div>
+		<div><img title="Good" class="inlineimg" src="thread-1385067.php_files/rating_4.gif" alt="Good"><label for="vote4"><input name="vote" id="vote4" value="4" type="radio">Good</label></div>
+		<div><img title="Average" class="inlineimg" src="thread-1385067.php_files/rating_3.gif" alt="Average"><label for="vote3"><input name="vote" id="vote3" value="3" type="radio">Average</label></div>
+		<div><img title="Bad" class="inlineimg" src="thread-1385067.php_files/rating_2.gif" alt="Bad"><label for="vote2"><input name="vote" id="vote2" value="2" type="radio">Bad</label></div>
+		<div><img title="Terrible" class="inlineimg" src="thread-1385067.php_files/rating_1.gif" alt="Terrible"><label for="vote1"><input name="vote" id="vote1" value="1" type="radio">Terrible</label></div>
+		</td>
+	</tr>
+	<tr>
+		<td style="cursor: default;" class="vbmenu_option" title="" align="center">
+			<input name="s" value="e3aaf319f2681d398101cec87f14b9ce" type="hidden">
+			<input name="t" value="1385067" type="hidden">
+			<input name="pp" value="10" type="hidden">
+			<input name="page" value="1" type="hidden">
+			<input class="button" value="Vote Now" type="submit">
+		</td>
+	</tr>
+	
+	</tbody></table>
+</form>
+</div>
+<!-- / thread rating menu -->
+
+
+<!-- / popup menu contents -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- forum rules and admin links -->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="bottom">
+	<td class="smallfont" align="left">
+		<table class="tborder" border="0" cellpadding="6" cellspacing="1" width="180">
+<thead>
+<tr>
+	<td class="thead">
+		<a style="float: right;" href="#top" onclick="return toggle_collapse('forumrules')"><img id="collapseimg_forumrules" src="thread-1385067.php_files/collapse_thead.gif" alt="" border="0"></a>
+		Posting Rules
+	</td>
+</tr>
+</thead>
+<tbody id="collapseobj_forumrules" style="">
+<tr>
+	<td class="alt1" nowrap="nowrap"><div class="smallfont">
+		
+		<div>You <strong>may not</strong> post new threads</div>
+		<div>You <strong>may not</strong> post replies</div>
+		<div>You <strong>may not</strong> post attachments</div>
+		<div>You <strong>may not</strong> edit your posts</div>
+		<hr>
+		
+		<div><a href="http://www.pcreview.co.uk/forums/misc.php?do=bbcode" target="_blank">vB code</a> is <strong>On</strong></div>
+		<div><a href="http://www.pcreview.co.uk/forums/misc.php?do=showsmilies" target="_blank">Smilies</a> are <strong>On</strong></div>
+		<div><a href="http://www.pcreview.co.uk/forums/misc.php?do=bbcode#imgcode" target="_blank">[IMG]</a> code is <strong>On</strong></div>
+		<div>HTML code is <strong>Off</strong></div>
+	</div></td>
+</tr>
+</tbody>
+</table>
+	</td>
+	<td class="smallfont" align="right">
+		<table border="0" cellpadding="0" cellspacing="0">
+		
+		<tbody><tr>
+			<td>
+			
+			</td>
+		</tr>		
+		</tbody></table>
+	</td>
+</tr>
+</tbody></table>
+<!-- /forum rules and admin links -->
+
+<br>
+
+
+
+<br>
+
+</div></div>
+<!-- end of center column -->
+<br>
+</div> 
+<div id="right">
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Poll.jpg" height="20" width="140"></div>
+<div class="menutext">
+  <div align="center">
+<form action="http://www.pcreview.co.uk/forums/poll.php" method="post">
+<input name="s" value="e3aaf319f2681d398101cec87f14b9ce" type="hidden">
+<input name="do" value="pollvote" type="hidden">
+<input name="pollid" value="133" type="hidden">
+
+<font style="font-size: 11px;" face="Tahoma"><b>What do you do with your old PC bits?</b></font><p>
+</p><div><label for="rb_optionnumber_1"><font style="font-size: 11px;" face="Tahoma"><input name="optionnumber" value="1" id="rb_optionnumber_1" type="radio">Sell them on</font></label></div>
+<div><label for="rb_optionnumber_2"><font style="font-size: 11px;" face="Tahoma"><input name="optionnumber" value="2" id="rb_optionnumber_2" type="radio">Give them away</font></label></div>
+<div><label for="rb_optionnumber_3"><font style="font-size: 11px;" face="Tahoma"><input name="optionnumber" value="3" id="rb_optionnumber_3" type="radio">Throw them in the bin</font></label></div>
+<div><label for="rb_optionnumber_4"><font style="font-size: 11px;" face="Tahoma"><input name="optionnumber" value="4" id="rb_optionnumber_4" type="radio">Recycle them</font></label></div>
+<font style="font-size: 11px;" face="Tahoma"><br>
+<input class="button" value="Vote" type="submit"><br>
+<a href="http://www.pcreview.co.uk/forums/poll.php?do=showresults&amp;pollid=133"><br>View Poll Results</a></font></form>
+  </div>
+</div>
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Features.jpg" height="20" width="140"></div>
+<div class="menubuttons"><div class="rightsidemenu">
+<a href="http://www.pcreview.co.uk/broadband/">Broadband Offers</a>
+<a href="http://www.pcreview.co.uk/broadband/ntl-broadband.php">NTL Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/pipex-broadband.php">Pipex Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/talk-talk-broadband.php">Talk Talk Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/telewest-broadband.php">Telewest Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/be-broadband.php">Be Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/tiscali-broadband.php">Tiscali Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/orange-broadband.php">Orange Broadband</a>
+<a href="http://www.pcreview.co.uk/broadband/bt-broadband.php">BT Broadband</a>
+</div>
+</div>
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Sponsors.jpg" height="20" width="140"></div>
+<div class="menutext">
+  <div align="center">    <br>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+   
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("http://www.pcreview.co.uk/adverts/adjs.php?n=" + phpAds_random);
+   document.write ("&what=zone:2&target=_blank");
+   document.write ("&exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><script language="JavaScript" type="text/javascript" src="thread-1385067.php_files/adjs_003.js"></script><a href="http://www.pcreview.co.uk/adverts/adclick.php?bannerid=19&amp;zoneid=2&amp;source=&amp;dest=http%3A%2F%2Fwww.vadim.co.uk" target="_blank"><img src="thread-1385067.php_files/adimage.jpg" alt="" title="" border="0" height="60" width="120"></a><div id="beacon_19" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="thread-1385067.php_files/adlog.gif" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div><noscript><a
+href='http://www.pcreview.co.uk/adverts/adclick.php?n=ac5ec049'
+target='_blank'><img
+src='http://www.pcreview.co.uk/adverts/adview.php?what=zone:2&n=ac5ec049'
+border='0' alt=''></a></noscript><br><br>
+</div>
+</div>
+
+<div class="menubuttons"><div class="rightsidemenu">
+<a href="http://www.disklabs.com/">Disklabs Data Recovery</a>
+</div>
+</div>
+
+<div class="menutitle"><img alt="" src="thread-1385067.php_files/Menu_Search.jpg" height="20" width="140"></div>
+<div class="menutext">
+  <div align="center">
+Please enter the search terms in the box below to search the entire site.<br><br><form action="http://www.pcreview.co.uk/forums/search.php" method="post" name="vbform">
+<input name="s" value="" type="hidden">
+<input name="do" value="process" type="hidden">
+<input class="bginput" name="query" size="35" value="" style="width: 100px;" type="text"><br><br>
+<input class="button" name="dosearch" value="Search" type="submit">
+</form>
+  </div>
+</div>
+
+
+</div>
+
+<!-- need this --><br style="clear: both;"> 
+</div> 
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+
+	// Initialize 'Active' Table Cells
+	// activecells_init();
+//-->
+</script>
+
+	
+<div id="footer"><img alt="" src="thread-1385067.php_files/Footer.gif" height="30" width="409"></div> 
+
+<!-- temp -->
+<div style="display: none;">
+	<!-- thread rate -->
+	
+		<!-- thread ratings form here -->
+	
+	<!-- / thread rate -->
+</div>
+
+</div></div></body></html>

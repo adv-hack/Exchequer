@@ -1,0 +1,6 @@
+frmAcSINList = 3, 3, 909, 625, , 44, 16, 735, 453, C
+frmPrintDlg = 1, 1, 898, 741, , 113, 24, 671, 536, C
+frmPreviewAX = 41, 69, 769, 704, , 17, 14, 705, 525, C
+frmPrintOptions = 176, 176, 718, 644, C, 286, 34, 828, 502, C
+Module1 = 0, 0, 0, 0, C
+frmEmailDetails = 88, 88, 671, 556, C, 88, 88, 697, 556, C

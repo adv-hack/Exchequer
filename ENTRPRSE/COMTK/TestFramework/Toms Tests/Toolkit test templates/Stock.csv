@@ -1,0 +1,17 @@
+"Blank Stock Code",C:\ComTKExes\StockTests.exe,Y,Y,30272,N,30272
+"Stock Group not ValidAdd",C:\ComTKExes\StockTests.exe,Y,Y,30273,N,30273
+"Stock Group changed",C:\ComTKExes\StockTests.exe,Y,Y,30270,N,30270
+"Stock type changed",C:\ComTKExes\StockTests.exe,Y,Y,30271,N,30271
+"Invalid Preferred supplier",C:\ComTKExes\StockTests.exe,Y,Y,30275,N,30275
+"Invalid Cost Centre Code",C:\ComTkExes\StockTests.exe,Y,Y,30287,N,30287
+"Invalid Department Code",C:\ComTkExes\StockTests.exe,Y,Y,30288,N,30288
+"Invalid Location Code",C:\ComTkExes\StockTests.exe,Y,Y,30291,N,30291
+"Invalid Job Analysis Code",C:\ComTkExes\StockTests.exe,Y,Y,30295,N,30295
+"Invalid Sales Return Nominal Code",C:\ComTkExes\StockTests.exe,Y,Y,30298,N,30298
+"Invalid Purchase Return Nominal Code",C:\ComTkExes\StockTests.exe,Y,Y,30299,N,30299
+"Invalid Stock Value GL",C:\ComTkExes\StockTests.exe,Y,Y,30280,N,302801
+"Invalid Cost of Sales GL",C:\ComTkExes\StockTests.exe,Y,Y,30280,N,302802
+"Invalid Closing Stk/Write Off GL",C:\ComTkExes\StockTests.exe,Y,Y,30280,N,302803
+"Invalid Sales GL",C:\ComTkExes\StockTests.exe,Y,Y,30280,N,302804
+"Invalid BOM/Finished Goods GL",C:\ComTkExes\StockTests.exe,Y,Y,30280,N,302805
+Duplicate,C:\ComTkExes\StockTests.exe,Y,Y,5,N,5

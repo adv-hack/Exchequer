@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>20130000001</MsgId>
+            <CreDtTm>2013-05-27T12:31:53.0Z</CreDtTm>
+            <NbOfTxs>4</NbOfTxs>
+            <CtrlSum>200.00</CtrlSum>
+	    <InitgPty>		
+		<Nm>ACME LIMITED</Nm>
+		<Id> 
+		    <OrgId>
+			<Othr>
+			    <Id>OIN</Id>
+			</Othr>
+ 		    </OrgId>
+		</Id>
+	    </InitgPty>
+	</GrpHdr>
+        <PmtInf>
+	    <PmtInfId>270520130000001</PmtInfId>
+	    <PmtMtd>TRF</PmtMtd>
+	    <NbOfTxs>2</NbOfTxs>
+	    <CtrlSum>100.00</CtrlSum>
+	    <PmtTpInf>
+		<SvcLvl>
+		    <Cd>SEPA</Cd>
+		</SvcLvl>		
+	    </PmtTpInf>
+	    <ReqdExctnDt>2013-05-24</ReqdExctnDt>
+	    <Dbtr>
+		<Nm>ACME LIMITED</Nm>
+	    </Dbtr>
+	    <DbtrAcct>
+		<Id>
+		    <IBAN>IE75ULSB98501011111111</IBAN>
+		</Id>
+		<Tp>
+		    <Prtry>ACME LIMITED</Prtry>
+		</Tp>
+	    </DbtrAcct>
+	    <DbtrAgt>
+		<FinInstnId>
+		    <BIC>ULSBIED2XXX</BIC>
+		</FinInstnId>
+	    </DbtrAgt>
+	    <CdtTrfTxInf>
+	        <PmtId>
+		    <EndToEndId>123456</EndToEndId>
+		</PmtId>
+		<Amt>
+		    <InstdAmt Ccy="EUR">40.00</InstdAmt>
+		</Amt>
+		<CdtrAgt>
+		    <FinInstnId>
+			<BIC>ULSBIED2XXX</BIC>
+		    </FinInstnId>
+		</CdtrAgt>
+		<Cdtr>
+		    <Nm>Jane Bloggs</Nm>
+		    <PstlAdr>
+			<Ctry>IE</Ctry>
+			<AdrLine>45 Long Drive </AdrLine>
+			<AdrLine>Co. Dublin</AdrLine>
+		    </PstlAdr>
+		</Cdtr>
+		<CdtrAcct>
+		    <Id>
+     			<IBAN>IE81ULSB98501056781234</IBAN>
+		    </Id>
+		</CdtrAcct>
+		<RmtInf>
+		    <Ustrd>CREDIT01</Ustrd>
+		</RmtInf>
+	    </CdtTrfTxInf>
+	    <CdtTrfTxInf>
+		<PmtId>
+		    <EndToEndId>456789</EndToEndId>
+		</PmtId>
+		<Amt>
+		    <InstdAmt Ccy="EUR">60.00</InstdAmt>
+		</Amt>
+		<CdtrAgt>
+		    <FinInstnId>
+			<BIC>ULSBIED2XXX</BIC>
+		    </FinInstnId>
+		</CdtrAgt>
+		<Cdtr>
+		    <Nm>Joe Bloggs</Nm>
+		    <PstlAdr>
+			<Ctry>IE</Ctry> 
+			<AdrLine>123 Fake Street</AdrLine>
+			<AdrLine>Co. Dublin</AdrLine> 
+		    </PstlAdr>
+		</Cdtr>
+		<CdtrAcct>
+		    <Id>
+			<IBAN>IE81ULSB98501012345678</IBAN>
+		    </Id>
+		</CdtrAcct>
+		<RmtInf>	
+		    <Ustrd>CREDIT02</Ustrd>
+		</RmtInf>
+	    </CdtTrfTxInf>
+	</PmtInf>
+	<PmtInf>
+	    <PmtInfId>270520130000002</PmtInfId>
+	    <PmtMtd>TRF</PmtMtd>
+	    <NbOfTxs>2</NbOfTxs>
+	    <CtrlSum>100.00</CtrlSum>
+	    <PmtTpInf>
+		<SvcLvl>
+		    <Cd>SEPA</Cd>
+		</SvcLvl>
+	    </PmtTpInf>
+	    <ReqdExctnDt>2013-05-29</ReqdExctnDt>
+	    <Dbtr>
+		<Nm>ACME LIMITED</Nm>
+	    </Dbtr>
+	    <DbtrAcct>
+		<Id>
+		    <IBAN>IE75ULSB98501011111111</IBAN>
+		</Id>
+		<Tp>
+		    <Prtry>ACME LIMITED</Prtry>
+		</Tp>
+	    </DbtrAcct>
+	    <DbtrAgt>
+		<FinInstnId>
+		    <BIC>ULSBIED2XXX</BIC>
+		</FinInstnId>
+	    </DbtrAgt>
+	    <CdtTrfTxInf>
+	        <PmtId>
+		    <EndToEndId>789123</EndToEndId>
+		</PmtId>
+		<Amt>
+		    <InstdAmt Ccy="EUR">55.00</InstdAmt>
+		</Amt>
+		<CdtrAgt>
+		    <FinInstnId>
+			<BIC>ULSBIED2XXX</BIC>
+		    </FinInstnId>
+		</CdtrAgt>
+		<Cdtr>
+		    <Nm>Frank Bloggs</Nm>
+		    <PstlAdr>
+			<Ctry>IE</Ctry>
+			<AdrLine>456 fake street</AdrLine>
+			<AdrLine>Co. Dublin</AdrLine>
+		    </PstlAdr>
+		</Cdtr>
+		<CdtrAcct>
+		    <Id>
+     			<IBAN>IE81ULSB98501056781234</IBAN>
+		    </Id>
+		</CdtrAcct>
+		<RmtInf>
+		    <Ustrd>CREDIT03</Ustrd>
+		</RmtInf>
+	    </CdtTrfTxInf>
+	    <CdtTrfTxInf>
+		<PmtId>
+		    <EndToEndId>789456</EndToEndId>
+		</PmtId>
+		<Amt>
+		    <InstdAmt Ccy="EUR">45.00</InstdAmt>
+		</Amt>
+		<CdtrAgt>
+		    <FinInstnId>
+			<BIC>ULSBIED2XXX</BIC>
+		    </FinInstnId>
+		</CdtrAgt>
+		<Cdtr>
+		    <Nm>Brian Bloggs</Nm>
+		    <PstlAdr>
+			<Ctry>IE</Ctry> 
+			<AdrLine>789 Fake Street</AdrLine>
+			<AdrLine>Co. Dublin</AdrLine> 
+		    </PstlAdr>
+		</Cdtr>
+		<CdtrAcct>
+		    <Id>
+			<IBAN>IE81ULSB98501012345678</IBAN>
+		    </Id>
+		</CdtrAcct>
+		<RmtInf>	
+		    <Ustrd>CREDIT04</Ustrd>
+		</RmtInf>
+	    </CdtTrfTxInf>
+	</PmtInf>
+    </CstmrCdtTrfInitn>
+</Document>
+

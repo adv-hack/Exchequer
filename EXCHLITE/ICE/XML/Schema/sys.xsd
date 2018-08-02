@@ -1,0 +1,174 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:sys"
+            targetNamespace="urn:www-iris-co-uk:sys" >
+            
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="useraddr">
+    <xsd:sequence>
+      <xsd:element name='useraddr1' type='xsd:string'/>
+      <xsd:element name='useraddr2' type='xsd:string'/>
+      <xsd:element name='useraddr3' type='xsd:string'/>
+      <xsd:element name='useraddr4' type='xsd:string'/>
+      <xsd:element name='useraddr5' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="traderudflabel">
+    <xsd:sequence>
+      <xsd:element name='traderudflabel11' type='xsd:string'/>
+      <xsd:element name='traderudflabel12' type='xsd:string'/>
+      <xsd:element name='traderudflabel13' type='xsd:string'/>
+      <xsd:element name='traderudflabel14' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="stockudflabel">
+    <xsd:sequence>
+      <xsd:element name='stockudflabel1' type='xsd:string'/>
+      <xsd:element name='stockudflabel2' type='xsd:string'/>
+      <xsd:element name='stockudflabel3' type='xsd:string'/>
+      <xsd:element name='stockudflabel4' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="transheadudflabel">
+    <xsd:sequence>
+      <xsd:element name='transheadudflabel1' type='xsd:string'/>
+      <xsd:element name='transheadudflabel2' type='xsd:string'/>
+      <xsd:element name='transheadudflabel3' type='xsd:string'/>
+      <xsd:element name='transheadudflabel4' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="transheadudfhide">
+    <xsd:sequence>
+      <xsd:element name='transheadudfhide1' type='xsd:string'/>
+      <xsd:element name='transheadudfhide2' type='xsd:string'/>
+      <xsd:element name='transheadudfhide3' type='xsd:string'/>
+      <xsd:element name='transheadudfhide4' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="translineudflabel">
+    <xsd:sequence>
+      <xsd:element name='translineudflabel1' type='xsd:string'/>
+      <xsd:element name='translineudflabel2' type='xsd:string'/>
+      <xsd:element name='translineudflabel3' type='xsd:string'/>
+      <xsd:element name='translineudflabel4' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="translineudfhide">
+    <xsd:sequence>
+      <xsd:element name='translineudfhide1' type='tns:boolean2'/>
+      <xsd:element name='translineudfhide2' type='tns:boolean2'/>
+      <xsd:element name='translineudfhide3' type='tns:boolean2'/>
+      <xsd:element name='translineudfhide4' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="translinetypelabel">
+    <xsd:sequence>
+      <xsd:element name='translinetypelabel1' type='xsd:string'/>
+      <xsd:element name='translinetypelabel2' type='xsd:string'/>
+      <xsd:element name='translinetypelabel3' type='xsd:string'/>
+      <xsd:element name='translinetypelabel4' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="translinetypehide">
+    <xsd:sequence>
+      <xsd:element name='translinetypehide1' type='tns:boolean2'/>
+      <xsd:element name='translinetypehide2' type='tns:boolean2'/>
+      <xsd:element name='translinetypehide3' type='tns:boolean2'/>
+      <xsd:element name='translinetypehide4' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="jobcostudflabel">
+    <xsd:sequence>
+      <xsd:element name='jobcostudflabel1' type='xsd:string'/>
+      <xsd:element name='jobcostudflabel2' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="custrec">
+    <xsd:sequence>
+      <xsd:element name='username' type='xsd:string'/>
+      <xsd:element name='useraddr' type='tns:useraddr' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='usersort' type='xsd:string'/>
+      <xsd:element name='useracc' type='xsd:string'/>
+      <xsd:element name='userref' type='xsd:string'/>
+      <xsd:element name='userbank' type='xsd:string'/>
+      <xsd:element name='expr' type='xsd:integer'/>
+      <xsd:element name='exyr' type='xsd:integer'/>
+      <xsd:element name='directcust' type='xsd:string'/>
+      <xsd:element name='directsupp' type='xsd:string' />
+      <xsd:element name='pricedp' type='xsd:integer'/>
+      <xsd:element name='costdp' type='xsd:integer'/>
+      <xsd:element name='quantitydp' type='xsd:integer'/>
+      <xsd:element name='multilocn' type='xsd:integer'/>
+      <xsd:element name='uservatreg' type='xsd:string'/>
+      <xsd:element name='periodsperyr' type='xsd:integer' />
+      <xsd:element name='ccdepts' type='tns:boolean2'/>
+      <xsd:element name='intrastat' type='tns:boolean2'/>
+      <xsd:element name='exchangerate' type='xsd:string'/>
+      <xsd:element name='finyearstart' type='xsd:string'/>
+      
+      <xsd:element name='traderudflabel' type='tns:traderudflabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='stockudflabel' type='tns:stockudflabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='transheadudflabel' type='tns:transheadudflabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='transheadudfhide' type='tns:transheadudfhide' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='translineudflabel' type='tns:translineudflabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='translineudfhide' type='tns:translineudfhide' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='translinetypelabel' type='tns:translinetypelabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='translinetypehide' type='tns:translinetypehide' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='jobcostudflabel' type='tns:jobcostudflabel' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='currentcountry' type='xsd:string'/>
+      <xsd:element name='orderallocstock' type='tns:boolean2'/>
+      <xsd:element name='calprfromdate' type='tns:boolean2'/>
+      <xsd:element name='usecrlimitchk' type='tns:boolean2'/>
+      <xsd:element name='usecreditchk' type='tns:boolean2'/>
+      <xsd:element name='stopbaddr' type='tns:boolean2'/>
+      <xsd:element name='usepick4all' type='tns:boolean2'/>
+      <xsd:element name='freeexall' type='tns:boolean2'/>
+      <xsd:element name='wksodue' type='xsd:integer'/>
+      <xsd:element name='deductbomcomponents' type='tns:boolean2'/>
+      <xsd:element name='filtersnobybinloc' type='tns:boolean2'/>
+      <xsd:element name='keepbinhistory' type='tns:boolean2'/>
+      <xsd:element name='binmask' type='xsd:string'/>
+      <xsd:element name='inputpackqtyonline' type='tns:boolean2'/>
+      <xsd:element name='percentagediscounts' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='sysrec' type='tns:sysrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='sys'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='sys' type='tns:sys'/>
+
+</xsd:schema>

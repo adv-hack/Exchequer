@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="..\Lib\C6\gtRPRC60.bpl"/>
+    <OBJFILES value="..\Lib\C6\gtRPRC60.obj ..\Lib\C6\gtRPRender_DlgConsts.obj 
+      ..\Lib\C6\gtRPRender_Consts.obj ..\Lib\C6\gtRPRender_BMP.obj 
+      ..\Lib\C6\gtRPRender_Document.obj ..\Lib\C6\gtRPRender_EMF.obj 
+      ..\Lib\C6\gtRPRender_Excel.obj ..\Lib\C6\gtRPRender_GIF.obj 
+      ..\Lib\C6\gtRPRender_Graphic.obj ..\Lib\C6\gtRPRender_HTML.obj 
+      ..\Lib\C6\gtRPRender_JPEG.obj ..\Lib\C6\gtRPRender_Main.obj 
+      ..\Lib\C6\gtRPRender_PDF.obj ..\Lib\C6\gtRPRender_RTF.obj 
+      ..\Lib\C6\gtRPRender_Text.obj ..\Lib\C6\gtRPRender_Utils.obj 
+      ..\Lib\C6\gtRPRender_WMF.obj ..\Lib\C6\gtRPRRoutines.obj 
+      ..\Lib\C6\gtRPRender_MainDlg.obj ..\Lib\C6\gtRPRender_DocumentDlg.obj 
+      ..\Lib\C6\gtRPRender_TextDlg.obj ..\Lib\C6\gtRPRender_ExcelDlg.obj 
+      ..\Lib\C6\gtRPRender_GIFDlg.obj ..\Lib\C6\gtRPRender_HTMLDlg.obj 
+      ..\Lib\C6\gtRPRender_JPEGDlg.obj ..\Lib\C6\gtRPRender_MetafileDlg.obj 
+      ..\Lib\C6\gtRPRender_PDFDlg.obj ..\Lib\C6\gtRPRender_ProgressDlg.obj 
+      ..\Lib\C6\gtRPRender_RTFDlg.obj ..\Lib\C6\gtRPRender_BMPDlg.obj"/>
+    <RESFILES value="gtRPRC60.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) gtRPRender_MainDlg.dfm gtRPRender_DocumentDlg.dfm 
+      gtRPRender_TextDlg.dfm gtRPRender_ExcelDlg.dfm gtRPRender_GIFDlg.dfm 
+      gtRPRender_HTMLDlg.dfm gtRPRender_JPEGDlg.dfm gtRPRender_MetafileDlg.dfm 
+      gtRPRender_PDFDlg.dfm gtRPRender_ProgressDlg.dfm gtRPRender_RTFDlg.dfm 
+      gtRPRender_BMPDlg.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="bcb2kaxserver.lib dbxcds.lib dclocx.lib soaprtl.lib bcbie.lib 
+      dbexpress.lib inetdbxpress.lib inetdbbde.lib dsnapcon.lib dsnapcrba.lib 
+      visualdbclx.lib teeqr.lib dss.lib tee.lib teedb.lib teeui.lib qrpt60.lib 
+      bdecds.lib cds.lib ibxpress.lib vcldbx.lib adortl.lib vcldb.lib"/>
+    <SPARELIBS value="rtl.lib vcldb.lib adortl.lib bdertl.lib vcldbx.lib ibxpress.lib cds.lib 
+      bdecds.lib qrpt60.lib teeui.lib teedb.lib tee.lib dss.lib teeqr.lib 
+      visualdbclx.lib dsnapcrba.lib dsnapcon.lib bcbsmp.lib inetdbbde.lib 
+      inetdbxpress.lib dbexpress.lib nmfast.lib bcbie.lib soaprtl.lib dclocx.lib 
+      dbxcds.lib indy.lib bcb2kaxserver.lib RPRV40D6.lib RPRT40D6.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi vcljpg.bpi nmfast.bpi indy.bpi RPRV40D6.bpi 
+      RPRT40D6.bpi bdertl.bpi dbrtl.bpi bcbsmp.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="gtRPRC60.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\lib;$(BCB)\lib\obj;..\Lib\C6"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tWM"/>
+    <PFLAGS value="-N2..\Lib\C6 -N0..\Lib\C6 -$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-l..\Lib\C6 -I..\Lib\C6 -D&quot;Gnostice RaveRender&quot; -aa -Tpp -Gpr -x -Gn -Gl 
+      -Gi -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="gtRPRC60.res" FORMNAME="" UNITNAME="gtRPRC60.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRC60.cpp" FORMNAME="" UNITNAME="gtRPRC60" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="rtl.bpi" FORMNAME="" UNITNAME="rtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_DlgConsts.pas" FORMNAME="" UNITNAME="gtRPRender_DlgConsts" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Consts.pas" FORMNAME="" UNITNAME="gtRPRender_Consts" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_BMP.pas" FORMNAME="" UNITNAME="gtRPRender_BMP" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Document.pas" FORMNAME="" UNITNAME="gtRPRender_Document" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_EMF.pas" FORMNAME="" UNITNAME="gtRPRender_EMF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Excel.pas" FORMNAME="" UNITNAME="gtRPRender_Excel" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_GIF.pas" FORMNAME="" UNITNAME="gtRPRender_GIF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Graphic.pas" FORMNAME="" UNITNAME="gtRPRender_Graphic" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_HTML.pas" FORMNAME="" UNITNAME="gtRPRender_HTML" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_JPEG.pas" FORMNAME="" UNITNAME="gtRPRender_JPEG" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Main.pas" FORMNAME="" UNITNAME="gtRPRender_Main" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_PDF.pas" FORMNAME="" UNITNAME="gtRPRender_PDF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_RTF.pas" FORMNAME="" UNITNAME="gtRPRender_RTF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Text.pas" FORMNAME="" UNITNAME="gtRPRender_Text" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_Utils.pas" FORMNAME="" UNITNAME="gtRPRender_Utils" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_WMF.pas" FORMNAME="" UNITNAME="gtRPRender_WMF" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRRoutines.pas" FORMNAME="" UNITNAME="gtRPRRoutines" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="vcl.bpi" FORMNAME="" UNITNAME="vcl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="vclx.bpi" FORMNAME="" UNITNAME="vclx" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="vcljpg.bpi" FORMNAME="" UNITNAME="vcljpg" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="nmfast.bpi" FORMNAME="" UNITNAME="nmfast" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="indy.bpi" FORMNAME="" UNITNAME="indy" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RPRV40D6.bpi" FORMNAME="" UNITNAME="RPRV40D6" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RPRT40D6.bpi" FORMNAME="" UNITNAME="RPRT40D6" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bdertl.bpi" FORMNAME="" UNITNAME="bdertl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="dbrtl.bpi" FORMNAME="" UNITNAME="dbrtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_MainDlg.pas" FORMNAME="gtRPRenderMainDlg" UNITNAME="gtRPRender_MainDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_DocumentDlg.pas" FORMNAME="gtRPRenderDocumentDlg" UNITNAME="gtRPRender_DocumentDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_TextDlg.pas" FORMNAME="gtRPRenderTextDlg" UNITNAME="gtRPRender_TextDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_ExcelDlg.pas" FORMNAME="gtRPRenderExcelDlg" UNITNAME="gtRPRender_ExcelDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_GIFDlg.pas" FORMNAME="gtRPRenderGIFDlg" UNITNAME="gtRPRender_GIFDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_HTMLDlg.pas" FORMNAME="gtRPRenderHTMLDlg" UNITNAME="gtRPRender_HTMLDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_JPEGDlg.pas" FORMNAME="gtRPRenderJPEGDlg" UNITNAME="gtRPRender_JPEGDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_MetafileDlg.pas" FORMNAME="gtRPRenderMetafileDlg" UNITNAME="gtRPRender_MetafileDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_PDFDlg.pas" FORMNAME="gtRPRenderPDFDlg" UNITNAME="gtRPRender_PDFDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_ProgressDlg.pas" FORMNAME="gtRPRenderProgressDlg" UNITNAME="gtRPRender_ProgressDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_RTFDlg.pas" FORMNAME="gtRPRenderRTFDlg" UNITNAME="gtRPRender_RTFDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="gtRPRender_BMPDlg.pas" FORMNAME="gtRPRenderBMPDlg" UNITNAME="gtRPRender_BMPDlg" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bcbsmp.bpi" FORMNAME="" UNITNAME="bcbsmp" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=2
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=Gnostice Information Technologies Private Limited
+FileDescription=Gnostice RaveRender for Delphi &amp; CBuilder
+FileVersion=1.2.0.0
+InternalName=Gnostice RPRender
+LegalCopyright=(c) 2000-2003 Gnostice Information Technologies Software Private Limited
+LegalTrademarks=
+OriginalFilename=
+ProductName=Gnostice RaveRender
+ProductVersion=1.2.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=2
+Item0=$(BCB)\include;$(BCB)\include\vcl
+Item1=C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=$(BCB)\lib;$(BCB)\lib\obj;..\Lib\C6
+Item1=C:\Program Files\Rave4\C6;$(BCB)\lib;$(BCB)\lib\obj;..\Lib\C6
+Item2=C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=..\Lib\C6
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=..\Lib\C6\
+Item1=..\Lib\C6
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=..\Lib\C6
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>

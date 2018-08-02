@@ -1,0 +1,8 @@
+[Version]
+Version=6.6.000.091
+
+
+[Trans Line]
+F005=TL.Currency                  0021    I 0002 O   Currency                                           default=1                                                                                                    comment=For TimeSheets this is the Cost Currency
+F025=TL.CostPrice                 0133    D 0008 O   Cost Price                                         default=0                                                                                                    comment=For TimeSheets this is the Charge Out Rate
+F034=TL.TSHCCurr                  0251    I 0002 O X Timesheet Charge Currency                          default=1                                                                                                    comment=

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:defaultform xmlns:val="urn:www-iris-co-uk:defaultform">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <defaultformrec>
+            <dfaccount/>        <!--: String[6];     { Account Code } -->
+            <dfformno/>         <!--: SmallInt;      { Default Form No. } -->
+            <dfcheckglobal/>    <!--: WordBool;      { Check global if no formset form defined } -->
+            <dfformname/>       <!--: String[8];     { Default Form Name } -->
+        </defaultformrec>
+    </message>
+</val:defaultform>

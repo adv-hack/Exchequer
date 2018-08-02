@@ -1,0 +1,98 @@
+:Base ABRV-COM.HLP>Main
+:Title Abbrevia Automation Object
+1 Abbrevia 2 COM Automation Object
+2 Introduction=Abbrevia_COM_Introduction>Main
+2 Whats an Automation Object=Abbrevia_COM_Whats_an_Automation_Object>Main
+2 The Abbrevia Type Library=Abbrevia_COM_The_Abbrevia_Type_Library>Main
+2 System Requirements=Abbrevia_COM_System_Requirements>Main
+2 Installation and Registration
+3 Installation and Object Registration=Abbrevia_COM_Installation_and_Object_Registration>Main
+3 Registering the Abbrevia COM Object=Abbrevia_COM_Registering_the_Abbrevia_COM_Object>Main
+2 Using in development enviroments
+3 Using the Abbrevia COM Object with Microsoft Internet Information Server=Abbrevia_COM_Using_the_Abbrevia_COM_Object_with_Microsoft_Internet_Information_Server>Main
+3 Using the Abbrevia Automation Object with Microsoft Visual Basic 6=Abbrevia_COM_Using_the_Abbrevia_Automation_Object_with_Microsoft_Visual_Basic_6>Main
+1 Abbrevia 2 COM Reference
+2 IZipItem Interface
+3 IZipItem Overview=Abbrevia_COM_IZipItem_Interface>Main
+3 IZipItem Properties
+4 Action=Abbrevia_COM_IZipItem.Action>Main
+4 CompressedSize=Abbrevia_COM_IZipItem.CompressedSize>Main
+4 CompressionMethod=Abbrevia_COM_IZipItem.CompressionMethod>Main
+4 CompressionRatio=Abbrevia_COM_IZipItem.CompressionRatio>Main
+4 CRC32=Abbrevia_COM_IZipItem.CRC32>Main
+4 CRC32St=Abbrevia_COM_IZipItem.CRC32St>Main
+4 DeflationOption=Abbrevia_COM_IZipItem.DeflationOption>Main
+4 DictionarySize=Abbrevia_COM_IZipItem.DictionarySize>Main
+4 DiskFileName=Abbrevia_COM_IZipItem.DiskFileName>Main
+4 DiskNumberStart=Abbrevia_COM_IZipItem.DiskNumberStart>Main
+4 DiskPath=Abbrevia_COM_IZipItem.DiskPath>Main
+4 ExternalFileAttributes=Abbrevia_COM_IZipItem.ExternalFileAttributes>Main
+4 ExtraField=Abbrevia_COM_IZipItem.ExtraField>Main
+4 FileComment=Abbrevia_COM_IZipItem.FileComment>Main
+4 FileName=Abbrevia_COM_IZipItem.FileName>Main
+4 InternalFileAttributes=Abbrevia_COM_IZipItem.InternalFileAttributes>Main
+4 IsEncrypted=Abbrevia_COM_IZipItem.IsEncrypted>Main
+4 LastModFileDateTime=Abbrevia_COM_IZipItem.LastModFileDateTime>Main
+4 Password=Abbrevia_COM_IZipItem.Password>Main
+4 StoredPath=Abbrevia_COM_IZipItem.StoredPath>Main
+4 Tagged=Abbrevia_COM_IZipItem.Tagged>Main
+4 UnCompressedSize=Abbrevia_COM_IZipItem.UnCompressedSize>Main
+4 VersionMadeBy=Abbrevia_COM_IZipItem.VersionMadeBy>Main
+4 VersionNeededToExtract=Abbrevia_COM_IZipItem.VersionNeededToExtract>Main
+2 IZipKit Interface
+3 IZipKit Overview=Abbrevia_COM_IZipKit_Interface>Main
+3 IZipKit Properties
+4 AutoSave=Abbrevia_COM_IZipKit.AutoSave
+4 BaseDirectory=Abbrevia_COM_IZipKit.BaseDirectory
+4 CompressionMethodToUse=Abbrevia_COM_IZipKit.CompressionMethodToUse
+4 Count=Abbrevia_COM_IZipKit.Count
+4 DeflationOption=Abbrevia_COM_IZipKit.DeflationOption
+4 DOSMode=Abbrevia_COM_IZipKit.DOSMode
+4 ExtractOptions=Abbrevia_COM_IZipKit.ExtractOptions
+4 FileName=Abbrevia_COM_IZipKit.FileName
+4 Item=Abbrevia_COM_IZipKit.Item
+4 LogFile=Abbrevia_COM_IZipKit.LogFile
+4 Logging=Abbrevia_COM_IZipKit.Logging
+4 Password=Abbrevia_COM_IZipKit.Password
+4 PasswordRetries=Abbrevia_COM_IZipKit.PasswordRetries
+4 Spanned=Abbrevia_COM_IZipKit.Spanned
+4 SpanningThreshold=Abbrevia_COM_IZipKit.SpanningThreshold
+4 Status=Abbrevia_COM_IZipKit.Status
+4 StoreOptions=Abbrevia_COM_IZipKit.StoreOptions
+4 TempDirectory=Abbrevia_COM_IZipKit.TempDirectory
+4 ZipFileComment=Abbrevia_COM_IZipKit.ZipFileComment
+3 IZipKit Events
+4 OnArchiveItemProgress=Abbrevia_COM_IZipKit.OnArchiveItemProgress
+4 OnArchiveProgress=Abbrevia_COM_IZipKit.OnArchiveProgress
+4 OnChange=Abbrevia_COM_IZipKit.OnChange
+4 OnConfirmOverwrite=Abbrevia_COM_IZipKit.OnConfirmOverwrite
+4 OnConfirmProcessItem=Abbrevia_COM_IZipKit.OnConfirmProcessItem
+4 OnConfirmSave=Abbrevia_COM_IZipKit.OnConfirmSave
+4 OnLoad=Abbrevia_COM_IZipKit.OnLoad
+4 OnNeedPassword=Abbrevia_COM_IZipKit.OnNeedPassword
+4 OnProcessItemFailure=Abbrevia_COM_IZipKit.OnProcessItemFailure
+4 OnRequestBlankDisk=Abbrevia_COM_IZipKit.OnRequestBlankDisk
+4 OnRequestImage=Abbrevia_COM_IZipKit.OnRequestImage
+4 OnRequestLastDisk=Abbrevia_COM_IZipKit.OnRequestLastDisk
+4 OnRequestNthDisk=Abbrevia_COM_IZipKit.OnRequestNthDisk
+4 OnSave=Abbrevia_COM_IZipKit.OnSave
+3 IZipKit Methods
+4 Add=Abbrevia_COM_IZipKit.Add>Main
+4 AddFromStream=Abbrevia_COM_IZipKit.AddFromStream
+4 ClearTags=Abbrevia_COM_IZipKit.ClearTags
+4 Delete=Abbrevia_COM_IZipKit.Delete
+4 DeleteAt=Abbrevia_COM_IZipKit.DeleteAt
+4 DeleteTaggedItems=Abbrevia_COM_IZipKit.DeleteTaggedItems
+4 Extract=Abbrevia_COM_IZipKit.Extract
+4 ExtractAt=Abbrevia_COM_IZipKit.ExtractAt
+4 ExtractTaggedItems=Abbrevia_COM_IZipKit.ExtractTaggedItems
+4 ExtractToStream=Abbrevia_COM_IZipKit.ExtractToStream
+4 Find=Abbrevia_COM_IZipKit.Find
+4 Freshen=Abbrevia_COM_IZipKit.Freshen
+4 FreshenTaggedItems=Abbrevia_COM_IZipKit.FreshenTaggedItems
+4 License=Abbrevia_COM_IZipKit.License
+4 Replace=Abbrevia_COM_IZipKit.Replace
+4 Save=Abbrevia_COM_IZipKit.Save
+4 TagItems=Abbrevia_COM_IZipKit.TagItems
+4 TestTaggedItems=Abbrevia_COM_IZipKit.TestTaggedItems
+4 UnTagItems=Abbrevia_COM_IZipKit.UnTagItems

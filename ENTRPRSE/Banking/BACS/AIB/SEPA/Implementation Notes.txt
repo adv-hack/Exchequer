@@ -1,0 +1,25 @@
+Transaction EndToEndId
+
+If the customer/supplier Bank Reference field is populated then this will be used; otherwise the SRC/PPY OurRef will be used, preceded by the first 25 characters of the Exchequer Installation Company Name.
+
+Originator ID
+
+For Stand-alone plug-ins, this will be read from an ini file. For eBanking it will be taken from the appropriate User ID field on the Bank Account Details record. The ini file should be called 'AIBSepa.ini' and has the same format as the existing aib.ini file:
+
+[EFT]
+UserID=
+RecUserID=
+
+Validation
+
+UserID: This will be validated as not being blank.
+BIC: This will be validated as being either 8 or 11 chars.
+IBAN: This will be validated as not being blank.
+Direct Debit Mandate: This will be validated as not being blank.
+Direct Debit Signature Date: This will be validated as being a valid date, not earlier than the current date.
+Direct Debit Mode: This will be validated as being one of First Request, On-going Request, Last Request, One-off Request. (Re-present last Request is not valid in SEPA.)
+
+
+
+
+

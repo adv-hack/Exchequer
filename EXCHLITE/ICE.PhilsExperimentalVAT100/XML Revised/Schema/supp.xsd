@@ -1,0 +1,141 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:cust"
+            targetNamespace="urn:www-iris-co-uk:cust">
+
+  <xsd:complexType name="address">
+    <xsd:sequence>
+      <xsd:element name='acstreet1' type='xsd:string'/>
+      <xsd:element name='acstreet2' type='xsd:string'/>
+      <xsd:element name='actown' type='xsd:string'/>
+      <xsd:element name='accounty' type='xsd:string'/>
+      <xsd:element name='acpostcode' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="tradeterms">
+    <xsd:sequence>
+      <xsd:element name='acterm1' type='xsd:string'/>
+      <xsd:element name='acterm2' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="custrec">
+    <xsd:sequence>
+      <xsd:element name='accode' type='xsd:string'/>
+      <xsd:element name='accompany' type='xsd:string'/>
+      <xsd:element name='acarea' type='xsd:string'/>
+      <xsd:element name='acacctype' type='xsd:string'/>
+      <xsd:element name='acstatementto' type='xsd:string'/>
+      <xsd:element name='acvatregno' type='xsd:string'/>
+      <xsd:element name='acaddress' type='tns:address' minOccurs='1' maxOccurs='1'/>
+      <xsd:element name='acdeladdress' type='tns:address' minOccurs='1' maxOccurs='1'/>
+      <xsd:element name='accontact' type='xsd:string'/>
+      <xsd:element name='acphone' type='xsd:string'/>
+      <xsd:element name='acfax' type='xsd:string'/>
+      <xsd:element name='actheiracc' type='xsd:string'/>
+      <xsd:element name='acowntradterm' type='tns:boolean2'/>
+      <xsd:element name='actradeterms' type='tns:tradeterms'/>
+      <xsd:element name='acbalance' type='xsd:double'/>
+      <xsd:element name='accurrency' type='xsd:integer'/>
+      <xsd:element name='acvatcode' type='xsd:string'/>
+      <xsd:element name='acpayterms' type='xsd:integer'/>
+      <xsd:element name='accreditlimit' type='xsd:double'/>
+      <xsd:element name='acdiscount' type='xsd:double'/>
+      <xsd:element name='accreditstatus' type='xsd:integer'/>
+      <xsd:element name='accostcentre' type='xsd:string'/>
+      <xsd:element name='acdiscountband' type='xsd:string'/>
+      <xsd:element name='acdepartment' type='xsd:string'/>
+      <xsd:element name='acecmember' type='tns:boolean2'/>
+      <xsd:element name='acstatement' type='tns:boolean2'/>
+      <xsd:element name='acsalesgl' type='xsd:integer'/>
+      <xsd:element name='aclocation' type='xsd:string'/>
+      <xsd:element name='acaccstatus' type='xsd:integer'/>
+      <xsd:element name='acpaytype' type='xsd:string'/>
+      <xsd:element name='acbanksort' type='xsd:string'/>
+      <xsd:element name='acbankacc' type='xsd:string'/>
+      <xsd:element name='acbankref' type='xsd:string'/>
+      <xsd:element name='aclastused' type='xsd:string'/>
+      <xsd:element name='acphone2' type='xsd:string'/>
+      <xsd:element name='acuserdef1' type='xsd:string'/>
+      <xsd:element name='acuserdef2' type='xsd:string'/>
+      <xsd:element name='acinvoiceto' type='xsd:string'/>
+      <xsd:element name='acsopautowoff' type='tns:boolean2'/>
+      <xsd:element name='acbookordval' type='xsd:double'/>
+      <xsd:element name='accosgl' type='xsd:integer'/>
+      <xsd:element name='acdrcrgl' type='xsd:integer'/>
+      <xsd:element name='acdirdebmode' type='xsd:integer'/>
+      <xsd:element name='acccstart' type='xsd:string'/>
+      <xsd:element name='acccend' type='xsd:string'/>
+      <xsd:element name='acccname' type='xsd:string'/>
+      <xsd:element name='acccnumber' type='xsd:string'/>
+      <xsd:element name='acccswitch' type='xsd:string'/>
+      <xsd:element name='acdefsettledays' type='xsd:integer'/>
+      <xsd:element name='acdefsettledisc' type='xsd:double'/>
+      <xsd:element name='acformset' type='xsd:integer'/>
+      <xsd:element name='acstatedeliverymode' type='xsd:integer'/>
+      <xsd:element name='acemailaddr' type='xsd:string'/>
+      <xsd:element name='acsendreader' type='tns:boolean2'/>
+      <xsd:element name='acebuspword' type='xsd:string'/>
+      <xsd:element name='acaltcode' type='xsd:string'/>
+      <xsd:element name='acpostcode' type='xsd:string'/>
+      <xsd:element name='acuseforebus' type='xsd:integer'/>
+      <xsd:element name='aczipattachments' type='xsd:integer'/>
+      <xsd:element name='acuserdef3' type='xsd:string'/>
+      <xsd:element name='acuserdef4' type='xsd:string'/>
+      <xsd:element name='actimestamp' type='xsd:string'/>
+      <xsd:element name='acssddeliveryterms' type='xsd:string'/>
+      <xsd:element name='acinclusivevatcode' type='xsd:string'/>
+      <xsd:element name='acssdmodeoftransport' type='xsd:integer'/>
+      <xsd:element name='aclastoperator' type='xsd:string'/>
+      <xsd:element name='acdocdeliverymode' type='xsd:integer'/>
+      <xsd:element name='acsendhtml' type='tns:boolean2'/>
+      <xsd:element name='acweblivecatalog' type='xsd:string'/>
+      <xsd:element name='acwebprevcatalog' type='xsd:string'/>
+      <xsd:element name='acsopconsho' type='xsd:integer'/>
+      <xsd:element name='acdeftagno' type='xsd:integer'/>
+      <xsd:element name='acordconsmode' type='xsd:integer'/>
+      <xsd:element name='spare' type='xsd:string'/>
+      <xsd:element name='spare2' type='xsd:string'/>
+      <xsd:element name='spare51' type='xsd:string'/>
+      <xsd:element name='spare52' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='custrec' type='tns:custrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='cust'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='cust' type='tns:cust'/>
+
+</xsd:schema>

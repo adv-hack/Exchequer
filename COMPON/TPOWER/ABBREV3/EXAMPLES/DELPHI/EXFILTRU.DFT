@@ -1,0 +1,420 @@
+object Form1: TForm1
+  Left = 238
+  Top = 191
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'ExFilter : Exception list example'
+  ClientHeight = 459
+  ClientWidth = 701
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label4: TLabel
+    Left = 564
+    Top = 20
+    Width = 65
+    Height = 20
+    Caption = 'Zip view'
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object AbMeter1: TAbMeter
+    Left = 271
+    Top = 327
+    Width = 203
+    Height = 53
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clTeal
+  end
+  object OpenBtn: TButton
+    Left = 8
+    Top = 8
+    Width = 89
+    Height = 25
+    Caption = '&Open zip file...'
+    TabOrder = 0
+    OnClick = OpenBtnClick
+  end
+  object AbZipView1: TAbZipView
+    Left = 504
+    Top = 56
+    Width = 185
+    Height = 393
+    Attributes = [vaItemName]
+    Colors.Selected = clHighlight
+    Colors.SelectedText = clHighlightText
+    Colors.Alternate = clAqua
+    Colors.AlternateText = clRed
+    Colors.Deleted = clYellow
+    Colors.DeletedText = clNavy
+    Headings.Strings = (
+      'Name'
+      'Packed'
+      'Method'
+      'Ratio (%)'
+      'CRC32'
+      'Attributes'
+      'Format'
+      'Encrypted'
+      'Time Stamp'
+      'Size'
+      'Version Made'
+      'Version Needed'
+      'Path')
+    DefaultColWidth = 150
+    DefaultRowHeight = 18
+    DisplayOptions = [doColSizing]
+    HeaderRowHeight = 20
+    SortAttributes = [saItemName]
+    Enabled = False
+    TabOrder = 2
+    ZipComponent = AbZipKit1
+    ColWidths = (
+      181)
+    RowHeights = (
+      20
+      18)
+  end
+  object CloseBtn: TButton
+    Left = 104
+    Top = 8
+    Width = 89
+    Height = 25
+    Caption = '&Close zip file'
+    Enabled = False
+    TabOrder = 3
+    OnClick = CloseBtnClick
+  end
+  object AddGroup: TGroupBox
+    Left = 8
+    Top = 48
+    Width = 233
+    Height = 257
+    Caption = ' Add files to zip archive  '
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 24
+      Top = 32
+      Width = 70
+      Height = 13
+      Caption = 'Files to include'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 127
+      Top = 32
+      Width = 76
+      Height = 13
+      Caption = 'except for these'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 24
+      Top = 80
+      Width = 82
+      Height = 13
+      Caption = 'from this directory'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Bevel1: TBevel
+      Left = 40
+      Top = 205
+      Width = 161
+      Height = 2
+      Shape = bsTopLine
+    end
+    object FileMask1: TEdit
+      Left = 24
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      Text = '*.*'
+    end
+    object FilterMask1: TEdit
+      Left = 128
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object AddBtn: TButton
+      Left = 79
+      Top = 216
+      Width = 89
+      Height = 25
+      Caption = '&Add'
+      Enabled = False
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = AddBtnClick
+    end
+    object DirectoryListBox1: TDirectoryListBox
+      Left = 24
+      Top = 96
+      Width = 185
+      Height = 97
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ItemHeight = 16
+      ParentFont = False
+      TabOrder = 3
+    end
+  end
+  object DeleteGroup: TGroupBox
+    Left = 8
+    Top = 320
+    Width = 233
+    Height = 129
+    Caption = ' Delete files from zip archive '
+    TabOrder = 4
+    object Label5: TLabel
+      Left = 24
+      Top = 32
+      Width = 65
+      Height = 13
+      Caption = 'Files to delete'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 127
+      Top = 32
+      Width = 76
+      Height = 13
+      Caption = 'except for these'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Bevel2: TBevel
+      Left = 40
+      Top = 80
+      Width = 161
+      Height = 2
+      Shape = bsTopLine
+    end
+    object FileMask2: TEdit
+      Left = 24
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      Text = '*.*'
+    end
+    object FilterMask2: TEdit
+      Left = 128
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object DeleteBtn: TButton
+      Left = 79
+      Top = 92
+      Width = 89
+      Height = 25
+      Caption = '&Delete'
+      Enabled = False
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = DeleteBtnClick
+    end
+  end
+  object AbortBtn: TButton
+    Left = 328
+    Top = 416
+    Width = 89
+    Height = 25
+    Caption = 'A&bort !'
+    TabOrder = 5
+    OnClick = AbortBtnClick
+  end
+  object ExitBtn: TButton
+    Left = 200
+    Top = 8
+    Width = 89
+    Height = 25
+    Caption = 'E&xit'
+    TabOrder = 6
+    OnClick = ExitBtnClick
+  end
+  object ExtractGroup: TGroupBox
+    Left = 256
+    Top = 48
+    Width = 233
+    Height = 257
+    Caption = ' Extract files from zip archive  '
+    TabOrder = 7
+    object Label7: TLabel
+      Left = 24
+      Top = 32
+      Width = 68
+      Height = 13
+      Caption = 'Files to extract'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 127
+      Top = 32
+      Width = 76
+      Height = 13
+      Caption = 'except for these'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 24
+      Top = 80
+      Width = 71
+      Height = 13
+      Caption = 'to this directory'
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Bevel3: TBevel
+      Left = 40
+      Top = 205
+      Width = 161
+      Height = 2
+      Shape = bsTopLine
+    end
+    object FileMask3: TEdit
+      Left = 24
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      Text = '*.*'
+    end
+    object FilterMask3: TEdit
+      Left = 128
+      Top = 48
+      Width = 73
+      Height = 21
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object ExtractBtn: TButton
+      Left = 79
+      Top = 216
+      Width = 89
+      Height = 25
+      Caption = '&Extract'
+      Enabled = False
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = ExtractBtnClick
+    end
+    object DirectoryListBox2: TDirectoryListBox
+      Left = 24
+      Top = 96
+      Width = 185
+      Height = 97
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ItemHeight = 16
+      ParentFont = False
+      TabOrder = 3
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'zip'
+    FileName = 'Test.zip'
+    Filter = 'Zip files (*.ZIP)'
+    FilterIndex = 0
+    Options = [ofCreatePrompt]
+    Title = 'Select or create new zip file'
+    Left = 408
+    Top = 8
+  end
+  object AbZipKit1: TAbZipKit
+    ArchiveProgressMeter = AbMeter1
+    AutoSave = False
+    ExtractOptions = []
+    OnConfirmProcessItem = AbZipKit1ConfirmProcessItem
+    Left = 440
+    Top = 8
+  end
+end

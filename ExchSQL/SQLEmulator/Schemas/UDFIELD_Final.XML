@@ -1,0 +1,36 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="460" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="fiFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="fiFolioNo" />
+        <schemafield fieldname="fiEntityFolio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="fiEntityFolio" />
+        <schemafield fieldname="fiLineNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="fiLineNo" />
+        <schemafield fieldname="fiDescription" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="fiDescription" />
+        <schemafield fieldname="fiValidationMode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="fiValidationMode" />
+        <schemafield fieldname="fiWindowCaption" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="fiWindowCaption" />
+        <schemafield fieldname="fiLookupRef" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" collation="1" columnname="fiLookupRef" />
+        <schemafield fieldname="fiDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="fiDummyChar" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>fiFolioNo</item>
+                <item>fiDummyChar</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>fiEntityFolio</item>
+                <item>fiLineNo</item>
+                <item>fiDummyChar</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>fiLookupRef</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

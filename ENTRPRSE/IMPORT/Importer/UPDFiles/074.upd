@@ -1,0 +1,5 @@
+[Version]
+Version=6.00.082.074
+
+[Job Analysis Budget]
+F019=AB.jbCurrency                0112    I 0002 O   Currency                                           default=                                                                                                     comment=

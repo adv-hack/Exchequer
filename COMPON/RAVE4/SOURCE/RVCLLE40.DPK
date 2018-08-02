@@ -1,0 +1,22 @@
+package RVCLLE40;
+
+{$DESCRIPTION 'Rave 4.0 Language Engine'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, RVCL40, RVCLB40, RVCLG40, RVCLS40, RVCLR40;
+
+contains
+  RVPDEvnt,
+  RVLEDef,
+  RVLEUtil,
+  RVLEType,
+  RVLEID,
+  RVLEMod,
+  RVLERun,
+  RVLEExpr,
+  RVLECode,
+  RVLEDbug,
+  RVLESys;
+
+end.

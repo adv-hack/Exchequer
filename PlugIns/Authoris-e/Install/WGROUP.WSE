@@ -1,0 +1,141 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Do Workgroup Stuff
+end
+item: Remark
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\EntStart.EXE
+  Flags=00000100
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\WSTATION\Setup.USR
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=WGROUPINSTALLED
+  Pathname=%ENTDIR%\WSTATION\Setup.USR
+  Section=Workgroup
+  Item=Installed
+  Default=N
+end
+item: If/While Statement
+  Variable=WGROUPINSTALLED
+  Value=Y
+  Flags=00000100
+end
+item: Get Registry Key Value
+  Variable=ENTSTARTDIR
+  Key=Software\Exchequer\Enterprise
+  Default=%ENTDIR%
+  Value Name=LocalDir
+  Flags=00000100
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTSTARTDIR%\EntStart.INI
+  Flags=00000100
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=ICONS
+  Value=A
+  Flags=00000010
+end
+item: Remark
+  Text=....Add icon into new Startup
+end
+item: Edit INI File
+  Pathname=%ENTSTARTDIR%\EntStart.INI
+  Settings=[TrayApps]
+  Settings=Authorise=%ENTDIR%Expaerm.exe
+  Settings=
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Remove Previous Startup Icon
+end
+item: Remark
+  Text=....Identify root of Programs directory
+end
+item: Get Registry Key Value
+  Variable=V_PROGROOT
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_PROGROOT
+  Value=\
+  Flags=00000001
+end
+item: Check if File/Dir Exists
+  Pathname=%V_PROGROOT%\Startup\Authoris-e EAR Monitor.lnk
+  Flags=00000100
+end
+item: Delete File
+  Pathname=%V_PROGROOT%\Startup\Authoris-e EAR Monitor.lnk
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Pervasive Workgroup Locator
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\CUST\~PVSW~.LOC
+  Flags=00000100
+end
+item: Copy Local File
+  Source=%ENTDIR%\CUST\~PVSW~.LOC
+  Destination=%ENTDIR%\WORKFLOW\~PVSW~.LOC
+  Description=Pervasive Workgroup Locator
+  Flags=0000000011000010
+end
+item: Set File Attributes
+  Pathname=%ENTDIR%\WORKFLOW\~PVSW~.LOC
+  Flags=00010001
+end
+item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end

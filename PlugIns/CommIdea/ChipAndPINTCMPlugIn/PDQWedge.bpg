@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = PDQWedge.exe TRADE.exe ExCommid.dll CommideaTestApp.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+PDQWedge.exe: PDQWedge.dpr
+  $(DCC)
+
+TRADE.exe: ..\..\TRADE\TRADE.DPR
+  $(DCC)
+
+ExCommid.dll: ..\..\..\Commidea\ExCommid.Dll\ExCommid.dpr
+  $(DCC)
+
+CommideaTestApp.exe: ..\..\..\Commidea\CommideaTestApp\CommideaTestApp.dpr
+  $(DCC)
+
+

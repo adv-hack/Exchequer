@@ -1,0 +1,18 @@
+[Version]
+Version=6.2.000.088
+
+[Trans Header]
+F052=TH.SSDProcess                0703    C 0001 O   SSD Process Flag                                   default=                                                                                                     comment=' '(Space),'T' or 'P' (' '=Normal,'T'=Triangulation,'P'=Process)
+
+[Trans Line]
+F107=TL.tlTransValueDiscountType  0912    I 0002 O   Transaction Discount Type                          default=                                                                                                     comment=
+F108=TL.tlMBDList                 0914    L 0004 N   Internal                                           default=                                                                                                     comment=
+F109=TL.tlECService               0918    W 0002 O   EC Service                                         default=                                                                                                     comment=
+F110=TL.tlECServiceStartDate      0920    S 0008 O   EC Service Start Date                              default=                                                                                                     comment=
+F111=TL.tlECServiceEndDate        0929    S 0008 O   EC Service End Date                                default=                                                                                                     comment=
+F112=TL.tlECSalesTaxReported      0938    D 0008 N   EC Sales Tax Reported                              default=                                                                                                     comment=
+F113=TL.tlECPurchaseServiceTax    0946    D 0008 N   EC Purchase Service Tax                            default=                                                                                                     comment=
+F114=TL.Spare2                    0954    C 0003 N   Padding                                            default=                                                                                                     comment=
+F115=TL.LastChar                  0957    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+

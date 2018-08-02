@@ -1,0 +1,5 @@
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\NewIncoming.dll
+bin\Release\NewIncoming.pdb
+obj\Release\NewIncoming.dll
+obj\Release\NewIncoming.pdb

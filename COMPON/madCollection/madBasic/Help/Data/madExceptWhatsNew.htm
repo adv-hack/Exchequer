@@ -1,0 +1,453 @@
+<html>
+
+  <head>
+    <title>mad* Help...</title>
+    <meta name="description" content="mad* Help...">
+    <meta name="keywords" content="madshi, components, delphi">
+    <meta http-equiv="expires" content="900">
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body background="bcklight.gif" bgcolor=#F8F8F8>
+    <table border=0 cellpadding=0 callspacing=0><tr>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=3 border=0>
+            <tr><td bgcolor=#FFFFF0>
+              <div id="verySmall"><br></div>
+              <div id="bigTitle">&nbsp;What Is New&nbsp;</div>
+              <div id="verySmall"><br></div>
+              <div id="small">
+                <a class="small" href="Content.htm">Content</a> /
+                <a class="small" href="madExcept.htm">madExcept</a> /...
+              </div>
+            </td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=7 border=0>
+            <tr><td bgcolor=#F4F4F8><a href="http://www.madshi.net">www.madshi.net</a></td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+    </tr></table>
+    <h3>madExcept 3.0</h3>
+    <table width=100% cellpadding=0 border=0>
+      <tr>
+        <td bgcolor=#D8D8D8>
+          <table width=100% cellpadding=10 border=0>
+            <tr>
+              <td bgcolor=#F8F0F0><img src='px.gif'></td>
+              <td width=100% bgcolor=#F4F4F8>
+                <table>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                redesigned settings dialog
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                The <a href="madExceptSettings.htm">madExcept settings</a> dialog needed a complete redesign to make space
+                for many new options. I think it looks quite nice now...  :-)  Hopefully it's
+                a bit more intuitive, too.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                thread safe assistants
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                You can create assistants (= a number of forms where each form is a step of an
+                assistant) at designtime in the <a href="madExceptSettings9.htm">madExcept
+                settings dialog</a>. These assistants are fully thread safe (not using any VCL
+                stuff) and can be automatically shown at specific situations, e.g. if the user
+                presses the "mail bug report" button. This can be used to ask the user for his
+                name and email address, or to ask him what he did to produce the crash. The
+                forms/assistants are fully configurable, similar to how the Delphi object
+                inspector works for VCL forms. Supported controls are labels, edits/memos,
+                check boxes, buttons and images. Optionally you can tell madExcept to
+                automatically add the edit/memo/checkbox content to the bug report.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                exception box variations
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                By default madExcept shows the <a href="madExceptSettings4.htm">full exception
+                box</a>, but not yet the bug report details. You can instead opt to show a
+                <a href="madExceptSettings3.htm">normal message box</a> with just an "OK"
+                button instead. Or you can show a normal message box with an "OK" and a
+                "Details" button, which when being pressed shows the full exception box with
+                the bug report details. Also you can choose to show a madExcept assistant
+                instead of a normal box. Whatever you like.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                exception filters
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                You can <a href="madExceptSettings3.htm">determine specific behaviour for
+                specific exception classes</a>. E.g. you can turn off bug report creation for
+                some exception classes, or show a simple message box instead of the full blown
+                up madExcept exception box etc... Quite flexible.</td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                resizable exception box with tabs
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                When you click on "show bug report" the old builds of madExcept showed a boring
+                scrolling monospaced memo field. I've now removed that and instead I'm showing
+                the seperate bug report sections in seperated tabs. The contents of each
+                section are nicely formatted by using owner draw list views. Looks quite good
+                (IMHO at least). Furthermore in "show detail" mode the exception box is now
+                resizable. Finally sections added by plugins are auto formatted. Depending on
+                the content of the section they are either shown in a mono spaced list view or
+                in a variable spaced list view or in a memo field.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                hyper jump functionality
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                If in the exception box you click on "show bug report" and if you then double
+                click items in the exception callstack, madExcept will automatically switch to
+                the Delphi IDE editor window for you and open the double clicked unit at the
+                specified line number taken from the callstack. madExcept uses the relative
+                address and line number information, so this will even work, if the sources are
+                slightly changed. You need to have the correct project loaded and successfully
+                compiled, though.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                threaded bug report creation
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                In earlier versions madExcept first created the bug report and then showed the
+                exception box. Now the exception box is shown as early as possible. The bug
+                report is calculated in a secondary thread and updates the exception box, when
+                it's complete. If the user aborts the box before the bug report is fully
+                created, the bug report creation is aborted (except if you turned features like
+                auto mailing or auto saving on). These changes result in a significantly
+                improved response time for the end user.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                extended runtime package support
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                In earlier versions you were not allowed to compile madExcept into one of your
+                own packages. Instead you had to compile it into the executable file. Nor were
+                you allowed to use madExcept_.bpl as a runtime package. Now this all changed.
+                You may use madExcept_.bpl as a runtime package. Alternatively you may compile
+                madExcept.pas etc into one of your own packages, if you prefer that. Either way,
+                in order to enable madExcept in this situation there must be one module (exe or
+                package) which is compiled with madExcept "enabled". This module must be loaded
+                before the madExcept runtime package is initialized (ideally that module should
+                be statically linked). Usually you should either compile the exe with madExcept
+                enabled or the runtime package in which madExcept.pas is contained. Of course
+                you can compile multiple (or all) modules with madExcept enabled. madExcept
+                will then for each exception use the settings which are stored in that module
+                in which the exception occurred.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                bug report plugins
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:4px;">You can now write your own
+                <a href="madExceptPlugins.htm">plugins for madExcept</a>. These show up in the
+                <a href="madExceptSettings8.htm">madExcept settings</a> dialog. You can also
+                share your plugins with other madExcept users. Installation of the plugins is
+                fully automated by madExcept. A simple double click on the plugin file suffices.
+                You can download some sample plugins here:</div>
+                <table style="border-spacing:0px;"><tr><td>&bull;&nbsp;</td><td>
+                <a href="http://madshi.net/LocaleInfo.mep">http://madshi.net/LocaleInfo.mep</a>
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                <a href="http://madshi.net/MemoryInfo.mep">http://madshi.net/MemoryInfo.mep</a>
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                <a href="http://madshi.net/SystemInfo.mep">http://madshi.net/SystemInfo.mep</a>
+                </td></tr></table>
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                madExcept settings stored in the resource section
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:4px;">This has multiple advantages:<br></div>
+                <table style="border-spacing:0px;"><tr><td>&bull;&nbsp;</td><td>
+                the string length of all the madExcept captions&texts is not limited, anymore
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                you can access (read & write at runtime) the settings of not only your own
+                module, but of all modules in your process
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                most translation tools will now automatically detect madExcept's strings
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                you can check via a resource editor (e.g. "Resource Hacker") which
+                <a href="madExceptSettings.htm">madExcept settings</a> a specific exe/dll is using
+                </td></tr></table>
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                settings accessible at runtime through an IInterface
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                By calling <a href="MESettings.htm">MESettings</a> you get an interface which gives you access to the
+                most important madExcept settings. By using "MESettings(someModuleHandle)" you
+                can get an interface to the settings of another module, which you can change at
+                runtime, too. The other module will automatically notice that and behave
+                accordingly.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                exception information encapsulated in an IInterface
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:4px;">Again this gives us multiple advantages:<br></div>
+                <table style="border-spacing:0px;"><tr><td>&bull;&nbsp;</td><td>
+                the <a href="madExceptUnit.htm#TExceptEvent">callback function declarations</a>
+                are simple now (only 2 parameters) and won't have to change so often, anymore
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                you get easy access to all the parts of the bug report, e.g. you can easily
+                delete or add <a href="madExceptUnit.htm#IMEException.BugReportHeader">bug
+                report header</a> items
+                </td></tr><tr><td>&bull;&nbsp;</td><td>
+                you can ask the exception interface to notify you when the bug report is
+                fully rendered
+                </td></tr></table>
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                exception interface is descendent of settings interface
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                Might sound strange at first, but it does make sense. The
+                <a href="madExceptUnit.htm#IMEException">exception interface</a> inherits the
+                settings properties from the <a href="MESettings.htm#IMESettings">settings
+                interface</a>. This enables you to adjust the settings for a specific exception
+                context, only. You no longer need to modify the global settings for one
+                exception and later restore the old state. When an exception occurs, the
+                exception interface is automatically initialized with the current active global
+                settings.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                duplicate bug report detection
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:6px;">There's a exception information item named
+                <a href="madExceptUnit.htm#IMEException.CallstackCrc">CallstackCrc</a> now,
+                which contains 3 hexadecimal numbers. The first one is a crc of the exception
+                location. The 2nd one is a crc of the whole crashing/frozen callstack. The 3rd
+                is a crc of all Delphi/BCB threads.</div>
+                <div style="margin-bottom:6px;">These crcs can be used to check whether two bug
+                reports are identical in some parts or not at all. The crcs are calculated so
+                that rebuilds of the same application with different absolute code addresses
+                won't change the crcs. That means even when bug reports of different versions
+                of your project come in, the crcs can still help to identify which bug reports
+                are identical - as long as the relative address offsets of all callstack items
+                remain unchanged.</div>
+                madExcept internally makes use of these crcs to
+                realize the new feature <a href="madExceptSettings7.htm">save settings -> don't
+                save duplicate exceptions</a>. When madExcept notices that an exception is
+                already contained in the bugreport file, it removes the old text from the file
+                and stores the new bug report text at the end of the file instead. In this case
+                a new header item named "count" is automatically added to the new bug report
+                text which counts how often this specific exception has occurred.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                HTTP upload functionality
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                Alternatively to using <a href="madExceptSettings5.htm">SMTP mailing</a> you
+                can now <a href="madExceptSettings5.htm">upload bug reports via HTTP</a>.
+                Optionally you can use authentication or/and add
+                <a href="MESettings.htm#IMESettings.AdditionalFields">custom HTTP fields</a>.
+                The bug report itself is uploaded as a text file.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                new attachment options
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:6px;">You can now at design time comfortably specify
+                <a href="madExceptSettings6.htm">additional attachments</a> to be sent with
+                each bug report. Some or all attachment files can now optionally be
+                <a href="madExceptSettings6.htm">zipped</a>. You can choose which files shall
+                be zipped into which zip archives. You also have full control over all file and
+                zip names etc...</div>
+                By default the bug report is now sent as a text file attachment and no longer
+                in the mail body (except when using "mailto" mailing, since that doesn't
+                support attachments). This change was done for several reasons. One is HTTP
+                uploading, another one is that putting the bug report into the mail body made
+                problems with some mail clients (which broke the format). Just another reason
+                is that the attachment solution introduces the option to register a specific
+                file extension for the bug report - which is not used right now by default,
+                though. If you still prefer the old solution of mailing the bug report in the
+                mail body, you can reenable that solution by specifiying
+                <a href="madExceptSettings10.htm">%bugReport%</a> as the mail body text.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                madExcept configuration dialog
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                There's a new global (project independent)
+                <a href="madExceptConfiguration.htm">madExcept configuration dialog</a> now
+                available in Delphi's "Tools" menu. It offers you the possibility to configure
+                how the madExcept IDE wizard behaves.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                additional exception context information
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                You can now ask where the exception was caught, and depending on that there
+                might be context related information available. E.g. when an exception is
+                caught during TThread.Execute you can get the
+                <a href="madExceptUnit.htm#IMEException.RelatedObject">related TThread object</a>.
+                Or when an exception was caught during dynamically loading a package, you can
+                ask <a href="madExceptUnit.htm#IMEException.Package">which package</a> the
+                program tried to load etc...
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                send & please wait progress boxes
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                A nice little box with an icon and a progress bar is now shown during SMTP
+                mailing and HTTP uploading, displaying the different phases of sending (the
+                strings can be <a href="madExceptSettings10.htm">customized/translated</a>, of
+                course). A similar box is also shown if madExcept is busy with calculating the
+                bug report, but if (for some reason) the exception box is not visible at that
+                time. This happens rarely only, but it can happen, e.g. if an exception occurs
+                during the initialization/finalization of a dll.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                no own settings for some modules
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                <div style="margin-bottom:6px;">The new feature
+                <a href="madExceptSettings1.htm">basic settings -> this module gets no own
+                madExcept setings</a> allows you to build an application which has all
+                madExcept settings stored in the executable file. All further dlls and bpls
+                can then be compiled without madExcept settings stored in - although being
+                compiled with madExcept enabled. These modules will then automatically find
+                and use the settings stored in the executable.</div>
+                Of course you can still store settings for the dlls/bpls, too, if you like.
+                madExcept then automatically for each exception chooses those settings which
+                are stored in the module, in which the exception occurred. This way you can
+                e.g. realize different email addresses for bug report mailing, depending on
+                in which module the exception ocurred.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                limit screen shot to our own app windows
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                If you like you can tell madExcept to <a href="madExceptSettings6.htm">only
+                include windows of our own app</a> into the screenshot. All parts of the screen
+                not being covered by our windows are then simply white boxed.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                bug report sending in background thread
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                madExcept can now <a href="madExceptSettings5.htm">send the bug report in a
+                background thread</a>. So the end user can continue using your program while
+                the bug report is being sent to you. The progress window is shown in the bottom
+                right corner of the screen in this mode.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                auto save only if bug report doesn't get sent
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                The bug report is now by default only
+                <a href="madExceptSettings2.htm">automatically saved</a>, if the end user
+                doesn't manually send the bug report to you. I think this makes a lot of sense
+                in most situations, because why saving the bug report, if you got it via mail,
+                anyway?
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                include minimal debug info only
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                When activating the feature <a href="madExceptSettings1.htm">include minimal
+                debug info only</a>, madExcept no longer stores the function names and line
+                number information into your exe. This way reverse engineers don't profit from
+                madExcept any longer. However, the bug reports given out by madExcept in this
+                mode are not of much use in raw form. In a later build I'll add a tool which
+                will be able to convert such raw reports into full bug reports by feeding the
+                tool with the original full map files.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                cpu registers & stack dump
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                madExcept now shows which state the <a href="madExceptSettings8.htm">CPU
+                registers</a> had when the exception was raised. Also a
+                <a href="madExceptSettings8.htm">stack dump</a> is added to the bug report.
+                (Of course you can turn it all off, if you don't like it).
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                support for UPX and Shrinker
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                Both UPX and Shrinker modify the PE image header and do not undo these changes
+                even after compression in memory! I consider that a bug. But since the UPX
+                guys didn't even respond to me, I've now added support for this strange
+                behaviour to madExcept. Actually madExcept now repairs what UPX and Shrinker
+                forgot to do.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                out of memory protection
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                madExcept now preallocates 2MB of memory during initialization. Plus it
+                reserves 16MB of address range (reserving doesn't consume memory). If an
+                exception is raised, madExcept frees all that, so that it can safely do its
+                work, without running into memory problems. After the exception handling is
+                done, madExcept tries to restore the preallocations & prereservations.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                safecall exception handling
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                In the old madExcept builds and versions there was an (undocumented) function
+                named "HookSafeCallExceptions". The reason for this was that the Borland logic
+                of catching safecall exceptions in "TObject.SafeCallException" didn't work for
+                access violations. I've now removed that undocumented function
+                "HookSafeCallExceptions" and instead I'm now (during madExcept initialization)
+                simply patching the RTL so that the mentioned RTL bug is gone.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                list of running processes
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                You can now ask madExcept to add a <a href="madExceptSettings8.htm">list of
+                running processes</a> to the bug report, with priorities, process ids and
+                session ids.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                new icons, now adjustable
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                There are new default <a href="madExceptSettings4.htm">icons for the exception
+                box buttons</a>. Also there is now a big icon for the exception box and for the
+                <a href="madExceptSettings2.htm">progress boxes</a>. All icons can be
+                customized at design time.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                pausing exception catching
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                You can now <a href="madExceptUnit.htm#PauseMadExcept">pause</a> madExcept's
+                automatic exception catching powers. Please use it wisely, though.
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                "mail bug report" -> "send bug report"
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                Since <a href="madExceptSettings5.htm">HTTP uploading</a> was added, the text
+                "mail bug report" didn't really fit, anymore. So I've renamed a lot of things
+                from "mail" to the more general "send".
+                </td></tr>
+                
+                <tr><td>&bull;&nbsp;</td><td><b>
+                check whether binary file is corrupt (via crc)
+                </b></td></tr><tr><td></td><td style="padding-bottom:8pt;">
+                If turned on, madExcept <a href="madExceptSettings1.htm">checks whether the
+                binary file contains bit faults</a> (via a checksum stored in the PE header).
+                If the checksum check fails, a message box is shown and the process is
+                terminated.
+                </td></tr>
+                
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

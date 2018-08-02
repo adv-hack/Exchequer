@@ -1,0 +1,716 @@
+object NomVCtlRec: TNomVCtlRec
+  Left = 784
+  Top = 215
+  HelpContext = 2146
+  ActiveControl = OkCP1Btn
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'General Ledger View Control Record'
+  ClientHeight = 277
+  ClientWidth = 372
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDefault
+  Scaled = False
+  Visible = True
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 14
+  object SBSPanel1: TSBSBackGroup
+    Left = 2
+    Top = 1
+    Width = 365
+    Height = 244
+    TextId = 0
+  end
+  object SBSBackGroup1: TSBSBackGroup
+    Left = 8
+    Top = 55
+    Width = 231
+    Height = 160
+    HelpContext = 2139
+    Caption = 'Defaults'
+    TextId = 0
+  end
+  object Label86: Label8
+    Left = 9
+    Top = 14
+    Width = 45
+    Height = 14
+    Caption = 'View No.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object CCLab: Label8
+    Left = 48
+    Top = 171
+    Width = 14
+    Height = 14
+    Alignment = taCenter
+    Caption = 'CC'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object DepLab: Label8
+    Left = 93
+    Top = 171
+    Width = 22
+    Height = 14
+    Alignment = taCenter
+    Caption = 'Dept'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label810: Label8
+    Left = 76
+    Top = 14
+    Width = 83
+    Height = 14
+    Caption = 'View Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label82: Label8
+    Left = 22
+    Top = 88
+    Width = 30
+    Height = 14
+    Caption = '&Period'
+    FocusControl = Period
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label81: Label8
+    Left = 68
+    Top = 109
+    Width = 4
+    Height = 14
+    Caption = '-'
+    FocusControl = Period
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label83: Label8
+    Left = 144
+    Top = 88
+    Width = 23
+    Height = 14
+    Caption = '&Year'
+    FocusControl = Year
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object NCurrLab: Label8
+    Left = 25
+    Top = 132
+    Width = 21
+    Height = 14
+    Caption = '&Curr'
+    FocusControl = Currency
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label85: Label8
+    Left = 80
+    Top = 88
+    Width = 11
+    Height = 14
+    Caption = 'To'
+    FocusControl = Period
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object SBSBackGroup2: TSBSBackGroup
+    Left = 245
+    Top = 55
+    Width = 114
+    Height = 183
+    Caption = 'Update Settings'
+    TextId = 0
+  end
+  object Label84: Label8
+    Left = 270
+    Top = 139
+    Width = 67
+    Height = 14
+    Alignment = taRightJustify
+    Caption = 'Last Updated '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label87: Label8
+    Left = 250
+    Top = 209
+    Width = 22
+    Height = 14
+    Alignment = taRightJustify
+    Caption = 'By : '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object NIPF: TBorCheck
+    Tag = 1
+    Left = 264
+    Top = 70
+    Width = 78
+    Height = 20
+    HelpContext = 2143
+    Caption = 'Inc. Budget'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 11
+    TabStop = True
+    TextId = 0
+  end
+  object NIDF: Text8Pt
+    Tag = 1
+    Left = 76
+    Top = 30
+    Width = 285
+    Height = 22
+    HelpContext = 2138
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 100
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 1
+    TextId = 0
+    ViaSBtn = False
+  end
+  object OkCP1Btn: TButton
+    Tag = 1
+    Left = 107
+    Top = 252
+    Width = 80
+    Height = 21
+    HelpContext = 278
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 20
+    OnClick = CanCP1BtnClick
+  end
+  object CanCP1Btn: TButton
+    Left = 192
+    Top = 252
+    Width = 80
+    Height = 21
+    HelpContext = 279
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 21
+    OnClick = CanCP1BtnClick
+  end
+  object NICF: TCurrencyEdit
+    Tag = 1
+    Left = 9
+    Top = 30
+    Width = 63
+    Height = 22
+    HelpContext = 2137
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    Lines.Strings = (
+      '0 ')
+    MaxLength = 3
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 0
+    WantReturns = False
+    WordWrap = False
+    OnExit = NIVNFExit
+    AutoSize = False
+    BlockNegative = False
+    BlankOnZero = True
+    DisplayFormat = '###,###,##0 ;###,###,##0-'
+    DecPlaces = 0
+    ShowCurrency = False
+    TextId = 0
+    Value = 1E-10
+  end
+  object A1CCF: Text8Pt
+    Tag = 1
+    Left = 16
+    Top = 184
+    Width = 49
+    Height = 22
+    HelpContext = 2141
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 9
+    OnExit = A1CCFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object A1DpF: Text8Pt
+    Tag = 1
+    Left = 69
+    Top = 184
+    Width = 49
+    Height = 22
+    HelpContext = 2141
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 10
+    OnExit = A1CCFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object NIICF: TBorCheck
+    Tag = 1
+    Left = 251
+    Top = 92
+    Width = 91
+    Height = 20
+    HelpContext = 2144
+    Caption = 'Use Committed'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 12
+    TabStop = True
+    TextId = 0
+    OnClick = NIICFClick
+  end
+  object Period: TSBSComboBox
+    Tag = 1
+    Left = 17
+    Top = 106
+    Width = 48
+    Height = 22
+    Hint = 
+      'Set Period|Selects the period to be displayed by the General Led' +
+      'ger'
+    Style = csDropDownList
+    Color = clWhite
+    DropDownCount = 2
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+    OnExit = PeriodExit
+    OnKeyPress = PeriodKeyPress
+    AllowChangeInExit = True
+    MaxListWidth = 0
+  end
+  object ToPeriod: TSBSComboBox
+    Tag = 1
+    Left = 75
+    Top = 106
+    Width = 48
+    Height = 22
+    Hint = 
+      'Set Period|Selects the period to be displayed by the General Led' +
+      'ger'
+    Style = csDropDownList
+    Color = clWhite
+    DropDownCount = 2
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    OnExit = PeriodExit
+    OnKeyPress = PeriodKeyPress
+    AllowChangeInExit = True
+    MaxListWidth = 0
+  end
+  object Year: TSBSComboBox
+    Tag = 1
+    Left = 129
+    Top = 106
+    Width = 57
+    Height = 22
+    Hint = 'Set Year|Selects the year to be displayed by the General Ledger'
+    Style = csDropDownList
+    Color = clWhite
+    DropDownCount = 2
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 4
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+    OnExit = PeriodExit
+    OnKeyPress = PeriodKeyPress
+    AllowChangeInExit = True
+    MaxListWidth = 0
+  end
+  object YTDChk: TBorCheck
+    Tag = 1
+    Left = 192
+    Top = 107
+    Width = 41
+    Height = 20
+    Hint = 
+      'Show YTD|When selected shows balances upto and including the cur' +
+      'rent period, otherwise shows balance for period only'
+    Align = alRight
+    Caption = 'YT&D'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Checked = True
+    ParentColor = False
+    State = cbChecked
+    TabOrder = 6
+    TabStop = True
+    TextId = 0
+    OnClick = YTDChkClick
+  end
+  object Currency: TSBSComboBox
+    Tag = 1
+    Left = 17
+    Top = 147
+    Width = 57
+    Height = 22
+    Hint = 
+      'Set Currency|Selects the currency of the balances to be displaye' +
+      'd by the General Ledger'
+    HelpContext = 2140
+    Style = csDropDownList
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 3
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+    ExtendedList = True
+    MaxListWidth = 90
+    Validate = True
+  end
+  object TxLateChk: TBorCheck
+    Tag = 1
+    Left = 81
+    Top = 148
+    Width = 129
+    Height = 20
+    Hint = 
+      'Translate Currency|When selected allows a transaction currency t' +
+      'o be selected'
+    HelpContext = 2140
+    Align = alRight
+    Caption = '&Translate to currency'
+    Color = clBtnFace
+    ParentColor = False
+    TabOrder = 8
+    TabStop = True
+    TextId = 0
+  end
+  object NIIUF: TBorCheck
+    Left = 262
+    Top = 127
+    Width = 80
+    Height = 20
+    HelpContext = 1434
+    Caption = 'Auto Synch'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 13
+    TabStop = True
+    TextId = 0
+    Visible = False
+  end
+  object NIAFCB: TBorCheck
+    Tag = 1
+    Left = 14
+    Top = 219
+    Width = 58
+    Height = 20
+    HelpContext = 2142
+    Caption = 'Inactive'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 19
+    TabStop = True
+    TextId = 0
+  end
+  object I1TransDateF: TEditDate
+    Left = 276
+    Top = 153
+    Width = 80
+    Height = 22
+    HelpContext = 2167
+    TabStop = False
+    AutoSelect = False
+    Color = clBtnFace
+    Enabled = False
+    EditMask = '00/00/0000;0;'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 10
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 15
+    Placement = cpAbove
+    AllowBlank = True
+  end
+  object I2PrYrF: TEditPeriod
+    Left = 297
+    Top = 179
+    Width = 59
+    Height = 22
+    HelpContext = 2167
+    TabStop = False
+    AutoSelect = False
+    Color = clBtnFace
+    Enabled = False
+    EditMask = '00/0000;0;'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 7
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 16
+    Text = '011996'
+    Placement = cpAbove
+    EPeriod = 1
+    EYear = 96
+    ViewMask = '000/0000;0;'
+  end
+  object NOpoF: Text8Pt
+    Left = 270
+    Top = 205
+    Width = 86
+    Height = 22
+    HelpContext = 2167
+    TabStop = False
+    Color = clBtnFace
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 17
+    OnExit = A1CCFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object NSysDFCB: TBorCheck
+    Tag = 1
+    Left = 20
+    Top = 68
+    Width = 171
+    Height = 20
+    Hint = 
+      'Use F6 as Default|When selected will use the system (F6) period ' +
+      'as the default period'
+    Align = alRight
+    Caption = 'Use System Default for Period'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Checked = True
+    ParentColor = False
+    State = cbChecked
+    TabOrder = 2
+    TabStop = True
+    TextId = 0
+    OnClick = NIFJCFClick
+  end
+  object NIUCB: TSBSComboBox
+    Tag = 1
+    Left = 252
+    Top = 117
+    Width = 102
+    Height = 22
+    HelpContext = 2145
+    Style = csDropDownList
+    Color = clWhite
+    DropDownCount = 3
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 4
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
+    OnChange = NIUCBChange
+    Items.Strings = (
+      'Posted Only'
+      'Unposted'
+      'Psted & Unpstd')
+    MaxListWidth = 0
+  end
+  object VRunNoF: Text8Pt
+    Left = 249
+    Top = 179
+    Width = 46
+    Height = 22
+    HelpContext = 2167
+    TabStop = False
+    Color = clBtnFace
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 18
+    OnExit = A1CCFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+end

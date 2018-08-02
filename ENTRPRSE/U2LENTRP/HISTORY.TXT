@@ -1,0 +1,53 @@
+U2LENTRP.DLL & ENTFUNCS.DLL Version History
+===========================================
+
+v4.31    25/04/00 HM   Released
+
+                  HM   Mods
+                       ~~~~
+                       Added Get Customer Details functions to allow simplification of
+                       ODBC queries.   
+
+U2LENTRP.DLL & ENTFUNCS.DLL
+b430.300 26/10/99 HM   Mods
+                       ~~~~
+                       Converted to Delphi 5 
+
+                       Added EntDefaultLogin function into EntFuncs.DLL
+
+--------------------------------------------------------------------------------------
+
+U2LENTRP.DLL & ENTFUNCS.DLL
+v4.30             MH   Released
+
+U2LENTRP.DLL & ENTFUNCS.DLL
+v4.23  30/03/98   MH   Bug
+                       ~~~
+                       Recompiled to pickup change of CustRec from 940
+                       back to 939 bytes.   
+
+U2LENTRP.DLL & ENTFUNCS.DLL
+b204   13/08/97   MH   Mods
+                       ~~~~
+                       Added Job Costing functions.
+ENTFUNCS.DLL
+b203   09/07/97   MH   Mods
+                       ~~~~
+                       Added EntStockValue function to give access to
+                       the Stock History.
+
+U2LENTRP.DLL & ENTFUNCS.DLL
+b202   08/07/97   MH   Mods
+                       ~~~~
+                       Added EntDocSign function into EntFuncs.Dll and
+                       the DocSign function into U2LEntrp which calls
+                       EntDocSign. DocSign is published in Crystal as
+                       entDocSign. EntDocSign takes a string containing
+                       a document type, e.g. thOurRef, and returns a
+                       Constant that can be used to sign the amounts.
+                       
+                       
+                       
+                       
+                       
+                       

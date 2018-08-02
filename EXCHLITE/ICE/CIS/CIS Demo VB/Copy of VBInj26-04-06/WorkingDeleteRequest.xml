@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<GovTalkMessage xmlns="http://www.govtalk.gov.uk/CM/envelope">
+   <EnvelopeVersion>1.0</EnvelopeVersion>
+   <Header>
+      <MessageDetails>
+         <Class>IR-PAYE-EOY</Class>
+         <Qualifier>request</Qualifier>
+         <Function>delete</Function>
+         <CorrelationID>DE176052294D4EFF81CEEC7706CD8B9</CorrelationID>
+         <ResponseEndPoint PollInterval=""></ResponseEndPoint>
+         <Transformation>XML</Transformation>
+         <GatewayTest>1</GatewayTest>
+         <GatewayTimestamp/>
+      </MessageDetails>
+      <SenderDetails>
+         <IDAuthentication>
+            <SenderID>Administrator</SenderID>
+            <Authentication>
+               <Method>clear</Method>
+               <Role></Role>
+               <Value>password</Value>
+            </Authentication>
+         </IDAuthentication>
+         <EmailAddress>bob@org001</EmailAddress>
+      </SenderDetails>
+   </Header>
+   <GovTalkDetails>
+      <Keys>
+         <Key Type='TaxOfficeNo'>123</Key>
+         <Key Type='EmployerRef'>P20</Key>
+      </Keys>
+      <TargetDetails>
+         <Organisation>IR</Organisation>
+      </TargetDetails>
+   </GovTalkDetails>
+   <Body>
+   </Body>
+</GovTalkMessage>

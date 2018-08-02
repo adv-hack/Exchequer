@@ -1,0 +1,110 @@
+module RVCsDraw;
+
+definition
+
+import
+  SysFunc,
+  RVClass;
+
+type
+  TRaveGraphicBase = class(TRaveControl)
+  end TRaveGraphicBase;
+
+  TRaveLine = class(TRaveGraphicBase)
+  protected
+    function GetColor: TColor;
+    function SetColor(Value: TColor);
+    function GetLineStyle: TPenStyle;
+    function SetLineStyle(Value: TPenStyle);
+    function GetLineWidth: TRaveFloat;
+    function SetLineWidth(Value: TRaveFloat);
+    function GetLineWidthType: TLineWidthType;
+    function SetLineWidthType(Value: TLineWidthType);
+    function GetNESW: boolean;
+    function SetNESW(Value: boolean);
+  public
+    property Color: TColor read GetColor write SetColor;
+    property LineStyle: TPenStyle read GetLineStyle write SetLineStyle;
+    property LineWidth: TRaveFloat read GetLineWidth write SetLineWidth;
+    property LineWidthType: TLineWidthType read GetLineWidthType write SetLineWidthType;
+    property NESW: boolean read GetNESW write SetNESW;
+  end TRaveLine;
+
+  TRaveHLine = class(TRaveLine)
+  end TRaveHLine;
+
+  TRaveVLine = class(TRaveLine)
+  end TRaveVLine;
+
+  TRaveSurface = class(TRaveGraphicBase)
+  protected
+    function SetForeColor(Value: TColor);
+    function GetForeColor: TColor;
+    function SetLineWidth(Value: TRaveFloat);
+    function GetLineWidth: TRaveFloat;
+    function SetLineStyle(Value: TPenStyle);
+    function GetLineStyle: TPenStyle;
+    function SetBackColor(Value: TColor);
+    function GetBackColor: TColor;
+  public
+    property BorderColor: TColor read GetForeColor write SetForeColor;
+    property BorderStyle: TPenStyle read GetLineStyle write SetLineStyle;
+    property BorderWidth: TRaveFloat read GetLineWidth write SetLineWidth;
+    property BorderWidthType: TLineWidthType read GetLineWidthType write SetLineWidthType;
+    property FillColor: TColor read GetBackColor write SetBackColor;
+  end TRaveSurface;
+
+  TRaveRectangle = class(TRaveSurface)
+  protected
+    function GetHRadius: TRaveUnits;
+    function SetHRadius(Value: TRaveUnits);
+    function GetVRadius: TRaveUnits;
+    function SetVRadius(Value: TRaveUnits);
+  public
+    property HRadius: TRaveUnits read GetHRadius write SetHRadius;
+    property VRadius: TRaveUnits read GetVRadius write SetVRadius;
+  end TRaveRectangle;
+
+  TRaveSquare = class(TRaveRectangle)
+  end TRaveSquare;
+
+  TRaveEllipse = class(TRaveSurface)
+  end TRaveEllipse;
+
+  TRaveCircle = class(TRaveEllipse)
+  end TRaveCircle;
+
+implementation
+
+// TRaveLine
+
+  function TRaveLine.GetColor: TColor; external;
+  function TRaveLine.SetColor(Value: TColor); external;
+  function TRaveLine.GetLineStyle: TPenStyle; external;
+  function TRaveLine.SetLineStyle(Value: TPenStyle); external;
+  function TRaveLine.GetLineWidth: TRaveFloat; external;
+  function TRaveLine.SetLineWidth(Value: TRaveFloat); external;
+  function TRaveLine.GetLineWidthType: TLineWidthType; external;
+  function TRaveLine.SetLineWidthType(Value: TLineWidthType); external;
+  function TRaveLine.GetNESW: boolean; external;
+  function TRaveLine.SetNESW(Value: boolean); external;
+
+// TRaveSurface
+
+  function TRaveSurface.SetForeColor(Value: TColor); external;
+  function TRaveSurface.GetForeColor: TColor; external;
+  function TRaveSurface.SetLineWidth(Value: TRaveFloat); external;
+  function TRaveSurface.GetLineWidth: TRaveFloat; external;
+  function TRaveSurface.SetLineStyle(Value: TPenStyle); external;
+  function TRaveSurface.GetLineStyle: TPenStyle; external;
+  function TRaveSurface.SetBackColor(Value: TColor); external;
+  function TRaveSurface.GetBackColor: TColor; external;
+
+// TRaveRectangle
+
+  function TRaveRectangle.GetHRadius: TRaveUnits; external;
+  function TRaveRectangle.SetHRadius(Value: TRaveUnits); external;
+  function TRaveRectangle.GetVRadius: TRaveUnits; external;
+  function TRaveRectangle.SetVRadius(Value: TRaveUnits); external;
+
+end RVCsDraw;

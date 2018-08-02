@@ -1,0 +1,10 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\CASPolicy-CS.dll
+bin\Debug\CASPolicy-CS.pdb
+obj\Debug\CASPolicy-CS.dll
+obj\Debug\CASPolicy-CS.pdb
+bin\Release\CASPolicy-CS.dll
+bin\Release\CASPolicy-CS.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\CASPolicy-CS.dll
+obj\Release\CASPolicy-CS.pdb

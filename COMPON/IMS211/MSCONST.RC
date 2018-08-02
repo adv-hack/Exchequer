@@ -1,0 +1,29 @@
+#include "msconst.pas"
+
+STRINGTABLE
+{
+
+  msSSenderRequired, "The address of sender is required"
+  msSRecipientRequired, "At least one Recipient, CC or BCC must be entered"
+  msSMailMessageRequired, "MailMessage property must be assigned"
+  msSUserNameRequired, "UserName property is required"
+  msSPasswordRequired, "Password property is required"
+  msSIDsDiffer, "IDs are different"
+
+  msSMIMEExplanation, "This is a multipart message in MIME format"
+
+  msSUnableToRetrieveHeaders, "Unable to retrieve headers"
+  msSMissingContentType, "Missing required field: Content-Type"
+  msSMissingClosingBoundary, "Cannot find closing boundary"
+  msSMissingBoundary, "Cannot find boundary"
+  msSErrorDecoding, "Error decoding the attachment"
+
+  msSFileNameBlank, "Unable to execute attachment #%d\nbecause file name is blank"
+  msSShellExecFailed, "Error executing ShellExec.  Error code %d"
+  msSArticleRequired, "Article property must be assigned"
+  msSNewsGroupRequired, "Newsgroup header is required"
+  msSSubjectRequired, "Subject header is required"
+  msSNewsGroupNotSelected, "Newsgroup has not been selected"
+  msSBadArticleNumber, "Article number is not in valid range"
+
+}

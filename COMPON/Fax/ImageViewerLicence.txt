@@ -1,0 +1,50 @@
+From: Viscomsoft Support Team [mailto:support@viscomsoft.com] 
+Sent: 25 June 2007 16:16
+To: Kevin Horlock
+Subject: image viewer cp activex
+
+ 
+
+Thank you your order.
+
+ 
+
+You can download full version from 
+
+www.viscomsoft.com/7001/imageviewerfull5.1setup.exe
+
+the image viewer cp license key is 12500 single developer license
+
+
+After installed full version image viewer cp activex , you can set the
+licensekey property in  property window.
+
+After you set the license key, the snag screen will not display
+
+e.g
+
+     ImageViewerCP1.LicenseKey ="12500 single developer license" 
+
+ 
+
+You can download image thumbnail activex from
+
+www.viscomsoft.com/8300/imagethumbnail3.0fullsetup.exe
+
+the image thumbnail cp license key is 14000 single developer license
+
+
+After installed full version image thumbnail activex , you can set the
+licensekey property in  property window.
+After you set the license key, the snag screen will not display
+e.g
+
+       ImageThumbnail1.LicenseKey ="14000 single developer license"
+
+If you encounter any problems with the program, please contact Customer Support: support@viscomsoft.com
+
+Sincerely,
+Support Staff
+Viscom Software
+
+ 

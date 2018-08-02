@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:sk xmlns:val="urn:www-iris-co-uk:sk">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <skrec>
+            <stockcode/>    <!--:  String[16];         { Stock Code } -->
+            <desc>         <!--:  Array[1..6] of      { Multiple Descriptions }  String[35];> -->
+              <desc1><![CDATA[]]></desc1>
+              <desc2><![CDATA[]]></desc2>
+              <desc3><![CDATA[]]></desc3>
+              <desc4><![CDATA[]]></desc4>
+              <desc5><![CDATA[]]></desc5>
+              <desc6><![CDATA[]]></desc6>
+            </desc>
+
+            <altcode/>      <!--:  string[16];         { secondary lookup key } -->
+            <supptemp/>     <!--:  string[6];          { preferred supplier } -->
+            <nomcodes>     <!--:  array[1..5]         { 1 sales nominal code }-->
+              <nomcodes1/>             <!--  of longint;       { 3 profit & loss closing stock }-->
+              <nomcodes2/>             <!--                    { 2 cost of sales nominal }-->
+              <nomcodes3/>             <!--                    { 4 balance sheet }-->
+              <nomcodes4/>             <!--                    { 5 wip nominal code }-->
+              <nomcodes5/>
+            </nomcodes>
+            <minflg/>       <!--:  wordbool;           { min rol flag } -->
+            <stockfolio/>   <!--:  longint;            { numerical equivalent code } -->
+            <stockcat/>     <!--:  string[16];         { code of parent on tree } -->
+            <stocktype/>    <!--:  char;               { history & tree type, h/p/d/m/x } -->
+            <unitk/>        <!--:  string[10];         { descriptive stocking unit qty }-->
+            <units/>        <!--:  string[10];         {      "      selling    "   "  } -->
+            <unitp/>        <!--:  string[10];         {      "      purchase   "   "  } -->
+            <pcurrency/>    <!--:  smallint;           { cost price currency }-->
+            <costprice/>    <!--:  double;             { last cost price / stock valuation price } -->
+
+            <sbands>   <!-- :  array[1..8] of tsalebandsrec;      { multiple selling bands a-h } -->
+               <salebands1>
+                   <currency/>   <!-- :  smallint;  { currency of band } -->
+                   <salesprice/> <!--   double;    { price of band    } -->
+               </salebands1>
+               <salebands2>
+                   <currency/>
+                   <salesprice/>
+               </salebands2>
+               <salebands3>
+                   <currency/>
+                   <salesprice/>
+               </salebands3>
+               <salebands4>
+                   <currency/>
+                   <salesprice/>
+               </salebands4>
+               <salebands5>
+                   <currency/>
+                   <salesprice/>
+               </salebands5>
+               <salebands6>
+                   <currency/>
+                   <salesprice/>
+               </salebands6>
+               <salebands7>
+                   <currency/>
+                   <salesprice/>
+               </salebands7>
+               <salebands8>
+                   <currency/>
+                   <salesprice/>
+               </salebands8>
+            </sbands>
+
+            <sellunit/>     <!--:  double;             { selling qty multiple } -->
+            <buyunit/>      <!--:  double;             { purchase qty   "     } -->
+            <vatcode/>      <!--:  char;               { default vat lookup }  -->
+            <cc/>           <!--:  string[3];          { cost centre / dep anal }  -->
+            <dep/>          <!--:  string[3];                                -->
+            <qtyinstock/>   <!--,                           { physical stock } -->
+            <qtyposted/>    <!--,                            { physical posted stock } -->
+            <qtyallocated/> <!--,                         { backorder qty }   -->
+            <qtyonorder/>   <!--,                           { onorder qty } -->
+            <qtymin/>       <!--,                               { min stock level qty } -->
+            <qtymax/>       <!--,                               { max   "     "    "  } -->
+            <roqty/>        <!--:  double;             { qty orded this order }  -->
+            <commodcode/>   <!--:  string[10];         { vat commodity code } -->
+            <sweight/>      <!--:  double;             { sales  unit weight }  -->
+            <pweight/>      <!--:  double;             { purchase "    "    } -->
+            <unitsupp/>     <!--:  string[10];         { supplimentry unit }  -->
+            <suppsunit/>    <!--:  double;             { no units in sales unit }  -->
+            <binloc/>       <!--:  string[08];         { physical location in stores }  -->
+            <covpr/>        <!--:  smallint;           { amount of periods to scan back to calc cover }-->
+            <covprunit/>    <!--:  char;               { period calc unit of measure, d/w/m }  -->
+            <covminpr/>     <!--:  smallint;           { amount of cover required in periods }  -->
+            <covminunit/>   <!--:  char;               { cover amount unit d/w/m }  -->
+            <supplier/>     <!--:  string[06];         { master supplier reference } -->
+            <covsold/>      <!--:  double;             { qty sold over cover period } -->
+            <usecover/>     <!--:  wordbool;           { use cover on this record } -->
+            <covmaxpr/>     <!--:  smallint;           { amount of max cover required } -->
+            <covmaxunit/>   <!--:  char;               { unit of max cover } -->
+            <rocurrency/>   <!--:  smallint;           { purchase order currency }  -->
+            <rocprice/>     <!--:  double;             { purchase order cost price } -->
+            <rodate/>       <!--:  String[8];          {     "      "   Delivery Date } -->
+            <stkvaltype/>   <!--:  Char;               { Stk Valuation Type C,L,F,S,A }-->
+            <qtypicked/>    <!--:  Double;             { Count of Qty Picked so Far } -->
+            <lastused/>     <!--:  String[8];          { ReadOnly - Date Last updated } -->
+            <stbarcode><![CDATA[]]></stbarcode>    <!--:  String[20];         { Bar Code } -->
+            <strocostcentre/> <!--:  String[3];          { RO Cost Centre } -->
+            <strodepartment/> <!--:  String[3];          { RO Department } -->
+            <stlocation/>   <!--:  String[3];          { Location }  -->
+            <stpricepack/>  <!--:  WordBool;           { Price per Pack - Price by (Split Pack) on Ent. screen } -->
+            <stdpackqty/>   <!--:  WordBool;           { Show Qty as Cases } -->
+            <stkitprice/>   <!--:  WordBool;           { Use BOM price, ignore component price } -->
+            <stkitonpurch/> <!--:  WordBool;           { Explode kit on Purch transactions } -->
+
+            <ststkuser1><![CDATA[]]></ststkuser1>   <!--:  String[20];         { User Defined Field 1 } -->
+            <ststkuser2><![CDATA[]]></ststkuser2>   <!--:  String[20];         { User Defined Field 2 } -->
+
+            <janalcode/>    <!--:  String[10];         { Default Job Analysis Code } -->
+
+            <webinclude/>   <!--:  SmallInt;           {Include on Web export} -->
+            <weblivecat><![CDATA[]]></weblivecat>   <!--:  String[20];         {Read Only - Web current catalogue entry}-->
+            <stkuser3><![CDATA[]]></stkuser3>     <!--:  String[30];         {Stk User Def 3} -->
+            <stkuser4><![CDATA[]]></stkuser4>     <!--:  String[30];         {Stk User Def 4} -->
+            <sernowavg/>    <!--:  SmallInt;           {Determins if average is to be used with snos} -->
+            <ssdduplift/>   <!--:  Double;             {Intrastat Uplift Dispatch default %} -->
+            <timechange/>   <!--:  String[6];          {* Time stamp for record Change *}  -->
+            <svatincflg/>   <!--:  Char;               {* Inc VAT Default *} -->
+            <lastopo/>      <!--:  String[10];         {Last operator} -->
+            <imagefile><![CDATA[]]></imagefile>    <!--:  String[30];         {Associated bitmap image} -->
+            <webprevcat><![CDATA[]]></webprevcat>   <!--:  String[20];         {Web previous catalogue entry} -->
+            <ssdcountry/>   <!--:  String[5];          -->
+            <stklinklt/>    <!--:  SmallInt;           { Default stock item line type normal, freight etc } -->
+
+            <pricebystkunit/> <!--: WordBool;           { Price by Stock Unit  } -->
+
+            <showaskit/>    <!--:  WordBool;           {BOM exploded on Sales transactions}  -->
+
+            <qtypickwor/>   <!--:  Double;             {Qty issued now, but not processed} -->
+
+            <usesbins/> <!--: WordBool;            {True = Multi-bins enabled}  -->
+
+            <ssdauplift/>   <!--:  Double;  -->
+            <bomprodtime/>  <!--  longint; -->
+            <wopprodtimedays/>
+            <wopprodtimehours/>
+            <wopprodtimemins/> <!--:  longint; -->
+            <wopleadtime/>  <!--:  longint;   -->
+            <wopcalcprodtime/> <!--:  WordBool; -->
+            <wopminecqty/>  <!--:  Double; -->
+            <wopissuedwipgl/>  <!--: longint; -->
+            <qtyallocwor/>  <!--:  Double; -->
+            <qtyissuewor/>  <!--:  Double;  -->
+            <qtystocktake/> <!--:  Double;-->
+            <qtystocktakechanged/> <!--: WordBool; -->
+            <qtyfreeze/>    <!--:  Double; -->
+            <binloc10/>     <!--:  String[10];-->
+        </skrec>
+    </message>
+</val:sk>

@@ -1,0 +1,27 @@
+unit dtilogdlg;
+
+
+interface
+
+uses SysUtils, Windows, Messages, Classes, Graphics, Controls,
+  Forms, StdCtrls, ExtCtrls;
+
+type
+  TDtiLoginDialog = class(TForm)
+    Panel: TPanel;
+    Bevel: TBevel;
+    ServerName: TLabel;
+    UserName: TEdit;
+    Password: TEdit;
+    OKButton: TButton;
+    CancelButton: TButton;
+    procedure FormShow(Sender: TObject);
+  end;
+
+function DtiLoginDialog(const AServerName: string;
+  var AUserName, APassword: string): Boolean;
+
+function DtiLoginDialogEx(const AServerName: string;
+  var AUserName, APassword: string; NameReadOnly: Boolean): Boolean;
+
+implementation

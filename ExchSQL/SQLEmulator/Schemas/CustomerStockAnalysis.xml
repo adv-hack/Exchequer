@@ -1,0 +1,64 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="400">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="cs_index" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="27" elements="1" id="-1" columnname="CsIndex"/>
+    <schemafield fieldname="cs_cust_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="CsCustCode" collation="1"/>
+    <schemafield fieldname="cs_stock_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="CsStockCode" collation="1"/>
+    <schemafield fieldname="cs_stk_folio" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="CsStkFolio"/>
+    <schemafield fieldname="cs_so_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsSOQty"/>
+    <schemafield fieldname="cs_last_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="CsLastDate"/>
+    <schemafield fieldname="cs_line_no" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="CsLineNo"/>
+    <schemafield fieldname="cs_last_price" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsLastPrice"/>
+    <schemafield fieldname="cs_lp_curr" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="CsLPCurr"/>
+    <schemafield fieldname="cs_job_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="CsJobCode" collation="1"/>
+    <schemafield fieldname="cs_ja_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="CsJACode" collation="1"/>
+    <schemafield fieldname="cs_loc_code" fullfieldname="" typename="DelphiString" size="6" elements="1" id="-1" columnname="CsLocCode" collation="1"/>
+    <schemafield fieldname="cs_nom_code" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="CsNomCode"/>
+    <schemafield fieldname="cs_cc_dep1" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="CsDepartment" collation="1"/>
+    <schemafield fieldname="cs_cc_dep2" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="CsCostCentre" collation="1"/>
+    <schemafield fieldname="cs_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsQty"/>
+    <schemafield fieldname="cs_net_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsNetValue"/>
+    <schemafield fieldname="cs_discount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsDiscount"/>
+    <schemafield fieldname="cs_vat_code" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="CsVATCode"/>
+    <schemafield fieldname="cs_cost" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsCost"/>
+    <schemafield fieldname="cs_desc1" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc1"/>
+    <schemafield fieldname="cs_desc2" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc2"/>
+    <schemafield fieldname="cs_desc3" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc3"/>
+    <schemafield fieldname="cs_desc4" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc4"/>
+    <schemafield fieldname="cs_desc5" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc5"/>
+    <schemafield fieldname="cs_desc6" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="CsDesc6"/>
+    <schemafield fieldname="cs_vat" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsVAT"/>
+    <schemafield fieldname="cs_prx_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="CsPrxPack"/>
+    <schemafield fieldname="cs_qty_pack" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsQtyPack"/>
+    <schemafield fieldname="cs_qty_mul" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsQtyMul"/>
+    <schemafield fieldname="cs_disc_ch" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="CsDiscCh"/>
+    <schemafield fieldname="cs_entered" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="CsEntered"/>
+    <schemafield fieldname="cs_use_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="CsUsePack"/>
+    <schemafield fieldname="cs_show_case" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="CsShowCase"/>
+    <schemafield fieldname="cs_line_type" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="CsLineType"/>
+    <schemafield fieldname="cs_price_mul_x" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="CsPriceMulX"/>
+    <schemafield fieldname="cs_vat_inc_flg" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="CsVATIncFlg"/>
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>cs_cust_code</item>
+				<item>cs_line_no</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item computedcolumnname="CsIndexComputed">cs_index</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isclustered="0" isunique="0">
+			<indexfields>
+				<item>cs_stock_code</item>
+				<item>cs_cust_code</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

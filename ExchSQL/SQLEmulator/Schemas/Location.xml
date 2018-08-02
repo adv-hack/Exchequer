@@ -1,0 +1,59 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="500">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="lo_code" fullfieldname="lo_code" typename="DelphiString" size="4" elements="1" id="0" columnname="LoCode" collation="1"/>
+    <schemafield fieldname="lo_name" fullfieldname="lo_name" typename="DelphiString" size="46" elements="1" id="0" columnname="LoName" collation="1"/>
+    <schemafield fieldname="lo_addr1" fullfieldname="lo_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr1"/>
+    <schemafield fieldname="lo_addr2" fullfieldname="lo_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr2"/>
+    <schemafield fieldname="lo_addr3" fullfieldname="lo_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr3"/>
+    <schemafield fieldname="lo_addr4" fullfieldname="lo_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr4"/>
+    <schemafield fieldname="lo_addr5" fullfieldname="lo_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr5"/>
+    <schemafield fieldname="lo_tel" fullfieldname="lo_tel" typename="DelphiString" size="26" elements="1" id="0" columnname="LoTel"/>
+    <schemafield fieldname="lo_fax" fullfieldname="lo_fax" typename="DelphiString" size="26" elements="1" id="0" columnname="LoFax"/>
+    <schemafield fieldname="lo_email" fullfieldname="lo_email" typename="DelphiString" size="101" elements="1" id="0" columnname="LoEmail"/>
+    <schemafield fieldname="lo_modem" fullfieldname="lo_modem" typename="DelphiString" size="26" elements="1" id="0" columnname="LoModem"/>
+    <schemafield fieldname="lo_contact" fullfieldname="lo_contact" typename="DelphiString" size="31" elements="1" id="0" columnname="LoContact"/>
+    <schemafield fieldname="lo_currency" fullfieldname="lo_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LoCurrency"/>
+    <schemafield fieldname="lo_area" fullfieldname="lo_area" typename="DelphiString" size="6" elements="1" id="0" columnname="LoArea"/>
+    <schemafield fieldname="lo_rep" fullfieldname="lo_rep" typename="DelphiString" size="6" elements="1" id="0" columnname="LoRep"/>
+    <schemafield fieldname="lo_tag" fullfieldname="lo_tag" typename="bool1" size="1" elements="1" id="0" columnname="LoTag"/>
+    <schemafield fieldname="lo_nominal1" fullfieldname="lo_nominal1" typename="long" size="4" elements="1" id="0" columnname="LoNominal1"/>
+    <schemafield fieldname="lo_nominal2" fullfieldname="lo_nominal2" typename="long" size="4" elements="1" id="0" columnname="LoNominal2"/>
+    <schemafield fieldname="lo_nominal3" fullfieldname="lo_nominal3" typename="long" size="4" elements="1" id="0" columnname="LoNominal3"/>
+    <schemafield fieldname="lo_nominal4" fullfieldname="lo_nominal4" typename="long" size="4" elements="1" id="0" columnname="LoNominal4"/>
+    <schemafield fieldname="lo_nominal5" fullfieldname="lo_nominal5" typename="long" size="4" elements="1" id="0" columnname="LoNominal5"/>
+    <schemafield fieldname="lo_nominal6" fullfieldname="lo_nominal6" typename="long" size="4" elements="1" id="0" columnname="LoNominal6"/>
+    <schemafield fieldname="lo_nominal7" fullfieldname="lo_nominal7" typename="long" size="4" elements="1" id="0" columnname="LoNominal7"/>
+    <schemafield fieldname="lo_nominal8" fullfieldname="lo_nominal8" typename="long" size="4" elements="1" id="0" columnname="LoNominal8"/>
+    <schemafield fieldname="lo_nominal9" fullfieldname="lo_nominal9" typename="long" size="4" elements="1" id="0" columnname="LoNominal9"/>
+    <schemafield fieldname="lo_nominal10" fullfieldname="lo_nominal10" typename="long" size="4" elements="1" id="0" columnname="LoNominal10"/>
+    <schemafield fieldname="lo_cc_dep1" fullfieldname="lo_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LoDepartment" collation="1"/>
+    <schemafield fieldname="lo_cc_dep2" fullfieldname="lo_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LoCostCentre" collation="1"/>
+    <schemafield fieldname="lo_use_price" fullfieldname="lo_use_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUsePrice"/>
+    <schemafield fieldname="lo_use_nom" fullfieldname="lo_use_nom" typename="bool1" size="1" elements="1" id="0" columnname="LoUseNom"/>
+    <schemafield fieldname="lo_use_cc_dep" fullfieldname="lo_use_cc_dep" typename="bool1" size="1" elements="1" id="0" columnname="LoUseCCDep"/>
+    <schemafield fieldname="lo_use_supp" fullfieldname="lo_use_supp" typename="bool1" size="1" elements="1" id="0" columnname="LoUseSupp"/>
+    <schemafield fieldname="lo_use_bin_loc" fullfieldname="lo_use_bin_loc" typename="bool1" size="1" elements="1" id="0" columnname="LoUseBinLoc"/>
+    <schemafield fieldname="lo_n_line_count" fullfieldname="lo_n_line_count" typename="long" size="4" elements="1" id="0" columnname="LoNLineCount"/>
+    <schemafield fieldname="lo_use_c_price" fullfieldname="lo_use_c_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUseCPrice"/>
+    <schemafield fieldname="lo_use_r_price" fullfieldname="lo_use_r_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUseRPrice"/>
+    <schemafield fieldname="lo_wopwipgl" fullfieldname="lo_wopwipgl" typename="long" size="4" elements="1" id="0" columnname="LoWOPWIPGL"/>
+    <schemafield fieldname="lo_return_gl" fullfieldname="lo_return_gl" typename="long" size="4" elements="1" id="0" columnname="LoReturnGL"/>
+    <schemafield fieldname="lo_p_return_gl" fullfieldname="lo_p_return_gl" typename="long" size="4" elements="1" id="0" columnname="LoPReturnGL"/>
+	</fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>lo_code</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>lo_name</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

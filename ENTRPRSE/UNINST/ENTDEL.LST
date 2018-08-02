@@ -1,0 +1,35 @@
+/* Root Directory
+DelFiles *.LCK
+DelFiles *.SWP
+DelFiles $*.*
+
+/* Cust
+DelFiles Cust\*.LCK
+
+/* DocMastr
+DelFiles DocMastr\*.*
+
+/* Docs
+DelFiles Docs\*.*
+
+/* Forms
+DelFiles Forms\*.BMP
+DelFiles Forms\*.EFD
+DelFiles Forms\*.LCK
+
+/* Jobs
+DelFiles Jobs\*.LCK
+
+/* Misc
+DelFiles Misc\*.LCK
+
+/* Reports
+DelFiles Reports\*.LCK
+
+/* Stock
+DelFiles Stock\*.LCK
+
+/* Trans
+DelFiles Trans\*.LCK
+
+

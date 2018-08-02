@@ -1,0 +1,206 @@
+unit HandlerU;
+
+{ Hook Customisation Unit - Allows standard Enterprise behaviour to }
+{                           be modified by calling code in the DLL  }
+
+interface
+
+Uses
+  CustWinU, CustAbsU, CCDeptU, Classes;
+
+  { Following functions required to be Exported by Enterprise }
+  Procedure InitCustomHandler(Var CustomOn : Boolean; CustomHandlers : TAbsCustomHandlers); Export;
+  Procedure TermCustomHandler; Export;
+  Procedure ExecCustomHandler(Const EventData : TAbsEnterpriseSystem); Export;
+  Procedure LocalMessageDlg(const sMessage : string);
+
+implementation
+
+Uses
+  MiscUtil, Forms, Inifiles, Dialogs, SysUtils, ChainU, PISecure, PIMisc;
+
+var
+  bInitialised, bHookEnabled : boolean;
+
+Const
+  EventDisabled = 0;
+  EventEnabled  = 1;
+
+
+{ Called by Enterprise to initialise the Customisation }
+Procedure InitCustomHandler(Var CustomOn : Boolean; CustomHandlers : TAbsCustomHandlers);
+var
+  iEID : byte;
+  iPos : integer;
+  slAboutText : TStringList;
+//  sGLCode, sByGLString : string[5];
+const
+  sPlugInName = 'Enterprise CC/Dept Validation Plug-In';
+  sVersionNo = 'v5.60.016';
+begin
+  CustomOn := True;
+
+  //Check Plug-In Security
+  bHookEnabled := PICheckSecurity('EXCHCCDEPT000006', 'd 6na0nF4Fqafdp1', sPlugInName
+  , sVersionNo + ' (DLL)', stSystemOnly, ptDLL, DLLChain.ModuleName);
+
+  if bHookEnabled then begin
+
+    With CustomHandlers Do Begin
+      { Set About Message }
+      slAboutText := TStringList.Create;
+      PIMakeAboutText(sPlugInName, sVersionNo + ' (DLL)', slAboutText);
+      for iPos := 0 to slAboutText.Count - 1 do AddAboutString(slAboutText[iPos]);
+      slAboutText.Free;
+
+      { Define Handlers }
+      for iEID := 18 to 24 do SetHandlerStatus(EnterpriseBase + 4000, iEID, EventEnabled);
+
+    End; { With }
+
+  end;{if}
+
+  { Call other Hook DLL's to get their customisation }
+  DLLChain.InitCustomHandler(CustomOn, CustomHandlers);
+End;
+
+{ Called by Enterprise to End the Customisation }
+Procedure TermCustomHandler;
+Begin
+//  Exclusions.Free;
+//  Inclusions.Free;
+
+  if slCombinations <> nil
+  then begin
+    ClearList(slCombinations);
+    slCombinations.Free;
+  end;{if}
+
+  { Notify other Hook DLL's to Terminate }
+  DLLChain.TermCustomHandler;
+
+  { Put Shutdown Code Here }
+End;
+
+{ Called by Enterprise whenever a Customised Event happens }
+Procedure ExecCustomHandler(Const EventData : TAbsEnterpriseSystem);
+var
+  rTemp : real;
+
+  procedure Initialise;
+  var
+    CCIni : TInifile;
+    slSections, slSection : TStringList;
+    iPos : integer;
+  begin
+    slCombinations := TStringList.Create;
+    CCIni := TInifile.create(extractfilepath(application.exename) + CCDEPTINI);
+
+    with CCIni do
+    begin
+      UpdateFile;
+
+      bByGLString := UpperCase(ReadString('Options','ByGLCode','FALSE')) = 'TRUE';
+      if bByGLString then
+      begin
+        // by GL Code
+        slSections := TStringList.Create;
+        CCIni.ReadSections(slSections);
+        ReadSections(slSections);
+
+        For iPos := 0 to slSections.Count -1 do
+        begin
+          slSection := TStringList.Create;
+          ReadSectionValues(slSections[iPos], slSection);
+          slCombinations.AddObject(slSections[iPos],slSection);
+        end;{for}
+
+        slSections.Free;
+      end else
+      begin
+        // NOT by GL Code
+        slSection := TStringList.Create;
+        ReadSectionValues('-Invalid Combinations', slSection);
+        slCombinations.AddObject('-Invalid Combinations',slSection);
+
+        slSection := TStringList.Create;
+        ReadSectionValues('-Valid Combinations', slSection);
+        slCombinations.AddObject('-Valid Combinations',slSection);
+      end;{if}
+
+{      sByGLString := UpperCase(ReadString('Options','ByGLCode','FALSE'));
+      if sByGLString = 'TRUE' then
+        sGLCode := IntToStr(iGLCode)
+      else
+        sGLCode := '';}
+
+      {read section for the GLCode}
+(*      ReadSectionValues(sGLCode + '-Invalid Combinations', Exclusions);
+      ReadSectionValues(sGLCode + '-Valid Combinations', Inclusions);
+
+      {Use the GL Wild-Card if there are no settings for the specific GL Code}
+      if (Exclusions.Count = 0) and (Inclusions.Count = 0) and (sByGLString = 'TRUE') then
+      begin
+        ReadSectionValues('*********-Invalid Combinations', Exclusions);
+        ReadSectionValues('*********-Valid Combinations', Inclusions);
+      end;{if}*)
+
+      Free;
+    end; // with CCIni do...
+
+//    Exclusions := TStringList.Create;
+//    Inclusions := TStringList.Create;
+
+    bInitialised := TRUE;
+  end;
+
+Begin
+  { Handle Hook Events here }
+  if bHookEnabled then begin
+
+    with EventData do begin
+      case WinId of
+        {Before enterprise validates a transaction line}
+        EnterpriseBase + 4000 : begin
+//            if (HandlerID in [18..21,23,24]) then
+          if (HandlerID in [18..24]) then
+          begin
+            if not bInitialised then Initialise;
+
+            if Setup.ssUseCCDep then begin
+              with Transaction, thLines.thCurrentLine do begin
+                ValidStatus := TRUE;
+                BoResult := TRUE;
+                if (AccessRights <> NotAvailable) then begin
+                  rTemp := EntInvLTotal(TRUE,0);
+                  if (rTemp <> 0) then begin
+                    BoResult := CCDeptValid(tlCostCentre, tlDepartment, tlGLCode
+                    , Setup.ssDataPath, tlLineNo, LocalMessageDlg);
+                  end;{if}
+                end;{if}
+              end;{with}
+            end;{if}
+          end else
+          begin
+//              if (HandlerID = 22) then begin
+//                ValidStatus := TRUE;
+//                BoResult := TRUE;
+//              end;{if}
+          end;{if}
+
+        end;
+      end;{case}
+    end;{with}
+  end;{if}
+
+  { Pass onto other Hook DLL's }
+  DLLChain.ExecCustomHandler(EventData);
+End;
+
+{Callback Procedure used to show the error messages}
+Procedure LocalMessageDlg(const sMessage : string);
+begin
+  MessageDlg(sMessage, mtWarning, [mbOK], 0);
+end;
+
+end.

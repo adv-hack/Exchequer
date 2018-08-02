@@ -1,0 +1,603 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Stefan Hoffmeister">
+   <title>TEmail Readme File</title>
+</head>
+<body>
+
+<center><h2>TEmail: MAPI component (V2.10.0)</h2></center>
+
+<center><h3>
+<a href="mailto:Danny.Heijl@cevi.be">Danny Heijl</a>
+&nbsp;
+<a href="http://www.cevi.be/pp/danny/dhe.htm">[URL]</a>
+</h3></center>
+
+<center><h3>
+<a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a>
+&nbsp;
+<a href="http://www.econos.de/">[URL]</a>
+</h3></center>
+
+<hr size="3">
+
+<p>TEmail is a non-visual component that allows you to send and receive e-mail
+on any Windows 3.x or Windows 95 or Windows NT PC that has MAPI-compatible
+e-mail provider software installed.
+
+<p>MAPI is an acronym for Microsoft's &quot;Messaging Application Programming Interface&quot;.
+
+<p>Microsoft Mail,  Microsoft Exchange, Microsoft Messaging client software, and 
+Novell GroupWise client software are examples of MAPI providers.
+
+<p>They all supply &quot;Simple MAPI&quot; services via MAPI(32).DLL.
+
+<p><b>Note: If support for MAPI has not been installed on your system, you will not be 
+able to <i>test</i> your application that uses TEmail!</b>
+
+<p>You can <i>develop</i> without MAPI support though.
+
+<p>The component will also test the availability of MAPI at runtime.
+
+<hr size="3">
+
+<ol>
+<li><a href="#instructions">Installation Instructions</a></li>
+<li><a href="#description">Component Description</a></li>
+<li><a href="#history">History, Authors and Credits</a></li>
+</ol>
+
+<hr>
+
+<a name="instructions"></a>
+<h3>1. Installation instructions :</h3>
+
+<table border="2">
+<tr>
+<td>1. Unzip Temail2.zip to a temporary directory</td>
+</tr>
+
+<tr>
+<td>2. Copy compon\*.* to your component directory</td>
+</tr>
+
+<tr>
+<td>3. Installation for
+<ul>
+
+<li>
+<b>Delphi 1</b>: Install <b>email16.pas</b> into your component library
+and rebuild the component library.
+
+<br>Add <b>email.kwf</b> to your help system using helpinst.exe and copy
+<b>email.hlp</b> to the Delphi \BIN directory.
+
+</li>
+</ul>
+
+<ul>
+<li>
+<b>Delphi 2 and C++ Builder 1.0</b>: Install <b>email32.pas</b> into your component library
+and rebuild the component library.
+
+<br>Add <b>email.kwf</b> to your help system using helpinst.exe and copy
+<b>email.hlp</b> and <b>email.cnt</b> to the respective \BIN directory.
+
+</li>
+</ul>
+
+<ul>
+<li>
+<b>Delphi 3</b>: Either install <b>email32.pas</b> into one of your user-defined
+packages, or open (File | Open) <b>email3.dpk</b> and press Install.
+
+<br>Copy <b>email.hlp</b> and <b>email.cnt</b> to your Delphi \HELP directory,
+open DELPHI3.CFG in \HELP with a text editor and add to the end of this
+file the text:
+<ul><tt>; TEmail Help</tt>
+<br><tt>;------------</tt>
+<br><tt>:Link email.hlp</tt></ul>
+Finally delete DELPHI3.GID.
+
+</li>
+</ul>
+
+<ul>
+<li>
+<b>C++ Builder 3.0:</b> Either install <b>email32.pas</b> into one of your 
+user-defined packages, or open (File | Open) <b>email3.bpk</b> and press Install.
+<p>Copy <b>email.hlp</b> and <b>email.cnt</b> to your C++ Builder \HELP folder, 
+then Help | Customize... your online help to include this help file.
+</ul>
+
+<ul>
+<li>
+<b>Delphi 4:</b> Either install <b>email32.pas</b> into one of your 
+user-defined packages, or open (File | Open) <b>email4.dpk</b> and 
+press Install.
+<p>
+Copy <b>email.hlp</b> and <b>email.cnt</b> to your Delphi 4 \HELP 
+folder, then Help | Customize... your online help to include this help file.
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>4. From this moment on you can play with the provided demo applications.
+
+<p>You may want to have a look at the FAXDEMO directory, which contains
+another demonstration of how to use the component with MAPI Fax support.
+
+<p>Alternatively you can play with the &quot;TEmail&quot; component itself.</td>
+</tr>
+</table>
+
+<hr>
+
+<a name="description"></a>
+<h3>2. Component Description :</h3>
+
+<h4>Published properties (design-time) :</h4>
+
+<ul>
+<li>
+<b>Acknowledge</b> : Boolean : sendmail sets receipt requested</li>
+
+<li>
+<b>Attachment</b> : TStrings with attachment file names</li>
+
+<li>
+<b>CC</b> : TStrings with CC</li>
+
+<li>
+<b>BCC</b> : TStrings with BCC</li>
+
+<li>
+<b>DownLoadFirst</b> : Boolean : MAPI will first get new mail messages before
+returning from Logon if set to True. If left False, Logon will return immediately
+and new mail will be fetched in background.</li>
+
+<li>
+<b>MAPIAvail</b> : Boolean read-only flag tells if MAPI services are present.</li>
+
+<li>
+<b>NewSession</b> : Boolean to select whether to unconditionally start a new MAPI session.</li>
+
+<li>
+<b>Password</b> : the logon password</li>
+
+<li>
+<b>Profile</b> : the Exchange logon profile (or MSMAIL logon id) defaults to Exchange
+DefaultProfile from registry when running on a Win32 system</li>
+
+<li>
+<b>Recipient</b> : TStrings with recipients</li>
+
+<li>
+<b>ShowDialog</b> : lets you use the standard Mail clients editor</li>
+
+<li>
+<b>Subject</b> : Pascal (short)string with subject</li>
+
+<li>
+<b>Text</b> : Pascal (short)string with (short) message body text</li>
+
+<li>
+<b>TruncAttFN</b> : determines whether to truncate the filename of an attachment</li>
+
+<li>
+<b>UnreadOnly</b> : Boolean : retrieves only new messages with GetNextMessageID</li>
+
+<li>
+<b>UseDefProfile</b> : Boolean : lets you use the Exchange default profile (this
+also works for a 16bit application running on a 32bit Windows)</li>
+
+</ul>
+Logon profile and password are not needed if you are already logged on.
+<br>If you are not logged on, you can leave them blank, a logon dialog
+box will pop up.
+
+<p><b>Public methods</b> :
+<ul>
+<li>
+<b>function SetLongText</b> : PChar : sets pointer to long message text</li>
+
+<li>
+<b>function GetLongtext</b> : PChar : gets pointer to long message text</li>
+
+<li>
+<b>function Logon</b> : integer : mapi logon</li>
+
+<li>
+<b>function Logoff</b> : integer : mapi logoff</li>
+
+<li>
+<b>function CheckRecipient</b> : (short)string returns valid recipient</li>
+
+<li>
+<b>function CheckAttachment</b> : (short)string returns valid attachment</li>
+
+<li>
+<b>procedure Clear</b> : invalidate and clear a number of message fields</li>
+
+<li>
+<b>function SendMail</b> : integer : sends mail</li>
+
+<li>
+<b>function SaveMail</b> : integer : saves mail</li>
+
+<li>
+<b>function CountUnread</b> : integer : counts unread messages</li>
+
+<li>
+<b>function GetNextMessageId</b> : (short)string : gets next message id</li>
+
+<li>
+<b>function ReadMail</b> : integer : reads a mail by message id</li>
+
+<li>
+<b>function Address</b> : check all addresses in recipient stringlists allows
+user to add addresses with dialog box pop-up</li>
+
+<li>
+<b>function CopyAttachment(index, destination, deleteflag)</b> : integer, copies
+a given attachment from it's temp location to a destination pathname optionally
+deleting the temporary copy.</li>
+
+<li>
+<b>procedure DownLoad</b> : will get new mail by logging off, setting DownLoadFirst
+to True, and loggin on again.</li>
+</ul>
+
+<h4>
+Public properties (runtime) :</h4>
+
+<ul>
+<li>
+<b>AttPathNames</b> : TStrings with received attachment temp pathnames if NoAttachments
+was False on ReadMail.</li>
+
+<li>
+<b>DateRecvd</b> : (short)string : date received (ReadMail)</li>
+
+<li>
+<b>HeaderOnly</b> : boolean : ReadMail returns &quot;envelope only&quot;</li>
+
+<li>
+<b>LeaveUnread</b> : boolean : ReadMail does not flag read messages &quot;read&quot;</li>
+
+<li>
+<b>MessageId</b> : (short)string : message id for ReadMail and DeleteMail, returned
+by GetNextMessageId</li>
+
+<li>
+<b>MessageType</b> : (short)string : message type</li>
+ 
+<li>
+<b>Originator</b> : (short)string : message originator (readmail)</li>
+
+<li>
+<b>OrigAddress</b> : (short)string, mail address of originator</li>
+
+<li>
+<b>Unread</b> : boolean : message was already marked &quot;read&quot; flag (ReadMail)</li>
+
+<li>
+<b>NoAttachments</b> : boolean : ReadMail does not retrieve attachments If set
+False : attachments are copied to a temporary location, you get the temporary
+pathnames in the AttPathNames stringlist.</li>
+</ul>
+
+<h4>
+<b>Take care:</b> If you set NoAttachments to false, then .ReadMail will put the
+attachments in a temp directory, and you have to delete them yourself,
+or call .CopyAttachment with the delete_after_copy flag set to True!</h4>
+
+<hr>
+
+<a name="history"></a>
+<h3>3. History:</h3>
+
+<p>More details can be found in the online help.
+
+<h4>
+Original version 1.00.00 : Keith Darragh (c) SWIFTsoft 1995</h4>
+
+<h4>Version 2.00.00, 2.00.0a, 2.00.0b: <a href="mailto:Danny.Heijl@cevi.be">Danny
+Heijl:</a></h4>
+
+Extended Keith's code sample to a fully functional MAPI component with
+demo application:
+<ul>
+<li>MAPI header file moved to a separate &quot;smapi.pas&quot; (simple mapi.pas)</li>
+<li>
+adds Acknowledge property (acknowledge receipt)</li>
+
+<li>
+adds CC property (multiple CCs in a stringlist)</li>
+
+<li>
+adds support for multiple recipients (in a stringlist)</li>
+
+<li>
+adds support for multiple attachments (in a stringlist)</li>
+
+<li>
+adds SetLongText/GetLongText methods, in case your message text happens to be
+&gt; 255 bytes in size</li>
+<li>
+adds CheckRecipient method</li>
+
+<li>
+adds CheckAttachment method</li>
+
+<li>
+adds GetNextMessageId method</li>
+
+<li>
+adds ReadMail method</li>
+
+<li>
+adds 'LeaveUnread' property for ReadMail</li>
+
+<li>
+adds 'NoAttachments' property for ReadMail</li>
+
+<li>
+adds 'HeaderOnly' property for ReadMail</li>
+
+<li>
+adds support for DELPHI 2.0</li>
+</ul>
+
+<h4>Version 2.00.0c:</h4>
+<h4><a href="mailto:R.Claasen@tip.nl">Rudi Claasen</a>:</h4>
+
+<li>
+added MAPI &quot;address&quot; dialog</li>
+
+<ul>
+<li>
+added BCC property</li>
+
+<li>
+moved repeated code to an internal procedure &quot;ListToRecipArray&quot;</li>
+</ul>
+
+<h4><a href="mailto:Danny.Heijl@cevi.be">Danny Heijl</a>:</h4>
+
+<ul>
+<li>
+added &quot;profile&quot; and &quot;password&quot; properties</li>
+
+<li>
+added &quot;UseDefProfile&quot; property for Win32 Exchange clients</li>
+</ul>
+
+<h4>Version 2.01.00: <a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a>:</h4>
+
+<ul>
+<li>
+added &quot;pass-thru addressing&quot;, ie: [FAX:123456] or [SMTP:xxx@yyy] by-passing
+the address book</li>
+
+<li>
+implemented dynamic loading of the MAPI(32).DLL, raises exception if MAPI(32).DLL
+is not found</li>
+
+<li>
+added &quot;MAPIAvail&quot; property (read-only)</li>
+
+<li>
+implemented dynamic arrays for recipient/attachment arrays</li>
+
+<li>
+some cosmetic changes</li>
+</ul>
+
+<h4>Version 2.02.00: <a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a>:</h4>
+
+<ul>
+<li>
+enabled &quot;UseDefProfile&quot; property for 16bit applications running on a native
+32bit systems (Win95, WinNT)
+
+<br>(this requires the public domain unit Call32NT which is included.
+<br>Note: A minor bug has been fixed in this version of Call32NT.
+It is very very unlikely that it would materialize, but then...)
+</li>
+
+<li>
+added a second attempt to load DLLs dynamically (for NT)</li>
+
+<li>
+added property ShowDialog - use the standard MAPI editor for editing</li>
+</ul>
+
+<h4>Version 2.02.0a:</h4>
+<h4><a href="mailto:iesmail@edc.gov.ab.ca">Ismail Esmail</a></h4>
+
+<ul>
+<li>
+runtime property &quot;OrigAddress&quot; added</li>
+
+<li>
+Also: minor bugfix for Delphi 16 in the 2.02.00 code (<b>Danny</b>)</li>
+</ul>
+
+<h4>Version 2.03.00:</h4>
+
+<h4><a href="mailto:Danny.Heijl@cevi.be">Danny Heijl</a>:</h4>
+Changes to attachment code suggested by <a href="mailto:rem@mega.tomsk.ru">Roman
+Popov</a>:
+<ul>
+<li>
+added runtime stringlist property with the pathnames of received attachments</li>
+
+<li>
+the pathname of attachments is returned in the attachment property in case
+your MAPI implementation does not use the filename member of the mapimessage
+structure</li>
+
+<li>
+a new method &quot;CopyAttachment(stringlist_index, destination, deleteaftercopyflag)&quot;
+copies an attachment for you.
+
+<br>If you double-click an attachment in the listbox in the demo app you
+can try this out.
+</li>
+
+</ul>
+
+<h4><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a>:</h4>
+
+<ul>
+<li>
+tested with Delphi 3, implemented resource strings.</li>
+</ul>
+
+<h4>
+<a href="mailto:stevep@direct.ca">Steve Pinneo</a> :</h4>
+
+<ul>
+<li>
+A new enhanced &quot;Demo App&quot;, further enhanced by Stefan.</li>
+</ul>
+
+<h4>Version 2.04.00:</h4>
+<h4><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a>:</h4>
+
+<ul>
+<li>
+If UseDefProfile = true was used in a 16bit Windows environment, error
+messages would be shown, though the component would continue to work. This
+has been fixed.</li>
+
+<li>
+Added property UnreadOnly as suggested by <a href="mailto:N.Soumarokov@iaea.org">Nikolai
+Soumarokov</a> - this will only retrieve unread mail.</li>
+
+<li>
+Some changes to the help file and documentation.</li>
+
+<li>
+Added FAX broadcast demo courtesy of <a href="mailto:mwilcox@economatics.co.uk">Michael
+Wilcox</a>. This application demonstrates how to amend a database of address
+details and fax a letter to people automatically using MS Exchange.</li>
+</ul>
+
+<h4>Version 2.05.00:</h4>
+<h4><a href="mailto:Danny.Heijl@cevi.be">Danny Heijl</a>:</h4>
+
+<ul>
+<li>
+Implemented new property <b>DownLoadFirst</b> and new procedure <b>Download</b>
+on suggestion of <a href="mailto:rem@mega.tomsk.ru">Roman Popov</a></li>
+
+<li>
+Updates to the documentation</li>
+</ul>
+
+<h4>Version 2.05.01:</h4>
+<b><a href="mailto:schoth@krohne.mhs.compuserve.com">Ulrik Schoth</a></b>
+:
+<ul>
+<li>
+The component now uses the correct registry key under Windows NT when &quot;UseDefProfile&quot;
+is True</li>
+</ul>
+
+<h4>Version 2.06.00:</h4>
+<b><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a></b>:
+<ul>
+<li>
+Integrated code for adding filename information for attachments created
+by <a href="mailto:kennedym@indigo.ie">Michael Kennedy</a></li>
+
+<li>
+Memory leaks in demo and component fixed</li>
+
+<li>
+Added Borland C++ Builder 1.0 compatibility</li>
+
+<li>
+Updates to the documentation</li>
+</ul>
+
+<h4>Version 2.07.00:</h4>
+<b><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a></b>:
+<ul>
+<li>
+Integrated code for SendMail and NewSession written
+by <a href="mailto:daniel.easton@launch.com">Daniel Easton</a></li>
+
+<li>
+Bug in 2.06.00 thunking code fixed</li>
+
+<li>
+Some internal restructuring, in particular flLogonFlags made protected</li>
+
+<li>
+Changed MAPI detection logic</li>
+
+<li>
+Updates to the documentation</li>
+</ul>
+
+
+<h4>Version 2.08.00:</h4>
+<b><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a></b>:
+<ul>
+<li>
+Fixed a long-standing issue where TEmail could not send mail to recipients where
+the name in the address book was not unique (e.g. two entries for &quot;Stefan Hoffmeister&quot;)</li>
+<li>Fixes compilation problem with C++ Builder</li>
+<li>Added a public &quot;MessageType&quot; property (Danny).</li>
+</ul>
+
+
+<h4>Version 2.08.01:</h4>
+<b><a href="mailto:Danny.Heijl@cevi.be">Danny Heijl</a></b> (never published):
+<ul>
+<li>A fix for use of TEmail with the Eudora PRO 3 and 4 MAPI support DLL's, by
+<a href="mailto:chronological@dial.pipex.com">Ken Clark</a>
+</li>
+<li>A new (read-only) &quot;Version&quot; property.
+</ul>
+
+
+<h4>Version 2.09.00 - 2.09.02:</h4>
+<b><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a></b>:
+
+<ul>
+<li>Code updated to support Delphi 4 and C++ Builder 3.0</li>
+<li>Updated C++ Builder 1.0 and 3.0 projects, courtesy 
+of <a href="mailto:G.Patel@Wanadoo.fr">Gerald Patel</a></li>
+<li>Added C++ Builder 3.0 project files</li>
+<li>Documentation updates</li>
+<li>...more details can be found in the online documentation.</li>
+</ul>
+
+
+<h4>Version 2.10.0:</h4>
+<b><a href="mailto:Stefan.Hoffmeister@Econos.de">Stefan Hoffmeister</a></b>:
+
+<ul>
+<li>Fix problem with Outlook Express attachments</li>
+<li>Fix problem with Novell GroupWise 5.2 server</li>
+<li>Documentation updates</li>
+<li>...more details can be found in the online documentation.</li>
+</ul>
+
+
+<hr size="2"><i>If you have added features
+to this component feel free to send them and they will probably be incorporated
+into future releases to the benefit of everybody.</i>
+
+<hr size="2">
+
+<p>Last update: 1 November 1998
+</body>
+</html>

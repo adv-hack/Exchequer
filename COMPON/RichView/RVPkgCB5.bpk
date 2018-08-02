@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="RVPkgCB5.bpl"/>
+    <OBJFILES value="RVStyle.obj DLines.obj PtblRV.obj RVScroll.obj RichView.obj RVEdit.obj 
+      CRVPP.obj RVPP.obj RVSEdit.obj CRVData.obj CRVFData.obj PtRVData.obj 
+      RVBack.obj RVERVData.obj RVFMisc.obj RVFuncs.obj RVItem.obj RVReg.obj 
+      RVRVData.obj RVUndo.obj RVUni.obj RVTable.obj RVCodePages.obj 
+      RVDataList.obj RVClasses.obj RVTInplace.obj RVCtrlData.obj RVStr.obj 
+      RVRTFErr.obj RVRTFProps.obj RVRTF.obj RVMapWht.obj CtrlImg.obj RVMisc.obj 
+      RVReport.obj RVSer.obj RVDsgn.obj RVOfficeCnv.obj RVMarker.obj 
+      RVXPTheme.obj RVResize.obj RVDragDrop.obj RVLinear.obj RVGetText.obj 
+      RVThread.obj RVWordPaint.obj RVAnimate.obj RVGetTextW.obj RVPopup.obj 
+      RVSeqItem.obj RVSubData.obj RVLabelItem.obj RVNote.obj RVDocParams.obj 
+      RVWinGrIn.obj RVGrIn.obj RVPkgCB5.obj"/>
+    <RESFILES value="RVPkgCB5.res RVReg.dcr"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) RVDsgn.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="Vcl50.lib vcljpg50.lib"/>
+    <PACKAGES value="vcl50.bpi vcljpg50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="RVPkgCB5.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-O2 -H=c:\PROGRA~1\borland\CBUILD~4\lib\vcl50.csm -Hc -Vx -Ve -Tkh30000 
+      -X- -a8 -b- -k- -vi -c -tWM"/>
+    <PFLAGS value="-$Y- -$L- -$D- -v -M -JPHNE -LUvcl50"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-D&quot;RichView&quot; -aa -Tpp -Gpd -x -Gn -Gl -Gi"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=9
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1251
+
+[Version Info Keys]
+CompanyName=Sergey Tkachenko
+FileDescription=RichView Package for C++Builder5
+FileVersion=1.9.0.0
+InternalName=RVPkg
+LegalCopyright=(C) Sergey Tkachenko
+LegalTrademarks=
+OriginalFilename=RVPkgCB5
+ProductName=RichView
+ProductVersion=1.9.0.0
+
+[Excluded Packages]
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=5
+Item0=$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=$(BCB)\Projects\Lib;D:\Program Files\Borland\CBuilder4\Lib\;$(BCB)\lib\obj;$(BCB)\lib
+Item2=$(BCB)\Projects\Lib;..\..\Program Files\Borland\CBuilder4\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item3=..\..\Program Files\Borland\CBuilder4\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item4=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_RTLDLL;USEPACKAGES
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=.
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

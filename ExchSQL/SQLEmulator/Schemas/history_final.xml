@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="uQTZWWo+3t0Tzh5MohKXsQ" identitycol="PositionId" recordfieldname="" reclen="159">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_code" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="hiCode"></schemafield>
+    <schemafield fieldname="f_ex_class" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="hiExCLass"></schemafield>
+    <schemafield fieldname="f_cr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="hiCurrency"></schemafield>
+    <schemafield fieldname="f_yr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="hiYear"></schemafield>
+    <schemafield fieldname="f_pr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="hiPeriod"></schemafield>
+    <schemafield fieldname="f_sales" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiSales"></schemafield>
+    <schemafield fieldname="f_purchases" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiPurchases"></schemafield>
+    <schemafield fieldname="f_budget" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiBudget"></schemafield>
+    <schemafield fieldname="f_cleared" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiCleared"></schemafield>
+    <schemafield fieldname="f_revised_budget_1" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiRevisedBudget1"></schemafield>
+    <schemafield fieldname="f_value1" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiValue1"></schemafield>
+    <schemafield fieldname="f_value2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiValue2"></schemafield>
+    <schemafield fieldname="f_value3" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiValue3"></schemafield>
+    <schemafield fieldname="f_revised_budget_2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiRevisedBudget2"></schemafield>
+    <schemafield fieldname="f_revised_budget_3" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiRevisedBudget3"></schemafield>
+    <schemafield fieldname="f_revised_budget_4" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiRevisedBudget4"></schemafield>
+    <schemafield fieldname="f_revised_budget_5" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiRevisedBudget5"></schemafield>
+    <schemafield fieldname="f_spare_v" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="hiSpareV"></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_ex_class</item>
+		  <item computedcolumnname="hiCodeComputed">f_code</item>
+        <item>f_cr</item>
+        <item>f_yr</item>
+        <item>f_pr</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>
+

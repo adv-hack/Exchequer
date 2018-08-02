@@ -1,0 +1,420 @@
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madBasic\Delphi 6\madBasic_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madBasic\Delphi 6\madHelp_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Search Path' -= 'C:\Program Files\madCollection\madBasic\Delphi 6;'
+'HKCU\Software\Borland\BDS\5.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\6.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\7.0\Globals'\'ForceEnvOptionsUpdate' = -
+'BDS4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS7', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 5', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Demos', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Help\Data', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Help', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Sources', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS4\madBasic.dcu', A249, 1CA946EB828B28E
+'BDS4\madBasic.h', 32, 1C4AEDA78712100
+'BDS4\madBasic.hpp', 43CF, 1CA946EB1EDAD5C
+'BDS4\madBasic.obj', 7A23, 1CA946EB1EDAD5C
+'BDS4\madBasic_.bpi', 6744, 1CA946EB213D2FC
+'BDS4\madBasic_.bpl', 2A000, 1CA946EB85F88A4
+'BDS4\madBasic_.dcp', 3852A, 1CA946EB23C5AF6
+'BDS4\madBasic_.lib', 39A00, 1CA946EB84A137A
+'BDS4\madCrypt.dcu', 2A76, 1CA946EB226E5CC
+'BDS4\madCrypt.h', 32, 1C4AEDA74DD9A00
+'BDS4\madCrypt.hpp', 8FE, 1CA946EB21170A2
+'BDS4\madCrypt.obj', 26FF, 1CA946EB21170A2
+'BDS4\madGraphics.dcu', 1213A, 1CA946EB2248372
+'BDS4\madGraphics.h', 38, 1C4AEDA7E670200
+'BDS4\madGraphics.hpp', B2B, 1CA946EB20A4994
+'BDS4\madGraphics.obj', FBC6, 1CA946EB20A4994
+'BDS4\madHelp_.bpl', 5200, 1CA946EB3FA32B4
+'BDS4\madLists.dcu', 6F60, 1CA946EB21FBEBE
+'BDS4\madLists.h', 32, 1C4AEDA832BB600
+'BDS4\madLists.hpp', 18DB, 1CA946EB1F27210
+'BDS4\madLists.obj', 58EC, 1CA946EB1F27210
+'BDS4\madRes.dcu', 4BA7, 1CA946EB226E5CC
+'BDS4\madRes.h', 2E, 1C4AEDA86BF3D00
+'BDS4\madRes.hpp', C57, 1CA946EB21170A2
+'BDS4\madRes.obj', 364A, 1CA946EB213D2FC
+'BDS4\madStrings.dcu', 7F67, 1CA946EB7E38E5C
+'BDS4\madStrings.h', 36, 1C4AEDA8B83F100
+'BDS4\madStrings.hpp', 2A0C, 1CA946EB1EB4B02
+'BDS4\madStrings.obj', 72B3, 1CA946EB1EB4B02
+'BDS4\madTools.dcu', 6D0F, 1CA946EB8180218
+'BDS4\madTools.h', 32, 1C4AEDA9048A500
+'BDS4\madTools.hpp', 1B2D, 1CA946EB1F00FB6
+'BDS4\madTools.obj', 53B6, 1CA946EB1F00FB6
+'BDS4\madTypes.dcu', 1A58, 1CA946EB7E12C02
+'BDS4\madTypes.h', 32, 1C4AEDA93DC2C00
+'BDS4\madTypes.hpp', 1510, 1CA946EB1DF5F40
+'BDS4\madTypes.obj', 1237, 1CA946EB1DF5F40
+'BDS4\madZip.dcu', C8FC, 1CA946EB226E5CC
+'BDS4\madZip.h', 2E, 1C4AEDA976FB300
+'BDS4\madZip.hpp', BCE, 1CA946EB20F0E48
+'BDS4\madZip.obj', 9194, 1CA946EB20F0E48
+'BDS6\madBasic.dcu', A975, 1CA946EBF7F6F96
+'BDS6\madBasic.hpp', 4676, 1CA946EB908CF9A
+'BDS6\madBasic.obj', 7C81, 1CA946EB90B31F4
+'BDS6\madBasic_.bpi', 6B84, 1CA946EB93D4356
+'BDS6\madBasic_.bpl', 2BA00, 1CA946EBFE8570E
+'BDS6\madBasic_.dcp', 3C2E8, 1CA946EB96CF25E
+'BDS6\madBasic_.lib', 3BA00, 1CA946EBFBD6CBA
+'BDS6\madCrypt.dcu', 2B87, 1CA946EB9551ADA
+'BDS6\madCrypt.hpp', 97D, 1CA946EB9387EA2
+'BDS6\madCrypt.obj', 2883, 1CA946EB9387EA2
+'BDS6\madGraphics.dcu', 12A8A, 1CA946EB9505626
+'BDS6\madGraphics.hpp', B1A, 1CA946EB9315794
+'BDS6\madGraphics.obj', FCAC, 1CA946EB9315794
+'BDS6\madHelp_.bpl', 5E00, 1CA946EBB61A032
+'BDS6\madLists.dcu', 7318, 1CA946EB9492F18
+'BDS6\madLists.hpp', 18E2, 1CA946EB914BB5C
+'BDS6\madLists.obj', 5A4D, 1CA946EB914BB5C
+'BDS6\madRes.dcu', 4FA9, 1CA946EB9551ADA
+'BDS6\madRes.hpp', DB4, 1CA946EB93AE0FC
+'BDS6\madRes.obj', 36E2, 1CA946EB93D4356
+'BDS6\madStrings.dcu', 9F1A, 1CA946EBF03754E
+'BDS6\madStrings.hpp', 2F3E, 1CA946EB9066D40
+'BDS6\madStrings.obj', 8588, 1CA946EB9066D40
+'BDS6\madTools.dcu', 792C, 1CA946EBF679812
+'BDS6\madTools.hpp', 1C6D, 1CA946EB90FF6A8
+'BDS6\madTools.obj', 5776, 1CA946EB9125902
+'BDS6\madTypes.dcu', 1B87, 1CA946EBF0112F4
+'BDS6\madTypes.hpp', 16AF, 1CA946EB8F0F816
+'BDS6\madTypes.obj', 12D0, 1CA946EB8F0F816
+'BDS6\madZip.dcu', CE53, 1CA946EB952B880
+'BDS6\madZip.hpp', C72, 1CA946EB9387EA2
+'BDS6\madZip.obj', 93A7, 1CA946EB9387EA2
+'BDS7\madBasic.dcu', D06B, 1CA946EC72C0146
+'BDS7\madBasic.hpp', 46A4, 1CA946EC0C14D0C
+'BDS7\madBasic.obj', A5FB, 1CA946EC0C14D0C
+'BDS7\madBasic_.bpi', 7DC4, 1CA946EC0F35E6E
+'BDS7\madBasic_.bpl', 31E00, 1CA946EC7712578
+'BDS7\madBasic_.dcp', 3DE27, 1CA946EC127D22A
+'BDS7\madBasic_.lib', 44E00, 1CA946EC7594DF4
+'BDS7\madCrypt.dcu', 2C2D, 1CA946EC10FFAA6
+'BDS7\madCrypt.hpp', 993, 1CA946EC0EC3760
+'BDS7\madCrypt.obj', 29C6, 1CA946EC0EC3760
+'BDS7\madGraphics.dcu', 12E26, 1CA946EC10B35F2
+'BDS7\madGraphics.hpp', B30, 1CA946EC0E51052
+'BDS7\madGraphics.obj', 10195, 1CA946EC0E51052
+'BDS7\madHelp_.bpl', 6600, 1CA946EC31C7FFE
+'BDS7\madLists.dcu', 84FB, 1CA946EC1040EE4
+'BDS7\madLists.hpp', 1904, 1CA946EC0C8741A
+'BDS7\madLists.obj', 6DE2, 1CA946EC0C8741A
+'BDS7\madRes.dcu', 57BD, 1CA946EC10FFAA6
+'BDS7\madRes.hpp', DCA, 1CA946EC0EE99BA
+'BDS7\madRes.obj', 426D, 1CA946EC0F0FC14
+'BDS7\madStrings.dcu', 9F79, 1CA946EC6C57C28
+'BDS7\madStrings.hpp', 2F54, 1CA946EC0BC8858
+'BDS7\madStrings.obj', 863A, 1CA946EC0BEEAB2
+'BDS7\madTools.dcu', 855F, 1CA946EC7168C1C
+'BDS7\madTools.hpp', 1C87, 1CA946EC0C611C0
+'BDS7\madTools.obj', 678F, 1CA946EC0C611C0
+'BDS7\madTypes.dcu', 266E, 1CA946EC6C319CE
+'BDS7\madTypes.hpp', 16C5, 1CA946EC0AE3A3C
+'BDS7\madTypes.obj', 2ADA, 1CA946EC0AE3A3C
+'BDS7\madZip.dcu', E1B1, 1CA946EC10D984C
+'BDS7\madZip.hpp', C88, 1CA946EC0E9D506
+'BDS7\madZip.obj', AEDA, 1CA946EC0EC3760
+'Delphi 4\madBasic.dcu', 8EAE, 1CA946E9C014DC8
+'Delphi 4\madBasic_.bpl', 29200, 1CA946E9C820CC4
+'Delphi 4\madBasic_.dcp', 32E64, 1CA946E7B7957C6
+'Delphi 4\madCrypt.dcu', 275F, 1CA946E9C3A8638
+'Delphi 4\madGraphics.dcu', 11FD7, 1CA946E7B2AAA2C
+'Delphi 4\madHelp_.bpl', 4800, 1CA946E9A4F61CC
+'Delphi 4\madHookWinHelp.dll', 19298, 1CA946E9A0C9FF4
+'Delphi 4\madLists.dcu', 66B7, 1CA946E7B094940
+'Delphi 4\madRes.dcu', 408C, 1CA946E8AA2CC1E
+'Delphi 4\madStrings.dcu', 5311, 1CA946E9C30FCD0
+'Delphi 4\madTools.dcu', 56A8, 1CA946E9C335F2A
+'Delphi 4\madTypes.dcu', 18FE, 1CA946E9C2E9A76
+'Delphi 4\madZip.dcu', A21E, 1CA946E9C3823DE
+'Delphi 5\madBasic.dcu', 8EA7, 1CA946EA577A2F8
+'Delphi 5\madBasic_.bpl', 28C00, 1CA946EA5B5A01C
+'Delphi 5\madBasic_.dcp', 325DF, 1CA946E9E8C2FC2
+'Delphi 5\madCrypt.dcu', 293D, 1CA946E9E7DE1A6
+'Delphi 5\madGraphics.dcu', 11ECA, 1CA946E9E7B7F4C
+'Delphi 5\madHelp_.bpl', 4800, 1CA946EA09FDC28
+'Delphi 5\madHookWinHelp.dll', 19298, 1CA946E9A0C9FF4
+'Delphi 5\madLists.dcu', 66A3, 1CA946E9E76BA98
+'Delphi 5\madRes.dcu', 497A, 1CA946E9E804400
+'Delphi 5\madStrings.dcu', 5314, 1CA946EA553DFB2
+'Delphi 5\madTools.dcu', 562F, 1CA946EA5707BEA
+'Delphi 5\madTypes.dcu', 176A, 1CA946EA5517D58
+'Delphi 5\madZip.dcu', AD91, 1CA946E9E7DE1A6
+'Delphi 6\madBasic.dcu', 8F38, 1CA946EAC598CC6
+'Delphi 6\madBasic_.bpl', 29A00, 1CA946EAC92C536
+'Delphi 6\madBasic_.dcp', 369FE, 1CA946EA6A8CFF8
+'Delphi 6\madCrypt.dcu', 2954, 1CA946EA6935ACE
+'Delphi 6\madGraphics.dcu', 12039, 1CA946EA690F874
+'Delphi 6\madHelp_.bpl', 5400, 1CA946EA9066544
+'Delphi 6\madLists.dcu', 66AD, 1CA946EA689D166
+'Delphi 6\madRes.dcu', 497C, 1CA946EA695BD28
+'Delphi 6\madStrings.dcu', 7702, 1CA946EAC2EA272
+'Delphi 6\madTools.dcu', 651C, 1CA946EAC54C812
+'Delphi 6\madTypes.dcu', 18A3, 1CA946EAC2EA272
+'Delphi 6\madZip.dcu', BCB0, 1CA946EA6935ACE
+'Demos\under construction', 0, 1BFE9B8D6FFB600
+'Help\Content.htm', 6A7, 1C4C4E8E6FCCB00
+'Help\Data\Accounts.htm', 3097, 1C5ACE79492D200
+'Help\Data\ACEs.htm', 308D, 1C5ACE79492D200
+'Help\Data\ACLs.htm', 4A03, 1C5ACE79492D200
+'Help\Data\AllocFreeMemEx.htm', E2B, 1C5ACE79361A500
+'Help\Data\ApiCodeHooking.htm', 40D5, 1C5ACE79492D200
+'Help\Data\ApiHookingMethods.htm', 7A7C, 1C5BC9A4C3D5300
+'Help\Data\bcklight.gif', 9CD, 1BFEBEEEBC58F00
+'Help\Data\BooleanTypes.htm', 1759, 1C5ACE79361A500
+'Help\Data\CharTypes.htm', D26, 1C5ACE79361A500
+'Help\Data\Content.htm', 1D3E, 1C5ACE79492D200
+'Help\Data\CopyFunction.htm', 17F3, 1C5ACE79361A500
+'Help\Data\CreateFileADisAsm.htm', FC7, 1C5ACE79361A500
+'Help\Data\CreateRemoteThread.htm', 1809, 1C5ACE79361A500
+'Help\Data\CriticalSections.htm', 1B18, 1C5ACE79361A500
+'Help\Data\DisplayModes.htm', 3B26, 1C5ACE79492D200
+'Help\Data\DllInjecting.htm', 7A59, 1CA9211912FC32A
+'Help\Data\e.gif', 32, 1C0929DFBE54000
+'Help\Data\EnumProcesses.htm', 1440, 1C5ACE79361A500
+'Help\Data\EventsAndMutexes.htm', 4946, 1C5ACE79361A500
+'Help\Data\ExampleMapFile.htm', 1B8E, 1C5ACE79492D200
+'Help\Data\exc-ss1.gif', 10C0, 1C3AC6BEC279100
+'Help\Data\exc-ss2.gif', 17E8, 1C3AC6BF6E22600
+'Help\Data\exc-ss3.gif', 190B, 1C5798871B30D00
+'Help\Data\FileStuff.htm', 1EAF, 1C5ACE79361A500
+'Help\Data\Handles.htm', 63FA, 1C5ACE79361A500
+'Help\Data\History.htm', 2DC91, 1CA922D97824AC4
+'Help\Data\HookingNotepad.htm', 2ABD, 1C5ACE79492D200
+'Help\Data\HookingRules.htm', 1CF4, 1CA8FC0E4400898
+'Help\Data\HowToUseMadCodeHook.htm', 54E2, 1CA9212BF512234
+'Help\Data\HowToUseMadExcept.htm', 25FC, 1C5ACE79492D200
+'Help\Data\IAccountRef.htm', 1484, 1C5ACE79492D200
+'Help\Data\IAceRef.htm', 13BE, 1C5ACE79492D200
+'Help\Data\IAclRef.htm', 250D, 1C5ACE79492D200
+'Help\Data\IBasicBaseInterface.htm', 4601, 1C5ACE79361A500
+'Help\Data\IBasicListRef.htm', 207E, 1C5ACE79361A500
+'Help\Data\IBasicLists.htm', 2BA8, 1C5ACE79361A500
+'Help\Data\IBasicRef.htm', FED, 1C5ACE79361A500
+'Help\Data\ICriticalSectionRef.htm', 1493, 1C5ACE79361A500
+'Help\Data\ICustomBasicListBaseInterface.htm', 30E8, 1C5ACE79361A500
+'Help\Data\ICustomBasicListRef.htm', 1B6A, 1C5ACE79361A500
+'Help\Data\IDisplayModeRef.htm', 158F, 1C5ACE79492D200
+'Help\Data\IDisplayModesRef.htm', 1D5E, 1C5ACE79492D200
+'Help\Data\IDLists.htm', 2EE1, 1C5ACE79492D200
+'Help\Data\IEventRef.htm', 1B5B, 1C5ACE79361A500
+'Help\Data\IExportEntryRef.htm', 12D0, 1C5ACE79361A500
+'Help\Data\IHandleRef.htm', 15EA, 1C5ACE79361A500
+'Help\Data\IHandlesRef.htm', 1F96, 1C5ACE79361A500
+'Help\Data\IIDListRef.htm', 1545, 1C5ACE79492D200
+'Help\Data\IInterfaceListRef.htm', 1DB5, 1C5ACE79361A500
+'Help\Data\IKernelObjRef.htm', 14D3, 1C5ACE79361A500
+'Help\Data\IListBaseInterface.htm', 2356, 1C5ACE79361A500
+'Help\Data\IListRef.htm', 1634, 1C5ACE79361A500
+'Help\Data\IMEAttachmentsRef.htm', B4A, 1C5E577E40F3D00
+'Help\Data\IMEExceptionRef.htm', 4EBB, 1C98B81C766DBBE
+'Help\Data\IMEFieldsRef.htm', C08, 1C5ACE79492D200
+'Help\Data\IMEModuleSettingsRef.htm', 4BA8, 1C7131AC0519D00
+'Help\Data\IMESettingsRef.htm', 3A8A, 1C5ACE79492D200
+'Help\Data\IModuleRef.htm', 189A, 1C5ACE79361A500
+'Help\Data\IModulesRef.htm', 1E39, 1C5ACE79361A500
+'Help\Data\IMutexRef.htm', 1AE9, 1C5ACE79361A500
+'Help\Data\INamedBufferRef.htm', 181C, 1C5ACE79361A500
+'Help\Data\Index.htm', 31CCD, 1CA920D79C64EB0
+'Help\Data\IndexClass.htm', 764, 1C5ACE79361A500
+'Help\Data\IndexError.htm', 2130, 1C856511A63F11A
+'Help\Data\IndexInterface.htm', 20EB, 1C5ACE79361A500
+'Help\Data\IndexPropMethod.htm', 2319F, 1CA471C044D5034
+'Help\Data\IndexRoutine.htm', 8A9A, 1CA920D79B59E3A
+'Help\Data\IndexType.htm', 5185, 1C98AE93A04F9EC
+'Help\Data\IndexUnit.htm', 177F, 1C5ACE79361A500
+'Help\Data\IndexVarConst.htm', 16FF, 1CA920D79BA62EE
+'Help\Data\InterfaceLists.htm', 3EDA, 1C5ACE79361A500
+'Help\Data\INVAssistantRef.htm', BB7, 1C7131AC0519D00
+'Help\Data\INVBitmapRef.htm', AE9, 1C5CD1CCB173000
+'Help\Data\INVButtonRef.htm', C63, 1C5CD1CCB173000
+'Help\Data\INVCheckBoxRef.htm', CF0, 1C5CD1CCB173000
+'Help\Data\INVEditRef.htm', ECA, 1C5BC9A4C3D5300
+'Help\Data\INVFormRef.htm', 127E, 1C5E577E40F3D00
+'Help\Data\INVImageRef.htm', E4B, 1C5ACE79492D200
+'Help\Data\INVItemRef.htm', A01, 1C5ACE79492D200
+'Help\Data\INVLabelRef.htm', BDF, 1C5CD1CCB173000
+'Help\Data\IObjAceRef.htm', 166F, 1C5ACE79492D200
+'Help\Data\IOtherKernelObjRef.htm', 1514, 1C3610D7E6C4600
+'Help\Data\IPC.htm', 3C26, 1C5ACE79492D200
+'Help\Data\IPointerListRef.htm', 1D7D, 1C5ACE79361A500
+'Help\Data\IProcessesRef.htm', 280A, 1C5ACE79361A500
+'Help\Data\IProcessRef.htm', 306E, 1C5ACE79361A500
+'Help\Data\IProgressAlertRef.htm', BDF, 1C5ACE79492D200
+'Help\Data\ISecurityObjectRef.htm', 1595, 1C5ACE79492D200
+'Help\Data\IShareRef.htm', 18DA, 1C5ACE79492D200
+'Help\Data\ISharesRef.htm', 1F01, 1C5ACE79492D200
+'Help\Data\IShellObjRef.htm', 25DD, 1C5ACE79492D200
+'Help\Data\IShortCutRef.htm', 1875, 1C5ACE79492D200
+'Help\Data\IThreadRef.htm', 23EB, 1C5ACE79361A500
+'Help\Data\IThreadsRef.htm', 257D, 1C5ACE79361A500
+'Help\Data\ITrayIconRef.htm', 16D1, 1C5ACE79361A500
+'Help\Data\ITrayIconsRef.htm', 1FAB, 1C5ACE79361A500
+'Help\Data\IUnknownTypes.htm', DBA, 1C5ACE79361A500
+'Help\Data\IWaitableObjRef.htm', 17AF, 1C5ACE79361A500
+'Help\Data\IWaitableObjsRef.htm', 1DEE, 1C5ACE79361A500
+'Help\Data\IWindowRef.htm', 278A, 1C5ACE79361A500
+'Help\Data\IWindowsRef.htm', 23C3, 1C5ACE79361A500
+'Help\Data\IXxportListRef.htm', 1D4B, 1C5ACE79361A500
+'Help\Data\KernelObjects.htm', AC29, 1C5ACE79361A500
+'Help\Data\License.htm', 38BF, 1CA946B035D62C6
+'Help\Data\m.gif', 4D, 1C09296C1C47000
+'Help\Data\madBasic.htm', D36, 1C5ACE79361A500
+'Help\Data\madBasicRef.htm', 650E, 1CA471C04AA4BEA
+'Help\Data\madBasicUnit.htm', D9B, 1C5ACE79361A500
+'Help\Data\madBasicUnitRef.htm', 14B9, 1C5E57AE2934400
+'Help\Data\madCodeHook.htm', 17E1, 1CA920E62B9F252
+'Help\Data\madCodeHook3.htm', 192D, 1CA9212BF4EBFDA
+'Help\Data\madCodeHookRef.htm', 2879, 1CA920D7AC0A59A
+'Help\Data\madCodeHookWhatsNew.htm', D8F, 1CA8FC63BA2F5B4
+'Help\Data\madCryptUnit.htm', 22EA, 1C5ACE79361A500
+'Help\Data\madDisAsm.htm', E32, 1C5ACE79361A500
+'Help\Data\madDisAsmRef.htm', 10B6, 1CA8FAC5F5BA48E
+'Help\Data\madExcept.htm', 22C0, 1C5ACE79492D200
+'Help\Data\madExceptConfiguration.htm', B7E, 1C5ACE79492D200
+'Help\Data\madExceptDemo.htm', 344A, 1C5ACE79492D200
+'Help\Data\madExceptFaq.htm', 1828, 1C5ACE79492D200
+'Help\Data\madExceptInternals.htm', 20B6, 1C5ACE79492D200
+'Help\Data\madExceptPlugins.htm', 2A88, 1C611F615159200
+'Help\Data\madExceptRef.htm', 34DF, 1CA471C05BC7A58
+'Help\Data\madExceptSettings.htm', E05, 1C5ACE79492D200
+'Help\Data\madExceptSettings1.htm', 185E, 1C5ACE79492D200
+'Help\Data\madExceptSettings10.htm', 1E63, 1CA0A0C3D7C891C
+'Help\Data\madExceptSettings2.htm', 1F94, 1C5ACE79492D200
+'Help\Data\madExceptSettings3.htm', 13C3, 1C7717DA798AD00
+'Help\Data\madExceptSettings4.htm', 1297, 1C5ACE79492D200
+'Help\Data\madExceptSettings5.htm', 18B9, 1C7717DA798AD00
+'Help\Data\madExceptSettings6.htm', 160C, 1C5ACE79492D200
+'Help\Data\madExceptSettings7.htm', 14C6, 1C5ACE79492D200
+'Help\Data\madExceptSettings8.htm', 1B94, 1C5ACE79492D200
+'Help\Data\madExceptSettings9.htm', 23D1, 1C5ACE79492D200
+'Help\Data\madExceptUnit.htm', 1838B, 1C98B83AB702580
+'Help\Data\madExceptUnitRef.htm', 341F, 1CA4814B770E83A
+'Help\Data\madExceptVclUnit.htm', 1121, 1C5ACE79492D200
+'Help\Data\madExceptWhatsNew.htm', 716E, 1CA8FC46BB2BE9E
+'Help\Data\madKernel.htm', 133B, 1C5ACE79361A500
+'Help\Data\madKernelRef.htm', 3277, 1C5E57AE2934400
+'Help\Data\madLinkDisAsmUnit.htm', E53, 1C5ACE79492D200
+'Help\Data\madListsRef.htm', F20, 1C5E57AE2934400
+'Help\Data\madListsUnit.htm', 8EF, 1C5ACE79361A500
+'Help\Data\madMapFileRef.htm', FC2, 1CA471C053E1DB6
+'Help\Data\madMapFileUnit.htm', 5920, 1C7131DCAC16600
+'Help\Data\madNVAssistantRef.htm', 1231, 1C5E57AE2934400
+'Help\Data\madNVAssistantUnit.htm', 7B2B, 1C7131C0E1AD500
+'Help\Data\madNVBitmapRef.htm', CEB, 1C5E57AE2934400
+'Help\Data\madNVBitmapUnit.htm', 2917, 1C5CD1CCB173000
+'Help\Data\madNVPrgrAlertUnit.htm', 34C5, 1C5ACE79492D200
+'Help\Data\madRemote.htm', 1016, 1C5ACE79361A500
+'Help\Data\madRemoteRef.htm', F27, 1CA8FBDFEED3A92
+'Help\Data\madResRef.htm', 1112, 1C98AE93A586C3A
+'Help\Data\madResUnit.htm', 7064, 1C5ACE79361A500
+'Help\Data\madScreenShotUnit.htm', 10F4, 1C57CF7030EE000
+'Help\Data\madSecurity.htm', C7D, 1C5ACE79492D200
+'Help\Data\madSecurityRef.htm', 1C3F, 1C5E57AE2934400
+'Help\Data\madShell.htm', B98, 1C5ACE79492D200
+'Help\Data\madShellRef.htm', 1DFB, 1C5E57AE2934400
+'Help\Data\madshi.gif', 476B, 1C23BC5372BAB00
+'Help\Data\madStackTraceRef.htm', E9C, 1C7131AC0519D00
+'Help\Data\madStackTraceUnit.htm', 6AF4, 1C5E577E40F3D00
+'Help\Data\madStringsRef.htm', 1A37, 1CA471C0488EAFE
+'Help\Data\madStringsUnit.htm', 981, 1C5ACE79361A500
+'Help\Data\madToolsRef.htm', 1A96, 1C98AE93A4EE2D2
+'Help\Data\madToolsUnit.htm', 9C1, 1C5ACE79361A500
+'Help\Data\madTypesRef.htm', 2974, 1C98AE93A34A8F4
+'Help\Data\madTypesUnit.htm', 1249, 1C5ACE79361A500
+'Help\Data\madZipRef.htm', AFB, 1C98B81C6B40B60
+'Help\Data\madZipUnit.htm', 382C, 1C5ACE79361A500
+'Help\Data\mchDrvCfg.htm', 1B88, 1CA9213D732AF5C
+'Help\Data\mchDrvSign.htm', 1759, 1CA9214ACAA9B86
+'Help\Data\mchInjDrv.htm', 261E, 1CA921360DAD60E
+'Help\Data\mchRequirementsLimitations.htm', DE4, 1CA8FC63BA5580E
+'Help\Data\mchTools.htm', 48C1, 1CA9211B4CF45E4
+'Help\Data\mes-cfg.gif', 1A56, 1C57FFD0B1F9600
+'Help\Data\mes-dem1.gif', 48ED, 1C5857EEF793A00
+'Help\Data\mes-dem2.gif', 4220, 1C5857EFDC75600
+'Help\Data\mes-dem3.gif', 39F6, 1C5857E98736500
+'Help\Data\mes-dem4.gif', 6553, 1C5857E927D8400
+'Help\Data\mes-dem5.gif', 3D7D, 1C5857EF43DEE00
+'Help\Data\mes-ss21.gif', 3A7A, 1C58AF9BD755400
+'Help\Data\mes-ss22.gif', 3CD1, 1C58AF9F1E91000
+'Help\Data\mes-ss23.gif', 3DF5, 1C58AFA1349FC00
+'Help\Data\mes-ss24.gif', 3261, 1C58AFA31176100
+'Help\Data\mes-ss30.gif', 54A6, 1C57A725E7C6C00
+'Help\Data\mes-ss31.gif', 6711, 1C57A72705E0F00
+'Help\Data\mes-ss32.gif', 6E1D, 1C57A72C3D05D00
+'Help\Data\mes-ss33.gif', 6A51, 1C57A72B6B36E00
+'Help\Data\mes-ss34.gif', 6795, 1C57A72AF8C6000
+'Help\Data\mes-ss35.gif', 622A, 1C57C1D37AE6900
+'Help\Data\mes-ss36.gif', 647D, 1C57A72A00D1700
+'Help\Data\mes-ss37.gif', 665F, 1C57A7298E60900
+'Help\Data\mes-ss38.gif', 7B33, 1C57A7292F02800
+'Help\Data\mes-ss39.gif', 6FBD, 1C57A74224A0B00
+'Help\Data\MESettings.htm', 11402, 1C7131E183DD300
+'Help\Data\MethodToProc.htm', 214C, 1C5ACE79361A500
+'Help\Data\Modules.htm', 7159, 1C5ACE79361A500
+'Help\Data\ModuleStuff.htm', 3274, 1C7131D0871BF00
+'Help\Data\MoveDisAsm.htm', 136C, 1C5ACE79361A500
+'Help\Data\MsgHandlerStuff.htm', 3C53, 1C5ACE79361A500
+'Help\Data\NamedBuffer.htm', 1FBE, 1C5ACE79361A500
+'Help\Data\Os64.htm', 1C10, 1CA921CC8959ECE
+'Help\Data\OSInfo.htm', 1E41, 1C7131E183DD300
+'Help\Data\ParseCode.htm', 17D7, 1C5ACE79361A500
+'Help\Data\ParseFunction.htm', 31A6, 1C5ACE79361A500
+'Help\Data\PointerLists.htm', 3FCD, 1C5ACE79361A500
+'Help\Data\PointerTypes.htm', C13, 1C5ACE79361A500
+'Help\Data\ProcessApi.htm', 1E28, 1C5ACE79492D200
+'Help\Data\Processes.htm', 1121B, 1C5ACE79361A500
+'Help\Data\ProcessFunc.htm', 257C, 1C5ACE79492D200
+'Help\Data\ProcessHandleToId.htm', 1217, 1C7131D0871BF00
+'Help\Data\ProcToMethod.htm', 287B, 1C5ACE79361A500
+'Help\Data\px.gif', 2B, 1BE1ACCECB6B500
+'Help\Data\r.gif', 5E, 1C0929763E45800
+'Help\Data\RemoteCmdLine.htm', 3BA3, 1C5ACE79361A500
+'Help\Data\RemoteExecute.htm', 15FD, 1C5ACE79361A500
+'Help\Data\SecurityObjects.htm', 35BF, 1C5ACE79492D200
+'Help\Data\Shares.htm', 6DA3, 1C5ACE79492D200
+'Help\Data\ShellEvents.htm', 53EA, 1C5ACE79492D200
+'Help\Data\ShellObjs.htm', 709D, 1C5ACE79492D200
+'Help\Data\ShortCuts.htm', 3EF6, 1C5ACE79492D200
+'Help\Data\SignedTypes.htm', 1FB2, 1C5ACE79361A500
+'Help\Data\SpecialFolders.htm', 42F5, 1C5ACE79492D200
+'Help\Data\StringCompare.htm', 2844, 1C5ACE79361A500
+'Help\Data\StringConvert.htm', 3E21, 1C5ACE79361A500
+'Help\Data\StringCopy.htm', FDC, 1C5ACE79361A500
+'Help\Data\StringDel.htm', 241C, 1C5ACE79361A500
+'Help\Data\StringManipulate.htm', 25BE, 1C5ACE79361A500
+'Help\Data\StringSearch.htm', 453D, 1C5ACE79361A500
+'Help\Data\StringSub.htm', 2164, 1C5ACE79361A500
+'Help\Data\StringTypes.htm', 24B4, 1C5ACE79361A500
+'Help\Data\style.css', BF2, 1C10A3BB048E500
+'Help\Data\SysRes9x.htm', BB7, 1C5ACE79361A500
+'Help\Data\SystemApi.htm', 52C2, 1C5ACE79492D200
+'Help\Data\SystemWideApiHooking.htm', 2B89, 1C5ACE79492D200
+'Help\Data\Threads.htm', 8DF2, 1C5ACE79361A500
+'Help\Data\TraceMethods.htm', 27F0, 1C5ACE79492D200
+'Help\Data\TrayIcons.htm', 45B0, 1C5ACE79361A500
+'Help\Data\TReaderDisAsm.htm', 442F, 1C5ACE79361A500
+'Help\Data\UnsignedTypes.htm', 1A62, 1C5ACE79361A500
+'Help\Data\w.gif', 4D, 1C09297B3C31F00
+'Help\Data\Windows.htm', E946, 1C5ACE79361A500
+'Help\Data\wordlist.txt', 1AC9E, 1CA920D7C04E56A
+'Help\madBasic.htm', 6A9, 1C4C4E9157AA600
+'Sources\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Sources\madBasic.pas', D050, 1C98AE483CA0040
+'Sources\madBasic_.dpk', 3F8, 1CA8FA92E09E1C8
+'Sources\madCrypt.pas', 6479, 1C98AE4A3EB7124
+'Sources\madGraphics.pas', 25030, 1CA87A45A1EF026
+'Sources\madHelp.pas', 5BA1, 1CA62D422842A9A
+'Sources\madHelp_.dpk', 251, 1C4C4E9C3865000
+'Sources\madLists.pas', 7541, 1C98AE579019CE4
+'Sources\madRes.pas', 9288, 1C98AE4CCD2C934
+'Sources\madStrings.pas', 1677F, 1CA3C43BB84D300
+'Sources\madTools.pas', C602, 1CA321D71E8C100
+'Sources\madTypes.pas', 1674, 1C98AE5F5862D48
+'Sources\madZip.pas', 2B2D8, 1CA62D272E04EBC
+'www.madshi.net.url', 59, 1BFE9B9B71CC200

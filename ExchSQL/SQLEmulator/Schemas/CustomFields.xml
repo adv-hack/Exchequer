@@ -1,0 +1,24 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="394">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="cf_field_id" fullfieldname="cf_field_id" typename="long" size="4" elements="1" id="-1" columnname="cfFieldID"/>
+    <schemafield fieldname="cf_stop_char" fullfieldname="cf_stop_char" typename="char" size="1" elements="1" id="-1" columnname="cfStopChar"/>
+    <schemafield fieldname="cf_supports_enablement" fullfieldname="cf_supports_enablement" typename="bool1" size="1" elements="1" id="-1" columnname="cfSupportsEnablement"/>
+    <schemafield fieldname="cf_enabled" fullfieldname="cf_enabled" typename="bool1" size="1" elements="1" id="-1" columnname="cfEnabled"/>
+    <schemafield fieldname="cf_caption" fullfieldname="cf_caption" typename="DelphiString" size="31" elements="1" id="-1" columnname="cfCaption" collation="1"/>
+    <schemafield fieldname="cf_description" fullfieldname="cf_description" typename="DelphiString" size="256" elements="1" id="-1" columnname="cfDescription" collation="1"/>
+	<schemafield fieldname="cf_display_pii_option" fullfieldname="cf_display_pii_option" typename="bool1" size="1" elements="1" id="-1" columnname="cfDisplayPIIOption"/>
+	<schemafield fieldname="cf_contains_pii_data" fullfieldname="cf_contains_pii_data" typename="bool1" size="1" elements="1" id="-1" columnname="cfContainsPIIData"/>
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>cf_field_id</item>
+				<item>cf_stop_char</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

@@ -1,0 +1,655 @@
+Deploying [Embedding] applications developed with PDAC
+======================================================
+
+With a few variations regarding the Borland and other runtime libraries,
+there are two basic ways to build PDAC applications for deployment to
+end users: using "runtime packages" or statically linking the PDAC
+libraries into the application's executable file.  C++ Builder also
+offers the option of dynamic or statically linking the Borland runtime
+library.
+
+NOTE that the SDK-supplied file drm.dll (from the \PVSW\bin directory
+after an SDK installation) must be installed into the path in all
+deployment configurations, and either a Pervasive.SQL 2000 client or a
+Pervasive.SQL engine (Server, Workgroup, or Workstation) must be
+properly installed on the target computer for a PDAC application to run.
+
+
+Deciding whether to Use Runtime Packages
+----------------------------------------
+
+Using runtime packages has several advantages.  It provides the smallest
+executable possible; this can be important where the executable or
+updates must be downloaded or transfered over slow links.  This option
+allows sharing of the PDAC and Borland runtime binaries; this can save
+considerable disk space and memory in environments with many Borland and
+PDAC applications.
+
+A disadvantage is that more files must be distributed and kept current,
+and the shared files can be vulnerable to third party installations that
+install incorrect versions of them in shared subdirectories.  If runtime
+packages are not used, only the application must be deployed; the PDAC
+libraries are statically linked into the executable, which will be
+correspondingly larger.
+
+To use runtime packages, the developer must deploy both the
+application's executable and the appropriate PDAC libraries (from the
+"redist" subdirectories in the PDAC installation directories), as well
+as any Borland or other runtime libraries (borlndmm.dll, found in the
+compiler's "bin" directory, is often needed) to end users.
+
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for C++ Builder 3:
+
+In the C++ Builder IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Linker" tab.
+
+    To have the application dynamically link the Borland runtime
+    library, make sure "Use dynamic RTL" is checked.  If you want to
+    statically link the runtime library into the application's
+    executable, make sure the option is unchecked.
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.BPI FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonB3, BtvDirectB3
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonB3, BtvDirect_ipB3
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonB3, SQLDirectB3
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonB3, SQLDirect_ipB3
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\BCB3\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\BCB3\REDIST, if their respective .BPI files
+  are in the package build list:
+
+    PvCommonB3.bpl
+    BtvDirectB3.bpl
+    BtvDirect_ipB3.bpl
+    SQLDirectB3.bpl
+    SQLDirect_ipB3.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the C++ Builder - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for C++ Builder 4:
+
+In the C++ Builder IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Linker" tab.
+
+    To have the application dynamically link the Borland runtime
+    library, make sure "Use dynamic RTL" is checked.  If you want to
+    statically link the runtime library into the application's
+    executable, make sure the option is unchecked.
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.BPI FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonB4, BtvDirectB4
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonB4, BtvDirect_ipB4
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonB4, SQLDirectB4
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonB4, SQLDirect_ipB4
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\BCB4\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\BCB4\REDIST, if their respective .BPI files
+  are in the package build list:
+
+    PvCommonB4.bpl
+    BtvDirectB4.bpl
+    BtvDirect_ipB4.bpl
+    SQLDirectB4.bpl
+    SQLDirect_ipB4.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the C++ Builder - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for C++ Builder 5:
+
+In the C++ Builder IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Linker" tab.
+
+    To have the application dynamically link the Borland runtime
+    library, make sure "Use dynamic RTL" is checked.  If you want to
+    statically link the runtime library into the application's
+    executable, make sure the option is unchecked.
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.BPI FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonB5, BtvDirectB5
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonB5, BtvDirect_ipB5
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonB5, SQLDirectB5
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonB5, SQLDirect_ipB5
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK2000\PDAC\BCB5\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK2000\PDAC\BCB5\REDIST, if their respective .BPI files
+  are in the package build list:
+
+    PvCommonB5.bpl
+    BtvDirectB5.bpl
+    BtvDirect_ipB5.bpl
+    SQLDirectB5.bpl
+    SQLDirect_ipB5.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the C++ Builder - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for Delphi 3:
+
+In the Delphi IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.DCP FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonD3, BtvDirectD3
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonD3, BtvDirect_ipD3
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonD3, SQLDirectD3
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonD3, SQLDirect_ipD3
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\Delphi3\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\Delphi3\REDIST, if their respective .DCP files
+  are in the package build list:
+
+    PvCommonD3.dpl
+    BtvDirectD3.dpl
+    BtvDirect_ipD3.dpl
+    SQLDirectD3.dpl
+    SQLDirect_ipD3.dpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the Delphi - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for Delphi 4:
+
+In the Delphi IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.DCP FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonD4, BtvDirectD4
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonD4, BtvDirect_ipD4
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonD4, SQLDirectD4
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonD4, SQLDirect_ipD4
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\Delphi4\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\Delphi4\REDIST, if their respective .DCP files
+  are in the package build list:
+
+    PvCommonD4.bpl
+    BtvDirectD4.bpl
+    BtvDirect_ipD4.bpl
+    SQLDirectD4.bpl
+    SQLDirect_ipD4.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the Delphi - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for Delphi 5:
+
+In the Delphi IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.DCP FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 PvCommonD5, BtvDirectD5
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove
+
+      TwwPvTable                  PvCommonD5, BtvDirect_ipD5
+
+
+      [Relational]
+      TPvSQLSession,              PvCommonD5, SQLDirectD5
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc
+
+      TwwPvQuery,                 PvCommonD5, SQLDirect_ipD5
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\Delphi5\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\Delphi5\REDIST, if their respective .DCP files
+  are in the package build list:
+
+    PvCommonD5.bpl
+    BtvDirectD5.bpl
+    BtvDirect_ipD5.bpl
+    SQLDirectD5.bpl
+    SQLDirect_ipD5.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the Delphi - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------
+
+Building and Deployment Instructions for Delphi 6:
+
+In the Delphi IDE, set the appropriate options as follows:
+
+  From the Menu, select Project | Options
+
+    Click the "Packages" tab.
+
+    To have the application dynamically link with the PDAC libraries at
+    runtime, make sure "Build with runtime packages" is checked, and
+    add the appropriate PDAC packages to the edit box's list, as follows:
+
+      [If the PDAC packages were added to the Build list at
+      installation, this step is not necessary.]
+
+      If the application uses the components on the left column of the
+      following table, the packages (.DCP FILES) from the right column
+      must appear in the build list.
+
+      Components Used             Packages Required
+      ---------------             -----------------
+
+      [Transactional]
+      TPvSession,                 pc200r60, pb200r60
+      TPvDatabase,
+      TPvTable,
+      TPvBatchMove,
+      TwwPvTable
+
+
+      [Relational]
+      TPvSQLSession,              pc200r60, ps200r60
+      TPvSQLDatabase,
+      TPvQuery,
+      TPvUpdateSQL,
+      TPvSQLStoredProc,
+      TwwPvQuery,
+      TwwPvSQLStoredProc
+
+
+      To select packages, click Add, then Browse, and select the
+      packages from the \PVSW\SDK\PDAC\Delphi6\LIB directory (for a
+      default installation).  All the packages may be selected at
+      once.
+
+      NOTE that if the PDAC packages are not added to the list, they
+      will be compiled into the executable and the shared libraries will
+      not be used, even if the box is checked.
+
+    To statically link the PDAC libraries into the application's
+    executable, make sure "Build with runtime packages" is unchecked.
+
+
+
+
+If "Build with runtime packages" is checked at compile time, the
+following libraries must be installed when the application is deployed,
+in addition to the application itself, drm.dll, and any other packages
+or DLLs it requires:
+
+  From \PVSW\SDK\PDAC\Delphi6\REDIST, if their respective .DCP files
+  are in the package build list:
+
+    pc200r60.bpl
+    pb200r60.bpl
+    ps200r60.bpl
+
+  These files may be installed in the same subdirectory as
+  the application's executable, but Pervasive recommends placing them
+  in the target machine's path so they may be shared by other
+  applications.  \PVSW\bin is a good choice, on computers where it is
+  the primary Pervasive executable directory.
+
+In addition, the Delphi - PDAC application will require an
+installation of either a Pervasive.SQL 2000 engine (Server, WorkGroup,
+or Workstation) or a Pervasive.SQL 2000 client and a remote server
+appropriately installed and configured.
+
+
+-----------------------------------------------------------------------

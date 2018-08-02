@@ -1,0 +1,36 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = DSRIMAPReceive.dll DSRIMAPSEND.dll DSRMAPIReceive.dll DSRMAPISend.dll \
+  DSRPOP3Receive.dll DSRPOP3Send.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+DSRIMAPReceive.dll: DSRIMAP\Receive\DSRIMAPReceive.dpr
+  $(DCC)
+
+DSRIMAPSEND.dll: DSRIMAP\Send\DSRIMAPSEND.dpr
+  $(DCC)
+
+DSRMAPIReceive.dll: DSRMAPI\Receive\DSRMAPIReceive.dpr
+  $(DCC)
+
+DSRMAPISend.dll: DSRMAPI\Send\DSRMAPISend.dpr
+  $(DCC)
+
+DSRPOP3Receive.dll: DSRPOP3\Receive\DSRPOP3Receive.dpr
+  $(DCC)
+
+DSRPOP3Send.dll: DSRPOP3\Send\DSRPOP3Send.dpr
+  $(DCC)
+
+

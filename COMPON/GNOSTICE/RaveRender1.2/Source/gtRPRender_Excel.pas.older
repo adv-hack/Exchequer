@@ -1,0 +1,919 @@
+{***************************************************************************}
+{                                                                           }
+{  Gnostice RaveRender                                                      }
+{                                                                           }
+{  Copyright © 2000-2003 Gnostice Information Technologies Private Limited  }
+{  http://www.gnostice.com                                                  }
+{                                                                           }
+{***************************************************************************}
+
+{$I gtDefines.Inc}
+{$I gtRPDefines.Inc}
+
+unit gtRPRender_Excel;
+
+interface
+
+uses
+	SysUtils, Windows, Messages, Classes, Graphics, Forms, Dialogs, StdCtrls,
+	Controls, RPRender, gtRPRender_Main, gtRPRender_Document, gtRPRender_Consts,
+	gtRPRender_Utils;
+
+type
+
+	// Excel Cell Type.
+	TgtExcelCellType = (ctString, ctInteger, ctDouble);
+
+	// Line Spacing.
+	TTextLineSpacing = (lsActual, lsNoBlank, lsOneBlank, lsTwoBlank,
+		lsThreeBlank, lsFourBlank, lsFiveBlank);
+
+	PgtRPFontAttrib = ^TgtRPFontAttrib;
+
+	PgtExcelTextDetails = ^TgtExcelTextDetails;
+	// Excel Text Details.
+	TgtExcelTextDetails = record
+		FColumnIndex: Integer;
+		FLeft: Extended;
+		FTop: Extended;
+    FRow: Integer;
+    FCol: Integer;
+		FText: string;
+		FWidth: Extended;
+		FTextAlign: TgtRPTextProperty;
+		FFontAttrib: TgtRPFontAttrib;
+		FExcelCellType: TgtExcelCellType;
+	end;
+
+	TgtOnEncodeText = procedure(Render: TgtRPRender; var Text: string;
+		var ExcelCellType: TgtExcelCellType) of object;
+
+{ TgtRPRenderExcel class }
+
+	TgtRPRenderExcel = class(TgtRPRenderDocument)
+	private
+		FOnEncodeText: TgtOnEncodeText;
+		FLineSpacing: TTextLineSpacing;
+		FSetCellAttributes: Boolean;
+
+		FColumns: array of Integer;
+		FExcelCellList: TStringList;
+		FExcelStream: TStream;
+		FExcelTextList: TList;
+    FRowTextList: Tlist;
+
+		FFontTable: TStringList;
+		FRowsPerPage, FPrevRowNO, FLastLine: Integer;
+		FTextWidths: array of Integer;
+		FXFactor: Extended;
+		FYFactor: Extended;
+    FPrevRowError: Extended; 
+
+    //Added by M Ravikiran
+    PrevPageCellno: Integer;
+    CellWidth: Extended;
+		function BuildFontString(AFontName: string;
+			AFontSize: Integer; AFontStyle: TFontStyles): string;
+		function GetNativeXPos(X: Extended): Extended;
+		function GetNativeYPos(Y: Extended): Extended;
+
+		procedure AddFontInfoToFontTable(AFontName: string; AFontSize: Integer;
+			AFontStyle: TFontStyles);
+		procedure SortAndInsertIntoList(ACurItem : PgtExcelTextDetails;
+      ATextList: TList);
+		procedure WriteRecord(RecType, RecSize: Integer;
+			Buf: array of word; DataSize: Integer; AStream: TStream);
+
+	protected
+		function ShowSetupModal: Word; override;
+
+		procedure Arc(const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3,
+			pfX4, pfY4: Double); override;
+		procedure Chord(const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3,
+			pfX4, pfY4: Double); override;
+		procedure DocBegin; override;
+		procedure DocEnd; override;
+		procedure Draw(const pfX1, pfY1: Double; AGraphic: TGraphic); override;
+		procedure Ellipse(const pfX1, pfY1, pfX2, pfY2: Double); override;
+		procedure EndText; override;
+		procedure FillRect(const pRect: TRect); override;
+		procedure LineTo(const pfX1, pfY1: Double); override;
+		procedure PageEnd; override;
+		procedure Pie(const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3,
+			pfX4, pfY4: Double); override;
+		procedure PrintBitmap(const X1, Y1, ScaleX, ScaleY: Double;
+			AGraphic: Graphics.TBitmap); override;
+		procedure PrintBitmapRect(const X1, Y1, X2, Y2: Double;
+			AGraphic: Graphics.TBitmap); override;
+		procedure Rectangle(const pfX1, pfY1, pfX2, pfY2: Double); override;
+		procedure RoundRect(const pfX1, pfY1, pfX2, pfY2,
+			pfX3, pfY3: Double); override;
+		procedure StretchDraw(const pRect: TRect; AGraphic: TGraphic); override;
+		procedure TextRect(Rect: TRect; X1, Y1: double; S1: string); override;
+
+	public
+		constructor Create(AOwner: TComponent); override;
+
+  {$IFDEF Rave50Up}
+    procedure RenderPage(PageNum: integer); override;
+  {$ELSE}
+		procedure PrintRender(NDRStream: TStream;
+			OutputFileName: TFileName); override;
+  {$ENDIF}
+
+	published
+		// LineSpacing Default is set to one
+		property LineSpacing: TTextLineSpacing read FLineSpacing
+			write FLineSpacing default lsActual;
+		property SetCellAttributes: Boolean read FSetCellAttributes
+			write FSetCellAttributes default True;
+
+		property OnEncodeText: TgtOnEncodeText read FOnEncodeText
+			write FOnEncodeText;
+	end;
+
+const
+
+	{---- Text: blank lines to leave before next line}
+	TextAdvanceLines: array[TTextLineSpacing] of integer = (-1, 0, 1, 2, 3, 4, 5);
+
+implementation
+
+uses gtRPRender_MainDlg, gtRPRender_DocumentDlg, gtRPRender_ExcelDlg;
+
+{------------------------------------------------------------------------------}
+{ TgtRPRenderExcel }
+{------------------------------------------------------------------------------}
+
+constructor TgtRPRenderExcel.Create(AOwner: TComponent);
+begin
+	inherited Create(AOwner);
+	DisplayName := sExcelDesc;
+	FileExtension := '*.' + sExcelExt;
+	FLineSpacing := lsActual;
+	FSetCellAttributes := True;
+end;
+
+{------------------------------------------------------------------------------}
+
+function TgtRPRenderExcel.BuildFontString(AFontName: string;
+	AFontSize: Integer; AFontStyle: TFontStyles): string;
+begin
+{ Font string includes FontName, FontSize and FontStyle. }
+
+	Result := AFontName + ' ' + IntToStr(AFontSize);
+	if fsBold in AFontStyle then
+		Result := Result + ' Bold';
+	if fsItalic in AFontStyle then
+		Result := Result + ' Italic';
+	if fsUnderLine in AFontStyle then
+		Result := Result + ' UnderLine';
+	if fsStrikeOut in AFontStyle then
+		Result := Result + ' StrikeOut';
+end;
+
+{------------------------------------------------------------------------------}
+
+function TgtRPRenderExcel.GetNativeXPos(X: Extended): Extended;
+begin
+	// Convert to Cell column number. 1 cell = 1 inch approx.
+	Result := X ;/// FXFactor;
+end;
+
+{------------------------------------------------------------------------------}
+
+function TgtRPRenderExcel.GetNativeYPos(Y: Extended): Extended;
+begin
+	// Convert to Cell Row number. 1 cell = 1 report char height
+	Result := Y ;// + (FCurrentPageNo - 1) * FRowsPerPage;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.AddFontInfoToFontTable(
+	AFontName: string; AFontSize: Integer; AFontStyle: TFontStyles);
+var
+	S: string;
+	AExcelFontAttrib: ^TgtRPFontAttrib;
+begin
+	S := BuildFontString(AFontName, AFontSize, AFontStyle);
+	if FFontTable.IndexOf(S) = -1 then
+	begin
+		New(AExcelFontAttrib);
+		AExcelFontAttrib.Name := AFontName;
+		AExcelFontAttrib.Size := AFontSize;
+		AExcelFontAttrib.Style := AFontStyle;
+		FFontTable.AddObject(S, TObject(AExcelFontAttrib));
+	end;
+end;
+
+{------------------------------------------------------------------------------}
+procedure TgtRPRenderExcel.SortAndInsertIntoList(ACurItem : PgtExcelTextDetails;
+              ATextList: TList);
+var
+	I,j: Integer;
+  AOldI: Extended;
+	AOldItem: PgtExcelTextDetails;
+begin
+	with ATextList do
+	begin
+		I := Count - 1;
+		// Insert new rec at point such that TextRecs sort by
+		// increasing order of Y and X.
+		while I >= 0 do
+		begin
+			AOldItem := Items[I];
+			if (ACurItem^.FTop >(AOldItem^.FTop + Abs(AOldItem^.FFontAttrib.Size))) then
+        Break
+      else
+      if (ACurItem^.FTop > AOldItem^.FTop )   then
+        ACurItem^.FTop := AOldItem^.FTop;
+      if (ACurItem^.FTop = AOldItem^.FTop )   then
+      begin
+        if  (ACurItem^.FLeft >= AOldItem^.FLeft)  then
+          Break;
+      end
+      else
+      if  ((ACurItem^.FTop + Abs(AOldItem^.FFontAttrib.Size )) >= AOldItem^.FTop) then
+      begin
+        AOldI := AOldItem^.FTop;
+        for j:=0 to I do
+        begin
+          AOldItem := Items[j];
+          if AOldItem^.FTop = AOldI then
+            AOldItem^. FTop := ACurItem^.FTop;
+        end;
+        Inc(I);
+      end;
+			Dec(I);
+		end;
+		if I = Count - 1 then
+			Add(ACurItem)
+		else
+			Insert(I + 1, ACurItem);
+	end;
+end;
+
+
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.WriteRecord(RecType, RecSize: Integer;
+	Buf: array of word; DataSize: Integer; AStream: TStream);
+var
+	Header: array[0..1] of word;
+begin
+	Header[0] := RecType;
+	Header[1] := RecSize;
+	AStream.Write(Header, SizeOf(Header));
+	if DataSize <> 0 then
+		AStream.Write(Buf, SizeOf(Buf));
+end;
+
+{------------------------------------------------------------------------------}
+
+function TgtRPRenderExcel.ShowSetupModal: Word;
+begin
+	with TgtRPRenderExcelDlg.Create(nil) do
+	try
+		RenderObject := Self;
+		Application.ProcessMessages;
+		Result := ShowModal;
+	finally
+		Free;
+	end;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Arc(
+	const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3, pfX4, pfY4: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Chord(
+	const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3, pfX4, pfY4: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.DocBegin;
+var
+  sizefont: Tfont;
+begin
+	if FExportCanceled then Exit;
+	inherited DocBegin;
+
+	FExcelTextList := TList.Create;
+  FRowTextList := TList.Create;
+	FExcelStream := TMemoryStream.Create;
+	FFontTable := TStringList.Create;
+	FExcelCellList := TStringList.Create;
+
+  sizefont := TFont.Create;
+  sizefont.Size := 10;
+  CellWidth := cExcel_StdCharsPerCell * GetTextSize(sizefont,'W').cx * 72 / 96;
+  sizefont.Free;
+	// Write Excel header
+	WriteRecord(cExcel_BIFF5_BOF, cExcel_Rec_Size_BOF,
+		[2, cExcel_DocType, 0], 6, FOwnedStream);
+	// Write worksheet dimensions
+	WriteRecord(cExcel_DIM, cExcel_Rec_Size_DIM,
+		[0, 0, 0, 0, 0], 10, FOwnedStream);
+
+  PrevPageCellno := 0;    
+	FLastLine := 0;
+	FXFactor := 0;
+	FYFactor := 0;
+	FColumns := nil;
+	FTextWidths := nil;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.DocEnd;
+	procedure WriteFontToStream(AFontAttrib: PgtRPFontAttrib);
+	var
+		S: string;
+		FontAttribute: array[2..4] of Byte;
+		FontHeight: Word;
+	begin
+		with AFontAttrib^ do
+		begin
+			FontAttribute[2] := 0;
+			if fsBold in Style then
+				FontAttribute[2] := FontAttribute[2] + 1;
+			if fsItalic in Style then
+				FontAttribute[2] := FontAttribute[2] + 2;
+			if fsUnderline in Style then
+				FontAttribute[2] := FontAttribute[2] + 4;
+			if fsStrikeOut in Style then
+				FontAttribute[2] := FontAttribute[2] + 8;
+
+			FontAttribute[3] := 0;
+			S := AFontAttrib^.Name;
+			FontAttribute[4] := Length(S);
+			WriteRecord(49, Length(S) + 5, [0], 0, FOwnedStream);
+			FontHeight := 20 * Size;
+			FOwnedStream.Write(FontHeight, Sizeof(FontHeight));
+			FOwnedStream.Write(FontAttribute, Sizeof(FontAttribute));
+			FOwnedStream.Write(Pointer(S)^, Length(S));
+		end;
+	end;
+
+var
+	I, AFontCount: Integer;
+	AFontAttrib: PgtRPFontAttrib;
+begin
+	if FExportCanceled then
+	begin
+		inherited DocEnd;
+		Exit;
+	end;
+
+	AFontCount := FFontTable.Count;
+	if AFontCount > 4 then
+		AFontCount := 4;
+	for I := 0 to AFontCount - 1 do
+	begin
+		AFontAttrib := PgtRPFontAttrib(FFontTable.Objects[I]);
+		WriteFontToStream(AFontAttrib);
+		Dispose(AFontAttrib);
+	end;
+	FOwnedStream.CopyFrom(FExcelStream, 0);
+	WriteRecord(cExcel_EOF, cExcel_Rec_Size_EOF, [0], 0, FOwnedStream);
+
+	FExcelCellList.Free;
+	FExcelTextList.Free;
+  FRowTextList.Free;
+	FExcelStream.Free;
+	FExcelStream := nil;
+	FFontTable.Free;
+	FOwnedStream.Free;
+	FOwnedStream := nil;
+	inherited DocEnd;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Draw(const pfX1, pfY1: Double; AGraphic: TGraphic);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Ellipse(const pfX1, pfY1, pfX2, pfY2: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.EndText;
+	function GetColulmnIndex(AText: string; AFontAttrib: TgtRPFontAttrib;
+		ALeft, ATextWidth: Integer; ATextAlign: TgtRPTextProperty): Integer;
+	var
+		IsColumnSet: Boolean;
+		APosX, I: Integer;
+	begin
+		{ Store Column and maximum width of data in the Column. }
+		Result := 0;
+		IsColumnSet := False;
+		APosX := ALeft;
+
+		if FColumns = nil then
+		begin
+			SetLength(FColumns, 1);
+			FColumns[0] := APosX;
+		end;
+		if FTextWidths = nil then
+			SetLength(FTextWidths, 1);
+
+		for I := 0 to High(FColumns) do
+		begin
+			if APosX = FColumns[I] then
+			begin
+				IsColumnSet := True;
+				if ATextWidth > FTextWidths[I] then
+					FTextWidths[I] := ATextWidth;
+				Result := I;
+				Break;
+			end;
+		end;
+		if not IsColumnSet then
+		begin
+			// New Column.
+			SetLength(FColumns, High(FColumns) + 2);
+			SetLength(FTextWidths, High(FTextWidths) + 2);
+			FColumns[High(FColumns)] := APosX;
+			FTextWidths[High(FTextWidths)] := ATextWidth;
+			Result := High(FColumns);
+		end;
+	end;
+
+	procedure InsertTextDetailsToList(ATextDetails: TgtRPTextDetails);
+	var
+		AExcelTextDetails: PgtExcelTextDetails;
+		S: string;
+		Temp: Extended;
+	begin
+		{ Store Text details in a record. Add the record to a list.
+			Sort the List based on X and Y positions. }
+
+		New(AExcelTextDetails);
+		with AExcelTextDetails^ do
+		begin
+			FText := ATextDetails.FText;
+			FWidth := GetNativeXPos(ATextDetails.FTextWidth);
+			FFontAttrib.Name := ATextDetails.FFont.Name;
+			FFontAttrib.Charset := ATextDetails.FFont.Charset;
+			FFontAttrib.Color := ATextDetails.FFont.Color;
+			FFontAttrib.Pitch := ATextDetails.FFont.Pitch;
+			FFontAttrib.Size := ATextDetails.FFont.Size;
+			FFontAttrib.Style := ATextDetails.FFont.Style;
+			AddFontInfoToFontTable(ATextDetails.FFont.Name,
+        ATextDetails.FFont.Size, ATextDetails.FFont.Style);
+			FTextAlign := ATextDetails.FTextAlign;
+			FLeft := GetNativeXPos(ATextDetails.FX);
+
+		 	if FTextAlign = tpAlignRight then			// Adjust X based on alignment
+			begin
+				FLeft := GetNativeXPos(ATextDetails.FX + ATextDetails.FTextWidth);
+				FLeft := FLeft - Length(FText);// / cExcel_StdCharsPerCell;
+			end
+			else if FTextAlign = tpAlignCenter then
+			begin
+				FLeft := GetNativeXPos(ATextDetails.FX + ATextDetails.FTextWidth / 2);
+				FLeft := FLeft - Length(FText) / 2;// / cExcel_StdCharsPerCell;
+			end;
+
+			FColumnIndex := GetColulmnIndex(FText, FFontAttrib, Round(FLeft),
+				Round(FWidth), FTextAlign);
+			FTop := GetNativeYPos(ATextDetails.FY);
+
+			// Excel Cell Type.
+			FExcelCellType := ctString;
+			S := FText;
+			if SysUtils.ThousandSeparator <> SysUtils.DecimalSeparator then
+				S := ReplaceString(FText, SysUtils.ThousandSeparator, '');
+			if TextToFloat(PChar(S), Temp, fvExtended) and
+				(StrToFloat(S) <= Maxint) then		// Is Number?
+			begin
+				if Pos(SysUtils.DecimalSeparator, S) = 0 then
+					FExcelCellType := ctInteger
+				else
+					FExcelCellType := ctDouble;
+			end;
+			if Assigned(OnEncodeText) then
+				OnEncodeText(Self, FText, FExcelCellType);
+		end;
+		SortAndInsertIntoList(AExcelTextDetails, FExcelTextList);
+	end;
+
+var
+	I: Integer;
+	AFont: TFont;
+	TS: TSize;
+begin
+
+	if ((FXFactor = 0) or (FYFactor = 0)) then
+	begin
+		AFont := TFont.Create;
+		try
+			// Used for positioning objects
+			// If you have a fixed width font, output will be closer to original
+			AFont.Name := 'Arial';
+			AFont.Size := 10;
+			TS := GetTextSize(AFont, 'W');
+			FRowsPerPage := Round(PaperHeight * cPixelsPerInch / TS.cy);
+			FXFactor := TS.cx * cExcel_StdCharsPerCell * 72 / 96;
+			FYFactor := TS.cy;
+			AddFontInfoToFontTable(AFont.Name, AFont.Size, AFont.Style);
+		finally
+			AFont.Free;
+		end;
+	end;
+
+	for I := 0 to FTextList.Count - 1 do
+    InsertTextDetailsToList(FTextList.Items[I]);
+
+	ClearTextList;
+	FProcessingText := False;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.FillRect(const pRect: TRect);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.LineTo(const pfX1, pfY1: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.PageEnd;
+
+	function GetFontIndex(AFontName: string; AFontSize: Integer;
+		AFontStyle: TFontStyles): Byte;
+	var
+		S: string;
+		I: Integer;
+	begin
+		{ Build Font string. If font is new, then add the string to a stringlist. }
+
+		S := BuildFontString(AFontName, AFontSize, AFontStyle);
+		I := FFontTable.IndexOf(S);
+		Result := I;
+		if I >= 4 then
+			Result := 0
+	end;
+
+	procedure SetExcelCell(var Buf: array of word);
+
+		function GetCellIndex(ABuf: array of word): Integer;
+		var
+			S: string;
+		begin
+			{ If Cell is new, add cell info to a stringlist.
+			  Return index of cell info. }
+
+			S := IntToStr(Buf[0]) + ' ' + IntToStr(Buf[1]);
+			Result := FExcelCellList.IndexOf(S);
+			if Result = -1 then
+				FExcelCellList.Add(S)
+		end;
+
+	begin
+		{ Check if the particular cell is alloted to some other data. If alloted,
+			then increase the column value until a blank cell is found. }
+
+		while GetCellIndex(Buf) <> -1 do
+			Buf[1] := Buf[1] + 1;
+	end;
+
+	procedure WriteCellData(ARow, ACol: Integer; AAttrib: array of Byte;
+		 AData: string; AExcelCellType: TgtExcelCellType);
+	var
+		S: string;
+		Buf: array[0..1] of word;
+		XLSString: shortstring;
+		AInt, ADataSize: Integer;
+		ADouble: Double;
+		ACellData: Pointer;
+	begin
+		XLSString := '';
+		ADataSize := 0;
+		ACellData := nil;
+		Buf[0] := ARow +  PrevPageCellno;
+		Buf[1] := ACol;
+		//SetExcelCell(Buf);
+		S := ReplaceString(AData, SysUtils.ThousandSeparator, '');
+    AExcelcellType := ctString;
+		case AExcelCellType of
+			ctInteger:
+			begin // Integer.
+				// Encode Cell Type as Integer.
+				WriteRecord(CExcel_Cell_Int, CExcel_Rec_Size_Cell_Int,
+					[0], 0, FExcelStream);
+				AInt := StrToInt(Trim(S));
+				ACellData := @AInt;
+				ADataSize := SizeOf(Integer);
+			end;
+			ctDouble:
+			begin // Double.
+				// Encode Cell Type as Double.
+				WriteRecord(CExcel_Cell_Double, CExcel_Rec_Size_Cell_Double,
+					[0], 0, FExcelStream);
+				ADouble := StrToFloat(Trim(S));
+				ACellData := @ADouble;
+				ADataSize := SizeOf(Double);
+			end;
+			ctString:
+			begin // Label.
+				// Encode Cell Type as Label.
+				XLSString := trim(AData);
+				WriteRecord(CExcel_Cell_Label,
+					Length(XLSString) + CExcel_Rec_Size_Cell_Label+1 ,
+					[0], 0, FExcelStream);
+			end;
+		end;
+
+		FExcelStream.Write(Buf, SizeOf(Buf));					// Cell Row, Col.
+		FExcelStream.Write(AAttrib, SizeOf(AAttrib));	// Cell Attribute.
+		if XLSString = '' then
+			// Cell data - Double/Integer.
+			FExcelStream.Write(ACellData^, ADataSize)
+		else
+			// Cell data - string.
+			FExcelStream.Write(XLSString, Length(XLSString)+1);
+	end;
+
+  procedure WriteRow(list: Tlist);
+  var
+    J: Integer;
+    Ptr1: PgtExcelTextDetails;
+    Val: Integer;
+    CellNo, PrevCellno,RowNO :Integer;
+    E1 : Extended;
+  begin
+    RowNo := 0;
+    PrevCellno := -1;
+    if List.Count > 0 then
+    begin
+      if LineSpacing = lsActual then
+      begin
+        E1 := (PgtExcelTextDetails(List.items[0]).FTop - FPrevRowError)
+           / FYFactor;
+        if Round(E1) <= FPrevRowNo then
+          E1 := FPrevRowNo + 1;
+        RowNO := Round(E1);
+        FPrevRowError := FPrevRowError + (Frac(E1)) * FYFactor;
+      end
+      else
+      begin
+        RowNO := FLastLine;
+        FLastLine := FLastLine + TextAdvanceLines[LineSpacing] + 1;
+      end;
+      FPrevRowNO := RowNO;
+    end;
+    for J := 0 to list.Count-1 do
+    begin
+      Ptr1 := list.Items[J];
+      E1 :=  Ptr1.FLeft / CellWidth;
+      if (1-Frac(E1)) <  ( Ptr1.FWidth) then
+        Val := Round(E1) + 1
+      else
+        Val := Round(E1);
+      if Val <= PrevCellno then
+        CellNo := PrevCellno + 1
+      else
+        CellNo := Val;
+      Ptr1.FCol := CellNo;
+      Ptr1.FRow := RowNO;
+      PrevCellno := CellNO;
+    end;
+  end;
+
+var
+	ATextDetails: PgtExcelTextDetails;
+  Ptr1, Ptr2: PgtExcelTextDetails;
+	CellAttribute: array[0..2] of Byte; { 24 bit field }
+	I: Integer;
+	Fn: Byte;
+begin
+	if FExportCanceled then Exit;
+	if FProcessingText then EndText;
+	CellAttribute[0] := 0;
+  Ptr1 := nil;
+  FPrevRowNO := 0;
+  FLastLine := 0;
+  FPrevRowError := 0.0;
+  if  FExcelTextList.Count > 0 then
+  begin
+    Ptr1 :=  FExcelTextList.Items[0];
+    FRowTextList.Add(Ptr1);
+  end;
+  for I := 1 to FExcelTextList.Count - 1 do
+	begin
+    Ptr2 := FExcelTextList.Items[I];
+    if (Ptr2.FTop> Ptr1.FTop ) then
+    begin
+      WriteRow(FRowTextList);
+      FRowTextList.Clear;
+      FRowTextList.Add(Ptr2);
+    end
+    else
+      FRowTextList.Add(Ptr2);
+    Ptr1 := Ptr2;
+  end;
+    WriteRow(FRowTextList);
+    FRowTextList.Clear;
+
+	for I := 0 to FExcelTextList.Count - 1 do
+	begin
+		ATextDetails := FExcelTextList.Items[I];
+		with ATextDetails^ do
+		begin
+			Fn := GetFontIndex(
+				FFontAttrib.Name, FFontAttrib.Size, FFontAttrib.Style) * 64;
+
+			CellAttribute[1] :=	Fn;
+			CellAttribute[2] := 0;										// Cell alignment byte.
+
+      if  SetCellAttributes then
+        if FTextAlign = tpAlignRight then
+          CellAttribute[2] := 3												// Set bit 0 & 1.
+        else if FTextAlign = tpAlignCenter then
+          CellAttribute[2] := 2;											// Set bit 1.
+
+			if FText <> '' then
+				WriteCellData(FRow, FCol, CellAttribute, FText,
+          FExcelCellType);
+			Dispose(ATextDetails);
+		end;
+	end;
+
+  PrevPageCellNO := PrevPageCellNO + FPrevRowNO + 1;
+
+	FExcelTextList.Clear;
+	FColumns := nil;
+	FTextWidths := nil;
+	inherited PageEnd;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Pie(
+	const pfX1, pfY1, pfX2, pfY2, pfX3, pfY3, pfX4, pfY4: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.PrintBitmap(const X1, Y1, ScaleX, ScaleY: Double;
+	AGraphic: Graphics.TBitmap);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.PrintBitmapRect(const X1, Y1, X2, Y2: Double;
+	AGraphic: Graphics.TBitmap);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.Rectangle(const pfX1, pfY1, pfX2, pfY2: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.RoundRect(const pfX1, pfY1, pfX2, pfY2,
+	pfX3, pfY3: Double);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.StretchDraw(const pRect: TRect; AGraphic: TGraphic);
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+end;
+
+{------------------------------------------------------------------------------}
+
+procedure TgtRPRenderExcel.TextRect(Rect: TRect; X1, Y1: double; S1: string);
+var
+	ATextDetails: TgtRPTextDetails;
+begin
+	if not IsPageInRange(Converter.PageNo) then Exit;
+	if FProcessingText then EndText;
+
+	ATextDetails := TgtRPTextDetails.Create;
+	with ATextDetails do
+		try
+			SetFontDetails(ATextDetails);
+			FTextAlign := tpAlignLeft;
+			FTextWidth := Rect.Right - Rect.Left;
+  {$IFDEF Rave50Up}
+			FTextHeight := Converter.FontData.Height * cPixelsPerInch;
+  {$ELSE}
+			FTextHeight := Converter.Font.Height * cPixelsPerInch;
+  {$ENDIF}
+			FText := ClipText(S1, Round(FTextWidth),
+				GetTextSize(Converter.Font, S1).cx);
+			FX := X1 * cPixelsPerInch;
+			FY := Y1 * cPixelsPerInch;
+			InsertObjectIntoList(ATextDetails, FExcelTextList);
+		finally
+			Free;
+		end;
+end;
+
+{------------------------------------------------------------------------------}
+
+{$IFDEF Rave50Up}
+
+procedure TgtRPRenderExcel.RenderPage(PageNum: integer);
+begin
+	inherited Renderpage(PageNum);
+
+	if not FExportCanceled then
+	begin
+		try
+			InitFileStream(ReportFileNames.Strings[0]);
+		except
+			CancelExport;
+			DoErrorMessage(sCreateFileError);
+			Exit;
+		end;
+		with TRPConverter.Create(NDRStream, Self) do
+		try
+			Generate;
+		finally
+			Free;
+		end;
+	end;
+end;
+
+{$ELSE}
+
+procedure TgtRPRenderExcel.PrintRender(NDRStream: TStream;
+	OutputFileName: TFileName);
+begin
+	inherited PrintRender(NDRStream, OutputFileName);
+
+	if not FExportCanceled then
+	begin
+		try
+			InitFileStream(ReportFileNames.Strings[0]);
+		except
+			CancelExport;
+			DoErrorMessage(sCreateFileError);
+			Exit;
+		end;
+		with TRPConverter.Create(NDRStream, Self) do
+		try
+			Generate;
+		finally
+			Free;
+		end;
+	end;
+end;
+
+{------------------------------------------------------------------------------}
+
+{$ENDIF}
+
+end.

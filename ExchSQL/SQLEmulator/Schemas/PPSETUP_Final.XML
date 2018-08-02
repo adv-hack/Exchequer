@@ -1,0 +1,21 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="1013" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="ppsfoliono" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppsfoliono" />
+        <schemafield fieldname="ppsdaysfield" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppsdaysfield" />
+        <schemafield fieldname="ppsholdflagfield" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppsholdflagfield" />
+        <schemafield fieldname="ppsdummychar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="ppsdummychar" />
+        <schemafield fieldname="ppsbaseinterestonduedate" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="ppsbaseinterestonduedate" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0">
+            <indexfields>
+                <item>ppsfoliono</item>
+                <item>ppsdummychar</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

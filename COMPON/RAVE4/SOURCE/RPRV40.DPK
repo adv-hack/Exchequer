@@ -1,0 +1,68 @@
+package
+{$IFDEF VER120}RPRV40D4{$ENDIF}
+{$IFDEF VER125}RPRV40D4{$ENDIF}
+{$IFDEF VER130}RPRV40D5{$ENDIF}
+{$IFDEF VER140}RPRV40D6{$ENDIF}
+{$IFDEF VER150}RPRV40D7{$ENDIF}
+{$IFDEF VER160}RPRV40D8{$ENDIF}
+{$IFDEF VER170}RPRV40D9{$ENDIF};
+
+{$DESCRIPTION 'Rave Reports 4.0 Package'}
+{$IMPLICITBUILD OFF}
+
+requires
+{$IFDEF VER120}
+  VCL40, RPRT40D4;
+{$ENDIF}
+{$IFDEF VER125}
+  VCL40, RPRT40D4;
+{$ENDIF}
+{$IFDEF VER130}
+  VCL50, RPRT40D5;
+{$ENDIF}
+{$IFDEF VER140}
+  VCL, VCLJPG, DBRTL, RPRT40D6;
+{$ENDIF}
+{$IFDEF VER150}
+  VCL, VCLJPG, DBRTL, RPRT40D7;
+{$ENDIF}
+{$IFDEF VER160}
+  VCL, VCLJPG, DBRTL, RPRT40D8;
+{$ENDIF}
+{$IFDEF VER170}
+  VCL, VCLJPG, DBRTL, RPRT40D9;
+{$ENDIF}
+
+contains
+  RVDefine,
+  RVUtil,
+  RVClass,
+  LinkIL,
+  ILRegister,
+  ILConfig_Default,
+  ILConfig,
+  RVData,
+  RVDataField,
+  RVDirectDataView,
+  RVDatabase,
+  RVSQLDataView,
+  RVLEMod,
+  RVLERun,
+  RVLEDBug,
+  RVLEExpr,
+  RVLECode,
+  RVLEID,
+  RVLEType,
+  RVLEUtil,
+  RVLEDef,
+  RVProj,
+  RVTool,
+  RPRave,
+  RVSecurity,
+  RVCmHuff,
+  RVCsStd,
+  RVCsDraw,
+  RVCsRpt,
+  RVCsData;
+
+end.

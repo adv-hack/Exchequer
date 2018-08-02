@@ -1,0 +1,179 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:system"
+            targetNamespace="urn:www-iris-co-uk:system">
+
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="companyaddress">
+    <xsd:sequence>
+      <xsd:element name="sscompanyaddressline" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="debtchasedays">
+    <xsd:sequence>
+      <xsd:element name="ssdebtchaseday" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="termsoftrade">
+    <xsd:sequence>
+      <xsd:element name="sstermoftrade" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="sysrec">
+    <xsd:sequence>
+      <xsd:element name='ssperiodsinyear' type='xsd:integer'/>
+      <xsd:element name='sscompanyname' type='xsd:string'/>
+      <xsd:element name='sslastaudityr' type='xsd:integer'/>
+      <xsd:element name='ssmanupdreordercost' type='tns:boolean2'/>
+      <xsd:element name='ssvatreturncurrency' type='xsd:integer'/>
+      <xsd:element name='sscostdecimals' type='xsd:integer'/>
+      <xsd:element name='ssshowstkpriceasmargin' type='tns:boolean2'/>
+      <xsd:element name='sslivestockcosval' type='tns:boolean2'/>
+      <xsd:element name='sssdnshowpickedonly' type='tns:boolean2'/>
+      <xsd:element name='ssuselocations' type='tns:boolean2'/>
+      <xsd:element name='sssetbomserno' type='tns:boolean2'/>
+      <xsd:element name='sswarndupliyourref' type='tns:boolean2'/>
+      <xsd:element name='ssuselocdeladdress' type='tns:boolean2'/>
+      <xsd:element name='ssbudgetbyccdept' type='tns:boolean2'/>
+      <xsd:element name='sscurrencytolerance' type='xsd:double'/>
+      <xsd:element name='sscurrencytolerancemode' type='xsd:integer'/>
+      <xsd:element name='ssdebtchasemode' type='xsd:integer'/>
+      <xsd:element name='ssautogenvariance' type='tns:boolean2'/>
+      <xsd:element name='ssautogendisc' type='tns:boolean2'/>
+      <xsd:element name='sscompanycountrycode' type='xsd:string'/>
+      <xsd:element name='sssalesdecimals' type='xsd:integer'/>
+      <xsd:element name='ssdebtchaseoverdue' type='xsd:integer'/>
+      <xsd:element name='sscurrentperiod' type='xsd:integer'/>
+      <xsd:element name='sscurrentyear' type='xsd:integer'/>
+      <xsd:element name='sstradeterm' type='tns:boolean2'/>
+      <xsd:element name='ssseparatecurrencystatements' type='tns:boolean2'/>
+      <xsd:element name='ssstatementagingmethod' type='xsd:integer'/>
+      <xsd:element name='ssstatementuseinvoicedate' type='tns:boolean2'/>
+      <xsd:element name='ssquotesallocatestock' type='tns:boolean2'/>
+      <xsd:element name='ssdeductbomcomponents' type='tns:boolean2'/>
+      <xsd:element name='ssauthorisationmethod' type='xsd:string'/>
+      <xsd:element name='ssuseintrastat' type='tns:boolean2'/>
+      <xsd:element name='ssanalysedesconly' type='tns:boolean2'/>
+      <xsd:element name='ssdefaultstockvalmethod' type='xsd:string'/>
+      <xsd:element name='ssdisplayupdatecosts' type='tns:boolean2'/>
+      <xsd:element name='ssautochequeno' type='tns:boolean2'/>
+      <xsd:element name='ssstatementincnotdue' type='tns:boolean2'/>
+      <xsd:element name='ssforcebatchtotalbalancing' type='tns:boolean2'/>
+      <xsd:element name='ssdisplaystocklevelwarning' type='tns:boolean2'/>
+      <xsd:element name='ssstatementnoteentry' type='tns:boolean2'/>
+      <xsd:element name='sshidemenuopt' type='tns:boolean2'/>
+      <xsd:element name='ssuseccdept' type='tns:boolean2'/>
+      <xsd:element name='ssholdsettlementdisctransactions' type='tns:boolean2'/>
+      <xsd:element name='sssettransperiodbydate' type='tns:boolean2'/>
+      <xsd:element name='ssstopovercreditlimit' type='tns:boolean2'/>
+      <xsd:element name='ssusesrcpayinref' type='tns:boolean2'/>
+      <xsd:element name='ssusepasswords' type='tns:boolean2'/>
+      <xsd:element name='ssprompttoprintreciept' type='tns:boolean2'/>
+      <xsd:element name='ssexternalcustomers' type='tns:boolean2'/>
+      <xsd:element name='ssqtydecimals' type='xsd:integer'/>
+      <xsd:element name='ssexternalsinentry' type='tns:boolean2'/>
+      <xsd:element name='ssdisablepostingtopreviousperiods' type='tns:boolean2'/>
+      <xsd:element name='sspercdiscounts' type='tns:boolean2'/>
+      <xsd:element name='ssnumericaccountcodes' type='tns:boolean2'/>
+      <xsd:element name='ssupdatebalanceonposting' type='tns:boolean2'/>
+      <xsd:element name='ssshowinvoicedisc' type='tns:boolean2'/>
+      <xsd:element name='sssplitdiscountsingl' type='tns:boolean2'/>
+      <xsd:element name='ssdocreditstatuscheck' type='tns:boolean2'/>
+      <xsd:element name='ssdocreditlimitcheck' type='tns:boolean2'/>
+      <xsd:element name='ssautoclearpayments' type='tns:boolean2'/>
+      <xsd:element name='sscurrencyratetype' type='xsd:string'/>
+      <xsd:element name='ssshowperiodsasmonths' type='tns:boolean2'/>
+      <xsd:element name='ssdirectcustomer' type='xsd:string'/>
+      <xsd:element name='ssdirectsupplier' type='xsd:string'/>
+      <xsd:element name='sssettlementdiscount' type='xsd:double'/>
+      <xsd:element name='sssettlementdays' type='xsd:integer'/>
+      <xsd:element name='ssneedbomcostingupdate' type='tns:boolean2'/>
+      <xsd:element name='ssinputpackqtyonline' type='tns:boolean2'/>
+      <xsd:element name='ssdefaultvatcode' type='xsd:string'/>
+      <xsd:element name='sspaymentterms' type='xsd:integer'/>
+      <xsd:element name='ssstatementageinginterval' type='xsd:integer'/>
+      <xsd:element name='sskeepquotedate' type='tns:boolean2'/>
+      <xsd:element name='ssfreestockexcludessor' type='tns:boolean2'/>
+      <xsd:element name='ssseparatedirecttranscounter' type='tns:boolean2'/>
+      <xsd:element name='ssstatementshowmatchedinmonth' type='tns:boolean2'/>
+      <xsd:element name='ssliveoldestdebt' type='tns:boolean2'/>
+      <xsd:element name='ssbatchppy' type='tns:boolean2'/>
+      <xsd:element name='ssdefaultbankgl' type='xsd:integer'/>
+      <xsd:element name='ssusedefaultbankaccount' type='tns:boolean2'/>
+      <xsd:element name='ssyearstartdate' type='xsd:string'/>
+      <xsd:element name='sslastauditdate' type='xsd:string'/>
+      <xsd:element name='ssbanksortcode' type='xsd:string'/>
+      <xsd:element name='ssbankaccountno' type='xsd:string'/>
+      <xsd:element name='ssbankaccountref' type='xsd:string'/>
+      <xsd:element name='ssbankname' type='xsd:string'/>
+      <xsd:element name='sscompanyphone' type='xsd:string'/>
+      <xsd:element name='sscompanyfax' type='xsd:string'/>
+      <xsd:element name='sscompanyvatregno' type='xsd:string'/>
+      <xsd:element name='sscompanyaddress' type='tns:companyaddress'/>
+      <xsd:element name='ssdebtchasedays' type='tns:debtchasedays'/>
+      <xsd:element name='sstermsoftrade' type='tns:termsoftrade'/>
+      <xsd:element name='sspickingorderallocatesstock' type='tns:boolean2'/>
+      <xsd:element name='ssusedoskeys' type='tns:boolean2'/>
+      <xsd:element name='sshideenterpriselogo' type='tns:boolean2'/>
+      <xsd:element name='ssconservememory' type='tns:boolean2'/>
+      <xsd:element name='ssprotectyourref' type='tns:boolean2'/>
+      <xsd:element name='sssdndateistaxpointdate' type='tns:boolean2'/>
+      <xsd:element name='ssautopostuplift' type='tns:boolean2'/>
+      <xsd:element name='sswopdisablewip' type='tns:boolean2'/>
+      <xsd:element name='ssworallocstockonpick' type='tns:boolean2'/>
+      <xsd:element name='ssworcopystknotes' type='xsd:integer'/>
+      <xsd:element name='ssfilterbybinlocation' type='tns:boolean2'/>
+      <xsd:element name='sskeepbinhistory' type='tns:boolean2'/>
+      <xsd:element name='ssbinmask' type='xsd:string'/>
+      <xsd:element name='sspostccnom' type='tns:boolean2'/>
+      <xsd:element name='sspostccdcombo' type='tns:boolean2'/>
+      <xsd:element name='ssstauidate' type='tns:boolean2'/>
+      <xsd:element name='sspurchuidate' type='tns:boolean2'/>
+      <xsd:element name='ssdefsrcbanknom' type='xsd:integer'/>
+      <xsd:element name='ssduplivsec' type='tns:boolean2'/>
+      <xsd:element name='ssseprunpost' type='tns:boolean2'/>
+      <xsd:element name='ssshowqtystree' type='tns:boolean2'/>
+      <xsd:element name='ssuseglclass' type='tns:boolean2'/>
+      <xsd:element name='sswarnjc' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='sysrec' type='tns:sysrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='system'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='system' type='tns:system'/>
+
+</xsd:schema>

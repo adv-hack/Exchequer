@@ -1,0 +1,147 @@
+object SQLCheckAllJobsFrm: TSQLCheckAllJobsFrm
+  Left = 336
+  Top = 125
+  Width = 367
+  Height = 158
+  BorderIcons = []
+  Caption = 'Check All Jobs'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  Scaled = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 14
+  object MainPanel: TPanel
+    Left = 0
+    Top = 0
+    Width = 351
+    Height = 88
+    Align = alClient
+    BevelOuter = bvNone
+    Ctl3D = False
+    ParentCtl3D = False
+    TabOrder = 0
+    object PageControl: TPageControl
+      Left = 0
+      Top = 0
+      Width = 351
+      Height = 88
+      ActivePage = ConfirmationPage
+      Align = alClient
+      Style = tsFlatButtons
+      TabOrder = 0
+      object ConfirmationPage: TTabSheet
+        Caption = 'ConfirmationPage'
+        TabVisible = False
+        object Label1: TLabel
+          Left = 8
+          Top = 8
+          Width = 250
+          Height = 14
+          Caption = 'Please confirm you wish to recalculate the Job Tree'
+        end
+        object chkRecreateAnalysisControlRecords: TCheckBox
+          Left = 8
+          Top = 40
+          Width = 237
+          Height = 17
+          Caption = 'Recreate the Analysis control records'
+          TabOrder = 0
+        end
+      end
+      object ProgressPage: TTabSheet
+        Caption = 'ProgressPage'
+        ImageIndex = 2
+        TabVisible = False
+        object Label3: TLabel
+          Left = 8
+          Top = 8
+          Width = 164
+          Height = 14
+          Caption = 'Processing Job Tree. Please wait.'
+        end
+        object ProgressBar: TAdvProgressBar
+          Left = 8
+          Top = 40
+          Width = 325
+          Height = 18
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Level0ColorTo = 14811105
+          Level1ColorTo = 13303807
+          Level2Color = 5483007
+          Level2ColorTo = 11064319
+          Level3ColorTo = 13290239
+          Level1Perc = 70
+          Level2Perc = 90
+          Position = 0
+          ShowBorder = True
+          ShowPercentage = False
+          ShowPosition = False
+          Steps = 20
+          Version = '1.1.2.1'
+        end
+      end
+      object FinishPage: TTabSheet
+        Caption = 'FinishPage'
+        ImageIndex = 3
+        TabVisible = False
+        object lblFinish: TLabel
+          Left = 8
+          Top = 8
+          Width = 329
+          Height = 61
+          AutoSize = False
+          Caption = 'Check All Jobs completed successfully'
+          WordWrap = True
+        end
+      end
+    end
+  end
+  object ButtonPanel: TPanel
+    Left = 0
+    Top = 88
+    Width = 351
+    Height = 31
+    Align = alBottom
+    BevelOuter = bvNone
+    Ctl3D = False
+    ParentCtl3D = False
+    TabOrder = 1
+    DesignSize = (
+      351
+      31)
+    object btnNext: TButton
+      Left = 92
+      Top = 4
+      Width = 80
+      Height = 21
+      Anchors = [akTop, akRight]
+      Caption = 'C&onfirm'
+      TabOrder = 0
+      OnClick = btnNextClick
+    end
+    object btnCancel: TButton
+      Left = 180
+      Top = 4
+      Width = 80
+      Height = 21
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = '&Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      OnClick = btnCancelClick
+    end
+  end
+end

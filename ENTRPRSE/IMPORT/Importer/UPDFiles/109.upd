@@ -1,0 +1,20 @@
+[Version]
+Version=9.0.109
+
+[Customer]
+F093=CU.acBankSortCode            1520    S 0015 O   Bank Sort Code / BIC                               default=                                                                                                     comment=
+F094=CU.acBankAccountCode         1536    S 0035 O   Bank Account Code / IBAN                           default=                                                                                                     comment=
+F095=CU.acMandateI                1572    S 0035 O   Direct Debit Mandate ID                            default=                                                                                                     comment=
+F096=CU.acMandateDate             1608    S 0008 O   Direct Debit Mandate Date                          default=                                                                                                     comment=
+
+
+
+[Supplier]
+F093=SU.acBankSortCode            1520    S 0015 O   Bank Sort Code / BIC                               default=                                                                                                     comment=
+F094=SU.acBankAccountCode         1536    S 0035 O   Bank Account Code / IBAN                           default=                                                                                                     comment=
+F095=SU.acMandateI                1572    S 0035 N   Direct Debit Mandate ID                            default=                                                                                                     comment=Not Used on Suppliers
+F096=SU.acMandateDate             1608    S 0008 N   Direct Debit Mandate Date                          default=                                                                                                     comment=Not Used on Suppliers
+
+
+
+

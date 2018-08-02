@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="F0+063v1JkPrC/AQym3big" identitycol="PositionId" recordfieldname="" reclen="414">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_gu_group_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="guGroupCode" collation="1"/>
+    <schemafield fieldname="f_gu_user_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="guUserCode" collation="1"/>
+    <schemafield fieldname="f_gu_user_name" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="guUserName" collation="1"/>
+    <schemafield fieldname="f_gu_password" fullfieldname="" typename="binary" size="11" elements="1" id="-1" columnname="guPassword"/>
+    <schemafield fieldname="f_gu_permissions" fullfieldname="" typename="binary" size="100" elements="1" id="-1" columnname="guPermissions"/>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="1">
+      <indexfields>
+        <item>f_gu_group_code</item>
+        <item>f_gu_user_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isclustered="0" isunique="1">
+      <indexfields>
+        <item>f_gu_group_code</item>
+        <item>f_gu_user_name</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isclustered="0" isunique="1">
+      <indexfields>
+        <item>f_gu_user_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

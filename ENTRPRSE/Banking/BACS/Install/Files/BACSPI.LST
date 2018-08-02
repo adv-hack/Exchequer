@@ -1,0 +1,64 @@
+/*
+/* COPY (Files=xxx [, Ovr=xxx] [,SubD=xxx])
+/*
+/* Copies files from the Network Directory to the Local Direcortory.
+/*
+/*   Files   DOS File specification of files to copy
+/*   Ovr     Yes/No - Overwrite Existing Files, defaults to Yes
+/*   SubD    Copy Subdirectories, Defaults to No
+/*
+/*
+/* Run (Cmd=xxx))
+/*
+/* Uses WinExec to run the specified command.
+/*
+/*   Cmd     Command line to be executed
+/*
+
+
+/* Check and Copy Plug-In Files
+Copy (Files=ABNEPF.dll)
+Copy (Files=ABNADMIN.exe)
+Copy (Files=AccBank.dll)
+Copy (Files=AIBEFT.dll)
+Copy (Files=AIBADMIN.EXE)
+Copy (Files=ANZ.dll)
+Copy (Files=BACS1.dll)
+Copy (Files=BACSess.dll)
+Copy (Files=BACSNC.dll)
+Copy (Files=BACSTEL.dll)
+Copy (Files=BankIre.dll)
+Copy (Files=BIAdmin.exe)
+Copy (Files=BIAdmin.exe)
+Copy (Files=BankIreX.dll)
+Copy (Files=BankLine.dll)
+Copy (Files=BANKSCOT.dll)
+Copy (Files=BBM.DLL)
+Copy (Files=BUSMAST.dll)
+Copy (Files=ClydBANK.Dll)
+Copy (Files=COOPBANK.dll)
+Copy (Files=COUTTS.dll)
+Copy (Files=DANSKE.dll)
+Copy (Files=FirstNat.dll)
+Copy (Files=FirstTst.dll)
+Copy (Files=HEXAGON.dll)
+Copy (Files=Hsbc18.dll)
+Copy (Files=HypoV.dll)
+Copy (Files=IDADMIN.exe)
+Copy (Files=IDEAL.dll)
+Copy (Files=NIBBacs.dll)
+Copy (Files=AUTADMIN.exe)
+Copy (Files=NATWEST.dll)
+Copy (Files=Northern.dll)
+Copy (Files=PAYAWAY.dll)
+Copy (Files=NWPayMan.dll)
+Copy (Files=PCPAYCSV.dll)
+Copy (Files=PCPAYASC.dll)
+Copy (Files=RBS.dll)
+Copy (Files=RBSBULK.dll)
+Copy (Files=ShbBacs.dll)
+Copy (Files=ShbIntl.dll)
+Copy (Files=TSBPerm.dll)
+Copy (Files=ULSTRBNK.dll)
+Copy (Files=Unity.dll)
+Copy (Files=YORKBANK.dll)

@@ -1,0 +1,140 @@
+CDGENRAT.INI
+============
+This is the .INI configuration file for the CD Licence Generation Utility, 
+CDGENRAT.EXE, it should be placed into the same directory as the .EXE. The 
+following information is contained within the .INI file.
+
+  [Config]
+  FileDir=Files\
+  LicenceDir=
+
+FileDir specifies the directory containing the master files used in the 
+creation of a licence file. They currently consist of:
+
+  LICWARN.TXT
+  A textual description and warning file placed at the start of the 
+  licence file for anyone editing the file to read.
+
+LicenceDir specifies the directory where the ENTRPRSE.LIC licence file will 
+be created.
+
+
+ENTRPRSE.LIC
+============
+The Enterprise Licence files are called ENTRPRSE.LIC and have the following 
+internal structure:
+
+  +-------+
+  |   1   |       LICWARN.TXT
+  +-------+
+  |   2   |       Licence Information
+  +-------+
+  |       |
+  |       |
+  |   3   |       Random Data
+  |       |
+  |       |
+  +-------+
+  |   4   |       Data Section
+  +-------+
+
+LICWARN.TXT
+-----------
+This is a textual description and warning about the perils of editing the 
+file. This is copied from LICWARN.TXT in the FILEDIR directory to allow it 
+to be easily changed.
+
+LICENCE INFORMATION
+-------------------
+The Licence Information is automatically written to the Licence File after 
+the warning message, this allows people to easily find out who the CD is 
+for and what the licence file will install.
+
+RANDOM DATA
+-----------
+This is a section of completely random data which is used to store the 
+licencing information in a variety of sneaky ways. It is 600 bytes + 
+RND(50) bytes to make the file length random, giving a length of 600 
+- 650 bytes.
+
+  Byte  |        |
+ Offset | Type   | Data
+--------+--------+-----------------------------------------------------------
+ 1        Char     'A' - Validation Check
+ 2        Byte     File Checksum NOT'd to ensure Checksum not altered 
+
+ 3        Byte     25 + Random(2) - Anti Hacker
+ 4        Byte     32 + Random(2) - Anti Hacker
+ 5        Char     'D' - Anti Hacker
+ 6        Byte     27 + Random(2) - Anti Hacker
+ 7        Byte     65 + Random(2) - Anti Hacker
+
+ 10       Byte     CD Serial Number[1] NOT'd
+ 11       Byte     CD Serial Number[2] + 1 then NOT'd
+ 12       Byte     CD Serial Number[3] - 7
+ 13       Byte     CD Serial Number[4] -3 then NOT'd
+ 14       Byte     CD Serial Number[5] NOT'd
+ 15       Byte     CD Serial Number[6] + 4 then NOT'd
+ 16       Byte     CD Serial Number[7] NOT'd
+ 17       Byte     CD Serial Number[8]  + 2
+
+ 20       Byte     Licence Expired - 'A'=No
+
+ 21       Byte     45 + Random(2) - Anti Hacker
+ 22       Byte     47 + Random(2) - Anti Hacker
+
+ 56-59    LongInt  Expiry Date = Y + (M * 10000) + (D * 1000000);
+
+ 87       Byte     1 - Anti Hacker
+ 88       Byte     0 + Random(2) - Anti Hacker
+ 89       Byte     1 + Random(2) - Anti Hacker
+
+ 104      Byte     Country + Ord('A')
+
+120-166   String   Company Name, length then chars 1 to length NOT'd 
+                   then checksum MOD 176'd
+
+ 179      Byte     Checksum on module release codes (even numbered 
+                   bytes NOT'd before adding into checksum) MOD 128.
+
+180-209   Byte     Module Release Codes
+
+ 312      Byte     Type + Ord(':')
+
+452-455   LongInt  (licUserCnt * 1000000) + (licCSUserCnt * 1000) +              
+                   (licEntClSvr * 100) + (licClServer * 10)
+
+507-510   LongInt  (licEntCVer * 1000000) + (licEntModVer * 100000)
+
+
+
+
+Data Section
+------------
+The data section stores pointer and checksum information for decrypting and 
+validating the file.
+
+It has the following structure
+
+  Byte            Licence Version 
+  Byte            File Checksum
+  LongInt         Offset to start of Binary section
+  LongInt         Offset to start of Data section
+  Char            'Z' - Validation Check
+
+Any future information should be added between the pointers for the Binary 
+and Data sections.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

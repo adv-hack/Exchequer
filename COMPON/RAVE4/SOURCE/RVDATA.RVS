@@ -1,0 +1,201 @@
+module RVData;
+
+definition
+
+import
+  SysFunc,
+  RVClass;
+
+type
+  TDate = TDateTime;
+  TTime = TDateTime;
+
+  TRaveDataField = class(TRaveComponent)
+  protected
+    function GetDescription: TRaveMemoString;
+    function SetDescription(Value: TRaveMemoString);
+    function GetFieldName: string;
+    function SetFieldName(Value: string);
+    function GetFullName: string;
+    function SetFullName(Value: string);
+    function GetNullText: string;
+    function SetNullText(Value: string);
+    function GetSize: integer;
+    function SetSize(Value: integer);
+  public
+    function DataType: TRPDataType;
+    function AsString: string;
+    function AsBoolean: boolean;
+    function AsInteger: integer;
+    function AsFloat: extended;
+    function AsCurrency: currency;
+    function AsDateTime: TDateTime;
+    function AsDate: TDate;
+    function AsTime: TTime;
+    function AsBlob: pointer;
+    function DataSize: integer;
+    function IsNull: boolean;
+    property Description: TRaveMemoString read GetDescription write SetDescription;
+    property FieldName: string read GetFieldName write SetFieldName;
+    property FullName: string read GetFullName write SetFullName;
+    property NullText: string read GetNullText write SetNullText;
+    property Size: integer read GetSize write SetSize;
+  end TRaveDataField;
+
+  TRaveFormattedField = class(TRaveDataField)
+  protected
+    function GetDisplayFormat: string;
+    function SetDisplayFormat(Value: string);
+  public
+    property DisplayFormat: string read GetDisplayFormat write SetDisplayFormat;
+  end TRaveFormattedField;
+
+  TRaveStringField = class(TRaveDataField)
+  end TRaveStringField;
+
+  TRaveBooleanField = class(TRaveDataField)
+  protected
+    function GetTextTrue: string;
+    function SetTextTrue(Value: string);
+    function GetTextFalse: string;
+    function SetTextFalse(Value: string);
+  public
+    property TextTrue: string read GetTextTrue write SetTextTrue;
+    property TextFalse: string read GetTextFalse write SetTextFalse;
+  end TRaveBooleanField;
+
+  TRaveIntegerField = class(TRaveFormattedField)
+  end TRaveIntegerField;
+
+  TRaveFloatField = class(TRaveFormattedField)
+  end TRaveFloatField;
+
+  TRaveCurrencyField = class(TRaveFormattedField)
+  end TRaveCurrencyField;
+
+  TRaveBCDField = class(TRaveCurrencyField)
+  end TRaveBCDField;
+
+  TRaveDateTimeField = class(TRaveFormattedField)
+  end TRaveDateTimeField;
+
+  TRaveDateField = class(TRaveDateTimeField)
+  end TRaveDateField;
+
+  TRaveTimeField = class(TRaveDateTimeField)
+  end TRaveTimeField;
+
+  TRaveBlobField = class(TRaveDataField)
+  end TRaveBlobField;
+
+  TRaveMemoField = class(TRaveBlobField)
+  end TRaveMemoField;
+
+  TRaveGraphicField = class(TRaveBlobField)
+  end TRaveGraphicField;
+
+  TRaveBaseDataView = class(TRaveDataObject)
+  end TRaveBaseDataView;
+
+  TRaveDataView = class(TRaveBaseDataView)
+  protected
+    function GetActive: boolean;
+    function SetActive(Value: boolean);
+    function GetConnectionName: string;
+    function SetConnectionName(Value: string);
+  public
+    function First;
+    function Next;
+    function GetCurrentRow;
+    function EOF: boolean;
+    function CheckRowsLeft(ReqRows: integer): boolean;
+    function FieldByName(FieldName: string): TRaveDataField;
+    function Peek(Amount: integer);
+    function Unpeek;
+    function Empty: boolean;
+    function Saving: boolean;
+
+    property Active: boolean read GetActive write SetActive;
+    property ConnectionName: string read GetConnectionName write SetConnectionName;
+  end TRaveDataView;
+
+{
+  function ProcessDataStr(DefaultDataView: TRaveDataView;
+                          Value: string): string;
+  function CreateDataCon(RPConnection: TRPCustomConnection): TRaveDataConnection;
+  function CreateDataView(DataCon: TRaveDataConnection): TRaveDataView;
+  function CreateFieldName(DataViewName: string;
+                           FieldName: string): string;
+  procedure CreateFields(DataView: TRaveDataView;
+                         DeletedFields: TStringList;
+                         ReplacedFields: TStringList;
+                         DoCreate: boolean);
+  function PerformLookup(LookupDataView: TRaveDataView;
+                         LookupValue: string;
+                         LookupValueField: TRaveDataField;
+                         LookupField: TRaveFieldName;
+                         LookupDisplay: TRaveFieldName;
+                         LookupInvalid: string): string;
+  procedure DataViewFirst(DataView: TRaveDataView;
+                          DetailKey: TRaveFieldName;
+                          MasterDataView: TRaveDataView;
+                          MasterKey: TRaveFieldName;
+                          SortKey: string);
+}
+implementation
+
+// TRaveDataField
+
+  function TRaveDataField.GetDescription: TRaveMemoString; external;
+  function TRaveDataField.SetDescription(Value: TRaveMemoString); external;
+  function TRaveDataField.GetFieldName: string; external;
+  function TRaveDataField.SetFieldName(Value: string); external;
+  function TRaveDataField.GetFullName: string; external;
+  function TRaveDataField.SetFullName(Value: string); external;
+  function TRaveDataField.GetNullText: string; external;
+  function TRaveDataField.SetNullText(Value: string); external;
+  function TRaveDataField.GetSize: integer; external;
+  function TRaveDataField.SetSize(Value: integer); external;
+  function TRaveDataField.DataType: TRPDataType; external;
+  function TRaveDataField.AsString: string; external;
+  function TRaveDataField.AsBoolean: boolean; external;
+  function TRaveDataField.AsInteger: integer; external;
+  function TRaveDataField.AsFloat: extended; external;
+  function TRaveDataField.AsCurrency: currency; external;
+  function TRaveDataField.AsDateTime: TDateTime; external;
+  function TRaveDataField.AsDate: TDate; external;
+  function TRaveDataField.AsTime: TTime; external;
+  function TRaveDataField.AsBlob: pointer; external;
+  function TRaveDataField.DataSize: integer; external;
+  function TRaveDataField.IsNull: boolean; external;
+
+// TRaveFormattedField
+
+  function TRaveFormattedField.GetDisplayFormat: string; external;
+  function TRaveFormattedField.SetDisplayFormat(Value: string); external;
+
+// TRaveBooleanField
+
+  function TRaveBooleanField.GetTextTrue: string; external;
+  function TRaveBooleanField.SetTextTrue(Value: string); external;
+  function TRaveBooleanField.GetTextFalse: string; external;
+  function TRaveBooleanField.SetTextFalse(Value: string); external;
+
+// TRaveDataView
+
+  function TRaveDataView.GetActive: boolean; external;
+  function TRaveDataView.SetActive(Value: boolean); external;
+  function TRaveDataView.GetConnectionName: string; external;
+  function TRaveDataView.SetConnectionName(Value: string); external;
+  function TRaveDataView.First; external;
+  function TRaveDataView.Next; external;
+  function TRaveDataView.GetCurrentRow; external;
+  function TRaveDataView.EOF: boolean; external;
+  function TRaveDataView.CheckRowsLeft(ReqRows: integer): boolean; external;
+  function TRaveDataView.FieldByName(FieldName: string): TRaveDataField; external;
+  function TRaveDataView.Peek(Amount: integer); external;
+  function TRaveDataView.Unpeek; external;
+  function TRaveDataView.Empty: boolean; external;
+  function TRaveDataView.Saving: boolean; external;
+
+end RVData;

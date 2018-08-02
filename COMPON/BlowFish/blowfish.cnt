@@ -1,0 +1,41 @@
+:Base BLOWFISH.hlp
+1 Getting Started with TSM Blowfish
+2 Contents=IDH_CONTENTS
+2 Installing=Installing
+2 Overview=Overview
+2 Using TBlowfish=Using
+2 Getting in touch with TSM Inc.=Getting_in_touch_with_TSM_Inc
+2 Other Delphi components by TSM Inc.=Other_Delphi_components_by_TSM_Inc
+2 Licensing and copyright=Licensing_and_copyright
+1 Properties
+2 CipherMode=CipherMode
+2 StringMode=StringMode
+1 Methods
+2 Burn=Burn
+2 CBCMACBlock=CBCMACBlock
+2 CBCMACString=CBCMACString
+2 DecBlock=DecBlock
+2 DecFile=DecFile
+2 DecStream=DecStream
+2 DecString=DecString
+2 EncBlock=EncBlock
+2 EncFile=EncFile
+2 EncStream=EncStream
+2 EncString=EncString
+2 GetVersion=GetVersion
+2 InitialiseByte=InitialiseByte
+2 InitialiseString=InitialiseString
+2 LoadIVByte=LoadIVByte
+2 LoadIVString=LoadIVString
+1 Background Information
+2 The security of TBlowfish=Security
+2 Blowfish Test Vectors=Test_Vectors
+2 Internals and interfacing with TBlowfish=Internals_and_interfacing
+2 Encryption Modes
+3 Modes of operation=Modes_of_operation
+3 ECB (Electronic Code Book)=ECB_Electronic_Code_Book
+3 CBC (Cipher Block Chaining)=CBC_Cipher_Block_Chaining
+3 CFB (Cipher FeedBack)=CFB_Cipher_FeedBack
+3 OFB (Output FeedBack)=OFB_Output_FeedBack
+1 Errors/Exceptions
+2 Errors / Exceptions=Errors_/_Exceptions

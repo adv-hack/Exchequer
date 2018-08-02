@@ -1,0 +1,19 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="KQW61corvPeA+ISATyycMA==" recordfieldname="" identitycol="PositionId" reclen="795">
+  <recordfields/>
+  <fixedfields>
+    <schemafield fieldname="f_field_1" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="f_field_1" indexsize="-1"/>
+    <schemafield fieldname="f_field_2" fullfieldname="" typename="DelphiString" size="121" elements="1" id="-1" columnname="f_field_3" collation="1" indexsize="-1"/>
+  </fixedfields>
+  <defaultrecordtype>
+    <schemafield fieldname="image" fullfieldname="image" typename="image" size="673" elements="1" id="-1" columnname="image_0" collation="0" indexsize="-1"/>
+  </defaultrecordtype>
+  <recordtypes/>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_field_1</item>
+        <item>f_field_2</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

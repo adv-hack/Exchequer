@@ -1,0 +1,25 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="514" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="cdtype" fullfieldname="" typename="char" size="1" elements="1" id="-1" collation="1" columnname="cdtype" />
+        <schemafield fieldname="cdglcode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="cdglcode" />
+        <schemafield fieldname="cdcostcentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" collation="1" columnname="cdcostcentre" />
+        <schemafield fieldname="cddepartment" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" collation="1" columnname="cddepartment" />
+        <schemafield fieldname="cddummychar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="cddummychar" />
+        <schemafield fieldname="cdvatcode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="cdvatcode" />
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>cdtype</item>
+                <item>cdglcode</item>
+                <item>cdcostcentre</item>
+                <item>cddepartment</item>
+                <item>cdvatcode</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

@@ -1,0 +1,126 @@
+**Version 1.15 (Release date 04-10-99)
+
+This is a list of the changes that have been made to Blowfish since the previous release:
+
+==========================================================================================
+
+Type of change:                  Internal/External
+Reason for change:               Upgrade
+Impact on existing applications: Medium
+
+All public encryption and decryption routines have received shorter names. "Encrypt" has been changed to "Enc" and "Decrypt" has been changed to "Dec". This is to ensure compatibility with CBuilder4.
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Upgrade
+Impact on existing applications: None
+
+Blowfish has been updated so that it is compatible with Delphi5.
+
+==========================================================================================
+==========================================================================================
+
+
+**Version 1.14b (Release date 30-05-99)
+
+This is a list of the changes that have been made to Blowfish since the previous release:
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Bug report
+Impact on existing applications: Minor
+
+Blowfish would not encrypt or decrypt files which were locked or read only. This was due to the file mode not being set.
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Performance
+Impact on existing applications: Minor
+
+Blowfish has been optimised for speed. This version of Blowfish has approximately a 100% increase in speed compared to 1.14a. We are now getting speeds of 2.2Mb/s for an old 150MHz pentium laptop. This is within 2% of a hand optimised assembler implementation!
+
+==========================================================================================
+==========================================================================================
+
+
+**Version 1.14a (Release date 26-03-99)
+
+This is a list of the changes that have been made to Blowfish since the previous release:
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Bug report
+Impact on existing applications: Minor
+
+InitialiseString would produce unpredictable results when using short passwords. This was due to a buffer not being initialised in the key setup routine.
+
+==========================================================================================
+==========================================================================================
+
+**Version 1.14 (Release date 22-01-99)
+
+This is a list of the changes that have been made to Blowfish since the previous release:
+
+==========================================================================================
+
+Type of change:                  Internal/External
+Reason for change:               Compliance with international ruling
+Impact on existing applications: Minor
+
+As a result of the Wassenaar Agreement, an additional define has been added to limit the key length to 64 bits. For countries not in the Wassenaar Agreement, the define can be made inactive to return the component back to the full strength.
+
+This define is currently not enabled as the law in Germany has not yet been passed to bring this ruling into local effect.
+
+==========================================================================================
+
+Type of change:                  Internal/External
+Reason for change:               Compatibility
+Impact on existing applications: Possibly Major
+
+The key setup procedures of blowfish have been reworked to make them simpler and more efficient. During the testing, it was found that the key setup was producing incorrect results with several keys. To ensure compatibility with implementations of Blowfish in other languages (apart from Delphi) the key setup has been changed to be compatible.
+
+** This may mean that there will be compatibility problems with this version of Blowfish reading encrypted data from pervious versions**
+
+==========================================================================================
+
+Type of change:                  Internal/External
+Reason for change:               Usability
+Impact on existing applications: Possibly Major
+
+Blowfish now reports errors in processing using exceptions instead of error codes. This has been changed because most users weren't checking the error codes, leading to strange results in the processing. While this will cause a one time change in the applications which use the component, we hope that this will lead to more reliable processing. See the help file for more details on the exceptions which can be raised.
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Bug report
+Impact on existing applications: Minor
+
+When processing long streams (more than 4k), an error would occur caused by a buffer overflow. The internal processing of the EncryptStream and DecryptStream functions has been modified to stop this error.
+
+==========================================================================================
+
+Type of change:                  External
+Reason for change:               Increase Usability
+Impact on existing applications: None
+
+The example project has been expanded to add examples for using streams and blocks. A basic cipher verifier has also been added.
+
+==========================================================================================
+==========================================================================================
+
+**Version 1.12 (Release date 22-08-98)
+
+This is a list of the changes that have been made to Blowfish since the previous release:
+
+==========================================================================================
+
+Type of change:                  Internal
+Reason for change:               Bug report
+Impact on existing applications: Minor
+
+A error could occur when encrypting and decrypting zero length strings. This has been repaired.
+

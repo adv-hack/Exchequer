@@ -1,0 +1,38 @@
+Extra properties in IXmlTransaction
+
+Name & Type                       Description or equivalent in Com Tk
+
+thXmlOutputDir : WideString       //Folder to write xml file to
+thXslUrl       : WideString       //Stylesheet to use (optional)
+
+thCurrencyCode,                   //ISO Code of currency 
+thCurrencyName : WideString       //Name of currency 
+
+thCustSuppName,                   //ITransaction.thAcCodeI.acCompany
+thContactName,                    //ITransaction.thAcCodeI.acContact
+thContactPhone,                   //ITransaction.thAcCodeI.acPhone  
+thContactFax   : WideString       //ITransaction.thAcCodeI.acFax
+ 
+thCustSuppAddress,                //ITransaction.thAcCodeI.acAddress
+thOurAddress       : IAddress     //SystemSetup.ssUserAddress
+
+thOurName,                        //SystemSetup.ssCompany
+thOurVatReg   : WideString        //SystemSetup.ssCompanyVATRegNo
+
+thUseCCDept : WordBool            //SystemSetup.ssUseCCDept
+
+thNarrative : INarrative          //List of strings - has methods add & delete
+
+Extra method in IXmlTransaction
+
+Clear                             //Clears all objects and fields
+
+
+Extra properties in IXmlTransactionLine
+
+tlVatRate  : Double               //Vat rate (e.g. 17.5)
+
+tlUOMQuantityDesc,                //tlStockCodeI.stUnitOfPurch
+tlUOMPriceDesc  : WideString      //tlStockCodeI.stUnitOfSale
+
+tlLineTotal : Double              //Total value of line including discount but not including tax

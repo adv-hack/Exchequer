@@ -1,0 +1,62 @@
+package EnCommon;
+
+{$R *.res}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $4000000}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE EXWIN}
+{$DEFINE PF_ON}
+{$DEFINE ENCOMMON}
+{$DEFINE EXSQL}
+
+requires
+  rtl,
+  vcl,
+  vcljpg,
+  HMESL1,
+  EnterTab,
+  ShellTree2005R;
+
+contains
+  CTKUTIL in '..\..\FUNCS\CtkUtil.pas',
+  MiscUtil in '..\..\FUNCS\MiscUtil.pas',
+  Enterprise01_TLB in '..\..\COMTK\Enterprise01_TLB.pas',
+  SecCodes in '..\..\COMTK\SECCODES.PAS',
+  APIUtil in '..\..\FUNCS\APIUTIL.PAS',
+  StrUtil in '..\..\FUNCS\StrUtil.pas',
+  MathUtil in '..\..\FUNCS\MathUtil.pas',
+  GfxUtil in '..\..\FUNCS\GFXUTIL.PAS',
+  XPThemes in '..\..\FUNCS\XPTHEMES.PAS',
+  BTUTIL in '..\..\FUNCS\BTUtil.pas',
+  BrwseDir in '..\..\FUNCS\BRWSEDIR.PAS' {FrmDirBrowse},
+  BTConst in '..\..\FUNCS\BTConst.pas',
+  FontProc in '..\..\FUNCS\FONTPROC.PAS',
+  FileUtil in '..\..\FUNCS\FILEUTIL.PAS',
+  FontDlg in '..\..\FUNCS\FONTDLG.PAS' {frmFontDlg},
+  VAOUtil in '..\..\FUNCS\VAOUtil.pas',
+  USEDLLU in '..\..\DLLTK\USEDLLU.PAS',
+  PIEXPIRE in 'U:\BESPOKE\FUNCS\PIEXPIRE.PAS' {frmPlugInExpired},
+  PIMisc in 'U:\BESPOKE\FUNCS\PIMISC.PAS',
+  PISecure in 'U:\BESPOKE\FUNCS\PISecure.pas';
+
+end.

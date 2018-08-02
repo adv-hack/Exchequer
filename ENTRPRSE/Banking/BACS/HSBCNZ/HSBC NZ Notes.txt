@@ -1,0 +1,13 @@
+The ini file is HSBCNZ.ini. It should contain the Payment Set No: 
+
+From the spec: "'Payment Set No' in Header Record is supplied by HSBC and can only be used once in a day. If another batch is to be sent, another “Payment Set No.” must be used or if a Batch is forward dated that “Payment Set No” will not be available for using until after the value date."
+
+
+
+[Settings]
+PaymentSetNo=
+
+Account Numbers:
+
+The format expects a 12-digit company hsbc bank account number. This should be stored in the System Setup Bank Ref field.
+The format expects a 16-digit account number for suppliers. This should be stored in the Supplier Bank Ref field.

@@ -1,0 +1,31 @@
+ADDING NEW MODULES TO WEBREL SOURCE
+===================================
+ Date: 03 March 2005              
+ Author: Antony Woodhams          
+===================================
+
+This is a straightforward process to include new modules into WebRel.
+
+
+1) In uCodeIDs.pas:
+
+Add a new constant into the CodeGenerator.GetCode section in the form,
+	
+	eidMyNewModule = x;
+
+where 'x' is a valid integer value (usually the last value incremented by one). Then in the text constants section add a value in the form,
+
+	tidMyNewModule = 'Module Description';
+
+
+
+2) In uWRServer.pas -> GetModuleID function:
+
+Add an additional else-if clause to the existing statement in the following form,
+
+	else if Module = tidMyNewModule then Result := eidMyNewModule;
+
+which upholds the link between the text description and the ID constant.
+
+
+3) Build project and it should be complete.

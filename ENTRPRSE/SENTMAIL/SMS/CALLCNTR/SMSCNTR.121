@@ -1,0 +1,9 @@
+[Settings]
+ComNo=1
+NoOfDataBits=8
+NoOfStopBits=1
+Parity=N
+CallCentreNo=07860980480
+ComPortLogFile=SMSPORT.LOG
+TapLogFile=SMSTAP.LOG
+NoOfSecsPauseBetweenDials=2

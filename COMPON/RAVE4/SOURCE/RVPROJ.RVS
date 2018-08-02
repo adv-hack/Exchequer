@@ -1,0 +1,106 @@
+module RVProj;
+
+definition
+
+import
+  SysFunc,
+  RVClass;
+
+type
+  TTagKind = (tkProject,tkExport,tkDataView,tkPage,tkReport,tkReportPage);
+
+  TRaveReport = class(TRaveProjectItem)
+  protected
+    function GetAlwaysGenerate: boolean;
+    function SetAlwaysGenerate(Value: boolean);
+    function GetCategory: string;
+    function SetCategory(Value: string);
+    function GetCopies: integer;
+    function SetCopies(Value: integer);
+    function GetFirstPage: TRavePage;
+    function SetFirstPage(Value: TRavePage);
+  //function GetPageList: TRaveComponentList;
+  //function SetPageList(Value: TRaveComponentList);
+    function GetCollate: TRavePrinterCollate;
+    function SetCollate(Value: TRavePrinterCollate);
+    function GetDuplex: TRavePrinterDuplex;
+    function SetDuplex(Value: TRavePrinterDuplex);
+    function GetMaxPages: integer;
+    function SetMaxPages(Value: integer);
+    function GetPrinter: string;
+    function SetPrinter(Value: string);
+    function GetResolution: TRavePrinterResolution;
+    function SetResolution(Value: TRavePrinterResolution);
+  public
+    property AlwaysGenerate: boolean read GetAlwaysGenerate write SetAlwaysGenerate;
+    property Category: string read GetCategory write SetCategory;
+    property Copies: integer read GetCopies write SetCopies;
+    property FirstPage: TRavePage read GetFirstPage write SetFirstPage;
+  //property PageList: TRaveComponentList read GetPageList write SetPageList;
+    property Collate: TRavePrinterCollate read GetCollate write SetCollate;
+    property Duplex: TRavePrinterDuplex read GetDuplex write SetDuplex;
+    property MaxPages: integer read GetMaxPages write SetMaxPages;
+    property Printer: string read GetPrinter write SetPrinter;
+    property Resolution: TRavePrinterResolution read GetResolution write SetResolution;
+  end TRaveReport;
+
+  TRaveProjectManager = class(TRaveProjectItem)
+  protected
+  //function GetCategories: TStrings;
+  //function SetCategories(Value: TStrings);
+    function GetUnits: TPrintUnits;
+    function SetUnits(Value: TPrintUnits);
+    function GetUnitsFactor: TRaveFloat;
+    function SetUnitsFactor(Value: TRaveFloat);
+  public
+    function FindRaveComponent(Name: string;
+                               DefRoot: TRaveComponent): TRaveComponent;
+    function SetParam(Param: string;
+                       Value: string);
+    function GetParam(Param: string): string;
+
+  //property Categories: TStrings read GetCategories write SetCategories;
+    property Units: TPrintUnits read GetUnits write SetUnits;
+    property UnitsFactor: TRaveFloat read GetUnitsFactor write SetUnitsFactor;
+  end TRaveProjectManager;
+
+implementation
+
+// TRaveReport
+
+  function TRaveReport.GetAlwaysGenerate: boolean; external;
+  function TRaveReport.SetAlwaysGenerate(Value: boolean); external;
+  function TRaveReport.GetCategory: string; external;
+  function TRaveReport.SetCategory(Value: string); external;
+  function TRaveReport.GetCopies: integer; external;
+  function TRaveReport.SetCopies(Value: integer); external;
+  function TRaveReport.GetFirstPage: TRavePage; external;
+  function TRaveReport.SetFirstPage(Value: TRavePage); external;
+//function TRaveReport.GetPageList: TRaveComponentList; external;
+//function TRaveReport.SetPageList(Value: TRaveComponentList); external;
+  function TRaveReport.GetCollate: TRavePrinterCollate; external;
+  function TRaveReport.SetCollate(Value: TRavePrinterCollate); external;
+  function TRaveReport.GetDuplex: TRavePrinterDuplex; external;
+  function TRaveReport.SetDuplex(Value: TRavePrinterDuplex); external;
+  function TRaveReport.GetMaxPages: integer; external;
+  function TRaveReport.SetMaxPages(Value: integer); external;
+  function TRaveReport.GetPrinter: string; external;
+  function TRaveReport.SetPrinter(Value: string); external;
+  function TRaveReport.GetResolution: TRavePrinterResolution; external;
+  function TRaveReport.SetResolution(Value: TRavePrinterResolution); external;
+
+// TRaveProjectManager
+
+//function TRaveProjectManager.GetCategories: TStrings; external;
+//function TRaveProjectManager.SetCategories(Value: TStrings); external;
+  function TRaveProjectManager.GetUnits: TPrintUnits; external;
+  function TRaveProjectManager.SetUnits(Value: TPrintUnits); external;
+  function TRaveProjectManager.GetUnitsFactor: TRaveFloat; external;
+  function TRaveProjectManager.SetUnitsFactor(Value: TRaveFloat); external;
+  function TRaveProjectManager.FindRaveComponent(Name: string;
+                                                 DefRoot: TRaveComponent): TRaveComponent; external;
+  function TRaveProjectManager.SetParam(Param: string;
+                                        Value: string); external;
+  function TRaveProjectManager.GetParam(Param: string): string; external;
+
+end RVProj;

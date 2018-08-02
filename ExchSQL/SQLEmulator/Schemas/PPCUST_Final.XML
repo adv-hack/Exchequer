@@ -1,0 +1,28 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="255" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="ppcCustCode" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="7" elements="1" id="-1" columnname="ppcCustCode" />
+        <schemafield fieldname="ppcDefaultRate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppcDefaultRate" />
+        <schemafield fieldname="ppcInterestVariance" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppcInterestVariance" />
+        <schemafield fieldname="ppcCreditDaysOffset" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppcCreditDaysOffset" />
+        <schemafield fieldname="ppcMinInvoiceValue" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppcMinInvoiceValue" />
+        <schemafield fieldname="ppcInterestGLCode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppcInterestGLCode" />
+        <schemafield fieldname="ppcDebtChargeGLCode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppcDebtChargeGLCode" />
+        <schemafield fieldname="ppcCostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="ppcCostCentre" />
+        <schemafield fieldname="ppcDepartment" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="ppcDepartment" />
+        <schemafield fieldname="ppcDebitChargeBasis" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="ppcDebitChargeBasis" />
+        <schemafield fieldname="ppcActive" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="ppcActive" />
+        <schemafield fieldname="ppcSyncGLCodes" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="ppcSyncGLCodes" />
+        <schemafield fieldname="ppcDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="ppcDummyChar" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item computedcolumnname="ppcCustCodeComputed">ppcCustCode</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

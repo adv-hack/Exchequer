@@ -1,0 +1,237 @@
+type
+  TfrmCoPayLink = class(TForm)
+    BtrieveDataset1: TBtrieveDataset;
+    Panel1: TPanel;
+    dmlCompany: TDBMultiList;
+    Panel2: TPanel;
+    SBSButton1: TSBSButton;
+    ScrollBox1: TScrollBox;
+    btnAdd: TSBSButton;
+    btnEdit: TSBSButton;
+    btnDelete: TSBSButton;
+    btnOpts: TSBSButton;
+    SBSButton3: TSBSButton;
+    mnuOpts: TPopupMenu;
+    Directories1: TMenuItem;
+    Employees1: TMenuItem;
+    ViewLogFiles1: TMenuItem;
+    procedure BtrieveDataset1GetFieldValue(Sender: TObject; PData: Pointer;
+      FieldName: String; var FieldValue: String);
+    procedure btnAddClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure SBSButton1Click(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure Directories1Click(Sender: TObject);
+    procedure btnOptsClick(Sender: TObject);
+    procedure Employees1Click(Sender: TObject);
+  private
+    { Private declarations }
+    FMCM : TMCMObject;
+    function GetCurrentRecord(Lock : Boolean = False) : Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCoPayLink: TfrmCoPayLink;
+
+implementation
+
+{$R *.dfm}
+uses                   
+  ExportO, LogO, BtrvU2, jcVar, CoDet, Enterprise01_TLB, ComObj, jcFuncs,
+  Dirs, JCIni, FileUtil, empGroup;
+
+procedure TfrmCoPayLink.BtrieveDataset1GetFieldValue(Sender: TObject;
+  PData: Pointer; FieldName: String; var FieldValue: String);
+begin
+  with PMCMRecType(PData)^ do
+  begin
+    Case FieldName[1] of
+      'C'  :  FieldValue := CoCode;
+      'N'  :  FieldValue := CoName;
+      'P'  :  FieldValue := PayID;
+      'F'  :  FieldValue := FileName;
+    end;//case
+  end;
+end;
+
+procedure TfrmCoPayLink.btnAddClick(Sender: TObject);
+var
+  Res : Integer;
+begin
+  with TfrmCoDetails.Create(nil) do
+  Try
+    Caption := 'Add Company/Payroll ID link';
+    ShowModal;
+    if ModalResult = mrOK then
+    begin
+      FMCM.CoCode := cbCode.Items[cbCode.ItemIndex];
+      FMCM.CoName := edtName.Text;
+      FMCM.PayID := edtPayID.Text;
+      FMCM.FileName := edtFileName.Text;
+      Res := FMCM.AddRec;
+      if Res <> 0 then
+        ShowMessage('Error adding new record. Btrieve error ' + IntToStr(Res));
+    end;
+  Finally
+    Free;
+  End;
+  dmlCompany.RefreshDB;
+end;
+
+procedure TfrmCoPayLink.FormCreate(Sender: TObject);
+var
+  Res : Integer;
+begin
+  oToolkit := CreateOLEObject('Enterprise01.Toolkit') as IToolkit;
+  TheIni := TJCIniObject.Create;
+  FMCM := TMCMObject.Create;
+  GroupList := TStringList.Create;
+  GroupList.Sorted := True;
+  Try
+    GroupList.LoadFromFile(GetEnterpriseDirectory + 'JC\Groups.dat');
+  Except
+  End;
+  Res := FMCM.OpenFile;
+  if Res <> 0 then
+    ShowMessage('Unable to open file. Error: ' + IntToStr(Res));
+end;
+
+procedure TfrmCoPayLink.FormDestroy(Sender: TObject);
+begin
+  FMCM.Free;
+  oToolkit := nil;
+  GroupList.SaveToFile(GetEnterpriseDirectory + 'JC\Groups.dat');
+  TheIni.Free;
+end;
+
+procedure TfrmCoPayLink.SBSButton1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmCoPayLink.btnEditClick(Sender: TObject);
+var
+  Res : Integer;
+begin
+  with TfrmCoDetails.Create(nil) do
+  Try
+    Caption := 'Edit Company/Payroll ID link';
+
+    if GetCurrentRecord(True) then
+    begin
+      cbCode.ItemIndex := cbCode.Items.IndexOf(FMCM.CoCode);
+      DoCodeChange;
+      edtPayID.Text := FMCM.PayID;
+      edtFileName.Text := FMCM.FileName;
+      ShowModal;
+      if ModalResult = mrOK then
+      begin
+        FMCM.CoCode := cbCode.Items[cbCode.ItemIndex];
+        FMCM.CoName := edtName.Text;
+        FMCM.PayID := edtPayID.Text;
+        FMCM.FileName := edtFileName.Text;
+        Res := FMCM.PutRec;
+      end
+      else
+        FMCM.UnlockRecord;
+    end;
+  Finally
+    Free;
+  End;
+  dmlCompany.RefreshDB;
+end;
+
+function TfrmCoPayLink.GetCurrentRecord(Lock : Boolean = False) : Boolean;
+var
+  Res : Integer;
+  mcm : MCMRecType;
+  P : Pointer;
+begin
+  P := BtrieveDataset1.GetRecord;
+  if Assigned(P) then
+  begin
+    mcm := MCMRecType(P^);
+    FMCM.Index := 2;
+    Res := FMCM.FindRec(LJVar(mcm.CoCode, 6) + mcm.PayID, B_GetEq, Lock);
+    Result := Res = 0;
+  end
+  else
+    Result := False;
+end;
+
+procedure TfrmCoPayLink.btnDeleteClick(Sender: TObject);
+begin
+  if GetCurrentRecord then
+  begin
+    FMCM.DelRec;
+    dmlCompany.RefreshDB;
+  end;
+end;
+
+procedure TfrmCoPayLink.Directories1Click(Sender: TObject);
+begin
+  with TfrmSelectDir.Create(nil) do
+  Try
+    edtEntDir.Text := TheIni.EntDir;
+    edtPayDir.Text := TheIni.PayDir;
+    edtLogDir.Text := TheIni.LogDir;
+    ShowModal;
+    if ModalResult = mrOK then
+    begin
+      TheIni.EntDir := edtEntDir.Text;
+      TheIni.PayDir := edtPayDir.Text;
+      TheIni.LogDir := edtLogDir.Text;
+    end;
+  Finally
+    Free;
+  End;
+end;
+
+procedure TfrmCoPayLink.btnOptsClick(Sender: TObject);
+var
+  p : TPoint;
+begin
+  p := btnOpts.ClientToScreen(Point(btnOpts.Left, btnOpts.Height));
+  mnuOpts.Popup(p.x, p.y);
+end;
+
+procedure TfrmCoPayLink.Employees1Click(Sender: TObject);
+var
+  Res, i : Integer;
+  s : string;
+  P : Pointer;
+begin
+  P := BtrieveDataset1.GetRecord;
+  if Assigned(P) then
+  begin
+    s := Trim(MCMRecType(P^).CoCode);
+    with oToolkit do
+    begin
+      for i := 1 to Company.cmCount do
+        if Trim(Company.cmCompany[i].coCode) = s then
+        begin
+          s := Trim(Company.cmCompany[i].coPath);
+          Break;
+        end;
+      Configuration.DataDirectory := s;
+      Res := OpenToolkit;
+
+      if Res <> 0 then
+        raise Exception.Create('Unable to open COM Toolkit. Error ' + IntToStr(Res) + #10#10 +
+                               QuotedStr(LastErrorString));
+
+      with TfrmEmpGroup.Create(nil) do
+      Try
+        FillLists;
+        ShowModal;
+      Finally
+        CloseToolkit;
+        Free;
+      End;
+    end; //with oToolkit
+  end;
+end;

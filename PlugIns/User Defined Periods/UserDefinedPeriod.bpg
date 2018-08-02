@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = PERHOOK.dll UDPeriod.dll UDPeriodTester.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+PERHOOK.dll: DLLHOOK\PERHOOK.DPR
+  $(DCC)
+
+UDPeriod.dll: UDPERIOD\UDPeriod.dpr
+  $(DCC)
+
+UDPeriodTester.exe: UDPERIOD\UDPeriodTester\UDPeriodTester.dpr
+  $(DCC)
+
+

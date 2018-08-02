@@ -1,0 +1,27 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="622" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="spCompany" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="spCompany" />
+        <schemafield fieldname="spFrequency" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="spFrequency" />
+        <schemafield fieldname="spAccountName" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="spAccountName" />
+        <schemafield fieldname="spAccountPWord" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="spAccountPWord" />
+        <schemafield fieldname="spEMail" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="spEMail" />
+        <schemafield fieldname="spAdminEMail" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="spAdminEMail" />
+        <schemafield fieldname="spOfflineStart" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="spOfflineStart" />
+        <schemafield fieldname="spOfflineFinish" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="spOfflineFinish" />
+        <schemafield fieldname="spEARTimeOut" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="spEARTimeOut" />        
+        <schemafield fieldname="spPassword" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="spPassword" />
+        <schemafield fieldname="spServer" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="spServer" />
+        <schemafield fieldname="spUseMapi" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="spUseMapi" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>spCompany</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

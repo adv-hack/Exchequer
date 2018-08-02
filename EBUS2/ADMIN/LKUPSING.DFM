@@ -1,0 +1,146 @@
+object frmOneLookup: TfrmOneLookup
+  Left = 287
+  Top = 176
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  BorderStyle = bsSingle
+  Caption = 'Lookups Setup'
+  ClientHeight = 105
+  ClientWidth = 370
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDefaultPosOnly
+  Scaled = False
+  Visible = True
+  OnClose = FormClose
+  OnKeyDown = ControlsKeyDown
+  OnKeyPress = ControlsKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label81: Label8
+    Left = 14
+    Top = 12
+    Width = 46
+    Height = 14
+    Caption = 'Our Code'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label82: Label8
+    Left = 14
+    Top = 44
+    Width = 52
+    Height = 14
+    Caption = 'Their Code'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label83: Label8
+    Left = 14
+    Top = 76
+    Width = 54
+    Height = 14
+    Caption = 'Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object btnOK: TButton
+    Left = 286
+    Top = 9
+    Width = 80
+    Height = 21
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 3
+    OnClick = btnOKClick
+  end
+  object btnCancel: TButton
+    Left = 286
+    Top = 32
+    Width = 80
+    Height = 21
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 4
+    OnClick = btnCancelClick
+  end
+  object edtDescription: Text8Pt
+    Left = 75
+    Top = 72
+    Width = 206
+    Height = 22
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 100
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    TextId = 0
+    ViaSBtn = False
+  end
+  object cbxOurCode: TSBSComboBox
+    Left = 75
+    Top = 8
+    Width = 150
+    Height = 22
+    Color = clGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    ParentFont = False
+    TabOrder = 0
+    OnExit = cbxOurCodeExit
+    MaxListWidth = 0
+  end
+  object edtTheirCode: TSBSComboBox
+    Left = 75
+    Top = 40
+    Width = 206
+    Height = 22
+    Color = clGreen
+    DropDownCount = 20
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 3
+    ParentFont = False
+    TabOrder = 1
+    OnExit = edtTheirCodeExit
+    ExtendedList = True
+    MaxListWidth = 300
+  end
+end

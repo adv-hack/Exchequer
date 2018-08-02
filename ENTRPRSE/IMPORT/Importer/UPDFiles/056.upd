@@ -1,0 +1,13 @@
+[Version]
+Version=5.70.061.056
+
+[Type]
+Decimal=
+
+[Import Settings]
+NOM Currency Variance Tolerance=0.01
+
+[NOM Currency Variance Tolerance]
+Type=Decimal
+
+

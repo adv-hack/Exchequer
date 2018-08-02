@@ -1,0 +1,46 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:vats"
+            targetNamespace="urn:www-iris-co-uk:vats" >
+
+  <xsd:complexType name="vat">
+    <xsd:sequence>
+      <xsd:element name='svcode' type='xsd:string'/>
+      <xsd:element name='svrate' type='xsd:double'/>
+      <xsd:element name='svdesc' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="vatrec">
+    <xsd:sequence>
+      <xsd:element name='vat' type='tns:vat' minOccurs='1' maxOccurs='unbounded' />
+      <xsd:element name='svintervalmonths' type='xsd:byte'/>
+      <xsd:element name='svscheme' type='xsd:string'/>
+      <xsd:element name='svlastreturndate' type='xsd:string'/>
+      <xsd:element name='svcurrentperiod' type='xsd:string'/>
+      <xsd:element name='lastecsalesdate' type='xsd:string'/>
+      <xsd:element name='olastecsalesdate' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='vatrec' type='tns:vatrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='vats'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='vats' type='tns:vats'/>
+
+</xsd:schema>

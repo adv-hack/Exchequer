@@ -1,0 +1,203 @@
+unit sqlmisc;
+
+
+interface
+
+uses classes, pvtables, pvodbc, db, dbconsts, pvconst, sysutils;
+
+const
+  SQL_BOOKMARK_SIZE: SQLUINTEGER = 4;
+  MAX_PRECISION      = 16;    // BIT16's
+
+type
+
+{ TSQLAbstractCollection }
+
+  TSQLAbstractCollection = class(TCollection)
+  private
+    FFilled: boolean;
+{$ifndef PvDelphi6Up}
+    FOwner: TComponent;
+{$endif}
+  protected
+    procedure Check(Status: SQLRETURN; Handle: SQLHSTMT);
+    procedure CheckDBHandle(Status: SQLRETURN; Handle: SQLHDBC);
+{$ifndef PvDelphi6Up}
+    property Owner: TComponent read FOwner;
+{$endif}
+  public
+    constructor Create(Owner: TComponent; ItemClass: TCollectionItemClass);
+    procedure Clear;
+    property Filled: boolean read FFilled write FFilled;
+  end;
+
+{ TSQLColumnInfo }
+
+  TSQLColumnInfo = class(TCollectionItem)
+  public
+    ColumnName: AnsiString;
+    ColTyp: SQLSMALLINT;
+    cbMax: SQLUINTEGER;
+    Scale: SQLSMALLINT;
+    BufferMax: SQLUINTEGER;
+    RealDataSize: SQLUINTEGER;
+    Offset: SQLUINTEGER;
+    Precision: SQLUINTEGER;
+    AutoInc: SQLSMALLINT;
+    Updatable: SQLSMALLINT;
+    Nullable: SQLSMALLINT;
+    BlobList: TList;
+    BlobSize: TList;
+    OldValue: Variant;
+    IsSigned: boolean;
+  end;
+
+{ TSQLColumnInfoCollection }
+
+  TSQLColumnInfoCollection = class(TSQLAbstractCollection)
+  private
+    FMaxColumnSize: SQLUINTEGER;
+  protected
+    function GetItem(Index: Integer): TSQLColumnInfo;
+    procedure SetItem(Index: Integer; Value: TSQLColumnInfo);
+    function GetCanModify: boolean;
+    function GetRecordSize:  SQLUINTEGER;
+  public
+    MaxBlobSize: SQLINTEGER;
+    function Add: TSQLColumnInfo;
+    procedure Clear;
+    function FindItemID(ID: Integer): TSQLColumnInfo;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TSQLColumnInfo;
+{$EndIf}
+    property Items[Index: Integer]: TSQLColumnInfo read GetItem write SetItem; default;
+    procedure SetColumnInfo(hstmt: SQLHSTMT);
+    property MaxColumnSize: SQLUINTEGER read FMaxColumnSize;
+    property CanModify: boolean read GetCanModify;
+    property RecordSize: SQLUINTEGER read GetRecordSize;
+  end;
+
+  { TSqlStoredProcInfo }
+
+  TSqlStoredProcInfo = class(TCollectionItem)
+  public
+    ProcName: AnsiString;
+    Description: AnsiString;
+    ProcType: SQLSMALLINT;
+  end;
+
+{ TSqlStoredProcInfoCollection }
+
+  TSqlStoredProcInfoCollection = class(TSQLAbstractCollection)
+  protected
+    function GetItem(Index: Integer): TSqlStoredProcInfo;
+    procedure SetItem(Index: Integer; Value: TSqlStoredProcInfo);
+  public
+    function Add: TSqlStoredProcInfo;
+    function FindItemID(ID: Integer): TSqlStoredProcInfo;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TSqlStoredProcInfo;
+{$EndIf}
+    property Items[Index: Integer]: TSqlStoredProcInfo read GetItem write SetItem; default;
+    procedure SetStoredProcs(h: SQLHDBC);
+  end;
+
+{ TSqlTablesInfo }
+
+  TSqlTablesInfo = class(TCollectionItem)
+  public
+    TableName: AnsiString;
+    TableType: AnsiString;
+    Description: AnsiString;
+  end;
+
+{ TSqlTablesInfoCollection }
+
+  TSqlTablesInfoCollection = class(TSQLAbstractCollection)
+  protected
+    function GetItem(Index: Integer): TSqlTablesInfo;
+    procedure SetItem(Index: Integer; Value: TSqlTablesInfo);
+  public
+    function Add: TSqlTablesInfo;
+    function FindItemID(ID: Integer): TSqlTablesInfo;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TSqlTablesInfo;
+{$EndIf}
+    property Items[Index: Integer]: TSqlTablesInfo read GetItem write SetItem; default;
+    procedure SetTables(h: SQLHDBC);
+  end;
+
+  PDouble = ^Double;
+
+  PSQL_EXACTNUMERIC = ^SQL_EXACTNUMERIC;
+  SQL_EXACTNUMERIC = packed record
+    Overflow: SQLUSMALLINT;
+    Scale: SQLSMALLINT;
+    Size: SQLSMALLINT;
+    Word: packed array [0..MAX_PRECISION-1] of SQLUSMALLINT;
+  end;
+
+  PSQL_DATE_STRUCT = ^SQL_DATE_STRUCT;
+  SQL_DATE_STRUCT = packed record
+    year: SQLSMALLINT;
+    month: SQLUSMALLINT;
+    day: SQLUSMALLINT;
+  end;
+
+  PSQL_TIME_STRUCT = ^SQL_TIME_STRUCT;
+  SQL_TIME_STRUCT = packed record
+    hour: SQLUSMALLINT;
+    minute: SQLUSMALLINT;
+    second: SQLUSMALLINT;
+  end;
+
+  PSQL_TIMESTAMP_STRUCT = ^SQL_TIMESTAMP_STRUCT;
+  SQL_TIMESTAMP_STRUCT = packed record
+    year: SQLSMALLINT;
+    month: SQLUSMALLINT;
+    day: SQLUSMALLINT;
+    hour: SQLUSMALLINT;
+    minute: SQLUSMALLINT;
+    second: SQLUSMALLINT;
+    fraction: SQLUINTEGER;
+  end;
+
+function SQLMiscGetRecord(
+    hstmt: SQLHSTMT;
+    Columns: TSQLColumnInfoCollection;
+    pData: PChar;
+    LoadBlobOnOpen: boolean;
+    IsStoredProc: boolean): SQLRETURN;
+
+const
+  dmgfRecordBuffer = false;
+  dmgfFieldBuffer = true;
+
+procedure SQLMiscGetField(Owner: TComponent; Columns: TSQLColumnInfoCollection;
+  iField: Word; pRecBuff: PChar; pDest: PChar; var bBlank: LongBool; DirectBuffer: boolean);
+
+procedure SQLMiscPutField(Owner: TComponent; Columns: TSQLColumnInfoCollection;
+  iField: Word; pRecBuff: PChar; pSrc: PChar);
+
+{$Ifndef PvDelphi5Up}
+// For compatibility with older versions
+function SQLMiscBCDToCurr(BCD: Pointer; var Curr: Currency): boolean;
+function SQLMiscCurrToBCD(const Curr: Currency; BCD: Pointer): boolean;
+function SQLMiscIntPower10(var ll: Word; var lh: Word;
+  var hl: Word; var hh: Word; Power: Integer): boolean;
+{$Endif}
+
+function SetSQLDataType(FldType: TFieldType): SQLSMALLINT;
+function SetDataType(sqlFldType: SQLSMALLINT; IsSigned: boolean): TFieldType;
+function SetCDataType(sqlDataType: SQLSMALLINT; IsSigned: boolean): SQLSMALLINT;
+
+function IsBlobColumn(Column: TSQLColumnInfo): boolean;
+function ColumnAsString(Column: TSQLColumnInfo; FieldBuf: Pointer): string;
+function ColumnAsVariant(Column: TSQLColumnInfo; FieldBuf: Pointer): Variant;
+
+function DetermineWhereClause(const SqlStatement: string;
+  var BeginPos, EndPos: integer): boolean;
+
+procedure ConvertToODBC(Buffer: Pointer; BufLength: Integer; DataType: TFieldType);
+
+implementation

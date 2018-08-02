@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:skalt xmlns:val="urn:www-iris-co-uk:skalt">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <skaltrec>
+             <stockcode/>  <!--:  String[16];   { Main Stock Code }  -->
+             <altcode/>    <!--:  String[16];   { Alternative Stock Code } -->
+             <altdesc><![CDATA[]]></altdesc>    <!--:  String[35];   { Alt.Code Description } -->
+             <suppcode/>   <!--:  String[6];    { Supplier Code }    -->
+             <rocurr/>     <!--:  SmallInt;     { ReOrder Currency } -->
+             <roprice/>    <!--:  Double;       { ReOrder Price } -->
+             <useroprice/> <!--:  WordBool;     { Use ReOrder Price Status } -->
+             <lastused/>   <!--:  String[8];    { Read Only - Last Used Date } -->
+             <lasttime/>   <!--:  String[6];    { Read Only - Last Used Time }-->
+        </skaltrec>
+    </message>
+</val:skalt>

@@ -1,0 +1,6 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\TestExportPlugin.dll
+bin\Debug\TestExportPlugin.pdb
+obj\Debug\TestExportPlugin.dll
+obj\Debug\TestExportPlugin.pdb
+bin\Debug\NewExportBox.dll

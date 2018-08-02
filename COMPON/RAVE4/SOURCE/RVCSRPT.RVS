@@ -1,0 +1,237 @@
+module RVCsRpt;
+
+definition
+
+import
+  SysFunc,
+  RVClass,
+  RVData,
+  RVCsStd;
+
+type
+//  TRaveBand = class;
+//  TRaveIterateBand = class;
+
+  TBandPositionMode = (pmOffset,pmOverlay,pmAbsolute);
+  TBandPrintLoc = (plBodyHeader,plGroupHeader,plRowHeader,plMaster,plDetail,
+   plRowFooter,plGroupFooter,plBodyFooter);
+//  TBandPrintLocSet = set of TBandPrintLoc;
+  TBandPrintOcc = (poFirst,poNewPage,poNewColumn);
+//  TBandPrintOccSet = set of TBandPrintOcc;
+
+  TRaveRegion = class(TRaveContainerControl)
+  protected
+    function GetColumns: integer;
+    function SetColumns(Value: integer);
+    function GetColumnSpacing: TRaveUnits;
+    function SetColumnSpacing(Value: TRaveUnits);
+  public
+    property Columns: integer read GetColumns write SetColumns;
+    property ColumnSpacing: TRaveUnits read GetColumnSpacing write SetColumnSpacing;
+  end TRaveRegion;
+
+  TRaveBand = class(TRaveContainerControl)
+  protected
+    function GetRegion: TRaveRegion;
+    function GetAllowSplit: boolean;
+    function SetAllowSplit(Value: boolean);
+  //function GetBandStyle: TRaveBandStyle;
+  //function SetBandStyle(Value: TRaveBandStyle);
+  //function GetControllerBand: TRaveIterateBand;
+  //function SetControllerBand(Value: TRaveIterateBand);
+    function GetDesignerHide: boolean;
+    function SetDesignerHide(Value: boolean);
+    function GetFinishNewPage: boolean;
+    function SetFinishNewPage(Value: boolean);
+    function GetGroupDataView: TRaveBaseDataView;
+    function SetGroupDataView(Value: TRaveBaseDataView);
+    function GetGroupKey: TRaveFieldName;
+    function SetGroupKey(Value: TRaveFieldName);
+    function GetMinHeightLeft: TRaveUnits;
+    function SetMinHeightLeft(Value: TRaveUnits);
+    function GetPositionMode: TBandPositionMode;
+    function SetPositionMode(Value: TBandPositionMode);
+    function GetPositionValue: TRaveUnits;
+    function SetPositionValue(Value: TRaveUnits);
+  //function GetReprintLocs: TBandPrintLocSet;
+  //function SetReprintLocs(Value: TBandPrintLocSet);
+    function GetStartNewPage: boolean;
+    function SetStartNewPage(Value: boolean);
+  public
+    property Region: TRaveRegion read GetRegion;
+    property AllowSplit: boolean read GetAllowSplit write SetAllowSplit;
+  //property BandStyle: TRaveBandStyle read GetBandStyle write SetBandStyle;
+  //property ControllerBand: TRaveIterateBand read GetControllerBand write SetControllerBand;
+    property DesignerHide: boolean read GetDesignerHide write SetDesignerHide;
+    property FinishNewPage: boolean read GetFinishNewPage write SetFinishNewPage;
+    property GroupDataView: TRaveBaseDataView read GetGroupDataView write SetGroupDataView;
+    property GroupKey: TRaveFieldName read GetGroupKey write SetGroupKey;
+    property MinHeightLeft: TRaveUnits read GetMinHeightLeft write SetMinHeightLeft;
+    property PositionMode: TBandPositionMode read GetPositionMode write SetPositionMode;
+    property PositionValue: TRaveUnits read GetPositionValue write SetPositionValue;
+  //property ReprintLocs: TBandPrintLocSet read GetReprintLocs write SetReprintLocs;
+    property StartNewPage: boolean read GetStartNewPage write SetStartNewPage;
+  end TRaveBand;
+
+  TRaveIterateBand = class(TRaveBand)
+  protected
+    function GetColumns: integer;
+    function SetColumns(Value: integer);
+    function GetColumnSpacing: TRaveUnits;
+    function SetColumnSpacing(Value: TRaveUnits);
+    function GetKeepBodyTogether: boolean;
+    function SetKeepBodyTogether(Value: boolean);
+    function GetKeepRowTogether: boolean;
+    function SetKeepRowTogether(Value: boolean);
+    function GetMaxRows: integer;
+    function SetMaxRows(Value: integer);
+    function GetInitToFirst: boolean;
+    function SetInitToFirst(Value: boolean);
+    function GetOrphanRows: integer;
+    function SetOrphanRows(Value: integer);
+    function GetWidowRows: integer;
+    function SetWidowRows(Value: integer);
+  public
+    property Columns: integer read GetColumns write SetColumns;
+    property ColumnSpacing: TRaveUnits read GetColumnSpacing write SetColumnSpacing;
+    property KeepBodyTogether: boolean read GetKeepBodyTogether write SetKeepBodyTogether;
+    property KeepRowTogether: boolean read GetKeepRowTogether write SetKeepRowTogether;
+    property MaxRows: integer read GetMaxRows write SetMaxRows;
+    property InitToFirst: boolean read GetInitToFirst write SetInitToFirst;
+    property OrphanRows: integer read GetOrphanRows write SetOrphanRows;
+    property WidowRows: integer read GetWidowRows write SetWidowRows;
+  end TRaveIterateBand;
+
+  TRaveDataBand = class(TRaveIterateBand)
+  protected
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetDetailKey: TRaveFieldName;
+    function SetDetailKey(Value: TRaveFieldName);
+    function GetMasterDataView: TRaveBaseDataView;
+    function SetMasterDataView(Value: TRaveBaseDataView);
+    function GetMasterKey: TRaveFieldName;
+    function SetMasterKey(Value: TRaveFieldName);
+    function GetSortKey: TRaveFieldName;
+    function SetSortKey(Value: TRaveFieldName);
+  public
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property DetailKey: TRaveFieldName read GetDetailKey write SetDetailKey;
+    property MasterDataView: TRaveBaseDataView read GetMasterDataView write SetMasterDataView;
+    property MasterKey: TRaveFieldName read GetMasterKey write SetMasterKey;
+    property SortKey: TRaveFieldName read GetSortKey write SetSortKey;
+  end TRaveDataBand;
+
+  TRaveDataCycle = class(TRaveComponent)
+  protected
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetDetailKey: TRaveFieldName;
+    function SetDetailKey(Value: TRaveFieldName);
+    function GetInitToFirst: boolean;
+    function SetInitToFirst(Value: boolean);
+    function GetMasterDataView: TRaveBaseDataView;
+    function SetMasterDataView(Value: TRaveBaseDataView);
+    function GetMasterKey: TRaveFieldName;
+    function SetMasterKey(Value: TRaveFieldName);
+    function GetMaxRows: integer;
+    function SetMaxRows(Value: integer);
+    function GetSortKey: TRaveFieldName;
+    function SetSortKey(Value: TRaveFieldName);
+  public
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property DetailKey: TRaveFieldName read GetDetailKey write SetDetailKey;
+    property InitToFirst: boolean read GetInitToFirst write SetInitToFirst;
+    property MasterDataView: TRaveBaseDataView read GetMasterDataView write SetMasterDataView;
+    property MasterKey: TRaveFieldName read GetMasterKey write SetMasterKey;
+    property MaxRows: integer read GetMaxRows write SetMaxRows;
+    property SortKey: TRaveFieldName read GetSortKey write SetSortKey;
+  end TRaveDataCycle;
+
+implementation
+
+// TRaveRegion
+
+  function TRaveRegion.GetColumns: integer; external;
+  function TRaveRegion.SetColumns(Value: integer); external;
+  function TRaveRegion.GetColumnSpacing: TRaveUnits; external;
+  function TRaveRegion.SetColumnSpacing(Value: TRaveUnits); external;
+
+// TRaveBand
+
+  function TRaveBand.GetRegion: TRaveRegion; external;
+  function TRaveBand.GetAllowSplit: boolean; external;
+  function TRaveBand.SetAllowSplit(Value: boolean); external;
+//function TRaveBand.GetBandStyle: TRaveBandStyle; external;
+//function TRaveBand.SetBandStyle(Value: TRaveBandStyle); external;
+//function TRaveBand.GetControllerBand: TRaveIterateBand; external;
+//function TRaveBand.SetControllerBand(Value: TRaveIterateBand); external;
+  function TRaveBand.GetDesignerHide: boolean; external;
+  function TRaveBand.SetDesignerHide(Value: boolean); external;
+  function TRaveBand.GetFinishNewPage: boolean; external;
+  function TRaveBand.SetFinishNewPage(Value: boolean); external;
+  function TRaveBand.GetGroupDataView: TRaveBaseDataView; external;
+  function TRaveBand.SetGroupDataView(Value: TRaveBaseDataView); external;
+  function TRaveBand.GetGroupKey: TRaveFieldName; external;
+  function TRaveBand.SetGroupKey(Value: TRaveFieldName); external;
+  function TRaveBand.GetMinHeightLeft: TRaveUnits; external;
+  function TRaveBand.SetMinHeightLeft(Value: TRaveUnits); external;
+  function TRaveBand.GetPositionMode: TBandPositionMode; external;
+  function TRaveBand.SetPositionMode(Value: TBandPositionMode); external;
+  function TRaveBand.GetPositionValue: TRaveUnits; external;
+  function TRaveBand.SetPositionValue(Value: TRaveUnits); external;
+//function TRaveBand.GetReprintLocs: TBandPrintLocSet; external;
+//function TRaveBand.SetReprintLocs(Value: TBandPrintLocSet); external;
+  function TRaveBand.GetStartNewPage: boolean; external;
+  function TRaveBand.SetStartNewPage(Value: boolean); external;
+
+// TRaveIterateBand
+
+  function TRaveIterateBand.GetColumns: integer; external;
+  function TRaveIterateBand.SetColumns(Value: integer); external;
+  function TRaveIterateBand.GetColumnSpacing: TRaveUnits; external;
+  function TRaveIterateBand.SetColumnSpacing(Value: TRaveUnits); external;
+  function TRaveIterateBand.GetKeepBodyTogether: boolean; external;
+  function TRaveIterateBand.SetKeepBodyTogether(Value: boolean); external;
+  function TRaveIterateBand.GetKeepRowTogether: boolean; external;
+  function TRaveIterateBand.SetKeepRowTogether(Value: boolean); external;
+  function TRaveIterateBand.GetMaxRows: integer; external;
+  function TRaveIterateBand.SetMaxRows(Value: integer); external;
+  function TRaveIterateBand.GetInitToFirst: boolean; external;
+  function TRaveIterateBand.SetInitToFirst(Value: boolean); external;
+  function TRaveIterateBand.GetOrphanRows: integer; external;
+  function TRaveIterateBand.SetOrphanRows(Value: integer); external;
+  function TRaveIterateBand.GetWidowRows: integer; external;
+  function TRaveIterateBand.SetWidowRows(Value: integer); external;
+
+// TRaveDataBand
+
+  function TRaveDataBand.GetDataView: TRaveBaseDataView; external;
+  function TRaveDataBand.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataBand.GetDetailKey: TRaveFieldName; external;
+  function TRaveDataBand.SetDetailKey(Value: TRaveFieldName); external;
+  function TRaveDataBand.GetMasterDataView: TRaveBaseDataView; external;
+  function TRaveDataBand.SetMasterDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataBand.GetMasterKey: TRaveFieldName; external;
+  function TRaveDataBand.SetMasterKey(Value: TRaveFieldName); external;
+  function TRaveDataBand.GetSortKey: TRaveFieldName; external;
+  function TRaveDataBand.SetSortKey(Value: TRaveFieldName); external;
+
+// TRaveDataCycle
+
+  function TRaveDataCycle.GetDataView: TRaveBaseDataView; external;
+  function TRaveDataCycle.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataCycle.GetDetailKey: TRaveFieldName; external;
+  function TRaveDataCycle.SetDetailKey(Value: TRaveFieldName); external;
+  function TRaveDataCycle.GetInitToFirst: boolean; external;
+  function TRaveDataCycle.SetInitToFirst(Value: boolean); external;
+  function TRaveDataCycle.GetMasterDataView: TRaveBaseDataView; external;
+  function TRaveDataCycle.SetMasterDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataCycle.GetMasterKey: TRaveFieldName; external;
+  function TRaveDataCycle.SetMasterKey(Value: TRaveFieldName); external;
+  function TRaveDataCycle.GetMaxRows: integer; external;
+  function TRaveDataCycle.SetMaxRows(Value: integer); external;
+  function TRaveDataCycle.GetSortKey: TRaveFieldName; external;
+  function TRaveDataCycle.SetSortKey(Value: TRaveFieldName); external;
+
+end RVCsRpt;

@@ -1,0 +1,71 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:empl"
+            targetNamespace="urn:www-iris-co-uk:empl" >
+            
+  <xsd:complexType name="addr">
+    <xsd:sequence>
+      <xsd:element name='addr1' type='xsd:string'/>
+      <xsd:element name='addr2' type='xsd:string'/>
+      <xsd:element name='addr3' type='xsd:string'/>
+      <xsd:element name='addr4' type='xsd:string'/>
+      <xsd:element name='addr5' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="emplrec">
+    <xsd:sequence>
+      <xsd:element name='empcode' type='xsd:string'/>
+      <xsd:element name='supplier' type='xsd:string'/>
+      <xsd:element name='empname' type='xsd:string'/>
+      <xsd:element name='addr' type='tns:addr' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='phone' type='xsd:string'/>
+      <xsd:element name='fax' type='xsd:string'/>
+      <xsd:element name='mobile' type='xsd:string'/>
+      <xsd:element name='emptype' type='xsd:string'/>
+      <xsd:element name='payno' type='xsd:string'/>
+      <xsd:element name='certno' type='xsd:string'/>
+      <xsd:element name='certexpiry' type='xsd:string'/>
+      <xsd:element name='useorate' type='tns:boolean2'/>
+      <xsd:element name='userdef1' type='xsd:string'/>
+      <xsd:element name='userdef2' type='xsd:string'/>
+      <xsd:element name='cc' type='xsd:string'/>
+      <xsd:element name='dep' type='xsd:string'/>
+      <xsd:element name='selfbill' type='tns:boolean2'/>
+      <xsd:element name='groupcert' type='tns:boolean2'/>
+      <xsd:element name='certtype' type='xsd:string'/>
+      <xsd:element name='userdef3' type='xsd:string'/>
+      <xsd:element name='userdef4' type='xsd:string'/>
+      <xsd:element name='enino' type='xsd:string'/>
+      <xsd:element name='labourplonly' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='emplrec' type='tns:emplrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='empl'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='empl' type='tns:empl'/>
+
+</xsd:schema>

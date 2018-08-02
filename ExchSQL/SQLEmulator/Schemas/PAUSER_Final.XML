@@ -1,0 +1,25 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="467" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="usCompany" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="usCompany" />
+        <schemafield fieldname="usUserID" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="usUserID" />
+        <schemafield fieldname="usUserName" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="usUserName" />
+        <schemafield fieldname="usEMail" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="usEMail" />
+        <schemafield fieldname="usFloorLimit" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="usFloorLimit" />        
+        <schemafield fieldname="usAuthAmount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="usAuthName" />        
+        <schemafield fieldname="usSendOptions" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="usSendOptions" />        
+        <schemafield fieldname="usDefaultApprover" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="usDefaultApprover" />
+        <schemafield fieldname="usDefaultAuthoriser" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="usDefaultAuthoriser" />
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>usCompany</item>
+                <item>usUserID</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

@@ -1,0 +1,59 @@
+package Ims2d3;
+
+{$R *.RES}
+{$R 'msreg.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'Internet Mail Suite 2'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl30;
+
+contains
+  msWsock,
+  Msaddrpe,
+  Msattadd,
+  Msattpe,
+  msCls,
+  msConst,
+  msDef,
+  msFTP,
+  msFTPCls,
+  msFTPUt,
+  mshttp,
+  msMIME,
+  msMsg,
+  MSMsgCls,
+  msNNTP,
+  mspars,
+  Mspop,
+  msreg,
+  Mssmtp,
+  msSocket,
+  msUtils,
+  msUUCode,
+  Msaddred,
+  msVersPe;
+
+end.

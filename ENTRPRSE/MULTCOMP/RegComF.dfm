@@ -1,0 +1,29 @@
+object frmCOMRegistration: TfrmCOMRegistration
+  Left = 431
+  Top = 253
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'frmCOMRegistration'
+  ClientHeight = 57
+  ClientWidth = 505
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 14
+  object lblRegistrationProgress: TLabel
+    Left = 16
+    Top = 21
+    Width = 472
+    Height = 14
+    Alignment = taCenter
+    AutoSize = False
+  end
+end

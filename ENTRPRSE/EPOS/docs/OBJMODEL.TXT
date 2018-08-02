@@ -1,0 +1,743 @@
+ITradeClient *
+	OnConfigure(Config: ITradeConfiguration) *
+	OnStartup(BaseData: ITradeConnectionPoint) *
+	OnCustomEvent(EventData: ITradeEventData) *
+	OnCustomText(CustomText: ITradeCustomText) *
+	OnShutdown *
+
+
+ITradeConfiguration *
+	cfEnterpriseDirectory *
+	cfDataDirectory *
+	cfLocalTradeDirectory *
+
+
+ITradeConnectionPoint *
+	piCustomisationSupport *
+	piName *
+	piVersion *
+	piAuthor *
+	piSupport *
+	piCopyright *
+	piHookPoints *
+	piCustomText *
+  	Functions *
+		fnTradehWnd *
+		entActivateClient *
+		entConvertAmount *
+		entConvertAmountWithRates *
+		entConvertDateToPeriod *
+		entFormatDate *
+		entFormatPeriodYear *
+		entOpenCashDrawer *
+		entRound *
+ 	SystemSetup *
+		ssTradeCounter *
+			ssTill(x) *
+				ssTillName 		*¬
+				ssCompanyCode
+				ssAfterTender
+				ssDefaultAccountCode
+				ssTillCurrency
+				ssCashGLCode
+				ssChequeGLCode
+				ssSSDDeliveryTerms
+				ssSSDModeOfTransport
+				ssStockLocation
+				ssWriteOffGLCode
+				ssNonStockGLCode
+				ssCashOnlyCustType
+				ssAutoAddLine
+				ssAllowModifyVATRate
+				ssRoundChange
+				ssRoundChangeTo
+				ssCreateTransType
+				ssCreateNegTransType
+				ssDiscountType
+				ssUseDefaultAccountCode
+				ssFilterSerialNoByLocation
+				ssTakeNonStockDefaultFrom
+				ssNonStockItemCode
+				ssNonStockVATCode
+				ssCCDeptMode
+				ssCostCentre
+				ssDepartment
+				ssAllowDepositsOnCashCust
+				ssCashDrawer *
+					cdOpenOnCash		*¬
+					cdOpenOnCheque
+					cdOpenOnCard
+					cdOpenOnAccount
+					cdKickOutCodes
+					cdComPortNo
+					cdBaudRate
+					OpenCashDrawer
+				ssPrinting *¬
+					prReceipt *¬
+						pdFormName	*¬
+						pdPrinterName
+						pdPaper
+						pdBin
+					prInvoice
+						pdFormName
+						pdPrinterName
+						pdPaper
+						pdBin
+					prOrder
+						pdFormName
+						pdPrinterName
+						pdPaper
+						pdBin
+				ssCreditCards *
+					ccCard(x) *
+						ccDescription *
+						ccGLCode *
+					ccNoOfCards *
+				ssLocation 		*¬
+					loCode
+					loName
+					loAddress
+					loPhone
+					loFax
+					loEmailAddr
+					loModem
+					loContact
+					loCurrency
+					loArea
+					loRep
+					loTagged
+					loCostCentre
+					loDepartment
+					loOverrideSalesPrice
+					loOverrideGLCodes
+					loOverrideCCDept
+					loOverrideSupplier
+					loOverrideBinLocation
+					loSalesGL
+					loCostOfSalesGL
+					loPandLGL
+					loBalSheetGL
+					loWIPGL
+				ssCompany *
+					coCode *
+					coName *
+					coPath *
+				ssTransactionTagNo *
+			ssNoOfTills *
+			ssCurrentTillNo *
+			ssLocalTradeDir *
+		ssEnterprise *
+			ssPeriodsInYear 	*¬
+			ssCompanyName   
+			ssLastAuditYr
+			ssManUpdReorderCost
+			ssVATReturnCurrency
+			ssCostDecimals
+			ssShowStkPriceAsMargin
+			ssLiveStockCOSVal
+			ssSDNShowPickedOnly
+			ssUseLocations
+			ssSetBOMSerNo
+			ssWarnDupliYourRef
+			ssUseLocDelAddress
+			ssBudgetByCCDept
+			ssCurrencyTolerance
+			ssCurrencyToleranceMode
+			ssDebtChaseMode
+			ssAutoGenVariance
+			ssAutoGenDisc
+			ssCompanyCountryCode
+			ssSalesDecimals
+			ssDebtChaseOverdue
+			ssCurrentPeriod
+			ssCurrentYear
+			ssTradeTerm
+			ssSeparateCurrencyStatements
+			ssStatementAgingMethod
+			ssStatementUseInvoiceDate
+			ssQuotesAllocateStock
+			ssDeductBOMComponents
+			ssAuthorisationMethod
+			ssUseIntrastat
+			ssAnalyseDescOnly
+			ssDefaultStockValMethod
+			ssDisplayUpdateCosts
+			ssAutoChequeNo
+			ssStatementIncNotDue
+			ssForceBatchTotalBalancing
+			ssDisplayStockLevelWarning
+			ssStatementNoteEntry
+			ssHideMenuOpt
+			ssUseCCDept
+			ssHoldSettlementDiscTransactions
+			ssSetTransPeriod	ByDate
+			ssStopOverCreditLimit
+			ssUseSRCPayInRef
+			ssUsePasswords
+			ssPromptToPrintReceipt
+			ssExternalCustomers
+			ssQtyDecimals
+			ssExternalSINEntry
+			ssDisablePostingToPreviousPeriods
+			ssPercDiscounts
+			ssNumericAccountCodes
+			ssUpdateBalanceOnPosting
+			ssShowInvoiceDisc
+			ssSplitDiscountsInGL
+			ssDoCreditStatusCheck
+			ssDoCreditLimitCheck
+			ssAutoClearPayments
+			ssCurrencyRateType
+			ssShowPeriodsAsMonths
+			ssDirectCustomer
+			ssDirectSupplier
+			ssSettlementDiscount
+			ssSettlementDays
+			ssNeedBOMCostingUpdate
+			ssInputPackQtyOnLine
+			ssDefaultVATCode
+			ssPaymentTerms
+			ssStatementAgeingInterval
+			ssKeepQuoteDate
+			ssFreeStockExcludesSOR
+			ssSeparateDirectTransCounter
+			ssStatementShowMatchedInMonth
+			ssLiveOldestDebt
+			ssBatchPPY
+			ssDefaultBankGL
+			ssUseDefaultBankAccount
+			ssYearStartDate
+			ssLastAuditDate
+			ssBankSortCode
+			ssBankAccountNo
+			ssBankAccountRef
+			ssBankName
+			ssCompanyPhone
+			ssCompanyFax
+			ssCompanyVATRegNo
+			ssCompanyAddress(x)
+			ssGLCtrlCodes(x)
+			ssDebtChaseDays(x)
+			ssTermsofTrade(x)
+			ssVATRates(x)
+				svCode
+				svDesc
+				svRate
+				svInclude
+			ssCurrency(x)
+				scSymbol
+				scDesc
+				scCompanyRate
+				scDailyRate
+				scPrintSymb
+				scTriRate
+				scTriEuroCcy
+				scTriInvert
+				scTriFloating
+			ssUserFields
+				ufAccount1
+				ufAccount2
+				ufAccount3
+				ufAccount4
+				ufStock1
+				ufStock2
+				ufStock3
+				ufStock4
+				ufJob1
+				ufJob2
+				ufADJDesc(x)
+				ufADJEnabled(x)
+				ufADJLineDesc(x)
+				ufADJLineEnabled(x)
+				ufCustDesc(x)
+				ufEmployeeDesc(x)
+				ufJobDesc(x)
+				ufLineTypeDesc(x)
+				ufNOMDesc(x)
+				ufNOMEnabled(x)
+				ufNOMLineDesc(x)
+				ufNOMLineEnabled(x)
+				ufPINDesc(x)
+				ufPINEnabled(x)
+				ufPINLineDesc(x)
+				ufPINLineEnabled(x)
+				ufPORDesc(x)
+				ufPOREnabled(x)
+				ufPORLineDesc(x)
+				ufPORLineEnabled(x)
+				ufPPYDesc(x)
+				ufPPYEnabled(x)
+				ufPPYLineDesc(x)
+				ufPPYLineEnabled(x)
+				ufPQUDesc(x)
+				ufPQUEnabled(x)
+				ufPQULineDesc(x)
+				ufPQULineEnabled(x)
+				ufSINDesc(x)
+				ufSINEnabled(x)
+				ufSINLineDesc(x)
+				ufSINLineEnabled(x)
+				ufSORDesc(x)
+				ufSOREnabled(x)
+				ufSORLineDesc(x)
+				ufSORLineEnabled(x)
+				ufSQUDesc(x)
+				ufSQUEnabled(x)
+				ufSQULineDesc(x)
+				ufSQULineEnabled(x)
+				ufSRCDesc(x)
+				usSRCEnabled(x)
+				ufSRCLineDesc(x)
+				ufSRCLineEnabled(x)
+				ufStockDesc(x)
+				ufSuppDesc(x)
+				ufTSHDesc(x)
+				ufTSHEnabled(x)
+				ufTSHLineDesc(x)
+				ufTSHLineDescEnabled(x)
+				ufWORDesc(x)
+				ufWOREnabled(x)
+				ufWORLineDesc(x)
+				ufWORLineEnabled(x)
+			ssPickingOrderAllocatesStock
+			ssDocumentNumbers(DocType
+			ssMaxCurrency
+			ssUseDosKeys
+			ssHideEnterpriseLogo
+			ssConserveMemory
+			ssProtectYourRef
+			ssSDNDateIsTaxPointDate
+			ssAutoPostUplift
+			ssJobCosting
+				ssUsePPIsForTimeSheets
+				ssSplitJobBudgetsByPeriod
+				ssPPISupAccount
+				ssJobCategory(x)
+				ssCheckJobBudget
+				ssJobCostingGLCtrlCodes(x)
+			ssTaxWord
+			ssMainCompanyDir
+			Refresh
+	Version *
+  		verTradeCounter *
+  		verCustomisation *
+  		verModuleVersion *
+  		verCurrencyVersion *
+  		verClientServer *
+  		verLicenceType *
+  		verModules(x) *
+	UserProfile *
+		upUserID		*¬
+		upName
+		upLockOutMins
+		upEmail
+		upDefSRICust
+		upDefPPISupp
+		upMaxSalesAuth
+		upMaxPurchAuth
+		upDefSalesBankGL
+		upDefPurchBankGL
+		upCCDeptRule
+		upDefCostCentre
+		upDefDepartment
+		upDefLocation
+		upDefLocRule
+		upSecurityFlags(x)
+
+
+ITradeEventData *
+	edWindowId * 
+	edHandlerId *
+	Transaction *
+		thOurRef
+		thYourRef
+		thAcCode
+		thRunNo
+		thFolioNum
+		thCurrency
+		thYear
+		thPeriod
+		thTransDate
+		thDueDate
+		thCompanyRate
+		thDailyRate
+		thDocType
+		thVATAnalysis(x)
+		thNetValue
+		thTotalVAT
+		thSettleDiscPerc
+		thSettleDiscAmount
+		thTotalLineDiscount
+		thSettleDiscDays
+		thSettleDiscTaken
+		thAmountSettled
+		thTransportNature
+		thTransportMode
+		thHoldFlag
+		thTotalWeight
+		thDelAddress
+		thTotalCost
+		thPrinted
+		thManualVAT
+		thDeliveryTerms
+		thOperator
+		thJobCode
+		thAnalysisCode
+		thTotalOrderOS
+		thUserField1
+		thUserField2
+		thUserField3
+		thUserField4
+		thTagNo
+		thNoLabels
+		thControlGL
+		thProcess
+		thSource
+		thPostedDate
+		thPORPickSOR
+		thBatchDiscAmount
+		thPrePost
+		thOutstanding
+		thFixedRate
+		thLongYourRef
+		thEmployeeCode
+		thLines *
+			thLine(x) *
+				tlLineNo
+				tlGLCode
+				tlCurrency
+				tlCompanyRate
+				tlDailyRate
+				tlCostCentre
+				tlDepartment
+				tlStockCode
+				tlQty
+				tlQtyMul
+				tlNetValue
+				tlDiscount
+				tlDiscFlag
+				tlVATCode
+				tlVATAmount
+				tlPayment
+				tlQtyWOFF
+				tlQtyDel
+				tlCost
+				tlLineDate
+				tlItemNo
+				tlDescr
+				tlJobCode
+				tlAnalysisCode
+				tlUnitWeight
+				tlLocation
+					loCode
+					loName
+					loAddress
+					loPhone
+					loFax
+					loEmailAddr
+					loModem
+					loContact
+					loCurrency
+					loArea
+					loRep
+					loTagged
+					loCostCentre
+					loDepartment
+					loOverrideSalesPrice
+					loOverrideGLCodes
+					loOverrideCCDept
+					loOverrideSupplier
+					loSalesGL
+					loCostOfSalesGL
+					loPandLGL
+					loBalSheetGL
+					loWIPGL
+					loQtyInStock
+					loQtyOnOrder
+					loQtyAllocated
+					loQtyPicked
+					loQtyMin
+					loQtyMax
+					loQtyFreeze
+					loReorderQty
+					loReorderCur
+					loReorderPrice
+					loReorderDate
+					loReorderCostCentre
+					loReorderDepartment
+					loBinLocation
+					loCostPriceCur
+					loCostPrice
+					loBelowMinLevel
+					loSuppTemp
+					loSupplier
+					loLastUsed
+					loQtyPosted
+					loQtyStockTake
+					loTimeChange
+					loSalesBands(x)
+					loQtyFree
+				tlChargeCurrency
+				tlAcCode
+				tlLineType
+				tlFolioNum
+				tlLineClass
+				tlRecStatus
+				tlSOPFolioNum
+				tlSOPABSLineNo
+				tlABSLineNo
+				tlUserField1
+				tlUserField2
+				tlUserField3
+				tlUserField4
+				tlSSDUpliftPerc
+				tlSSDCommodCode
+				tlSSDSalesUnit
+				tlSSDUseLineValues
+				tlPriceMultiplier
+				tlQtyPicked
+				tlQtyPickedWO
+				tlSSDCountry
+				tlInclusiveVATCode
+				tlBOMKitLink
+				tlOurRef
+				tlStock *
+					stCode
+					stDesc(x)
+					stAltCode
+					stType
+					stSalesGL
+					stCOSGL
+					stPandLGL
+					stBalSheetGL
+					stWIPGL
+					stBelowMinLevel
+					stFolioNum
+					stParentCode
+					stSuppTemp
+					stUnitOfStock
+					stUnitOfSale
+					stUnitOfPurch
+					stCostPriceCur
+					stCostPrice
+					stSalesUnits
+					stPurchUnits
+					stVATCode
+					stCostCentre
+					stDepartment
+					stQtyInStock
+					stQtyPosted
+					stQtyAllocated
+					stQtyOnOrder
+					stQtyMin
+					stQtyMax
+					stBinLocation
+					stCover
+						stUseCover
+						stCoverPeriods
+						stCoverPeriodUnits
+						stCoverMinPeriods
+						stCoverMinPeriodUnits
+						stCoverQtySold
+						stCoverMaxPeriods
+						stCoverMaxPeriodUnits
+					stIntrastat
+						stSSDCommodityCode
+						stSSDSalesUnitWeight
+						stSSDPurchaseUnitWeight
+						stSSDUnitDesc
+						stSSDStockUnits
+						stSSDDespatchUplift
+						stSSDCountry
+					stReorder
+						stReorderQty
+						stReorderCur
+						stReorderPrice
+						stReorderDate
+						stReorderCostCentre
+						stReorderDepartment
+					stAnalysisCode
+					stSalesBands(x)
+						stPrice
+						stCurrency
+					stTimeChange
+					stInclusiveVATCode
+					stOperator
+					stSupplier
+					stDefaultLineType
+					stValuationMethod
+					stQtyPicked
+					stLastUsed
+					stBarCode
+					stPricingMethod
+					stShowQtyAsPacks
+					stUseKitPrice
+					stUserField1
+					stUserField2
+					stUserField3
+					stUserField4
+					stShowKitOnPurchase
+					stImageFile
+					stWebLiveCatalog
+					stWebPrevCatalog
+					stUseForEbus
+					stQtyFree
+				tlSerialNumbers *
+					snUsed(x)
+						snSerialNo
+						snBatchNo
+						snType
+						snSold
+						snUseByDate
+						snInDate
+						snInOrderRef
+						snInOrderLine
+						snInDocRef
+						snInDocLine
+						snInLocation
+						snOutDate
+						snOutOrderRef
+						snOutOrderLine
+						snOutDocRef
+						snOutDocLine
+						snOutLocation
+						snCostPrice
+						snCostPriceCurrency
+						snSalesPrice
+						snSalesPriceCurrency
+						snBatchQuantity
+						snBatchQuantitySold
+						snDailyRate
+						snCompanyRate
+						snBatchQtySelected
+						snBatchQtyAvailable
+					snAvailable(x)
+						[as above]
+					snUsedCount
+					snAvailableCount
+					Refresh
+					Select(x,y)
+					Deselect(x,y)
+				Save
+				Cancel
+			thCurrentLine *
+			thLineCount
+			Add
+			Delete(x)
+		thPaymentLines *
+			thLine(x)
+				tlLineNo
+				tlGLCode
+				tlCurrency
+				tlCompanyRate
+				tlPayingInRef
+				tlDailyRate
+				tlCostCentre
+				tlDepartment
+				tlNetValue
+				tlLineDate
+				tlChequeNo
+				tlLineType
+				tlFolioNum
+				tlLineClass
+				tlRecStatus
+				tlABSLineNo
+				tlUserField1
+				tlUserField2
+				tlUserField3
+				tlUserField4
+				tlOurRef
+			thLineCount
+		thCustomer
+			acCode
+			acCompany
+			acArea
+			acAccType
+			acStatementTo
+			acVATRegNo
+			acAddress
+			acDelAddress
+			acContact
+			acPhone
+			acFax
+			acTheirAcc
+			acOwnTradTerm
+			acTradeTerms(x)
+			acCurrency
+			acVATCode
+			acPayTerms
+			acCreditLimit
+			acDiscount
+			acCreditStatus
+			acCostCentre
+			acDiscountBand
+			acDepartment
+			acECMember
+			acStatement
+			acSalesGL
+			acLocation
+			acAccStatus
+			acPayType
+			acBankSort
+			acBankAcc
+			acBankRef
+			acLastUsed
+			acPhone2
+			acUserDef1
+			acUserDef2
+			acInvoiceTo
+			acSOPAutoWOff
+			acBookOrdVal
+			acCOSGL
+			acDrCrGL
+			acDirDebMode
+			acCCStart
+			acCCEnd
+			acCCName
+			acCCNumber
+			acCCSwitch
+			acDefSettleDays
+			acDefSettleDisc
+			acFormSet
+			acStateDeliveryMode
+			acEmailAddr
+			acSendReader
+			acEBusPword
+			acAltCode
+			acPostCode
+			acUseForEbus
+			acZIPAttachments
+			acUserDef3
+			acUserDef4
+			acTimeStamp
+			acSSDDeliveryTerms
+			acInclusiveVATCode
+			acSSDModeOfTransport
+			acLastOperator
+			acDocDeliveryMode
+			acSendHTML
+			acWebLiveCatalog
+			acWebPrevCatalog
+		thTender *
+			teCash
+			teCheque
+			teCard
+			teAccount
+			teCardDetails
+				cdCardType
+				cdCardNumber
+				cdCardName
+				cdExpiryDate
+				cdAuthorisationCode
+		Recalculate
+	edBoolResult(x)
+	edStringResult(x)
+	edLongResult(x)
+	edDoubleResult(x)
+	edVariantResult(x)
+
+
+ITradeCustomText
+	ctWindowId
+	ctTextId
+	ctText

@@ -1,0 +1,27 @@
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.exe.config
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.exe
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.pdb
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Interop.ADODB.dll
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Interop.Enterprise.dll
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Interop.Enterprise01.dll
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Interop.EnterpriseBeta.dll
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Posting Hook Tester.csproj.ResolveComReference.cache
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Posting_Hook_Tester.frmExchPHT.resources
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Posting_Hook_Tester.Properties.Resources.resources
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\Posting Hook Tester.csproj.GenerateResource.Cache
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\ExchPHT.exe
+D:\GitHub\ExchequerCore\ExchSQL\Posting Hook Tester\obj\Debug\ExchPHT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.exe.config
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Interop.ADODB.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Interop.Enterprise.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Interop.Enterprise01.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Interop.EnterpriseBeta.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Posting Hook Tester.csproj.ResolveComReference.cache
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\ExchPHT.exe
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\ExchPHT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.exe
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\bin\Debug\ExchPHT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Posting Hook Tester.csprojResolveAssemblyReference.cache
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Posting_Hook_Tester.frmExchPHT.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Posting_Hook_Tester.Properties.Resources.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\Posting Hook Tester\obj\Debug\Posting Hook Tester.csproj.GenerateResource.Cache

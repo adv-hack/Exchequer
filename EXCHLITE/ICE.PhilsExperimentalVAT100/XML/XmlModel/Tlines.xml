@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:tlines xmlns:val="urn:www-iris-co-uk:tlines">
+<message guid="" number="" count="" source="" destination="" flag="">
+  <tlinerec>
+        <transrefno/>  <!--::  String[9];  {* Parent Transaction number *}  -->
+        <lineno/>      <!--::  LongInt;     { Array / Line No} -->
+        <nomcode/>     <!--::  LongInt;     { Nominal Code } -->
+        <currency/>    <!--::  SmallInt;    { Transaction Currency [0-30]} -->
+        <corate/>      <!--::  Double;      { Line Currency Company Exchange Rate } -->
+        <vatrate/>     <!--::  Double;      { Line Currency Daily Exchange Rate } -->
+        <cc/>          <!--::  String[3];   { Cost Centre Code } -->
+        <dep/>         <!--::  String[3];   { Department Code } -->
+        <stockcode/>   <!--::  String[16];  { Stock Code } -->
+        <qty/>         <!--::  Double;      { Qty!} -->
+        <qtymul/>      <!--::  Double;      { Qty Multiplier Factor } -->
+        <netvalue/>    <!--::  Double;      { Line Total excluding Tax } -->
+        <discount/>    <!--::  Double;      { Amount/% } -->
+        <vatcode/>     <!--::  Char;        { VATCode } -->
+        <vat/>         <!--::  Double;      { Tax Line Content } -->
+        <payment/>     <!--::  WordBool;    { Line Type  } -->
+        <discountchr/> <!--::  Char;        { Flag to indicate if disc is amount or % } -->
+        <qtywoff/>    <!--:                { Total Qty Written OFF } -->
+        <qtydel/>     <!--:                { Total Qty Physicaly delivered +WOFF - Qty = OS } -->
+        <costprice/>   <!--::  Double; -->
+        <custcode/>    <!--::  String[6];   { Account Code } -->
+        <linedate/>    <!--::  String[8];   { Line Transaction date. SPOP= Delivery Date } -->
+        <item/>        <!--::  String[3]; -->
+        <desc><![CDATA[]]></desc>        <!--::  String[55];  { Line Desc } -->
+        <lweight/>     <!--::  Double;      { Weight of Sales Unit in Kg} -->
+        <mlocstk/>     <!--::  String[3];   { Multi stock location code *} -->
+
+        <jobcode/>     <!--::  String[10];  { Job Code } -->
+        <analcode/>    <!--::  String[10];  { Job Analysis Code } -->
+        <tshccurr/>    <!--::  SmallInt;    { Charge Currency for Job Costing Time Sheet } -->
+
+        <docltlink/>   <!--::  SmallInt;    { Doc Line Type Link } -->
+        <kitlink/>     <!--::  LongInt;     { Folio No. of parent Stock code for kit line } -->
+        <folionum/>    <!--::  LongInt;     { Folio No. Of Transaction header } -->
+
+        <linetype/>    <!--::  Char;        { Transaction Line Type } -->
+
+        <reconcile/>   <!--::  Byte;        { Status of item for reconciling ie cleared etc } -->
+
+        <soplink/>     <!--::  LongInt;     { Folio No. of Parent Order Line *} -->
+        <soplineno/>   <!--::  LongInt;     { Folio No. of Prarent ABSLineNo *} -->
+
+        <abslineno/>   <!--::  LongInt;     { Absolute, non moveable line no. *} -->
+
+        <lineuser1><![CDATA[]]></lineuser1>  <!--::  String[30];  {* Line user def 1 *} -->
+        <lineuser2><![CDATA[]]></lineuser2>  <!--::  String[30];  {* Line user def 2 *} -->
+        <lineuser3><![CDATA[]]></lineuser3>  <!--::  String[30];  {* Line user def 3 *} -->
+        <lineuser4><![CDATA[]]></lineuser4>  <!--::  String[30];  {* Line user def 4 *} -->
+        <ssduplift/>  <!--::  Double;      {* Intrastat uplift % *} -->
+        <ssdcommod/>  <!--::  String[8];   {* SSD Commodity code - Numbers Only *} -->
+        <ssdspunit/>  <!--::  Double;      {* SSD unit into sales unit *} -->
+        <ssduseline/> <!--::  WordBool;    {* Take the ssd values from the line *} -->
+        <pricemulx/>  <!--::  Double;      {* Price rate multiplier to get price per *} -->
+
+        <qtypick/>    <!--::  Double;      {* Picked Quantity *} -->
+        <vatincflg/>  <!--::  Char;        {* VAT Include flag *} -->
+
+        <qtypwoff/>   <!--::  Double;      {* Pick WriteOff Qty *} -->
+
+        <rtnerrcode/> <!--::  SmallInt;    {* Return Error Code *} -->
+        <ssdcountry/> <!--::  string[5]; -->
+
+        <incnetvalue/> <!--: Double; -->
+
+        <autoLinetype/> <!--: Byte;         {Line has been auto manufactured. 0 = Not auto line. -->
+                                      <!--  1 = via customisation -->
+                                      <!--  2 = via CIS routine } -->
+        <cisratecode/> <!--: Char;         {Valid CIS Tax rate code} -->
+        <sisrate/>     <!--: Double;       {CIS % rate aplied} -->
+        <costapport/>  <!--: Double;       {Cost apportionment value} -->
+        <nomvattype/>  <!--: Byte;         {0 = N/A, 1 = Auto, 2 = Manual} -->
+
+        <binqty/>      <!--: Double;       {Bin Quantity for Multi-Bin support} -->
+
+        <tlaltstockfolio/>    <!--: longint;  //Folio of Alternate Stock Code. Read-only -->
+        <tlrunno/>            <!--: longint;  //Transaction Run Number. Read-only -->
+        <tlstockdeductqty/>   <!--: Double;   //Qty to deduct from stock. Read-only -->
+        <tluseqtymul/>        <!--: WordBool; //Whether to use the Qty Multiplier. Read-only -->
+        <tlserialqty/>        <!--: Double;   //Number of serial nos required. Read-only -->
+        <tlpricebypack/>      <!--: WordBool;  //Read-only -->
+        <tlreconciliationdate/> <!--: String[8]; //Date line was reconciled. Read-only -->
+        <tlb2blinkfolio/>
+        <tlb2blineno/>        <!--: longint; //Folio number and line number of back-to-back equiv.Read-only -->
+        <tlcosdailyrate/>     <!--: Double;  //Daily rate for Cost-of-Sales conversion. Read-only -->
+        <tlqtypack/>          <!--: Double; -->
+  </tlinerec>
+</message>
+</val:tlines>

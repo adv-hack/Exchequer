@@ -1,0 +1,16 @@
+[Entrprse]
+PEmail=B
+PEmailAttach=A
+PEmailPrn=HP LaserJet 4 (Develop) on \\Sbs_server\develop
+PEmailSMTP=ntbox
+PEmailName=emname
+PEmailAddr=emaddr
+PFax=A
+PFaxName=fxname
+PFaxNo=fxaddr
+
+[WorkStation]
+GroupName=Exchequer Enterprise
+LocalProgs=N
+LocalDir=C:\EXCHEQR\ENTRPRSE
+StartRepl=Y

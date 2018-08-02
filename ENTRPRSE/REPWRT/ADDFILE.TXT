@@ -1,0 +1,30 @@
+Adding a new file to Report Writer
+
+RepObjCU.pas
+
+func File_BtrvDrv - add new file to Case statement (sets Btrieve function)
+func File_CheckKey - add new file to case statement (Sets Prefix, subtype etc)
+
+DicLinkU.pas
+
+proc FileTXLate - add new file to case statement (converts from fileno in repwrt to btrieve file no)
+
+VarCnst3.pas
+
+Add new file to DataFilesL array
+
+RepDet.pas
+
+Add new file to version check in FormCreate
+
+===================================================================================================
+
+Adding a new index to Report Writer
+
+VarCnst3.pas
+
+Add new index to FastNDXHedL and FastNDXOrdL arrays
+
+RepFNO1U.pas
+
+Add new index to FastNDXObj.Prime_FastNDX method.

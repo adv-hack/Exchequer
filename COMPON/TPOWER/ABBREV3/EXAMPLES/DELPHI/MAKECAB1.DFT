@@ -1,0 +1,114 @@
+object Form1: TForm1
+  Left = 276
+  Top = 277
+  Width = 442
+  Height = 199
+  Caption = 'Make Cabinet Archive'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 124
+    Top = 13
+    Width = 185
+    Height = 13
+    Caption = 'This example creates a cabinet archive'
+    WordWrap = True
+  end
+  object Label2: TLabel
+    Left = 165
+    Top = 104
+    Width = 103
+    Height = 13
+    Caption = 'Archive Item Progress'
+  end
+  object AbMeter1: TAbMeter
+    Left = 141
+    Top = 120
+    Width = 150
+    Height = 16
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clNavy
+  end
+  object AddBtn: TButton
+    Left = 100
+    Top = 51
+    Width = 75
+    Height = 25
+    Caption = '&Add...'
+    TabOrder = 0
+    OnClick = AddBtnClick
+  end
+  object CreateBtn: TButton
+    Left = 23
+    Top = 51
+    Width = 75
+    Height = 25
+    Caption = '&Create'
+    TabOrder = 1
+    OnClick = CreateBtnClick
+  end
+  object CloseBtn: TButton
+    Left = 335
+    Top = 51
+    Width = 75
+    Height = 25
+    Caption = 'C&lose'
+    TabOrder = 2
+    OnClick = CloseBtnClick
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 149
+    Width = 432
+    Height = 24
+    Align = alBottom
+    BevelOuter = bvLowered
+    Caption = 'Idle'
+    TabOrder = 3
+  end
+  object NewFolderBtn: TButton
+    Left = 178
+    Top = 51
+    Width = 75
+    Height = 25
+    Caption = '&New Folder'
+    TabOrder = 4
+    OnClick = NewFolderBtnClick
+  end
+  object NewCabBtn: TButton
+    Left = 258
+    Top = 51
+    Width = 75
+    Height = 25
+    Caption = 'New Cab'
+    TabOrder = 5
+    OnClick = NewCabBtnClick
+  end
+  object OpenDialog1: TOpenDialog
+    Options = [ofHideReadOnly, ofAllowMultiSelect]
+    Left = 56
+    Top = 8
+  end
+  object AbMakeCab1: TAbMakeCab
+    ArchiveProgressMeter = AbVCLMeterLink1
+    CompressionType = ctMSZIP
+    FolderThreshold = 0
+    ItemProgressMeter = AbMeter1
+    OnArchiveItemProgress = AbMakeCab1ArchiveItemProgress
+    SetID = 0
+    SpanningThreshold = 500000
+    Left = 16
+    Top = 8
+  end
+  object AbVCLMeterLink1: TAbVCLMeterLink
+    Meter = AbMeter1
+    Left = 112
+    Top = 116
+  end
+end

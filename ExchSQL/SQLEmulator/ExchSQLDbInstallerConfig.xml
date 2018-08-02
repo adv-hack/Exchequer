@@ -1,0 +1,5 @@
+<create_new_database collate="SQL_Latin1_General_CP1_CI_AS">
+	<dat_file_details size="50MB" maxsize="Unlimited" filegrowth="50MB" />
+	<log_file_details size="100MB" maxsize="2097152MB" filegrowth="10MB"  />
+	<recovery Option="Simple"/>
+</create_new_database>

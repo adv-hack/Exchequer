@@ -1,0 +1,42 @@
+From: SDSTeam [SDSTeam@hmrc.gsi.gov.uk]
+Sent: 06 June 2005 15:48
+Subject: Updated CIS Schemas and BVRs
+
+Dear Developer,
+
+Please find attached updated CIS Schemas and Business Validation Rules for the monthly return, verification request and response. These documents are now at version 1.1 and will be included in the CIS technical pack on the HMRC web site shortly.
+
+The changes from version 1.0 to version 1.1 are as follows:
+
+In CISrequest:
+ - Changed maximum number of subcontractors from unbounded to 100
+ - Moved Action indicator to be part of Subcontractor rather than Contractor
+ - Added WorksRef to Subcontractor
+ - Removed "2007" from schema name
+
+In CISresponse:
+ - Added WorksRef to Subcontractor
+ - Removed "2007" from schema name
+
+In CISreturn:
+ - Removed "2007" from schema name
+ 
+
+Thank you 
+
+SDS Team
+IMS (Electronic Business Unit)
+HMRC
+Tel: 01274 534666
+email: sdsteam@hmrc.gsi.gov.uk
+
+
+  <<CISreturn-v1-1.xsd>>   <<CISresponse-v1-1.xsd>>     
+<<CISrequest-v1-1.xsd>>       <<cis-return-businessrules.pdf>>  
+<<cis-request-businessrules.pdf>>    <<cis-reply-businessrules.pdf>> 
+
+
+
+The original of this email was scanned for viruses by the Government Secure Intranet (GSi) virus scanning service supplied exclusively by Energis in partnership with MessageLabs.
+
+On leaving the GSi this email was certified virus-free

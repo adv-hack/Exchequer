@@ -1,0 +1,57 @@
+<schemarecord version="2" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix" identitycol="PositionId" reclen="322"  >
+	<recordfields>
+		<schemafield fieldname="fixed" fullfieldname="fixed" typename="EBUSLKUP_FIXED" size="0" elements="1" id="-1" columnname="" />
+		<schemafield fieldname="var" fullfieldname="var" typename="EBUSLKUP_VAR" size="0" elements="1" id="-1" columnname="" />
+	</recordfields>
+	<fixedfields>
+		<schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix"/>
+		<schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+		<schemafield fieldname="ourtradercode" fullfieldname="ourtradercode" typename="DelphiString" size="11" elements="1" id="-1" columnname="ourtradercode" />
+		<schemafield fieldname="ouritemcode" fullfieldname="ouritemcode" typename="DelphiString" size="51" elements="1" id="-1" columnname="ouritemcode" />
+		<schemafield fieldname="theiritemcode" fullfieldname="theiritemcode" typename="DelphiString" size="51" elements="1" id="-1" columnname="theiritemcode" />
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes>
+		<recordtype name="TLookupGenericC" id="0" stringid="C" >
+			<schemafields>
+				<schemafield fieldname="description" fullfieldname="description" typename="DelphiString" size="101" elements="1" id="0" columnname="description" />
+				<schemafield fieldname="tag" fullfieldname="tag" typename="int16" size="2" elements="1" id="0" columnname="tag" />
+			</schemafields>
+		</recordtype>
+		<recordtype name="TLookupGenericV" id="1" stringid="V" >
+			<schemafields>
+				<schemafield fieldname="description" fullfieldname="description" typename="DelphiString" size="101" elements="1" id="0" columnname="description" />
+				<schemafield fieldname="tag" fullfieldname="tag" typename="int16" size="2" elements="1" id="0" columnname="tag" />				
+			</schemafields>
+		</recordtype>
+		<recordtype name="T" id="2" stringid="T" >
+			<schemafields>
+				<schemafield fieldname="lookuptrader" fullfieldname="lookuptrader" typename="DelphiString" size="11" elements="1" id="0" columnname="lookuptrader" />
+			</schemafields>
+		</recordtype>
+	</recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item>ourtradercode</item>
+				<item>ouritemcode</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item>ourtradercode</item>
+				<item>theiritemcode</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isclustered="0" isunique="0">
+			<indexfields>
+				<item>ourtradercode</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+
+</schemarecord>

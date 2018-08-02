@@ -1,0 +1,100 @@
+program Trade;
+
+{$REALCOMPATIBILITY ON}
+
+uses
+  Sharemem,
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
+  D6OnHelpFix,
+  conHTMLHelp,
+  Forms,
+  EnterpriseTrade_TLB in 'EnterpriseTrade_TLB.pas',
+  Login in 'LOGIN.PAS' {FrmLogin},
+  TXHead in 'TXHEAD.PAS' {FrmTXHeader},
+  Tender in 'TENDER.PAS' {FrmTender},
+  TxLine in 'TXLINE.PAS' {FrmTXLine},
+  FindStk in 'FindStk.pas' {FrmFindStock},
+  FindTX in 'FINDTX.PAS' {FrmFindTX},
+  CardDet in 'CARDDET.PAS' {FrmCardDetails},
+  LineDisc in 'LineDisc.pas' {FrmLineDiscount},
+  FindAcc in 'FindAcc.pas' {FrmFindAccount},
+  SettDisc in 'SettDisc.pas' {FrmSettlement},
+  EPOSCnst in '..\Shared\EPOSCNST.PAS',
+  EPOSMess in '..\Shared\EPOSMess.pas' {FrmMessageBox},
+  TXList in 'Txlist.pas' {FrmTXList},
+  EPOSKey in '..\Shared\Eposkey.pas',
+  deposit in 'deposit.pas' {FrmDeposit},
+  EPOSProc in '..\Shared\EPOSPROC.PAS',
+  NonStock in 'NonStock.pas' {FrmNonStockItem},
+  BackGrnd in 'BackGrnd.pas' {FrmBackground},
+  MultiBins in 'MultiBins.pas' {frmMultiBins},
+  RunWarn in 'RunWarn.pas' {frmRunWarning},
+  LicUtil in 'x:\entrprse\FUNCS\LicUtil.pas',
+  VarConst in '..\SHARED\VARCONST.PAS',
+  LayList in '..\SHARED\LAYLIST.PAS' {frmLayaways},
+  DLLINC in '..\SHARED\DLLINC.PAS',
+  TRADE_TLB in 'TRADE_TLB.pas',
+  PIAboutF in 'Custom\PIABOUTF.PAS' {frmAbout},
+  CustIntU in 'Custom\CUSTINTU.PAS',
+  oDummy in 'Custom\ODUMMY.PAS',
+  oLines in 'Custom\OLINES.PAS',
+  oLine in 'CUSTOM\OLINE.PAS',
+  oCust in 'Custom\OCUST.PAS',
+  oStock in 'Custom\OSTOCK.PAS',
+  oSerials in 'Custom\OSERIALS.PAS',
+  oSerial in 'Custom\OSERIAL.PAS',
+  oLoctn in 'Custom\OLOCTN.PAS',
+  oTender in 'CUSTOM\OTENDER.PAS',
+  oCardDet in 'CUSTOM\OCARDDET.PAS',
+  oAddr in 'CUSTOM\OADDR.PAS',
+  oTCMSys in 'CUSTOM\OTCMSYS.PAS',
+  oTill in 'CUSTOM\OTILL.PAS',
+  oEntSys in 'CUSTOM\OENTSYS.PAS',
+  oDrawer in 'Custom\oDrawer.pas',
+  oPrnting in 'CUSTOM\OPRNTING.PAS',
+  oPrntDet in 'CUSTOM\OPRNTDET.PAS',
+  oCards in 'Custom\OCARDS.PAS',
+  oCard in 'CUSTOM\OCARD.PAS',
+  oSysLoc in 'CUSTOM\OSYSLOC.PAS',
+  OCOMPANY in 'Custom\OCOMPANY.PAS',
+  oSysSetup in 'CUSTOM\oSysSetup.pas',
+  oFuncs in 'CUSTOM\OFUNCS.PAS',
+  oVersion in 'CUSTOM\OVERSION.PAS',
+  oTrans in 'Custom\OTRANS.PAS',
+  OPLINES in 'CUSTOM\OPLINES.PAS',
+  oPayLine in 'CUSTOM\OPAYLINE.PAS',
+  oHookPnt in 'CUSTOM\OHOOKPNT.PAS',
+  oConfig in 'CUSTOM\OCONFIG.PAS',
+  oCustTxt in 'CUSTOM\OCUSTTXT.PAS',
+  oTrade in 'CUSTOM\OTRADE.PAS',
+  oStock2 in 'Custom\oStock2.pas',
+  oEvent in 'CUSTOM\OEVENT.PAS',
+  oUserPro in 'CUSTOM\OUSERPRO.PAS',
+  CustomP in 'CUSTOM\CUSTOMP.PAS',
+  CalcPric in 'CalcPric.pas',
+  TXRecs in 'TXRecs.pas',
+  MultiBinPrc in 'MultiBinPrc.pas',
+  EntLicence in 'X:\entrprse\DRILLDN\EntLicence.pas',
+  Serial in 'Serial.pas' {FrmSerial},
+  SerialPrc in 'SerialPrc.pas',
+  CalcVBD in 'CalcVBD.pas',
+  TTDCalcTCM in 'TTDCalcTCM.pas',
+  TTDF in 'x:\entrprse\R&D\TTDF.pas' {frmTTDOffer},
+  TCMEntFuncs in 'TCMEntFuncs.pas';
+
+{$R *.TLB}
+{$R *.RES}
+{$R TRADE.EXE.RES}
+{$R ARROWS.RES}
+
+begin
+  Application.Initialize;
+  Application.Title := 'Trade Counter Module';
+  Application.HelpFile := 'Trade.chm';
+  Application.CreateForm(TFrmTXHeader, FrmTXHeader);
+  Application.Run;
+end.

@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9f0f5923-5a90-48b2-9d86-76a432628df5}</ProjectGuid>
+    <ProjectType>CppPackage</ProjectType>
+    <MainSource>tmsc2007.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Debug Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <DCC_Optimize>false</DCC_Optimize>
+    <OutputExt>bpl</OutputExt>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <DynamicRTL>true</DynamicRTL>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+    <ILINK_AppType>Windows</ILINK_AppType>
+    <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <UsePackages>true</UsePackages>
+    <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+    <FinalOutputDir>.</FinalOutputDir>
+    <TASM_AdditionalSwitches> /w2</TASM_AdditionalSwitches>
+    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;tee.bpi;bcbsmp.bpi;bcbie.bpi;vcljpg.bpi;VclSmp.bpi;bdertl.bpi;designide.bpi</PackageImports>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <ILINK_Description>TMS Component Pack</ILINK_Description>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <ILINK_WinAppType>Package</ILINK_WinAppType>
+    <BRCC_UserSuppliedOptions> -I$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <BCC_IncludePath>$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BCC_IncludePath>
+    <TASM_IncludePath>$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;vcldb.lib;bdertl.lib;vcldbx.lib;ibxpress.lib;dsnap.lib;dsnapcon.lib;teeui.lib;teedb.lib;tee.lib;dss.lib;dsnapcon.lib;bcbsmp.lib;inetdbbde.lib;inetdbxpress.lib;dbexpress.lib;bcbie.lib;soaprtl.lib;dbxcds.lib;VclSmp.lib;adortl.lib</AllPackageLibs>
+    <BRCC_IncludePath>$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <ILINK_LibraryPath>C:\Program Files\Intraweb 8.0\LibCB6;C:\Program Files\IntraWeb for CBuilder\LibCB6;C:\Program Files\IntraWeb\CBuilder\LibCB6;$(BDS)\Projects\Lib;$(BDS)\Pack;$(BDS)\lib\obj;$(BDS)\lib</ILINK_LibraryPath>
+    <BCC_Defines>NO_STRICT</BCC_Defines>
+    <DCC_ObjOutput>.</DCC_ObjOutput>
+    <BRCC_Defines>_DEBUG</BRCC_Defines>
+    <TASM_Defines>_DEBUG</TASM_Defines>
+    <Multithreaded>true</Multithreaded>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>Full</TASM_Debugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <DCC_Optimize>true</DCC_Optimize>
+    <ILINK_FullDebugInfo>false</ILINK_FullDebugInfo>
+    <BCC_InstructionSet>5</BCC_InstructionSet>
+    <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <BCC_DebugLineNumbers>false</BCC_DebugLineNumbers>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+    <BCC_SourceDebuggingOn>false</BCC_SourceDebuggingOn>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppPackage</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2067</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">1</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Count">1</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item0">C:\Program Files\IntraWeb for CBuilder\LibCB6;C:\Program Files\IntraWeb\CBuilder\LibCB6;$(BCB)\Projects\Lib;$(BCB)\Pack;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath></HistoryLists_hlLibraryPath><HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath></HistoryLists_hlDebugSourcePath><HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Count">1</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item0">_DEBUG</HistoryLists_hlConditionals></HistoryLists_hlConditionals><Debugging><Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Language><Language Name="ActiveLang" /><Language Name="ProjectLang">$00000000</Language><Language Name="RootDir" /></Language><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><Source><Source Name="MainSource">tmsc2007.cpp</Source></Source><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties>  <HistoryLists_hlFinalOutputDir>
+      <HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir>
+      <HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir>
+    </HistoryLists_hlFinalOutputDir>
+    <HistoryLists_hlILINK_LibraryPath>
+      <HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath>
+      <HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\release;C:\Program Files\Intraweb 8.0\LibCB6;C:\Program Files\IntraWeb for CBuilder\LibCB6;C:\Program Files\IntraWeb\CBuilder\LibCB6;$(BDS)\Projects\Lib;$(BDS)\Pack;$(BDS)\lib\obj;$(BDS)\lib</HistoryLists_hlILINK_LibraryPath>
+    </HistoryLists_hlILINK_LibraryPath>
+    <HistoryLists_hlIntermediateOutputDir>
+      <HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir>
+      <HistoryLists_hlIntermediateOutputDir Name="Item0">Release_Build</HistoryLists_hlIntermediateOutputDir>
+    </HistoryLists_hlIntermediateOutputDir>
+    <HistoryLists_hlBCC_MaxIdentifierLength>
+      <HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength>
+      <HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength>
+    </HistoryLists_hlBCC_MaxIdentifierLength>
+    <HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors>
+      <HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors>
+    </HistoryLists_hlILINK_MaxErrors>
+    <HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment>
+      <HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment>
+    </HistoryLists_hlILINK_FileAlignment>
+    <HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment>
+      <HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment>
+    </HistoryLists_hlILINK_ObjectAlignment>
+    <HistoryLists_hlILINK_BaseAddress>
+      <HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress>
+      <HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress>
+    </HistoryLists_hlILINK_BaseAddress>
+    <HistoryLists_hlILINK_HeapCommitSize>
+      <HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize>
+      <HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize>
+    </HistoryLists_hlILINK_HeapCommitSize>
+    <HistoryLists_hlILINK_HeapReserveSize>
+      <HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize>
+      <HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize>
+    </HistoryLists_hlILINK_HeapReserveSize>
+    <HistoryLists_hlILINK_StackCommitSize>
+      <HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize>
+      <HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize>
+    </HistoryLists_hlILINK_StackCommitSize>
+    <HistoryLists_hlILINK_StackReserveSize>
+      <HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize>
+      <HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize>
+    </HistoryLists_hlILINK_StackReserveSize>
+    <HistoryLists_hlBCC_IncludePath>
+      <HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath>
+      <HistoryLists_hlBCC_IncludePath Name="Item0">$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</HistoryLists_hlBCC_IncludePath>
+    </HistoryLists_hlBCC_IncludePath>
+    <HistoryLists_hlBCC_Defines>
+      <HistoryLists_hlBCC_Defines Name="Count">1</HistoryLists_hlBCC_Defines>
+      <HistoryLists_hlBCC_Defines Name="Item0">NDEBUG;NO_STRICT</HistoryLists_hlBCC_Defines>
+    </HistoryLists_hlBCC_Defines>
+  </CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <PackageImport Include="bcbie.bpi">
+      <BuildOrder>0</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="bcbsmp.bpi">
+      <BuildOrder>1</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="bdertl.bpi">
+      <BuildOrder>2</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="dbrtl.bpi">
+      <BuildOrder>3</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="designide.bpi">
+      <BuildOrder>4</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="rtl.bpi">
+      <BuildOrder>5</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="tee.bpi">
+      <BuildOrder>6</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="vcl.bpi">
+      <BuildOrder>7</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="vcldb.bpi">
+      <BuildOrder>8</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="vcljpg.bpi">
+      <BuildOrder>9</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="VclSmp.bpi">
+      <BuildOrder>10</BuildOrder>
+    </PackageImport>
+    <PackageImport Include="vclx.bpi">
+      <BuildOrder>11</BuildOrder>
+    </PackageImport>
+    <Resfiles Include="acreg.dcr">
+      <BuildOrder>12</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvAlertWindowReg.dcr">
+      <BuildOrder>14</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advappstyler.dcr">
+      <BuildOrder>16</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvDBLookupComboBoxReg.dcr">
+      <BuildOrder>21</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advedbr.dcr">
+      <BuildOrder>23</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advglowbuttonreg.dcr">
+      <BuildOrder>26</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advluedr.dcr">
+      <BuildOrder>30</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvMemoReg.dcr">
+      <BuildOrder>32</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvMenuRegister.dcr">
+      <BuildOrder>34</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvMoneyEditReg.dcr">
+      <BuildOrder>36</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvNavBarReg.dcr">
+      <BuildOrder>38</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvOfficeButtonsReg.dcr">
+      <BuildOrder>40</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advofficeimagereg.dcr">
+      <BuildOrder>43</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvOfficeStatusBarReg.dcr">
+      <BuildOrder>46</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvOfficeTabSetReg.dcr">
+      <BuildOrder>48</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advoutlooklistreg.dcr">
+      <BuildOrder>50</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvPageControlreg.dcr">
+      <BuildOrder>52</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advpicr.dcr">
+      <BuildOrder>54</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advpnlreg.dcr">
+      <BuildOrder>56</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvProgressBarReg.dcr">
+      <BuildOrder>59</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="advqryr.dcr">
+      <BuildOrder>61</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvShaperReg.dcr">
+      <BuildOrder>64</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AdvTabSetReg.dcr">
+      <BuildOrder>66</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="aereg.dcr">
+      <BuildOrder>70</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Alvreg.dcr">
+      <BuildOrder>72</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Anireg.dcr">
+      <BuildOrder>74</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="asreg.dcr">
+      <BuildOrder>79</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="AstaPatchUtil.dcr">
+      <BuildOrder>81</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="atbreg.dcr">
+      <BuildOrder>83</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="btnlireg.dcr">
+      <BuildOrder>85</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Cabr.dcr">
+      <BuildOrder>87</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="calcreg.dcr">
+      <BuildOrder>89</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="calpreg.dcr">
+      <BuildOrder>91</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Clistedr.dcr">
+      <BuildOrder>94</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="colcoreg.dcr">
+      <BuildOrder>96</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="collireg.dcr">
+      <BuildOrder>98</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="datelbl.dcr">
+      <BuildOrder>100</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="DBAdvEdBtnReg.dcr">
+      <BuildOrder>103</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbadvler.dcr">
+      <BuildOrder>107</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbaereg.dcr">
+      <BuildOrder>109</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbanreg.dcr">
+      <BuildOrder>111</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbasreg.dcr">
+      <BuildOrder>113</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbhtmlar.dcr">
+      <BuildOrder>115</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="DBHTMLBtnsReg.dcr">
+      <BuildOrder>117</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="DBInspectorBarReg.dcr">
+      <BuildOrder>119</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dblucmbr.dcr">
+      <BuildOrder>121</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbmereg.dcr">
+      <BuildOrder>123</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="DBPlannerCalReg.dcr">
+      <BuildOrder>125</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbplanreg.dcr">
+      <BuildOrder>128</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="dbslstreg.dcr">
+      <BuildOrder>130</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="DBTodoListReg.dcr">
+      <BuildOrder>132</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Edtbreg.dcr">
+      <BuildOrder>134</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="edtlstreg.dcr">
+      <BuildOrder>136</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="EllipsLblReg.dcr">
+      <BuildOrder>138</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="ExeInfoReg.dcr">
+      <BuildOrder>140</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="folderdialogreg.dcr">
+      <BuildOrder>143</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="frmsreg.dcr">
+      <BuildOrder>145</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Fsreg.dcr">
+      <BuildOrder>147</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="GradientLblReg.dcr">
+      <BuildOrder>149</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Hilireg.dcr">
+      <BuildOrder>151</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="HotSpotImageReg.dcr">
+      <BuildOrder>153</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmbureg.dcr">
+      <BuildOrder>155</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmcoreg.dcr">
+      <BuildOrder>157</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmhireg.dcr">
+      <BuildOrder>159</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmlareg.dcr">
+      <BuildOrder>161</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="htmlchklireg.dcr">
+      <BuildOrder>163</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="HTMLCreditReg.dcr">
+      <BuildOrder>165</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="htmldlgr.dcr">
+      <BuildOrder>167</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmlireg.dcr">
+      <BuildOrder>169</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="HTMLPopupReg.dcr">
+      <BuildOrder>171</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="HTMLTLREG.dcr">
+      <BuildOrder>173</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Htmltvr.dcr">
+      <BuildOrder>175</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="htmstbr.dcr">
+      <BuildOrder>177</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="htmstreg.dcr">
+      <BuildOrder>179</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="imgpickr.dcr">
+      <BuildOrder>181</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="INIInspectorBarReg.dcr">
+      <BuildOrder>183</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="InspectorBarReg.dcr">
+      <BuildOrder>185</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="lfreg.dcr">
+      <BuildOrder>188</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Llreg.dcr">
+      <BuildOrder>190</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="lureg.dcr">
+      <BuildOrder>192</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="MacroRecorderReg.dcr">
+      <BuildOrder>194</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="MoneyEdr.dcr">
+      <BuildOrder>196</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Olnkreg.dcr">
+      <BuildOrder>201</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="paramchklreg.dcr">
+      <BuildOrder>203</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="paramlabreg.dcr">
+      <BuildOrder>205</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="paramlstreg.dcr">
+      <BuildOrder>207</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="paramtreeviewreg.dcr">
+      <BuildOrder>209</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="parlreg.dcr">
+      <BuildOrder>211</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Pdlgreg.dcr">
+      <BuildOrder>213</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="PictureContainerReg.dcr">
+      <BuildOrder>216</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="PlannerCalReg.dcr">
+      <BuildOrder>218</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="PlannerMonthViewReg.dcr">
+      <BuildOrder>220</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Planreg.dcr">
+      <BuildOrder>222</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Rtflreg.dcr">
+      <BuildOrder>225</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="RTTIInspectorBarReg.dcr">
+      <BuildOrder>227</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="SHADER.dcr">
+      <BuildOrder>230</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Slstreg.dcr">
+      <BuildOrder>232</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Sysmreg.dcr">
+      <BuildOrder>234</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="thumbreg.dcr">
+      <BuildOrder>237</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Tilebmp.dcr">
+      <BuildOrder>239</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Tlreg.dcr">
+      <BuildOrder>241</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="TMSGraphicsReg.dcr">
+      <BuildOrder>245</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="TMSOfficeGraphicsReg.dcr">
+      <BuildOrder>247</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="TodoListReg.dcr">
+      <BuildOrder>249</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="ToolPanelsReg.dcr">
+      <BuildOrder>251</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="uhtmcoreg.dcr">
+      <BuildOrder>253</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="uhtmlareg.dcr">
+      <BuildOrder>255</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="uhtmlireg.dcr">
+      <BuildOrder>257</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="vCalReg.dcr">
+      <BuildOrder>259</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="wallpreg.dcr">
+      <BuildOrder>261</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="WDATREG.dcr">
+      <BuildOrder>263</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="WebConnectReg.dcr">
+      <BuildOrder>265</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="webcreg.dcr">
+      <BuildOrder>267</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="WebImgR.dcr">
+      <BuildOrder>269</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="WebPostr.dcr">
+      <BuildOrder>271</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="WinXP.dcr">
+      <BuildOrder>273</BuildOrder>
+    </Resfiles>
+    <Resfiles Include="Wupdreg.dcr">
+      <BuildOrder>275</BuildOrder>
+    </Resfiles>
+    <DelphiCompile Include="acreg.pas">
+      <BuildOrder>13</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvAlertWindowReg.pas">
+      <BuildOrder>15</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advappstyler.pas">
+      <BuildOrder>17</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advcardlistadveditlink.pas">
+      <BuildOrder>18</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advcardlisteditlinks.pas">
+      <BuildOrder>19</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvCardListReg.pas">
+      <BuildOrder>20</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvDBLookupComboBoxReg.pas">
+      <BuildOrder>22</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advedbr.pas">
+      <BuildOrder>24</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvEdBtn.pas">
+      <BuildOrder>25</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advglowbuttonreg.pas">
+      <BuildOrder>27</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvGridRtf.pas">
+      <BuildOrder>28</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advlued.pas">
+      <BuildOrder>29</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advluedr.pas">
+      <BuildOrder>31</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvMemoReg.pas">
+      <BuildOrder>33</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvMenuRegister.pas">
+      <BuildOrder>35</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvMoneyEditReg.pas">
+      <BuildOrder>37</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvNavBarReg.pas">
+      <BuildOrder>39</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvOfficeButtonsReg.pas">
+      <BuildOrder>41</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advofficehintreg.pas">
+      <BuildOrder>42</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advofficeimagereg.pas">
+      <BuildOrder>44</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advofficepagerreg.pas">
+      <BuildOrder>45</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvOfficeStatusBarReg.pas">
+      <BuildOrder>47</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvOfficeTabSetReg.pas">
+      <BuildOrder>49</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advoutlooklistreg.pas">
+      <BuildOrder>51</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvPageControlreg.pas">
+      <BuildOrder>53</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advpicr.pas">
+      <BuildOrder>55</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advpnlreg.pas">
+      <BuildOrder>57</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advpreviewmenureg.pas">
+      <BuildOrder>58</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvProgressBarReg.pas">
+      <BuildOrder>60</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advqryr.pas">
+      <BuildOrder>62</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="advshapebuttonreg.pas">
+      <BuildOrder>63</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvShaperReg.pas">
+      <BuildOrder>65</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvTabSetReg.pas">
+      <BuildOrder>67</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvToolBarReg.pas">
+      <BuildOrder>68</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AdvTreeComboBoxReg.pas">
+      <BuildOrder>69</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="aereg.pas">
+      <BuildOrder>71</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Alvreg.pas">
+      <BuildOrder>73</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Anireg.pas">
+      <BuildOrder>75</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Apreg.pas">
+      <BuildOrder>76</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Asgcreg.pas">
+      <BuildOrder>77</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Asgreg.pas">
+      <BuildOrder>78</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="asreg.pas">
+      <BuildOrder>80</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="AstaPatchUtil.pas">
+      <BuildOrder>82</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="atbreg.pas">
+      <BuildOrder>84</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="btnlireg.pas">
+      <BuildOrder>86</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Cabr.pas">
+      <BuildOrder>88</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="calcreg.pas">
+      <BuildOrder>90</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="calpreg.pas">
+      <BuildOrder>92</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="ChartLinkReg.pas">
+      <BuildOrder>93</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Clistedr.pas">
+      <BuildOrder>95</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="colcoreg.pas">
+      <BuildOrder>97</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="collireg.pas">
+      <BuildOrder>99</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="datelbl.pas">
+      <BuildOrder>101</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBAdvCardListReg.pas">
+      <BuildOrder>102</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBAdvEdBtnReg.pas">
+      <BuildOrder>104</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DbAdvGridreg.pas">
+      <BuildOrder>105</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbadvle.pas">
+      <BuildOrder>106</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbadvler.pas">
+      <BuildOrder>108</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbaereg.pas">
+      <BuildOrder>110</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbanreg.pas">
+      <BuildOrder>112</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbasreg.pas">
+      <BuildOrder>114</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbhtmlar.pas">
+      <BuildOrder>116</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBHTMLBtnsReg.pas">
+      <BuildOrder>118</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBInspectorBarReg.pas">
+      <BuildOrder>120</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dblucmbr.pas">
+      <BuildOrder>122</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbmereg.pas">
+      <BuildOrder>124</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBPlannerCalReg.pas">
+      <BuildOrder>126</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBPlannerMonthViewReg.pas">
+      <BuildOrder>127</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbplanreg.pas">
+      <BuildOrder>129</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="dbslstreg.pas">
+      <BuildOrder>131</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="DBTodoListReg.pas">
+      <BuildOrder>133</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Edtbreg.pas">
+      <BuildOrder>135</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="edtlstreg.pas">
+      <BuildOrder>137</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="EllipsLblReg.pas">
+      <BuildOrder>139</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="ExeInfoReg.pas">
+      <BuildOrder>141</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Flctrlr.pas">
+      <BuildOrder>142</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="folderdialogreg.pas">
+      <BuildOrder>144</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="frmsreg.pas">
+      <BuildOrder>146</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Fsreg.pas">
+      <BuildOrder>148</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="GradientLblReg.pas">
+      <BuildOrder>150</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Hilireg.pas">
+      <BuildOrder>152</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="HotSpotImageReg.pas">
+      <BuildOrder>154</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmbureg.pas">
+      <BuildOrder>156</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmcoreg.pas">
+      <BuildOrder>158</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmhireg.pas">
+      <BuildOrder>160</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmlareg.pas">
+      <BuildOrder>162</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="htmlchklireg.pas">
+      <BuildOrder>164</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="HTMLCreditReg.pas">
+      <BuildOrder>166</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="htmldlgr.pas">
+      <BuildOrder>168</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmlireg.pas">
+      <BuildOrder>170</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="HTMLPopupReg.pas">
+      <BuildOrder>172</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="HTMLTLREG.pas">
+      <BuildOrder>174</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Htmltvr.pas">
+      <BuildOrder>176</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="htmstbr.pas">
+      <BuildOrder>178</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="htmstreg.pas">
+      <BuildOrder>180</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="imgpickr.pas">
+      <BuildOrder>182</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="INIInspectorBarReg.pas">
+      <BuildOrder>184</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="InspectorBarReg.pas">
+      <BuildOrder>186</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="InspLinks.pas">
+      <BuildOrder>187</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="lfreg.pas">
+      <BuildOrder>189</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Llreg.pas">
+      <BuildOrder>191</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="lureg.pas">
+      <BuildOrder>193</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="MacroRecorderReg.pas">
+      <BuildOrder>195</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="MoneyEdr.pas">
+      <BuildOrder>197</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Mskreg.pas">
+      <BuildOrder>198</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Olnkreg.pas">
+      <BuildOrder>202</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="paramchklreg.pas">
+      <BuildOrder>204</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="paramlabreg.pas">
+      <BuildOrder>206</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="paramlstreg.pas">
+      <BuildOrder>208</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="paramtreeviewreg.pas">
+      <BuildOrder>210</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="parlreg.pas">
+      <BuildOrder>212</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Pdlgreg.pas">
+      <BuildOrder>214</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="piclistreg.pas">
+      <BuildOrder>215</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="PictureContainerReg.pas">
+      <BuildOrder>217</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="PlannerCalReg.pas">
+      <BuildOrder>219</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="PlannerMonthViewReg.pas">
+      <BuildOrder>221</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Planreg.pas">
+      <BuildOrder>223</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Propscrl.pas">
+      <BuildOrder>224</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Rtflreg.pas">
+      <BuildOrder>226</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="RTTIInspectorBarReg.pas">
+      <BuildOrder>228</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Scrlreg.pas">
+      <BuildOrder>229</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="SHADER.PAS">
+      <BuildOrder>231</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Slstreg.pas">
+      <BuildOrder>233</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Sysmreg.pas">
+      <BuildOrder>235</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="taskdialog.pas">
+      <BuildOrder>236</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="thumbreg.pas">
+      <BuildOrder>238</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Tilebmp.pas">
+      <BuildOrder>240</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Tlreg.pas">
+      <BuildOrder>242</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="TMSGraphicsReg.pas">
+      <BuildOrder>246</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="TMSOfficeGraphicsReg.pas">
+      <BuildOrder>248</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="TodoListReg.pas">
+      <BuildOrder>250</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="ToolPanelsReg.pas">
+      <BuildOrder>252</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="uhtmcoreg.pas">
+      <BuildOrder>254</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="uhtmlareg.pas">
+      <BuildOrder>256</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="uhtmlireg.pas">
+      <BuildOrder>258</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="vCalReg.pas">
+      <BuildOrder>260</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="wallpreg.pas">
+      <BuildOrder>262</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="WDATREG.PAS">
+      <BuildOrder>264</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="WebConnectReg.pas">
+      <BuildOrder>266</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="webcreg.pas">
+      <BuildOrder>268</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="WebImgR.pas">
+      <BuildOrder>270</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="WebPostr.pas">
+      <BuildOrder>272</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="WinXP.pas">
+      <BuildOrder>274</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="Wupdreg.pas">
+      <BuildOrder>276</BuildOrder>
+    </DelphiCompile>
+    <LibFiles Include="odbc32.lib">
+      <BuildOrder>199</BuildOrder>
+    </LibFiles>
+    <LibFiles Include="odbccp32.lib">
+      <BuildOrder>200</BuildOrder>
+    </LibFiles>
+    <CppCompile Include="tmsc2007.cpp">
+      <BuildOrder>243</BuildOrder>
+    </CppCompile>
+    <ResFiles Include="tmsc2007.res">
+      <BuildOrder>244</BuildOrder>
+    </ResFiles>
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>

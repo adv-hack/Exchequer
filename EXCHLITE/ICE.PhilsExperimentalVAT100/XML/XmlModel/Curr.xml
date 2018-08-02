@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:curr xmlns:val="urn:www-iris-co-uk:curr">
+<message guid="" number="" count="" source="" destination="" flag="">
+  <currpage>
+    <pageno/>
+    <currrec>
+      <name/>        <!--: String[11];           { Currency name }  -->
+      <screensymb/>  <!--: String[3];            { Screen Symbol }  -->
+      <printersymb/> <!--: String[3];            { Printer Symbol } -->
+      <dailyrate/>   <!--: Double;               { Daily Rate }    -->
+      <companyrate/> <!--: Double;               { Company Rate }  -->
+      <trieuro/>     <!--: SmallInt;                              -->
+      <trirates/>    <!--: Double;                                 -->
+      <triinvert/>   <!--: WordBool;                              -->
+      <trifloat/>    <!--: WordBool;                              -->
+    </currrec>
+  </currpage>    
+</message>
+</val:curr>

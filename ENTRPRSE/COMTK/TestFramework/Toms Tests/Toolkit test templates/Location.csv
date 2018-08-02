@@ -1,0 +1,7 @@
+"Duplicate Location Code",C:\ComTKExes\LocationTests.exe,Y,Y,5,N,5
+"Blank Location Code",C:\ComTKExes\LocationTests.exe,Y,Y,30271,N,30271
+"Cost Centre Code not valid",C:\ComTKExes\LocationTests.exe,Y,Y,30273,N,30273
+"Department Code not valid",C:\ComTKExes\LocationTests.exe,Y,Y,30274,N,30274
+"Invalid Nominal Code",C:\ComTKExes\LocationTests.exe,Y,Y,30275,N,30275
+"Invalid Sales Return Nominal Code",C:\ComTKExes\LocationTests.exe,Y,Y,30276,N,30276
+"Invalid Purchase Return Nominal Code",C:\ComTKExes\LocationTests.exe,Y,Y,30277,N,30277

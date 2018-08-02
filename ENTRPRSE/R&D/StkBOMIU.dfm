@@ -1,0 +1,222 @@
+object BOMRec: TBOMRec
+  Left = 499
+  Top = 246
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Build Details'
+  ClientHeight = 173
+  ClientWidth = 270
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDefault
+  Scaled = False
+  Visible = True
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 14
+  object SBSPanel1: TSBSBackGroup
+    Left = 7
+    Top = 1
+    Width = 256
+    Height = 128
+    TextId = 0
+  end
+  object Label81: Label8
+    Left = 26
+    Top = 16
+    Width = 55
+    Height = 14
+    Caption = 'Stock Code'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label83: Label8
+    Left = 27
+    Top = 44
+    Width = 54
+    Height = 14
+    Caption = 'Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label85: Label8
+    Left = 38
+    Top = 74
+    Width = 43
+    Height = 14
+    Caption = 'Unit Cost'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label82: Label8
+    Left = 64
+    Top = 102
+    Width = 17
+    Height = 14
+    Caption = 'Qty'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object OkCP1Btn: TButton
+    Tag = 1
+    Left = 54
+    Top = 141
+    Width = 80
+    Height = 22
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 5
+    OnClick = CanCP1BtnClick
+  end
+  object CanCP1Btn: TButton
+    Tag = 1
+    Left = 138
+    Top = 141
+    Width = 80
+    Height = 22
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 6
+    OnClick = CanCP1BtnClick
+  end
+  object SCodeF: Text8Pt
+    Tag = 1
+    Left = 87
+    Top = 14
+    Width = 121
+    Height = 22
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    OnExit = SCodeFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object DescF: Text8Pt
+    Left = 87
+    Top = 42
+    Width = 165
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 1
+    TextId = 0
+    ViaSBtn = False
+  end
+  object CostF: TCurrencyEdit
+    Left = 87
+    Top = 70
+    Width = 99
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    Lines.Strings = (
+      '0.67-')
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 2
+    WantReturns = False
+    WordWrap = False
+    AutoSize = False
+    BlockNegative = False
+    BlankOnZero = False
+    DisplayFormat = '###,###,##0.00 ;###,###,##0.00-'
+    ShowCurrency = False
+    TextId = 0
+    Value = -0.666666
+  end
+  object QtyF: TCurrencyEdit
+    Tag = 1
+    Left = 87
+    Top = 99
+    Width = 65
+    Height = 22
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    Lines.Strings = (
+      '1-')
+    MaxLength = 13
+    ParentFont = False
+    TabOrder = 3
+    WantReturns = False
+    WordWrap = False
+    AutoSize = False
+    BlockNegative = False
+    BlankOnZero = False
+    DisplayFormat = '###,###,##0.00 ;###,###,##0.-'
+    ShowCurrency = False
+    TextId = 0
+    Value = -0.666666
+  end
+  object CBFreeI: TBorCheck
+    Left = 157
+    Top = 99
+    Width = 98
+    Height = 20
+    HelpContext = 879
+    Caption = 'Free Issue Stock'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    ParentColor = False
+    TabOrder = 4
+    TabStop = True
+    TextId = 0
+  end
+end

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:bomlines xmlns:val="urn:www-iris-co-uk:bomlines">
+<message guid="" number="" count="" source="" destination="" flag="">
+   <bomlinerec>
+         <stockcode/>  <!--:  String[16]; { Stock Code } -->
+         <qtyused/>    <!--:  Double;     { Qty used in BOM } -->
+         <qtycost/>    <!--:  Double;     { Cost } -->
+   </bomlinerec>
+</message>
+</val:bomlines>

@@ -1,0 +1,26 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="388" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="etFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="etFolioNo"/>
+        <schemafield fieldname="etDescription" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" collation="1" columnname="etDescription"/>
+        <schemafield fieldname="etType" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="etType"/>
+        <schemafield fieldname="etFormat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="etFormat"/>
+        <schemafield fieldname="etDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="etDummyChar"/>
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0">
+            <indexfields>
+                <item>etFolioNo</item>          
+                <item>etDummyChar</item>          
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0">
+            <indexfields>
+                <item>etDescription</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

@@ -1,0 +1,9 @@
+"Empty Job Code",C:\ComTKExes\JobTest.exe,Y,Y,30003,N,30003
+"Job Type is changed during editing",C:\ComTKExes\JobTest.exe,Y,Y,30001,N,30001
+"Parent Job Category is changed",C:\ComTKExes\JobTest.exe,Y,Y,30002,N,30002
+"Invalid Job Parent Category Code",C:\ComTKExes\JobTest.exe,Y,Y,30006,N,30006
+"Invalid Customer Code",C:\ComTKExes\JobTest.exe,Y,Y,30008,N,30008
+"Invalid Start Date",C:\ComTkExes\JobTest.exe,Y,Y,30009,N,30009
+"Invalid End Date",C:\ComTkExes\JobTest.exe,Y,Y,30010,N,30010
+"Invalid Revised Date",C:\ComTkExes\JobTest.exe,Y,Y,30011,N,30011
+Duplicate,C:\ComTkExes\JobTest.exe,Y,Y,5,N,5

@@ -1,0 +1,30 @@
+AND
+OR
+XOR
+(((NOT)))
++ - * /
+
+BEGINSWITH
+ENDSWITH
+CONTAINS
+
+
+ROUND(Val, decplaces)
+TRUNC(Val)
+MIN(val1, val2)
+MAX(Val1, val2)
+
+IF(Condition, Val1, Val2)  {IIF}
+
+SUBSTRING(String, Start, Length)
+TEXTTONUMBER(String)
+NUMBERTOTEXT(Val, Format)
+DATETOTEXT(Val, Format)
+DATETONUMBER (Date) {Days since 1/1/1900}
+TRIM(String)
+
+DBField[Dict]
+Formula[FormulaCode]
+InputField[InputCode, Start/End]
+sectionTotal[Dict/Fmla]
+GrandTotal[Dict/Fml]

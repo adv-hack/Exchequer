@@ -1,0 +1,48 @@
+package AddNom;
+
+{$R *.res}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $71200000}
+{$DESCRIPTION 'Add Journal Wizard'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE EXWIN}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  vcljpg,
+  VclSmp,
+  HMESL1,
+  DBMBtrieve,
+  EnterTab,
+  LocalComps,
+  EnCommon;
+
+contains
+  AddNomWizard in 'AddNomWizard.pas' {frmAddNomWizard},
+  NomLine in 'NomLine.pas' {fNomLine: TFrame},
+  AddNomPROC in 'AddNomPROC.PAS',
+  PeriodYearUtil in '..\..\FUNCS\PeriodYearUtil.pas';
+
+end.

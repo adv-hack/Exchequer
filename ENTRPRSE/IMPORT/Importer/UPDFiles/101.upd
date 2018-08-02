@@ -1,0 +1,16 @@
+[Version]
+Version=8.0.101
+
+
+[Note]
+F008=NP.LineNo                    0043    L 0004 O   Note Line No                                       default=                                                                                                     comment=
+F009=NP.User                      0047    S 0008 O   User ID From                                       default=[I]%sysuser%                                                                                         comment=
+F010=NP.NoteLine                  0056    S 0065 O   Note Narrative                                     default=                                                                                                     comment=
+F011=NP.PadChar2                  0122    C 0001 N   Padding                                            default=                                                                                                     comment=
+F012=NP.RepeatDays                0123    I 0002 O   Repeat Days                                        default=0                                                                                                    comment=
+F013=NP.NoteFor                   0125    S 0010 O   User ID To                                         default=                                                                                                     comment=
+F014=NP.KeyStr                    0136    S 0026 O   Key String                                         default=                                                                                                     comment=
+F015=NP.SnoType                   0162    B 0001 O   SNO Type                                           default=                                                                                                     comment=
+F016=NP.NFolio                    0164    L 0004 R   Notepad Folio                                      default=0                                                                                                    comment=
+F017=NP.Spare                     0168    C 0242 N   Padding                                            default=                                                                                                     comment=
+F018=NP.LastChar                  0410    C 0001 N   Padding                                            default=                                                                                                     comment=

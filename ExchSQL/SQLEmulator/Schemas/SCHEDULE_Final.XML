@@ -1,0 +1,48 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="758" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+		<schemafield fieldname="sttasktype" fullfieldname="sttasktype" typename="char" size="1" elements="1" id="-1" collation="1" columnname="sttasktype" />
+		<schemafield fieldname="sttaskname" fullfieldname="sttaskname" typename="DelphiString" size="51" elements="1" id="-1" collation="1" columnname="sttaskname" />
+		<schemafield fieldname="stnextrundue" fullfieldname="stnextrundue" typename="DelphiString" size="13" elements="1" id="-1" columnname="stnextrundue" />
+		<schemafield fieldname="sttaskid" fullfieldname="sttaskid" typename="DelphiString" size="21" elements="1" id="-1" columnname="sttaskid" />
+		<schemafield fieldname="stscheduletype" fullfieldname="stscheduletype" typename="BYtE" size="1" elements="1" id="-1" columnname="stscheduletype" />
+		<schemafield fieldname="stdaynumber" fullfieldname="stdaynumber" typename="long" size="4" elements="1" id="-1" columnname="stdaynumber" />
+		<schemafield fieldname="sttimeofday" fullfieldname="sttimeofday" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="sttimeofday" />
+		<schemafield fieldname="stinterval" fullfieldname="stinterval" typename="int16" size="2" elements="1" id="-1" columnname="stinterval" />
+		<schemafield fieldname="ststarttime" fullfieldname="ststarttime" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="ststarttime" />
+		<schemafield fieldname="stendtime" fullfieldname="stendtime" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="stendtime" />
+		<schemafield fieldname="ststatus" fullfieldname="ststatus" typename="BYtE" size="1" elements="1" id="-1" columnname="ststatus" />
+		<schemafield fieldname="stemailaddress" fullfieldname="stemailaddress" typename="DelphiString" size="101" elements="1" id="-1" columnname="stemailaddress" />
+		<schemafield fieldname="stlastrun" fullfieldname="stlastrun" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="stlastrun" />
+		<schemafield fieldname="stlastupdated" fullfieldname="stlastupdated" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="stlastupdated" />
+		<schemafield fieldname="stlastupdatedby" fullfieldname="stlastupdatedby" typename="DelphiString" size="11" elements="1" id="-1" columnname="stlastupdatedby" />
+		<schemafield fieldname="sttimetype" fullfieldname="sttimetype" typename="BYTE" size="1" elements="1" id="-1" columnname="sttimetype" />
+		<schemafield fieldname="stincludeinPost" fullfieldname="stincludeinPost" typename="Int64" size="8" elements="1" id="-1" columnname="stincludeinPost" />
+		<schemafield fieldname="stpostprotected" fullfieldname="stpostprotected" typename="bool1" size="1" elements="1" id="-1" columnname="stpostprotected" />
+		<schemafield fieldname="stpostseparated" fullfieldname="stpostseparated" typename="bool1" size="1" elements="1" id="-1" columnname="stpostseparated" />
+		<schemafield fieldname="stcustomclassName" fullfieldname="stcustomclassName" typename="DelphiString" size="51" elements="1" id="-1" columnname="stcustomclassName" />
+		<schemafield fieldname="stonetimeonly" fullfieldname="stonetimeonly" typename="bool1" size="1" elements="1" id="-1" columnname="stOneTimeOnly" />
+		<schemafield fieldname="strestartcount" fullfieldname="strestartcount" typename="byte" size="1" elements="1" id="-1" columnname="stRestartCount" />
+	</fixedfields>
+	<defaultrecordtype>
+	</defaultrecordtype>
+	<recordtypes/>
+    <indexes>
+      <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+        <indexfields>
+          <item>sttaskname</item>
+        </indexfields>
+      </schemaindexes>
+      <schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+        <indexfields>
+          <item>stnextrundue</item>
+        </indexfields>
+      </schemaindexes>
+      <schemaindexes indexnumber="2" isunique="1" isclustered="0" >
+        <indexfields>
+          <item>sttasktype</item>
+          <item>sttaskname</item>
+        </indexfields>
+      </schemaindexes>		
+    </indexes>
+</schemarecord>

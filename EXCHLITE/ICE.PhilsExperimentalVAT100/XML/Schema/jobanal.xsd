@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:jobanal"
+            targetNamespace="urn:www-iris-co-uk:jobanal" >
+            
+  <xsd:complexType name="jobanalrec">
+    <xsd:sequence>
+      <xsd:element name='janalcode' type='xsd:string'/>
+      <xsd:element name='janaldesc' type='xsd:string'/>
+      <xsd:element name='janaltype' type='xsd:string'/>
+      <xsd:element name='janalcatry' type='xsd:string'/>
+      <xsd:element name='wipnomcode' type='xsd:integer'/>
+      <xsd:element name='plnomcode' type='xsd:integer'/>
+      <xsd:element name='linetype' type='xsd:string'/>
+      <xsd:element name='cistaxrate' type='xsd:string'/>
+      <xsd:element name='upliftp' type='xsd:double'/>
+      <xsd:element name='upliftgl' type='xsd:integer'/>
+      <xsd:element name='revenuetype' type='xsd:byte'/>
+      <xsd:element name='japaycode' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='jobanalrec' type='tns:jobanalrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='jobanal'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='jobanal' type='tns:jobanal'/>
+
+</xsd:schema>

@@ -1,0 +1,29 @@
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\ExchDVT.exe.config
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\ExchDVT.exe
+D:\GitHub\EIT\Data Integrity Checker\bin\Debug\ExchDVT.pdb
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Interop.Enterprise01.dll
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Interop.EnterpriseBeta.dll
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Exchequer SQL Data Validation Tool.csproj.ResolveComReference.cache
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.frmDataIntegrityNoUI.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.frmDataIntegrityUI.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.frmExportEmail.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Data_Integrity_Checker.Properties.Resources.resources
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\Exchequer SQL Data Validation Tool.csproj.GenerateResource.Cache
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\ExchDVT.exe
+D:\GitHub\EIT\Data Integrity Checker\obj\Debug\ExchDVT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\bin\Debug\ExchDVT.exe.config
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Interop.ADODB.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Interop.Enterprise.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Interop.Enterprise01.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Interop.EnterpriseBeta.dll
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Exchequer SQL Data Validation Tool.csproj.ResolveComReference.cache
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\ExchDVT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\bin\Debug\ExchDVT.exe
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\bin\Debug\ExchDVT.pdb
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Data_Integrity_Checker.frmDataIntegrityNoUI.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Data_Integrity_Checker.frmDataIntegrityUI.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Data_Integrity_Checker.frmExportEmail.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Data_Integrity_Checker.Properties.Resources.resources
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Exchequer SQL Data Validation Tool.csproj.GenerateResource.Cache
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\ExchDVT.exe
+D:\GitHub\ExchequerCore-2018r1\ExchSQL\ExchDVT\obj\Debug\Exchequer SQL Data Validation Tool.csprojResolveAssemblyReference.cache

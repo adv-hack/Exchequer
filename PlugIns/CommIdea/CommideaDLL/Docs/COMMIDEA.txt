@@ -1,0 +1,17 @@
+The basic results from a request are 
+/ 0-CHARGED
+/ 2-REFERRED phone me !  		2p 	manual auth code
+/ 5-DECLINED 				5p
+/ 6-AUTHORISED 				
+/ 7-REVERSED				
+   what do these mean ?
+
+
+
+Printing Credit Card Slip
+-------------------------
+1. Format - legal requirements ?
+2. Which printer to use (invoice / order / receipt / other) ?
+3. Use forms ?
+4. Which form to use ?
+5. Fields : Date time / amount / card no (****) / sig box.........

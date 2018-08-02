@@ -1,0 +1,93 @@
+package RVPkgD4;
+
+{$R *.RES}
+{$R 'RVReg.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'RichView'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl40,
+  vcljpg40;
+
+contains
+  RVStyle in 'RVStyle.pas',
+  DLines in 'DLines.pas',
+  RVScroll in 'RVScroll.pas',
+  RVSEdit in 'RVSEdit.pas',
+  RVItem in 'RVItem.pas',
+  RVFuncs in 'RVFuncs.pas',
+  RVFMisc in 'RVFMisc.pas',
+  CRVData in 'CRVData.pas',
+  RVRVData in 'RVRVData.pas',
+  CRVFData in 'CRVFData.pas',
+  RVBack in 'RVBack.pas',
+  PtRVData in 'PtRVData.pas',
+  PtblRV in 'PtblRV.pas',
+  CRVPP in 'CRVPP.pas',
+  RVPP in 'RVPP.pas',
+  RVERVData in 'RVERVData.pas',
+  RVEdit in 'RVEdit.pas',
+  RVUndo in 'RVUndo.pas',
+  RVReg in 'RVReg.pas',
+  RVUni in 'RVUni.pas',
+  RichView in 'RichView.pas',
+  RVClasses in 'RVClasses.pas',
+  RVCodePages in 'RVCodePages.pas',
+  RVDataList in 'RVDataList.pas',
+  RVTable in 'RVTable.pas',
+  RVTInplace in 'RVTInplace.pas',
+  RVCtrlData in 'RVCtrlData.pas',
+  RVRTF in 'RVRTF.pas',
+  RVRTFProps in 'RVRTFProps.pas',
+  RVStr in 'RVStr.pas',
+  RVRTFErr in 'RVRTFErr.pas',
+  RVMapWht in 'RVMapWht.pas',
+  CtrlImg in 'CtrlImg.pas',
+  RVMisc in 'RVMisc.pas',
+  RVReport in 'RVReport.pas',
+  RVSer in 'RVSer.pas',
+  RVDsgn in 'RVDsgn.pas' {frmRVDesign},
+  RVOfficeCnv in 'RVOfficeCnv.pas',
+  RVMarker in 'RVMarker.pas',
+  RVXPTheme in 'RVXPTheme.pas',
+  RVResize in 'RVResize.pas',
+  RVDragDrop in 'RVDragDrop.pas',
+  RVThread in 'RVThread.pas',
+  RVWordPaint in 'RVWordPaint.pas',
+  RVLinear in 'RVLinear.pas',
+  RVGetText in 'RVGetText.pas',
+  RVAnimate in 'RVAnimate.pas',
+  RVGetTextW in 'RVGetTextW.pas',
+  RVPopup in 'RVPopup.pas',
+  RVSeqItem in 'RVSeqItem.pas',
+  RVLabelItem in 'RVLabelItem.pas',
+  RVNote in 'RVNote.pas',
+  RVSubData in 'RVSubData.pas',
+  RVDocParams in 'RVDocParams.pas',
+  RVTypes in 'RVTypes.pas',
+  RVWinGrIn in 'RVWinGrIn.pas',
+  RVGrIn in 'RVGrIn.pas';
+
+end.

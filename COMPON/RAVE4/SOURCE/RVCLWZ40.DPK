@@ -1,0 +1,13 @@
+package RVCLWz40;
+
+{$DESCRIPTION 'Rave 4.0 Report Wizards'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, VCLX50, RVCL40, RVCLR40, RVCLS40, RVCLG40;
+
+contains
+  RVWzSimp,
+  RVWzMD;
+
+end.

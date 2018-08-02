@@ -1,0 +1,46 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="403" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="Company" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="Company" />
+        <schemafield fieldname="reEAR" fullfieldname="" typename="DelphiString" size="51" elements="1" id="-1" columnname="reEAR" />
+        <schemafield fieldname="reOurRef" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="reOurRef" />
+        <schemafield fieldname="reUserID" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="reUserID" />
+        <schemafield fieldname="reTimeStamp" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="reTimeStamp" />
+        <schemafield fieldname="reTotalValue" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="reTotalValue" />
+        <schemafield fieldname="reStatus" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="reStatus" />
+        <schemafield fieldname="reApprovedBy" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="reApprovedBy" />
+        <schemafield fieldname="reAuthoriser" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="reAuthoriser" />
+        <schemafield fieldname="reFolio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="reFolio" />
+        <schemafield fieldname="reDocType" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="reDocType" />
+        <schemafield fieldname="reSupplier" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="reSupplier" />
+        <schemafield fieldname="reLineCount" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="reLineCount" />
+        <schemafield fieldname="reCheckSum" fullfieldname="" typename="int64" size="8" elements="1" id="-1" columnname="reCheckSum" />        
+        <schemafield fieldname="reApprovalDateTime" fullfieldname="" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="reApprovalDateTime" />
+        <schemafield fieldname="reAdminNotified" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="reAdminNotified" />
+        <schemafield fieldname="reAlreadySent" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="reAlreadySent" />
+        <schemafield fieldname="rePrevDate" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="rePrevDate" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>Company</item>
+                <item>reEAR</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>Company</item>
+                <item>reTimeStamp</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>Company</item>
+                <item>reOurRef</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

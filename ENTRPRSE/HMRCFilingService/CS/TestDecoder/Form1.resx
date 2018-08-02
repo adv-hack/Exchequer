@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="editXML.Text" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;GovTalkMessage xmlns="http://www.govtalk.gov.uk/CM/envelope"&gt;
+  &lt;EnvelopeVersion&gt;2.0&lt;/EnvelopeVersion&gt;
+  &lt;Header&gt;
+    &lt;MessageDetails&gt;
+      &lt;Class&gt;HMRC-VAT-DEC&lt;/Class&gt;
+      &lt;Qualifier&gt;response&lt;/Qualifier&gt;
+      &lt;Function&gt;submit&lt;/Function&gt;
+      &lt;TransactionID&gt;
+      &lt;/TransactionID&gt;
+      &lt;CorrelationID&gt;29E3A396C75D47C6B4A0A8B1A9CAAA90&lt;/CorrelationID&gt;
+      &lt;ResponseEndPoint PollInterval="10"&gt;https://secure.dev.gateway.gov.uk/poll&lt;/ResponseEndPoint&gt;
+      &lt;Transformation&gt;XML&lt;/Transformation&gt;
+      &lt;GatewayTimestamp&gt;2015-09-18T14:35:39.810&lt;/GatewayTimestamp&gt;
+    &lt;/MessageDetails&gt;
+    &lt;SenderDetails /&gt;
+  &lt;/Header&gt;
+  &lt;GovTalkDetails&gt;
+    &lt;Keys /&gt;
+  &lt;/GovTalkDetails&gt;
+  &lt;Body&gt;
+    &lt;SuccessResponse xmlns="http://www.inlandrevenue.gov.uk/SuccessResponse"&gt;
+      &lt;IRmarkReceipt&gt;
+        &lt;dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"&gt;
+          &lt;dsig:SignedInfo&gt;
+            &lt;dsig:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /&gt;
+            &lt;dsig:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /&gt;
+            &lt;dsig:Reference&gt;
+              &lt;dsig:Transforms&gt;
+                &lt;dsig:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"&gt;
+                  &lt;dsig:XPath&gt;(count(ancestor-or-self::node()|/gti:GovTalkMessage/gti:Body)=count(ancestor-or-self::node())) and (count(ancestor-or-self::node()|/gti:GovTalkMessage/gti:Body/*[name()='IRenvelope']/*[name()='IRheader']/*[name()='IRmark'])!=count(ancestor-or-self::node()))&lt;/dsig:XPath&gt;
+                &lt;/dsig:Transform&gt;
+                &lt;dsig:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments" /&gt;
+              &lt;/dsig:Transforms&gt;
+              &lt;dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /&gt;
+              &lt;dsig:DigestValue&gt;S45Fy3L7tCEyW7qsFX19OxkZjzk=&lt;/dsig:DigestValue&gt;
+            &lt;/dsig:Reference&gt;
+          &lt;/dsig:SignedInfo&gt;
+          &lt;dsig:SignatureValue&gt;oHeBMNTj+ci890/8ywOQcwML00P24Wo7PpjEgkhRVOUoshobEZpp/6hj6xTU4VxAWorUiFcLqTX7PCAbSc4HIoisPdI23c7kiALXIjalncmaLYvCY2YPOa8i6ZCjEb8h5XLpALby/9UR8e9OMTSWHF2uzVnxwaM7LXoOF682WabYi4dLF7LnKPCgg301b1bxHnAN3g2QtRSOw34gLoOKPcgUdNkGzpIXyEInx/ZcyV6j7wqyheUMzac2CDp9aJOX/0lu5JFELwhHVnYlGWQcGLWs+NADVyRDknmWlcdutdCUE3xZ+PNwD7alLtIs0GLFk/LzHHp0ccHa0Izz+Rns9A==&lt;/dsig:SignatureValue&gt;
+          &lt;dsig:KeyInfo&gt;
+            &lt;dsig:X509Data&gt;
+              &lt;dsig:X509Certificate&gt;MIIE+jCCA+KgAwIBAgIQBZcQozWQhL8zDmhLe8HfKjANBgkqhkiG9w0BAQsFADB+MQswCQYDVQQGEwJVUzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xHzAdBgNVBAsTFlN5bWFudGVjIFRydXN0IE5ldHdvcmsxLzAtBgNVBAMTJlN5bWFudGVjIENsYXNzIDMgU2VjdXJlIFNlcnZlciBDQSAtIEc0MB4XDTE0MTEyNzAwMDAwMFoXDTE3MDIyNTIzNTk1OVowgYIxCzAJBgNVBAYTAkdCMRMwEQYDVQQIEwpTaHJvcHNoaXJlMRAwDgYDVQQHFAdUZWxmb3JkMR8wHQYDVQQKFBZITSBSZXZlbnVlIGFuZCBDdXN0b21zMQwwCgYDVQQLFANEVEExHTAbBgNVBAMUFGlyYTc0ODMyLmhtcmMuZ292LnVrMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsdcs5ltUYUILjpEy+3CJo/PX3NuhbfKEH1OvYgoJ4lj8T32lzYYRZia8UzmwFdt0eNmEkZBmf5rYL487VVl48EsamCi1DZRY1M19bu+4zyr6E/gWuEfUS3uAqtlrqlc2b/LtRDqtV6xNpI5Yx4eA5HydX3GrvNtM918bBc9gAXeq2FFFBKwbJO/KmsIBT+3qe8DzJDMLXh3p/fG1fjACLnLmqsawKkMjgNUFUpS/dtkYR+Y34gZX2pvbr6UReFYq15A2nk9V4SZau7IubGojagZ4enCQDzwu7P3cIwh84w2J8meWtkYalbSlBVtCHImQXEv/Pxp0fYFYcl8uY44AhQIDAQABo4IBbTCCAWkwHwYDVR0RBBgwFoIUaXJhNzQ4MzIuaG1yYy5nb3YudWswCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBaAwZQYDVR0gBF4wXDBaBgpghkgBhvhFAQc2MEwwIwYIKwYBBQUHAgEWF2h0dHBzOi8vZC5zeW1jYi5jb20vY3BzMCUGCCsGAQUFBwICMBkMF2h0dHBzOi8vZC5zeW1jYi5jb20vcnBhMCsGA1UdHwQkMCIwIKAeoByGGmh0dHA6Ly9zcy5zeW1jYi5jb20vc3MuY3JsMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBRfYM9hkFXfhEMUimAqsvV69EMY7zBXBggrBgEFBQcBAQRLMEkwHwYIKwYBBQUHMAGGE2h0dHA6Ly9zcy5zeW1jZC5jb20wJgYIKwYBBQUHMAKGGmh0dHA6Ly9zcy5zeW1jYi5jb20vc3MuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQCL+eFV+jBFtyS+2F+g0ij7h/vL2hgeyqRGZQKKvQm2dGrRKMlc6yHlFsfH+2WrnwfNUH5dCsMv8frCjwxcXchvy0AA762VMAv/PcndsDE0k6fKiPHzDFyfOxUabCrbeC2O/VzhOg7au028iy/vRMXKJbxp0bsTGbjJgXBCj8bRBIKqE3HlQipK2GJRCmxF7esi73nndyJfsh62TJCuynRpPYoDl6MPWFwX4Me5t5sfiO5wozrvfnIbglMopYwAJ4KSFFE64vkGyDo6wclswnznIeW0pcVSwFpEHgomDgx8B5zx7UVrPJ5Z/a8QRQyrY2hAS27Yr77YtEsRPYk5LE1k&lt;/dsig:X509Certificate&gt;
+            &lt;/dsig:X509Data&gt;
+          &lt;/dsig:KeyInfo&gt;
+        &lt;/dsig:Signature&gt;
+        &lt;Message code="0000"&gt;HMRC has received the HMRC-VAT-DEC document ref: 999900001 at 15.35 on 18/09/2015. The associated IRmark was: JOHELS3S7O2CCMS3XKWBK7L5HMMRTDZZ. We strongly recommend that you keep this receipt electronically, and we advise that you also keep your submission electronically for your records. They are evidence of the information that you submitted to HMRC.&lt;/Message&gt;
+      &lt;/IRmarkReceipt&gt;
+      &lt;Message code="077001"&gt;Thank you for your submission&lt;/Message&gt;
+      &lt;AcceptedTime&gt;2015-09-18T15:35:36.674&lt;/AcceptedTime&gt;
+      &lt;ResponseData&gt;
+        &lt;VATDeclarationResponse xmlns="http://www.govtalk.gov.uk/taxation/vat/vatdeclaration/2" SchemaVersion="1.0"&gt;
+          &lt;Header&gt;
+            &lt;VATPeriod&gt;
+              &lt;PeriodId&gt;2015-05&lt;/PeriodId&gt;
+              &lt;PeriodStartDate&gt;2015-05-01&lt;/PeriodStartDate&gt;
+              &lt;PeriodEndDate&gt;2015-05-31&lt;/PeriodEndDate&gt;
+            &lt;/VATPeriod&gt;
+            &lt;CurrencyCode&gt;GBP&lt;/CurrencyCode&gt;
+          &lt;/Header&gt;
+          &lt;Body&gt;
+            &lt;PaymentDueDate&gt;2015-06-30&lt;/PaymentDueDate&gt;
+            &lt;VATDeclarationReference&gt;999900001&lt;/VATDeclarationReference&gt;
+            &lt;ReceiptTimestamp&gt;2015-09-18T15:35:36.674&lt;/ReceiptTimestamp&gt;
+            &lt;PaymentNotification&gt;
+              &lt;Narrative&gt;This is a nil return. No payment is due.&lt;/Narrative&gt;
+              &lt;NetVAT&gt;0.00&lt;/NetVAT&gt;
+              &lt;NilPaymentIndicator /&gt;
+            &lt;/PaymentNotification&gt;
+          &lt;/Body&gt;
+        &lt;/VATDeclarationResponse&gt;
+      &lt;/ResponseData&gt;
+    &lt;/SuccessResponse&gt;
+  &lt;/Body&gt;
+&lt;/GovTalkMessage&gt;</value>
+  </data>
+</root>

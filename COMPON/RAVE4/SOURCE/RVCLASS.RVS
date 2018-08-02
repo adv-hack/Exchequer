@@ -1,0 +1,500 @@
+module RVClass;
+
+definition
+
+import
+  SysFunc;
+
+const
+{ *** RPTF Constants *** }
+  RPTFPrefix = \01; { Begins an RPTF formatting block }
+  RPTFInfix = \02; { Separates commands within an RPTF formatting blocks }
+  RPTFSeparator = \03; { Used to separate parameters }
+  RPTFSuffix = \04; { Ends an RPTF formatting block }
+
+  RPTFOff = '0';
+  RPTFOn = '1';
+  RPTFLeft = 'L';
+  RPTFCenter = 'C';
+  RPTFRight = 'R';
+  RPTFBlock = 'B';
+
+{ RPTF Commands }
+  RPTFIgnore = ' ';
+  RPTFBold = 'B';
+  RPTFItalic = 'I';
+  RPTFUnderline = 'U';
+  RPTFStrikeout = 'K';
+  RPTFSuperscript = 'P';
+  RPTFSubscript = 'S';
+  RPTFName = 'N';
+  RPTFSize = 'Z';
+  RPTFColor = 'C';
+  RPTFPitch = 'H';
+  RPTFResetParagraph = 'R';
+  RPTFResetStyle = 'r';
+  RPTFJustify = 'J';
+  RPTFFirstIndent = 'F';
+  RPTFLeftIndent = 'L';
+  RPTFRightIndent = 'G';
+
+{ RPTF Macros }
+  BoldOn = RPTFPrefix + RPTFBold + RPTFOn + RPTFSuffix;
+  BoldOff = RPTFPrefix + RPTFBold + RPTFOff + RPTFSuffix;
+  ItalicOn = RPTFPrefix + RPTFItalic + RPTFOn + RPTFSuffix;
+  ItalicOff = RPTFPrefix + RPTFItalic + RPTFOff + RPTFSuffix;
+  UnderlineOn = RPTFPrefix + RPTFUnderline + RPTFOn + RPTFSuffix;
+  UnderlineOff = RPTFPrefix + RPTFUnderline + RPTFOff + RPTFSuffix;
+  StrikeoutOn = RPTFPrefix + RPTFStrikeout + RPTFOn + RPTFSuffix;
+  StrikeoutOff = RPTFPrefix + RPTFStrikeout + RPTFOff + RPTFSuffix;
+  SuperscriptOn = RPTFPrefix + RPTFSuperscript + RPTFOn + RPTFSuffix;
+  SuperscriptOff = RPTFPrefix + RPTFSuperscript + RPTFOff + RPTFSuffix;
+  SubscriptOn = RPTFPrefix + RPTFSubscript + RPTFOn + RPTFSuffix;
+  SubscriptOff = RPTFPrefix + RPTFSubscript + RPTFOff + RPTFSuffix;
+  JustifyLeft = RPTFPrefix + RPTFJustify + RPTFLeft + RPTFSuffix;
+  JustifyCenter = RPTFPrefix + RPTFJustify + RPTFCenter + RPTFSuffix;
+  JustifyRight = RPTFPrefix + RPTFJustify + RPTFRight + RPTFSuffix;
+  JustifyBlock = RPTFPrefix + RPTFJustify + RPTFBlock + RPTFSuffix;
+
+  clBlack = #000000;
+  clMaroon = #000080;
+  clGreen = #008000;
+  clOlive = #008080;
+  clNavy = #800000;
+  clPurple = #800080;
+  clTeal = #808000;
+  clGray = #808080;
+  clSilver = #C0C0C0;
+  clRed = #0000FF;
+  clLime = #00FF00;
+  clYellow = #00FFFF;
+  clBlue = #FF0000;
+  clFuchsia = #FF00FF;
+  clAqua = #FFFF00;
+  clWhite = #FFFFFF;
+  clPink = #8080FF;
+  clRedClay = #404080;
+  clNightRed = #000040;
+  clLemon = #80FFFF;
+  clPeach = #4080FF;
+  clOrange = #0080FF;
+  clBrown = #004080;
+  clMistGreen = #80FF80;
+  clYellowGreen = #00FF80;
+  clNightGreen = #004000;
+  clGold = #408080;
+  clSeaGreen = #80FF00;
+  clGreenApple = #40FF00;
+  clBlueGreen = #408000;
+  clForestGreen = #404000;
+  clSkyBlue = #FFFF80;
+  clDeepBlue = #804000;
+  clTealGray = #808040;
+  clGreenBlue = #FF8000;
+  clTealBlue = #C08000;
+  clLavender = #FF8080;
+  clRoyalBlue = #A00000;
+  clNightBlue = #400000;
+  clBubbleGum = #C080FF;
+  clPeriwinkle = #C08080;
+  clPlum = #400080;
+  clBlackCherry = #400040;
+  clPinkCarnation = #FF80FF;
+  clVioletRed = #8000FF;
+  clLightPurple = #FF0080;
+  clDarkPurple = #800040;
+
+type
+  TVersion = string;
+  TTitleString = string;
+  TFormatString = string;
+  TDeviceState = (dsNone,dsIC,dsDC);
+  TAccuracyMethod = (amPositioning,amAppearance);
+  TMarginMethod = (mmScaled,mmFixed);
+  TRulerType = (rtNone,rtHorizCm,rtVertCm,rtBothCm,rtHorizIn,rtVertIn,rtBothIn);
+  TPrintJustify = (pjCenter,pjLeft,pjRight,pjBlock);
+  TTabJustify = (tjCenter,tjLeft,tjRight,tjBlock,tjNone);
+  TPrintJustifyVert = (pjTop,pjMiddle,pjBottom);
+  TPrintUnits = (unInch,unMM,unCM,unPoint,unUser);
+  TLineHeightMethod = (lhmLinesPerInch,lhmFont,lhmUser);
+  TBKMode = (bkTransparent,bkOpaque);
+  TDestination = (destPrinter,destPreview,destFile,destNone,destCustomFile);
+  TStreamMode = (smMemory,smFile,smUser,smTempFile);
+  TOrientation = (poPortrait,poLandScape,poDefault);
+  TDuplex = (dupSimplex,dupVertical,dupHorizontal);
+  TReportEventType = (reBeginPage,reEndPage);
+  TFontAlign = (faBaseline,faTop,faBottom);
+  TReportDest = (rdPreview,rdPrinter,rdFile);
+  TSystemSetup = (ssAllowSetup,ssAllowCopies,ssAllowCollate,ssAllowDuplex,
+   ssAllowDestPreview,ssAllowDestPrinter,ssAllowDestFile,ssAllowPrinterSetup,
+   ssAllowPreviewSetup);
+  TSystemOption = (soUseFiler,soWaitForOK,soShowStatus,soAllowPrintFromPreview,
+   soPreviewModal,soNoGenerate);
+  TBoxLines = (blNone,blLeft,blRight,blLeftRight,blTop,blLeftTop,blRightTop,
+   blNoBottom,blBottom,blLeftBottom,blRightBottom,blNoTop,blTopBottom,blNoRight,
+   blNoLeft,blAll);
+  TMacroID = (midCurrDateShort,midCurrDateLong,midCurrDateUS,midCurrDateInter,
+   midCurrTimeShort,midCurrTimeLong,midCurrTimeAMPM,midCurrTime24,midFirstPage,
+   midLastPage,midTotalPages,midCurrentPage,midRelativePage,
+   midPrinterName,midDriverName,midPortName,
+   midUser01,midUser02,midUser03,midUser04,midUser05,midUser06,midUser07,
+   midUser08,midUser09,midUser10,midUser11,midUser12,midUser13,midUser14,
+   midUser15,midUser16,midUser17,midUser18,midUser19,midUser20);
+  TFrameMode = (fmInside,fmSplit,fmOutside);
+
+  TRPDataType = (dtString,dtInteger,dtBoolean,dtFloat,dtCurrency,dtBCD,dtDate,
+   dtTime,dtDateTime,dtBlob,dtMemo,dtGraphic);
+  TColor = integer;
+
+  TFileName = string;
+  TUserLevel = (ulBeginner,ulIntermediate,ulAdvanced);
+  TLineWidthType = (wtPoints,wtPixels);
+  TFontAttribute = (faAll,faName,faSize,faBold,faItalic,faUnderline);
+  TDisplayOn = (doParent,doAll,doPreviewOnly,doPrinterOnly);
+  TGotoMode = (gmGotoDone,gmGotoNotDone,gmCallEach);
+  TRaveAnchor = byte;
+  TRaveVAnchor = (anvTop,anvBottom,anvCenter,anvStretch,anvResize,anvSpread);
+  TRaveHAnchor = (anhLeft,anhRight,anhCenter,anhStretch,anhResize,anhSpread);
+  TRaveFillStyle = (fsSolid,fsClear,fsHorizontal,fsVertical,fsFDiagonal,
+   fsBDiagonal,fsCross,fsDiagCross,fsNone);
+  TFontPitch = (fpDefault, fpVariable, fpFixed);
+  TFontStyle = (fsBold, fsItalic, fsUnderline, fsStrikeOut);
+  TPenStyle = (psSolid, psDash, psDot, psDashDot, psDashDotDot, psClear,
+    psInsideFrame);
+  TPenMode = (pmBlack, pmWhite, pmNop, pmNot, pmCopy, pmNotCopy,
+    pmMergePenNot, pmMaskPenNot, pmMergeNotPen, pmMaskNotPen, pmMerge,
+    pmNotMerge, pmMask, pmNotMask, pmXor, pmNotXor);
+  TBrushStyle = (bsSolid, bsClear, bsHorizontal, bsVertical,
+    bsFDiagonal, bsBDiagonal, bsCross, bsDiagCross);
+
+  TRaveFloat = double;
+  TRaveUnits = TRaveFloat;
+  TRaveFieldName = string;
+  TRaveMemoString = string;
+
+  TRavePoint = record
+    X: TRaveUnits;
+    Y: TRaveUnits;
+  end TRavePoint;
+
+  TRaveRect = record
+    Left: TRaveUnits;
+    Top: TRaveUnits;
+    Right: TRaveUnits;
+    Bottom: TRaveUnits;
+  end TRaveRect;
+
+  TRavePaperSize = integer;
+  TPaperSizeName = record
+    Name: string;
+    PaperSize: TRavePaperSize;
+    PaperWidth: TRaveUnits;
+    PaperHeight: TRaveUnits;
+  end TPaperSizeName;
+
+  TRaveBin = integer;
+  TRaveBinName = record
+    Name: string;
+    RaveBin: TRaveBin;
+  end TRaveBinName;
+
+  TRavePrinterDuplex = (pdSimplex,pdHorizontal,pdVertical,pdDefault);
+  TRavePrinterCollate = (pcFalse,pcTrue,pcDefault);
+  TRavePrinterResolution = (prDraft,prLow,prMedium,prHigh,prDefault);
+
+  TRaveComponent = class
+  protected
+    function GetLocked: boolean;
+    function SetLocked(Value: boolean);
+    //function GetParent: TRaveComponent;
+    //function SetParent(Value: TRaveComponent);
+    function GetVisible: boolean;
+    function SetVisible(Value: boolean);
+    function GetEnabled: boolean;
+    function SetEnabled(Value: boolean);
+  public
+    function Show;
+    function Hide;
+    function Enable;
+    function Disable;
+    function MoveForward;
+    function MoveBehind;
+    function BringToFront;
+    function SendToBack;
+
+    function XU2I(Value: TRaveUnits): TRaveUnits;
+    function YU2I(Value: TRaveUnits): TRaveUnits;
+    function XI2U(Value: TRaveUnits): TRaveUnits;
+    function YI2U(Value: TRaveUnits): TRaveUnits;
+    //function Child(Index: integer): TRaveComponent;
+    //function ChildCount: integer;
+    //function ChildIndex: integer;
+    function PageLeft: TRaveUnits;
+    function PageTop: TRaveUnits;
+    function PageRight: TRaveUnits;
+    function PageBottom: TRaveUnits;
+    //function Page: TRavePage;
+
+    property Locked: boolean read GetLocked write SetLocked;
+    property Enabled: boolean read GetEnabled write SetEnabled;
+    //property Parent: TRaveComponent read GetParent write SetParent;
+    property Visible: boolean read GetVisible write SetVisible;
+  end TRaveComponent;
+
+  TRaveControl = class(TRaveComponent)
+  protected
+    function GetFontJustify: TPrintJustify;
+    function SetFontJustify(Value: TPrintJustify);
+    function GetBackColor: TColor;
+    function SetBackColor(Value: TColor);
+    function GetForeColor: TColor;
+    function SetForeColor(Value: TColor);
+    function GetFillStyle: TRaveFillStyle;
+    function SetFillStyle(Value: TRaveFillStyle);
+    function GetText: string;
+    function SetText(Value: string);
+    function GetLineWidth: TRaveFloat;
+    function SetLineWidth(Value: TRaveFloat);
+    function GetLineWidthType: TLineWidthType;
+    function SetLineWidthType(Value: TLineWidthType);
+    function GetLineStyle: TPenStyle;
+    function SetLineStyle(Value: TPenStyle);
+    function GetBoundsRect: TRaveRect;
+    function SetBoundsRect(Value: TRaveRect);
+    function GetLeft: TRaveUnits;
+    function SetLeft(Value: TRaveUnits);
+    function GetRight: TRaveUnits;
+    function SetRight(Value: TRaveUnits);
+    function GetTop: TRaveUnits;
+    function SetTop(Value: TRaveUnits);
+    function GetBottom: TRaveUnits;
+    function SetBottom(Value: TRaveUnits);
+    function GetWidth: TRaveUnits;
+    function SetWidth(Value: TRaveUnits);
+    function GetHeight: TRaveUnits;
+    function SetHeight(Value: TRaveUnits);
+    //function GetMirror: TRaveControl;
+    //function SetMirror(Value: TRaveControl);
+    function GetDisplayOn: TDisplayOn;
+    function SetDisplayOn(Value: TDisplayOn);
+  public
+    function Reflect;
+    function SetPos(Left: TRaveUnits;
+                    Top: TRaveUnits);
+    function SetSize(P1: TRavePoint;
+                     P2: TRavePoint);
+    function AdjLeft: TRaveUnits;
+    function AdjTop: TRaveUnits;
+    function AdjWidth: TRaveUnits;
+    function AdjHeight: TRaveUnits;
+    function VAnchor: TRaveVAnchor;
+    function HAnchor: TRaveHAnchor;
+
+    property FontJustify: TPrintJustify read GetFontJustify write SetFontJustify;
+    property BackColor: TColor read GetBackColor write SetBackColor;
+    property ForeColor: TColor read GetForeColor write SetForeColor;
+    property FillStyle: TRaveFillStyle read GetFillStyle write SetFillStyle;
+    property Text: string read GetText write SetText;
+    property LineWidth: TRaveFloat read GetLineWidth write SetLineWidth;
+    property LineWidthType: TLineWidthType read GetLineWidthType write SetLineWidthType;
+    property LineStyle: TPenStyle read GetLineStyle write SetLineStyle;
+    property BoundsRect: TRaveRect read GetBoundsRect write SetBoundsRect;
+    property Left: TRaveUnits read GetLeft write SetLeft;
+    property Right: TRaveUnits read GetRight write SetRight;
+    property Top: TRaveUnits read GetTop write SetTop;
+    property Bottom: TRaveUnits read GetBottom write SetBottom;
+    property Width: TRaveUnits read GetWidth write SetWidth;
+    property Height: TRaveUnits read GetHeight write SetHeight;
+    //property Mirror: TRaveControl read GetMirror write SetMirror;
+    property DisplayOn: TDisplayOn read GetDisplayOn write SetDisplayOn;
+  end TRaveControl;
+
+  TRaveContainerControl = class(TRaveControl)
+  end TRaveContainerControl;
+
+  TRaveContainerComponent = class(TRaveComponent)
+  end TRaveContainerComponent;
+
+  TRaveProjectItem = class(TRaveContainerComponent)
+  protected
+    //function GetParameters: TStrings;
+    //function SetParameters(Value: TStrings);
+    //function GetPIVars: TStrings;
+    //function SetPIVars(Value: TString);
+    function GetDescription: TRaveMemoString;
+    function SetDescription(Value: TRaveMemoString);
+    function GetFullName: string;
+    function SetFullName(Value: string);
+  public
+    //property Parameters: TStrings read GetParameters write SetParameters;
+    //property PIVars: TStrings read GetPIVars write SetPIVars;
+    property Description: TRaveMemoString read GetDescription write SetDescription;
+    property FullName: string read GetFullName write SetFullName;
+  end TRaveProjectItem;
+
+  TRavePage = class(TRaveProjectItem)
+  protected
+    function GetBin: TRaveBin;
+    function SetBin(Value: TRaveBin);
+    function GetBinCustom: string;
+    function SetBinCustom(Value: string);
+    function GetGotoMode: TGotoMode;
+    function SetGotoMode(Value: TGotoMode);
+    //function GetGotoPage: TRavePage;
+    //function SetGotoPage(Value: TRavePage);
+    function GetGridLines: integer;
+    function SetGridLines(Value: integer);
+    function GetGridSpacing: TRaveUnits;
+    function SetGridSpacing(Value: TRaveUnits);
+    function GetOrientation: TOrientation;
+    function SetOrientation(Value: TOrientation);
+    function GetPageHeight: TRaveUnits;
+    function SetPageHeight(Value: TRaveUnits);
+    function GetPageWidth: TRaveUnits;
+    function SetPageWidth(Value: TRaveUnits);
+    function GetPaperSize: TRavePaperSize;
+    function SetPaperSize(Value: TRavePaperSize);
+    function GetWasteFit: boolean;
+    function SetWasteFit(Value: boolean);
+  public
+    function Global: boolean;
+    property Bin: TRaveBin read GetBin write SetBin;
+    property BinCustom: string read GetBinCustom write SetBinCustom;
+    property GotoMode: TGotoMode read GetGotoMode write SetGotoMode;
+    //property GotoPage: TRavePage read GetGotoPage write SetGotoPage;
+    property GridLines: integer read GetGridLines write SetGridLines;
+    property GridSpacing: TRaveUnits read GetGridSpacing write SetGridSpacing;
+    property Orientation: TOrientation read GetOrientation write SetOrientation;
+    property PageHeight: TRaveUnits read GetPageHeight write SetPageHeight;
+    property PageWidth: TRaveUnits read GetPageWidth write SetPageWidth;
+    property PaperSize: TRavePaperSize read GetPaperSize write SetPaperSize;
+    property WasteFit: boolean read GetWasteFit write SetWasteFit;
+  end TRavePage;
+
+  TRaveDataObject = class(TRaveProjectItem)
+  end TRaveDataObject;
+
+//  function ShadeToColor(ShadeColor: TColor;
+//                        ShadePercent: byte): TColor;
+//  function MoneyToLongName(Value: extended): string;
+
+implementation
+
+// TRaveComponent
+
+  function TRaveComponent.GetLocked: boolean; external;
+  function TRaveComponent.SetLocked(Value: boolean); external;
+  //function TRaveComponent.GetParent: TRaveComponent; external;
+  //function TRaveComponent.SetParent(Value: TRaveComponent); external;
+  function TRaveComponent.GetVisible: boolean; external;
+  function TRaveComponent.SetVisible(Value: boolean); external;
+  function TRaveComponent.GetEnabled: boolean; external;
+  function TRaveComponent.SetEnabled(Value: boolean); external;
+
+  function TRaveComponent.Show; external;
+  function TRaveComponent.Hide; external;
+  function TRaveComponent.Enable; external;
+  function TRaveComponent.Disable; external;
+  function TRaveComponent.MoveForward; external;
+  function TRaveComponent.MoveBehind; external;
+  function TRaveComponent.BringToFront; external;
+  function TRaveComponent.SendToBack; external;
+
+  function TRaveComponent.XU2I(Value: TRaveUnits): TRaveUnits; external;
+  function TRaveComponent.YU2I(Value: TRaveUnits): TRaveUnits; external;
+  function TRaveComponent.XI2U(Value: TRaveUnits): TRaveUnits; external;
+  function TRaveComponent.YI2U(Value: TRaveUnits): TRaveUnits; external;
+  //function TRaveComponent.Child(Index: integer): TRaveComponent; external;
+  //function TRaveComponent.ChildCount: integer; external;
+  //function TRaveComponent.ChildIndex: integer; external;
+  function TRaveComponent.PageLeft: TRaveUnits; external;
+  function TRaveComponent.PageTop: TRaveUnits; external;
+  function TRaveComponent.PageRight: TRaveUnits; external;
+  function TRaveComponent.PageBottom: TRaveUnits; external;
+  //function TRaveComponent.Page: TRavePage; external;
+
+// TRaveControl
+
+  function TRaveControl.GetFontJustify: TPrintJustify; external;
+  function TRaveControl.SetFontJustify(Value: TPrintJustify); external;
+  function TRaveControl.GetBackColor: TColor; external;
+  function TRaveControl.SetBackColor(Value: TColor); external;
+  function TRaveControl.GetForeColor: TColor; external;
+  function TRaveControl.SetForeColor(Value: TColor); external;
+  function TRaveControl.GetFillStyle: TRaveFillStyle; external;
+  function TRaveControl.SetFillStyle(Value: TRaveFillStyle); external;
+  function TRaveControl.GetText: string; external;
+  function TRaveControl.SetText(Value: string); external;
+  function TRaveControl.GetLineWidth: TRaveFloat; external;
+  function TRaveControl.SetLineWidth(Value: TRaveFloat); external;
+  function TRaveControl.GetLineWidthType: TLineWidthType; external;
+  function TRaveControl.SetLineWidthType(Value: TLineWidthType); external;
+  function TRaveControl.GetLineStyle: TPenStyle; external;
+  function TRaveControl.SetLineStyle(Value: TPenStyle); external;
+  function TRaveControl.GetBoundsRect: TRaveRect; external;
+  function TRaveControl.SetBoundsRect(Value: TRaveRect); external;
+  function TRaveControl.GetLeft: TRaveUnits; external;
+  function TRaveControl.SetLeft(Value: TRaveUnits); external;
+  function TRaveControl.GetRight: TRaveUnits; external;
+  function TRaveControl.SetRight(Value: TRaveUnits); external;
+  function TRaveControl.GetTop: TRaveUnits; external;
+  function TRaveControl.SetTop(Value: TRaveUnits); external;
+  function TRaveControl.GetBottom: TRaveUnits; external;
+  function TRaveControl.SetBottom(Value: TRaveUnits); external;
+  function TRaveControl.GetWidth: TRaveUnits; external;
+  function TRaveControl.SetWidth(Value: TRaveUnits); external;
+  function TRaveControl.GetHeight: TRaveUnits; external;
+  function TRaveControl.SetHeight(Value: TRaveUnits); external;
+//function TRaveControl.GetMirror: TRaveControl; external;
+//function TRaveControl.SetMirror(Value: TRaveControl); external;
+  function TRaveControl.GetDisplayOn: TDisplayOn; external;
+  function TRaveControl.SetDisplayOn(Value: TDisplayOn); external;
+  function TRaveControl.Reflect; external;
+  function TRaveControl.SetPos(Left: TRaveUnits;
+                               Top: TRaveUnits); external;
+  function TRaveControl.SetSize(P1: TRavePoint;
+                                P2: TRavePoint); external;
+  function TRaveControl.AdjLeft: TRaveUnits; external;
+  function TRaveControl.AdjTop: TRaveUnits; external;
+  function TRaveControl.AdjWidth: TRaveUnits; external;
+  function TRaveControl.AdjHeight: TRaveUnits; external;
+  function TRaveControl.VAnchor: TRaveVAnchor; external;
+  function TRaveControl.HAnchor: TRaveHAnchor; external;
+
+// TRaveProjectItem
+
+  //function TRaveProjectItem.GetParameters: TStrings; external;
+  //function TRaveProjectItem.SetParameters(Value: TStrings); external;
+  //function TRaveProjectItem.GetPIVars: TStrings; external;
+  //function TRaveProjectItem.SetPIVars(Value: TString); external;
+  function TRaveProjectItem.GetDescription: TRaveMemoString; external;
+  function TRaveProjectItem.SetDescription(Value: TRaveMemoString); external;
+  function TRaveProjectItem.GetFullName: string; external;
+  function TRaveProjectItem.SetFullName(Value: string); external;
+
+// TRavePage
+
+  function TRavePage.GetBin: TRaveBin; external;
+  function TRavePage.SetBin(Value: TRaveBin); external;
+  function TRavePage.GetBinCustom: string; external;
+  function TRavePage.SetBinCustom(Value: string); external;
+  function TRavePage.GetGotoMode: TGotoMode; external;
+  function TRavePage.SetGotoMode(Value: TGotoMode); external;
+  function TRavePage.GetGotoPage: TRavePage; external;
+  function TRavePage.SetGotoPage(Value: TRavePage); external;
+  function TRavePage.GetGridLines: integer; external;
+  function TRavePage.SetGridLines(Value: integer); external;
+  function TRavePage.GetGridSpacing: TRaveUnits; external;
+  function TRavePage.SetGridSpacing(Value: TRaveUnits); external;
+  function TRavePage.GetOrientation: TOrientation; external;
+  function TRavePage.SetOrientation(Value: TOrientation); external;
+  function TRavePage.GetPageHeight: TRaveUnits; external;
+  function TRavePage.SetPageHeight(Value: TRaveUnits); external;
+  function TRavePage.GetPageWidth: TRaveUnits; external;
+  function TRavePage.SetPageWidth(Value: TRaveUnits); external;
+  function TRavePage.GetPaperSize: TRavePaperSize; external;
+  function TRavePage.SetPaperSize(Value: TRavePaperSize); external;
+  function TRavePage.GetWasteFit: boolean; external;
+  function TRavePage.SetWasteFit(Value: boolean); external;
+
+end RVClass;

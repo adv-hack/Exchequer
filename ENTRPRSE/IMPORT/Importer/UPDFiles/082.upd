@@ -1,0 +1,14 @@
+[Version]
+Version=6.01.000.082
+
+[Trans Header]
+F065=TH.AutoIncBy                 0737    C 0001 O   Auto Increment By                                  default=                                                                                                     comment=D or P
+F066=TH.AutoEndDate               0738    S 0008 O   Auto End Date                                      default=                                                                                                     comment=
+F067=TH.AutoEndPr                 0747    I 0002 O   Auto End Period                                    default=0                                                                                                    comment=
+F068=TH.AutoEndYr                 0749    I 0002 O   Auto End Year                                      default=0                                                                                                    comment=
+F069=TH.AutoPost                  0751    W 0002 O   Auto Post                                          default=[I]Y                                                                                                 comment=Y/N
+F090=TH.thAutoTransaction         0866    W 0002 O   Auto Transaction                                   default=[I]Y                                                                                                 comment=Y/N
+F105=TH.thOnPickRun               0962    W 0002 O   Auto Keep Date                                     default=[I]Y                                                                                                 comment=Y/N
+
+[Auto End Date]
+VRule=isDateFormat

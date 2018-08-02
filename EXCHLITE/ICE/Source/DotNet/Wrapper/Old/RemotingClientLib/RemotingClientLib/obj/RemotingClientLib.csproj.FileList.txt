@@ -1,0 +1,12 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\RemotingClientLib.dll
+bin\Debug\RemotingClientLib.pdb
+bin\Debug\IRIS.ICE.Common.pdb
+obj\Debug\RemotingClientLib.dll
+obj\Debug\RemotingClientLib.pdb
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\RemotingClientLib.dll
+bin\Release\RemotingClientLib.pdb
+bin\Release\IRIS.ICE.Common.pdb
+obj\Release\RemotingClientLib.dll
+obj\Release\RemotingClientLib.pdb

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HMRCFilingService", "HMRCFilingService.csproj", "{7766878E-EB32-4097-9675-E8D2A825863B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HMRCStatusChecker", "HMRCStatusChecker\HMRCStatusChecker.csproj", "{E9D759B2-E701-409C-AD25-B153F6FF6C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDecoder", "TestDecoder\TestDecoder.csproj", "{C6603114-9007-42A0-93C9-8338BE472080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUUConsole", "GUUConsole\GUUConsole.csproj", "{7A7AC7F7-1DD8-4E47-BA6F-17991806648E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://bmtdevtfs1:8080/tfs/exchequer
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HMRCFilingService.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = HMRCStatusChecker\\HMRCStatusChecker.csproj
+		SccProjectName2 = HMRCStatusChecker
+		SccLocalPath2 = HMRCStatusChecker
+		SccProjectUniqueName3 = TestDecoder\\TestDecoder.csproj
+		SccProjectName3 = TestDecoder
+		SccLocalPath3 = TestDecoder
+		SccProjectUniqueName4 = GUUConsole\\GUUConsole.csproj
+		SccProjectName4 = GUUConsole
+		SccLocalPath4 = GUUConsole
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7766878E-EB32-4097-9675-E8D2A825863B}.Debug|x86.ActiveCfg = Debug|x86
+		{7766878E-EB32-4097-9675-E8D2A825863B}.Debug|x86.Build.0 = Debug|x86
+		{7766878E-EB32-4097-9675-E8D2A825863B}.Release|x86.ActiveCfg = Release|x86
+		{7766878E-EB32-4097-9675-E8D2A825863B}.Release|x86.Build.0 = Release|x86
+		{E9D759B2-E701-409C-AD25-B153F6FF6C52}.Debug|x86.ActiveCfg = Debug|x86
+		{E9D759B2-E701-409C-AD25-B153F6FF6C52}.Debug|x86.Build.0 = Debug|x86
+		{E9D759B2-E701-409C-AD25-B153F6FF6C52}.Release|x86.ActiveCfg = Release|x86
+		{E9D759B2-E701-409C-AD25-B153F6FF6C52}.Release|x86.Build.0 = Release|x86
+		{C6603114-9007-42A0-93C9-8338BE472080}.Debug|x86.ActiveCfg = Debug|x86
+		{C6603114-9007-42A0-93C9-8338BE472080}.Release|x86.ActiveCfg = Release|x86
+		{7A7AC7F7-1DD8-4E47-BA6F-17991806648E}.Debug|x86.ActiveCfg = Debug|x86
+		{7A7AC7F7-1DD8-4E47-BA6F-17991806648E}.Debug|x86.Build.0 = Debug|x86
+		{7A7AC7F7-1DD8-4E47-BA6F-17991806648E}.Release|x86.ActiveCfg = Release|x86
+		{7A7AC7F7-1DD8-4E47-BA6F-17991806648E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

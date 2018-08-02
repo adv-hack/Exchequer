@@ -1,0 +1,56 @@
+package madExceptWizard_;
+
+{$R *.res}
+{$R madExceptBitmaps.res}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $5A000000}
+{$DESCRIPTION 'madExceptWizard 3.0g  -  www.madshi.net'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  madExcept_,
+  {$ifndef ver120}{$ifndef ver130}designide,{$endif}{$endif}
+  {$ifdef ver140}
+    vclx;
+  {$else}
+    {$ifdef ver130}
+      vclx50;
+    {$else}
+      {$ifdef ver120}
+        vclx40;
+      {$else}
+        vclx;
+      {$endif}
+    {$endif}
+  {$endif}
+
+contains
+  madExceptPatcher in 'madExceptPatcher.pas',
+  madExceptWizard in 'madExceptWizard.pas',
+  madSideTabs in 'madSideTabs.pas',
+  meEditAttach in 'meEditAttach.pas' {FEditAttach},
+  meEditAssis in 'meEditAssis.pas' {FEditAssis},
+  meGlobalCfg in 'meGlobalCfg.pas' {FGlobalCfg},
+  meAddComp in 'meAddComp.pas' {FNewComp};
+
+end.

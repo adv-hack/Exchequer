@@ -1,0 +1,74 @@
+package
+{$IFDEF VER120}RPRT40D4{$ENDIF}
+{$IFDEF VER125}RPRT40D4{$ENDIF}
+{$IFDEF VER130}RPRT40D5{$ENDIF}
+{$IFDEF VER140}RPRT40D6{$ENDIF}
+{$IFDEF VER150}RPRT40D7{$ENDIF}
+{$IFDEF VER160}RPRT40D8{$ENDIF}
+{$IFDEF VER170}RPRT40D9{$ENDIF};
+
+{$DESCRIPTION 'Rave Reports 4.0 Run-Time Package'}
+{$IMPLICITBUILD OFF}
+
+requires
+{$IFDEF VER120}
+  VCL40, VCLDB40, VCLJPG40;
+{$ENDIF}
+{$IFDEF VER125}
+  VCL40, VCLDB40, VCLJPG40;
+{$ENDIF}
+{$IFDEF VER130}
+  VCL50, VCLDB50, VCLBDE50, VCLJPG50;
+{$ENDIF}
+{$IFDEF VER140}
+  VCL, VCLJPG, DBRTL, BDERTL;
+{$ENDIF}
+{$IFDEF VER150}
+  VCL, VCLJPG, DBRTL, BDERTL;
+{$ENDIF}
+{$IFDEF VER160}
+  VCL, VCLJPG, DBRTL, BDERTL;
+{$ENDIF}
+{$IFDEF VER170}
+  VCL, VCLJPG, DBRTL, BDERTL;
+{$ENDIF}
+
+contains
+  NDRVSystem,
+  NDRVStream,
+  NDRVCursor,
+  NDRVStrings,
+  RPDefine,
+  RPDevice,
+  RPFont,
+  RPBase,
+  RPCanvas,
+  RPFiler,
+  RPrinter,
+  RPFPrint,
+  RPreview,
+  RPSystem,
+  RPShell,
+  RPLabel,
+  RPTable,
+  RPDBTabl,
+  RPMemo,
+  RPBars,
+  RPDBUtil,
+  RPSect,
+  RPPreFrm,
+  RPStaFrm,
+  RPSetFrm,
+  RPRPTF,
+  RPHTFilr,
+  RPRTFilr,
+  RPTxFilr,
+  RPCursor,
+  RPCon,
+  RPConDS,
+  RPConBDE,
+  RPRender,
+  RPRender_HTML,
+  RPRender_PDF;
+
+end.

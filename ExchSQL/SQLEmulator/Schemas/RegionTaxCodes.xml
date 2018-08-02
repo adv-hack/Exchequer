@@ -1,0 +1,28 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="1R1wJegDo4GuMDB6L+CyFQ" identitycol="PositionId" recordfieldname="" reclen="400">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_region_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="rtcRegionID" ></schemafield>
+    <schemafield fieldname="f_tax_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="rtcTaxID" ></schemafield>
+    <schemafield fieldname="f_tax_code_description" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1"  columnname="rtcTaxCodeDescription" collation="1"></schemafield>
+    <schemafield fieldname="f_tax_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="rtcTaxRate" collation="0"/>
+    <schemafield fieldname="f_tax_reporting_behaviour" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="rtcTaxReportingBehaviour" ></schemafield>
+    <schemafield fieldname="f_active" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="rtcActive" ></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_region_id</item>
+        <item>f_tax_id</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_tax_id</item>
+        <item>f_region_id</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>  
+

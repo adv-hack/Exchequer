@@ -1,0 +1,807 @@
+﻿<dbConfig importFile="Demo.Zip">
+  <dbCreate>
+    <preCreateGroups>
+      <preCreateGroup target="Common">
+        <sqlScripts path="schemas">
+          <preCreationScripts>
+            <preCreationScript file="SQLScripts\001 - Assemblies\01 - CLR Convert to Real48.sql" timeout="10000"/>
+            <preCreationScript file="SQLScripts\000 - Scripts\UpdateDatabaseCompatibilityLevel.sql"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <preCreationScript file="SQLScripts\003 - Tables\003 - Integer User-defined Table Type.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\004 - Varchar User-defined Table Type.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\005 - common.etb_Information.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\045 - efn_CreateNominalHistoryCode.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\046 - efn_CreateStockHistoryCode.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\047 - efn_CreateTraderHistoryCode.sql"/>
+
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaFunctions.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaProcedures.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaReferentialConstraints.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaTables.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropSchemaViews.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropCustomerSchema.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_RethrowError.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_DropUserLogin.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_IsLoginUsed.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_BinaryConversionFunctions.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetCompanyCurrentProcessCount.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_RaiseError.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_StkLocORReplaceInter.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_StkFreeze.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_CheckStkLocHistory.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_ResetViewHistory.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_ResetAuditHistory.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_IntToHex.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_HexToInt.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_ExchRnd.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_RebuildIndexes.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_ReorganizeIndexes.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_UpdateStatistics.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_HexFloat2Float.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_Report_AgedDebtors_Consolidated_GetAgedPeriod.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_Report_TrialBalance_GetHiCodeComputedValue.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_Enable_Foreign_Keys.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_Enable_Triggers.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_RI_NonClustered.sql"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\003 - efn_TableFromList.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\340 - evw_PostAnalysisType.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\999 - evw_LockingInformation.sql"/>
+			
+			<!-- WJ 15/12/2017 - Anonymisation -->
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\360 - evw_NewId.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\370 - evw_Rand.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\065 - efn_RandomNumberString.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\070 - efn_RandomText.sql"/>
+			
+          </preCreationScripts>
+        </sqlScripts>
+      </preCreateGroup>
+      <preCreateGroup target="Common" executeCondition="SELECT 1-COUNT(*) FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[!ActiveSchema!].isp_ExchequerUpper') AND OBJECTPROPERTY(id, N'IsScalarFunction') = 1">
+        <sqlScripts path="schemas">
+          <preCreationScripts>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql"/>
+          </preCreationScripts>
+        </sqlScripts>
+      </preCreateGroup>
+      <preCreateGroup target="Customer" executeCondition="SELECT 1-COUNT(*) FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[!ActiveSchema!].isp_ExchequerUpper') AND OBJECTPROPERTY(id, N'IsScalarFunction') = 1">
+        <sqlScripts path="schemas">
+          <preCreationScripts>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_ExchequerUpperFunction.sql"/>
+          </preCreationScripts>
+        </sqlScripts>
+      </preCreateGroup>
+      <preCreateGroup target="Customer">
+        <sqlScripts path="schemas">
+          <preCreationScripts>
+            
+            <preCreationScript file="Upgrade Scripts\9.1\HistoryUpgraderV1.sql" timeout="10000"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <preCreationScript file="SQLScripts\003 - Tables\010 - etb_PostingRunSummary.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\015 - etb_PostingRunExclusion.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\040 - efn_StockDiscount.sql"/>
+            <!-- MH 31/05/2017 - SQL Posting ABSEXCH-18758 -->
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\050 - efn_CalculateVATPeriod.sql"/>
+            
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_AdjustYear.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_LastYtd.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_AddHistory.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_PostToHistory.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_PostToYearToDate.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetHistoryPositionId.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetHistoryClearedQty.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetLineNumberAccounts.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetLineNumberStock.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_TotalProfitToDateRange.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_StockAddCustAnal.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_TotalProfitToDateRange.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_LFillBudget.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_EntFuncs.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetCustValue.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_RemovedLastCommit.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetNominalValue.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_EntGL.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetJCValue.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetJobBudgetValue.sql"/>
+            <preCreationScript file="SQLScripts\010 - Scalar Functions\ifn_GetJCBudgetValue.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\SortViewCreate.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\MultiBuyCreate.sql"/>
+            <preCreationScript file="SQLScripts\003 - Tables\WindowSettingsCreator.sql"/>
+
+            <!--
+                 The CustomFields table must be created here, rather than in
+                 the post-creation stage (where most of the upgrade scripts
+                 are run), because it is required by other routines in the
+                 upgrade.
+            -->
+            <preCreationScript file="Upgrade Scripts\6.9\CustomFieldsCreator.sql"/>
+
+            <preCreationScript file="SQLScripts\003 - Tables\CurrencyTableCreator.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_OLE_AccountAgedBalance.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_TransactionType.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_PostToStockHistory.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_HistoryRestore.sql"/>
+
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_ComparisonType.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewListType.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewFilterField.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewSortField.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewHeader.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewSortDetail.sql"/>
+            <preCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_SortViewFilterDetail.sql"/>
+            <preCreationScript file="SQLScripts\020 - Stored Procedures\isp_SortView.sql"/>
+
+            <!-- CJS 2015-05-06 - new table for System Setup -->
+            <preCreationScript file="Upgrade Scripts\7.0.14\CreateSystemSetup.sql"/>
+            
+          </preCreationScripts>
+        </sqlScripts>
+      </preCreateGroup>
+    </preCreateGroups>
+    <postCreateGroups>
+      <postCreateGroup processIndividually="true" target="Common">
+        <tables>
+          <!-- No overwrite files -->
+          <table filename="Company.dat"               create="true" import="true" overwrite="false" />
+          <table filename="GroupCmp.dat"              create="true" import="true" overwrite="false" />
+          <table filename="Groups.dat"                create="true" import="true" overwrite="false" />
+          <table filename="GroupUsr.dat"              create="true" import="true" overwrite="false" />
+          <table filename="SchedCfg.dat"              create="true" import="true" overwrite="false" />
+          <table filename="Tools.dat"                 create="true" import="true" overwrite="false" />
+          <!-- Overwrite files -->
+          <table filename="Reports\Dictnary.dat"      create="true" import="true" overwrite="false" />
+        </tables>
+      </postCreateGroup>
+      <postCreateGroup processIndividually="true" target="Customer">
+        <tables>
+          <!-- No overwrite files -->
+          <table filename="Exchqnum.dat"          create="true" import="true" overwrite="false" />
+          <table filename="Exchqss.dat"           create="true" import="true" overwrite="false" />
+<!--      <table filename="CurrencyHistory.dat"   create="true" import="true" overwrite="false" /> -->
+          <table filename="Cust\CustSupp.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Forms\PaprSize.dat"    create="true" import="true" overwrite="false" />
+          <table filename="Jobs\JobCtrl.dat"      create="true" import="true" overwrite="false" />
+          <table filename="Jobs\JobDet.dat"       create="true" import="true" overwrite="false" />
+          <table filename="Jobs\JobHead.dat"      create="true" import="true" overwrite="false" />
+          <table filename="Jobs\JobMisc.dat"      create="true" import="true" overwrite="false" />
+          <table filename="Misc\ExchqChk.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Misc\ExStkChk.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Misc\MultiBuy.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Misc\Settings.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Misc\SortView.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Misc\SVUsrDef.dat"     create="true" import="true" overwrite="false" />
+<!--      <table filename="Misc\SystemSetup.dat"  create="true" import="true" overwrite="false" /> -->
+          <table filename="Misc\WinSet.dat"       create="true" import="true" overwrite="false" />
+          <table filename="Misc\ParSet.dat"       create="true" import="true" overwrite="false" />
+          <table filename="Misc\ColSet.dat"       create="true" import="true" overwrite="false" />
+          <table filename="Misc\CustomFields.dat" create="true" import="true" overwrite="false"/>
+          <table filename="Schedule\Schedule.dat" create="true" import="true" overwrite="false"/>
+          <table filename="Stock\MLocStk.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Stock\Stock.dat"       create="true" import="true" overwrite="false" />
+          <table filename="Trans\Details.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Trans\Document.dat"    create="true" import="true" overwrite="false" />
+          <table filename="Trans\History.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Trans\Nominal.dat"     create="true" import="true" overwrite="false" />
+          <table filename="Trans\NomView.dat"     create="true" import="true" overwrite="false" />
+        </tables>
+      </postCreateGroup>
+      <postCreateGroup target="Common">
+        <sqlScripts path="schemas">
+          <postCreationScripts>
+            <postCreationScript file="SQLScripts\005 - Indexes\idx_ClusteredIndexes_Common.sql" timeout="10000"/>
+            <!-- ABSEXCH-15280 - Store Exchequer DB Version in SQL Database -->
+            <postCreationScript file="SQLScripts\000 - Scripts\UpdateVersion.sql" timeout="10000"/>
+            <!-- ABSEXCH-15521 - OLE amendments -->
+            <postCreationScript file="SQLScripts\000 - Scripts\GrantExecUsers.sql" timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\esp_GetNominalValue.sql" timeout="10000"/>
+            
+            <!-- SQL Performance Improvements inc. Real48 conversion -->
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\001 - efn_SafeDivide.sql" timeout="10000"/>
+
+            <!-- ABSEXCH-17220 - SQL Check All Stock -->
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\003 - efn_NewRoundUp.sql" timeout="10000"/>
+           
+            <!-- SQL Performance Improvements inc. Real48 conversion -->
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\005 - efn_ExchequerCurrencyConvert.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\010 - efn_GetVATRate.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\015 - efn_RoundDown.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\020 - efn_RoundUp.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\025 - efn_ExchequerRoundUp.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\030 - efn_CalculateDiscount.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\004 - evw_DiscountType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\009 - evw_HoldStatus.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\093 - evw_HistoryClassification.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\095 - evw_TransactionType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\170 - evw_JobStatus.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\175 - evw_NominalClassification.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\176 - evw_NominalType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\177 - evw_EmployeeType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\178 - evw_CISType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\179 - evw_CISSubType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\180 - evw_TimeRateRule.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\185 - evw_BudgetType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\250 - evw_StockType.sql" timeout="10000"/>
+
+			<!-- ABSEXCH-19494 - Anonymisation -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\365 - esp_AnonymiseEntity.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\370 - esp_GetLetterLinkFilenames.sql" timeout="10000"/>
+			<postCreationScript file="SQLScripts\015 - Views &amp; TVFs\012 - evw_AnonymisationStatus.sql" timeout="10000"/>
+			
+          </postCreationScripts>
+        </sqlScripts>
+      </postCreateGroup>
+      <postCreateGroup target="Customer">
+        <sqlScripts path="schemas">
+          <postCreationScripts>
+            <postCreationScript file="SQLScripts\003 - Tables\icc_DropBinaryConversionColumns.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\003 - Tables\icc_AddBinaryConversionColumns.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\005 - Indexes\idx_ExchequerReindexingV0.5.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\ivw_CreateHistoryViews.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\ifn_TotalProfitToDateRange.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\003 - Tables\itr_UpdateAcLastUsed.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\003 - Tables\acc_GetStringCorrection.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\005 - Indexes\idx_ClusteredIndexes_ActiveSchema.sql" timeout="10000"/>
+
+            <!--
+                  The EXSTKCHK table must be updated with the new QtyBreakFolio
+                  field before CustomerDiscountCreator.sql is run, as the latter
+                  copies the fields from EXSTKCHK.
+            -->
+            <postCreationScript file="Upgrade Scripts\6.10\EXSTKCHKUpgraderV2.sql"/>
+
+            <postCreationScript file="Upgrade Scripts\6.3\TransactionNoteCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\FinancialMatchingCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\CustomerDiscountCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\CustomerStockAnalysisCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\FiFoCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\SerialBatchCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\LocationCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\StockLocationCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\AllocWizardSessionCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\AnalysisCodeBudgetCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.3\JobTotalsBudgetCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.4\CleanseNormalisedData.sql" timeout="10000"/>
+            <!--
+            <postCreationScript file="Upgrade Scripts\6.10\QtyBreakCreator.sql" timeout="10000"/>
+            -->
+            <postCreationScript file="Upgrade Scripts\7.0\CurrencyHistoryCreator.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0\GLBudgetHistoryCreator.sql" timeout="10000"/>
+
+            <!-- MH 06/12/2017 2018-R1 ABSEXCH-19478: -->
+            <postCreationScript file="Upgrade Scripts\11.0\AnonymisationDiaryCreator.sql" timeout="10000"/>
+
+            <!--
+                 The Document and Details tables have to be 'upgraded' when we
+                 first install them, because they now include indexes that the
+                 Emulator knows nothing about, so these have to be added via a
+                 script. Because the Upgrade scripts are not run on a normal
+                 install, the scripts have been copied to here, as well as being
+                 in the Upgrade section. We can't remove them from the Upgrade
+                 section because the Emulator will complain about the version
+                 numbers not matching.
+                 CJS 2011-11-01
+            -->
+            <postCreationScript file="Upgrade Scripts\6.9\DetailsUpgraderV5.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.10\DetailsUpgraderV6.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\6.9\DocumentUpgraderV4.sql" timeout="10000"/>
+
+            <!--
+                 Script to remove obsolete reporting scripts
+            -->
+            <postCreationScript file="Upgrade Scripts\6.10\SQLScriptsUpgraderV610.sql" timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_GetCostCentreDepartments.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\003 - Tables\trgCurrencyUpdate.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\ifn_Report_GetPostedBalance.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_GLPrePostingRun_Online.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_AuditHistoryNote_Online.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_GLHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_Daybook.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_AgedDebtorsDocuments.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_Report_TrialBalanceData.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_GetAccountTransactions_ResetHistory.sql" timeout="10000"/>
+
+            <!--
+            ABSEXCH-13218 - speed issues with Job Costing Budgets Update Category
+            -->            
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\ifn_CurrencyConversion.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_UpdateCategoryLevel.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_UpdateCategoryLevel_PeriodBudgets.sql" timeout="10000"/>
+            
+            <!--
+            ABSEXCH-14012 - OLE performance mods
+            -->
+            <postCreationScript file="SQLScripts\005 - Indexes\idx_HISTORY_Index_OLE.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\isp_SaveNominalValue.sql" timeout="10000"/>
+
+            <!-- CJS 2014-01-21 - MRD2.4.04 - new tables for Ledger Multi-Contacts -->
+            <postCreationScript file="Upgrade Scripts\7.0.9\CreateAccountContact.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0.9\CreateContactRole.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0.9\CreateAccountContactRole.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0.9\InitialiseAccountContact.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0.9\InitialiseContactRole.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\7.0.9\InitialiseAccountContactRole.sql" timeout="10000"/>
+
+            <!-- ABSEXCH-15398 - OLE Performance - ENTGLJOBACTUAL -->
+            <postCreationScript file="SQLScripts\005 - Indexes\idx_JOBDET.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\esp_GLJobActual.sql" timeout="10000"/>
+
+            <!-- ABSEXCH-17220 - SQL Check All Stock -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\008 - evw_ChargeType.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\009 - evw_JobType.sql" timeout="10000"/>
+
+            <!-- ABSEXCH-15785 - Update All Contracts -->
+            <!-- ABSEXCH-16133 - Check All Job Totals -->
+            <!-- SQL Performance Improvements inc. Real48 conversion -->
+<!--            <postCreationScript file="SQLScripts\001 - Assemblies\01 - CLR Convert to Real48.sql" timeout="10000"/>-->
+            <postCreationScript file="SQLScripts\005 - Indexes\001 - idx_History_Filtered.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\005 - Indexes\101 - idx_DOCUMENT_TraderRecalc.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\010 - Scalar Functions\010 - efn_GetVATRate.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\001 - evw_History.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\005 - evw_SystemSettings.sql" timeout="10000"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\005a - evw_NominalControl.sql"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\005b - evw_ControlNominal.sql"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\006 - evw_VATSystemSettings.sql"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\007 - evw_CISSystemSettings.sql"/>
+
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\007 - efn_Period.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\010 - evw_Job.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\015 - efn_JobHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\025 - evw_JobAnalysis.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\030 - evw_JobCategory.sql" timeout="10000"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\032 - evw_ExchequerNumber.sql"/>
+
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\035 - evw_JobCategoryAnalysis.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\040 - evw_JobStockBudget.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\045 - evw_JobHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\050 - evw_JobAscendant.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\055 - evw_JobHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\056 - efn_JobTree.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\060 - evw_EmployeeHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\063 - evw_JobCostingHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\065 - evw_JobPeriodBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\070 - evw_JobActual.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\075 - evw_TraderHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\080 - evw_VATHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\083 - evw_NominalHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\085 - evw_StockHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\090 - evw_TraderStockHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\100 - evw_VATRate.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\105 - evw_TransactionHeaderValues.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\110 - evw_TransactionHeader.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\115 - evw_TraderCurrentBalance.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\120 - evw_TransactionLine.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\150 - evw_Period.sql" timeout="10000"/>
+
+            <!-- MH 13/06/2017 - SQL Posting - ABSEXCH-18774 -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\152 - evw_Year.sql" timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\155 - evw_CostCentre.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\160 - evw_Department.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\182 - evw_TimeRate.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\190 - evw_Currency.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\195 - evw_Nominal.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\200 - evw_NominalHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\205 - evw_NominalDescendant.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\210 - evw_NominalAscendant.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\215 - evw_NominalCurrentBalance.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\220 - evw_Employee.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\225 - evw_TimesheetActual.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\230 - evw_JobTree.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\235 - evw_JobDescendant.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\240 - evw_JobCategoryBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\245 - evw_JobAnalysisBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\255 - evw_BillOfMaterials.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\260 - evw_BOMHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\265 - evw_Stock.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\270 - evw_SupplierDiscount.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\275 - efn_StockHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\280 - evw_StockHierarchy.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\285 - evw_StockDescendant.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\290 - evw_StockAscendant.sql" timeout="10000"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\320 - evw_AutoTransaction.sql"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\330 - evw_TransactionVATAnalysis.sql"/>
+
+            <!-- MH 07/03/2017 - ABSEXCH-18443 - SQL Posting -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\350 - efn_CalculateCISDate.sql"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\001 - esp_UpdateJobCategoryLevelPeriodBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\005 - esp_UpdateParentJobNonPeriodBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\010 - esp_UpdateParentJobPeriodBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\015 - esp_RecalculateCTDJobBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\020 - esp_RecalculateCTDJobActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\025 - esp_RecalculateCTDEmployeeActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\030 - esp_RecalculateCTDJobCostingActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\035 - esp_RollupJobBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\040 - esp_RecalculateJobContractActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\045 - esp_RecalculateEmployeeActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\050 - esp_RecalculateJobCostingActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\055 - esp_RecalculateJobActuals.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\060 - esp_CheckJobIntegrity.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\100 - esp_RecalculateYTDTraderHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\105 - esp_RecalculateCTDTraderHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\110 - esp_RecalculateTraderHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\120 - esp_JobFinancialSummary.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\130 - esp_RecalculateCTDNominalBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\135 - esp_RecalculateYTDNominalBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\138 - esp_RollupGLCCDeptBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\139 - esp_RollupGLSummaryBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\140 - esp_RollupGLBudgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\150 - esp_UpdateBuildCosts.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\180 - esp_RecalculateYTDNominalHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\185 - esp_RecalculateCTDNominalHistory.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\190 - esp_RecalculateCCDeptNominalBalances.sql" timeout="10000"/>
+            
+            <!-- ABSEXCH-15740 - VAT100 -->            
+            <postCreationScript file="Upgrade Scripts\7.0.14\CreateVAT100.sql" timeout="10000"/>
+                        
+            <!-- Amendments for Order Payments -->
+            <postCreationScript file="Upgrade Scripts\8.0\CreateOPVATPay.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\8.0\CreateOrderPaymentsMatching.sql" timeout="10000"/>
+                    
+            <!-- ABSEXCH-17379 - Amendments for Multi-Region Tax -->
+            <postCreationScript file="Upgrade Scripts\9.1\CreateRegionTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\CreateStockTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\CreateTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\CreateTaxRegionsTable.sql" timeout="10000"/>
+
+            <postCreationScript file="Upgrade Scripts\9.1\InitialiseRegionTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\InitialiseStockTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\InitialiseTaxCodesTable.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\9.1\InitialiseTaxRegionsTable.sql" timeout="10000"/>
+            
+            <!-- HV 20/05/2016 2016-R2 ABSEXCH-17430: Recalculate Trader Oldest Debt Only -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\200 - esp_RecalculateOldestDebt.sql" timeout="10000"/>
+            
+            <!-- ABSEXCH-17615 - Amendments to support Analytics -->
+            <postCreationScript file="SQLScripts\003 - Tables\001 - HISTORY - Revised Budgets.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\003 - Tables\002 - HISTORY - hiBudget2.sql" timeout="10000"/>
+
+            <!-- PS/TG 28/07/2016 2016-R3 ABSEXCH-17220: SQL Improvement - Check all Stock Performance -->
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\300 - evw_NoteType.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\301 - evw_Notes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\305 - evw_TraderNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\307 - evw_EmployeeNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\310 - evw_LocationNotes.sql " timeout="10000"/> 
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\312 - evw_DepartmentNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\313 - evw_CostCentreNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\315 - evw_JobNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\015 - Views &amp; TVFs\317 - evw_StockNotes.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\210 - esp_RecalculateStock.sql " timeout="10000"/>
+
+            <!-- MH 04/01/2017 - SQL Posting -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\220 - esp_PostingExclusion.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\221 - esp_PostRunExclusionReport.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\222 - esp_PostRunSummaryReport.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\225 - esp_UpdateTraderHistory.sql " timeout="10000"/>
+
+            <!-- MH 21/02/2017 ABSEXCH-18345 - Additional SQL Posting Script -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\226 - esp_UpdateTraderCommitments.sql " timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\230 - esp_CreateAutoTransaction.sql " timeout="10000"/>
+
+            <!-- MH 23/02/2017 ABSEXCH-18396 - Additional SQL Posting Script -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\231 - esp_CreateAutoReverseTransaction.sql " timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\235 - esp_UpdateBatchTransaction.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\245 - esp_CreateStockValuationControl.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\250 - esp_CreateTransactionControl.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\255 - esp_CreatePayInControl.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\260 - esp_CreateJCUpliftControl.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\265 - esp_CreateCommitmentControl.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\270 - esp_PostVATHeader.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\275 - esp_PostVATDetail.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\280 - esp_PostStock.sql " timeout="10000"/>
+
+            <!-- MH 26/04/2017 ABSEXCH-18634 - Additional SQL Posting Script -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\282 - esp_RecalculateProfitBF.sql " timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\285 - esp_PostCCDeptNominalBalances.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\290 - esp_PostLiveCommitments.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\295 - esp_PostTransactionDetail.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\300 - esp_PostTrader.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\305 - esp_PostTransaction.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\310 - esp_PostRunSummary.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\315 - esp_PostDaybook.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\320 - esp_PostTransactionList.sql " timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\325 - esp_RecalculateCTDHistory.sql " timeout="10000"/>
+
+            <!-- MH 07/11/2017 - ABSEXCH-2906 - Mod to fix missing collations -->
+            <postCreationScript file="Upgrade Scripts\10.1\AllocWizardSessionCollateUpgraderV3.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\CustsuppCollateUpgraderV8.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\DetailsCollateUpgraderV11.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\DocumentCollateUpgraderV10.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\EBusDetlCollateUpgraderV12.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\EBusDocCollateUpgraderV11.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\EBuslkupCollateUpgraderV2.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\EBusNoteCollateUpgraderV2.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\ExchqchkCollateUpgraderV4.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\ExstkchkCollateUpgraderV5.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\FinancialMatchingCollateUpgraderV2.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\JobctrlCollateUpgraderV2.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\JobheadCollateUpgraderV2.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\JobMiscCollateUpgraderV3.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\LheaderCollateUpgraderV1.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\LlinesCollateUpgraderV1.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\LocationCollateUpgraderV1.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\MLocStkCollateUpgraderV12.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\10.1\StockCollateUpgraderV3.sql" timeout="10000"/>
+            <postCreationScript file="Upgrade Scripts\11.0\CustomFieldsUpgraderV1.sql" timeout="10000"/>
+			
+
+            <!-- WJ 15/12/2017 ABSEXCH-19494 - Anonymisation -->
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\330 - esp_AnonymiseLetters.sql" timeout="10000"/>
+
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\335 - esp_AnonymiseLinks.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\340 - esp_AnonymiseNotes.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\345 - esp_AnonymiseTransactions.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\350 - esp_AnonymiseEmployee.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\355 - esp_AnonymiseTraderJobs.sql" timeout="10000"/>
+            <postCreationScript file="SQLScripts\020 - Stored Procedures\360 - esp_AnonymiseTrader.sql" timeout="10000"/>
+			</postCreationScripts>  
+        </sqlScripts>
+      </postCreateGroup>
+    </postCreateGroups>
+  </dbCreate>
+  <dbUpgrade>
+    <schemas>
+      <schema name="AccountContact.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\AccountContactUpgraderV1.sql"  version="1" timeout="10000"/>
+	  <script scriptPath="Schemas\Upgrade Scripts\10.1\AccountContactUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <schema name="AccountContactRole.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\AccountContactRoleUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="AllocWizardSession.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\AllocWizardSessionUpgraderV1.sql"  version="1" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\AllocWizardSessionUpgraderV2.sql"  version="2" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\AllocWizardSessionCollateUpgraderV3.sql"  version="3" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="Company_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.3\CompanyUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.2\CompanyUpgraderV3.sql"  version="3" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <schema name="ContactRole.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\ContactRoleUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="CustSupp_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\CustSuppUpgraderV1.sql" version="1" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.6\CustSuppUpgraderV2.sql" version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.7\CustSuppUpgraderV3.sql" version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.8\CustSuppUpgraderV4.sql" version="4" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.14\CustSuppUpgraderV5.sql" version="5" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.0\CustSuppUpgraderV6.sql" version="6" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.1\CustSuppUpgraderV7.sql" version="7" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\CustsuppCollateUpgraderV8.sql" version="8" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\11.0\CustSuppUpgraderV9.sql" version="9" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="CustomerStockAnalysis.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.4\CustomerStockAnalysisUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <schema name="CustomFields.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\11.0\CustomFieldsUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="Details_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.01\DetailsUpgraderV1.sql" version="1" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.2\DetailsUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.3\DetailsUpgraderV3.sql"  version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.4\DetailsUpgraderV4.sql"  version="4" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\DetailsUpgraderV5.sql"  version="5" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.10\DetailsUpgraderV6.sql" version="6" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.8\DetailsUpgraderV7.sql" version="7" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.9\DetailsUpgraderV8.sql" version="8" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.0\DetailsUpgraderV9.sql" version="9" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.1\DetailsUpgraderV10.sql" version="10" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\DetailsCollateUpgraderV11.sql" version="11" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\EBusDetlCollateUpgraderV12.sql" version="12" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="Document_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.3\DocumentUpgraderV1.sql"  version="1" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.4\DocumentUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.5\DocumentUpgraderV3.sql"  version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\DocumentUpgraderV4.sql"  version="4" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.10\DocumentUpgraderV5.sql" version="5" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.7\DocumentUpgraderV6.sql" version="6" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.14\DocumentUpgraderV7.sql" version="7" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.0\DocumentUpgraderV8.sql" version="8" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.1\DocumentUpgraderV9.sql" version="9" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\DocumentCollateUpgraderV10.sql" version="10" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\EBusDocCollateUpgraderV11.sql" version="11" timeout="10000"/>
+		  <script scriptPath="Schemas\Upgrade Scripts\11.0\DocumentUpgraderV12.sql" version="12" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="EXCHQCHK_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.4\ExchqChkUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.14\ExchqChkUpgraderV3.sql"  version="3" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\ExchqchkCollateUpgraderV4.sql"  version="4" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="EXCHQSS_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.01\EXCHQSSUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.2\EXCHQSSUpgraderV3.sql"  version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.5\EXCHQSSUpgraderV4.sql"  version="4" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0\EXCHQSSUpgraderV5.sql"  version="5" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.4\EXCHQSSUpgraderV6.sql"  version="6" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.6\EXCHQSSUpgraderV7.sql"  version="7" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.8\EXCHQSSUpgraderV8.sql"  version="8" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.9\EXCHQSSUpgraderV9.sql"  version="9" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\EXCHQSSUpgraderV10.sql"  version="10" timeout="10000"/>		  
+        </scripts>
+      </schema>
+      <schema name="EXSTKCHK_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.10\EXSTKCHKUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0\EXSTKCHKUpgraderV3.sql"  version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.14\EXSTKCHKUpgraderV4.sql"  version="4" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\ExstkchkCollateUpgraderV5.sql"  version="5" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="EBUS_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.01\EBUSUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.4\EBUSUpgraderV3.sql"  version="3" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="EBUSNOTE_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\EBusNoteCollateUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="EBUSLKUP_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\EBuslkupCollateUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="jobctrl_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\JobctrlCollateUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+	  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="lheader_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\LheaderCollateUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+	   <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="llines_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\LlinesCollateUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+	   <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+	  <schema name="Location.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\LocationCollateUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="FinancialMatching.xml">
+        <scripts>
+         <script scriptPath="Schemas\Upgrade Scripts\6.6\FinancialMatchingUpgraderV1.sql"  version="1" timeout="10000"/>
+		 <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+		<script scriptPath="Schemas\Upgrade Scripts\10.1\FinancialMatchingCollateUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+      <!--
+      <schema name="History_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\9.1\HistoryUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      -->
+      <schema name="MLocStk_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.3\MLocStkUpgraderV2.sql"  version="2" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.8\MLocStkUpgraderV3.sql"  version="3" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\MLocStkUpgraderV4.sql"  version="4" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0\MLocStkUpgraderV5.sql"  version="5" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.6\MLocStkUpgraderV6.sql"  version="6" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.7\MLocStkUpgraderV7.sql"  version="7" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\MLocStkUpgraderV8.sql"  version="8" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\MLocStkUpgraderV9.sql"  version="9" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.0\MLocStkUpgraderV10.sql"  version="10" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\9.1\MLocStkUpgraderV11.sql"  version="11" timeout="10000"/>
+		  <script scriptPath="Schemas\Upgrade Scripts\10.1\MLocStkCollateUpgraderV12.sql"  version="12" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\MLocStkUpgraderV13.sql"  version="13" timeout="10000"/>
+		  <script scriptPath="Schemas\Upgrade Scripts\11.0\MLocStkUpgraderV14.sql"  version="14" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="JobHead_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\JobHeadUpgraderV1.sql"  version="1" timeout="10000"/>
+		  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+		  <script scriptPath="Schemas\Upgrade Scripts\10.1\JobheadCollateUpgraderV2.sql"  version="2" timeout="10000"/>
+		  <!-- HV 16-11-2017 2018 R1, ABSEXCH-19348: GDPR - JobHead Database Changes  -->
+		  <script scriptPath="Schemas\Upgrade Scripts\11.0\JobHeadUpgraderV3.sql"  version="3" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="JobMisc_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.3\JobMiscUpgraderV2.sql"  version="2" timeout="10000"/>
+          <!-- AP 10/10/2017 ABSEXCH-2906 - Collating fields SQL_Latin1_General_CP1_CI_AS  -->
+          <script scriptPath="Schemas\Upgrade Scripts\10.1\JobMiscCollateUpgraderV3.sql"  version="3" timeout="10000"/>
+          <!-- SSK 15/11/2017 ABSEXCH-19352 - GDPR Fields upgrade for Employees db table  -->
+          <script scriptPath="Schemas\Upgrade Scripts\11.0\JobMiscUpgraderV4.sql"  version="4" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="SCHEDCFG_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.6\SchedCfgUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="SCHEDULE_Final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.6\ScheduleUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="SentLine_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.10\SentlineUpgraderV2.sql"  version="2" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="SerialBatch.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.5\SerialBatchUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="SortTemp_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.10\SortTempUpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="Stock_final.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\6.9\StockUpgraderV1.sql"  version="1" timeout="10000"/>
+          <script scriptPath="Schemas\Upgrade Scripts\7.0.12\StockUpgraderV2.sql"  version="2" timeout="10000"/>
+		  <!-- AP 10/10/2017 ABSEXCH-2906 - Collating feilds SQL_Latin1_General_CP1_CI_AS  -->
+		  <script scriptPath="Schemas\Upgrade Scripts\10.1\StockCollateUpgraderV3.sql"  version="3" timeout="10000"/>
+        </scripts>
+      </schema>
+      <schema name="VAT100.xml">
+        <scripts>
+          <script scriptPath="Schemas\Upgrade Scripts\8.0\VAT100UpgraderV1.sql"  version="1" timeout="10000"/>
+        </scripts>
+      </schema>
+    </schemas>
+  </dbUpgrade>
+</dbConfig>

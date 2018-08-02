@@ -1,0 +1,10 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\IRIS.ICE.Common.dll
+bin\Debug\IRIS.ICE.Common.pdb
+obj\Debug\IRIS.ICE.Common.dll
+obj\Debug\IRIS.ICE.Common.pdb
+bin\Release\IRIS.ICE.Common.dll
+bin\Release\IRIS.ICE.Common.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\IRIS.ICE.Common.dll
+obj\Release\IRIS.ICE.Common.pdb

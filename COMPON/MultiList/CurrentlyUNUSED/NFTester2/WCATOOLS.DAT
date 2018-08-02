@@ -1,0 +1,15 @@
+[ToolsMenu]
+Options=1
+
+[ToolsTitles]
+Opt1=Windows Card System
+
+[ToolsCmds]
+Opt1=F:\WINCARD\WinCard.exe
+
+[ToolsParams]
+Opt1=
+
+[ToolsStartup]
+Opt1=F:\WINCARD\
+

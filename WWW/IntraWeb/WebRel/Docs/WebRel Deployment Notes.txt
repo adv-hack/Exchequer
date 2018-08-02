@@ -1,0 +1,48 @@
+WEBREL DEPLOYMENT NOTES
+========================
+ Date: 03 March 2005
+ Author: Antony Woodhams
+========================
+
+1) Once the WebRel project is built, FTP the WebRel.dll file to:
+
+	ftp://mdtadmin@www.exchequer.secure.com
+
+You will have to supply the MDTADMIN password for this to be successful.
+
+
+2) Open a mobile desktop to continue:
+
+	http://www.exchequer-secure.com/mdt/
+
+Login with MDTADMIN username and the correct password.
+
+
+3) Once logged in, you will need to stop the w3svc publishing service by issuing the following instruction at the command prompt:
+
+	net stop w3svc
+
+This will stop the WWW services.
+
+
+4) Copy the uploaded file from c:\source\xxxxxxx (Wherever you uploaded it to) to:
+
+	c:\inetpub\exwebrel (Live WebRel) or
+	c:\inetpub\exwrtest (test webrel)
+
+*** making sure that you backed up the original WebRel.dll file first! ***
+
+
+5) Restart the WWW services by issuing the following instruction at the command prompt:
+
+	net start w3svc
+
+This will restart the WWW services.
+
+
+6) To test, visit:
+
+	https://www.exchequer-secure.com/wrscripts/webrel.dll/webrel     (Live) or
+	https://www.exchequer-secure.com/wrtest/webrel.dll/webrel        (Test).
+
+N.B. - when accessing the test site (if you are using the test site), you may be asked to authenticate to Exchequer-Secure using the MDTADMIN login. I believe this is due to the setup of the test site. The live site should not pop up this authentication dialog and if it does, there is likely a problem.

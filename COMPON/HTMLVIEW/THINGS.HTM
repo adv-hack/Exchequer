@@ -1,0 +1,150 @@
+<HTML>
+ 
+<HEAD>
+<TITLE>Things You Should Know</TITLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="demo.css"> 
+<STYLE TYPE="text/css"> <!--
+  .indent1 {Margin-left: 35px;}
+  -->
+</STYLE>
+
+</HEAD>
+
+<BODY CLASS="indent">
+<P CLASS="title">Things You Should Know</P>
+<TABLE ALIGN="center" BORDER="0">
+  <TR>
+	 <TD> <UL>
+	 <LI><A HREF="#Difference">TFrameViewer, ThtmlViewer, and TFrameBrowser</A> </LI>
+	 <LI><A HREF="#CompileOptions">Version 8 Compile Time Options</A> </LI>
+	 <LI><A HREF="#DLL">Graphics Capabilities and the Graphics DLL</A> </LI>
+	 <LI><A HREF="#ActiveImages">Mouseover Images</A> </LI>
+	 </UL>
+	 </TD>
+	 <TD WIDTH="30">&nbsp;</TD>
+  </TR>
+</TABLE>
+
+<p CLASS="heading"><A NAME="Difference">TFrameViewer, ThtmlViewer, and TFrameBrowser</A></p>
+<P>The HTML component set consists of the <B>ThtmlViewer</B>, <B>TFrameViewer</B>, and <B>TFrameBrowser</B>
+components. All three are HTML document display components:</P>
+<TABLE WIDTH="100%" CELLSPACING="2" CELLPADDING="2" BORDER="0">
+  <TR>
+	 <TH WIDTH="2%"></TH>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">ThtmlViewer</TH>
+	 <TD VALIGN="top">The basic component. <B>ThtmlViewer</B> displays single (non-frame) documents. It also forms
+	 the basis for the other two components.<BR>
+	 <BR>
+	 </TD>
+  </TR>
+  <TR>
+	 <TD></TD>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">TFrameViewer</TH>
+	 <TD VALIGN="top">Displays both Frame and single HTML documents. <B>TFrameViewer</B> is oriented more for local
+	 disk file use.<BR>
+	 <BR>
+	 </TD>
+  </TR>
+  <TR>
+	 <TH></TH>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">TFrameBrowser&nbsp;&nbsp;&nbsp;</TH>
+	 <TD VALIGN="top">Also displays Frame and single HTML documents. However, <B>TFrameBrower</B> is oriented
+	 toward Internet style protocols and URL usage. Additional code and/or components are generally required to use
+	 <B>TFrameBrowser</B>.<BR>
+	 </TD>
+  </TR>
+</TABLE>
+<P> If you know that your appication will not be using Frames, you can save a fair amount of code overhead by
+using <B>ThtmlViewer</B> rather than one of the Frame components. Many operations are also simpler using
+<B>ThtmlViewer</B>. </P>
+
+<p CLASS="heading"><A NAME="CompileOptions">Version 8 Compile Time Options</A></p>
+<P>Version 8 has several possible compile time options controlled by defining symbols. You can find these in the
+<CODE>HTMLCONS.INC</CODE> file. None of these symbols are initially defined. To make any one (or all) of these
+symbols active, remove the &quot;<B>.</B>&quot; from the <CODE>{$.Define XXXX}</CODE> sequence and recompile the
+code. </P>
+<P> The possibilities are: </P>
+<P CLASS="maroon">NoGIF</P>
+<P CLASS="indent1">Defining <B>NoGIF</B> disables GIF imaging capabilities. Other image types are unaffected.
+<B>NoGIF</B> may be used with or without the graphics DLL. </P>
+<P CLASS="maroon"><A NAME="UseDLL">UseDLL</A></P>
+<P CLASS="indent1">Define <B>UseDLL</B> to use the optional <A HREF="#DLL">graphics DLL</A> and obtain the extra
+graphics capabilities it provides. </P>
+<P> The Former <SPAN CLASS="maroon">NoDLL</SPAN> compile time option is no longer required as not using the DLL is
+the default condition. </P>
+<P> The Former <SPAN CLASS="maroon">NoUnderline</SPAN> and <SPAN CLASS="maroon">PrintTableBackground</SPAN>
+compile time options are now handled by the <B>htOptions</B> and <B>fvOptions</B> properties. </P>
+
+<p CLASS="heading"><A NAME="DLL">Graphics Capabilities and the Optional Graphics DLL</A></p>
+<P>The table below indicates the graphics capabilities of the various versions of the HTML components when used
+with and without the optional graphics DLL: </P>
+<P> </P>
+<TABLE BORDER="1" ALIGN="center" WIDTH="500" CELLPADDING="5" BGCOLOR="#FFFFE0">
+  <TR BGCOLOR="#FFD0D0">
+	 <TH>Type</TH>
+	 <TH>Without Graphics DLL</TH>
+	 <TH>With Graphics DLL</TH>
+  </TR>
+  <TR>
+	 <TD>Bitmap</TD>
+	 <TD>Delphi 1-5</TD>
+	 <TD>Delphi 1-5</TD>
+  </TR>
+  <TR>
+	 <TD>GIF</TD>
+	 <TD>Delphi 1-5</TD>
+	 <TD>Delphi 1-5</TD>
+  </TR>
+  <TR>
+	 <TD>Animated GIF</TD>
+	 <TD>Delphi 1-5</TD>
+	 <TD>Delphi 1-5</TD>
+  </TR>
+  <TR>
+	 <TD>JPEG</TD>
+	 <TD>Delphi 3, 4, 5</TD>
+	 <TD>Delphi 1-5</TD>
+  </TR>
+  <TR>
+	 <TD>PNG</TD>
+	 <TD>None</TD>
+	 <TD>Delphi 1-5</TD>
+  </TR>
+</TABLE>
+<P> The optional graphics DLLs used with the HTML components are named as follows: </P>
+<P> </P>
+<TABLE BORDER="0">
+  <TR>
+	 <TD WIDTH="35">&nbsp;</TD>
+	 <TD WIDTH="100">ILDA16.DLL</TD>
+	 <TD>Delphi 1 Professional version</TD>
+  </TR>
+  <TR>
+	 <TD> </TD>
+	 <TD>ILDA32.DLL</TD>
+	 <TD>32 bit Professional versions</TD>
+  </TR>
+  <TR>
+	 <TD> </TD>
+	 <TD>ILDA16T.DLL</TD>
+	 <TD>Delphi 1 demo</TD>
+  </TR>
+</TABLE>
+<P> To use the DLL, define <A HREF="#UseDLL"><B>UseDLL</B></A> before compiling your application.&nbsp; The DLL
+may be located in the either the <CODE>Windows\System</CODE> directory or the same directory as your program. Be
+sure and supply the appropriate DLL with your application. </P>
+<P> </P>
+
+<p CLASS="heading"><A NAME="ActiveImages">Mouseover Images</A></p>
+<P>A<I><B> Mouseover Image</B></I> is one that changes when the mouse passes over it. The HTML components use a
+special syntax to implement mouseover images. It's done with the <B>&lt;img&gt;</B> tag as follows: </P>
+<UL>
+<LI>the <B>SRC=&quot;...&quot;</B> attribute should specify an animated GIF image </LI>
+<LI>Add an <B>Active</B> attribute </LI>
+</UL>
+<P> With the <B>Active</B> attribute, the GIF will normally just display the first frame. When the mouse passes
+over, it will display the second frame if there are 2 frames or will animate if there are more than 2 frames. </P>
+<P> </P>
+</BODY>
+</HTML>
+

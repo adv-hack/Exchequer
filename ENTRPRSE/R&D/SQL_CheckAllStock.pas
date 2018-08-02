@@ -1,0 +1,278 @@
+unit SQL_CheckAllStock;
+
+interface
+
+uses Windows, Classes, SysUtils, Dialogs, DB, ADODB, VarConst, SQLCallerU, PostingU,
+  EntLoggerClass, IndeterminateProgressF, ADOConnect, SQLUtils, GlobVar, Controls;
+
+
+type
+  // Main handler for rebuilding Stock.
+
+  TCheckAllStockThread = object(TEntPost)
+  private
+    // Stock Code, when processing a single Stock. If this is empty, it is
+    // assumed that all Stock are to be checked.
+    FStockCode: string;
+
+    // Company Code -- required for calling stored procedures
+    FCompanyCode: string;
+
+    // Error report logging
+    FSQLLogger : TEntSQLReportLogger;
+
+    // Progress bar form
+    FProgressFrm: TIndeterminateProgressFrm;
+    SingleMode  :  Boolean;
+    procedure SQL_Re_CalcStockLevels(aHasSPOP : Str1);
+  public
+    destructor Destroy; virtual;
+    // -------------------------------------------------------------------------
+    // Main processing routines
+    // -------------------------------------------------------------------------
+    // Initialises the system
+    function Start: Boolean;
+    // Main processing routine, called by the Thread Controller
+    procedure Process; virtual;
+    // Finish up
+    procedure Finish; virtual;
+
+    // -------------------------------------------------------------------------
+    // Error handling & logging
+    // -------------------------------------------------------------------------
+    // Error message display. Displays and logs the supplied error, and sets the
+    // abort flag.
+    procedure ErrorMessage(const Routine: string; const Msg: string); overload;
+
+    // Updates the error log. This is automatically called by the ErrorMessage
+    // routine above
+    procedure WriteErrorMsg(const Routine: string; const Msg: string);
+
+    // -------------------------------------------------------------------------
+    // Properties
+    // -------------------------------------------------------------------------
+
+    // Stock Code, when processing a single Stock. If this is empty, it is
+    // assumed that all Stock are to be checked.
+    property StockCode: string read FStockCode write FStockCode;
+  end;
+
+  procedure CheckSingleStock(AOwner: TObject; StockCode: string; Ask: Boolean = True);
+  procedure CheckAllStock(AOwner: TObject; Ask: Boolean = True);
+  procedure CheckStock(AOwner: TObject; StockCode: string = '');
+  function ConfirmCheckStock(StockCode: string = ''): Boolean;
+  function CheckOk2SQLVer: Boolean;
+
+implementation
+
+uses
+  Forms, SQLRep_Config, ExThrd2U, EntLicence, oProcessLock;
+
+{ TCheckAllStockThread }
+
+var
+  FSQLCaller      : TSQLCaller;   // SQL access component, to run the stored procedure
+
+destructor TCheckAllStockThread.Destroy;
+begin
+  FreeAndNil(FSQLLogger);
+  FProgressFrm := nil;
+  inherited Destroy;
+end;
+
+procedure TCheckAllStockThread.ErrorMessage(const Routine, Msg: string);
+begin
+  // Write the message to the error log
+  WriteErrorMsg(Routine, Msg);
+
+  // Display the message to the user, using the thread-safe error dialog
+  MTExLocal.LThShowMsg(nil, 0, Msg);
+
+  ThreadRec.ThAbort := True;
+end;
+
+procedure TCheckAllStockThread.Finish;
+begin
+  if (FProgressFrm <> nil) then
+    FProgressFrm.Stop;
+  inherited;
+end;
+
+procedure TCheckAllStockThread.Process;
+var
+  ConnectionString, lPassword: WideString;
+  HasSPOP         : Str1;
+begin
+  // Create the SQL Caller instance
+  FSQLCaller := TSQLCaller.Create(nil);
+
+  try
+    // Determine the company code
+    FCompanyCode := SQLUtils.GetCompanyCode(SetDrive);
+
+    // Set up the ADO Connection for the SQL Caller
+    //SQLUtils.GetConnectionString(FCompanyCode, False, ConnectionString);
+    //VA:29/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+    SQLUtils.GetConnectionStringWOPass(FCompanyCode, False, ConnectionString, lPassword);
+    FSQLCaller.ConnectionString := ConnectionString;
+    FSQLCaller.Connection.Password := lPassword;
+    // Set the time-outs to as defined in ini File
+    FSQLCaller.Connection.CommandTimeout := SQLReportsConfiguration.CheckAllStockLevelTimeoutInSeconds;
+    FSQLCaller.Query.CommandTimeout := SQLReportsConfiguration.CheckAllStockLevelTimeoutInSeconds;
+    FSQLCaller.Records.CommandTimeout := SQLReportsConfiguration.CheckAllStockLevelTimeoutInSeconds;
+
+    If (EnterpriseLicence.elModuleVersion = mvSPOP) Then
+      HasSPOP := '1'
+    else
+      HasSPOP := '0';
+
+    SQL_Re_CalcStockLevels(HasSPOP);
+  finally
+    FreeAndNil(FSQLCaller);
+  end;
+
+end;
+
+function TCheckAllStockThread.Start: Boolean;
+begin
+  ProcessLockType := plCheckStock;
+  Result := True;
+  FSQLLogger := TEntSQLReportLogger.Create('Check All Stock');
+  try
+    // Create the progress bar form
+    if (FStockCode = '') then
+    begin
+      FProgressFrm := TIndeterminateProgressFrm.Create(Application.MainForm);
+      FProgressFrm.Start('Check All Stock', 'Recalculating stock levels');
+    end;
+
+  except
+    on E:Exception do
+    begin
+      // Report the error and return False to indicate the failure
+      ErrorMessage('Starting Check Stock', 'Initialisation failed: ' + E.Message);
+      Result := False;
+    end;
+  end;
+end;
+
+procedure TCheckAllStockThread.WriteErrorMsg(const Routine, Msg: string);
+begin
+  FSQLLogger.LogError('Error in ' + Routine, Msg);
+end;
+
+procedure CheckSingleStock(AOwner: TObject; StockCode: string; Ask: Boolean = True);
+var
+  Confirmed: Boolean;
+begin
+  if Ask then
+    Confirmed := ConfirmCheckStock(StockCode)
+  else
+    Confirmed := True;
+
+  if Confirmed then
+    CheckStock(AOwner, StockCode);
+end;
+
+// -----------------------------------------------------------------------------
+procedure CheckAllStock(AOwner: TObject; Ask: Boolean = True);
+var
+  Confirmed: Boolean;
+begin
+  if Ask then
+    Confirmed := ConfirmCheckStock
+  else
+    Confirmed := True;
+
+  if Confirmed then
+    CheckStock(AOwner);
+end;
+// -----------------------------------------------------------------------------
+// Internal procedure to actually run the Check All Stock stored procedure
+procedure CheckStock(AOwner: TObject; StockCode: string = '');
+var
+  CheckStock: ^TCheckAllStockThread;
+begin
+  // Create the thread
+  if Create_BackThread then
+  begin
+    // Create the controlling object
+    New(CheckStock, Create(AOwner));
+    try
+      CheckStock.StockCode := StockCode;
+
+      // Initialise the CheckStock instance and add the CheckStock object
+      // to the queue of threads
+      if CheckStock.Start and Create_BackThread then
+        BackThread.AddTask(CheckStock, 'Recalculating stock balances')
+      else
+      begin
+        // If we failed to initialise CheckStock successfully, close things
+        // down tidily
+        Set_BackThreadFlip(False);
+        Dispose(CheckStock, Destroy);
+      end;
+    except
+      Dispose(CheckStock, Destroy);
+    end;
+  end;
+end;
+// -----------------------------------------------------------------------------
+function ConfirmCheckStock(StockCode: string = ''): Boolean;
+const
+  SingleMsg = 'Please confirm that you wish to check stock ';
+  AllMsg = 'Please confirm that you wish to check all stocks';
+var
+  Msg: string;
+begin
+  if StockCode = '' then
+    Msg := AllMsg
+  else
+    Msg := SingleMsg + StockCode;
+  Result := MessageDlg(Msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes;
+end;
+// -----------------------------------------------------------------------------
+// Check to run SQL Version (Stored procedure)
+function CheckOk2SQLVer: Boolean;
+begin
+  Result := SQLUtils.UsingSQLAlternateFuncs and SQLReportsConfiguration.UseSQLCheckAllStockLevel;
+end;
+
+procedure TCheckAllStockThread.SQL_Re_CalcStockLevels(aHasSPOP : Str1);
+Var
+  Res : Integer;
+  Query: string;
+begin
+  Try
+    Screen.Cursor := crHourGlass;
+
+    if (Trim(Self.StockCode)<>'') then       //SingleMode
+    begin
+      Query := '[COMPANY].esp_RecalculateStock 1, ' + QuotedStr(Self.StockCode) + ', ' + aHasSPOP ;
+    end
+    else
+    begin
+      if Trim(aHasSPOP) = '1' then
+      begin
+        Query := '[COMPANY].esp_RecalculateStock 1 ' ;
+      end
+      else
+      begin
+        Query := '[COMPANY].esp_RecalculateStock 1, Null, 0 ' ;
+      end;
+    end;
+
+    Res :=  FSQLCaller.ExecSQL(Query, fCompanyCode);
+
+    // show error message is SQL execution failed for any reason.
+    If (Res < 0) Then
+      Application.MessageBox(PChar('The following error occurred when running Check Stock All Level '
+                                   + #13 + FSQLCaller.ErrorMsg), PChar('Update Check Stock All Level'));
+
+  Finally
+    Screen.Cursor := crDefault;
+  End;
+end;
+
+
+end.

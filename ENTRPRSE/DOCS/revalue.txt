@@ -1,0 +1,310 @@
+Overview
+
+The revaluation process is designed essentially to do 2 main things:
+
+1. Go through all o/s transactions and convert their outstanding amounts using the new exchange rate; add a nominal transfer to write the cumulative difference into the unrealised currency variance GL.
+ 
+2. Go through GL codes and convert the current balance in currency to base using the new exchange rate; add a nominal transfer to move the difference into the unrealised currency variance GL.
+
+The process has access to the changed Currency Table and the previous Currency Table, and there is an option to revert back to the existing values. The process runs in a thread (TRValueThread in RevalueU.pas) and has the usual 3 methods: Start, Process and Finish. The process works differently for company rate systems and daily rate systems.
+
+Start
+=====
+
+Calls CheckNomCC (in PostingU.pas) to check that all required control codes are populated - if this function returns false, the process displays a message and ends.
+
+Calls HasUnpAlloc (in PostingU.pas) to check if there are any allocated unposted transactions.
+--------------------------------------
+Process
+=======
+
+Check if HookPoint wiTransLine, 51  (Override Revaluation Unrealised Currency GL Code Hook) has been enabled (This is used in procedure Currency_Variance below)
+
+if DailyRate
+
+  call Day_Currency_ReValue
+
+else
+
+  call Currency_ReValue
+
+If any values have been updated then
+
+  Delete all Allocation Wizard Records (as they may no longer be valid)
+
+  Print the Revaluation Report (calls AddRVRep2Thread)
+
+  Posts the nominal daybook (calls AddPost2Thread)
+
+  Checks all trader account balances (calls AddCheckCust2Thread)
+
+End Process
+--------------------------------------
+Finish
+======
+
+No special processing (just calls inherited.)
+
+---------------------------------------
+Day_Currency_ReValue
+====================
+
+Calls Calc_DayDebCredVar
+
+Calls Day_ScanNomCodes
+
+End Day_Currency_ReValue
+-----------------------
+
+Procedure Currency_Variance
+===========================
+
+parameters CNo (CurrencyNo); DiffBy (Difference?) NCode (GL Code)
+
+This function adds two lines to a Nominal Transfer (held in MTExLocal.LInv).
+
+Clear fields of MTExLocal.LId then populate them by calling Create_NomTxfrLines (in RevalU2U.pas) This sets the fields appropriately from the header (in MTExLocal.LInv). LineNo is set to RecieptCode and the line is auto-reconciled if that is the setting in SystemSetup (Syss.AutoClearPay)
+
+Set the NetValue of the line to DiffBy.
+
+Set the GL Code of the line to NCode.
+
+Set the CostCentre & Department to the values set in start.
+
+Set the description (Currency code + revaluation.)
+
+If the Override Revaluation Unrealised Currency GL Code Hook isn't enabled, or if it is and calling it returns false then set the GL code to the Control GL for Unrealised Currency Diff.
+
+Add the detail record to the database
+
+Set NetValue to its negative
+
+If the Override Revaluation Unrealised Currency GL Code Hook isn't enabled, or if it is and calling it returns false then set the GL code to the Control GL for Unrealised Currency Diff.
+
+Add the detail record to the database
+
+End Currency_Variance
+-----------------------------------------
+
+Procedure Calc_DayDebCredVar
+============================
+
+Function to find all outstanding transactions and revalue their outstanding amount.
+
+Deletes all records in ExchqChk which have a RecPFix of 'F' and a SubType of 'P' (Password.BankCRec)
+
+Read through all transaction headers whose OurRef begins with 'P' (using the InvOurRefK index); (This is then repeated for all transaction headers whose OurRef begin with 'S')
+
+  for each transaction
+    if the Control GL Code is not 0 and has not already been encountered, it stores the code in LPassWord.BankCRec and writes it to ExchqChk with RecPFix = 'F' and SubType = 'P'; if the control code has already been encountered, it finds the record and updates the value (procedure Update_MDCCA)
+
+    if the currency > 1 and the RunNo > 1 (ie it's posted) and the year is this year or earlier and the year hasn't been purged then
+
+       temporarily replaces the new ghost currency rates with the previous ghost currency rates
+
+       if the total outstanding in base is not 0 or UseORate = 1 then
+
+         Calculate the o/s total in base (using the xrate from the transaction) and store in OITot
+         Calculate the o/s total in currency and store in OConvTot
+         Add a record to the Revalue Log
+
+         If the transaction is fully settled in base but not in currency, then CurrSettled is set to the transaction currency total
+         If the transaction is fully unallocated in base but not in currency then CurrSettled is set to 0
+         (This is presumably done because if the settled amount is either full or zero, then it should be so for both currency and base - if not it's an error and needs to be rectified.) 
+         
+         The variable OConvTot is set to the transaction's total in base (using function ConvCurrITotal.)
+
+         Base total and Currency Total are added to the Revalue Log
+
+         The new ghost currency rates are now restored and the o/s total of the transaction in Base (using the xrate from the transaction) is stored in ReValueEquiv
+
+         The o/s base total (using the new xrate) is now stored in the variable ITot
+
+         The variable RevalueAdj is calculated by subtracting ReValueEquiv from ITot and multiplying by DocConst and DocNotConst. At this point it is rounded to 2 decimal places.
+
+         if there is a control GL Code on the transaction then the record for that code in Password is updated using the function Update_MDCCA, passing ITot-OITot as a parameter
+         
+         if there is no control GL Code on the transaction then the appropriate member (according to P/S transaction) of the DrCr array is updated with ITot-OITot
+         
+         If the transaction is a receipt/payment, then its TotalInvoiced field is set to the base equivalent of the total
+
+       otherwise (if the total outstanding in base is 0 and UseORate <> 1 then)
+
+         if the o/s total in currency is not 0 then set CurrSettled to the transaction total
+
+       end otherwise
+
+       Store the transaction header.
+
+  end for each transaction
+
+End Calc_DayDebCredVar
+--------------------------------------------
+
+Day_ScanNomCodes
+================
+
+This function iterates through all GL codes and adds any differences from the revaluation to a nominal transfer.
+
+It first checks that the Control Code GL Unrealised Currency Variance (UnRCurrVar) exists.
+
+If it doesn't then the function exits without doing anything
+
+If it does then the function iterates through the GL codes in GL Code order starting with the first. For each GL code
+
+  if it is a Balance Sheet or a Header AND
+  it is not one of the control codes UnRCurrVar, ProfitBF, Debtors, Creditors, (and it is not InVAT, OutVAT (unless the VAT Currency > 1)) and it is not one of the codes stored in ExchqChk (Password.BankCRec, added during Calc_DayDebCredVar) THEN
+    
+    LProfit_To_Date up to the last period in the current year in Consolidated is stored in the variable OldBal
+    A record is added to the Revalue Log
+
+    For each currency
+
+      LProfit_To_Date up to the last period in the current year in the currency is converted to base and added to the variable NewBal
+      A record is added to the Revalue Log
+
+    End for each currency
+
+    if NewBal is different to OldBal  then
+      if the Nominal Transfer hasn't already been created create it (function Create_NTHed.)
+ 
+      Call Currency_Variance to add the Nominal Transfer lines for this GL Code.
+
+end for each GL Code
+
+if any debtors or creditors variance was identified in Calc_DayDebCredVar, Currency_Variance is called once each for Debtors and Creditors control codes to add lines for them to the Nominal Transfer.
+
+If any control codes were added to ExchqChk in Password.BankCRec then Currency_Variance is called once for each control code.    
+
+End Day_ScanNomCodes
+-----------------------------------------
+
+
+Currency_ReValue
+================
+
+Call SetCurrInclude. This function runs through the original and amended currency records and returns any where the rate has changed in the set CurrInclude.
+
+Call CalcDebCredVar
+
+For each currency in CurrInclude
+
+  Call ScanNomCodes
+
+End for each
+
+Call Fix_NomCodes 
+
+End Currency_ReValue
+-----------------------------------------------
+
+Procedure CalcDebCredVar (Company Rate)
+============================
+
+Function to find all outstanding transactions and revalue their outstanding amount.
+
+Deletes all records in ExchqChk which have a RecPFix of 'F' and a SubType of 'P' (Password.BankCRec)
+
+Read through all transaction headers whose OurRef begins with 'P' (using the InvOurRefK index.) (This is then repeated for all transaction headers whose OurRef begin with 'S')
+
+  for each transaction
+    if the Control GL Code is not 0 and has not already been encountered, it stores the code in LPassWord.BankCRec and writes it to ExchqChk with RecPFix = 'F' and SubType = 'P'; if the control code has already been encountered, it finds the record and updates the value (procedure Update_MDCCA)
+
+    if the currency is in CurrInclude and the RunNo > 0 (ie it's posted) and the year is this year or earlier and the year hasn't been purged then
+
+       if the transaction's company rate is 0 then set it to the company rate from System Setup (the new rate.)
+
+       temporarily replace the new ghost currency rates with the previous ghost currency rates
+
+       if the total outstanding in base is not 0 or UseORate = 1 then
+
+         Calculate the o/s total in base (using the xrate from the transaction) and store in OITot
+         Calculate the o/s total in currency and store in OConvTot
+         Add a record to the Revalue Log
+
+         If the transaction is fully settled in base but not in currency, then CurrSettled is set to the transaction currency total
+         If the transaction is fully unallocated in base but not in currency then CurrSettled is set to 0
+         (This is presumably done because if the settled amount is either full or zero, then it should be so for both currency and base - if not it's an error and needs to be rectified.) 
+         
+         The variable OConvTot is set to the transaction's total in base (using function ConvCurrITotal.)
+
+         Base total and Currency Total are added to the Revalue Log
+
+         The new ghost currency rates are now restored and the o/s total of the transaction in Base (using the xrate from the transaction) is stored in ReValueEquiv
+
+         The o/s base total (using the new xrate) is now stored in the variable ITot
+
+         The variable RevalueAdj is calculated by subtracting ReValueEquiv from ITot and multiplying by DocConst and DocNotConst. At this point it is rounded to 2 decimal places.
+
+         if there is a control GL Code on the transaction then the record for that code in Password is updated using the function Update_MDCCA, passing ITot-OITot as a parameter
+         
+         if there is no control GL Code on the transaction then the appropriate member (according to P/S transaction) of the DrCr array is updated with ITot-OITot
+         
+         If the transaction is a receipt/payment, then its TotalInvoiced field is set to the base equivalent of the total
+
+       otherwise (if the total outstanding in base is 0 and UseORate <> 1 then)
+
+         if the o/s total in currency is not 0 then set CurrSettled to the transaction total
+
+       end otherwise
+
+       Store the transaction header.
+
+  end for each transaction
+
+End CalcDebCredVar
+--------------------------------------------
+
+ScanNomCodes
+============
+This function iterates through all GL codes and adds any differences from the revaluation to a nominal transfer.
+
+It first checks that the Control Code GL Unrealised Currency Variance (UnRCurrVar) exists.
+
+If it doesn't then the function exits without doing anything
+
+If it does then the function iterates through the GL codes in GL Code order starting with the first. For each GL code
+
+  if it is a Balance Sheet or a Header AND
+  it is not one of the control codes UnRCurrVar, ProfitBF, Debtors, Creditors, (and it is not InVAT, OutVAT (unless the VAT Currency > 1)) and it is not one of the codes stored in ExchqChk (Password.BankCRec, added during Calc_DayDebCredVar) THEN
+    
+    LProfit_To_Date up to the last period in the current year in the required currency is stored in the variable CurrBal
+
+    if CurrBal is not 0 then
+    
+      The ghost rates are temporarily replaced by the old ghost rates
+
+      CurrBal is converted to base using the old rate and stored in OldBal
+
+      The ghost rates are restored
+
+      CurrBal is converted to base using the new rate and stored in NewBal
+      
+
+      if NewBal is different to OldBal  then
+        if the Nominal Transfer hasn't already been created create it (function Create_NTHed.)
+ 
+      Call Currency_Variance to add the Nominal Transfer lines for this GL Code.
+
+      Add a record to the ReValueLog
+
+end for each GL Code
+
+if any debtors or creditors variance was identified in Calc_DayDebCredVar, Currency_Variance is called once each for Debtors and Creditors control codes to add lines for them to the Nominal Transfer.
+
+If any control codes were added to ExchqChk in Password.BankCRec then Currency_Variance is called once for each control code.    
+
+End ScanNomCodes
+-----------------------------------------
+
+Fix_NomCodes
+============
+
+This function seems to be exactly the same as Day_ScanNomCodes up to the point 'end for each GL Code', at which point it finishes. I would assume that it is included to fix any existing errors in the currencies which haven't been changed on this occasion.
+
+Suggestions for performance improvements:
+
+1. To the best of my knowledge, the revaluation process should only be concerned with transactions which are fully or partially outstanding; consequently, in the functions CalcdebCredVar and Calc_DayDebCredVar it should be possible to use the Outstanding Index (InvOSK) rather than the Our Ref index (InvOurRefK) to read through the transaction table. This would remove the need to iterate through a large number of already allocated transactions.
+
+2. The function FixNomCodes seems to be a 'just in case' function; it may be possible to have an option to only run this function if there is an actual need for it.
+

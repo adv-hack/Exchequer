@@ -1,0 +1,23 @@
+:Base IMPORTER.hlp
+:Title Exchequer Importer Help
+1 Importer
+2 Introduction=Introduction
+2 Logging into Exchequer Importer=Logging_into_Exchequer_Importer
+2 Setup
+3 Setting up Importer=Setting_up_Importer
+3 Default System Settings (page 1 of 3)=Default_System_Settings_page_1_of_3_
+3 Default Job Settings (page 2 of 3)=Default_Job_Settings_page_2_of_3_
+3 Default Import Settings (page 3 of 3)=Default_Import_Settings_page_3_of_3_
+2 Files required
+3 Files Required to Import into Exchequer=Files_Required_to_Import_into_Exchequer
+3 CSV File=CSV_File
+3 Field Map File=Field_MAP_File_Creation
+3 Job File=Job_File_Creation
+2 Import
+3 Importing Files into Exchequer=Importing_Files_into_Exchequer
+3 Setting up the Scheduler=Setting_up_the_Scheduler
+3 Log Files=Log_Files
+2 Importing Transactions
+3 Transaction Types=Transaction_Types
+3 Transaction Import Methods=Transaction_Import_Methods
+3 Importing Transactions with VAT=Importing_Transactions_with_VAT

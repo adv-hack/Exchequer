@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InternetFiling</name>
+    </assembly>
+    <members>
+        <member name="T:IRIS.Systems.InternetFiling.IPosting">
+            <summary>
+            Interface used to define the COM interop
+            </summary>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.IPosting.AddIRMark(System.String@,System.Int32)">
+            <summary>
+            Add an IRMark 
+            </summary>
+            <param name="DocumentXml"></param>
+            <param name="SubmissionType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.Posting">
+            <summary>
+            Class used as the COM gateway
+            </summary>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.Posting.AddIRMark(System.String@,System.Int32)">
+            <summary>
+            Add the IRMark to the file and return it to the calling app
+            </summary>
+            <param name="FileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.Posting.AddIRMark(System.String@,System.String)">
+            <summary>
+            Add the IRMark to the file and return it to the calling app, Overloaded method to allow the passing in
+            if the document type namespace directly.
+            </summary>
+            <param name="DocumentXml">A string representation of the whole document containing the Document type
+            specified in the namespace paramter that requires the generation of the IR Mark</param>
+            <param name="Namespace" > Namespace of the document type that requires the IR Mark</param>
+            <returns></returns>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.Posting.Submit(System.String,System.Boolean,System.String)">
+            <summary>
+            Submit the document to the government gateway.
+            Returns the Xml from the GatewayServer, or an empty
+            string if nothing to submit.
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.ICallback">
+            <summary>
+            Interface used to define the callback class
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.CallbackContainer">
+            <summary>
+            Container class used as a type definition for an unmanaged
+            variable
+            </summary>
+        </member>
+        <member name="T:IRIS.Systems.InternetFiling.PollingBrokerage">
+            <summary>
+            This class serves as the monitor brokerage for the 
+            </summary>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.PollingBrokerage.EndBroker">
+            <summary>
+            Flags the system to end the broker on the next idle loop
+            </summary>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.PollingBrokerage.BeginPolling(IRIS.Systems.InternetFiling.ICallback,System.String,System.String,System.Boolean,System.String,System.Int32)">
+            <summary>
+            Begins polling the government gateway on a new thread
+            </summary>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.PollingBrokerage.EndPolling(System.String)">
+            <summary>
+            Suspends a particular thread and 
+            ends the polling session
+            </summary>
+            <param name="Guid"></param>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.PollingBrokerage.RedirectPolling(System.String,System.String,System.Int32)">
+            <summary>
+            Adds a message to the volatile message queue
+            </summary>
+            <param name="Guid"></param>
+            <param name="RedirectedUrl"></param>
+        </member>
+        <member name="M:IRIS.Systems.InternetFiling.PollingBrokerage.RunPollingThread(System.Object)">
+            <summary>
+            Provides the meat of the polling mechanism.
+            </summary>
+        </member>
+        <member name="P:IRIS.Systems.InternetFiling.PollingBrokerage.Log">
+            <summary>
+            Reverved for future use, unused
+            </summary>
+        </member>
+    </members>
+</doc>

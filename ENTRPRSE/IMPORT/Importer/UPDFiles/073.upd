@@ -1,0 +1,38 @@
+[Version]
+Version=6.00.081.073
+
+[Stock]
+F006=SK.NomCodeS                  0261 05 L 0004 M   GL Code [LOCGL]                                    default=0                                                                                                    comment=
+F011=SK.StockType                 0306    C 0001 M   Stock Type                                         default=P                                                                                                    comment=P,G,D,M,X (P=Product,G=Group,D=Description,M=BoM,X=Discontinued)
+F066=SK.SellUnit                  0641    D 0008 M   Sales Units to Stock                               default=[I]1                                                                                                 comment=
+F067=SK.BuyUnit                   0649    D 0008 M   Purchase Units to Stock                            default=[I]1                                                                                                 comment=
+F068=SK.VATCode                   0657    C 0001 M   VAT Code                                           default=                                                                                                     comment=
+F085=SK.SuppSUnit                 0765    D 0008 M   Stock Units in SSD Unit                            default=1                                                                                                    comment=
+F102=SK.StkValType                0832    C 0001 M   Stock Valuation Type                               default=                                                                                                     comment=A,C,F,L,S,R (R=see Serial / Average)
+F132=SK.StkLinkLT                 1121    I 0002 M   Line Type                                          default=0                                                                                                    comment=0-4 (0=Normal,1=Labour,2=Materials,3=Freight,4=Discount)
+
+[Customer]
+F018=CU.Currency                  0643    I 0002 M   Currency                                           default=1                                                                                                    comment=
+F019=CU.VATCode                   0645    C 0001 M   VAT Code                                           default=S                                                                                                    comment=S,E,Z,1-9,A,D,T,X,I,B,C,F,G,R,W,Y
+
+[Supplier]
+F018=SU.Currency                  0643    I 0002 M   Currency                                           default=1                                                                                                    comment=
+F019=SU.VATCode                   0645    C 0001 M   VAT Code                                           default=S                                                                                                    comment=S,E,Z,1-9,A,D,T,X,I,B,C,F,G,R,W,Y
+
+[Matching]
+F007=MA.BaseVal                   0041    D 0008 M   Base Value                                         default=0                                                                                                    comment=
+
+[Employee]
+F001=EM.EmpCode                   0001    S 0006 M   Employee Code                                      default=                                                                                                     comment=
+F003=EM.EmpName                   0015    S 0030 M   Employee Name                                      default=                                                                                                     comment=
+F008=EM.EmpType                   0264    C 0001 M   Employee Type                                      default=                                                                                                     comment=O,S,P (O=Overheads, S=Sub-Contractor, P=Production)
+
+[Job Purchase Terms]
+F013=PT.tpCurrency                0068    I 0002 M X Currency                                           default=                                                                                                     comment=Pro=0, Euro=1 or 2, Global=1-89
+
+[Job Contract Terms]
+F013=CT.tpCurrency                0068    I 0002 M X Currency                                           default=                                                                                                     comment=Pro=0, Euro=1 or 2, Global=1-89
+F028=CT.tpEmployeeCode            0253    S 0006 M   Employee Code                                      default=                                                                                                     comment=
+
+[Job Purchase Application]
+F003=PA.tpAppsInterimFlag         0019    B 0001 M X Application Stage                                  default=                                                                                                     comment=0=Stand Alone, 1=Interim, 2=Practical, 3=Final

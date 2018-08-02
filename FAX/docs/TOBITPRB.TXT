@@ -1,0 +1,9 @@
+There are currently 3 methods to send faxes to Tobit FaxWare / David, these are as follows :
+
+DDE - We don't like this idea, merely on the basis that it has the three letters D, D and E in it.
+
+
+16-bit DLL - We not too impressed with this idea as it would involve thinking and THUNKing.
+
+
+3. FileScan - This involves writing a text file with @@ commands in it. You can define the number, and a fax file to send. Unfortunately (apart from the fact I can't actually get this to work) This means that you somehow have to somehow create a modified huffman format file. Tobit does create these but you need to know the file name etc. Also this means that it does not fit our current mould - Call Fax DLL then print to fax driver.

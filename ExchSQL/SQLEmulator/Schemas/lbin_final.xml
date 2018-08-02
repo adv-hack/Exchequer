@@ -1,0 +1,24 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="454" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="lbHeaderNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lbHeaderNo" />
+        <schemafield fieldname="lbLineNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lbLineNo" />
+        <schemafield fieldname="lbBinCode" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="lbBinCode" />
+        <schemafield fieldname="lbUsedInBatch" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lbUsedInBatch" />
+        <schemafield fieldname="lbUsedInThisLine" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lbUsedInThisLine" />
+        <schemafield fieldname="lbUsedElsewhere" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lbUsedElsewhere" />
+        <schemafield fieldname="lbDummyChar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lbDummyChar" collation="1"/>
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>lbHeaderNo</item>
+                <item>lbLineNo</item>
+                <item>lbDummyChar</item>
+            </indexfields>
+        </schemaindexes>        
+    </indexes>
+</schemarecord>

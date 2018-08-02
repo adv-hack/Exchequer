@@ -1,0 +1,25 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="171" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="CoCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="CoCode" collation="1"/>
+        <schemafield fieldname="EmpCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="EmpCode" collation="1"/>
+        <schemafield fieldname="AcGroup" fullfieldname="" typename="DelphiString" size="26" elements="1" id="-1" columnname="AcGroup" collation="1"/>
+        <schemafield fieldname="EmpName" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="EmpName" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>CoCode</item>
+                <item>EmpCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>AcGroup</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

@@ -1,0 +1,133 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Welcome.WSE - Welcome Dialog
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=010
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_FWD
+  Value=020
+end
+item: Remark
+end
+item: Remark
+  Text=....Display Welcome Dialog
+end
+item: Custom Dialog Set
+  Name=Welcome
+  Flags=00110101
+  item: Dialog
+    Title=Exchequer Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=&Next  >>
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=7 10 89 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=x:\PlugIns\Graphics\\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 181 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Welcome !
+    end
+    item: Static
+      Rectangle=95 30 251 49
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=This installation wizard will install the Exchequer Purchase Freight Plug-In into your Exchequer system.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=8 1 78 9
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=%D_ENTVER%
+    end
+    item: Static
+      Rectangle=95 54 251 89
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=The Exchequer Purchase Freight Plug-In allows you to apply transport costs to your purchase transactions, splitting the cost across multiple lines using quantity, value or weight.
+    end
+    item: Static
+      Rectangle=95 93 251 118
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Press the Next button to start the installation. You can press the Exit Installation button now if you do not want to install at this time.
+    end
+  end
+end
+item: Remark
+end
+item: End Block
+end

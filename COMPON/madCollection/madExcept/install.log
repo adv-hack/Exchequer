@@ -1,0 +1,350 @@
+need 'madBasic'
+need 'madDisAsm'
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madExcept\Delphi 6\madExceptIde_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madExcept\Delphi 6\madExcept_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madExcept\Delphi 6\madExceptVcl_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Known Packages'\'C:\Program Files\madCollection\madExcept\Delphi 6\madExceptWizard_.bpl' = -
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Search Path' -= 'C:\Program Files\madCollection\madExcept\Delphi 6;'
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Search Path' -= 'C:\Program Files\madCollection\madExcept\..\Plugins;'
+'HKCU\Software\Borland\Delphi\6.0\Library'\'Browsing Path' -= 'C:\Program Files\madCollection\madExcept\Sources;'
+'HKCU\Software\madshi\madExcept'\'plugin root' = -
+'HKCR\.mep'\'' = -
+'HKCR\madExceptPlugin\shell\open\command'\'' = -
+'HKCR\madExceptPlugin\DefaultIcon'\'' = -
+'HKCU\Software\Borland\BDS\5.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\6.0\Globals'\'ForceEnvOptionsUpdate' = -
+'HKCU\Software\CodeGear\BDS\7.0\Globals'\'ForceEnvOptionsUpdate' = -
+'BDS4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS7', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 4', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 5', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Delphi 6', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Demos', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Help', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Sources', FFFFFFFF, FFFFFFFFFFFFFFFF
+'Tools', FFFFFFFF, FFFFFFFFFFFFFFFF
+'BDS4\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'BDS4\madDumpObj.dcu', 16AF, 1CA946EB5FACC4A
+'BDS4\madDumpObj.h', 36, 1C5E7929D495F00
+'BDS4\madDumpObj.hpp', 428, 1CA946EB5DE3012
+'BDS4\madDumpObj.obj', 181D, 1CA946EB5DE3012
+'BDS4\madExcept.dcu', 5CC26, 1CA946EB5F869F0
+'BDS4\madExcept.h', 34, 1C4B4EEF8A51100
+'BDS4\madExcept.hpp', C5F8, 1CA946EB67B8B46
+'BDS4\madExcept.obj', 42523, 1CA946EB5DBCDB8
+'BDS4\madExceptIde_.bpl', 7A00, 1CA946EB6687876
+'BDS4\madExceptVcl.dcu', E27, 1CA946EB612A3CE
+'BDS4\madExceptVcl.h', 3A, 1C4AED9F08B1700
+'BDS4\madExceptVcl.hpp', 79D, 1CA946EB6091A66
+'BDS4\madExceptVcl.obj', 1125, 1CA946EB6091A66
+'BDS4\madExceptVcl_.bpi', 4D4, 1CA946EB60B7CC0
+'BDS4\madExceptVcl_.bpl', 3200, 1CA946EB65C8CB4
+'BDS4\madExceptVcl_.dcp', 15D8, 1CA946EB6150628
+'BDS4\madExceptVcl_.lib', 1400, 1CA946EB64252D6
+'BDS4\madExceptWizard_.bpl', 6B000, 1CA946EB67928EC
+'BDS4\madExcept_.bpi', 5754, 1CA946EB5E0926C
+'BDS4\madExcept_.bpl', 50E00, 1CA946EB64E3E98
+'BDS4\madExcept_.dcp', 5E6F4, 1CA946EB601F358
+'BDS4\madExcept_.lib', 69E00, 1CA946EB63FF07C
+'BDS4\madIWSupport.cpp', 165E, 1CA09F69F856AEA
+'BDS4\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'BDS4\madIWSupport.h', 8F3, 1CA09F6B92B771E
+'BDS4\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'BDS4\madLinkDisAsm.dcu', 1E1, 1CA946EB5FACC4A
+'BDS4\madLinkDisAsm.hpp', 3F8, 1CA946EB5DBCDB8
+'BDS4\madLinkDisAsm.obj', 31E, 1CA946EB5DBCDB8
+'BDS4\madListHardware.dcu', 1B12, 1CA946EB5FACC4A
+'BDS4\madListHardware.h', 40, 1C525A0FF691900
+'BDS4\madListHardware.hpp', 43F, 1CA946EB5DE3012
+'BDS4\madListHardware.obj', 19BF, 1CA946EB5DE3012
+'BDS4\madListModules.dcu', C5D, 1CA946EB5FACC4A
+'BDS4\madListModules.h', 3E, 1C5E79265421C00
+'BDS4\madListModules.hpp', 436, 1CA946EB5DBCDB8
+'BDS4\madListModules.obj', C9A, 1CA946EB5DBCDB8
+'BDS4\madListProcesses.dcu', 1D42, 1CA946EB5FACC4A
+'BDS4\madListProcesses.h', 42, 1C5E7927E4ACD00
+'BDS4\madListProcesses.hpp', 445, 1CA946EB5DBCDB8
+'BDS4\madListProcesses.obj', 17F2, 1CA946EB5DE3012
+'BDS4\madMapFile.dcu', A407, 1CA946EB5E55720
+'BDS4\madMapFile.h', 36, 1C4AEDA131D3000
+'BDS4\madMapFile.hpp', 1098, 1CA946EB5BF3180
+'BDS4\madMapFile.obj', 838B, 1CA946EB5C193DA
+'BDS4\madNVAssistant.dcu', 103BA, 1CA946EB5EA1BD4
+'BDS4\madNVAssistant.h', 3E, 1C58956FAEDAC00
+'BDS4\madNVAssistant.hpp', 2C52, 1CA946EB67DEDA0
+'BDS4\madNVAssistant.obj', BDE9, 1CA946EB5C8BAE8
+'BDS4\madNVBitmap.dcu', 5EB7, 1CA946EB5E7B97A
+'BDS4\madNVBitmap.h', 38, 1C525A1042DCD00
+'BDS4\madNVBitmap.hpp', 8A7, 1CA946EB5C3F634
+'BDS4\madNVBitmap.obj', 43EC, 1CA946EB5C3F634
+'BDS4\madNVPrgrAlert.dcu', 331B, 1CA946EB5E7B97A
+'BDS4\madNVPrgrAlert.h', 3E, 1C5E79294F12400
+'BDS4\madNVPrgrAlert.hpp', 924, 1CA946EB5C193DA
+'BDS4\madNVPrgrAlert.obj', 2366, 1CA946EB5C193DA
+'BDS4\madStackTrace.dcu', 83E4, 1CA946EB5E7B97A
+'BDS4\madStackTrace.h', 3C, 1C4AEDA26300000
+'BDS4\madStackTrace.hpp', DBA, 1CA946EB67B8B46
+'BDS4\madStackTrace.obj', 6FEF, 1CA946EB5C3F634
+'BDS6\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'BDS6\madDumpObj.dcu', 16D8, 1CA946EBC310CC8
+'BDS6\madDumpObj.h', 36, 1C5E7929D495F00
+'BDS6\madDumpObj.hpp', 422, 1CA946EBC0FABDC
+'BDS6\madDumpObj.obj', 17F7, 1CA946EBC0FABDC
+'BDS6\madExcept.dcu', 61484, 1CA946EBC2C4814
+'BDS6\madExcept.h', 34, 1C4B4EEF8A51100
+'BDS6\madExcept.hpp', CF5D, 1CA946EBD518952
+'BDS6\madExcept.obj', 4469A, 1CA946EBC0D4982
+'BDS6\madExceptIde_.bpl', 7A00, 1CA946EBD40D8DC
+'BDS6\madExceptVcl.dcu', F16, 1CA946EBC4B46A6
+'BDS6\madExceptVcl.h', 3A, 1C4AED9F08B1700
+'BDS6\madExceptVcl.hpp', 78B, 1CA946EBC41BD3E
+'BDS6\madExceptVcl.obj', 11D1, 1CA946EBC41BD3E
+'BDS6\madExceptVcl_.bpi', 4F4, 1CA946EBC41BD3E
+'BDS6\madExceptVcl_.bpl', 3800, 1CA946EBD328AC0
+'BDS6\madExceptVcl_.dcp', 16A8, 1CA946EBC500B5A
+'BDS6\madExceptVcl_.lib', 1600, 1CA946EBD1850E2
+'BDS6\madExceptWizard_.bpl', 70C00, 1CA946EBD4CC49E
+'BDS6\madExcept_.bpi', 5AD4, 1CA946EBC0FABDC
+'BDS6\madExcept_.bpl', 54200, 1CA946EBD269EFE
+'BDS6\madExcept_.dcp', 6460C, 1CA946EBC35D17C
+'BDS6\madExcept_.lib', 6D400, 1CA946EBD15EE88
+'BDS6\madIWSupport.cpp', 165E, 1CA09F69F856AEA
+'BDS6\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'BDS6\madIWSupport.h', 8F3, 1CA09F6B92B771E
+'BDS6\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'BDS6\madLinkDisAsm.dcu', 1F0, 1CA946EBC2EAA6E
+'BDS6\madLinkDisAsm.hpp', 3E7, 1CA946EBC0D4982
+'BDS6\madLinkDisAsm.obj', 328, 1CA946EBC0D4982
+'BDS6\madListHardware.dcu', 1D2D, 1CA946EBC2EAA6E
+'BDS6\madListHardware.h', 40, 1C525A0FF691900
+'BDS6\madListHardware.hpp', 436, 1CA946EBC0D4982
+'BDS6\madListHardware.obj', 1BE3, 1CA946EBC0D4982
+'BDS6\madListModules.dcu', D94, 1CA946EBC2EAA6E
+'BDS6\madListModules.h', 3E, 1C5E79265421C00
+'BDS6\madListModules.hpp', 430, 1CA946EBC0D4982
+'BDS6\madListModules.obj', E3B, 1CA946EBC0D4982
+'BDS6\madListProcesses.dcu', 209C, 1CA946EBC2EAA6E
+'BDS6\madListProcesses.h', 42, 1C5E7927E4ACD00
+'BDS6\madListProcesses.hpp', 43F, 1CA946EBC0D4982
+'BDS6\madListProcesses.obj', 1B95, 1CA946EBC0D4982
+'BDS6\madMapFile.dcu', AC79, 1CA946EBC193544
+'BDS6\madMapFile.h', 36, 1C4AEDA131D3000
+'BDS6\madMapFile.hpp', 10F3, 1CA946EBBE9863C
+'BDS6\madMapFile.obj', 8702, 1CA946EBBEBE896
+'BDS6\madNVAssistant.dcu', 10F24, 1CA946EBC1DF9F8
+'BDS6\madNVAssistant.h', 3E, 1C58956FAEDAC00
+'BDS6\madNVAssistant.hpp', 2DCF, 1CA946EBD53EBAC
+'BDS6\madNVAssistant.obj', C240, 1CA946EBBF571FE
+'BDS6\madNVBitmap.dcu', 645F, 1CA946EBC1B979E
+'BDS6\madNVBitmap.h', 38, 1C525A1042DCD00
+'BDS6\madNVBitmap.hpp', 8C6, 1CA946EBBF0AD4A
+'BDS6\madNVBitmap.obj', 45EE, 1CA946EBBF30FA4
+'BDS6\madNVPrgrAlert.dcu', 35E0, 1CA946EBC193544
+'BDS6\madNVPrgrAlert.h', 3E, 1C5E79294F12400
+'BDS6\madNVPrgrAlert.hpp', 94B, 1CA946EBBEE4AF0
+'BDS6\madNVPrgrAlert.obj', 2483, 1CA946EBBEE4AF0
+'BDS6\madStackTrace.dcu', 8B3C, 1CA946EBC1B979E
+'BDS6\madStackTrace.h', 3C, 1C4AEDA26300000
+'BDS6\madStackTrace.hpp', DA5, 1CA946EBD518952
+'BDS6\madStackTrace.obj', 72E3, 1CA946EBBF0AD4A
+'BDS7\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'BDS7\madDumpObj.dcu', 16F8, 1CA946EC3DD9E78
+'BDS7\madDumpObj.h', 36, 1C5E7929D495F00
+'BDS7\madDumpObj.hpp', 438, 1CA946EC3BC3D8C
+'BDS7\madDumpObj.obj', 181C, 1CA946EC3BE9FE6
+'BDS7\madExcept.dcu', 6BB6F, 1CA946EC3DB3C1E
+'BDS7\madExcept.h', 34, 1C4B4EEF8A51100
+'BDS7\madExcept.hpp', CFAB, 1CA946EC4F6F3F4
+'BDS7\madExcept.obj', 502CB, 1CA946EC3B9DB32
+'BDS7\madExceptIde_.bpl', 7A00, 1CA946EC4E17ECA
+'BDS7\madExceptVcl.dcu', FDB, 1CA946EC3FEFF64
+'BDS7\madExceptVcl.h', 3A, 1C4AED9F08B1700
+'BDS7\madExceptVcl.hpp', 7A1, 1CA946EC3F313A2
+'BDS7\madExceptVcl.obj', 12C1, 1CA946EC3F313A2
+'BDS7\madExceptVcl_.bpi', 4F4, 1CA946EC3F313A2
+'BDS7\madExceptVcl_.bpl', 3C00, 1CA946EC4D330AE
+'BDS7\madExceptVcl_.dcp', 1788, 1CA946EC403C418
+'BDS7\madExceptVcl_.lib', 1600, 1CA946EC4B8F6D0
+'BDS7\madExceptWizard_.bpl', 77200, 1CA946EC4F4919A
+'BDS7\madExcept_.bpi', 5D54, 1CA946EC3BE9FE6
+'BDS7\madExcept_.bpl', 5F800, 1CA946EC4C744EC
+'BDS7\madExcept_.dcp', 65342, 1CA946EC3E727E0
+'BDS7\madExcept_.lib', 7C800, 1CA946EC4B69476
+'BDS7\madIWSupport.cpp', 165E, 1CA09F69F856AEA
+'BDS7\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'BDS7\madIWSupport.h', 8F3, 1CA09F6B92B771E
+'BDS7\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'BDS7\madLinkDisAsm.dcu', 1AC, 1CA946EC3DB3C1E
+'BDS7\madLinkDisAsm.hpp', 3FD, 1CA946EC3B9DB32
+'BDS7\madLinkDisAsm.obj', 2D2, 1CA946EC3B9DB32
+'BDS7\madListHardware.dcu', 1DF9, 1CA946EC3DB3C1E
+'BDS7\madListHardware.h', 40, 1C525A0FF691900
+'BDS7\madListHardware.hpp', 450, 1CA946EC3BC3D8C
+'BDS7\madListHardware.obj', 1D26, 1CA946EC3BC3D8C
+'BDS7\madListModules.dcu', DDD, 1CA946EC3DB3C1E
+'BDS7\madListModules.h', 3E, 1C5E79265421C00
+'BDS7\madListModules.hpp', 44A, 1CA946EC3B9DB32
+'BDS7\madListModules.obj', E94, 1CA946EC3B9DB32
+'BDS7\madListProcesses.dcu', 2313, 1CA946EC3DB3C1E
+'BDS7\madListProcesses.h', 42, 1C5E7927E4ACD00
+'BDS7\madListProcesses.hpp', 459, 1CA946EC3B9DB32
+'BDS7\madListProcesses.obj', 1ED8, 1CA946EC3BC3D8C
+'BDS7\madMapFile.dcu', B9CF, 1CA946EC3C5C6F4
+'BDS7\madMapFile.h', 36, 1C4AEDA131D3000
+'BDS7\madMapFile.hpp', 1109, 1CA946EC39ADCA0
+'BDS7\madMapFile.obj', 96BD, 1CA946EC39ADCA0
+'BDS7\madNVAssistant.dcu', 115CE, 1CA946EC3CCEE02
+'BDS7\madNVAssistant.h', 3E, 1C58956FAEDAC00
+'BDS7\madNVAssistant.hpp', 2DE5, 1CA946EC4F9564E
+'BDS7\madNVAssistant.obj', C992, 1CA946EC3A203AE
+'BDS7\madNVBitmap.dcu', 6CAB, 1CA946EC3CA8BA8
+'BDS7\madNVBitmap.h', 38, 1C525A1042DCD00
+'BDS7\madNVBitmap.hpp', 8DC, 1CA946EC39FA154
+'BDS7\madNVBitmap.obj', 5227, 1CA946EC39FA154
+'BDS7\madNVPrgrAlert.dcu', 3BB5, 1CA946EC3C8294E
+'BDS7\madNVPrgrAlert.h', 3E, 1C5E79294F12400
+'BDS7\madNVPrgrAlert.hpp', 961, 1CA946EC39ADCA0
+'BDS7\madNVPrgrAlert.obj', 2B04, 1CA946EC39ADCA0
+'BDS7\madStackTrace.dcu', 912F, 1CA946EC3C8294E
+'BDS7\madStackTrace.h', 3C, 1C4AEDA26300000
+'BDS7\madStackTrace.hpp', DBB, 1CA946EC4F6F3F4
+'BDS7\madStackTrace.obj', 7B85, 1CA946EC39D3EFA
+'Delphi 4\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Delphi 4\madDumpObj.dcu', 1431, 1CA946E8BC348A8
+'Delphi 4\madExcept.dcu', 4F543, 1CA946E8E38B578
+'Delphi 4\madExceptIde_.bpl', 7800, 1CA946E8ED87306
+'Delphi 4\madExceptVcl.dcu', D0D, 1CA946E8BEE32FC
+'Delphi 4\madExceptVcl_.bpl', 3A00, 1CA946E8EA8C3FE
+'Delphi 4\madExceptVcl_.dcp', 15F9, 1CA946E8BF2F7B0
+'Delphi 4\madExceptWizard_.bpl', 75400, 1CA946E8EEDE830
+'Delphi 4\madExcept_.bpl', 54C00, 1CA946E8E8E8A20
+'Delphi 4\madExcept_.dcp', 56FE0, 1CA946E8BD65B78
+'Delphi 4\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'Delphi 4\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'Delphi 4\madLinkDisAsm.dcu', 188, 1CA946E8E38B578
+'Delphi 4\madListHardware.dcu', 1829, 1CA946E8DA4E3AC
+'Delphi 4\madListModules.dcu', ACD, 1CA946E8DA74606
+'Delphi 4\madListProcesses.dcu', 19B9, 1CA946E8DA74606
+'Delphi 4\madMapFile.dcu', 8D71, 1CA946E8E2CC9B6
+'Delphi 4\madNVAssistant.dcu', DAC0, 1CA946E8E318E6A
+'Delphi 4\madNVBitmap.dcu', 5276, 1CA946E8E2F2C10
+'Delphi 4\madNVPrgrAlert.dcu', 2A97, 1CA946E8E25A2A8
+'Delphi 4\madStackTrace.dcu', 70ED, 1CA946E8E2F2C10
+'Delphi 5\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Delphi 5\madDumpObj.dcu', 14C2, 1CA946EA251C824
+'Delphi 5\madExcept.dcu', 57C20, 1CA946EA24F65CA
+'Delphi 5\madExceptIde_.bpl', 7800, 1CA946EA2F64A66
+'Delphi 5\madExceptVcl.dcu', CF8, 1CA946EA270C6B6
+'Delphi 5\madExceptVcl_.bpl', 3C00, 1CA946EA2D9AE2E
+'Delphi 5\madExceptVcl_.dcp', 1651, 1CA946EA2758B6A
+'Delphi 5\madExceptWizard_.bpl', 75200, 1CA946EA3023628
+'Delphi 5\madExcept_.bpl', 56200, 1CA946EA2C8FDB8
+'Delphi 5\madExcept_.dcp', 57A13, 1CA946EA25DB3E6
+'Delphi 5\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'Delphi 5\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'Delphi 5\madLinkDisAsm.dcu', 18C, 1CA946EA24F65CA
+'Delphi 5\madListHardware.dcu', 19B3, 1CA946EA24F65CA
+'Delphi 5\madListModules.dcu', BAA, 1CA946EA24F65CA
+'Delphi 5\madListProcesses.dcu', 1B6A, 1CA946EA24F65CA
+'Delphi 5\madMapFile.dcu', 9FEC, 1CA946EA23C52FA
+'Delphi 5\madNVAssistant.dcu', F193, 1CA946EA2437A08
+'Delphi 5\madNVBitmap.dcu', 5A80, 1CA946EA23EB554
+'Delphi 5\madNVPrgrAlert.dcu', 2FD1, 1CA946EA23C52FA
+'Delphi 5\madStackTrace.dcu', 8088, 1CA946EA23EB554
+'Delphi 6\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Delphi 6\madDumpObj.dcu', 1651, 1CA946EAA817B2A
+'Delphi 6\madExcept.dcu', 57F11, 1CA946EAA7F18D0
+'Delphi 6\madExceptIde_.bpl', 7800, 1CA946EAAF3EC0A
+'Delphi 6\madExceptVcl.dcu', CF9, 1CA946EAA948DFA
+'Delphi 6\madExceptVcl_.bpl', 3C00, 1CA946EAAD9B22C
+'Delphi 6\madExceptVcl_.dcp', 16E3, 1CA946EAA96F054
+'Delphi 6\madExceptWizard_.bpl', 6A000, 1CA946EAB023A26
+'Delphi 6\madExcept_.bpl', 50400, 1CA946EAACDC66A
+'Delphi 6\madExcept_.dcp', 58480, 1CA946EAA863FDE
+'Delphi 6\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'Delphi 6\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'Delphi 6\madLinkDisAsm.dcu', 18C, 1CA946EAA7F18D0
+'Delphi 6\madListHardware.dcu', 19E1, 1CA946EAA7F18D0
+'Delphi 6\madListModules.dcu', BC2, 1CA946EAA7F18D0
+'Delphi 6\madListProcesses.dcu', 1B82, 1CA946EAA7F18D0
+'Delphi 6\madMapFile.dcu', A04B, 1CA946EAA732D0E
+'Delphi 6\madNVAssistant.dcu', F220, 1CA946EAA77F1C2
+'Delphi 6\madNVBitmap.dcu', 5ABF, 1CA946EAA758F68
+'Delphi 6\madNVPrgrAlert.dcu', 3029, 1CA946EAA732D0E
+'Delphi 6\madStackTrace.dcu', 812A, 1CA946EAA758F68
+'Demos\ConfForm.dfm', 2E1, 1C28F1EC06DB000
+'Demos\ConfForm.pas', B0F, 1C323060197B000
+'Demos\EC.bdsproj', 2033, 1C54CE56ECBD100
+'Demos\EC.DPR', 1D9, 1C5ACE93F57C000
+'Demos\EC.MES', 1A9B, 1C5ACE93F57C000
+'Demos\ecCrashParam.pas', 7E0, 1C8F62F985A2700
+'Demos\ecDll.pas', 1E2, 1C31D4D98380000
+'Demos\ecMain.dfm', 1A41, 1C298A41B4EC200
+'Demos\ecMain.pas', 2B99, 1C8F62C0E5C8F00
+'Demos\ecMini.pas', 3CA, 1C29887352DDC00
+'Demos\ecStrings.pas', 550D, 1C981F8E1FB8700
+'Demos\ExcCatch.bdsproj', 2039, 1C4A934C616E800
+'Demos\ExcCatch.dpr', 373, 1C5ACE95AC2CB00
+'Demos\ExcCatch.mes', 1A9A, 1C5ACE95AC2CB00
+'Demos\madExcept.res', 4C4, 1C321F0B5A71700
+'Demos\TraceConf.bdsproj', 203A, 1C4A93564A34900
+'Demos\TraceConf.dpr', 151, 1C5ACE96DD59B00
+'Demos\TraceConf.htm', 775, 1C28F1F64EFF200
+'Demos\TraceConf.mes', 1A9B, 1C5ACE98F368700
+'Help\Content.htm', 6CF, 1C4C4E8DFD5BD00
+'Help\madExcept.htm', 6D3, 1C4C4E91B708700
+'Sources\asInvoker.res', 19C, 1C839B5D7993528
+'Sources\mad.inc', 1C1, 1C7D2C7F10D1FC4
+'Sources\madCompileBugReport.dpr', 3BAC, 1C98DF1F1CABC00
+'Sources\madDumpObj.pas', 1AB7, 1CA360233BD8B98
+'Sources\madExcept.pas', 96B92, 1CA8FAC4004DB8C
+'Sources\madExcept.res', 4C4, 1C1BAD73DC2DC00
+'Sources\madExceptBitmaps.res', 970C, 1C5A3E813366800
+'Sources\madExceptIde.pas', 332, 1C53952B06D9400
+'Sources\madExceptIde_.dpk', 262, 1C53958B9616400
+'Sources\madExceptPatch.dpr', 24BF, 1CA0A06D8A213A4
+'Sources\madExceptPatcher.pas', 20C35, 1CA480C14D82F00
+'Sources\madExceptVcl.pas', 1011, 1C5897836E53900
+'Sources\madExceptVcl_.dpk', 272, 1C4B6C8C222EE00
+'Sources\madExceptVcl_.res', 1F0, 1C322C200449400
+'Sources\madExceptWizard.dfm', 19303, 1C6778101200500
+'Sources\madExceptWizard.pas', 38FF0, 1CA362629AFE672
+'Sources\madExceptWizard_.dpk', 4B8, 1CA36264133F824
+'Sources\madExceptWizard_.res', BE38, 1C5895DF973B200
+'Sources\madExcept_.dpk', 3E5, 1CA8FAC61420446
+'Sources\madIWSupport.cpp', 165E, 1CA09F69F856AEA
+'Sources\madIWSupport.dfm', 1C4, 1C402F9428F0D00
+'Sources\madIWSupport.h', 8F3, 1CA09F6B92B771E
+'Sources\madIWSupport.pas', 17F6, 1CA09F71BE63808
+'Sources\madLinkDisAsm.pas', 531, 1C332645626AF00
+'Sources\madListHardware.pas', 2202, 1C98AE712D3530C
+'Sources\madListModules.pas', DC0, 1C98AE72241EB96
+'Sources\madListProcesses.pas', 28B1, 1CA36024CCB014C
+'Sources\madMapFile.pas', 12EEE, 1CA4688DD64BD06
+'Sources\madNVAssistant.pas', 134D6, 1C98C9481DB177C
+'Sources\madNVBitmap.pas', A44E, 1C98AE764AB8C94
+'Sources\madNVPrgrAlert.pas', 3A67, 1C98C9487A14974
+'Sources\madPluginMan.dpr', 2F4C, 1C8564E0DDBB700
+'Sources\madSideTabs.pas', 2F6A, 1C5BC8F8BB27200
+'Sources\madStackTrace.pas', 15FFB, 1C98AE7860EDAEE
+'Sources\madTestMailAPIs.dpr', 147, 1C42563A09F4900
+'Sources\madTraceProcess.dpr', 43A6, 1C906ABEBAE1B00
+'Sources\MAILTEST.dfm', 10C9, 1C4AA37242BF400
+'Sources\MAILTEST.PAS', 9C3D, 1C981F772D16300
+'Sources\meAddComp.dfm', 4E8, 1C584C0073DB900
+'Sources\meAddComp.pas', 11BE, 1C98AE799A269EA
+'Sources\meEditAssis.dfm', 51B, 1C58959B57EAE00
+'Sources\meEditAssis.pas', 1125, 1C98AE7A6BA9436
+'Sources\meEditAttach.dfm', 522, 1C7602122F4BC00
+'Sources\meEditAttach.pas', 130E, 1C98AE7B30CDB54
+'Sources\meGlobalCfg.dfm', C8D, 1C589792C776F00
+'Sources\meGlobalCfg.pas', 1324, 1C5897997C14100
+'Tools\madCompileBugReport.exe', 706A0, 1CA946E94A369B2
+'Tools\madExceptPatch.exe', 7FC98, 1CA946E90C39772
+'Tools\madExceptViewer.exe (download).url', 79, 1C4AA3A4ECB7C00
+'Tools\madPluginMan.exe', 69898, 1CA946E95F859F8
+'Tools\madTestMailAPIs.exe', B2098, 1CA946E934E796C
+'Tools\madTraceProcess.exe', D8498, 1CA946E91F726CC
+'Tools\README.TXT', A6F, 1C5C2F45263AD00
+'www.madshi.net.url', 59, 1BFE9B9B71CC200

@@ -1,0 +1,38 @@
+package EntComD5;
+
+{$R *.RES}
+{$R 'Enterprise_TLB.dcr'}
+{$R '..\EntCustom.dcr'}
+{$ALIGN OFF}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA OFF}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Exchequer Delphi 5.0 COM Customisation Client'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl50;
+
+contains
+  EnterpriseEvents in 'EnterpriseEvents.pas',
+  Enterprise_TLB in 'Enterprise_TLB.pas',
+  EntCustom in '..\EntCustom.pas';
+
+end.

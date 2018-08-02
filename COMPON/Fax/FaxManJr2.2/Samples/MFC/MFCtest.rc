@@ -1,0 +1,263 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""MFCtest.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "MFCtest.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MFCTEST_DIALOG DIALOGEX 0, 0, 184, 206
+STYLE DS_SETFONT | DS_3DLOOK | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+CAPTION "MFC Sample FaxMan Jr Test App."
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_EBFILE,52,4,128,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&File",IDC_CBFILE,4,4,44,12
+    EDITTEXT        IDC_EBNUMBER,52,20,128,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EBDEVICE,52,36,128,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Device",IDC_CBDEVICE,4,37,44,12
+    DEFPUSHBUTTON   "&Send",IDC_CBSEND,52,54,53,18
+    PUSHBUTTON      "&Receive",IDC_CBRECEIVE,109,54,53,18
+    PUSHBUTTON      "&Options \\/",IDC_CBOPTIONS,4,54,44,18
+    COMBOBOX        IDC_CMBCHOICE,4,78,67,89,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CMBOPTION,73,78,107,62,CBS_DROPDOWNLIST | NOT 
+                    WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Button1",IDC_CBOPTION,77,79,56,11,NOT WS_VISIBLE
+    CTEXT           "Number",IDC_STATIC,4,21,34,11,SS_CENTERIMAGE
+    CONTROL         "",IDC_FJ1,"{07728B50-6223-11D2-BA57-00002149093D}",NOT 
+                    WS_VISIBLE,149,150,21,20
+    CONTROL         "",IDC_FF1,"{A5929EC5-74CF-11D2-BA5E-00002149093D}",NOT 
+                    WS_VISIBLE,150,174,21,20
+    LISTBOX         IDC_LBOUT,4,96,176,106,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EBOPTION,73,78,107,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_FMPRINTER1,"{CE1191A2-543E-4E06-A9D1-ADCBFCD5D368}",
+                    WS_TABSTOP,147,121,25,26
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,20,0,0
+ PRODUCTVERSION 2,20,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "MFCtest MFC Application"
+            VALUE "FileVersion", "2.20\0"
+            VALUE "InternalName", "MFCtest"
+            VALUE "LegalCopyright", "Copyright (C) 1999"
+            VALUE "OriginalFilename", "MFCtest.EXE"
+            VALUE "ProductName", "MFCtest Application"
+            VALUE "ProductVersion", "2.20\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MFCTEST_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 180
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 202
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MFCTEST_DIALOG DLGINIT
+BEGIN
+    IDC_CMBCHOICE, 0x403, 6, 0
+0x6c43, 0x7361, 0x0073, 
+    IDC_CMBCHOICE, 0x403, 12, 0
+0x6544, 0x6976, 0x6563, 0x4920, 0x696e, 0x0074, 
+    IDC_CMBCHOICE, 0x403, 13, 0
+0x6544, 0x6976, 0x6563, 0x5220, 0x7365, 0x7465, "\000" 
+    IDC_CMBCHOICE, 0x403, 11, 0
+0x6146, 0x2078, 0x6142, 0x6e6e, 0x7265, "\000" 
+    IDC_CMBCHOICE, 0x403, 13, 0
+0x6146, 0x2078, 0x6f43, 0x6d6d, 0x6e65, 0x7374, "\000" 
+    IDC_CMBCHOICE, 0x403, 12, 0
+0x6146, 0x2078, 0x6f43, 0x706d, 0x6e61, 0x0079, 
+    IDC_CMBCHOICE, 0x403, 15, 0
+0x6146, 0x2078, 0x6f43, 0x6576, 0x2072, 0x6150, 0x6567, "\000" 
+    IDC_CMBCHOICE, 0x403, 9, 0
+0x6146, 0x2078, 0x614e, 0x656d, "\000" 
+    IDC_CMBCHOICE, 0x403, 15, 0
+0x6146, 0x2078, 0x6552, 0x6f73, 0x756c, 0x6974, 0x6e6f, "\000" 
+    IDC_CMBCHOICE, 0x403, 12, 0
+0x6146, 0x2078, 0x7553, 0x6a62, 0x6365, 0x0074, 
+    IDC_CMBCHOICE, 0x403, 14, 0
+0x6146, 0x2078, 0x7355, 0x7265, 0x4420, 0x7461, 0x0061, 
+    IDC_CMBCHOICE, 0x403, 13, 0
+0x6d49, 0x6f70, 0x7472, 0x4620, 0x6c69, 0x7365, "\000" 
+    IDC_CMBCHOICE, 0x403, 9, 0
+0x6f4c, 0x6163, 0x206c, 0x6449, "\000" 
+    IDC_CMBCHOICE, 0x403, 12, 0
+0x6552, 0x6563, 0x7669, 0x2065, 0x6944, 0x0072, 
+    IDC_CMBCHOICE, 0x403, 11, 0
+0x6143, 0x636e, 0x6c65, 0x4620, 0x7861, "\000" 
+    IDC_CMBCHOICE, 0x403, 13, 0
+0x7355, 0x7265, 0x4320, 0x6d6f, 0x6170, 0x796e, "\000" 
+    IDC_CMBCHOICE, 0x403, 16, 0
+0x7355, 0x7265, 0x4620, 0x7861, 0x4e20, 0x6d75, 0x6562, 0x0072, 
+    IDC_CMBCHOICE, 0x403, 10, 0
+0x7355, 0x7265, 0x4e20, 0x6d61, 0x0065, 
+    IDC_CMBCHOICE, 0x403, 16, 0
+0x7355, 0x7265, 0x5620, 0x696f, 0x6563, 0x4e20, 0x6d75, 0x002e, 
+    IDC_CMBCHOICE, 0x403, 9, 0
+0x6956, 0x7765, 0x4620, 0x7861, "\000" 
+    IDC_CMBCHOICE, 0x403, 15, 0
+0x6544, 0x7562, 0x2067, 0x6f4c, 0x2067, 0x6946, 0x656c, "\000" 
+    IDC_CMBCHOICE, 0x403, 7, 0
+0x694c, 0x7473, 0x6e65, "\000" 
+    IDC_CMBCHOICE, 0x403, 9, 0
+0x654d, 0x7373, 0x6761, 0x7365, "\000" 
+    IDC_FJ1, 0x376, 134, 0
+0x0000, 0x0000, 0x0710, 0x0000, 0x13d8, 0x0000, 0x13d8, 0x0000, 0x0008, 
+0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 
+0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 
+0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 
+0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 
+0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0002, 0x0001, 0x0003, 0x0001, 
+0x0000, 0x0008, 0x0000, 0x0000, 0x0008, 0x0000, 0x0000, 0x0003, 0x0001, 
+0x0000, 0x0008, 0x0000, 0x0000, 
+    IDC_FF1, 0x376, 16, 0
+0x0000, 0x0000, 0x0710, 0x0000, 0x13d8, 0x0000, 0x13d8, 0x0000, 
+    IDC_FMPRINTER1, 0x376, 92, 0
+0x0011, 0x0000, 0x0046, 0x006d, 0x0050, 0x0072, 0x0069, 0x006e, 0x0074, 
+0x0065, 0x0072, 0x0020, 0x006c, 0x0069, 0x0063, 0x0065, 0x006e, 0x0073, 
+0x0065, 0x0710, 0x0000, 0x034f, 0x0000, 0x034f, 0x0000, 0x0008, 0x0024, 
+0x0000, 0x006d, 0x0073, 0x0064, 0x0065, 0x0076, 0x0020, 0x0046, 0x0061, 
+0x0078, 0x0020, 0x0050, 0x0072, 0x0069, 0x006e, 0x0074, 0x0065, 0x0072, 
+0x0000, 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "MFCtest.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

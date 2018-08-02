@@ -1,0 +1,14 @@
+package RVCLS40;
+
+{$DESCRIPTION 'Rave 4.0 Standard Components'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, RVCL40;
+
+contains
+  RVCsStd,
+  RVPEImg,
+  RVPEMail;
+
+end.

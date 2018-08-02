@@ -1,0 +1,70 @@
+eBusiness Export Module Version History
+
+
+b431.103
+--------
+Recompiled for Long filename support
+
+
+b431.104
+--------
+Changed "Close" shortcut key on export manager to avoid clashes.
+
+
+b431.105
+--------
+Fixed bug where exporting updated records in XML did not work.
+
+
+b431.106
+--------
+Fixed bug in Stock tree traversal. For both XML and CSV,  empty groups were exporting records from another group.
+
+
+b431.107
+--------
+Company code added into the Company combo.
+A "Save" button has been added to the Export wizard, when editing Export Jobs.
+Fixed CloseFile error on export timer.
+Added Command Line to run after export job.
+FTP Log Viewer Added.
+
+
+b431.108 (11/04/2001)
+---------------------
+Export Wizard now warns if a command line file is not found.
+Locking files are now created in the same dir as the export files (oops !)
+
+
+v4.32.109 (17/04/2001)
+----------------------
+New Version Number !
+
+
+v4.32.110 (23/04/2001)
+----------------------
+Executed Command only gets run once now per export.
+Taken out check for filename exists on command line.
+Support for long filenames, and a browse button, on command line added.
+
+
+v4.32.111 (25/04/2001)
+----------------------
+Long Filenames in the directories now get converted to short if too long, and a warning is shown if they are still too long.
+
+
+v4.32.113 (16/08/2001)
+----------------------
+Fixed Bug on Exporting "other" transactions to CSV.
+
+
+v4.32.115 (16/08/2001)
+----------------------
+Fixed Version numbering in XML (from 4.31 to 4.32).
+
+
+v4.32.116 (16/08/2001)
+----------------------
+Fixed Access Violation on Exporting CSV with Header line to 1 file.
+
+

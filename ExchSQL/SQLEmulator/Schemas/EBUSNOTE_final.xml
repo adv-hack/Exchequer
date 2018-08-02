@@ -1,0 +1,48 @@
+<schemarecord version="2" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="283"  >
+	<recordfields>
+		<schemafield fieldname="fixed" fullfieldname="fixed" typename="EbusNote_FIXED" size="0" elements="1" id="-1" columnname="" />
+		<schemafield fieldname="var" fullfieldname="var" typename="EbusNote_VAR" size="0" elements="1" id="-1" columnname="" />
+	</recordfields>
+	<fixedfields>
+		<schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix"/>
+		<schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+		<schemafield fieldname="note_no" fullfieldname="note_no" typename="DelphiEmbeddedCaseSensitiveString" size="13" elements="1" id="-1" columnname="NoteNo"/>
+		<schemafield fieldname="note_date" fullfieldname="note_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="NoteDate"/>
+		<schemafield fieldname="spare3" fullfieldname="spare3" typename="BYTE" size="1" elements="1" id="-1" columnname="Spare3"/>
+		<schemafield fieldname="ebusnote_code1" fullfieldname="ebusNote_code1" typename="DelphiEmbeddedCaseSensitiveString" size="12" elements="1" id="-1" columnname="EbusNote_Code1"/>	
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes>
+		<recordtype name="NotesTypeND" id="0" stringid="ND" >			
+			<schemafields>				
+				<schemafield fieldname="note_folio" fullfieldname="note_folio" typename="DelphiEmbeddedCaseSensitiveString" size="11" elements="1" id="0" columnname="NoteFolio"  />
+				<schemafield fieldname="n_type" fullfieldname="n_type" typename="char" size="1" elements="1" id="0" columnname="NType"  />
+				<schemafield fieldname="spare1" fullfieldname="spare1" typename="binary" size="2" elements="1" id="0" columnname="Spare1"  />
+				<schemafield fieldname="line_no" fullfieldname="line_no" typename="long" size="4" elements="1" id="0" columnname="LineNumber"/>
+				<schemafield fieldname="note_line" fullfieldname="note_line" typename="DelphiString" size="101" elements="1" id="0" columnname="NoteLine"  />
+				<schemafield fieldname="note_user" fullfieldname="note_user" typename="DelphiString" size="11" elements="1" id="0" columnname="NoteUser"  />
+				<schemafield fieldname="tmp_imp_code" fullfieldname="tmp_imp_code" typename="DelphiString" size="17" elements="1" id="0" columnname="TmpImpCode"  />
+				<schemafield fieldname="show_date" fullfieldname="show_date" typename="bool1" size="1" elements="1" id="0" columnname="ShowDate"/>
+				<schemafield fieldname="repeat_no" fullfieldname="repeat_no" typename="int16" size="2" elements="1" id="0" columnname="RepeatNo"/>
+				<schemafield fieldname="note_for" fullfieldname="note_for" typename="DelphiString" size="11" elements="1" id="0" columnname="NoteFor"  />
+			</schemafields>
+		</recordtype>		
+	</recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="NoteNoComputed">note_no</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="ebusnotecode1Computed">ebusnote_code1</item>				
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

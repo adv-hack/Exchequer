@@ -1,0 +1,71 @@
+Document Type: WSE
+item: Global
+  Version=7.041
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Ready.wse - Ready to install dialog
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_CURRENT
+  Value=900
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=%DLG_CURRENT%
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_BACK
+  Value=100
+end
+item: Set Variable
+  Variable=DLG_FWD
+  Value=950
+end
+item: Remark
+end
+item: Remark
+  Text=....Display Ready to Install Dialog
+end
+item: Call DLL Function
+  Pathname=%INST%\TCMSETUP.DLL
+  Function Name=ShowReady
+  Return Variable=0
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PREVDIALOG
+  Value=%DLG_CURRENT%
+end
+item: Remark
+end

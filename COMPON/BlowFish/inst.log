@@ -1,0 +1,20 @@
+dir,d:\Program Files\BlowFishDemo\examples\
+dir,d:\Program Files\BlowFishDemo\examples\delphi\
+dir,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\blowtest.cfg
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\blowtest.dof
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\blowtest.dpr
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\blowtest.dsk
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\blowtest.res
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\frmctest.dcu
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\frmctest.ddp
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\frmctest.dfm
+file,d:\Program Files\BlowFishDemo\examples\delphi\blowtest\frmctest.pas
+file,d:\Program Files\BlowFishDemo\blowfish.cnt
+file,d:\Program Files\BlowFishDemo\blowfish.hlp
+file,d:\Program Files\BlowFishDemo\changes.txt
+dir,d:\Program Files\BlowFishDemo\delphi6\
+file,d:\Program Files\BlowFishDemo\delphi6\blowfish.dcr
+file,d:\Program Files\BlowFishDemo\delphi6\blowfish.dcu
+file,d:\Program Files\BlowFishDemo\delphi6\d6_blow.bpl
+registry,\Software\Borland\Delphi\6.0\Library,$(DELPHI)\Lib;$(DELPHI)\Bin;$(DELPHI)\Imports;$(DELPHI)\Projects\Bpl;X:\ENTRPRSE\FUNCS;x:\compon\rave4\d6,$(DELPHI)\Lib;$(DELPHI)\Bin;$(DELPHI)\Imports;$(DELPHI)\Projects\Bpl;X:\ENTRPRSE\FUNCS;x:\compon\rave4\d6;d:\Program Files\BlowFishDemo\delphi6,d:\Program Files\BlowFishDemo\delphi6

@@ -1,0 +1,13 @@
+/********************************************************************
+ * Async Professional: adsrmgr.rc                                    *
+ * Copyright (c) TurboPower Software Company 1996-2002              *
+ * All rights reserved.                                             *
+ ********************************************************************
+ * Terminal: Resource script for string resource manager            *
+ ********************************************************************/
+
+#ifdef win16
+ADSRMGR_STRINGS RCDATA ADSRMGR.S16 
+#else 
+ADSRMGR_STRINGS RCDATA ADSRMGR.S32 
+#endif 

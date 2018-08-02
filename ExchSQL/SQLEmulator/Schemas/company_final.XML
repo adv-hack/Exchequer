@@ -1,0 +1,103 @@
+<schemarecord version="3" tldformat="4" tldthreshold="0" recordfieldname="RecPFix" identitycol="PositionId" reclen="1536" >
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="COMPANY_FIXED" size="0" elements="1" id="-1" columnname="" />
+    <schemafield fieldname="var" fullfieldname="var" typename="COMPANY_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+    <schemafield fieldname="RecPFix" fullfieldname="RecPFix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix" />
+    <schemafield fieldname="Company_code1" fullfieldname="Company_code1" typename="DelphiEmbeddedCaseSensitiveString" size="7" elements="1" id="-1" columnname="CompanyCode1"/>
+    <schemafield fieldname="Company_code2" fullfieldname="Company_code2" typename="DelphiString" size="46" elements="1" id="-1" columnname="Company_code2" />
+    <schemafield fieldname="Company_code3" fullfieldname="Company_code3" typename="DelphiEmbeddedCaseSensitiveString" size="101" elements="1" id="-1" columnname="Company_code3" collation="1"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="CompanyDetRec" id="0" stringid="C">
+      <schemafields>
+        <schemafield fieldname="CompId" fullfieldname="CompId" typename="long" size="4" elements="1" id="0" columnname="CompId" />
+        <schemafield fieldname="CompDemoData" fullfieldname="CompDemoData" typename="bool1" size="1" elements="1" id="0" columnname="CompDemoData" />
+        <schemafield fieldname="CompExportToAnalytics" fullfieldname="CompExportToAnalytics" typename="bool1" size="1" elements="1" id="0" columnname="CompExportToAnalytics" />
+        <schemafield fieldname="CompSpare" fullfieldname="CompSpare" typename="binary" size="1353" elements="1" id="0" columnname="CompSpare" />
+        <schemafield fieldname="CompDemoSys" fullfieldname="CompDemoSys" typename="bool1" size="1" elements="1" id="0" columnname="CompDemoSys" />
+        <schemafield fieldname="CompTKUCount" fullfieldname="CompTKUCount" typename="int16" size="2" elements="1" id="0" columnname="CompTKUCount" />
+        <schemafield fieldname="CompTrdUCount" fullfieldname="CompTrdUCount" typename="int16" size="2" elements="1" id="0" columnname="CompTrdUCount" />
+        <schemafield fieldname="CompSysESN" fullfieldname="CompSysESN" typename="binary" size="8" elements="1" id="0" columnname="CompSysESN" />
+        <schemafield fieldname="CompModId" fullfieldname="CompModId" typename="long" size="4" elements="1" id="0" columnname="CompModId" />
+        <schemafield fieldname="CompModSynch" fullfieldname="CompModSynch" typename="BYTE" size="1" elements="1" id="0" columnname="CompModSynch" />
+        <schemafield fieldname="CompUCount" fullfieldname="CompUCount" typename="int16" size="2" elements="1" id="0" columnname="CompUCount" />
+        <schemafield fieldname="CompAnal" fullfieldname="CompAnal" typename="int16" size="2" elements="1" id="0" columnname="CompAnal" />
+      </schemafields>
+    </recordtype>	  
+    <recordtype name="CompanyOptions" id="1" stringid="S">
+      <schemafields>
+        <schemafield fieldname="OptPWord" fullfieldname="OptPWord" typename="binary" size="9" elements="1" id="0" columnname="OptPWord" />
+        <schemafield fieldname="OptBackup" fullfieldname="OptBackup" typename="DelphiString" size="201" elements="1" id="0" columnname="OptBackup" />
+        <schemafield fieldname="OptRestore" fullfieldname="OptRestore" typename="DelphiString" size="201" elements="1" id="0" columnname="OptRestore" />
+        <schemafield fieldname="OptHidePath" fullfieldname="OptHidePath" typename="bool1" size="1" elements="1" id="0" columnname="OptHidePath" />
+        <schemafield fieldname="OptHideBackup" fullfieldname="OptHideBackup" typename="bool1" size="1" elements="1" id="0" columnname="OptHideBackup" />
+        <schemafield fieldname="OptWin9xCmd" fullfieldname="OptWin9xCmd" typename="DelphiString" size="9" elements="1" id="0" columnname="OptWin9xCmd" />
+        <schemafield fieldname="OptWinNTCmd" fullfieldname="OptWinNTCmd" typename="DelphiString" size="9" elements="1" id="0" columnname="OptWinNTCmd" />
+        <schemafield fieldname="OptShowCheckUsr" fullfieldname="OptShowCheckUsr" typename="bool1" size="1" elements="1" id="0" columnname="OptShowCheckUsr" />
+        <schemafield fieldname="optSystemESN" fullfieldname="optSystemESN" typename="binary" size="8" elements="1" id="0" columnname="optSystemESN" />
+        <schemafield fieldname="OptSecurity" fullfieldname="OptSecurity" typename="binary" size="427" elements="1" id="0" columnname="OptSecurity" />
+        <schemafield fieldname="OptShowExch" fullfieldname="OptShowExch" typename="bool1" size="1" elements="1" id="0" columnname="OptShowExch" />
+        <schemafield fieldname="OptBureauModule" fullfieldname="OptBureauModule" typename="bool1" size="1" elements="1" id="0" columnname="OptBureauModule" />
+        <schemafield fieldname="OptBureauAdminPWord" fullfieldname="OptBureauAdminPWord" typename="binary" size="11" elements="1" id="0" columnname="OptBureauAdminPWord" />
+        <schemafield fieldname="OptShowViewCompany" fullfieldname="OptShowViewCompany" typename="bool1" size="1" elements="1" id="0" columnname="OptShowViewCompany" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="UserCountXRefTypeU" id="2" stringid="U">
+      <schemafields>
+        <schemafield fieldname="ucCompanyId" fullfieldname="ucCompanyId" typename="long" size="4" elements="1" id="0" columnname="ucCompanyId" />
+        <schemafield fieldname="ucWStationId" fullfieldname="ucWStationId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucWStationId" />
+        <schemafield fieldname="ucUserId" fullfieldname="ucUserId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucUserId" />
+        <schemafield fieldname="ucRefCount" fullfieldname="ucRefCount" typename="int16" size="2" elements="1" id="0" columnname="ucRefCount" />
+      </schemafields>
+    </recordtype>
+      <recordtype name="UserCountXRefTypeT" id="3" stringid="T">
+        <schemafields>
+          <schemafield fieldname="ucCompanyId" fullfieldname="ucCompanyId" typename="long" size="4" elements="1" id="0" columnname="ucCompanyId" />
+          <schemafield fieldname="ucWStationId" fullfieldname="ucWStationId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucWStationId" />
+          <schemafield fieldname="ucUserId" fullfieldname="ucUserId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucUserId" />
+          <schemafield fieldname="ucRefCount" fullfieldname="ucRefCount" typename="int16" size="2" elements="1" id="0" columnname="ucRefCount" />
+        </schemafields>
+    </recordtype>
+    <recordtype name="UserCountXRefTypeR" id="4" stringid="R">
+      <schemafields>
+        <schemafield fieldname="ucCompanyId" fullfieldname="ucCompanyId" typename="long" size="4" elements="1" id="0" columnname="ucCompanyId" />
+        <schemafield fieldname="ucWStationId" fullfieldname="ucWStationId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucWStationId" />
+        <schemafield fieldname="ucUserId" fullfieldname="ucUserId" typename="DelphiString" size="41" elements="1" id="0" columnname="ucUserId" />
+        <schemafield fieldname="ucRefCount" fullfieldname="ucRefCount" typename="int16" size="2" elements="1" id="0" columnname="ucRefCount" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="HookSecurityRecType" id="5" stringid="H">
+      <schemafields>
+        <schemafield fieldname="hkId" fullfieldname="hkId" typename="DelphiString" size="17" elements="1" id="0" columnname="hkId" />
+        <schemafield fieldname="hkSecCode" fullfieldname="hkSecCode" typename="DelphiString" size="17" elements="1" id="0" columnname="hkSecCode" />
+        <schemafield fieldname="hkDesc" fullfieldname="hkDesc" typename="DelphiString" size="101" elements="1" id="0" columnname="hkDesc" />
+        <schemafield fieldname="hkStuff" fullfieldname="hkStuff" typename="binary" size="34" elements="1" id="0" columnname="hkStuff" />
+        <schemafield fieldname="hkMessage" fullfieldname="hkMessage" typename="DelphiString" size="101" elements="1" id="0" columnname="hkMessage" />
+        <schemafield fieldname="hkVersion" fullfieldname="hkVersion" typename="int16" size="2" elements="1" id="0" columnname="hkVersion" />
+        <schemafield fieldname="hkEncryptedCode" fullfieldname="hkEncryptedCode" typename="DelphiEmbeddedCaseSensitiveString" size="17" elements="1" id="0" columnname="hkEncryptedCode"/>
+      </schemafields>
+    </recordtype>
+	  <recordtype name="AccessControlType" id="6" stringid="A">
+		  <schemafields>
+			  <schemafield fieldname="acSystemId" fullfieldname="acSystemId" typename="char" size="1" elements="1" id="0" columnname="acSystemId" />
+		  </schemafields>
+	  </recordtype>
+  </recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="1">
+      <indexfields>
+        <item>RecPFix</item>
+        <item computedcolumnname="CompanyCode1Computed">Company_code1</item>
+      </indexfields>
+    </schemaindexes>
+  <schemaindexes indexnumber="1" isclustered="0" isunique="1">
+	  <indexfields>
+		  <item>RecPFix</item>
+      <item computedcolumnname="CompanyCode3Computed">Company_code3</item>
+	  </indexfields>
+  </schemaindexes>
+  </indexes>
+</schemarecord>

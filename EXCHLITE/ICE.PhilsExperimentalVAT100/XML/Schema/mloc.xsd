@@ -1,0 +1,83 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:mloc"
+            targetNamespace="urn:www-iris-co-uk:mloc" >
+            
+  <xsd:complexType name="loaddr">
+    <xsd:sequence>
+      <xsd:element name='loaddr1' type='xsd:string'/>
+      <xsd:element name='loaddr2' type='xsd:string'/>
+      <xsd:element name='loaddr3' type='xsd:string'/>
+      <xsd:element name='loaddr4' type='xsd:string'/>
+      <xsd:element name='loaddr5' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="lonominal">
+    <xsd:sequence>
+      <xsd:element name='lonominal1' type='xsd:integer'/>
+      <xsd:element name='lonominal2' type='xsd:integer'/>
+      <xsd:element name='lonominal3' type='xsd:integer'/>
+      <xsd:element name='lonominal4' type='xsd:integer'/>
+      <xsd:element name='lonominal5' type='xsd:integer'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="mlocrec">
+    <xsd:sequence>
+      <xsd:element name='locode' type='xsd:string'/>
+      <xsd:element name='loname' type='xsd:string'/>
+      <xsd:element name='loaddr' type='tns:loaddr' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='lotel' type='xsd:string'/>
+      <xsd:element name='lofax' type='xsd:string'/>
+      <xsd:element name='loemail' type='xsd:string'/>
+      <xsd:element name='lomodem' type='xsd:string'/>
+      <xsd:element name='locontact' type='xsd:string'/>
+      <xsd:element name='locurrency' type='xsd:integer'/>
+      <xsd:element name='loarea' type='xsd:string'/>
+      <xsd:element name='lorep' type='xsd:string'/>
+      <xsd:element name='lotag' type='tns:boolean2'/>
+      <xsd:element name='lonominal' type='tns:lonominal' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='locc' type='xsd:string'/>
+      <xsd:element name='lodep' type='xsd:string'/>
+      <xsd:element name='louseprice' type='tns:boolean2'/>
+      <xsd:element name='lousenom' type='tns:boolean2'/>
+      <xsd:element name='louseccdep' type='tns:boolean2'/>
+      <xsd:element name='lousesupp' type='tns:boolean2'/>
+      <xsd:element name='lousebinloc' type='tns:boolean2'/>
+      <xsd:element name='lonlinecount' type='xsd:integer'/>
+      <xsd:element name='lousecprice' type='tns:boolean2'/>
+      <xsd:element name='louserprice' type='tns:boolean2'/>
+      <xsd:element name='lowopwipgl' type='xsd:integer'/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='mlocrec' type='tns:mlocrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='mloc'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='mloc' type='tns:mloc'/>
+
+</xsd:schema>

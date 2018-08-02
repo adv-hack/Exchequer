@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:notes xmlns:val="urn:www-iris-co-uk:notes">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <notesrec>
+           <notesort/>   <!--:  String[3];   { ACC/STK/DOC } -->
+           <notetype/>   <!--:  Char;        { 1=General 2=Dated Notes } -->
+           <notecode/>   <!--:  String[16];  { Account Code/Stock Code/Doc. No. } -->
+           <notedate/>   <!--:  String[8];   { Optional Date for Note line (YYYYMMDD) }-->
+           <alarmdate/>  <!--:  String[8];   { Optional Date for Alarm (YYYYMMDD) } -->
+           <alarmset/>   <!--:  Char;        { Set Alarm Y/N - Optional } -->
+           <lineno/>     <!--:  SmallInt;    { Notes Line No. } -->
+           <user/>       <!--:  String[8];   { User/Login Code }-->
+           <noteline><![CDATA[]]></noteline>   <!--:  String[65];  { Note Line Content } -->
+           <repeatdays/> <!--:  SmallInt;    { Repeat every xx Days } -->
+           <notefor/>    <!--:  String[10];  { Notes For valid user name in Enterprise } -->
+         </notesrec>
+    </message>
+</val:notes>

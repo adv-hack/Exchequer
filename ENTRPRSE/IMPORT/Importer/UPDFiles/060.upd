@@ -1,0 +1,5 @@
+[Version]
+Version=5.70.064.060
+
+[Customer]
+F082=CU.SOPConsHO                 1321    I 0002 O X Head Office                                        default=0                                                                                                    comment=0=N, 1=Y

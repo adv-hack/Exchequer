@@ -1,0 +1,245 @@
+object FrmSettlement: TFrmSettlement
+  Left = 379
+  Top = 308
+  HelpContext = 12
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Settlement Discount'
+  ClientHeight = 131
+  ClientWidth = 244
+  Color = clNavy
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Arial Narrow'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  Scaled = False
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Label1: TLabel
+    Left = 8
+    Top = 20
+    Width = 108
+    Height = 16
+    Caption = 'Settlement Discount'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Shape1: TShape
+    Left = 124
+    Top = 16
+    Width = 3
+    Height = 61
+    Pen.Style = psClear
+  end
+  object Label2: TLabel
+    Left = 221
+    Top = 18
+    Width = 12
+    Height = 20
+    Caption = '%'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label3: TLabel
+    Left = 30
+    Top = 52
+    Width = 86
+    Height = 16
+    Caption = 'Settlement Days'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object edSettlement: TCurrencyEdit
+    Left = 136
+    Top = 16
+    Width = 80
+    Height = 25
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'ARIAL'
+    Font.Style = []
+    Lines.Strings = (
+      '0.00 ')
+    MaxLength = 6
+    ParentFont = False
+    TabOrder = 0
+    WantReturns = False
+    WordWrap = False
+    AutoSize = False
+    BlankOnZero = False
+    DisplayFormat = '###,###,##0.00 ;###,###,##0.00-'
+    ShowCurrency = False
+    TextId = 0
+    Value = 1E-10
+  end
+  object btnOK: TIAeverButton
+    Left = 64
+    Top = 88
+    Width = 82
+    Height = 33
+    Caption = 'OK'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnOKClick
+    ButtonAngle = 1800
+    ButtonWidth = 82
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C0C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0C0C0C0000080000080C0C0C0000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080000080C0C0C000
+      0080000080000080000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080000080C0C0C0000080000080000080000080000080C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+  object btnCancel: TIAeverButton
+    Left = 152
+    Top = 88
+    Width = 81
+    Height = 33
+    Cancel = True
+    Caption = 'Cancel'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = [fsBold]
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 3
+    ButtonAngle = 1800
+    ButtonWidth = 81
+    ButtonHeight = 33
+    CaptionAngle = 0
+    ButtonKind = bkRoundRect
+    ButtonDepth = 4
+    MainBitmap.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      1800000000000003000000000000000000000000000000000000C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080C0C0C0C0C0C0C0C0C0C0C0C0000080
+      000080C0C0C0C0C0C0C0C0C0000080000080C0C0C0C0C0C0C0C0C00000800000
+      80C0C0C0C0C0C0C0C0C0C0C0C0000080000080000080000080C0C0C000008000
+      0080000080000080C0C0C0000080000080000080000080C0C0C0C0C0C0000080
+      000080000080000080C0C0C0000080000080000080000080C0C0C00000800000
+      80000080000080C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+      C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+    Transparent = True
+    BitmapHAlign = haNone
+    BitmapVAlign = vaNone
+    UserRGNAUTO = True
+    RotationPointX = 0
+    RotationPointY = 0
+    Rotated = False
+    CaptionFixed = False
+    GradientFixed = False
+    GradientBitmapLine = 0
+    Caption3dKind = ckPressed
+    RadiusRatio = 0.5
+    ArcAngle = 2.0943951023932
+  end
+  object edSettDiscDays: TCurrencyEdit
+    Left = 136
+    Top = 48
+    Width = 80
+    Height = 25
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'ARIAL'
+    Font.Style = []
+    Lines.Strings = (
+      '0.00 ')
+    MaxLength = 6
+    ParentFont = False
+    TabOrder = 1
+    WantReturns = False
+    WordWrap = False
+    AutoSize = False
+    BlankOnZero = False
+    DisplayFormat = '###,###,##0.00 ;###,###,##0.00-'
+    ShowCurrency = False
+    TextId = 0
+    Value = 1E-10
+  end
+end

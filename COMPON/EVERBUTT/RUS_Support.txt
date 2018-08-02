@@ -1,0 +1,11 @@
+//RUS_Description.txt - Описание компонента
+//RUS_Install.txt- Как инсталлировать компонент 
+//RUS_License.txt- Лицензия 
+//RUS_Support.txt- Информация о поддержке(этот файл)
+
+По вопросам мыльте             :andronovin@au.ru
+                                inandronov@usa.net
+
+Русским отвечу бесплатно.
+Остальных не беспокоиться...
+ 

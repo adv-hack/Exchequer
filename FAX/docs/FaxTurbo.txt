@@ -1,0 +1,61 @@
+Hello Mike, I would just like to describe to you the faxing problem that we are having with 
+Windows 2000, so that we are all straight on what we are looking at here.
+
+Firstly we have 3 programs involved in this operation
+
+	1. Enterprise - Our accounting system that the users sends the faxes from.
+	
+	2. Fax Client - An EXE that needs to be running all the time.
+	
+	3. Fax Sender - An EXE to send the faxes.
+
+The fax sender is normally on a separate machine on the network. Each user that wants
+to send faxes, must be running Enterprise and the Fax Client.
+
+
+The process that works fine on Windows 95 / 98 / NT machines is as follows :
+
+1. The User says "Send A Fax" in Enterprise
+2. A unique name for the print job is created (e.g. "00000A Enterprise Fax").
+3. The details of the fax job (The Name, the fax number, the Unique Job Name etc.) 
+are stored as a record in a database by Enterprise. 
+4. Enterprise says "Print this Job" - Passing in the Unique Job Name.
+
+5. The Fax Client will then leap into action, activated by the "OnDocStart" event of a
+"TApdFaxDriverInterface" component. 
+6. The Fax Client can then find the previously created database record using the Unique 
+Job Name which comes into the "OnDocStart" event as ApdFaxDriverInterface.DocName.
+7. A unique filename will now be calculated for the APF file (e.g. 00000007.APF), the
+ApdFaxDriverInterface.FileName will then be set to it, and the Unique Filename will be 
+held in the database against the record for this fax.
+
+8. After the printing is complete, we will now have the APF file where we want it, and an 
+entry in the database which matches the APF filename containing all the information we 
+need to send the fax.
+9. The Fax Sender now periodically polls the directory for new files, finds their entry in
+the database and sends each fax, using the details held in the database.
+
+Phew !
+
+Now, the problem occurs in Windows 2000 on step 6 of the above. What you will find is that
+Windows 2000 changes the names of the print jobs, even though we have specified the Unique
+Job Name that we want the job to be created as. This will then mean that on step 6, 
+ApdFaxDriverInterface.DocName will not be set to our Unique Job Name. It can therefore not 
+find the details of the fax in the database, because we use this Unique Job Name to find 
+the details. 
+This means that we cannot modify the database record to add in the Unique APF filename. So
+although we can get the APF filename created in the correct place, we have lost the link
+between the file and the database record, so the fax sender cannot find any faxes to send.
+
+Can you think of anything that we can do, to get around this problem ?
+
+A Suggested solution was to change the piece of code that fires the "OnDocStart" event to
+check another mechanism first. For instance, if before firing the event, you checked a 
+registy entry to get the new filename, then we could populate the registy entry before 
+printing each fax. If the registy entry exists it would not fire the event, if it did not 
+exist then the event would trigger as usual. What do you think ?
+
+If you have any queries regarding this matter, don't hesitate to contact me.
+
+Neil Frewer.
+

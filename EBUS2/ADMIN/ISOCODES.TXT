@@ -1,0 +1,309 @@
+AFA	Afghanistan, Afghani
+ALL	Albania, Lek
+DZD	Algeria, Algerian Dinar
+ESP	Amercian Samoa, Spanish Peseta
+USD	America (United States of America), US Dollar
+USD	American Samoa, US Dollar
+USD	American Virgin Islands, US Dollar
+FRF	Andorra, French Franc
+ESP	Andorra, Spanish Peseta
+AON	Angola, New Kwanza
+XCD	Anguilla, East Caribbean Dollar
+XCD	Antigua and Barbuda, East Caribbean Dollar
+ARP	Argentina, Peso
+AMD	Armenia, Dram
+AWF	Aruba, Florin
+ANG	Aruba, Netherlands Antilles Guilder
+AUD	Australia, Dollar
+ATS	Austria, Schilling
+AZM	Azerbaijan, Manat
+PTE	Azores, Portuguese Escudo
+BSD	Bahamas, Dollar
+BHD	Bahrain, Dinar
+ESP	Baleares (Balearic Islands), Spanish Peseta
+BDT	Bangladesh, Taka
+BBD	Barbados, Dollar
+XCD	Barbuda and Antigua, East Caribbean Dollar
+BYR	Belarus, Ruble
+BEF	Belgium, Franc
+BZD	Belize, Dollar
+XOF	Benin, CFA Franc BCEAO
+BMD	Bermuda, Dollar
+INR	Bhutan, Indian Rupee
+BTR	Bhutan, Rupee
+BOB	Bolivia, Boliviano
+ANG	Bonaire, Netherlands Antilles Guilder
+BAK	Bosnia and Herzegovina, Convertible Mark
+BWP	Botswana, Pula
+NOK	Bouvet Island, Norwegian Krone
+BRR	Brazil, Brazilian Real
+GBP	Britain (Great Britain), Pound Sterling
+USD	British Indian Ocean Territory, US Dollar
+USD	British Virgin Islands, US Dollar
+BND	Brunei Darussalam, Dollar
+BGL	Bulgaria, Lev
+XOF	Burkina Faso, CFA Franc BCEAO
+MMK	Burma (Myanmar), Kyat
+BIF	Burundi, Burundi Franc
+XOF	Côte D'Ivoire, CFA Franc BCEAO
+USD	Caicos and Turks Islands, US Dollar
+KHR	Cambodia, Riel
+XAF	Cameroon, CFA Franc BEAC
+CAD	Canada, Dollar
+ESP	Canary Islands, Spanish Peseta
+CVE	Cape Verde, Escudo
+KYD	Cayman Islands, Dollar
+XAF	Central African Republic, CFA Franc BEAC
+XAF	Chad, CFA Franc BEAC
+CLP	Chile, Peso
+CNY	China, Yuan Renminbi
+AUD	Christmas Island, Australian Dollar
+AUD	Cocos (Keeling) Islands, Australian Dollar
+COP	Colombia, Peso
+KMF	Comoros, Franc
+XAF	Congo, CFA Franc BEAC
+NZD	Cook Islands, New Zealand Dollar
+CRC	Costa Rica, Colon
+HRK	Croatia, Kuna
+CUP	Cuba, Peso
+ANG	Curaço, Netherlands Antilles Guilder
+CYP	Cyprus, Pound
+CSK	Czech Republic, Koruna
+DKK	Denmark, Krone
+DJF	Djibouti, Franc
+XCD	Dominica, East Caribbean Dollar
+DOP	Dominican Republic, Peso
+NLG	Dutch (The Netherlands) Guilder
+EUR	EMU (European Economic and Monetary Union), Euro
+XCD	East Caribbean Dollar
+IDR	East Timor, Indonesian Rupiah
+ECS	Ecuador, Sucre
+EGP	Egypt, Pound
+IEP	Eire (Ireland), Punt
+SVC	El Salvador, Colon
+GBP	England (Great Britain), Pound Sterling
+XAF	Equatorial Guinea, CFA Franc BEAC
+ETB	Eritrea, Ethiopian Birr
+ERN	Eritrea, Nakfa
+EEK	Estonia, Kroon
+ETB	Ethiopia, Birr
+EUR	Euro
+EUR	European Economic and Monetary Union (EMU), Euro
+FKP	Falkland Islands (Malvinas), Pound
+DKK	Faroe Islands, Danish Krone
+FJD	Fiji, Dollar
+FIM	Finland, Markka
+FRF	France, Franc
+FRF	French Guiana, French Franc
+XPF	French Pacific Islands (French Polynesia), CFP Franc
+XPF	French Polynesia (French Pacific Islands), CFP Franc
+FRF	French Southern Territories, French Franc
+XPF	Futuna and Wallis Islands, CFP Franc
+XAF	Gabon, CFA Franc BEAC
+GMD	Gambia, Dalasi
+GEL	Georgia, Lari
+DEM	Germany, Deutsche Mark
+GHC	Ghana, Cedi
+GIP	Gibraltar, Pound
+XAU	Gold, Ounces
+GBP	Great Britain, Pound Sterling
+GRD	Greece, Drachma
+DKK	Greenland, Danish Krone
+XCD	Grenada, East Caribbean Dollar
+XCD	Grenadines (The) and Saint Vincent, East Caribbean Dollar
+FRF	Guadeloupe, French Franc
+USD	Guam, US Dollar
+GTQ	Guatemala, Quetzal
+GNF	Guinea, Franc
+XOF	Guinea-Bissau, CFA Franc BCEAO
+GYD	Guyana, Dollar
+HTG	Haiti, Gourde
+USD	Haiti, US Dollar
+AUD	Heard Island and McDonald Islands, Australian Dollar
+BAK	Herzegovina and Bosnia, Convertible Mark
+NLG	Holland (The Netherlands), Guilder
+ITL	Holy See, (Vatican City), Italian Lira
+HNL	Honduras, Lempira
+HKD	Hong Kong, Dollar
+HUF	Hungary, Forint
+XDR	IMF, Special Drawing Right
+ISK	Iceland, Krona
+INR	India, Rupee
+IDR	Indonesia, Rupiah
+IRR	Iran, Rial
+IQD	Iraq, Dinar
+IEP	Ireland (Eire), Punt
+ILS	Israel, Shekel
+ITL	Italy, Lira
+XOF	Ivory Coast, CFA Franc BCEAO
+JMD	Jamaica, Dollar
+NOK	Jan Mayen and Svalbard, Norwegian Krone
+JPY	Japan, Yen
+JOD	Jordan, Dinar
+KZT	Kazakstan, Tenge
+AUD	Keeling (Cocos) Islands, Australian Dollar
+KES	Kenya, Shilling
+AUD	Kiribati, Australian Dollar
+KPW	Korea (North), Won
+KRW	Korea (South), Won
+KWD	Kuwait, Dinar
+KGS	Kyrgyzstan, Som
+LAK	Laos, Kip
+LVL	Latvia, Lat
+LBP	Lebanon, Pound
+LSL	Lesotho, Loti
+ZAR	Lesotho, South African Rand
+LRD	Liberia, Dollar
+LYD	Libya, Dinar
+CHF	Liechtenstein, Swiss Franc
+LTL	Lithuania, Lita
+LUF	Luxembourg, Franc
+MOP	Macau, Pataca
+MKD	Macedonia, Denar
+MGF	Madagascar, Malagasy Franc
+PTE	Madeira Islands, Portuguese Escudo
+MWK	Malawi, Kwacha
+MYR	Malaysia, Ringgit
+MVR	Maldives (Maldive Islands), Rufiyaa
+XOF	Mali, CFA Franc BCEAO
+MTL	Malta, Lira
+FKP	Malvinas (Falkland Islands), Pound
+USD	Mariana Islands (Northern), US Dollar
+USD	Marshall Islands, US Dollar
+FRF	Martinique, French Franc
+MRO	Mauritania, Ouguiya
+MUR	Mauritius, Rupee
+FRF	Mayotte, French Franc
+AUD	McDonald Islands and Heard Island, Australian Dollar
+MXP	Mexico, Peso
+USD	Micronesia (Federated States of), US Dollar
+USD	Midway Islands, US Dollar
+FRF	Miquelon and Saint Pierre, French Franc
+MDL	Moldova, Leu
+FRF	Monaco, French Franc
+MNT	Mongolia, Tugrik
+YUN	Montenegro and Serbia, Yugoslav New Dinar
+XCD	Montserrat, East Caribbean Dollar
+MAD	Morocco, Dirham
+MZM	Mozambique, Metical
+MMK	Myanmar (Burma), Kyat
+NAD	Namibia, Dollar
+ZAR	Namibia, South African Rand
+AUD	Nauru, Australian Dollar
+NPR	Nepal, Nepalese Rupee
+NLG	Netherlands (The), Guilder
+ANG	Netherlands Antilles, Guilder
+XCD	Nevis and Saint Kitts, East Caribbean Dollar
+XPF	New Caledonia, CFP Franc
+NZD	New Zealand, Dollar
+NIO	Nicaragua, Cordoba Oro
+XOF	Niger, CFA Franc BCEAO
+NGN	Nigeria, Naira
+NZD	Niue, New Zealand Dollar
+AUD	Norfolk Island, Australian Dollar
+USD	Northern Mariana Islands, US Dollar
+NOK	Norway, Krone
+OMR	Oman, Sul Rial
+PKR	Pakistan, Rupee
+USD	Palau, US Dollar
+XPD	Palladium Ounces
+PAB	Panama, Balboa
+USD	Panama, US Dollar
+PGK	Papua New Guinea, Kina
+PYG	Paraguay, Guarani
+PEN	Peru, Nuevo Sol
+PHP	Philippines, Peso
+NZD	Pitcairn Islands, New Zealand Dollar
+XPT	Platinum, Ounces
+PLZ	Poland, Zloty
+PTE	Portugal, Escudo
+STD	Principe and São Tome, Dobra
+USD	Puerto Rico, US Dollar
+QAR	Qatar, Rial
+FRF	Réunion, French Franc
+ROL	Romania, Leu
+RUR	Russia, Ruble
+RWF	Rwanda, Rwanda Franc
+STD	São Tome and Principe, Dobra
+ANG	Saba, Netherlands Antilles Guilder
+MAD	Sahara (Western), Moroccan Dirham
+XCD	Saint Christopher, East Caribbean Dollar
+SHP	Saint Helena, Pound
+XCD	Saint Kitts and Nevis, East Caribbean Dollar
+XCD	Saint Lucia, East Caribbean Dollar
+FRF	Saint Pierre and Miquelon, French Franc
+XCD	Saint Vincent and The Grenadines, East Caribbean Dollar
+FRF	Saint-Martin, French Francs
+ESP	Samoa (American), Spanish Peseta
+USD	Samoa (American), US Dollar
+WST	Samoa (Western), Tala
+ITL	San Marino, Italian Lira
+SAR	Saudi Arabia, Riyal
+SBL	Seborga, Luigino
+XOF	Senegal, CFA Franc BCEAO
+YUN	Serbia and Montenegro, Yugoslav New Dinar
+SCR	Seychelles, Rupee
+SLL	Sierra Leone, Leone
+XAG	Silver, Ounces
+SGD	Singapore, Dollar
+ANG	Sint Eustatius, Netherlands Antilles Guilder
+ANG	Sint Maarten, Netherlands Antilles Guilder
+SKK	Slovakia, Koruna
+SIT	Slovenia, Tolar
+SBD	Solomon Islands, Dollar
+SOS	Somalia, Shilling
+ZAR	South Africa, Rand
+GBP	South Georgia, British Pounds
+GBP	South Sandwich Islands, British Pounds
+ESP	Spain, Peseta
+XDR	Special Drawing Right
+LKR	Sri Lanka, Rupee
+SDD	Sudan, Dinar
+SRG	Suriname, Guilder
+NOK	Svalbard and Jan Mayen, Norwegian Krone
+SZL	Swaziland, Lilangeni
+SEK	Sweden, Krona
+CHF	Switzerland, Franc
+SYP	Syria, Pound
+TWD	Taiwan, Dollar
+TJR	Tajikistan, Ruble
+RUR	Tajikistan, Russian Ruble
+TZS	Tanzania, Shilling
+THB	Thailand, Baht
+IDR	Timor (East), Indonesian Rupiah
+TTD	Tobago and Trinidad, Dollar
+XOF	Togo, CFA Franc BCEAO
+NZD	Tokelau, New Zealand Dollar
+TOP	Tonga, Pa'anga
+TTD	Trinidad and Tobago, Dollar
+TND	Tunisia, Dinar
+TRL	Turkey, Lira
+TMM	Turkmenistan, Manat
+USD	Turks and Caicos Islands, US Dollar
+AUD	Tuvalu, Australian Dollar
+USD	US Virgin Islands, US Dollar
+UGX	Uganda, Shilling
+UAH	Ukraine, Hryvnia
+AED	United Arab Emirates, Dirham
+GBP	United Kingdom (Great Britain), Pound Sterling
+USD	United States Minor Outlying Islands, US Dollar
+USD	United States of America, US Dollar
+UYU	Uruguay, Peso
+UZS	Uzbekistan, Som
+VUV	Vanuatu, Vatu
+ITL	Vatican City (The Holy See), Italian Lira
+VEB	Venezuela, Bolivar
+VND	Viet Nam, Dong
+USD	Virgin Islands (American), US Dollar
+USD	Virgin Islands (British), US Dollar
+USD	Wake Island, US Dollar
+XPF	Wallis and Futuna Islands, CFP Franc
+WST	West Samoa, Tala
+MAD	Western Sahara, Moroccan Dirham
+WST	Western Samoa, Tala
+YER	Yemen, Rial
+YUN	Yugoslavia, New Dinar
+ZRN	Zaire, New Zaire
+ZMK	Zambia, Kwacha
+ZWD	Zimbabwe, Zimbabwe Dollar
+

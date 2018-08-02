@@ -1,0 +1,52 @@
+package HMESL1;
+
+{$R *.res}
+{$R 'Teditval.dcr'}
+{$R 'TCUSTOM.dcr'}
+{$R 'ANIMATE.dcr'}
+{$R 'BORBTNS.dcr'}
+{$R '\ENTRPRSE\R&D\ExportLists\WindowExport.dcr'}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA OFF}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'ESL Standard Components'}
+{$IMPLICITBUILD OFF}
+{$DEFINE PKG_On}
+
+requires
+  vcl,
+  vclx,
+  vclsmp,
+  designide;
+
+contains
+  TEditVal in 'Teditval.pas',
+  TCustom in 'TCUSTOM.PAS',
+  AccelLbl in 'ACCELLBL.PAS',
+  bkgroup in 'BkGroup.pas',
+  ANIMATE in 'ANIMATE.PAS',
+  Security in 'SECURITY.PAS',
+  CustWinU in '..\..\..\ENTRPRSE\R&D\CustWinU.pas',
+  CheckBoxEx in 'CheckBoxEx.pas',
+  BorBtns in 'BORBTNS.PAS',
+  WindowExport in '\ENTRPRSE\R&D\ExportLists\WindowExport.pas';
+
+end.

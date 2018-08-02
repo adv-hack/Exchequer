@@ -1,0 +1,8 @@
+﻿Uninstalling assembly 'C:\Projects\Ice\Wrapper\bin\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Projects\Ice\Wrapper\bin\WrapperDSRServer.exe
+   logfile = C:\Projects\Ice\Wrapper\bin\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.

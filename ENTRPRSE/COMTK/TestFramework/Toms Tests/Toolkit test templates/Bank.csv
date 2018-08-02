@@ -1,0 +1,6 @@
+"Invalid GL Code",C:\ComTKExes\BankTest.exe,Y,Y,30000,N,30000
+"Invalid Bank Product",C:\ComTKExes\BankTest.exe,Y,Y,30001,N,30001
+"Add Bank Account",C:\ComTKExes\BankTest.exe,Y,Y,0,N,0
+"Invalid Statement Date",C:\ComTKExes\BankStatementTest.exe,Y,Y,30000,N,30000
+"Invalid Statement Line Date",C:\ComTKExes\BankStatementTest.exe,Y,Y,30000,N,300001
+"Add Statement",C:\ComTKExes\BankStatementTest.exe,Y,Y,0,N,0

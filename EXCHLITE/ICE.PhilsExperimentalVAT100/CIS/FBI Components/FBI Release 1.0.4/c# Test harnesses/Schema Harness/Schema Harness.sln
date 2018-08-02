@@ -1,0 +1,108 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schema Harness", "Schema Harness.csproj", "{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C} = {D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}
+		{F7E18541-6338-4140-9C27-68C714875164} = {F7E18541-6338-4140-9C27-68C714875164}
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035} = {ACBBDCE9-2192-4C56-96BF-AAF4810A2035}
+		{F8919948-D44C-4330-8009-771AC813C813} = {F8919948-D44C-4330-8009-771AC813C813}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElectronicTaxReturnDataAccess", "..\..\xmlFormer\ElectronicTaxReturnDataAccess\ElectronicTaxReturnDataAccess.vcproj", "{F8919948-D44C-4330-8009-771AC813C813}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7E18541-6338-4140-9C27-68C714875164} = {F7E18541-6338-4140-9C27-68C714875164}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElectronicTaxReturnTransmission", "..\..\xmlFormer\ElectronicTaxReturnTransmission\ElectronicTaxReturnTransmission.vcproj", "{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C} = {D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xmlFormer", "..\..\xmlFormer\xmlFormer\xmlFormer.csproj", "{F7E18541-6338-4140-9C27-68C714875164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xmlTransmission", "..\..\xmlFormer\xmlTransmission\xmlTransmission.csproj", "{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Schema\u0020Harness.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\..\\xmlFormer\\ElectronicTaxReturnDataAccess\\ElectronicTaxReturnDataAccess.vcproj
+		SccProjectName2 = \u0022$/IRIS/TAX/xmlFormer/ElectronicTaxReturnDataAccess\u0022,\u0020PJBIAAAA
+		SccLocalPath2 = ..\\..\\xmlFormer\\ElectronicTaxReturnDataAccess
+		SccProjectUniqueName3 = ..\\..\\xmlFormer\\ElectronicTaxReturnTransmission\\ElectronicTaxReturnTransmission.vcproj
+		SccProjectName3 = \u0022$/IRIS/TAX/xmlFormer/ElectronicTaxReturnTransmission\u0022,\u0020JUWJAAAA
+		SccLocalPath3 = ..\\..\\xmlFormer\\ElectronicTaxReturnTransmission
+		SccProjectUniqueName4 = ..\\..\\xmlFormer\\xmlFormer\\xmlFormer.csproj
+		SccProjectName4 = \u0022$/IRIS/TAX/xmlFormer/xmlFormer\u0022,\u0020TEWHAAAA
+		SccLocalPath4 = ..\\..\\xmlFormer\\xmlFormer
+		SccProjectUniqueName5 = ..\\..\\xmlFormer\\xmlTransmission\\xmlTransmission.csproj
+		SccProjectName5 = \u0022$/IRIS/TAX/xmlFormer/xmlTransmission\u0022,\u0020MUWJAAAA
+		SccLocalPath5 = ..\\..\\xmlFormer\\xmlTransmission
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A0B7EF8B-9D36-42F9-AACD-0EA02AA62858}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F8919948-D44C-4330-8009-771AC813C813}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Debug|Win32.Build.0 = Debug|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Release|Win32.ActiveCfg = Release|Win32
+		{F8919948-D44C-4330-8009-771AC813C813}.Release|Win32.Build.0 = Release|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Debug|Win32.Build.0 = Debug|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Release|Any CPU.ActiveCfg = Release|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Release|Win32.ActiveCfg = Release|Win32
+		{ACBBDCE9-2192-4C56-96BF-AAF4810A2035}.Release|Win32.Build.0 = Release|Win32
+		{F7E18541-6338-4140-9C27-68C714875164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F7E18541-6338-4140-9C27-68C714875164}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D93B3ACD-6079-4F08-8F79-E34BBA0D4A3C}.Release|Win32.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

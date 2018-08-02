@@ -1,0 +1,21 @@
+Using SEPA format for BACS Payments/Receipts will become compulsary in Ireland from the end of February 2014. Unfortunately there will be some minor differences in the format as implemented by different banks, so we will still need to have a separate format for each bank.
+
+The SEPA format will become compulsary from November 2016 for UK banks making Euro payments to bank accounts in Eurozone countries. How UK banks will implement this is not yet known.
+
+Database changes required for SEPA:
+
+The bank sort code used in SEPA is a BIC, which can be either 8 or 11 chars in length.
+The bank account code used is an IBAN which can be up to 34 characters in length.
+
+These two fields will need to be added to the following record structures:
+
+Customer/Supplier
+Bank Account (used in eBanking.)
+System Setup (used for stand-alone BACS plug-ins.)
+
+Two further fields will need to be added to customer records:
+
+Mandate ID is the ID for a direct debit mandate and must be included in any direct debits. It can be up to 35 characters in length.
+Mandate Date of Signature is self-explanatory. It must be included in any direct debit.
+
+At least the BIC and the IBAN should be stored encrypted in the Exchequer database, so we will need to allow extra space for the fact that strings encrypted using Blowfish become longer.

@@ -1,0 +1,207 @@
+object BankDefault: TBankDefault
+  Left = 348
+  Top = 222
+  HelpContext = 548
+  ActiveControl = DefGLF
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Bank Default'
+  ClientHeight = 215
+  ClientWidth = 285
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = True
+  Scaled = False
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SBSPanel1: TSBSBackGroup
+    Left = 4
+    Top = 1
+    Width = 277
+    Height = 172
+    TextId = 0
+  end
+  object Label81: Label8
+    Left = 13
+    Top = 42
+    Width = 109
+    Height = 14
+    Caption = 'Default &Bank G/L Code'
+    FocusControl = DefGLF
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label82: Label8
+    Left = 67
+    Top = 74
+    Width = 54
+    Height = 14
+    Caption = 'Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label83: Label8
+    Left = 50
+    Top = 99
+    Width = 75
+    Height = 28
+    AutoSize = False
+    Caption = 'Auto Generate &Variance Entry'
+    FocusControl = AutoVar
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = True
+    TextId = 0
+  end
+  object Label84: Label8
+    Left = 51
+    Top = 134
+    Width = 74
+    Height = 28
+    AutoSize = False
+    Caption = 'Auto Generate &Discount Entry'
+    FocusControl = AutoDisc
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = True
+    TextId = 0
+  end
+  object OkR1Btn: TButton
+    Tag = 1
+    Left = 63
+    Top = 184
+    Width = 80
+    Height = 21
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 5
+  end
+  object CanR1Btn: TButton
+    Tag = 1
+    Left = 148
+    Top = 184
+    Width = 80
+    Height = 21
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 6
+  end
+  object UserDef1: TBorCheck
+    Left = 15
+    Top = 10
+    Width = 133
+    Height = 20
+    Caption = '&Use default Bank A/C'
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    TextId = 0
+  end
+  object DefGLF: Text8Pt
+    Tag = 1
+    Left = 127
+    Top = 38
+    Width = 71
+    Height = 22
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    OnExit = DefGLFExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object GLDescF: Text8Pt
+    Left = 127
+    Top = 70
+    Width = 141
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 2
+    TextId = 0
+    ViaSBtn = False
+  end
+  object AutoVar: TBorCheck
+    Left = 128
+    Top = 101
+    Width = 20
+    Height = 20
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 3
+    TextId = 0
+  end
+  object AutoDisc: TBorCheck
+    Left = 130
+    Top = 136
+    Width = 18
+    Height = 20
+    CheckColor = clWindowText
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 4
+    TextId = 0
+  end
+end

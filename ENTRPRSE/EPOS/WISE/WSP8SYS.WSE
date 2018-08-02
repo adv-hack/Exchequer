@@ -1,0 +1,119 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000000010110000001000
+  Password=MERRIMACK
+  Log Pathname=%WIN%\Excheqr\INSTALL.LOG
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00101100000000100000000000000000
+  Extra Pages=00000000000000000000000000010000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Distribute Type=1
+  Step View=Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+end
+item: Remark
+end
+item: Remark
+  Text=WSP8SYS.WSE - Workstation Setup - Install Pervasive.SQL 8 System Files
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Install standard OLE files as required by Pervasive.SQL 8 32-Bit Client
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\MSVCRT.DLL
+  Destination=%SYS%\MSVCRT.DLL
+  Flags=0000000000000011
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\MSVCP60.DLL
+  Destination=%SYS%\MSVCP60.DLL
+  Flags=0000000000000011
+end
+item: Remark
+end
+item: Check if File/Dir Exists
+  Pathname=%SYS%\REGSVR32.EXE
+  Flags=00000101
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\REGSVR32.EXE
+  Destination=%SYS%\REGSVR32.EXE
+  Flags=0000000000000010
+end
+item: End Block
+end
+item: Remark
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\MFC42.DLL
+  Destination=%SYS%\MFC42.DLL
+  Flags=0000000000000011
+  Extra Flags=00000001
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\MFCOLEUI.DLL
+  Destination=%SYS%\MFCOLEUI.DLL
+  Flags=0000000000000011
+  Extra Flags=00000001
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\MSVCRT20.DLL
+  Destination=%SYS%\MSVCRT20.DLL
+  Flags=0000000000000011
+  Extra Flags=00000001
+end
+item: Remark
+end
+item: Check Configuration
+  Flags=10100000
+end
+item: Remark
+  Text=NT Series OS - NT 3.51 / NT 4 / 2000 / XP / 2003 / Longhorn???
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\WINNT\CTL3D32.DLL
+  Destination=%SYS%\CTL3D32.DLL
+  Flags=0000000000000011
+  Extra Flags=00000001
+end
+item: Else Statement
+end
+item: Remark
+  Text=Win 9x Series - 95 / 98 / ME
+end
+item: Install File
+  Source=N:\Master\BETA\ENTRPRSE\PSQL8\SYSTEM\WIN9X\CTL3D32.DLL
+  Destination=%SYS%\CTL3D32.DLL
+  Flags=0000000000000011
+  Extra Flags=00000001
+end
+item: End Block
+end
+item: Remark
+end

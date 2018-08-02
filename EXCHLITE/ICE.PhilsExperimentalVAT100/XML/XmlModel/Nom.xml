@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:nom xmlns:val="urn:www-iris-co-uk:nom">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <nomrec>
+           <nomcode/>    <!--:  Longint;   { Nominal Code } -->
+           <desc><![CDATA[]]></desc>       <!--:  String[30]; -->
+           <cat/>        <!--:  LongInt;   { Parent Code } -->
+           <nomtype/>    <!--:  Char;      { Heading / A,B,C } -->
+           <nompage/>    <!--:  WordBool;  { Page At end of this } -->
+           <subtype/>    <!--:  WordBool;  { Sub Total at end } -->
+           <total/>      <!--:  WordBool;  { Show Balance only or Cr/Dr } -->
+           <carryf/>     <!--:  LongInt;   { Nom Code to Carry Forward to } -->
+           <revalue/>    <!--:  WordBool;  { Code is to be revalued } -->
+           <altcode><![CDATA[]]></altcode>    <!--:  String[50];{ Alternative look up code} -->
+           <defcurr/>    <!--:  SmallInt;  { Validation currency associated with this G/L. 0= All} -->
+           <inactive/>  <!--: WordBool; -->
+           <longdesc><![CDATA[]]></longdesc>   <!--:  string[40];{Full 40-character name stored in Enterprise} -->
+        </nomrec>
+    </message>
+</val:nom>

@@ -1,0 +1,351 @@
+                Pervasive.SQL 2000i Software Developer Kit (SDK)
+                   Service Pack 3 Release - September 2001
+                                READSDK.TXT
+
+Contents
+
+1. Welcome
+2. General Information
+3. Links to Other Information
+4. Known Issues
+5. Documentation
+6. Technical Support
+7. Disclaimer
+
+  ------------------------------------------------------------------------
+
+1. Welcome
+
+Welcome to the Pervasive.SQL 2000i Software Developer Kit (SDK). This SDK
+contains all the necessary software components and tools to develop
+Pervasive.SQL database applications.
+
+Service Pack 3 version of the SDK includes the following features:
+
+       Feature              Description             Described in
+                                                      manuals
+
+  ADO/OLE DB          The Pervasive OLE DB      Programmer's Guide,
+  support             provider marks the        Visual Programmer's
+                      next level of             Reference
+                      connectivity for
+                      developers using          see also OLE DB
+                      Microsoft Visual          Readme, Links
+                      Studio and other          to Other
+                      tools. The Pervasive      Information
+                      OLE DB Provider is a
+                      rowset provider for
+                      use with OLE DB
+                      consumers, including
+                      ActiveX Data Objects
+                      (ADO), Microsoft’s
+                      latest high-level data
+                      model for Visual
+                      Basic, Visual C/C++,
+                      and Active Server.
+
+                      The Visual Basic
+                      version of the PVideo
+                      sample application
+                      uses the new OLE DB
+                      driver.
+
+  Pervasive Direct    Pervasive Direct          Visual Programmer's
+  Access Components   Access Components for     Reference contains
+  for Delphi and      Delphi and C++ Builder    installation
+  C++ Builder         allows Borland Delphi     instructions
+                      and C++ Builder
+                      developers to             see also PDAC Readme,
+                      seamlessly access a       Links to Other Information
+                      Pervasive data source
+                      from within either
+                      Inprise/Borland
+                      development
+                      environment. By
+                      implementing the
+                      TDataSet classes, the
+                      data aware components
+                      within these
+                      environments will be
+                      able to take full
+                      advantage of a
+                      Pervasive data source
+                      with higher
+                      performance than using
+                      the built in access to
+                      ODBC via the Borland
+                      Database Engine (BDE).
+
+                      The components support
+                      direct Btrieve access
+                      via the TPvTable
+                      class, which
+                      implements the TTable
+                      database object. A
+                      PVideo example is
+                      provided in the SDK
+                      for both Delphi and
+                      C++ Builder 3, 4, and 5.
+
+  JDBC driver and     New interfaces in the     Programmer's Guide,
+  Java Class          Pervasive Java Class      API Programmer's
+  Library             Library provide           Reference
+  Enhancements        support for Binary
+                      Large Objects or          see also JDBC Readme
+                      BLOBs. BLOB support       
+                      allows Java developers
+                      the ability to
+                      represent large binary
+                      files such as GIF,
+                      JPEG, and WAV files as
+                      Java objects that can
+                      then be stored in and
+                      retrieved from the
+                      database. A Java
+                      object serialization
+                      example is included.
+
+                      The new Pervasive.SQL
+                      JDBC driver gives
+                      developers the benefit
+                      of a standard data
+                      interface, remote data
+                      access, and support
+                      across all platforms
+                      supporting the JVM.
+                      Service Pack 2 adds
+                      the ability to use
+                      JDBC from the
+                      Workgroup engine
+                      included with the
+                      Pervasive.SQL SDK.
+
+  Tuning Interfaces   The Distributed Tuning    API Programmer's
+                      Objects (DTO) and         Reference (DTI)
+                      Distributed Tuning
+                      Interface (DTI) gives     Visual Programmer's
+                      developers an             Reference (DTO)
+                      unprecedented level of
+                      access to information
+                      about Pervasive.SQL
+                      database engines. The
+                      major categories of
+                      interfaces supported
+                      are:
+
+                         * Connection -
+                           establish and
+                           discard
+                           connections to
+                           remote database
+                           servers
+                         * Configuration -
+                           settings for the
+                           database engines
+                         * Monitoring and
+                           Diagnostics -
+                           engine statistics
+                           and resource
+                           usage
+                         * Catalog - manage
+                           database catalog
+                           information
+                           (database names,
+                           table names,
+                           table properties,
+                           etc.)
+
+                      DTI is a procedural
+                      interface and can be
+                      used with C or Delphi.
+
+                      DTO is a COM-based set
+                      of objects and can be
+                      used with any IDE that
+                      supports COM,
+                      including Visual
+                      Basic, Visual C++,
+                      Delphi, and C++ Builder,
+
+
+  Samples             Service Pack 3 includes
+                      the following samples     see the \SAMPLES
+                                                folder under your
+                                                SDK installation
+                         * Pvideo for Visual    folder
+                           C 6.0 - uses ADO
+                         * Pvideo for Delphi    See also Pervasive
+                         * DTO for Visual       ComponentZone for
+                           Basic                additional sample
+                         * DTI for Visual C     code.
+                           6.0 and Delphi 5
+
+  
+
+  ------------------------------------------------------------------------
+
+2. General Information
+
+The SDK supports both the server and workstation/workgroup engines of
+Pervasive.SQL 2000i.
+
+Important: If you have an earlier version of Pervasive.SQL 2000 SDK installed
+on your system, you should remove it using the Control Panel before
+installing the Pervasive.SQL 2000i SDK.
+
+
+Server engines are available for:
+
+   * Windows 2000, Windows NT 4.0
+   * NetWare 3.2, 4.11 and higher, and 5.0
+   * Linux
+
+
+Workstation/Workgroup engines are available for:
+
+   * Windows 2000
+   * Windows NT 4.0
+   * Windows 9X, Windows ME
+
+Client applications may run on:
+
+   * Windows 3.1, Windows 9X, Windows NT 4.0, Windows 2000
+   * DOS 5.x, 6.x.
+
+Visit the Developer Center
+
+Pervasive is committed to bringing you the tools, information, and
+resources to take advantage of Pervasive.SQL.
+
+Come join us at our DeveloperZone, the web resource for all your
+development needs: information, updates, samples, tools, and more:
+
+http://www.pervasive.com/developerzone
+
+While you’re there, join Pervasive DevWire and TechWire, two email
+newsletters that are your best source of news for Pervasive web and database
+developers! Up to date information delivered right to your desktop! Sign up
+at the Subscription Center at
+
+http://www.pervasive.com/support/subscription.asp
+
+
+  ------------------------------------------------------------------------
+
+3. Links to Other Information
+
+You may find the following web sites of interest in learning about the
+technologies present in this SDK:
+
+  Pervasive
+  Developer Zone -
+  Developer news,     http://www.pervasive.com/developerzone
+  updates, samples
+
+  Pervasive
+  Component Zone -
+  Developer           http://www.pervasive.com/componentzone
+  community samples
+
+  JDBC API Page -
+  Sun Microsystems    http://java.sun.com/products/jdbc
+
+  Microsoft
+  Universal Data
+  Access Site - for
+  introduction to     http://www.microsoft.com/data
+  Microsoft
+  solutions such as
+  ADO and OLE DB
+
+  Borland
+  Programming Tools
+  - Information and
+  resources for       http://www.borland.com
+  Delphi and C++
+  Builder
+  development
+
+  Pervasive DevTalk   http://www.pervasive.com/devtalk
+  - Developer 
+  community technical 
+  discussion and 
+  support forum.
+
+
+
+
+  ------------------------------------------------------------------------
+
+4. Known Issues
+
+With the Service Pack 3 release, the Pervasive.SQL SDK issues are 
+documented in separate readmes for the components
+
+  1. ActiveX                            - readme_activex.txt
+  2. OLE DB                             - readme_oledb.txt
+  3. Distributed Tuning Interface       - readme_dti.txt
+  4. Distributed Tuning Objects         - readme_dto.txt
+  5. Pervasive Direct Access Components - readme_pdac.txt
+  6. Java Class Library                 - readme_jcl.txt
+  7. JDBC                               - readme_jdbc.txt
+  
+
+  ------------------------------------------------------------------------
+
+5. Documentation
+
+Online documents in HTML Help format are provided in the SDK. The master 
+help file PSDK2000.CHM includes the complete set of online documents for 
+both your Pervasive.SQL engine and the SDK, including an integrated table of 
+contents, index, and glossary. You can load PSDK2000.CHM via 
+the Windows Start menu: 
+
+Start | Programs | Pervasive |Pervasive.SQL SDK | Documentation 
+
+In addition to the installed manuals, you can view the current documentation 
+online at the Pervasive Developer Network Library, which you can reach at 
+
+     http://www.pervasive.com/library
+
+A README document (this document) in Text format is included in the SDK. 
+There is also a duplicate version in HTML format (readsdk.htm). 
+
+Please visit ftp://ftp.pervasive.com/documentation/updates for any product 
+documentation that may be updated between product releases. 
+
+
+
+
+  ------------------------------------------------------------------------
+
+6. Technical Support
+
+   * For technical support, browse to http://www.pervasive.com/devtalk or
+     open an e-mail incident at http://www.pervasive.com/support/support_email.asp
+
+   * You can also visit http://www.pervasive.com/company/contact on the
+     Pervasive Home Page for this information.
+
+
+  ------------------------------------------------------------------------
+
+7. Disclaimer
+
+PERVASIVE SOFTWARE INC. LICENSES THE SOFTWARE AND DOCUMENTATION PRODUCT TO
+YOU OR YOUR COMPANY SOLELY ON AN "AS IS" BASIS AND SOLELY IN ACCORDANCE
+WITH THE TERMS AND CONDITIONS OF THE ACCOMPANYING LICENSE AGREEMENT.
+PERVASIVE SOFTWARE INC. MAKES NO OTHER WARRANTIES WHATSOEVER, EITHER
+EXPRESS OR IMPLIED, REGARDING THE SOFTWARE OR THE CONTENT OF THE
+DOCUMENTATION; PERVASIVE SOFTWARE INC. HEREBY EXPRESSLY STATES AND YOU OR
+YOUR COMPANY ACKNOWLEDGES THAT PERVASIVE SOFTWARE INC. DOES NOT MAKE ANY
+WARRANTIES, INCLUDING, FOR EXAMPLE, WITH RESPECT TO MERCHANTABILITY, TITLE,
+OR FITNESS FOR ANY PARTICULAR PURPOSE OR ARISING FROM COURSE OF DEALING OR
+USAGE OF TRADE, AMONG OTHERS.
+
+© Copyright 2001 Pervasive Software Inc. All Rights Reserved.
+  ------------------------------------------------------------------------
+
+                          ** End of READSDK.TXT **
+
+                        Part number 106-003656-004

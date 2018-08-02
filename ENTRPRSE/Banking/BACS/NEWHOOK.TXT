@@ -1,0 +1,48 @@
+Adding a new bacs hook
+
+Create a new dll
+
+Add the following units to the project:
+
+CustAbsU
+HandlerU
+LabelU
+EntMenuU
+ChainU
+
+Add the standard exports clause:
+
+Exports
+  CustomMenus,
+  CloseCustomMenus,
+  InitCustomHandler,
+  TermCustomHandler,
+  ExecCustomHandler,
+  EntDoCustomText,
+  EntGetCustomText;
+
+end.
+
+
+Descend a new class from TExportObject in x:\enterprise\bacs\objects\ExpObj.pas
+
+Override the (abstract) WriteRec method.
+
+Override any other methods needed.
+
+In x:\enterprise\bacs\general\BacConst.pas: 
+
+  Increment the KnownBacsTypes constant
+  Add an identifier for the new class
+
+In x:\enterprise\bacs\general\ExWrap.pas: 
+  Add the new class's unit to the uses clause in the implementation section
+  Add the new class to the case statement in the TExportWrapper.Create method
+
+Replace the contents of HandlerU.pas with those from x:\enterprise\custom\bacs\template\handlerU.pas
+
+Make the following changes to HandlerU.pas
+
+Lines 12-13 Enter the names of the output files for the new class
+Lines 42-43 Enter the details of the hook for the Help | About box
+Line 79 Enter the id for the new class (as put into ExWrap) and the file types allowed constant: (ftaCreditOnly, ftaDebitOnly, ftaBoth)

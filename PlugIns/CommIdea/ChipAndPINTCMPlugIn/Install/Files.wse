@@ -1,0 +1,59 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Plug-In Files
+end
+item: Remark
+end
+item: Install File
+  Source=X:\ENTRPRSE\EPOS\PlugIns\PDQWedge\Install\Files\PDQWedge.exe
+  Destination=%ENTDIR%TRADE\PDQWedge.exe
+  Description=TCM Plug-In
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\ENTRPRSE\EPOS\PlugIns\PDQWedge\Install\Files\TCMPDQPI.LST
+  Destination=%ENTDIR%TRADE\TCMPDQPI.LST
+  Description=TCM Replication Files
+  Flags=0000000010000010
+end
+item: Install File
+  Source=X:\ENTRPRSE\EPOS\PlugIns\PDQWedge\Install\Files\TCMCUSTM.LST
+  Destination=%ENTDIR%TRADE\TCMCUSTM.LST
+  Description=TCM Replication Files
+  Flags=0000000010000010
+end
+item: Remark
+end
+item: Copy Local File
+  Source=%INST%\ENTSETUP.DLL
+  Destination=%ENTDIR%\ENTSETUP.DLL
+  Description=Plug-In Setup Function Library
+  Local Path=X:\BESPOKE\EXCHEQR\USERDEF\INSTALL\ENTSETUP.DLL
+  Flags=0000010011010010
+end

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<PervasiveDataEncryption>
+  <Estimation THSeconds="0.185" LPM="1"></Estimation>
+  <GlobalFiles>
+    <File Name="Company.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="11"></File>
+    <File Name="Contact.Dat" Optional="Y" GDPR="Y" EstimateRecords="100" EstimateSeconds="20"></File>
+    <File Name="Ebus.Dat" Optional="Y" GDPR="Y" EstimateRecords="10" EstimateSeconds="17"></File>
+    <File Name="GroupCmp.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="17"></File>
+    <File Name="Groups.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="18"></File>
+    <File Name="GroupUsr.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="12"></File>
+    <File Name="SchedCFG.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="13"></File>
+    <File Name="SentSys.Dat" Optional="Y" GDPR="N" EstimateRecords="8" EstimateSeconds="10"></File>
+    <File Name="Tools.Dat" Optional="N" GDPR="N" EstimateRecords="5" EstimateSeconds="11"></File>
+    <File Name="JC\EmpPay.Dat" Optional="Y" GDPR="Y" EstimateRecords="200" EstimateSeconds="32"></File>
+    <File Name="JC\MCPay.Dat" Optional="Y" GDPR="Y" EstimateRecords="12" EstimateSeconds="13"></File>
+    <File Name="Trade\TillName.Dat" Optional="Y" GDPR="N" EstimateRecords="8" EstimateSeconds="15"></File>
+    <File Name="Trade\Trade.Dat" Optional="Y" GDPR="N" EstimateRecords="3" EstimateSeconds="12"></File>
+  </GlobalFiles>
+  <CompanyFiles>
+    <File Name="CurrencyHistory.Dat" Optional="N" GDPR="N" EstimateRecords="536" EstimateSeconds="105"></File>
+    <File Name="ExchqNum.Dat" Optional="N" GDPR="N" EstimateRecords="60" EstimateSeconds="69"></File>
+    <File Name="ExchqSS.Dat" Optional="N" GDPR="Y" EstimateRecords="19" EstimateSeconds="68"></File>
+    <File Name="Cust\AccountContact.Dat" Optional="N" GDPR="Y" EstimateRecords="3967" EstimateSeconds="694"></File>
+    <File Name="Cust\AccountContactRole.Dat" Optional="N" GDPR="N" EstimateRecords="3625" EstimateSeconds="144"></File>
+    <File Name="Cust\CustSupp.Dat" Optional="N" GDPR="Y" EstimateRecords="20096" EstimateSeconds="52415"></File>
+    <File Name="Ebus\EbusDetl.Dat" Optional="Y" GDPR="Y" EstimateRecords="252" EstimateSeconds="1204"></File>
+    <File Name="Ebus\EbusDoc.Dat" Optional="Y" GDPR="Y" EstimateRecords="129" EstimateSeconds="621"></File>
+    <File Name="Ebus\EbusLkup.Dat" Optional="Y" GDPR="N" EstimateRecords="100" EstimateSeconds="13"></File>
+    <File Name="Ebus\EbusNote.Dat" Optional="Y" GDPR="Y" EstimateRecords="100" EstimateSeconds="15"></File>
+    <File Name="Forms\PaprSize.Dat" Optional="N" GDPR="N" EstimateRecords="10" EstimateSeconds="65"></File>
+    <File Name="Jobs\JobCtrl.Dat" Optional="Y" GDPR="N" EstimateRecords="79496" EstimateSeconds="1883"></File>
+    <File Name="Jobs\JobDet.Dat" Optional="Y" GDPR="Y" EstimateRecords="75902" EstimateSeconds="45503"></File>
+    <File Name="Jobs\JobHead.Dat" Optional="Y" GDPR="Y" EstimateRecords="3911" EstimateSeconds="255"></File>
+    <File Name="Jobs\JobMisc.Dat" Optional="Y" GDPR="Y" EstimateRecords="43" EstimateSeconds="108"></File>
+    <File Name="Misc\ColSet.Dat" Optional="N" GDPR="N" EstimateRecords="5532" EstimateSeconds="321"></File>
+    <File Name="Misc\CustomFields.Dat" Optional="N" GDPR="N" EstimateRecords="493" EstimateSeconds="71"></File>
+    <File Name="Misc\ExchqChk.Dat" Optional="N" GDPR="Y" EstimateRecords="4362873" EstimateSeconds="2142152"></File>
+    <File Name="Misc\ExStkChk.Dat" Optional="N" GDPR="N" EstimateRecords="240442" EstimateSeconds="138062"></File>
+    <File Name="Misc\MultiBuy.Dat" Optional="N" GDPR="N" EstimateRecords="1" EstimateSeconds="15"></File>
+    <File Name="Misc\ParSet.Dat" Optional="N" GDPR="N" EstimateRecords="1716" EstimateSeconds="111"></File>
+    <File Name="Misc\QtyBreak.Dat" Optional="N" GDPR="N" EstimateRecords="22" EstimateSeconds="133"></File>
+    <File Name="Misc\Settings.Dat" Optional="N" GDPR="N" EstimateRecords="80" EstimateSeconds="25"></File>
+    <File Name="Misc\SortView.Dat" Optional="N" GDPR="N" EstimateRecords="3" EstimateSeconds="15"></File>
+    <File Name="Misc\SVUsrDef.Dat" Optional="N" GDPR="N" EstimateRecords="10" EstimateSeconds="19"></File>
+    <File Name="Misc\SystemSetup.Dat" Optional="N" GDPR="N" EstimateRecords="10" EstimateSeconds="14"></File>
+    <File Name="Misc\VAT100.Dat" Optional="N" GDPR="N" EstimateRecords="100" EstimateSeconds="28"></File>
+    <File Name="Misc\WinSet.Dat" Optional="N" GDPR="N" EstimateRecords="283" EstimateSeconds="61"></File>
+    <File Name="Reports\Reports.Dat" Optional="Y" GDPR="N" EstimateRecords="2770" EstimateSeconds="60"></File>
+    <File Name="Reports\VRWSec.Dat" Optional="Y" GDPR="N" EstimateRecords="10" EstimateSeconds="11"></File>
+    <File Name="Reports\VRWTree.Dat" Optional="Y" GDPR="N" EstimateRecords="132" EstimateSeconds="20"></File>
+    <File Name="Schedule\Schedule.Dat" Optional="N" GDPR="N" EstimateRecords="10" EstimateSeconds="12"></File>
+    <File Name="SentMail\Sent.Dat" Optional="Y" GDPR="Y" EstimateRecords="50" EstimateSeconds="16"></File>
+    <File Name="SentMail\SentLine.Dat" Optional="Y" GDPR="Y" EstimateRecords="500" EstimateSeconds="27"></File>
+    <File Name="Stock\MLocStk.Dat" Optional="N" GDPR="Y" EstimateRecords="1077" EstimateSeconds="65"></File>
+    <File Name="Stock\Stock.Dat" Optional="N" GDPR="N" EstimateRecords="571" EstimateSeconds="35"></File>
+    <File Name="Trade\LBin.Dat" Optional="Y" GDPR="N" EstimateRecords="100" EstimateSeconds="21"></File>
+    <File Name="Trade\LHeader.Dat" Optional="Y" GDPR="Y" EstimateRecords="1277820" EstimateSeconds="3198221"></File>
+    <File Name="Trade\LLines.Dat" Optional="Y" GDPR="Y" EstimateRecords="4019820" EstimateSeconds="6785271"></File>
+    <File Name="Trade\LSerial.Dat" Optional="Y" GDPR="N" EstimateRecords="100" EstimateSeconds="22"></File>
+    <File Name="Trade\TillName.Dat" Optional="Y" GDPR="N" EstimateRecords="5" EstimateSeconds="13"></File>
+    <File Name="Trans\Details.Dat" Optional="N" GDPR="Y" EstimateRecords="4019820" EstimateSeconds="6785012"></File>
+    <File Name="Trans\Document.Dat" Optional="N" GDPR="Y" EstimateRecords="1277820" EstimateSeconds="3198718"></File>
+    <File Name="Trans\GLBudgetHistory.Dat" Optional="N" GDPR="N" EstimateRecords="100" EstimateSeconds="1"></File>
+    <File Name="Trans\History.Dat" Optional="N" GDPR="N" EstimateRecords="597863" EstimateSeconds="442119"></File>
+    <File Name="Trans\Nominal.Dat" Optional="N" GDPR="Y" EstimateRecords="1060" EstimateSeconds="72"></File>
+    <File Name="Trans\NomView.Dat" Optional="N" GDPR="Y" EstimateRecords="5" EstimateSeconds="29"></File>
+    <File Name="Trans\OPVATPay.Dat" Optional="N" GDPR="N" EstimateRecords="100" EstimateSeconds="14"></File>
+  </CompanyFiles>
+</PervasiveDataEncryption>

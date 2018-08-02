@@ -1,0 +1,463 @@
+========== COMMON ==========
+If you used freeware version (0.5), read the section
+in the end of this file.
+
+If you have another version of RichView Package installed,
+you need to delete (archive) it.
+If older version remains in paths where Delphi/C++Builder
+searches for components, you will not be able to compile/run
+your applications with RichView properly.
+
+Below are the instructions how to install components, 
+how to run demos, how to integrate help into IDE. 
+(Help file is integrated with more or less completeness, 
+ depending on version of Delphi/C++Builder)
+
+In registered version, components are in the the root directory of installation.
+In trial versions, components are in the locations specified below.
+
+
+========== Installing Update ======
+Copy updated files to the same directory as older version (override older files)
+Then follow instructions for your version of Delphi/C++Builder (choose "Compile"
+instead of "Install" for updates).
+Do not forget to rebuild packages!
+Read about compatibility issues (if any) in Readme.txt
+
+
+========== Delphi 3 ==========
+
+INSTALLING COMPONENTS
+IMPORTANT: 
+(=problem description=) 
+  There is a problem in Delphi 3 with packages 
+which use jpeg.dcu unit (as RVPkgD3.dpk does).
+Jpeg unit is not included in any package by default. 
+If some package uses this unit, this unit is included in it implicitly. 
+When second package tries to use it, Delphi says that jpeg unit 
+is already implicitly contained in the first package, and does not want 
+to install the second one. 
+Moreover, when such thing happens, you will not be able to install 
+second package any more, even if you set correct dependencies manually 
+(you will need to delete all compilation result files for packages 
+manually, or install a new package under a new name).
+(=what to do=)
+The recommended way is to create a new package with jpeg unit, install it and 
+specify that all packages which use jpeg unit require this package.
+(a)If you have no third-party packages which use jpeg unit, 
+  first open JpegD3.dpk package from D3 directory of RichView 
+  (menu "File|Open") and click "Install" button in the package window 
+  (this package contains only standart jpeg unit).
+  Open RVPkgD3.dpk (menu "File|Open") and click "Install" button in
+  the package window. 
+  You can see what this package requires JpegD3 package 
+  (click on "Requires" tab on package window).
+  Repeat the steps above with RVDBPkgD3.dpk.
+(b)If you have third-party package which already uses jpeg unit, please
+ - uninstall this package 
+   (menu "Component|Install Packages",
+   select this package and click "Remove" button)
+ - install JpegD3.dpk (see above)
+ - open these old packages and make them to require JpegD3 package 
+   (click on "Requires" tab in the package window, then click "Add" 
+   button in the toolbar and add JpegD3.dcp from D3 directory of RichView
+ - install RVPkgD3.dpk (see above)
+ - if your version of Delphi supports database components, 
+   install RVDBPkgD3.dpk.
+INSTALLING HELP
+ - Copy RichView.hlp and RichView.cnt to HELP directory of Delphi
+ - Open Delphi3.cfg in HELP directory of Delphi, and add line:
+:Link RichView.hlp
+ - Open Delphi3.cnt in HELP directory of Delphi 
+  (it's possible that you'll need to use wordpad or other text editor 
+   without file size limitation), and add two lines: 
+:Include RichView.cnt
+:Index RichView=RichView.hlp
+ - delete all *.gid files from HELP directory of Delphi (these files are hidden!)
+
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================= Delphi 4 ===============================
+
+INSTALLING COMPONENTS
+  Open RVPkgD4.dpk
+ (menu "File|Open") and click "Install" button 
+in package window. 
+  Repeat the steps above with RVDBPkgD4.dpk.
+INSTALLING HELP
+- Copy RichView.hlp and RichView.cnt to HELP directory of Delphi
+- Open Delphi4.cfg in HELP directory of Delphi, and add line:
+:Link RichView.hlp
+- Open Delphi4.cnt in HELP directory of Delphi, and add lines:
+:Include RichView.cnt
+:Index RichView=RichView.hlp
+- delete all *.gid files from HELP directory of Delphi (these files are hidden!)
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================= Delphi 5 ===============================
+
+INSTALLING COMPONENTS
+  Open RVPkgD5.dpk (menu "File|Open") and click "Install" button 
+in package window. 
+  Repeat the steps above with RVDBPkgD5.dpk.
+INSTALLING HELP
+In Delphi IDE, choose Help | Customize to open OpenHelp application.
+Choose the Contents tab.
+Choose Edit | Add Files.
+Select RichView.cnt.
+Click OK
+Choose the Index tab.
+Choose Edit | Add Files.
+Select RichView.hlp.
+Click OK
+Choose the Link tab.
+Choose Edit | Add Files.
+Select RichView.hlp.
+Click OK
+Choose File | Save Project to update Delphi's help file.
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================= Delphi 6 ===============================
+
+INSTALLING COMPONENTS
+  Open RVPkgD6.dpk (menu "File|Open") and click "Install" button 
+in the package window. 
+  Repeat the steps above with RVDBPkgD6.dpk.
+INSTALLING HELP
+Choose menu "Help|Customize...". You'll see Borland OpenHelp Window.
+Click the tab "Contents", then "Add files" button and add "RichView.cnt".
+Click the tab "Index", then "Add files" button and add "RichView.hlp".
+Click the tab "Link", then "Add files" button and add "RichView.hlp".
+Click OpenHelp menu "File|Save project".
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================= Delphi 7 ===============================
+
+INSTALLING COMPONENTS
+  Open RVPkgD7.dpk (menu "File|Open") and click "Install" button 
+in the package window. 
+  Repeat the steps above with RVDBPkgD7.dpk.
+
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================= Delphi 2005 ============================
+
+INSTALLING COMPONENTS
+  Open RVPkgD9.bdsproj (menu "File|Open"). In the Project Manager window,
+  right-click the package name and choose "Install" in the context menu.
+  Repeat the steps above with RVDBPkgD9.bdsproj.
+
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+================ Delphi and C++Builder 2006 ======================
+
+INSTALLING COMPONENTS
+  Open RVPkg2006.bdsproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkg2006.bdsproj.
+Make sure that the path to the packages is included in
+  the BDS 2006's library path. Menu Tools | Options,
+  the lists of paths are:
+  a) Environment Options | C++ Options | Paths and Directories, Search Path;
+  b) Environment Options | Delphi Options | Library - Win32, Library Path.
+
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+============================== Delphi 2007 ========================
+
+INSTALLING COMPONENTS
+  Open RVPkgD2007.dproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgD2007.dproj.
+Make sure that the path to the packages is included in
+  the RAD Studio 2007's library path. Menu Tools | Options,
+  the lists of paths is:
+  Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in C++Builder 2007.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\Delphi subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+============================== Delphi 2009 ========================
+
+INSTALLING COMPONENTS
+  Open RVPkgD2009.dproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgD2009.dproj.
+Make sure that the path to the packages is included in
+  the RAD Studio 2009's library path. Menu Tools | Options,
+  the lists of paths is:
+  Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in C++Builder 2009.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\DelphiUnicode subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+============================== Delphi 2010 ========================
+
+INSTALLING COMPONENTS
+  Open RVPkgD2010.dproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgD2010.dproj.
+Make sure that the path to the packages is included in
+  the RAD Studio 2010's library path. Menu Tools | Options,
+  the lists of paths is:
+  Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in C++Builder 2010.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\DelphiUnicode subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+============================== Delphi XE ========================
+
+INSTALLING COMPONENTS
+  Open RVPkgDXE.dproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgDXE.dproj.
+Make sure that the path to the packages is included in
+  the RAD Studio XE's library path. Menu Tools | Options,
+  the lists of paths is:
+  Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in C++Builder XE.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\DelphiUnicode subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+======================== C++Builder 4 ============================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB4.bpk (menu "File|Open") 
+and click "Install" button in package window.
+  Repeat the steps above with RVDBPkgCB4.bpk.
+Note: it may be necessary to edit include- and library- paths manually, 
+if your C++Builder can't find *.hpp or *.obj files. 
+Add path to components' directory to:
+- menu "Tools|Environment Options", "Library" tab, 
+  "Library path"
+- menu "Project|Options", "Directories/Conditionals" tab, 
+  "Include path" and "Library path"
+INSTALLING HELP
+- Copy RichView.hlp and RichView.cnt to HELP directory of C++Builder
+- Open Bcb4.cfg in HELP directory of C++Builder, and add line:
+:Link RichView.hlp
+- Open Bcb4.cnt in HELP directory of C++Builder, and add lines:
+:Include RichView.cnt
+:Index RichView=RichView.hlp
+- delete all *.gid files from HELP directory of C++Builder (these files are hidden!)
+DEMOS
+Demos are in Demos\CBuilder subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+======================== C++Builder 5 ============================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB5.bpk (menu "File|Open") 
+and click "Install" button in package window.
+  If your version of C++Builder supports database components, 
+repeat the steps above with RVDBPkgCB5.bpk.
+Note: it may be necessary to edit include- and library- paths manually, 
+if your C++Builder can't find *.hpp or *.obj files. 
+Add path to components' directory to:
+- menu "Tools|Environment Options", "Library" tab, 
+  "Library path"
+- menu "Project|Options", "Directories/Conditionals" tab, 
+  "Include path" and "Library path"
+INSTALLING HELP
+- Copy RichView.hlp and RichView.cnt to the HELP directory of C++Builder
+Run C++Builder.
+Click menu "Help|Customize...". You'll see Borland OpenHelp Window.
+Click the tab "Contents", then "Add files" button and add "RichView.cnt".
+Click the tab "Index", then "Add files" button and add "RichView.hlp".
+Click the tab "Link", then "Add files" button and add "RichView.hlp".
+Click OpenHelp menu "File|Save project".
+DEMOS
+Demos are in Demos\CBuilder subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+======================== C++Builder 6 ============================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB6.bpk (menu "File|Open") 
+and click "Install" button in package window.
+  Repeat the steps above with RVDBPkgCB6.bpk.
+Note: it may be necessary to edit include- and library- paths manually, 
+if your C++Builder can't find *.hpp or *.obj files. 
+Add path to components' directory to:
+- menu "Tools|Environment Options", "Library" tab, 
+  "Library path"
+- menu "Project|Options", "Directories/Conditionals" tab, 
+  "Include path" and "Library path"
+INSTALLING HELP
+- Copy RichView.hlp and RichView.cnt to the HELP directory of C++Builder
+Run C++Builder.
+Click menu "Help|Customize...". You'll see Borland OpenHelp Window.
+Click the tab "Contents", then "Add files" button and add "RichView.cnt".
+Click the tab "Index", then "Add files" button and add "RichView.hlp".
+Click the tab "Link", then "Add files" button and add "RichView.hlp".
+Click OpenHelp menu "File|Save project".
+DEMOS
+Demos are in Demos\CBuilder subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+======================== Turbo C++ 2006 ============================
+
+INSTALLING COMPONENTS
+  Open RVPkgTCPP.bdsproj (menu "File|Open") 
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgTCPP.bdsproj.
+Make sure that the following paths:
+- the path to the packages, 
+- the path to obj files created on compiling (usually "debug_build" subdirectory)
+ are included in the TurboC++ library path. Menu Tools | Options, the list of paths is:
+  Environment Options | C++ Options | Paths and Directories, Search Path;
+
+DEMOS
+Demos are in Demos\CBuilder subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================== C++Builder 2007 =========================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB2007.cbproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgCB2007.cbproj.
+Make sure that the following paths:
+- the path to the packages, 
+- the path to obj files created on compiling (usually "Release" subdirectory)
+ are included in the RAD Studio 2007's library path. Menu Tools | Options,
+  the lists of paths are:
+  a) Environment Options | C++ Options | Paths and Directories, Search Path;
+  b) Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in Delphi 2007.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\CBuilder\ subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================== C++Builder 2009 =========================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB2009.cbproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgCB2009.cbproj.
+Make sure that the following paths:
+- the path to the packages, 
+- the path to obj files created on compiling (usually "Release" subdirectory)
+ are included in the RAD Studio 2009's library path. Menu Tools | Options,
+  the lists of paths are:
+  a) Environment Options | C++ Options | Paths and Directories, Search Path;
+  b) Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in Delphi 2009.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+
+DEMOS
+Demos are in Demos\CBuilderUnicode\ subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================== C++Builder 2010 =========================
+
+INSTALLING COMPONENTS
+  Open RVPkgCB2010.cbproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgCB2010.cbproj.
+IF THE STEPS ABOVE DO NOT WORK
+  If C++Builder displays internal errors when installing RVPkgCB2010.cbproj,
+use the following workaround. Instead of using "Install" command, choose
+"Build". Then choose "Install". If it fails, choose "Install" again.
+
+Make sure that the following paths:
+- the path to the packages, 
+- the path to obj files created on compiling (usually "Release" subdirectory)
+ are included in the RAD Studio 2010's library path. Menu Tools | Options,
+  the lists of paths are:
+  a) Environment Options | C++ Options | Paths and Directories, Search Path;
+  b) Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in Delphi 2010.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\CBuilderUnicode\ subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+========================== C++Builder XE =========================
+
+INSTALLING COMPONENTS
+  Open RVPkgCBXE.cbproj.
+  Right click the package name in the Project Manager, 
+  choose "Install" in the popup menu.
+  Repeat the steps above with RVDBPkgCBXE.cbproj.
+IF THE STEPS ABOVE DO NOT WORK
+  If C++Builder displays internal errors when installing RVPkgCBXE.cbproj,
+use the following workaround. Instead of using "Install" command, choose
+"Build". Then choose "Install". If it fails, choose "Install" again.
+
+Make sure that the following paths:
+- the path to the packages, 
+- the path to obj files created on compiling (usually "Release" subdirectory)
+ are included in the RAD Studio XE's library path. Menu Tools | Options,
+  the lists of paths are:
+  a) Environment Options | C++ Options | Paths and Directories, Search Path;
+  b) Environment Options | Delphi Options | Library - Win32, Library Path.
+See also: installing in Delphi XE.
+Either Delphi or C++Builder files may be installed in RAD Studio.
+They cannot be installed together.
+
+DEMOS
+Demos are in Demos\CBuilderUnicode\ subdirectory.
+Some additional utilities are in Demos\Addins\.
+
+
+===== FOR USERS OF FREEWARE VERSION (0.5): =====
+
+You can't use both freeware and shareware version
+on the same Delphi or C++Builder instance.
+If you have the old freeware version, please uninstall it
+before installing the shareware one (and remove it from 
+directories where Delphi/C++Builder searches for 
+components).
+You can try your existing projects with this version 
+of RichView, but read "Compatibility with older versions 
+of RichView" topic of RichView help before. Please save 
+original code of these projects (old freeware version 
+could not be able to load projects saved with new one, 
+and you can decide to return to old version).

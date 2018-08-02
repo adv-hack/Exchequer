@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Order>
+	<OrderDate></OrderDate>
+	<Supplier ID="">
+		<SupplierReferences>
+			<TaxNumber></TaxNumber>
+			<GLN></GLN>
+		</SupplierReferences>
+		<Address ID="">
+			<Name></Name>
+			<AddressLine></AddressLine>
+			<Street></Street>
+			<City></City>
+			<State></State>
+			<PostCode></PostCode>
+			<Country></Country>
+		</Address>
+		<Contact ID="">
+			<Name></Name>
+			<Department></Department>
+			<Switchboard></Switchboard>
+			<Fax></Fax>
+			<Email></Email>
+		</Contact>
+	</Supplier>
+</Order>
+

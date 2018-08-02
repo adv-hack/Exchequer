@@ -1,0 +1,2 @@
+[Warning] CONFIGF.PAS(75): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Hint] AUCONFIG.PAS(40): Variable 'i' is declared but never used in 'TfrmAutopayConfig.edtValChange'

@@ -1,0 +1,622 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Title=Exchequer v7.0 Pre-Upgrade Survey
+  Flags=00000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000011000000110001001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00101000000000000000000000000000
+  Extra Pages=00000000000000000000000000110000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=20000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Description1=Hide the Wise Splash Screen
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+  Variable Name2=_DISTRO_
+  Variable Description2=Specify the Distributor that the Survey is being built for
+  Variable Default2=UK
+  Variable Values2=UK
+  Variable Values2=EIRE
+  Variable Values2=NZ
+  Variable Values2=Australia
+  Variable Values2=Singapore
+  Variable Flags2=00000010
+end
+item: Remark
+end
+item: Remark
+  Text=UPGSURV7.WSE - Exchequer v7.0 Pre-Upgrade Survey
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Wise Script Variables
+end
+item: Set Variable
+  Variable=PASSWORD
+  Value=SHINSEKI
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=Display Title and Copyright
+end
+item: Custom Graphic
+  Y Position=5
+  Width=637
+  Height=68
+  Flags=0000000000101000
+  item: Text
+    Text=Exchequer
+    Rectangle=0 0 637 68
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Extra Flags=00000011
+    Name=Times New Roman
+    Font Style=-48 0 0 0 700 255 0 0 0 3 2 1 18
+  end
+end
+item: Custom Graphic
+  Y Position=16389
+  Width=636
+  Height=77
+  Flags=0000000000101000
+  item: Text
+    Text=Pre-Upgrade Survey
+    Rectangle=4 1 633 61
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Extra Flags=00000011
+    Name=Times New Roman
+    Font Style=-43 0 0 0 700 0 0 0 0 3 2 1 18
+  end
+  item: Text
+    Text=Copyright © Advanced Enterprise Software Ltd 2013
+    Rectangle=0 57 636 77
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Name=Times New Roman
+    Font Style=-13 0 0 0 700 255 0 0 0 3 2 1 18
+  end
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end
+item: Remark
+  Text=---------------------------------- Extract OLE Server path from registry
+end
+item: Get Registry Key Value
+  Variable=V_MAINDIR
+  Key=CLSID\{D7AF2B20-8D38-11CF-BD36-444553540000}\LocalServer32
+end
+item: Remark
+end
+item: Remark
+  Text=---------------------------------- AOK - OLE Server path found in Registry
+end
+item: Check if File/Dir Exists
+  Pathname=%V_MAINDIR%
+  Flags=01000100
+end
+item: Remark
+end
+item: Remark
+  Text=Remove OLE Server file name
+end
+item: Set Variable
+  Variable=V_MAINDIR
+  Value=%V_MAINDIR%
+  Flags=00000010
+end
+item: Remark
+end
+item: Remark
+  Text=Display 'Welcome' dialog
+end
+item: Custom Dialog Set
+  Name=Welcome
+  item: Dialog
+    Title=Exchequer v7.0 Pre-Upgrade Survey
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=V_OPERATION
+      Value=U
+      Action=1
+      Create Flags=01010000000000010000000000000001
+      Text=Co&ntinue
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 90 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 260 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Welcome
+    end
+    item: Static
+      Rectangle=95 30 257 74
+      Create Flags=01010000000000000000000000000000
+      Text=This program installs the Exchequer v7.0 Pre-Upgrade Survey which should be used prior to upgrading from Exchequer v6.xx to Exchequer v7.0.
+      Text=
+      Text=The Survey performs two main tasks:-
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Push Button
+      Rectangle=162 156 207 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=&Cancel
+    end
+    item: Static
+      Rectangle=99 97 105 107
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000001
+      Flags=0000000000000001
+      Name=Symbol
+      Font Style=-13 0 0 0 400 0 0 0 2 3 2 1 18
+      Text=·
+    end
+    item: Static
+      Rectangle=106 76 257 97
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000000
+      Text=It scans your accounts for any issues that may cause a problem during the upgrade to Exchequer v7.0.
+    end
+    item: Static
+      Rectangle=106 98 248 117
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000000
+      Text=It contains a short survey to allow us to update your contact details in our internal records.
+    end
+    item: Static
+      Rectangle=99 75 105 85
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000000000000000000001
+      Flags=0000000000000001
+      Name=Symbol
+      Font Style=-13 0 0 0 400 0 0 0 2 3 2 1 18
+      Text=·
+    end
+    item: Static
+      Rectangle=95 121 256 146
+      Create Flags=01010000000000000000000000000000
+      Text=Click the Continue button below to continue with the installation process, or click the Cancel button to exit the install program now.
+    end
+  end
+end
+item: Remark
+end
+item: Remark
+  Text=Display 'Ready To Upgrade' dialog
+end
+item: Custom Dialog Set
+  Name=Ready To Upgrade
+  item: Dialog
+    Title=Exchequer v7.0 Pre-Upgrade Survey
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=V_OPERATION
+      Value=U
+      Action=1
+      Create Flags=01010000000000010000000000000000
+      Text=&Install
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 90 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 260 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Ready To Install Survey
+    end
+    item: Static
+      Rectangle=95 30 251 49
+      Create Flags=01010000000000000000000000000000
+      Text=An existing installation of Exchequer has been found in the following directory:-
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=103 52 247 63
+      Destination Dialog=2
+      Create Flags=01010000000000000000000000000000
+      Text=%V_MAINDIR%
+    end
+    item: Static
+      Rectangle=95 66 251 103
+      Create Flags=01010000000000000000000000000000
+      Text=To install the Pre-Upgrade Survey into this system click the Install button below.
+      Text=
+      Text=To cancel the install, click the Cancel button below.
+    end
+    item: Push Button
+      Rectangle=162 156 207 171
+      Action=3
+      Create Flags=01010000000000010000000000000001
+      Text=&Cancel
+    end
+  end
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=V_OPERATION
+  Value=U
+  Flags=00000100
+end
+item: Remark
+  Text=---------------------------------- AOK - Install Survey Executable
+end
+item: Check if File/Dir Exists
+  Pathname=%V_MAINDIR%\ICoreBtrv.Dll
+  Flags=01000100
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\SQL Edition\ExSurvey.exe
+  Destination=%V_MAINDIR%\ExSurvey.exe
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Else Statement
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Pervasive Edition\ExSurvey.exe
+  Destination=%V_MAINDIR%\ExSurvey.exe
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=---------------------------------- HM 28/08/02 - Install Local Configuration File
+end
+item: Compiler Variable If
+  Variable=_DISTRO_
+  Value=UK
+end
+item: Remark
+  Text=UK
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Config\UK\EXSURVEY.DAT
+  Destination=%V_MAINDIR%\EXSURVEY.DAT
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Compiler Variable Else
+end
+item: Compiler Variable If
+  Variable=_DISTRO_
+  Value=EIRE
+end
+item: Remark
+  Text=Ireland
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Config\EIRE\EXSURVEY.DAT
+  Destination=%V_MAINDIR%\EXSURVEY.DAT
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Compiler Variable Else
+end
+item: Compiler Variable If
+  Variable=_DISTRO_
+  Value=NZ
+end
+item: Remark
+  Text=New Zealand
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Config\NZ\EXSURVEY.DAT
+  Destination=%V_MAINDIR%\EXSURVEY.DAT
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Compiler Variable Else
+end
+item: Compiler Variable If
+  Variable=_DISTRO_
+  Value=Australia
+end
+item: Remark
+  Text=Australia
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Config\Australia\EXSURVEY.DAT
+  Destination=%V_MAINDIR%\EXSURVEY.DAT
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Compiler Variable Else
+end
+item: Compiler Variable If
+  Variable=_DISTRO_
+  Value=Singapore
+end
+item: Remark
+  Text=Singapore
+end
+item: Install File
+  Source=X:\ENTRPRSE\SURVEY\Pre-Upgrade\Installer\Config\Singapore\EXSURVEY.DAT
+  Destination=%V_MAINDIR%\EXSURVEY.DAT
+  Description=Exchequer Pre-Upgrade Survey
+  Flags=0000000010000010
+end
+item: Compiler Variable Else
+end
+item: Remark
+  Text=Unknown Distributor
+end
+item: Halt Compilation
+  Message=Unhandled Distributor
+end
+item: Compiler Variable End
+end
+item: Compiler Variable End
+end
+item: Compiler Variable End
+end
+item: Compiler Variable End
+end
+item: Compiler Variable End
+end
+item: Remark
+end
+item: Remark
+  Text=---------------------------------- Upgrade installed - let them know its all over and select the options for icons
+end
+item: Set Variable
+  Variable=V_RUNSURVEY
+  Value=A
+end
+item: Custom Dialog Set
+  Name=Finished
+  item: Dialog
+    Title=Exchequer v7.0 Pre-Upgrade Survey
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Action=1
+      Create Flags=01010000000000010000000000000000
+      Text=&Finish
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 90 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 260 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Survey Installed
+    end
+    item: Static
+      Rectangle=95 30 251 73
+      Create Flags=01010000000000000000000000000000
+      Text=The Pre-Upgrade survey has been installed into your Exchequer system.
+      Text=
+      Text=There are two options below which you can use to run the Survey:-
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Checkbox
+      Rectangle=104 74 236 98
+      Variable=V_RUNSURVEY
+      Enabled Color=00000000000000001111111111111111
+      Create Flags=01010000000000010000000000000011
+      Text=Add a shortcut into the Start Menu
+      Text=Run the Survey after this Install finishes
+      Text=
+    end
+    item: Static
+      Rectangle=95 100 251 143
+      Create Flags=01010000000000000000000000000000
+      Text=NOTE: Adding a shortcut into the Start Menu will allow you to re-run the survey at any time.  If the survey generates any warnings then this will allow you to easily check that they have been fixed before applying the next upgrade.
+    end
+  end
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=V_RUNSURVEY
+  Value=A
+  Flags=00001010
+end
+item: Remark
+  Text=---------------------------------- Add Icon into Start Menu
+end
+item: Get Registry Key Value
+  Variable=V_STARTMENU
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Start Menu
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_STARTMENU
+  Value=\
+  Flags=00000001
+end
+item: Create Shortcut
+  Source=%V_MAINDIR%\EXSURVEY.EXE
+  Destination=%V_STARTMENU%\Exchequer Pre-Upgrade Survey.lnk
+  Working Directory=%V_MAINDIR%
+  Description=Exchequer Pre-Upgrade Survey
+  Key Type=1536
+  Flags=00000001
+end
+item: End Block
+end
+item: If/While Statement
+  Variable=V_RUNSURVEY
+  Value=B
+  Flags=00001010
+end
+item: Remark
+  Text=---------------------------------- Run Survey
+end
+item: Execute Program
+  Pathname=%V_MAINDIR%\EXSURVEY.EXE
+  Default Directory=%V_MAINDIR%
+end
+item: End Block
+end
+item: End Block
+end
+item: Else Statement
+end
+item: Custom Dialog Set
+  Name=Error
+  item: Dialog
+    Title=Exchequer Pre-Upgrade Survey
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Action=1
+      Create Flags=01010000000000010000000000000001
+      Text=&Close
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=S:\ExchCD\Setup\IMAGES\sidelogo.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 260 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Times New Roman
+      Font Style=-24 0 0 0 700 255 0 0 0 3 2 1 18
+      Text=Exchequer Not Found
+    end
+    item: Static
+      Rectangle=95 30 251 128
+      Create Flags=01010000000000000000000000000000
+      Text=An existing installation of Exchequer could not be detected on this workstation.
+      Text=
+      Text=If you do use Exchequer on this workstation please use the Exchequer Workstation Setup Program to correctly configure this workstation and then retry this program.
+      Text=
+      Text=If you do not use Exchequer on this workstation then please retry this installation on a workstation that Exchequer is used on.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+  end
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text========================================================================================================
+end
+item: Remark
+end

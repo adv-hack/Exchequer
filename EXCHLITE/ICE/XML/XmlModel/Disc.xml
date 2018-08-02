@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:disc xmlns:val="urn:www-iris-co-uk:disc">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <discrec>
+            <custcode/>      <!--:  String[6];    { Customer Code } -->
+            <stockcode/>     <!--:  String[16];   { Stock Code }  -->
+            <disctype/>      <!--:  Char;         { Discount Type - B,S,M,U,Q } -->
+            <salesband/>     <!--:  Char;         { Sales Price Band - A to H } -->
+            <spcurrency/>    <!--:  SmallInt;     { Special Price Currency }-->
+            <sprice/>        <!--:  Double;       { Special Price }   -->
+            <discper/>       <!--:  Double;       { Discount % }   -->
+            <discamt/>       <!--:  Double;       { Discount Amount of Unit Price } -->
+            <discmar/>       <!--:  Double;       { Discount MarkUp or Margin % } -->
+            <qtybreak/>      <!--:  WordBool;     { Qty Break Status }       -->
+            <qtyfr/>         <!--:  Double;       { Qty Discount From Qty }  -->
+            <qtyto/>         <!--:  Double;       { Qty Discount To Qty }   -->
+        </discrec>
+    </message>
+</val:disc>

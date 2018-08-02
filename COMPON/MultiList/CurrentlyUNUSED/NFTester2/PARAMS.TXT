@@ -1,0 +1,32 @@
+Command Line parameters for WINCARD.EXE
+
+/DETAILEDLOGGING 
+
+Switches on detailed logging in the commslog files. Shows all bytes, not just packets.
+
+
+/MUXPAUSE=50
+
+Defines the pause (in milliseconds) that is made after switching the MUX.
+This defaults to 10 but should be set to 50 (or above) for sites with the checking tills problem.
+
+
+/ENTDIR=C:\SBSCARD\EXCH\ 
+
+Overrides the setting in the System Setup for the enterprise Directory.
+This allows you to run the system, so that you can change the setting in the system setup !
+
+
+/COMMSTIMEOUT=10000 
+
+This defines the time that the comms waits, to decide if a timeout occurs. 
+If you get no information back from the till within this time, it will give up.
+The time is defined in milliseconds, and the default value is 2000.
+
+/COM1 /COM2 /COM3 /COM4
+
+This defines which com port you wish to use with the card system to communicate with your tills.
+
+LIVE_ON
+
+This switches the communications to the till on (Note : No slash).

@@ -1,0 +1,281 @@
+ 
+<HTML>
+ 
+<HEAD>
+<TITLE></TITLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="demo.css"> 
+
+</HEAD>
+
+<BODY CLASS="indent">
+<p CLASS="heading"><A NAME="What">What are the HTML Viewer Components?</A></p>
+<P>The HTML component set consists of the <B>ThtmlViewer</B>, <B>TFrameViewer</B>, and <B>TFrameBrowser</B>
+components. All three are HTML document display components:</P>
+<TABLE WIDTH="100%" CELLSPACING="2" CELLPADDING="2" BORDER="0">
+  <TR>
+	 <TH WIDTH="2%"></TH>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">ThtmlViewer</TH>
+	 <TD VALIGN="top">The basic component. <B>ThtmlViewer</B> displays single (non-frame) documents. It also forms
+	 the basis for the other two components.<BR>
+	 <BR>
+	 </TD>
+  </TR>
+  <TR>
+	 <TD></TD>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">TFrameViewer</TH>
+	 <TD VALIGN="top">Displays both Frame and single HTML documents. <B>TFrameViewer</B> is oriented more for local
+	 disk file use.<BR>
+	 <BR>
+	 </TD>
+  </TR>
+  <TR>
+	 <TH></TH>
+	 <TH CLASS="maroon" VALIGN="top" ALIGN="left">TFrameBrowser&nbsp;&nbsp;&nbsp;</TH>
+	 <TD VALIGN="top">Also displays Frame and single HTML documents. However, <B>TFrameBrower</B> is oriented
+	 toward Internet style protocols and URL usage. Additional code and/or components are generally required to use
+	 <B>TFrameBrowser</B>.<BR>
+	 </TD>
+  </TR>
+</TABLE>
+<P>Version 8 of these components supports most of the HTML 3.2 specifications with many additional popular HTML 4
+enhancements. Many Cascading Style Sheet properties are also supported. </P>
+<UL>
+<LI>Cascading Stylesheets &nbsp;&nbsp;&nbsp;(32 bit versions only)<A HREF="properties.htm" TARGET="RightWin"></A>
+</LI>
+<LI>Frames </LI>
+<LI>Bitmap, <A HREF="#Unisys">GIF</A>, JPEG, and PNG Images &nbsp;&nbsp;(see
+<A HREF="Things.htm#Dll" TARGET="RightWin">graphics DLL)</A> <UL>
+<LI><IMG ALIGN="middle" ALT="Animated GIFs" HEIGHT="32" SRC="AGif2.gif" WIDTH="181"> </LI>
+<LI>Transparent images </LI>
+<LI>Image caching </LI>
+<LI>Left and right floating images </LI>
+<LI>Image sizing attributes </LI>
+<LI>Client side image maps</LI>
+</UL>
+</LI>
+<LI>Large HTML files </LI>
+<LI>HTML Tables </LI>
+<LI>HTML Forms </LI>
+<LI>Font sizes, styles, and colors with HTML tags or default settings </LI>
+<LI>Background colors and images </LI>
+<LI>Formatted printing of the HTML document </LI>
+<LI>Print preview &nbsp;&nbsp;(32 bit versions only) </LI>
+<LI>Text search </LI>
+<LI>Copy to clipboard </LI>
+<LI>Subscripts and superscripts</LI>
+</UL>
+<P>While HTML documents are normally associated with the Internet, they are also very useful for displaying all
+kinds of textual material such as documentation, helpfiles, etc. Graphics are easily incorporated in these
+documents. </P>
+
+<p CLASS="heading"><A NAME="Files">Files Supplied</A></p>
+<PRE>DEMO.HTM        This file
+*.HTM           Frame files for DEMO.HTM
+FRAMEDEM.EXE    The TFrameViewer demo program
+Various image and sound files for demo
+
+Source code for the demo programs
+   FRAMEDEM.DPR    Source for the TFrameViewer demo program
+   FRMUNIT.PAS, .DFM
+   HTMLDEMO.DPR    Source for the ThtmlViewer demo program
+   DEMOUNIT.PAS, .DFM
+   HTMLEDITOR.DPR  Source for the demo editor program
+   HTMLED1.PAS, .DFM
+   HTMLABT.PAS, .DFM
+   FONTDLG.PAS, .DFM
+   SUBMIT.PAS, .DFM
+   IMGFORM.PAS, .DFM
+
+   PREVIEWFORM.PAS, .DFM      32 bit versions only
+   PRINTSTATUSFORM.PAS, .DFM
+   GOPAGE.PAS, .DFM
+   GRID.RES
+
+Source code for the ThtmlViewer, TFrameViewer, and TFrameBrowser components
+
+   FRAMBRWZ.PAS, .DCR
+   FRAMVIEW.PAS, .DCR
+   HTMLVIEW.PAS, .DCR
+   HTMLSUBS.PAS
+   HTMLSBS1.PAS
+   READHTML.PAS
+   HTMLUN2.PAS
+   HTMLGIF.PAS
+   URLSUBS.PAS
+   METAFILEPRINTER.PAS
+   DITHERUNIT.PAS       
+   VWPRINT.PAS          
+   HTMLCOMPEDIT.PAS     
+   STYLEUN.PAS
+   STYLEPARS.PAS
+   HTMLCONS.INC         File of optional compile time constants
+   DLLINTA.PAS
+   FRAMEVIEWER3.DPK, .RES  Delphi 3 Package source file
+   FRAMEVIEWER4.DPK, .RES  Delphi 4 Package source file
+   FRAMEVIEWER5.DPK, .RES  Delphi 5 Package source file
+   HTML32.RES           Resource file
+   HTMLVIEW.HLP         The help file
+   HTMLVIEW.KWF         It's keyword file
+   HTMLVIEW.CNT         Help contents file
+</PRE>
+
+
+<p CLASS="heading"><A NAME="InstallViewer">Installing The HTML Components</A></p>
+<P>If you are installing more for than one version of Delphi, use separate directories for the installations. </P>
+<P>Installation problems are almost always due to old or incorrect files being accessed. Make sure that the
+Library Path or Search Path does not point to the directory of any old HTML component files. The Library Path can
+be edited from the <B>Tools|Environment</B> Options dialog, <B>Library</B> tab. The Search Path from the
+<B>Project|Options</B> dialog, <B>Directories/Conditionals</B> tab.</P>
+<P>Delete all DCU files generated with previous installations. </P>
+<P>The Register procedures in <CODE>HTMLVIEW.PAS</CODE>, <CODE>FRAMVIEW.PAS</CODE>, and <CODE>FRAMBRWZ.PAS</CODE>
+are set to place the components on the palette page tab named <B>Samples</B>. These can be relocated later from
+the IDE if desired. </P>
+<P ALIGN="center"> </P>
+<TABLE WIDTH="300" ALIGN="center">
+  <TR ALIGN="center">
+	 <TD> <A HREF="#Delphi2Install">Delphi 2</A></TD>
+	 <TD><A HREF="#Delphi345Install">Delphi 3, 4, 5</A></TD>
+  </TR>
+</TABLE>
+<P CLASS="maroon"><A NAME="Delphi2Install">Delphi 2</A> </P>
+<OL>
+<LI><B>Backup <CODE>CMPLIB32.DCL</CODE> or start a new library file.</B><P></P>
+</LI>
+<LI>If you have installed an earlier version of these components, be sure and remove them from
+<CODE>COMPLIB32.DCL</CODE> (use the Remove button in the Install Components Dialog). The old files should be
+deleted or otherwise made inaccessible before doing the new installation. <P></P>
+</LI>
+<LI>If the optional graphics DLL is being used, copy it (<CODE>ILDA32.DLL</CODE>) to the
+<CODE>WINDOWS\SYSTEM</CODE> directory. Also define the constant, <CODE><B><A
+HREF="Things.htm#CompileOptions">UseDLL</A></B></CODE>, as discussed in
+<A HREF="Things.htm#CompileOptions" TARGET="RightWin">Compile Time Options</A>. <P></P>
+</LI>
+<LI>From the Delphi IDE, choose <B>Component | Install</B>. In the dialog, choose the <B>Add...</B> button. In the
+Add Module dialog that then comes up, the simplest approach is to use the <B>Browse</B> button to find: 
+<BLOCKQUOTE> <CODE>C:\THTML\PACKAGE\HTMLVIEW.PAS</CODE>. </BLOCKQUOTE>
+<P>assuming that you chose the default installation directories. Then hit <B>OK</B> and the Search Path edit box
+will have the correct path added and ThtmlViewer will have been added to the installed units listbox. (You may
+have to scroll down to see it.) </P>
+<P></P>
+</LI>
+<LI>Repeat the above procedure to similarly locate the <CODE>FRAMVIEW.PAS</CODE> and <CODE>FRAMBRWZ.PAS</CODE>
+files. <P></P>
+</LI>
+<LI>Hit <B>OK</B> on the Install Components dialog and the necessary steps will be taken to do the installation.
+The HTML component buttons will appear on the <CODE>SAMPLES</CODE> component page tab. </LI>
+</OL>
+<P CLASS="maroon"><A NAME="Delphi345Install">Delphi 3, 4, and 5</A> </P>
+<P> </P>
+<OL>
+<LI>If the optional graphics DLL is being used, copy it (<CODE>ILDA32.DLL</CODE>) to the
+<CODE>WINDOWS\SYSTEM</CODE> directory. Also define the constant, <CODE><B><A
+HREF="Things.htm#CompileOptions">UseDLL</A></B></CODE>, as discussed in
+<A HREF="Things.htm#CompileOptions" TARGET="RightWin">Compile Time Options</A>. <P></P>
+</LI>
+<LI>Choose <B>File|Open...</B> from the main menu. Browse through the dialog to find
+<CODE>FRAMEVIEWER3|4|5.DPK</CODE> (by default in the <CODE>\THTML\PACKAGES</CODE> directory). <P> </P>
+</LI>
+<LI>Click <B>Open</B> and in the ensuing dialog, press <B>Compile</B> and then <B>Install</B>. <P> </P>
+</LI>
+<LI>When using the HTML components, include the <CODE>\THTML\Package</CODE> directory in the searchpath. The
+searchpath can be edited by choosing <B>Project|Options|Directories|Conditionals</B> from the main menu. <P> </P>
+</LI>
+<LI><IMG SRC="Import1.gif" ALIGN="top">Make sure that the Library Path string does not point to the directory of
+any old HTML component files. The Library Path string can be edited from the <B>Tools|Environment</B> Options
+dialog, <B>Library</B> tab.</LI>
+</OL>
+<P> </P>
+
+<p CLASS="heading"><A NAME="installHelp">Installing the Help File</A></p>
+<P>The file <CODE>HTMLVIEW.HLP</CODE> will supply context sensitive help for the HTML components. </P>
+<TABLE WIDTH="300" ALIGN="center">
+  <TR ALIGN="center">
+	 <TD><A HREF="#Delphi2Help">Delphi 2</A></TD>
+	 <TD><A HREF="#Delphi3_4Help">Delphi 3, 4, 5</A></TD>
+  </TR>
+</TABLE>
+<P CLASS="maroon"><A NAME="Delphi2Help">Delphi 2</A> </P>
+<P> </P>
+<OL>
+<LI>Close the Delphi IDE. <P></P>
+</LI>
+<LI>Run Delphi's <CODE>HELPINST</CODE> program. Choose File | Open to open <CODE>DELPHI.HDX</CODE> in the
+<CODE>DELPHI\BIN</CODE> directory. <P></P>
+</LI>
+<LI>Choose Keywords | Add Keyword File to add the <CODE>HTMLVIEW.KWF</CODE> file to the list of <CODE>.KWF</CODE>
+files. (The <CODE>HTMLVIEW.KWF</CODE> is located in the <CODE>C:/THTML/HELP</CODE> directory if you've chosen the
+default directory setup.) <P></P>
+</LI>
+<LI>Choose File | Save or hit the blue disk button to compile and save the revised <CODE>.HDX</CODE> file. <P></P>
+</LI>
+<LI>After the <CODE>.HDX</CODE> file has been modified, Delphi must be reloaded for the changes to take effect. 
+</LI>
+</OL>
+<P>The <CODE>HTMLVIEW.HLP</CODE> file contains documentation on how to use the HTML components. To access the
+help, place one of the HTML components on your form and press F1. The first time you do this, Delphi may complain
+that it can't find the help file. At that time, select the &quot;Find it yourself&quot; option. This operation
+will get the information loaded into the Win95 Registry and Delphi will be able to locate the help file
+thereafter.<BR>
+&nbsp; </P>
+<P CLASS="maroon"><A NAME="Delphi3_4Help">Delphi 3, 4 and 5</A> </P>
+<P> </P>
+<OL>
+<LI>Remove any old <CODE>HTMLVIEW.HLP</CODE> and <CODE>HTMLVIEW.CNT</CODE> files from the
+<CODE>BORLAND\DELPHIX\HELP</CODE> directory. It's no longer necessary to move the new files to this directory. <P>
+</P>
+</LI>
+<LI>Edit the <CODE>DELPHI.CNT</CODE> file (in the <CODE>BORLAND\DELPHIX\HELP</CODE> directory. Load the file into
+an editor and add the following line at the end: <PRE>
+   :include HTMLVIEW.CNT
+</PRE>
+You'll find other similar lines already there. 
+</LI>
+</OL>
+<P>If you later decide to remove the HTML Components, this added information to the <CODE>DELPHI.CNT</CODE> file
+will simply be ignored.<BR>
+&nbsp; </P>
+
+<p CLASS="heading"><A NAME="UnInstall">UnInstalling the Components</A></p>
+<P>To uninstall the HTML components from Windows: </P>
+<UL>
+<LI>From the Control Panel, select Add/Remove Programs </LI>
+<LI>In the listbox on the Install/UnInstall Tab, select HTML Components </LI>
+<LI>Press the Add/Remove button.</LI>
+</UL>
+<P>When asked if the DLL should be removed, select &quot;Yes&quot; as this DLL is only used with these components.
+</P>
+
+<p CLASS="heading"><A NAME="Addresses">Contacts and Addresses</A></p>
+<P><SMALL><B>Note: Address and Telephone changes frequently. Please verify by email.</B></SMALL></P>
+<P><B><A NAME="Sales Address">Sales and Technical</A></B> </P>
+<ADDRESS STYLE="margin-left: 35px;"> David Baldwin,<BR>
+22 Simeon Wilson Rd.,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Summer<BR>
+Amherst, New Hampshire 03031, USA<BR>
+Phone: (603) 672-2531<BR>
+Fax: (603) 672-1567<BR>
+<BR>
+144 Sands Point Dr.,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Winter<BR>
+Tierra Verde, FL 33715, USA<BR>
+Phone: (727) 906-9072<BR>
+Fax: (727) 867-7828<BR>
+<BR>
+Internet: <A HREF="mailto:dbaldwin@pbear.com">dbaldwin@pbear.com</A><BR>
+World Wide Web: <A HREF="http://www.pbear.com/">http://www.pbear.com/</A> </ADDRESS>
+
+<p CLASS="heading"><A NAME="ImageLib">ImageLib Graphics Software</A></p>
+<P>The optional graphics DLL used with the the HTML components is provided using a portion of ImageLib's image
+library. The full ImageLib shareware package may be obtained at <A
+HREF="http://www.imagelib.com/">http://www.imagelib.com/</A>. </P>
+<P>For further information, contact: </P>
+<ADDRESS> Skyline Tools<BR>
+<A HREF="mailto:sales@imagelib.com">sales@imagelib.com</A><BR>
+</ADDRESS> <P> </P>
+
+<p CLASS="heading"><A NAME="Unisys">GIF Image Royalties</A></p>
+<P><B>Important:</B> </P>
+<P>The use of GIF Images in a commercial product may necessitate royalty payments to Unisys Corporation. For
+further information, contact <A HREF="mailto:LZW_INFO@UNISYS.COM">lzw_info@unisys.com</A> </P>
+
+</BODY>
+</HTML>
+

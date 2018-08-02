@@ -1,0 +1,206 @@
+<importExport>
+	<commonGroups>
+		<commonGroup name="CompanySpecificGroup" processIndividually="true">
+			<tables>
+				<table name="ExchqNum" btrieveFilename="ExchqNum.dat" />
+				<table name="ExchqSS" btrieveFilename="ExchqSS.dat" />
+				<table name="CustSupp" btrieveFilename="Cust\CustSupp.dat" />
+				<table name="AccountContact" btrieveFilename="Cust\AccountContact.dat" />
+				<table name="ContactRole" btrieveFilename="Cust\ContactRole.dat" />
+				<table name="AccountContactRole" btrieveFilename="Cust\AccountContactRole.dat" />
+				<table name="PaprSize" btrieveFilename="Forms\PaprSize.dat" />
+				<table name="JobCtrl" btrieveFilename="Jobs\JobCtrl.dat" />
+				<table name="JobDet" btrieveFilename="Jobs\JobDet.dat" />
+				<table name="JobHead" btrieveFilename="Jobs\JobHead.dat" />
+				<table name="JobMisc" btrieveFilename="Jobs\JobMisc.dat" />
+				<table name="ExchqChk" btrieveFilename="Misc\ExchqChk.dat" />
+				<table name="ExStkChk" btrieveFilename="Misc\ExStkChk.dat" />
+				<table name="MultiBuy" btrieveFilename="Misc\MultiBuy.dat" />
+				<table name="Settings" btrieveFilename="Misc\Settings.dat" />
+				<table name="SortView" btrieveFilename="Misc\SortView.dat" />
+				<table name="SVUsrDef" btrieveFilename="Misc\SVUsrDef.dat" />
+				<table name="SystemSetup" btrieveFilename="Misc\SystemSetup.dat" />
+				<table name="WinSet" btrieveFilename="Misc\WinSet.dat" />
+				<table name="ParSet" btrieveFilename="Misc\ParSet.dat" />
+				<table name="ColSet" btrieveFilename="Misc\ColSet.dat" />
+				<table name="CustomFields" btrieveFilename="Misc\CustomFields.dat" />
+				<table name="VAT100" btrieveFilename="Misc\VAT100.dat" />
+				<table name="VRWSec" btrieveFilename="Reports\VRWSec.dat" optional="true" />
+				<table name="VRWTree" btrieveFilename="Reports\VRWTree.dat" optional="true" />
+				<table name="Sent" btrieveFilename="SMail\Sent.dat" optional="true" />
+				<table name="SentLine" btrieveFilename="SMail\SentLine.dat" optional="true" />
+				<table name="MLocStk" btrieveFilename="Stock\MLocStk.dat" />
+				<table name="Stock" btrieveFilename="Stock\Stock.dat" />
+				<table name="LBin" btrieveFilename="Trade\LBin.dat" optional="true" />
+				<table name="LHeader" btrieveFilename="Trade\LHeader.dat" optional="true" />
+				<table name="LLines" btrieveFilename="Trade\LLines.dat" optional="true" />
+				<table name="LSerial" btrieveFilename="Trade\LSerial.dat" optional="true" />
+				<table name="Details" btrieveFilename="Trans\Details.dat" />
+				<table name="Document" btrieveFilename="Trans\Document.dat" />
+				<table name="History" btrieveFilename="Trans\History.dat" />
+				<table name="Nominal" btrieveFilename="Trans\Nominal.dat" />
+				<table name="NomView" btrieveFilename="Trans\NomView.dat" />
+				<table name="Schedule" btrieveFilename="Schedule\Schedule.dat" />
+				<table name="CCDeptV" btrieveFilename="CCDeptV.dat" optional="true" />
+				<table name="UDEntity" btrieveFilename="UDEntity.dat" optional="true" />
+				<table name="UDField" btrieveFilename="UDField.dat" optional="true" />
+				<table name="UDItem" btrieveFilename="UDItem.dat" optional="true" />
+				<table name="PPCust" btrieveFilename="PromPay\PPCust.dat" optional="true" />
+				<table name="PPDebt" btrieveFilename="PromPay\PPDebt.dat" optional="true" />
+				<table name="PPSetup" btrieveFilename="PromPay\PPSetup.dat" optional="true" />
+				<table name="SCType" btrieveFilename="SalesCom\SCType.dat" optional="true" />
+				<table name="SaleCode" btrieveFilename="SalesCom\SaleCode.dat" optional="true" />
+				<table name="Commssn" btrieveFilename="SalesCom\Commssn.dat" optional="true" />
+				<table name="VatPrd" btrieveFilename="VatPer\VatPrd.dat" optional="true" />
+				<table name="VatOpt" btrieveFilename="VatPer\VatOpt.dat" optional="true" />
+				<table name="AnalysisCodeBudget" btrieveFilename="Jobs\AnalysisCodeBudget.dat" />
+				<table name="AllocWizardSession" btrieveFilename="Stock\AllocWizardSession.dat" />
+				<table name="CustomerDiscount" btrieveFilename="Misc\CustomerDiscount.dat" />
+				<table name="CustomerStockAnalysis" btrieveFilename="Stock\CustomerStockAnalysis.dat" />
+				<table name="FiFo" btrieveFilename="Misc\FiFo.dat" />
+				<table name="FinancialMatching" btrieveFilename="Misc\FinancialMatching.dat" />
+				<table name="OrderPaymentsMatching" btrieveFilename="Misc\OrderPaymentsMatching.dat" />
+				<table name="JobTotalsBudget" btrieveFilename="Jobs\JobTotalsBudget.dat" />
+				<table name="Location" btrieveFilename="Stock\Location.dat" />
+				<table name="SerialBatch" btrieveFilename="Misc\SerialBatch.dat" />
+				<table name="StockLocation" btrieveFilename="Stock\StockLocation.dat" />
+				<table name="TransactionNote" btrieveFilename="Misc\TransactionNote.dat" />
+				<table name="QtyBreak" btrieveFilename="Misc\QtyBreak.dat" />
+				<table name="CurrencyHistory" btrieveFilename="CurrencyHistory.dat" />
+				<table name="GLBudgetHistory" btrieveFilename="Trans\GLBudgetHistory.dat" />
+				<table name="OPVATPay" btrieveFilename="Trans\OPVATPay.dat" />
+				<table name="TaxCodes" />
+				<table name="etb_PostingRunExclusion" />
+				<table name="etb_PostingRunSummary" />
+
+			</tables>
+		</commonGroup>
+		<commonGroup name="CommonGroup" processIndividually="true">
+			<tables>
+				<table name="Tools" btrieveFilename="Tools.dat" useCommon="true" optional="true" exportWhereClause="micompany = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="Ebus" btrieveFilename="Ebus.dat" useCommon="true" optional="true" />
+				<table name="EmpPay" btrieveFilename="JC\EmpPay.dat" useCommon="true" optional="true" exportWhereClause="CoCode = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="McPay" btrieveFilename="JC\McPay.dat" useCommon="true" optional="true" exportWhereClause="CoCode = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="ImportJob" btrieveFilename="Misc\ImportJob.dat" useCommon="true" optional="true" />
+				<table name="TillName" btrieveFilename="Trade\TillName.dat" useCommon="true" optional="true" />
+				<table name="Contact" btrieveFilename="Contact.dat" useCommon="true" optional="true" exportWhereClause="CoCompany = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="PaAuth" btrieveFilename="Workflow\PaAuth.dat" useCommon="true" optional="true" exportWhereClause="Company = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="PaComp" btrieveFilename="Workflow\PaComp.dat" useCommon="true" optional="true" exportWhereClause="Company = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="PaEar" btrieveFilename="Workflow\PaEar.dat" useCommon="true" optional="true" exportWhereClause="Company = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="PaGlobal" btrieveFilename="Workflow\PaGlobal.dat" useCommon="true" optional="true" exportWhereClause="spCompany = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="PaUser" btrieveFilename="Workflow\PaUser.dat" useCommon="true" optional="true" exportWhereClause="usCompany = @CoCode" useExportWhereClauseForImport="true" />
+				<table name="etb_Information" useCommon="true" />
+			</tables>
+		</commonGroup>
+		<commonGroup name="LIVECompanySpecificGroup" processIndividually="true">
+			<tables>
+				<table name="ApprovalRelationships" />
+				<table name="CompanyWebSettings" />
+				<table name="ExpenseCategories" />
+				<table name="ExtendedStates" />
+				<table name="LIVEReceipts" />
+				<table name="LIVETransactionIndex" />
+				<table name="LIVETransactionLines" />
+				<table name="LIVETransactionNotes" />
+				<table name="LIVETransactions" />
+				<table name="Thresholds" />
+				<table name="UserCostCentres" />
+				<table name="UserDepartments" />
+				<table name="UserGLCodes" />
+				<table name="UserJobCategories" />
+				<table name="UserJobCodes" />
+				<table name="UserLocations" />
+				<table name="WebApprovals" />
+				<table name="WebUDFPeriods" />
+				<table name="WebVATCodes" />
+				<table name="WeekMonthDefs" />
+				<table name="JobCategoryRoot" />
+				<table name="JobCatRootAssoc" />
+			</tables>
+		</commonGroup>
+		<commonGroup name="LIVECommonGroup" processIndividually="true">
+			<tables>
+				<table name="CommonTransactionTypes" useCommon="true" />
+				<table name="ExchequerWebSettings" useCommon="true" />
+				<table name="HoursPeriodTypes" useCommon="true" />
+				<table name="LIVESessionState" useCommon="true" />
+				<table name="LIVEVersion" useCommon="true" />
+				<table name="ModuleCodes" useCommon="true" />
+				<table name="Notifications" useCommon="true" />
+				<table name="NotificationState" useCommon="true" />
+				<table name="NotificationTypes" useCommon="true" />
+				<table name="PermittedRoleSets" useCommon="true" />
+				<table name="RoleSetGroups" useCommon="true" />
+				<table name="RoleSets" useCommon="true" />
+				<table name="RoleTypes" useCommon="true" />
+				<table name="SystemCodes" useCommon="true" />
+				<table name="UserTypes" useCommon="true" />
+				<table name="UXTemplates" useCommon="true" />
+				<table name="UXTemplateTypes" useCommon="true" />
+				<table name="WebCompany" useCommon="true" />
+				<table name="WebSystemSettings" useCommon="true" />
+				<table name="WebUserMaps" useCommon="true" />
+				<table name="WebUserProfile" useCommon="true" />
+				<table name="WebUserRoleSets" useCommon="true" />
+				<table name="WebUserTransactionBookmarks" useCommon="true" />
+				<table name="WebUserUXTemplates" useCommon="true" />
+				<table name="BatchProcessingAction" useCommon="true" />
+				<table name="BatchProcessingQueue" useCommon="true" />
+				<table name="BatchProcessingState" useCommon="true" />
+				<table name="ExpenseBatchProcessingAllowanceThresholds" useCommon="true" />
+				<table name="LIVEPlugins" useCommon="true" />
+				<table name="OvertimePeriodTypes" useCommon="true" />
+			</tables>
+		</commonGroup>
+	</commonGroups>
+	<dataSets>
+		<dataSet name="Common" displayName="Exchequer common files">
+			<parameters>
+				<stringParameter name="@CoCode" />
+			</parameters>
+			<groups>
+				<groupReference references="CommonGroup" />
+			</groups>
+		</dataSet>
+		<dataSet name="Company" displayName="Exchequer company specific files">
+			<groups>
+				<groupReference references="CompanySpecificGroup" />
+			</groups>
+		</dataSet>
+		<dataSet name="CommonAndCompany" displayName="Exchequer common and company specific files">
+			<parameters>
+				<stringParameter name="@CoCode" />
+			</parameters>
+			<groups>
+				<groupReference references="CommonGroup" />
+				<groupReference references="CompanySpecificGroup" />
+			</groups>
+		</dataSet>
+		<dataSet name="CommonAndLIVE" displayName="Exchequer/LIVE common files">
+			<parameters>
+				<stringParameter name="@CoCode" />
+			</parameters>
+			<groups>
+				<groupReference references="CommonGroup" />
+				<groupReference references="LIVECommonGroup" />
+			</groups>
+		</dataSet>
+		<dataSet name="CompanyAndLIVE" displayName="Exchequer/LIVE company specific files">
+			<groups>
+				<groupReference references="CompanySpecificGroup" />
+				<groupReference references="LIVECompanySpecificGroup" />
+			</groups>
+		</dataSet>
+		<dataSet name="CommonAndCompanyAndLIVE" displayName="Exchequer/LIVE common and company specific files">
+			<parameters>
+				<stringParameter name="@CoCode" />
+			</parameters>
+			<groups>
+				<groupReference references="CommonGroup" />
+				<groupReference references="LIVECommonGroup" />
+				<groupReference references="CompanySpecificGroup" />
+				<groupReference references="LIVECompanySpecificGroup" />
+			</groups>
+		</dataSet>
+	</dataSets>
+</importExport>

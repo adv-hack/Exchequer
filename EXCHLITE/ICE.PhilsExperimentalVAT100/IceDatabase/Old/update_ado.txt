@@ -1,0 +1,9 @@
+Method 2: Reinstall MDAC components
+On Windows XP, if updating MDAC fails, reinstall the most recent version of the MDAC components from the Windows .cab files. To do this, follow these steps.
+
+Note If you have the Windows XP CD, do not finish step 1. 1. Search for the Adcjavas.inc file, and then make a note of the path. The Adcjavas.inc file is typically in the i386 folder. 
+2. Locate the C:\Windows\Inf folder. 
+3. Right-click the Mdac.inf file, and then click Install. 
+4. When you are prompted to insert the Windows XP CD, insert it. If you do not have the Windows XP CD, change the path to match the path for Adcjavas.inc (in the i386 folder) that you noted in step 1, and then click OK. 
+5. If you are prompted to overwrite any files, click Yes. 
+6. If you are prompted to restore system files from the Windows XP CD, click Cancel. Or, you may want to do a Repair installation of Windows XP. You must reinstall any Windows Updates or Service Packs after you do this. 

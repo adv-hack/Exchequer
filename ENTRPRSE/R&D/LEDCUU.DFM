@@ -1,0 +1,91 @@
+object LCForm: TLCForm
+  Left = 336
+  Top = 188
+  ActiveControl = CurrF
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Ledger Currency'
+  ClientHeight = 102
+  ClientWidth = 186
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = True
+  Scaled = False
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SBSPanel1: TSBSPanel
+    Left = 2
+    Top = 14
+    Width = 183
+    Height = 41
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    TabOrder = 3
+    AllowReSize = False
+    IsGroupBox = False
+    TextId = 0
+    object CDRCurrLab: Label8
+      Left = 24
+      Top = 14
+      Width = 45
+      Height = 14
+      Caption = 'Cu&rrency'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TextId = 0
+    end
+  end
+  object ClsCP1Btn: TButton
+    Left = 96
+    Top = 73
+    Width = 80
+    Height = 23
+    Cancel = True
+    Caption = 'C&lose'
+    ModalResult = 2
+    TabOrder = 2
+  end
+  object OkCP1Btn: TButton
+    Tag = 1
+    Left = 12
+    Top = 73
+    Width = 80
+    Height = 23
+    Caption = '&OK'
+    ModalResult = 1
+    TabOrder = 1
+  end
+  object CurrF: TSBSComboBox
+    Tag = 1
+    Left = 78
+    Top = 24
+    Width = 81
+    Height = 22
+    Style = csDropDownList
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 14
+    MaxLength = 3
+    ParentFont = False
+    TabOrder = 0
+    ExtendedList = True
+    MaxListWidth = 90
+    Validate = True
+  end
+end

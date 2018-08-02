@@ -1,0 +1,790 @@
+unit SQL_CheckCustomerStockAnalysis;
+
+{$ALIGN 1}
+{$REALCOMPATIBILITY ON}
+
+interface
+
+uses Classes, SysUtils, Dialogs, DB, ADODB, VarConst, SQLCallerU, PostingU,
+  EntLoggerClass;
+
+type
+  // Main handler for rebuilding Customer/Supplier Stock histories
+  TCheckCustomerStockAnalysis = object(TEntPost)
+  private
+    // Company Code -- required for calling stored procedures
+    FCompanyCode: string;
+    // Error report logging
+    FSQLLogger : TEntSQLReportLogger;
+    // The current Customer/Supplier code
+    FAccountCode: string;
+    // SQL access components, to run the stored procedure and return the
+    // record set
+    FSQLCaller: TSQLCaller;
+
+    // Pointers to field objects returned from stored procedures.
+    fldStockLine_FolioNum: TIntegerField;
+    fldStockLine_StockCode: TStringField;
+    fldStockLine_CustCode: TStringField;
+    fldStockLine_LineNo: TIntegerField;
+    fldStockLine_RunNo: TIntegerField;
+    fldStockLine_NetValue: TFloatField;
+    fldStockLine_Qty: TFloatField;
+    fldStockLine_Department: TStringField;
+    fldStockLine_CostCentre: TStringField;
+    fldStockLine_DocType: TIntegerField;
+    fldStockLine_PaymentCode: TStringField;
+    fldStockLine_QtyMul: TFloatField;
+    fldStockLine_Cost: TFloatField;
+    fldStockLine_UsePack: TBooleanField;
+    fldStockLine_UseOriginalRates: TIntegerField;
+    fldStockLine_Year: TIntegerField;
+    fldStockLine_Period: TIntegerField;
+    fldStockLine_CompanyRate: TFloatField;
+    fldStockLine_DailyRate: TFloatField;
+    fldStockLine_LineDate: TStringField;
+    fldStockLine_Currency: TIntegerField;
+
+    // -------------------------------------------------------------------------
+    // Main update routines
+    // -------------------------------------------------------------------------
+    // Sets up the links to the columns returned by the SQL Recordset
+    procedure PrepareStockLineFields;
+    // Copies the values returned from the SQL query into the supplied record
+    procedure ReadStockLineRecord(var IdR: IDetail);
+    // Updates the Stock history for the current Customer/Supplier
+    procedure UpdateStockHistory;
+    // Clears the existing Stock History values
+    procedure ResetStockHistory;
+    // Adds the Customer Stock Analysis details for the specified Transaction
+    // Line
+    procedure AddCustomerStockAnalysis(var IdR: IDetail);
+    // Updates the existing Customer Stock History records
+    procedure UpdateCustomerStockAnalysis(var IdR: IDetail);
+    // Returns the character at the specified position in the string, or the
+    // default character if the position is out of range
+    function SafeCharFromString(Str: string; Position: Integer; DefaultChr: Char = ' '): Char;
+
+    // -------------------------------------------------------------------------
+    // Error handling & logging
+    // -------------------------------------------------------------------------
+    // Error message display. Displays and logs the supplied error, and sets the
+    // abort flag.
+    procedure ErrorMessage(const Routine: string; const Msg: string); overload;
+    // Alternative error message, replacing the LReport_BError() function with
+    // consistent error reporting. This builds an error message and passes it to
+    // the overloaded ErrorMessage() function above
+    procedure ErrorMessage(const Routine: string; const Msg: string; FileNo: Integer;
+                           ErrorCode: Integer); overload;
+    // Updates the error log. This is automatically called by the ErrorMessage
+    // routines above
+    procedure WriteErrorMsg(const Routine: string; const Msg: string);
+
+  public
+    destructor Destroy; virtual;
+    // -------------------------------------------------------------------------
+    // Main processing routines
+    // -------------------------------------------------------------------------
+    // Initialises the system
+    function Start: Boolean;
+    // Main processing routine, called by the Thread Controller
+    procedure Process; virtual;
+    // Tidies up the system
+    procedure Finish; virtual;
+  end;
+
+  // Entry point
+  procedure CheckCustomerStockAnalysis(AOwner: TObject);
+
+implementation
+
+uses Forms, Controls, SQLUtils, SQLRep_Config, BtrvU2, GlobVar, ExThrd2U, ADOConnect,
+  CurrncyU, ComnUnit, ETDateU, JChkUseU, ETMiscU, SysU2,
+  CuStkA4U, BtKeys1U, BtSupU1, ETStrU, VarRec2U, ComnU2,
+  DateUtils, SQLThreadU, PWarnU, UA_Const, GenWarnU;
+
+// =============================================================================
+// TCheckCustomerStockAnalysis
+// =============================================================================
+
+procedure CheckCustomerStockAnalysis(AOwner: TObject);
+var
+  CheckAccounts: ^TCheckCustomerStockAnalysis;
+begin
+  // Create the thread
+  if Create_BackThread then
+  begin
+    // Create the controlling object
+    New(CheckAccounts, Create(AOwner));
+    try
+      // Initialise the CheckAccounts instance
+      if CheckAccounts.Start then
+        BackThread.AddTask(CheckAccounts, 'Customer Stock Analysis')
+      else
+      begin
+        // If we failed to initialise CheckAccounts successfully, close things
+        // down tidily
+        Set_BackThreadFlip(False);
+        Dispose(CheckAccounts, Destroy);
+      end;
+    except
+      Dispose(CheckAccounts, Destroy);
+    end;
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+destructor TCheckCustomerStockAnalysis.Destroy;
+begin
+  FreeAndNil(FSQLLogger);
+  FreeAndNil(FSQLCaller);
+  inherited Destroy;
+end;
+
+// -----------------------------------------------------------------------------
+// Main processing routines
+// -----------------------------------------------------------------------------
+function TCheckCustomerStockAnalysis.Start: Boolean;
+const
+  Msg = 'Please confirm that you wish to check all Customer Stock Analysis';
+var
+  ConnectionString: string;
+begin
+  Result := MessageDlg(Msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes;
+  if Result then
+  begin
+    FSQLLogger := TEntSQLReportLogger.Create('Check Customer Stock Analysis');
+    try
+      // Create the SQL Caller instance
+      FSQLCaller := TSQLCaller.Create(nil);
+      // Set the time-outs
+      FSQLCaller.Connection.CommandTimeout := 60;
+      // Determine the company code
+      FCompanyCode := SQLUtils.GetCompanyCode(SetDrive);
+      // Set up the ADO Connection for the SQL Caller
+      SQLUtils.GetConnectionString(FCompanyCode, False, ConnectionString);
+      FSQLCaller.ConnectionString := ConnectionString;
+      FSQLCaller.Connection.CursorLocation := clUseServer;
+      // Open the local files (we will need these in addition to the SQL query
+      // results)
+      if (not Assigned(LPostLocal)) then
+        Result := Create_LocalThreadFiles;
+      if (Result) then
+        MTExLocal := LPostLocal;
+    except
+      on E:Exception do
+      begin
+        // Report the error and return False to indicate the failure
+        MessageDlg('An error occurred while preparing to check the account: ' +
+                   #13#10#13#10 + E.Message, mtError,[mbOk], 0);
+        Result := False;
+      end;
+    end;
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+// CJS 2015-04-28 - ABSEXCH-16163 - Check All Accounts, SQL improvements
+// Rewritten to use SQL stored procedure
+procedure TCheckCustomerStockAnalysis.Process;
+// Copied from PostingU.pas, TCheckCust.Check_AllCust(), and amended
+const
+  KeyPath = CustCodeK;
+var
+  KeyS     : Str255;
+  Count    : LongInt;
+  TmpKPath: Integer;
+  {$IFDEF SOP}
+  TmpStat: Integer;
+  TmpRecAddr: LongInt;
+  {$ENDIF}
+begin
+  KeyS  := '';
+  Count := 0;
+
+  // Open the required files
+  MTExLocal.Open_System(CustF, InvF);
+
+  // Initialise the progress labels and progress bar on the Object Thread
+  // Controller window
+  InitStatusMemo(4);
+  ShowStatus(0, 'Recalculating Customer Stock Analysis');
+  InitProgress(Used_RecsCId(MTExLocal.LocalF[CustF], CustF, MTExLocal.ExClientId));
+
+  TmpKPath := KeyPath;
+
+  // Work through all the Customer/Supplier records
+  MTExLocal.LStatus := MTExLocal.LFind_Rec(B_GetFirst, CustF, KeyPath, KeyS);
+  while MTExLocal.LStatusOk and not Has_Aborted do
+  begin
+    {$IFDEF SOP}
+    TmpStat := MTExLocal.LPresrv_BTPos(CustF, TmpKPath, MTExLocal.LocalF[CustF], TmpRecAddr, BOff, BOff);
+    {$ENDIF}
+
+    // Update the sub-process progress label
+    ShowStatus(3, 'Updating Stock Analysis for ' + MTExLocal.LCust.CustCode);
+    // Recalculate the Stock analysis
+    UpdateStockHistory;
+
+    Inc(Count);
+    UpdateProgress(Count);
+
+    {$IFDEF SOP}
+    TmpStat := MTExLocal.LPresrv_BTPos(CustF, TmpKPath, MTExLocal.LocaLF[CustF], TmpRecAddr, BOn, BOff);
+    {$ENDIF}
+
+    MTExLocal.LStatus := MTExLocal.LFind_Rec(B_GetNext, CustF, KeyPath, KeyS);
+  end;
+
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.Finish;
+begin
+  inherited;
+  // ShowMessage('Time: ' + FormatFloat('#.00', MillisecondsBetween(FStart, FFinish) / 1000.0));
+end;
+
+// -----------------------------------------------------------------------------
+
+function TCheckCustomerStockAnalysis.SafeCharFromString(Str: string; Position: Integer; DefaultChr: Char = ' '): Char;
+begin
+  if (Position > Length(Str)) then
+    Result := DefaultChr
+  else
+    Result := Str[Position];
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.PrepareStockLineFields;
+begin
+  fldStockLine_FolioNum := FSQLCaller.Records.FieldByName('tlFolioNum') as TIntegerField;
+  fldStockLine_StockCode := FSQLCaller.Records.FieldByName('StockCode') as TStringField;
+  fldStockLine_CustCode := FSQLCaller.Records.FieldByName('tlAcCode') as TStringField;
+  fldStockLine_LineNo := FSQLCaller.Records.FieldByName('tlLineNo') as TIntegerField;
+  fldStockLine_RunNo := FSQLCaller.Records.FieldByName('tlRunNo') as TIntegerField;
+  fldStockLine_NetValue := FSQLCaller.Records.FieldByName('tlNetValue') as TFloatField;
+  fldStockLine_Qty := FSQLCaller.Records.FieldByName('tlQty') as TFloatField;
+  fldStockLine_Department := FSQLCaller.Records.FieldByName('tlDepartment') as TStringField;
+  fldStockLine_CostCentre := FSQLCaller.Records.FieldByName('tlCostCentre') as TStringField;
+  fldStockLine_DocType := FSQLCaller.Records.FieldByName('tlDocType') as TIntegerField;
+  fldStockLine_PaymentCode := FSQLCaller.Records.FieldByName('tlPaymentCode') as TStringField;
+  fldStockLine_QtyMul := FSQLCaller.Records.FieldByName('tlQtyMul') as TFloatField;
+  fldStockLine_Cost := FSQLCaller.Records.FieldByName('tlCost') as TFloatField;
+  fldStockLine_UsePack := FSQLCaller.Records.FieldByName('tlUsePack') as TBooleanField;
+  fldStockLine_UseOriginalRates := FSQLCaller.Records.FieldByName('tlUseOriginalRates') as TIntegerField;
+  fldStockLine_Year := FSQLCaller.Records.FieldByName('tlYear') as TIntegerField;
+  fldStockLine_Period := FSQLCaller.Records.FieldByName('tlPeriod') as TIntegerField;
+  fldStockLine_CompanyRate := FSQLCaller.Records.FieldByName('tlCompanyRate') as TFloatField;
+  fldStockLine_DailyRate := FSQLCaller.Records.FieldByName('tlDailyRate') as TFloatField;
+  fldStockLine_LineDate := FSQLCaller.Records.FieldByName('tlLineDate') as TStringField;
+  fldStockLine_Currency := FSQLCaller.Records.FieldByName('tlCurrency') as TIntegerField;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.ReadStockLineRecord(var IdR: IDetail);
+begin
+  Blank(IdR, SizeOf(IdR));
+  IdR.FolioRef := fldStockLine_FolioNum.Value;
+  IdR.StockCode := fldStockLine_StockCode.Value;
+  IdR.CustCode := fldStockLine_CustCode.Value;
+  IdR.LineNo := fldStockLine_LineNo.Value;
+  IdR.PostedRun := fldStockLine_RunNo.Value;
+  IdR.NetValue := fldStockLine_NetValue.Value;
+  IdR.Qty := fldStockLine_Qty.Value;
+  IdR.CCDep[False] := fldStockLine_Department.Value;
+  IdR.CCDep[True] := fldStockLine_CostCentre.Value;
+  IdR.IdDocHed := DocTypes(fldStockLine_DocType.Value);
+  IdR.Payment := SafeCharFromString(fldStockLine_PaymentCode.Value, 1, ' ');
+  IdR.QtyMul := fldStockLine_QtyMul.Value;
+  IdR.CostPrice := fldStockLine_Cost.Value;
+  IdR.UsePack := fldStockLine_UsePack.Value;
+  IdR.UseORate := fldStockLine_UseOriginalRates.Value;
+  IdR.PYr := fldStockLine_Year.Value;
+  IdR.PPr := fldStockLine_Period.Value;
+  IdR.CXRate[False] := fldStockLine_CompanyRate.Value;
+  IdR.CXRate[True] := fldStockLine_DailyRate.Value;
+  IdR.PDate := fldStockLine_LineDate.Value;
+  IdR.Currency := fldStockLine_Currency.Value;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.UpdateStockHistory;
+// Copied from PostingU.pas, TCheckCust.cuStk_CheckHist(), and amended
+const
+  Fnum2    = MLocF;
+  Keypath2 = MLSecK;
+
+  { Query to select all transaction lines against the Customer/Supplier which
+    have a Stock Code. The tlStockCode field is binary - 0x10 is the length
+    byte, which for blank codes will be followed either by 0x00 or by an
+    0x20 (space). Anything greater than 0x1020 should be a non-blank code. }
+  BaseQuery =
+    'SELECT tlFolioNum                                                 '+
+    '     , CAST(SUBSTRING(tlStockCode, 2, 16) AS VARCHAR) AS StockCode'+
+    '     , tlAcCode                                                   '+
+    '     , tlLineNo                                                   '+
+    '     , tlRunNo                                                    '+
+    '     , tlNetValue                                                 '+
+    '     , tlQty                                                      '+
+    '     , tlDepartment                                               '+
+    '     , tlCostCentre                                               '+
+    '     , tlDocType                                                  '+
+    '     , tlPaymentCode                                              '+
+    '     , tlQtyMul                                                   '+
+    '     , tlCost                                                     '+
+    '     , tlUsePack                                                  '+
+    '     , tlUseOriginalRates                                         '+
+    '     , tlYear                                                     '+
+    '     , tlPeriod                                                   '+
+    '     , tlCompanyRate                                              '+
+    '     , tlDailyRate                                                '+
+    '     , tlLineDate                                                 '+
+    '     , tlCurrency                                                 '+
+    'FROM [COMPANY].[Details]                                          '+
+    'WHERE tlAcCode = %s AND                                           '+
+    '      tlLineType = %s AND                                         '+
+    '      tlStockCode >= 0x1021                                       ';
+
+var
+  KeyS2,KeyChk2 :  Str255;
+  LineType      :  Char;
+  ChkRun        :  LongInt;
+  KeyPath: Integer;
+  RecAddr: LongInt;
+  FuncRes: LongInt;
+Begin
+  with MTExLocal^ do
+  begin
+    // Clear down the existing values.
+    ResetStockHistory;
+
+    If (IsaCust(LInv.CustSupp)) then
+      LineType := StkLineType[SIN]   // 'I'
+    else
+      LineType := StkLineType[PIN];  // 'N'
+
+    // Locate all the Stock Transaction Lines for this Customer/Supplier
+    FSQLCaller.Select(Format(BaseQuery, [QuotedStr(FAccountCode), QuotedStr(LineType)]), FCompanyCode);
+    FSQLCaller.Records.DisableControls;
+    try
+      if (FSQLCaller.ErrorMsg = '') then
+      begin
+        FSQLCaller.Records.First;
+        // Initialise the SQL Caller fields
+        try
+          PrepareStockLineFields;
+        except
+          on E:Exception do
+            ErrorMessage('Preparing SQL columns for Stock Transaction Lines', E.Message);
+        end;
+        while not FSQLCaller.Records.EOF and not ThreadRec.ThAbort do
+        begin
+          // Read the record into MTExLocal.LId
+          ReadStockLineRecord(LId);
+          with LId do
+          begin
+            // If there is a Stock Code and a valid line number...
+            if (Is_FullStkCode(LId.StockCode)) and (LineNo > 0) then
+            begin
+              // ...find the matching Customer Stock Analysis record
+              KeyChk2 := PartCCKey(MatchTCode, MatchSCode) +
+                         Full_CuStkKey(CustCode, StockCode);
+              LStatus := LFind_Rec(B_GetEq, Fnum2, KeyPath2, KeyChk2);
+
+              // If no record was found, add a new one
+              if (not LStatusOk) then
+              begin
+                ShowStatus(3, 'Updating Stock Analysis');
+                AddCustomerStockAnalysis(LId);
+              end;
+
+              // Determine the correct posting run number, as the run number on
+              // the line is not always set
+              if (PostedRun = 0) and (NetValue = 0.0) and (Qty <> 0.0) then
+              begin
+                // Find the matching Transaction Header
+                KeyS2 := FullNomKey(FolioRef);
+                LStatus := LFind_Rec(B_GetEq,InvF,InvFolioK,KeyS2);
+                If (LStatusOk) then
+                  // Use the run number from the header
+                  ChkRun := LInv.RunNo
+                else
+                  // No header found -- use the run number from the line
+                  ChkRun := PostedRun;
+              end
+              else
+                ChkRun := PostedRun;
+
+              // If the stock code line is a valid posted line, update the stock
+              // history
+              If (ChkRun > 0) then
+//                Ctrl_CuStkHist(LId,1);
+                UpdateCustomerStockAnalysis(LId);
+
+            end;
+          end;
+          FSQLCaller.Records.Next;
+        end;
+      end
+      else
+      begin
+        // Report the error and abort
+        ErrorMessage('Updating Stock History for ' + FAccountCode,
+                     FSQLCaller.ErrorMsg);
+      end;
+    finally
+      // Close the record set
+      FSQLCaller.Records.Close;
+      FSQLCaller.Records.EnableControls;
+    end;
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.ResetStockHistory;
+// Copied from PostingU.pas, TCheckCust.cu_DeleteHistory(), and amended
+Var
+  KeyChk  :  Str255;
+Begin
+  With MTExLocal^ do
+  Begin
+    Blank(KeyChk,Sizeof(KeyChk));
+
+    { Remove posted history. The final 'True' parameter indicates that the
+      field values should be reset to zero, rather than deleting the whole
+      record. }
+    KeyChk := CuStkHistCode + FullCustCode(FAccountCode);
+    LDeleteAuditHist(KeyChk, Length(KeyChk), True);
+
+    { Remove CC/Dep history. The final 'True' parameter indicates that the
+      field values should be reset to zero, rather than deleting the whole
+      record. }
+    KeyChk := CuStkHistCode + #1 + FullCustCode(FAccountCode);
+    LDeleteAuditHist(KeyChk, Length(KeyChk), True);
+
+    { Remove Location history. The final 'True' parameter indicates that the
+      field values should be reset to zero, rather than deleting the whole
+      record. }
+    KeyChk := CuStkHistCode + #2 + FullCustCode(FAccountCode);
+    LDeleteAuditHist(KeyChk, Length(KeyChk), True);
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.UpdateCustomerStockAnalysis(var IdR: IDetail);
+const
+  POST_TO_STOCK_HISTORY_QUERY =
+    'EXEC [COMPANY].[isp_PostToStockHistory] ' +
+    ' %s, ' +       // NType
+    ' %s, ' +       // NCode_01
+    ' %s, ' +       // NCode_02
+    ' %s, ' +       // NCode_03
+    ' %s, ' +       // NCode_04
+    ' %12.8f, ' +   // Purchases_01
+    ' %12.8f, ' +   // Sales_01
+    ' %12.8f, ' +   // Purchases_02
+    ' %12.8f, ' +   // Sales_02
+    ' %12.8f, ' +   // Cleared (actually Quantity, for Stock History)
+    ' %d, ' +       // HistCr_01
+    ' %d, ' +       // HistCr_02
+    ' %d, ' +       // PYr
+    ' %d, ' +       // Period_01
+    ' %d, ' +       // Period_02
+    ' %d  ';        // Syss.NoQtyDec
+var
+  NCode_01: Str20;
+  NCode_02: Str20;
+  NCode_03: Str20;
+  NCode_04: Str20;
+  NType: Char;
+  Base_Purchases: Double;
+  Base_Sales: Double;
+  Cleared: Double;
+  COSRate: Double;
+  Rate: Double;
+  CnvCr: Integer;
+  HistCr_01: Integer;
+  HistCr_02: Integer;
+  Purchases_01: Double;
+  Sales_01: Double;
+  Purchases_02: Double;
+  Sales_02: Double;
+  PreviousBalance: Double;
+  StkFolio: LongInt;
+  Period_01: Integer;
+  Period_02: Integer;
+  Qry: AnsiString;
+begin
+  with MTExLocal^, IdR do
+  begin
+    if (LStock.StockCode <> StockCode) then
+    begin
+      if not LGetMainRecPos(StockF, StockCode) then
+        { TODO: report error }
+        exit;
+    end;
+    StkFolio := LStock.StockFolio;
+
+    // Set up the base History codes for each required posting:
+
+    // Base Stock Item
+    NCode_01 := Full_CuStkHKey1(CustCode, StkFolio);
+    // Cost Centre/Department
+    if (Syss.PostCCNom) and (Syss.UseCCDep) then
+    begin
+      if (not EmptyKeyS(CCDep[False], ccKeyLen, False)) then
+        NCode_02 := Full_CuStkHKey2(CustCode, StkFolio, CCDep[False]);
+      if (not EmptyKeyS(CCDep[True], ccKeyLen, False)) then
+        NCode_03 := Full_CuStkHKey2(CustCode, StkFolio, CCDep[True]);
+    end;
+    // Stock Location
+    {$IFDEF SOP}
+    if (Syss.UseMLoc) and (Not EmptyKey(MLocStk,MLocKeyLen)) then
+      NCode_04 := Full_CuStkHKey3(CustCode,StkFolio,MLocStk);
+    {$ENDIF}
+
+    // Everything is posted to Customer Stock History
+    NType := CuStkHistCode;
+
+    // Calculate the base values
+    Cleared        := ((Qty * StkAdjCnst[IdDocHed] * DocNotCnst) * QtyMul);
+    Base_Purchases := (CostPrice * Calc_IdQty(Cleared, QtyMul, UsePack));
+    Base_Sales     := DetLTotal(IdR, BOn, BOff, 0.0) * DocNotCnst;
+
+    // Convert to consolidated currency
+    COSRate := 1.0;
+    Rate    := 1.0;
+    CnvCr   := 0;
+
+    HistCr_01    := Currency;
+    Purchases_01 := Conv_TCurr(Base_Purchases, COSRate, CnvCr, UseORate, BOff);
+    Sales_01     := Conv_TCurr(Base_Sales, Rate, CnvCr, UseORate, BOff);
+    Period_01    := PPr;
+
+    // Convert to currency
+    Rate := XRate(CXrate, BOff, Currency);
+    If (COSConvRate = 0.0) then
+      COSRate := Rate
+    else
+      COSRate := COSConvRate;
+    CnvCr := Currency;
+
+    HistCr_02    := 0;
+    Purchases_02 := Conv_TCurr(Base_Purchases, COSRate, CnvCr, UseORate, BOff);
+    Sales_02     := Conv_TCurr(Base_Sales, Rate, CnvCr, UseORate, BOff);
+    Period_02    := YTDNCF;
+
+    // Call the stored procedure
+    Qry := Format(POST_TO_STOCK_HISTORY_QUERY,
+      [
+        IntToStr(Ord(NType)),
+        StringToHex(NCode_01, 20, True, '20'),
+        StringToHex(NCode_02, 20, True, '20'),
+        StringToHex(NCode_03, 20, True, '20'),
+        StringToHex(NCode_04, 20, True, '00'),
+        Purchases_01,
+        Sales_01,
+        Purchases_02,
+        Sales_02,
+        Cleared,
+        HistCr_01,
+        HistCr_02,
+        PYr,
+        Period_01,
+        Period_02,
+        Syss.NoQtyDec
+      ]);
+    FSQLCaller.ExecSQL(Qry, FCompanyCode);
+    if (FSQLCaller.ErrorMsg <> '') then
+      ErrorMessage('Update Customer Stock Analysis for ' + FAccountCode,
+                   FSQLCaller.ErrorMsg);
+  end;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.AddCustomerStockAnalysis(var IdR: IDetail);
+// Copied from PostingU.pas, TCheckCust.LStock_AddCustAnal(), and amended.
+const
+  Fnum      =  MLocF;
+  Keypath   =  MLSecK;
+  Fnum2     =  IdetailF;
+  Keypath2  =  IdCAnalK;
+var
+  KeyChk  :  Str255;
+  UnlockStatus :  Integer;
+  UseNext :  Integer;
+  NewRec,
+  RunOk,
+  Locked  :  Boolean;
+  OldId   :  Idetail;
+
+  // ...........................................................................
+  function GetLastLineNo: LongInt;
+  // Copied from PostingU.pas, TCheckCust.LGet_LastLineNo(), and amended.
+
+  // Returns the next available line number for the Customer Stock Analysis
+  // records against the current Customer/Supplier
+  const
+    MAX_LINE_NO = 65535;
+  var
+    Key: Str255;
+    KeyChk: Str255;
+  begin
+    Result := 1;
+    KeyChk := PartCCKey(MatchTCode, MatchSCode) + FullCustCode(FAccountCode);
+    Key    := KeyChk + Full_CuStkLKey(FAccountCode, MAX_LINE_NO);
+    with MTExLocal^ do
+    begin
+      LStatus := LFind_Rec(B_GetLessEq, MLocF, MLK, Key);
+      if (LStatusOk) and (CheckKey(KeyChk, Key, Length(KeyChk), False)) then
+        Result := LMLocCtrl^.CuStkRec.csLineNo + 1;
+    end;
+  end;
+  // ...........................................................................
+
+begin
+  with MTExLocal^ do
+  begin
+    // Preserve the existing Transaction Line details
+    OldId := LId;
+    // Check that this is a valid Stock record line
+    if not EmptyKey(IdR.CustCode, CustKeyLen) and
+       Is_FullStkCode(IdR.StockCode) and
+       AnalCuStk and not (IdR.IdDocHed In QuotesSet) and
+       (IdR.LineNo > 0) then
+    begin
+      // Search for an existing Customer Stock Analysis record for this
+      // Account and Stock Code
+      KeyChk := PartCCKey(MatchTCode, MatchSCode) +
+                Full_CuStkKey(IdR.CustCode, IdR.StockCode);
+      LStatus := LFind_Rec(B_GetEq,Fnum,KeyPath,KeyChk);
+      // If we didn't find a record, we need to add a new one
+      NewRec := (LStatus = 4);
+      if ((LStatusOk) or (NewRec)) then
+      with IdR do
+      begin
+        if (NewRec) then
+        // Set up the details for the new record
+        with LMLocCtrl^, CuStkRec do
+        begin
+          RunOk  := True;
+          Locked := True;
+
+          UseNext := GetLastLineNo;
+
+          LResetRec(Fnum);
+
+          RecPFix := MatchTCode;
+          SubType := MatchSCode;
+
+          csLineNo := UseNext;
+
+          csCode1 := Full_CuStkLKey(CustCode, csLineNo);
+          csCode2 := Full_CuStkKey(CustCode, StockCode);
+          csCode3 := Full_CuStkKey2(CustCode, StockCode);
+
+          csCustCode  := CustCode;
+          csStockCode := StockCode;
+
+          if (LStock.StockCode <> StockCode) then
+            LGetMainRecPos(StockF, StockCode);
+
+          csStkFolio := LStock.StockFolio;
+        end
+        else
+          // Lock the existing record
+          RunOk := LGetMultiRec(B_GetDirect, B_MultLock, KeyChk, KeyPath, Fnum, True, Locked);
+
+        if (RunOk) and (Locked) then
+        with LMLocCtrl^, CuStkRec do
+        begin
+          LGetRecAddr(Fnum);
+          if (IdDocHed in SalesSplit - CreditSet) then
+          begin
+            // Update with the current pricing values
+            csLastDate := PDate;
+            csLPCurr   := Currency;
+            if (LStock.CalcPack) then
+              QtyMul := 1;
+            Qty := 1;
+            csLastPrice := DetLTotal(IdR, True, False, 0.0) * DocNotCnst;
+          end;
+          // Add or update the record
+          UnlockStatus := 0;
+          if (NewRec) then
+            LStatus := LAdd_Rec(Fnum, KeyPath)
+          else
+          begin
+            LStatus      := LPut_Rec(Fnum, KeyPath);
+            UnlockStatus := LUnLockMLock(Fnum);
+          end;
+          // Check for errors
+          if (LStatus <> 0) then
+          begin
+            // Report the error and abort
+            ErrorMessage('Updating Customer Stock Analysis for ' + FAccountCode,
+                         'Failed to save Customer Stock Analysis Record', MLocF, LStatus);
+          end
+          else if (UnlockStatus <> 0) then
+          begin
+            // Report the error and abort
+            ErrorMessage('Updating Customer Stock Analysis for ' + FAccountCode,
+                         'Failed to unlock Customer Stock Analysis Record', MLocF, UnlockStatus);
+          end;
+        end;
+      end; {With..}
+    end; {If no cust, or stock code}
+    LId     := OldId;
+  end; {With..}
+end;
+
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Error handling & logging
+// -----------------------------------------------------------------------------
+procedure TCheckCustomerStockAnalysis.ErrorMessage(const Routine: string; const Msg: string);
+begin
+  // Write the message to the error log
+  WriteErrorMsg(Routine, Msg);
+  // Display the message to the user, using the thread-safe error dialog
+  MTExLocal.LThShowMsg(nil, 0, Msg);
+  // If an error occurs, we have to abort. In theory, CheckCustomerStockAnalysis could
+  // skip to the next account and try to carry on, but in practice we have no
+  // way of offering this option to the user without rewriting LThShowMsg().
+  ThreadRec.ThAbort := True;
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.ErrorMessage(const Routine: string; const Msg: string;
+                                         FileNo, ErrorCode: Integer);
+var
+  FileName: string;
+begin
+  // Append the filename and error code to the supplied error message
+  FileName := Filenames[FileNo];
+  ErrorMessage(Routine, Msg + ' - File: ' + Filename + ', error: ' + IntToStr(ErrorCode));
+end;
+
+// -----------------------------------------------------------------------------
+
+procedure TCheckCustomerStockAnalysis.WriteErrorMsg(const Routine: string; const Msg: string);
+begin
+  FSQLLogger.LogError('Error in ' + Routine, Msg);
+end;
+
+// -----------------------------------------------------------------------------
+
+end.
+

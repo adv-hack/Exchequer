@@ -1,0 +1,56 @@
+package pkDBMultiList;
+
+{$R *.res}
+{$R 'uMULTILIST.dcr'}
+{$R 'uDBMULTILIST.dcr'}
+{$R 'uBTRIEVEDATASET.dcr'}
+{$R 'uSQLDATASETS.dcr'}
+{$ALIGN 1}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'DBMultiList Package'}
+{$IMPLICITBUILD OFF}
+{$DEFINE EXWIN}
+
+requires
+  rtl,
+  vcl,
+  dbrtl,
+  vcldb,
+  pc200r60,
+  pb200r60,
+  bdertl,
+  ps200r60,
+  dac60,
+  sdac60,
+  pkEnt;
+
+contains
+  uDBMColumns in 'uDBMColumns.pas',
+  uScrollBar in 'uScrollBar.pas',
+  uExDatasets in '..\ExDatasets\uExDatasets.pas',
+  uMultiList in 'uMultiList.pas',
+  uDBMultiList in 'uDBMultiList.pas',
+  uSQLDatasets in '..\ExDatasets\uSQLDatasets.pas',
+  uBtrieveDataset in '..\ExDatasets\uBtrieveDataset.pas',
+  uBtrv in '\\Sbs_server\vol2\ENT500\SQL\DBMultiList\uBtrv.pas';
+
+end.

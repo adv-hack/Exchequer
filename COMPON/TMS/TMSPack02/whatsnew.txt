@@ -1,0 +1,5372 @@
+***********************************************
+TMS Component pack v4.4 : update Jun 23, 2007
+***********************************************
+Update : TMS Advanced ToolBars & Menus v2.9
+-------------------------------------------
+- New : TAdvToolBarForm, Office 2007 style resizable form with rounded corners, single border
+- New : Automatic system font selection support, uses Segoe UI font on Windows Vista
+- New : TAdvOfficeStatusBar : Office 2007 style statusbar
+- New : TAdvPreviewMenu designer
+- New : Extended wizard with generation of application with TAdvPreviewMenu on a TAdvToolBarForm
+- New : TAdvPageCaption.MinWidth property added
+- New : Exposed DoDropDown method for TAdvCustomToolBarButton
+- New : Method MoveUpInRUList added in TAdvToolBar
+- Improved : Handling of actions in TAdvPreviewMenu
+- Various smaller fixes & improvements 
+
+Update : TAdvStringGrid v3.5.4.0 
+--------------------------------
+- New : property SortSettings.SortOnVirtualCells added
+- New : TAdvGridUndoRedo.OnUndo, OnRedo events added
+- New : TAdvGridFindDialog.OnCellFound event added   
+- New : C++Builder 2007 support 
+- Fixed : issue with OnGridHint with scrolled FloatingFooter
+- Fixed : issue with subgrouping in special cases
+- Fixed : issue with OnCellsChanged event for unicode inplace memo editing
+- Fixed : issue with cell properties on floating footer row with no column calc
+- Fixed : issue with OnClick in readonly grid
+
+Update : TDBAdvGrid v2.1.4.4
+----------------------------
+- Fixed : issue with closed form with grouped grid
+- Fixed : wheel scroll issue
+
+Update : TPlanner v2.5.4.1
+--------------------------
+- New : exposed OnTimer as public event
+- Fixed : issue with item hint for items in Planner Header
+- Fixed : issue with header activecolor for vertically scroll grid
+- Fixed : issue with child item moving/sizing
+- Fixed : issue with proportional trackbar drawing
+- Fixed : issue with active display in sidebar with FullHalfday mode
+
+Update : TAdvAppStyler v1.2.0.0
+-------------------------------
+- New : Added event OnApplyStyle in TAdvFormStyler to allow excluding components from being styled
+
+Update : TAdvNavBar v1.5.2.3
+----------------------------
+- Fixed : memory leak with SectionFont
+
+Update : TAdvOfficeComboBox v1.0.2.3
+------------------------------------
+- Fixed : issue with drawing
+
+Update : TAdvFontComboBox v1.3.2.2
+----------------------------------
+- Fixed : issue with border color of dropdown
+
+Update : TAdvOfficeSelectors v1.3.4.0
+-------------------------------------
+- New : Added HotItemIndex in public section of TAdvSelectorPanel
+
+Update : TAdvMemo v2.1.3.0
+--------------------------
+- New : C++Builder support added
+
+Update : TAdvTaskDialog v1.2.5.1
+--------------------------------
+- Fixed : issue with identical accelerator key for expand/collaps
+
+Update : THTMListBox v1.9.1.2
+-----------------------------
+- Fixed issue with sizing
+
+Update : TAdvFileNameEdit v1.1.0.0
+----------------------------------
+- New : Support for ShowURL added
+
+Update : TAdvTreeComboBox v1.1.1.0
+----------------------------------
+- New : Exposed Bevel properties
+
+Update : TAdvSplitter v1.1.0.0
+------------------------------
+- New : OnDblClick event added
+- New : property DefaultSize added
+
+Update : TPlannerDatePicker v1.6.2.0
+------------------------------------
+- Improved : enhanced keyboard event routing from calendardropdown to datepicker control
+
+Update : TWebUpdate v1.7.4.0
+----------------------------
+- Improved : What's new information is downloaded when OnDownloadedWhatsnew is assigned from the DoVersionCheck function
+
+Update : TFolderDialog v1.0.2.0
+-------------------------------
+- New : added Caption property
+
+
+***********************************************
+TMS Component pack v4.3 : update May 31, 2007
+***********************************************
+
+Update : TAdvNavBar v1.5.2.1 
+----------------------------
+- Fixed : issue with mouse up on panel icon during splitter move
+
+Update : TInspectorBar v1.5.4.2
+-------------------------------
+- Fixed : painting issue with D2007
+
+Update : TPlannerCalendarGroup v1.7.3.3
+---------------------------------------
+- Fixed : painting issue with D2007
+
+Update : TAdvSpinEdit v1.4.3.0
+------------------------------
+- New : property AllowNullValue added
+
+Update : TAdvEdit v2.7.3.4
+--------------------------
+- Fixed : issue with lookup case insensitive compare
+
+Update : TAdvOutlookList v1.4.1.0
+---------------------------------
+- New : OnMouseMove, OnMouseDown, OnMouseUp events added
+- Fixed : issue with OnSelectionChange
+
+Update : TAdvOfficeComboBox v1.3.2.2
+------------------------------------
+- Fixed : issue with border color of dropdown
+
+Update : TAdvOfficeButtons v1.0.2.0
+-----------------------------------
+- New : Added OnEnter, OnExit events in TAdvOfficeRadioButton, TAdvOfficeCheckBox
+
+Update : TAdvOfficeSelectors v1.1.0.2
+-------------------------------------
+- Fixed : issue with closing selector panel & drawing update
+
+Update : TAdvOfficePager v1.3.1.2
+---------------------------------
+- Fixed : issue with OnChange event during loading
+
+Update : TAdvOfficeTabSet v1.2.0.1
+----------------------------------
+- Fixed : issue with OnDestroy for TAdvOfficeMDITabSet
+
+Update: TAdvToolPanel v1.4.2.2
+------------------------------
+- Fixed : issue with destroying panel while sliding
+
+Update : TMacroRecorder v1.1.0.0
+--------------------------------
+- New : event OnRecordCancelled added
+- New : event OnPlaybackCancelled added
+
+Update : TDBAdvCardList v1.2.2.0
+--------------------------------
+- Improved : shows DisplayText for string field types
+
+Update : TAdvTaskDialog v1.2.5.0
+--------------------------------
+- New : support for hotkeys on expand/contract text on non-Vista emulation
+
+Update : TAdvStringGrid v3.5.3.1
+--------------------------------
+- Fixed : issue with unicode inplace editors
+- Fixed : issue with calling BeginDrag from OnMouseMove
+- Improved : TAdvGridExcelIO XLS import/export
+
+Update : TPlanner v2.5.3.6
+--------------------------
+- Fixed : issue with recurrency editor
+- Fixed : issue with InHeader item painting
+
+
+***********************************************
+TMS Component pack v4.3 : update May 19, 2007
+***********************************************
+
+Update : TAdvEdit, TAdvMaskEdit v2.7.3.3
+----------------------------------------
+- Fixed : issue with design time destroy of TAdvEdit, TAdvMaskEdit with Label
+
+Update : TAdvGlowButton v1.7.1.1
+--------------------------------
+- New : F4 key to open attached dropdown menu
+- Fixed : issue with OnClick event and dropdownsplit = true
+
+Update : TDBAdvGrid v2.1.4.2
+----------------------------
+- Fixed : issue with scrolling with DataSetType = dtSequenced
+- Fixed : issue with setting grid.MouseActions.WheelIncrement
+
+Update : TAdvStringGrid v3.5.3.0
+--------------------------------
+- New : OnSearchEditChanged event added
+- New : exposed MatchCase checkbox in search footer via Grid.SearchPanel.MatchCase
+- Improved : sequence of OnRowMoved event triggering
+- Fixed : issue with Tab on datepicker inplace edit
+- Fixed : isues with tab key and OnCellValidate
+- Fixed : issue with AllowFmtClipboard & AllowClipboardRowGrow,AllowClipboardColGrow
+- Fixed : issue with multicell text Paste in VCL.NET
+- Fixed : issue with printing
+- Improved : OnCellClick triggered when clicked on node cells outside node
+
+Update : TAdvNavBar v1.5.2.0
+----------------------------
+- New : SectionFont property added
+
+Update : TAdvOfficeSelectors v1.1.0.1
+-------------------------------------
+- Fixed : issue with OnDropDown event
+
+Update : TAdvTaskDialog v1.2.4.0
+--------------------------------
+- Fixed : issue with \n linebreaks with doHyperlinks style
+- Improved : keyboard handling for CommandLinks dialog on non Vista emulation
+- Improved : DefaultButton handling for CommandLinks dialog on non Vista emulation
+- Improved : allow using \n line separators in footer text on non Vista emulation
+- Fixed : issue with noCommandLinksIcon on non Vista emulation
+- Fixed : hot state painting issue on taskdialog button on non Vista emulation
+- Fixed : issue with doAllowDialogCancel on non Vista emulation
+- Fixed : issue with doAllowMinimize on non Vista emulation
+- Improved : removed limitation on text length of Content, Title, ... in Vista native mode
+- Improved : handling of linefeed character on non Vista emulation
+- Improved : handling of anchors in Vista native mode
+- Improved : handling of ESC with common buttons
+
+Update : TEditListbox v2.1.0.2
+------------------------------
+- Fixed : issue with handling ESC/Return on modal form with default buttons
+
+Update : TAdvGlassButton v1.0.0.1
+---------------------------------
+- Improved : glyph positioning when ShowCaption = false
+
+Update : TAdvMemo v2.1.2.7
+--------------------------
+- Fixed : issue with codefolding & mousewheel handling
+- Fixed : issue with Ctrl-End, Ctrl-Home selection
+- Improved : PageUp/PageDn scroll behaviour
+
+Update : TAdvOfficeComboBox v1.0.2.2
+------------------------------------
+- Fixed : issue with & display in items
+- Fixed : issue with ItemIndex during OnChange event
+
+Update : TAdvFontSelector v1.3.2.1
+----------------------------------
+- Fixed : issue with programmatic dropdown text initialization
+
+Update : TAdvMoneyEdit v1.1.1.1
+-------------------------------
+- Fixed : compatibility issue with TAdvEdit for setting Text
+
+Update : TAdvReflectionLabel v1.0.0.1
+-------------------------------------
+- Fixed : issue with reflection painting for centered HTML text
+
+Update : TAdvReflectionImage v1.0.0.1
+-------------------------------------
+- Fixed : issue with OnClick event
+
+Update : TAdvToolBar v2.8.1.1
+-----------------------------
+- New : TAdvPageCaption.MinWidth property added
+- Fixed : issue with dragging form through TAdvToolBarPager caption
+- Fixed : issue with alignment of min,max,close button in TAdvToolBarPager caption
+- Fixed : handling style changes for compact toolbars
+
+Update : TAdvPreviewMenu v1.1.2.0
+---------------------------------
+- Fixed : issue with updates from Actions
+
+Update : TAdvOfficeRadioButton v1.0.1.0
+---------------------------------------
+- Improved : exposed Visible property in TAdvOfficeRadioButton
+
+Update : TAdvOfficeTabSet v1.2.0.0
+----------------------------------
+- New : ImagePosition can be set in TabSettings as left, top, bottom, right from tab caption
+- New : Wordwrapped tab caption support
+- New : autoscrolling pages while mouse is down on scroll buttons
+- New : ScrollButtonsAlways property to show scroll buttons always irrespective of nr. of tabs
+- New : OnDrawTab event for custom tab drawing
+
+Update : TPickDialog v1.5.0.1
+-----------------------------
+- Fixed : issue to copy also objects to selectlist
+
+Update : TAdvPanel v1.7.7.2
+---------------------------
+- Fixed : issue with setting AutoSize at design time
+- Fixed : issue with persisting collaps state with Styler assigned
+- Fixed : issue with Indent,TopIndent with Anchors
+
+Update: TAdvOfficePager v1.3.1.0 
+--------------------------------
+- New : TAdvOfficePage.OnHide event added 
+
+Update : TAdvOfficeSelectors v1.1.0.2
+-------------------------------------
+- Fixed : issue with closing selector panel & drawing update
+
+Update : TAdvPageControl v1.5.0.5
+---------------------------------
+- Fixed : painting issue with bottom tabs on Delphi 5
+
+Update : TPlannerMonthView v2.5.3.0
+-----------------------------------
+- New : OnItemUnSelect event added
+- Fixed : issue with Allow parameter in OnItemMoving
+
+Update : TPlanner v2.5.3.5
+--------------------------
+- Fixed : issue with OnItemImageClick event for items in header
+
+
+
+***********************************************
+TMS Component pack v4.3 : update Apr 21, 2007
+***********************************************
+
+New : TAdvReflectionImage v1.0
+------------------------------
+- Image component with built-in configurable reflection effect
+
+New : TAdvReflectionLabel v1.0
+------------------------------
+- Label component with built-in configurable reflection effect
+
+New : TAdvGlassButton v1.0
+------------------------------
+- Vista style translucent button control
+
+New : TDBAdvOfficeCheckBox, TDBAdvOfficeRadioGroup
+--------------------------------------------------
+ - New : DB-aware versions : TDBAdvOfficeCheckBox, TDBAdvOfficeRadioGroup
+
+Update: TAdvOfficePager 
+-----------------------
+- New : ImagePosition can be set in TabSettings as left, top, bottom, right from tab caption
+- New : Wordwrapped tab caption support
+- New : autoscrolling pages while mouse is down on scroll buttons
+- New : ScrollButtonsAlways property to show scroll buttons always irrespective of nr. of tabs
+- New : OnDrawTab event for custom tab drawing
+- New : fixed tab width setting with ellipsis text for non fitting tab caption
+
+Update : TMS Advanced ToolBars & Menus v2.8.0.3
+-----------------------------------------------
+- Improved : TAdvToolBarPager caption alignment
+
+Update : TAdvStringGrid v3.5.1.1
+--------------------------------
+- Improved : index sort indicator drawing
+- Fixed : issue with OnCanEdit and button in cell
+
+Update : TAdvOfficeTabSet v1.1.2.2
+----------------------------------
+- Improved : paint issue with TabSettings.StartMargin = 0
+
+
+***********************************************
+TMS Component pack v4.2 : update Apr 13, 2007
+***********************************************
+Update : TAdvTaskDialog v1.2.1.1
+--------------------------------
+- New : support added for Hyperlinks in expanded text
+- New : option to show no default radiobutton added
+- New : capability to update instruction, content, expanded text, footer while dialog is displayed
+- New : option to allow cancelling the dialog with ESC added
+- New : TAdvTaskDialogEx component created using TAdvGlowButton on non Vista emulation
+- New : property ApplicationIsParent added
+- New : support for custom icons
+- New : support for Information & Shield footer icon
+- New : added support for \n linebreaks in Vista emulation mode
+- Improved : text wrapping for verify text
+- Improved : border drawing on Vista in XP compatibility mode
+- Fixed : issue with DefaultRadioButton initialization
+
+Update : TMS Advanced ToolBars & Menus v2.8.0.2
+-----------------------------------------------
+- Fixed : issue with runtime toolbar create & destroy
+- Fixed : painting issue with toolbar container  
+- Fixed : issue with compact TAdvPage display
+
+Update : TAdvStringGrid v3.5.1.0
+--------------------------------
+- Fixed : issue with hidden columns and tracking column moving
+- Fixed : issue with OnEditCellDone with advance edit
+- Improved : AutoFitColumns
+- Improved : OnClick, OnClickCell events triggered for click on footerpanel
+
+Update : TDBAdvGrid v2.1.4.0
+----------------------------
+- Fixed : issue with display updates during scrolling
+- Improved : record move on db indicator column click
+- New : SelectedField public property added
+
+Update : TWebUpdate v1.7.3.0
+----------------------------
+- New : Polish language support
+
+Update : THTMLButtons v1.5.2.1
+------------------------------
+- Fixed : compatibility issue with TRadioGroup of THTMLRadioGroup
+
+Update : TAdvOfficeButtons v1.0.0.1
+-----------------------------------
+- Fixed : compatibility issue with TRadioGroup of TAdvOfficeRadioGroup
+
+Update : TAdvAlertWindow v1.5.4.0
+---------------------------------
+- Improved : form creation to allow use of TAdvAlertWindow on datamodule
+
+Update : TAdvColumnGrid v3.1.0.5
+--------------------------------
+- Fixed : issue with header alignment for merged cells
+
+Update : TAdvSpinEdit v1.4.2.0
+------------------------------
+- Improved : painting of spin buttons
+
+
+
+***********************************************
+TMS Component pack v4.2 : update Mar 31, 2007
+***********************************************
+
+General
+-------
+New : Delphi 2007 support
+
+Update : TMS Advanced ToolBars & Menus v2.8.0.0
+-----------------------------------------------
+- New : DockMode property added in TAdvToolBar
+- New : Office 2007 style toolbar button sizing control
+- Improved : transparent drawing of TAdvOfficeButton controls on TAdvToolBar
+- Improved : various smaller code improvements
+- Fixed : painting issue with hidden root menu items
+
+Update : TAdvStringGrid v3.5.0.0
+--------------------------------
+- New : methods ColumnStatesToString, StringToColumnStates
+- New : methods ColumnPosition, ColumnAtPosition
+- New : OnEllipsClick event triggered on F4 key in edEditBtn editor
+- New : fcCalculated setting for filter data to filter in TAdvSpreadGrid on results
+- New : OnEditCellDone event added
+- New : Extra MaxRows parameter for functions LoadFromCSV, InsertFromCSV
+- New : OnDatePickerCloseUp event added
+- New : AutoFitColumns added
+- New : 2 sample applications for using OnPrintNewPage event and using Unicode features
+- Lots of smaller code improvements & fixes
+
+Update : TDBAdvGrid v2.1.3.0
+----------------------------
+- Fixed issue with SearchFooter & scrolling
+- Fixed issue with HTMLTemplates & PageMode = false
+- Fixed issue with display of graphic fields on fixed columns
+- Fixed issue with progressbar display in floating footer
+- Fixed issue with checkbox, picture display in floating footer
+- Fixed issue with ColumnByFieldName use from OnColumnMoved event
+- Improved : display DataImageField when PageMode = false
+- Fixed issue with Navigation.KeepHorizScroll = true
+- Improved : faster design time handling for large active datasets
+
+Update : TAdvColumnGrid v3.1.0.4
+--------------------------------
+- Fixed issue with bands & checkbox colors
+- Fixed issue with default color on fixed cells
+
+Update : TAdvOfficeStatusBar v1.1.2.0
+-------------------------------------
+- Improved : file ellipsis antialiased text drawing
+
+Update : TAdvMoneyEdit v1.1.1.0
+-------------------------------
+- Fixed : issue with painting due to changed behaviour in VCL TSpeedButton
+
+Update : TAdvOutlookList v1.4.0.0
+---------------------------------
+- New : SelectionColor, SelectionTextColor properties added
+- Fixed : issue with DeleteGroup, DeleteAllGroups method
+
+Update : TAdvOfficePager v1.2.1.5
+---------------------------------
+- Fixed : issue with FindNextPage
+- Fixed : issue with styler change and button appearance update
+
+Update : TAdvPanel v1.7.7.0
+---------------------------
+- Improved : property ParentShowHint exposed
+
+Update : TAdvEdit v2.7.3.1
+--------------------------
+- Fixed : issue with using Color & FlatParentColor = false
+
+Update : TAdvOfficeTabSet v1.1.2.1
+----------------------------------
+- Fixed : issue with right click on tab
+
+Update : TAdvDBLookupComboBox v1.5.2.0
+--------------------------------------
+- Improved : handling of Tab, Return, Esc key
+- Improved : Used AnsiUpperCase instead of UpperCase
+
+Update : TDBAdvNavigator v1.3.1.0
+---------------------------------
+- New : property InsertDisabled added
+
+Update : TAdvOfficeImage v1.0.1.0
+---------------------------------
+- New : property Align added
+
+Update : TDriveComboBoxEx v1.2.1.0
+----------------------------------
+- Improved : handling of selection of invalid drives
+
+Update : TDBInspectorBar v1.5.4.1
+---------------------------------
+- Fixed : issue in TDBInspectorBar with items not connnected to a DataField
+
+Update : THTMLabel v1.7.5.4
+---------------------------
+- Fixed : issue with AutoSizing = true & VAlignment <> tvaTop
+
+Update : TAdvComboBox v1.2.4.0
+------------------------------
+- New : property DisabledBorder added
+- New : method SelectItem added
+
+Update : TAdvPageControl v1.5.0.4
+---------------------------------
+- Improved : small cosmetic painting issue with tab borders
+
+Update : TAdvEditBtn v1.3.1.0
+-----------------------------
+- Improved : disabled painting
+
+Update : TPlannerRecurrencyEdit
+-------------------------------
+- Fixed issue with 'by week' recurrency setting
+
+
+
+***********************************************
+TMS Component pack v4.2 : update Mar 10, 2007
+***********************************************
+
+Update : TMS Advanced ToolBars & Menus v2.7.5.0
+-----------------------------------------------
+- New : wizard to automatically create apps or add forms with TAdvToolBarPager
+
+Update : TAdvAlertWindow v1.5.3.2
+--------------------------------
+- Fixed : issue with Hide method & Fade thread
+
+Update : TAdvOfficePager v1.2.1.3
+---------------------------------
+- Improved : prevented reentrance in page close
+
+Update : TAdvOutlookList v1.3.10.2
+----------------------------------
+- Fixed : issue with ClearChilds on group without childs
+- Fixed : memory leak issue with TOutlookGroup
+
+Update : TDriveComboBoxEx, TFileListBoxEx, TDirectoryListBoxEx v1.2.1.0
+-----------------------------------------------------------------------
+- Improved : handling of selection of invalid drives
+
+Update : TAdvSelectors v1.3.4.0
+-------------------------------
+- New : Added HotItemIndex in public section of TAdvSelectorPanel
+
+Update : TAdvEdit v2.7.2.0
+--------------------------
+- New : DisabledBorder property added
+- Improved : focus border drawing for TAdvMaskEdit
+
+Update : TAdvComboBox v1.2.3.0
+------------------------------
+- New : property DisabledBorder added
+
+Update : TAdvEditBtn v1.3.1.0
+-----------------------------
+- Improved : disabled painting
+
+Update : TDBAdvNavigator v1.3.0.0
+---------------------------------
+- New : property DeleteDisabled added
+
+Update : TAdvPageControl v1.5.0.4
+---------------------------------
+- Improved : small cosmetic painting issue with tab borders
+
+Update : TAdvScrollBox v1.1.0.0
+-------------------------------
+- New : Added events OnHScroll, OnVScroll, OnHScrollEnd, OnVScrollEnd
+
+Update : TDBInspectorBar v1.5.4.1
+---------------------------------
+- Fixed : issue in TDBInspectorBar with items not connnected to a DataField
+
+Update : TAdvStringGrid v3.4.8.11
+---------------------------------
+- Fixed : issue with ActiveRowColor & unicode text
+- Fixed : issue with HintShowSizing and multimonitor use
+- Fixed : issue with goTabs & edUniMemo editor
+
+Update : TDBAdvGrid v2.1.2.0
+----------------------------
+- Fixed : issue with progressbar display in floating footer
+- Fixed : issue with checkbox, picture display in floating footer
+- Fixed : issue with ColumnByFieldName use from OnColumnMoved event
+- Improved : display DataImageField when PageMode = false
+
+Update : TPlanner/TDBPlanner v2.5.3.4
+-------------------------------------
+- Fixed : issue with ShowCurrentItem := true
+- Fixed : issue with recurrency handling
+
+
+***********************************************
+TMS Component pack v4.2 : update Feb 24, 2007
+***********************************************
+Update : TTaskDialog v1.1
+-------------------------
+- New : Added ShortCut support in CommandLinks
+- Improved : Reflect properties change at run time
+- Fixed : issues with Footer and its FooterIcon size
+
+Update : TAdvProgressBar v1.1.2.1
+---------------------------------
+- Fixed : issue with display with Format
+
+Update : TAdvShapeButton v1.0.0.1
+---------------------------------
+- Fixed : issue with menu positioning on multimonitor screens
+
+Update : TAdvGlowButton v1.7.0.1
+--------------------------------
+- Fixed : issue with Enabled = false for non antialiased text
+
+Update : TAdvToolBar v2.7.0.5
+-----------------------------
+- New : Display of shortcut hints on QAT
+- Improved : handling of shortcut hint display on toolbar
+- Improved : design time right-click menu for QAT controls
+- Fixed : issue with shortcut key handling on QAT
+
+Update : TAdvStringGrid v3.4.8.10
+---------------------------------
+- Fixed : issue with scroll & searchfooter visible
+- Fixed : issue with rangeselectandedit=true and mouse dbl click
+- Fixed : issue with row sizing & nodes
+- Fixed : small painting issue with nodes
+- Fixed : issue with cell controls & grid resize
+
+Update : TDBAdvGrid v2.1.1.12
+-----------------------------
+- Fixed : issue with HTMLTemplates & PageMode = false
+- Fixed : issue with display of graphic fields on fixed columns
+
+Update : TPlanner / TDBPlanner v2.5.3.3
+---------------------------------------
+- Fixed : issue with apNextToTime & rightaligned sidebar
+- Fixed : issue with scrolling & position resizing
+
+Update : TWebUpdate v1.7.2.0
+----------------------------
+- Improved : added support for handling updates for readonly & hidden files
+
+
+***********************************************
+TMS Component pack v4.2 : update Feb 10, 2007
+***********************************************
+New : TAdvOfficeTabSet & TAdvOfficeMDITabset v1.1
+-------------------------------------------------
+- New : property TabRearrange added
+- New : OnTabMoved event added
+- New : TAdvOfficeMDITabSet
+
+Update : TAdvToolBar & Menus v2.7.0.3
+-------------------------------------
+- Improved : QAT drawing
+- Fixed : issue with design time toolbar delete
+
+!!!! BREAKING CHANGE !!!!!
+Update : TAdvTaskDialog v1.0.6.0
+--------------------------------
+- Renamed component from TTaskDialog 
+
+Update : TAdvOfficePager v1.2.1.2
+---------------------------------
+- Improved : minor border drawing cosmetic issue
+
+Update : TDBAdvGrid v2.1.1.11
+-----------------------------
+- Fixed : issue with SearchFooter & scrolling
+
+Update : TAdvOutlookList v1.3.10.0
+----------------------------------
+- New : method UnSelectAll added
+- Fixed : issue with SelectItem & multiselect option
+
+
+***********************************************
+TMS Component pack v4.2 : update Feb 3, 2007
+***********************************************
+Update : TAdvCircularProgress
+-------------------------------------------------
+- New : StepIt, StepBy methods added
+
+Update : TAdvToolBar & Menus v2.7.0.2
+-------------------------------------
+- Fixed : focus handling for compact toolbutton dropdown
+- Fixed : issue with QAT height
+- Fixed : issue with QAT dropdown menu position
+
+Update : TAdvStringGrid v3.4.8.9
+--------------------------------
+- New : Select method added to programmatically perform select on the default cell
+- Fixed : issue with shift column selection
+
+Update : TDBAdvGrid v2.1.1.10
+-----------------------------
+- Fixed issue with OnCanEditCell & keyboard navigation
+
+Update : TTaskDialog v1.0.6.0
+-----------------------------
+- New : property DialogPosition added , only applicable for non Vista OS
+- Fixed : issue with ESC key handling
+
+Update : ToolPanels v1.4.2.1
+----------------------------
+- Fixed : issue with ssInstant slidespeed for closing tabs
+
+
+***********************************************
+TMS Component pack v4.2 : update Jan 31, 2007
+***********************************************
+Update : TAdvWiiProgressBar, TAdvCircularProgress
+-------------------------------------------------
+- Fixed : issue with Enabled property
+
+Update : TAdvToolBar & Menus v2.7.0.1
+-------------------------------------
+- Fixed : issue with button focus on compact toolbar dropdown 
+
+Update : TAdvOfficeHint v1.1.2.3
+--------------------------------
+- Fixed : issue when showing normal hint only for controls with OfficeHint property
+
+
+***********************************************
+TMS Component pack v4.2 : update Jan 27, 2007
+***********************************************
+New : TAdvGroupBox v1.0.0.0
+---------------------------
+- New : Transparent groupbox
+      : Customizable caption position
+      : Customizable border color
+      : Optionally rounded corners
+      : Optional image in caption
+
+New : TAdvScrollBox v1.0.0.0
+----------------------------
+- New : Transparent scrollbox
+      : Customizable border color 
+
+New : TAdvSysKeyboardHook v1.0.0.0
+----------------------------------
+- New : system wide keyboard hook component
+
+New : TAdvOfficeButtons v1.0.0.0
+--------------------------------
+- New : Office 2007 checkbox, radiobutton, checkgroup, radiogroup components
+      : TAdvCheckGroup, TAdvRadioGroup can have customizable caption position
+      : Support for rounded corners, image in caption, custom border color
+      : Transparent
+      : Captions can have HTML formatted text
+
+New : TAdvWiiProgressBar v1.0.0.0
+---------------------------------
+- New : Nintendo Wii style progress bar
+
+New : TAdvCircularProgress v1.0.0.0
+-----------------------------------
+- New : SQL 2005 style progressbar
+      : Customizable block, active block colors & interval speed
+      : Real progress can be optionally indicated with Position, Min, Max properties and in color set by Appearance.ProgressSegmentColor
+ 
+Update : TAdvTaskDialog v1.5.0.8
+--------------------------------
+- Fixed : issue with default button for non Vista operating systems dialogs
+- Fixed : issue with Expanded Text size calculation for non Vista operating systems dialogs
+- Fixed : issue with FooterIcon drawing 
+
+Update : TAdvGlowButton v1.7.0.0
+--------------------------------
+- New : Repeat functionality added with repeat initial delay & frequency setting
+- New : support for using \n newline specifier in property inspector
+- Improved : wordwrap drawing with no text aliasing
+
+Update : TAdvToolBar & Menus v2.7.0.0
+-------------------------------------
+- New : built-in Quick Access toolbar in TAdvToolBarPager
+- New : Unicode support for TAdvToolBar, TAdvPage, TTabGroup, TAdvGlowButton, TAdvToolBarPager captions
+- New : OnCanShow event for customizer dialog
+- New : Visible property added for Menuitems & SubMenuItems in TAdvPreviewMenu
+- New : Built-in auto repeat function in TAdvGlowButton
+- New : Support for using \n newline specifier in property inspector for setting multiline captions
+- New : TAdvPreviewMenu item scroller support
+- New : TAdvToolBarPager toolbar scroller support
+- New : TAdvPreviewMenu MenuWidth & SubMenuWidth properties added
+- Improved : Tab sizing in TAdvToolBarPager, multiline TAdvToolBarPager caption handling
+- Improved : toolbar customizer handling
+- Improved : submenu positioning
+
+Update : TAdvStringGrid v3.4.8.8
+--------------------------------
+- Fixed : issue with center alignment & haBeforeText, haAfterText images
+- Fixed : issue with InsertRows & CellControls
+- Improved : added support for export grids with empty cells to XML
+- Improved : behaviour of OnEditChange
+
+Update : TAdvPageControl v1.5.0.4
+---------------------------------
+- Improved : small cosmetic painting issue with tab borders
+
+Update : TAdvListView v1.6.3.0
+------------------------------
+- New : method IndexOfColumn added to get index of columns after rearrange
+
+Update : TInspectorBar v1.5.4.1
+-------------------------------
+- Fixed : issue in TDBInspectorBar with items not connnected to a DataField
+
+Update : TPlannerCalendarGroup v1.7.3.2
+---------------------------------------
+- Fixed : issue with display update on font change in TPlannerCalendarGroup
+
+Update : TAdvNavBar v1.5.1.1
+----------------------------
+ -Fixed : issue with OnCollapsChange event
+
+Update : TWebCopy v1.6.0.1
+--------------------------
+- Fixed : issue with wildchard match multiple file FTP upload/download
+
+Update : TFolderDialog v1.0.1.1
+-------------------------------
+- Fixed : issue with initializing directory
+
+Update : TEXEInfo v1.2.0.0
+--------------------------
+- New : Added support for Windows 2003, Windows Vista
+
+Update : TAdvOfficePager v1.2.1.1
+---------------------------------
+- Fixed : issue with TabVisible and close button on tab
+
+Update : TAdvCardList v1.2.2.1
+------------------------------
+- Fixed : issue with default item show conditions
+
+Update : THTMLCheckList v1.9.0.2
+--------------------------------
+- Fixed : drawing issue with BeginUpdate/EndUpdate
+
+Update : TParamCheckList v1.3.2.0
+---------------------------------
+- New : property WordWrap added
+
+Update : ToolPanels v1.4.2.0
+----------------------------
+- New : property AutoOpenOnMouseEnter added
+
+Update : TPlanner/TDBPlanner v2.5.2.0
+-------------------------------------
+- New : property NotesMaxLength added
+
+Update : TPlannerMonthView/TDBPlannerMonthView v2.5.2.0
+-------------------------------------------------------
+- Fixed : issue with MinDate & MaxDate use
+
+Update : TDBAdvGrid v2.1.1.9
+----------------------------
+- Fixed : issue with inplace editor = edNone
+- Fixed : issue with inactive queries & readonly cells
+- Fixed : issue with OnKeyDown for VK_HOME, VK_END in specific conditions
+- Fixed : issue with OnCanEditCell
+
+
+***********************************************
+TMS Component pack v4.1 : update Dec 28, 2006
+***********************************************
+Update : TTaskDialog v1.0.5.6
+----------------------------
+- Fixed : issue with Expanded Text size calculation for non Vista operating systems dialogs
+
+Update : TAdvStringGrid v3.4.8.7
+--------------------------------
+- Fixed : Issue with goEditing = false
+
+Update : TDBAdvGrid v2.1.1.7 
+-----------------------------
+- Fixed : issue with OnCanDeleteRow, OnCanInsertRow
+
+Update : TAdvMemo v2.1.2.5
+--------------------------
+- Fixed : issue with DeleteSelection for ReadOnly memo
+
+Update : TAdvOfficeTabSet v1.0.0.1
+----------------------------------
+- Fixed : issue with deleting tabs
+
+
+***********************************************
+TMS Component pack v4.1 : update Dec 19, 2006
+***********************************************
+New : TDBAdvMoneyEdit 1.0.0.0
+-----------------------------
+- New : DB-aware AdvMoneyEdit component
+
+Update : TAdvComboBox v1.2.1.0
+------------------------------
+- New : Exposed ComboLabel property
+
+Update : THTMLCredit v1.0.1.0
+-----------------------------
+- New : Loop property added
+
+Update : TTaskDialog 1.0.5.5
+----------------------------
+- Fixed issue with blank FooterIcon
+- Fixed issue with content height
+- Improved : content sizing for non Vista operating systems dialogs
+- Fixed issue with progress bar for non Vista operating systems dialogs
+
+Update : TAdvStringGrid v3.4.8.6
+--------------------------------
+- New : filter based on cells with stripped HTML tags
+- Improved : AdvGridReplaceDialog shows modified rows when enabled
+- Improved : RTF export with tables with many columns
+- Improved : Filtering for grid with unicode cells automatically falls back to ANSI
+- Fixed : issue with RemoveChildRow()
+- Fixed : issue with Undo for data checkboxes
+- Fixed : issue with combination of RangeSelectAndEdit, goColMoving = true, SelectionResizer
+
+Update : TAdvAppStyler v1.1.4.1
+-------------------------------
+- Fixed : issue with AutoThemeAdapt
+
+Update : TAdvProgressBar v1.1.2.0
+---------------------------------
+- New : added property InfiniteInterval
+
+Update : TPlannerMonthView v2.5.1.6
+-----------------------------------
+- Fixed : issue with FindItemAtDate
+
+Update : TPlanner v2.5.1.6
+--------------------------
+- Improved : painting of planner items with multiple images
+
+Update : ToolPanels v1.4.1.2
+----------------------------
+- Improved : drawing of TAdvToolPanel caption with ampersand
+
+Update : TAdvMemo v2.1.2.4
+--------------------------
+- Improved : ActiveLine show with wordwrapping enabled
+- Improved : smarttabs behaviour with backspace key
+- Fixed : issue with copy & paste in VCL.NET
+
+Update : TAdvOfficePager v1.2.1.0
+---------------------------------
+- New : OnClosedPage event added
+- New : drag & drop events added for TAdvOfficePager
+
+Update : Parameter Controls v1.3.1.0
+------------------------------------
+- Improved : positioning of directory select dialog on multimonitor machines
+
+Update : TFolderDialog v1.0.1.0
+-------------------------------
+- Improved : positioning of directory select dialog on multimonitor machines
+
+Update : TDBAdvGrid v2.1.1.6
+----------------------------
+- Improved : scrollbar handling for grid with less rows can fit in the grid
+
+Update : TAdvToolBar v2.6.1.1
+-----------------------------
+- Improved : Office 2003 color schemes
+
+Update : TAdvAlertWindow v1.5.3.1
+---------------------------------
+- Fixed : issue in CloseAlert method
+
+Update : TAdvPageControl v1.5.0.3
+---------------------------------
+- Fixed : issue with OnCanChange and keyboard tabbing
+
+Update : TAdvCodeList v2.0.0.2
+------------------------------
+- Fixed : issue with ClipboardViewer setting when window handle is recreated
+
+Update : THTMLabel v1.7.5.3
+---------------------------
+- Fixed : issue with anchors for vertical center & bottom alignment
+
+Update : TSectionListBox v1.9.1.1
+---------------------------------
+- Fixed : issue with DeleteSelected
+
+Update : TAdvGlowButton v1.6.0.0
+--------------------------------
+- Fixed : incorrect display with fonts that are not installed
+- New : support for Trimming added
+
+Update : TAdvToolButton v1.3.3.0
+--------------------------------
+- New : public method ShowDropDownMenu
+
+Update : TAdvOfficeHint v1.1.2.2
+--------------------------------
+- Fixed : issue for using hint with non TMS components that directly use the hintwindowclass
+
+Update : TAdvListView v1.6.2.4
+------------------------------
+- Fixed : issue with HideSelection
+
+Update : THTMLTreeList v1.0.0.1
+-------------------------------
+- Fixed : issue with HotTrack display
+
+Update : THTMLTreeView v1.1.1.1
+-------------------------------
+- Fixed : issue with HotTrack display
+
+Update : TPlannerCalendarGroup v1.7.3.1
+---------------------------------------
+- Fixed : issue with ShowMonthSelector, ShowYearSelector in TPlannerCalendarGroup
+
+Update : TLayeredForm v1.0.0.1
+------------------------------
+- Fixed : issue with closing forms while fading is happening
+
+***********************************************
+TMS Component pack v4.1 : update Nov 26, 2006
+***********************************************
+Update : TAdvGlowButton v1.5.0.0
+--------------------------------
+- New : support for Unicode text via public property WideCaption
+- Improved : text drawing in aaNone AntiAlias mode
+
+Update : TTaskDialog v1.0.4.0
+-----------------------------
+- New : Added support to display shield icon on non Vista operating systems
+
+Update : TAdvMemo v2.1.2.2
+--------------------------
+- Fixed : issue with Undo for Paste action
+- Fixed : issue with Find&Replace dialog
+
+Update : TAdvPreviewMenu v1.1.1.1
+---------------------------------
+- Fixed : issue with painting of disabled menu items
+
+Update : TAdvToolBar v2.6.1.0
+-----------------------------
+- Fixed : support for customize dialog for TAdvGlowButton  
+- New : delay for showing shortcut hints
+
+Update : THTMLTreeview v1.1.1.1
+-------------------------------
+- Fixed : painting issue with HotTrack = true
+
+Update : THTMLTreeList v1.0.0.1
+-------------------------------
+- Fixed : painting issue with HotTrack = true
+
+Update : TPlannerMonthView v2.5.1.1
+-----------------------------------
+- Fixed : issue with programmatically setting the ImageList
+- Fixed : issue with multiday items with duration < 24hrs
+
+Update : THTMLRadioButton v1.5.1.2
+----------------------------------
+- Fixed : issue with dbl OnClick event on radiobutton click
+
+Update : TPlanner v2.5.1.5
+--------------------------
+- Fixed : sidebar display issue in period mode for horiz. time axis
+
+
+***********************************************
+TMS Component pack v4.1 : update Nov 20, 2006
+***********************************************
+New : TaskDialog v1.0.3.0
+-------------------------
+- New Windows Vista Task dialog with emulated version for older operating system
+
+Update : TAdvTabSet v1.5.2.0
+----------------------------
+- New : event OnDrawTabSetBackground
+
+Update : TAdvAlertWindow 1.5.3.0
+--------------------------------
+- New : Exposed Handle property of the alert window
+- Improved : alert window position control with AutoSize = true
+- Improved : Apply style change immediate when alertwindow is visible
+
+Update : TAdvMemo v2.1.2.0
+--------------------------
+- New : support for autocorrect on words followed by [, (, =
+
+Update : TCheckListEdit v1.3.1.0
+--------------------------------
+- New : Added property Selected[i]: boolean to get/set selected items in dropdown
+- Fixed : fix for QC-36372 issue with Refresh call in ShowCheckList
+
+Update : TTodoList & TDBTodoList v1.3.2.0
+-----------------------------------------
+- New : exposed Anchors property
+
+Update : THTMLRadioButton v1.5.1.2
+----------------------------------
+- Fixed : issue with dbl OnClick event on radiobutton click
+
+Update : TAdvTreeComboBox v1.1.0.4
+----------------------------------
+- Fixed : design time issue during loading of component
+
+Update : TAdvOfficeStatusBar v1.1.0.1
+-------------------------------------
+- Fixed : issue with percentage display & max value <> 100
+
+Update : TWebUpdate v1.7.1.0
+----------------------------
+- New : support for Czech language added
+
+Update : TAdvStringGrid v3.4.8.3
+--------------------------------
+- Improved : SmartClipboard resize with editing enabled
+- Improved : scientific type detection
+- Improved : AdvanceOnEnter, OnCellValidate behaviour with custom inplace editors
+- Improved : fnAutoGoto search in disjunct row select mode
+
+Update : TDBAdvGrid v2.1.1.5
+----------------------------
+- Fixed : issue with scrolling & floating footer
+
+Update : TPlanner & TDBPlanner v2.5.1.4
+---------------------------------------
+- Improved : printing with use of OnPlannerBottomLine event
+- Fixed : issue with CtrlDragCopy & TDBPlanner
+- Fixed : issue with displaying events < DisplayStart & > DisplayEnd
+
+Update : TAdvPreviewMenu v1.1.1.0
+---------------------------------
+- New : Added Tag property in menu items
+
+***********************************************
+TMS Component pack v4.1 : update Nov 8, 2006
+***********************************************
+Update : TMS Advanced ToolBars & Menus v2.6.0.1
+-----------------------------------------------
+- New : Methods Expand/Collaps added in TAdvToolBarPager
+- New : Action support in TAdvPreviewMenu
+- New : Visible property added for Menuitems & SubMenuItems in TAdvPreviewMenu
+- New : OnClick events added for Menuitems & SubMenuItems in TAdvPreviewMenu
+- Fixed : small color setting issue with Office 2007 silver styler
+- Fixed : issue with GDI resource leak on Win98
+- Improved : Office 2007 silver styler colors
+
+Update : TAdvGlowButton v1.4.6.1
+--------------------------------
+- Fixed : memory leak issue on Windows 98
+
+Update : TAdvStringGrid v3.4.8.2
+--------------------------------
+- New : added support to sort cells with scientific notation X,YE+Z
+- Fixed : issue with dbl click & MouseActions.RangeSelectAndEdit = true
+- Fixed : background color issue with checkboxes on gradient grid
+- Fixed : issue with RangeSelectAndEdit and popup menus
+- Fixed : issue with client-alignment, stretchcolumn
+
+Update : TPlanner & TDBPlanner v2.5.1.2
+---------------------------------------
+- Improved : printing in plTimeLine mode & HTML header printing
+- Fixed : issue with sidebar printing in timeline mode
+
+Update : TInspectorBar v1.5.4.0
+-------------------------------
+New events OnSetEditText, OnGetEditText added in TInspectorEditLink
+
+Update : TAdvOfficePager v1.2.0.5
+---------------------------------
+- Fixed : issue with resizing control to very small sizes
+
+Update : THTMListbox v1.9.1.1
+-----------------------------
+- Fixed : issue with fixed ItemHeight
+
+Update : TSectionListBox v1.9.0.3
+---------------------------------
+- Improved : code improved for AV during clear of empty sectionlistbox
+
+Update : TShader v1.2.1.0
+-------------------------
+- New : Added support for Office 2007 styles
+
+Update : TAdvOfficeHint v1.1.2.1
+--------------------------------
+- Fixed : issue with positioning of normal hints exceeding screen width, height
+
+
+***********************************************
+TMS Component pack v4.1 : update Oct 28, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.7.1
+--------------------------------
+- Fixed : issue with SaveToASCII and property SaveFixedCells
+
+Update : TAdvToolBar v2.5.1.1
+-----------------------------
+- Fixed : issue with floating toolbar size persistence
+
+Update : TAdvToolButton v1.3.2.1
+--------------------------------
+- Fixed : issue with programmatically setting down
+
+Update : TAdvFormStyler v1.1.4.0
+--------------------------------
+- New : Added support to handle frames in frames
+
+Update : TAdvOfficeHint v1.1.2.1
+--------------------------------
+- Fixed : issue with positioning of normal hints exceeding screen width, height
+
+
+***********************************************
+TMS Component pack v4.1 : update Oct 24, 2006
+***********************************************
+
+Update : TPlannerMonthView v2.5.1.0
+-----------------------------------
+New : support for Office 2007 silver style added
+
+Update : TPlannerDatePicker v1.6.1.0
+------------------------------------
+New : support for Office 2007 silver style added
+
+Update : TPlannerCalendar v1.7.3.0
+----------------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvCardList v1.2.2.0
+------------------------------
+New : support for Office 2007 silver style added
+
+Update : ToolPanels v1.4.1.0
+----------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvOfficeComboBox v1.0.1.0
+------------------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvFontCombobox v1.3.2.0
+----------------------------------
+New : support for Office 2007 silver style added
+
+Update : TInspectorBar v1.5.3.0
+-------------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvToolButton v1.3.2.0
+--------------------------------
+New : support for Office 2007 silver style added
+
+Update : TTodoList v1.3.1.0
+---------------------------
+New : support for Office 2007 silver style added
+
+Update : THTMListBox v1.9.1.0
+-----------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvPanel v1.7.6.0
+---------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvOutlookList v1.3.9.0
+---------------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvOfficeHint v1.2.1.0
+--------------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvMemo v2.1.1.0
+--------------------------
+New : support for Office 2007 silver style added
+
+Update : TAdvGlowButton v1.4.6.0
+--------------------------------
+New : support for Office 2007 silver style added
+
+
+***********************************************
+TMS Component pack v4.1 : update Oct 21, 2006
+***********************************************
+
+New : TAdvOfficeImage v1.0.0.0
+------------------------------
+- New : image component with support to display PNG, BMP, ICO, GIF, JPEG files, including PNG images with alpha transparency support
+
+Update : TMS Advanced ToolBars & Menus v2.5.1.0
+-----------------------------------------------
+- New: TAdvPreviewMenu component implementing the Office 2007 style file menu
+- New: TAdvShapeButton component allowing to create buttons with PNG images in any shape
+- New: TAdvToolBar OnResize event added
+- New: support for MDI built-in in TAdvToolBarPager
+- New: Office 2007 silver style added
+- New: TAdvToolBar.DockPanel added
+- New: DisabledImages added in TAdvMainMenu, TAdvPopupMenu
+- New: TAdvGlowButton OnDrawButton added
+- New: double click on caption changes window state between maximized & normal
+
+Update : TAdvStringGrid v3.4.7.0
+--------------------------------
+- New : Office2007 Silver style support added
+- Improved : performance of RemoveRows
+- Improved : drawing speed
+- Fixed : issue with DirectEdit & Merged cells
+- Fixed : issue with AdvanceOnEnter, checkboxes and OnCanEdit event
+- Fixed : issue with KeepHorizScroll, FixedFooters, goRowSelect mode
+- Fixed : issue with AlwaysEdit = true and readonly cells
+- Fixed : issue with CursorWalkEditor & cell merging & static edits
+- Fixed : issue with unicode editing
+- Fixed : issue with GroupCalc for grid with contracted nodes
+- Fixed : issue with copy & paste for float cells
+- Fixed : issue with disjunctrowselect
+
+Update : TPlanner v2.5.1.0
+--------------------------
+- New : Office2007 Silver style added
+- Fixed : issue with PlannerHeader.Assign
+- Fixed : issue with multimonth mode & multiyear items
+- Fixed : issue with position resize during header resize
+
+Update : TAdvGlowButton v1.4.5.0
+--------------------------------
+- New : PopupMenu property added
+- New : OnDrawButton event added
+- New : TButtonLayout blGlyphTopAdjusted and blGlyphBottomAdjusted added
+
+Update : TAdvAlertWindow v1.5.1.0
+---------------------------------
+- New : Office2007 Silver style added
+
+Update : TAdvNavBar v1.5.1.0
+----------------------------
+- New : Office2007Silver style added
+- Fixed : issue with hidden panels & collaps
+
+Update : TImagePicker v1.1.1.0
+------------------------------
+- New : added method SelectByTag
+- Fixed : issue with EditHeight
+
+Update : TPlannerCalendarGroup v1.7.2.0
+---------------------------------------
+- New : TabStop, TabOrder properties added on TPlannerCalendarGroup
+
+Update : TPlannerMonthView v2.5.0.11
+------------------------------------
+- Fixed : issue with OnItemText event
+
+Update : TDBAdvGrid v2.1.1.4
+----------------------------
+- Improved : setting column header for PageMode = false
+- Fixed : issue with unicode editing
+
+Update : TWebCopy v1.6.0.0
+--------------------------
+- New : wildchard match multiple file FTP upload/download
+
+Update : TInspectorBar v1.5.2.2
+-------------------------------
+- Changed : OnItemDraw handling to allow to just change canvas properties
+- Fixed : issue with showing EditLink inplace editor for Delphi 2005,2006
+
+Update : TAdvOfficeComboBox v1.3.1.1
+------------------------------------
+- Fixed : issue with focus of control & dropdown
+
+Update : TCheckListEdit v1.3.0.0
+--------------------------------
+- New : Added capability to enable/disable individual checkboxes with ItemEnabled[index]: boolean
+- New : Added OnShowCheckList event
+
+Update : THTMListbox v1.9.0.1
+-----------------------------
+- Fixed : issue with AutoItemHeight
+
+
+***********************************************
+TMS Component pack v4.0 : update Sep 22, 2006
+***********************************************
+Update : TAdvOfficePager v1.2.0.4
+---------------------------------
+- Fixed : issue with scrolling & hidden tabs
+
+Update : TAdvOfficeTabSet v1.0.0.1
+----------------------------------
+- Fixed : issue with scrolling & hidden tabs
+
+Update : TAdvListView v1.6.2.3
+------------------------------
+- Fixed : issue with MoveItem and ItemHeight
+
+Update : TAdvGlowButton v1.4
+----------------------------
+- New : Spacing property added
+- New : WordWrap property added
+- New : AutoSize property added
+- New : MarginVert property added
+- New : MarginHorz property added
+- New : Rounded property added
+- New : DropDownDirection property added
+- New : HotImages, HotPicture property addedNew: design time Office 2007 / Office 2003 style selection
+- New : standalone DB-aware version
+- Improved : seamlessly works with TrueType & non TrueType fonts
+
+Update : TParamTreeview  v1.3.0.5
+---------------------------------
+- Fixed : issue with inplace editors wider than control width
+
+Update : TAdvOutlookList v1.3.8.0
+---------------------------------
+- New : Added OutlookGroup.ItemIndex(p: POGLItem); function
+
+Update : TAdvOfficeComboBox v1.0.0.2
+------------------------------------
+- New : exposed TabOrder in AdvOfficeSelector
+
+Update : TColumnListBox v1.2.1.1
+--------------------------------
+- Fixed : issue with DeleteSelected
+
+Update : TAdvDBLookupComboBox v1.5.0.1
+--------------------------------------
+- New : DisabledColor property added
+- New : DropDownStretchColumn added
+- New : OnDrawProp event added
+- New : autosizing dropdown capability (when DropWidth = 0)
+- New : Dropdown sizing persistence
+- Fixed : issue with calculated lookup fields
+
+Update : TAdvMainMenu, TAdvPopupMenu v2.0.5.0
+---------------------------------------------
+- New : support for DisabledImages in TAdvMainMenu, TAdvPopupMenu
+
+Update : THTMLCheckList v1.9.0.1
+--------------------------------
+- Fixed : memory leak issue
+
+Update : TPlannerCalenader v1.7.1.3
+-----------------------------------
+- Fixed : issue with custom prev month glyph position
+
+Update : THTMLabel v1.7.5.2
+---------------------------
+- Improved : URL color printing
+
+Update : THTMLCheckBox, THTMLRadioButton v1.5.1.0
+-------------------------------------------------
+- Improved : transparent drawing for HTMLCheckBox, HTMLRadioButton
+
+Update : TAdvMemo v2.1.0.8
+--------------------------
+- Fixed : issue with autocompletion in empty memo
+
+Update : TAdvStringGrid v3.4.6.0
+--------------------------------
+- New : property FloatingFooter.BorderColor added
+- New : property AllGridCells[] added to get real grid cell value of hidden & visible cells
+- Fixed : issue with Navigation.AllowCtrlEnter = false
+- Fixed : issue with OnGetCellPrintBorder and right-side borders
+- Fixed : issue with MouseActions.RangeSelectAndEdit = true for non editable grids
+- Fixed : issue with column moving & visible floating footer
+- Fixed : Issue with SaveRectToBinStream
+- Improved : drag & drop interface for disjunct selected rows
+
+Update : TDBAdvGrid v2.1.1.3
+----------------------------
+- Fixed : issue with OnCellValidate and edNormal editor type
+- Fixed : issue with AutoRemoveColumns when removing datasource
+
+Update : TPlanner / TDBPlanner v2.5.0.16
+----------------------------------------
+- Fixed : issue with multimonth mode & multiyear items
+- Fixed : issue with MultiMonthSource and items longer than viewed timespan
+
+Update : TPlannerMonthView v2.5.0.10
+------------------------------------
+- Fixed : issue with OnItemMoving with Allow = false
+
+Update : TAdvToolBar  v2.2.6.0
+------------------------------
+- New : exposed ToolBarIndex property
+- Fixed : issue with toolbar control hiding
+
+
+***********************************************
+TMS Component pack v4.0 : update Sep 2, 2006
+***********************************************
+Update : TMS Advanced Office Graphics controls v1.1
+---------------------------------------------------
+- New : AdvOfficeScrollSelector component added
+- Fixed : issue with glyph on TAdvOfficeColorSelector
+
+Update : TAdvStringGrid v3.4.4.0
+--------------------------------
+- New : OnRowDisjunctSelected event added
+- Fixed : issue with scrolling with SearchFooter visible
+
+Update : TAdvToolBar v2.2.5.1
+-----------------------------
+- Fixed : issue with sizing toolbar & compact buttons
+
+Update : TDBAdvCardList v1.2.1.0
+--------------------------------
+- New : event OnCardUpdate added in TDBAdvCardList 
+
+
+***********************************************
+TMS Component pack v4.0 : update Aug 19, 2006
+***********************************************
+New : TMS Advanced Office Graphics controls
+-------------------------------------------
+- New : AdvOfficeColorSelector component
+- New : AdvOfficeTextColorSelector component
+- New : AdvOfficeFontSelector component
+- New : AdvOfficeSelector component
+- New : AdvOfficePenStyleSelector component
+- New : AdvOfficePenWidthSelector component
+- New : AdvOfficeBrushStyleSelector component
+- New : AdvOfficeGradientDirectionSelector component
+- New : AdvOfficeShadowSelector component
+- New : AdvOfficeToolSelector component
+- New : AdvOfficeTableSelector component
+- New : AdvOfficeTableBorderSelector component
+- New : AdvOfficeCharacterSelector component
+
+Update : TAdvEdit v2.7.0.5
+--------------------------
+- Fixed : issue with handling eaRight edit & focus alignment
+
+Update : ToolPanels v1.4.0.2
+----------------------------
+- Fixed : issue with Accept handling in OnDockOver
+
+Update : TAdvGlowButton v1.3.3.0
+--------------------------------
+- New : public property DroppedDown added
+
+Update : TAdvToolBar v2.2.5.0
+-----------------------------
+- New : added support for using TMS Advanced Office Control Pack selectors on toolbars (as part of TMS Component Pack)
+- New : added support for design time positioning of controls on Office2003 toolbar
+
+Update : TAdvMemo v2.1.0.6
+--------------------------
+- Fixed : issue with hint parameters & codefolding
+
+Update : THTMLabel v1.7.5.2
+---------------------------
+- Improved : URL color printing
+
+Update : TPlannerCalendar / TPlannerCalendarGroup v1.7.1.1
+----------------------------------------------------------
+- New : Added property MultiSelectCtrlKey
+- Fixed : issue with OnGetDateHintString
+
+Update : TAdvStringGrid v3.4.2.1
+--------------------------------
+- Fixed : hide of spin edit with blank text 
+
+Update : TDBAdvGrid v2.1.1.1
+----------------------------
+- Fixed : issue with showing memo fields when ShowMemoFields = true and PageMode = false 
+- Improved : showing picturefields with PageMode = false
+
+Update : TAdvOutlookList v1.3.7.1
+---------------------------------
+- Fixed : issues with drag & drop
+
+
+***********************************************
+TMS Component pack v3.9 : update Jul 30, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.2.0
+--------------------------------
+- New : Events OnGetEditWideText, OnSetEditWideText added
+
+Update : TPlannerCalendar / TPlannerCalendarGroup v1.7.0.1
+----------------------------------------------------------
+- Fixed : issue with changing StartMonth, StartYear from OnDaySelect in TPlannerCalendarGroup
+
+Update : TAdvGlowButton v1.3.1.3
+--------------------------------
+- Fixed : issue with actionlinks & bsCheck type
+
+Update : TAdvOfficeStatusBar 1.0.1.0
+------------------------------------
+- Improved : statusbar styler color definitions
+
+Update : TPlanner / TDBPlanner v2.5.0.15
+----------------------------------------
+- Fixed : issue with items after midnight in multiday scenarios
+
+
+***********************************************
+TMS Component pack v3.9 : update Jul 26, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.1.0
+--------------------------------
+- New : support for printing radiobuttons added
+- Fixed : issue with editing when AlwaysEdit = true & AllowCtrlEnter = false
+- Fixed : issue with goTabs and tab advance with readonly cells
+- Fixed : issue with Navigation.TabToNextAtEnd
+- Fixed : issue when application active window changes when inplace editor is active
+
+Update : TAdvGlowButton v1.3.1.2
+--------------------------------
+- Improved : transitioning from transparent to hot
+
+Update : TAdvQueryDialog v1.0.1.0
+---------------------------------
+- New : Added property DialogUnitWidth
+- New : Added property DialogColor
+
+Update : TAdvPanel / TAdvPanelGroup v1.7.5.0
+--------------------------------------------
+- New : added mirror gradients for panel background for Office 2007 Luna & Obsidian colors
+- Fixed : issue with PanelCount and design time added panels in TAdvPanelGroup
+
+Update : TAdvOfficePager v1.2.0.2
+---------------------------------
+- Fixed : issue with return value of AddAdvPage
+
+Update : TShader v1.2.0.0
+-------------------------
+- New : added mirror gradient capability
+- New : added styler interface
+
+Update : THTMListbox, THTMLCheckList v1.9.0.0
+---------------------------------------------
+- New : property AutoItemHeight added in THTMListbox
+- New : styler interface added with Office 2007 gradient selection colors
+- New : ShowFocus property added
+
+Update : TAdvMemo v2.1.0.5
+--------------------------
+- Fixed : issue with block delete & Undo
+- Improved : autocompletion  
+
+Update : T(DB)Planner v2.5.0.14 
+-------------------------------
+- Fixed : issue with changing active record for recurring items
+
+
+***********************************************
+TMS Component pack v3.9 : update Jul 16, 2006
+***********************************************
+Update : TAdvGlowButton v1.3.1.0
+--------------------------------
+- Fixed : issue with hot & down border painting
+- Fixed : issue with Down property for bsCHeck style
+
+Update : TAdvMemo v2.1.0.5
+--------------------------
+- Fixed : issue with block delete & Undo
+- Improved : autocompletion 
+
+Update : TAdvOfficePager v1.2.0.1
+---------------------------------
+- Fixed : issue with form windows proc hook
+
+Update : TPlanner / TDBPlanner v2.5.0.13
+----------------------------------------
+- Fixed : issue with yearly recurrency handling
+
+Update : TAdvStringGrid v3.4.0.6
+--------------------------------
+- Fixed : parameter order in OnGetWordWrap
+- Fixed : issue with OnEllipsClick for edButton editor type
+- Fixed : issue with insert/remove rows and ShowModified
+
+Update : TInspectoBar v1.5.2.1
+------------------------------
+- Fixed : Changed OnItemDraw handling to allow to just change canvas properties
+
+
+***********************************************
+TMS Component pack v3.9 : update Jul 8, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.0.4
+--------------------------------
+- Fixed : issue with OnGetDisplWideText
+- Fixed : print column width calculation with use of OnGetFloatFormat
+- Improved : node position for painting
+- Improved : group summary handling
+
+Update : TPlanner / TDBPlanner v2.5.0.12
+----------------------------------------
+- Fixed : issue with yearly recurrency handling
+
+Update : TPlannerMonthView v2.5.0.8
+-----------------------------------
+- Fixed : issue with mouse handling for items when ShowWeeks = true
+
+Update : TAdvToolBar v2.2.0.0
+-----------------------------
+- New : Keyboard shortcuthint support added
+- New : PageLeftMargin, PageRightMargin added
+- New : TabSettings.EndMargin property exposed
+- New : Central TAdvToolBarPager OptionPicture support added
+- New : AdvToolBar.ParentOptionPicture property added
+- Fixed : issue with programmatic Compact mode handling
+- Fixed : issue with separator size with Compact mode handling
+
+Update : TAdvOfficePager v1.2.0.0
+---------------------------------
+- New : keybooard support added
+- New : shortcuthints added
+- New : page OnShow event added
+
+Update : TAdvGlowButton v1.3.0.1
+--------------------------------
+- Fixed : issue with font and aaNone
+
+Update : THTMLTreeview v1.1.1.0
+-------------------------------
+- New : Exposed MultiSelectStyle property
+
+Update : TAdvAppStyler v1.1.2.0
+-------------------------------
+- New : Added OnChange event for TAdvAppStyler
+
+Update : TAdvMemo v2.1.0.4
+--------------------------
+- Fixed : issue with underscore drawing for italic fonts
+- Fixed : issue with wwRightMargin wordwrap mode 
+
+Update : TAdvOfficeHint v1.1.0.2
+--------------------------------
+- Fixed : issue with positioning of hint exceeding screen width, height
+
+Update : TAdvOutlookList v1.3.7.0
+---------------------------------
+- New : property HeaderResize & OnHeaderResize event added
+- New : event OnSorted added
+
+Update : THTMLCheckBox, THTMLRadioButton v1.5.0.0
+-------------------------------------------------
+- New : Added btTheme button type to automatically switch checkbox/radiobutton display for Win XP themed apps
+
+Update : TTreeList v1.0.0.2
+---------------------------
+- Fixed : issue with RightClickSelect
+
+Update : TAdvOfficeStatusBar v1.0.1.0
+-------------------------------------
+- New : Exposed Canvas as public property & fixed OnDrawPanel event handling
+
+Update : TAdvPanel / TAdvPanelGroup v1.7.0.1
+--------------------------------------------
+- Fixed : issue with Panel.Visible on AdvPanelGroup with ScrollSmooth = true
+
+Update : TAniIcon v1.2.0.1
+--------------------------
+- Fixed : issue with large icon sizes
+
+Update : TInspectorBar v1.5.2.0
+-------------------------------
+- Improved: runtime created panels automatically get the InspectorBar.Style setting
+
+Update : THTMLabel v1.7.5.0
+---------------------------
+- New : added BorderColor property
+
+
+***********************************************
+TMS Component pack v3.9 : update Jun 23, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.0.3
+--------------------------------
+- Fixed : issue with OnBeforeClipboardPasteCell
+- Fixed : issue with painting for merged group headers
+- Fixed : issue with reparenting with inplace editor
+- Fixed : issue with AppendToDoc
+- Fixed : issue with inplace combobox in classic Windows style for BidiMode bdRightToLeft  
+- Improved : grid.Invalidate now also automatically invalidates the floating footer
+
+Update : TPlanner v2.5.0.11
+---------------------------
+- Fixed : issue with HTML export colors for horizonal oriented planners
+
+New : TAdvOfficeStatusBar v1.0
+------------------------------
+- New : Office 2003 / Office 2007 style statusbar
+
+New : TAdvOfficeTabSet v1.0
+---------------------------
+- New : Office 2003 / Office 2007 style tabset
+
+Update : TAdvNavBar v1.5.0.0
+----------------------------
+- New : capability to collaps TAdvNavBar
+- New : Runtime section sizing
+- New : Handpoint cursor for mouse over panel tab
+- New : CaptionHint added in TAdvNavBarPanel
+- New : CaptionAlignment added in TAdvNavBarPanel
+- New : automatic tab panel caption display when no panel image is specified
+
+Update : TPlannerMonthView v2.5.0.7
+-----------------------------------
+- Fixed : issue with resizing while inplace edit
+
+Update : TAdvGlowButton v1.3.0.0
+--------------------------------
+- New : Added new property FocusType
+- New : Added new ShortCutHint, ShortCutHintPos & methods ShowShortCutHint, HideShortCutHint
+
+Update : TAdvToolBar v2.1.0.0
+-----------------------------
+- New : PageIndex property added on TAdvPage
+- New : TabStop added for TAdvToolbarPager
+- New : Keyboard events added on TAdvToolBarPager
+- New : Keyboard support added on TAdvToolBarPager, TAdvToolBar
+- Several smaller fixes and code improvements 
+
+Update : ToolPanels v1.4.0.1
+----------------------------
+- Fixed : issue with tab size calculation for non default fonts
+
+***********************************************
+TMS Component pack v3.9 : update Jun 9, 2006
+***********************************************
+Update : TAdvStringGrid v3.4.0.2
+--------------------------------
+- Fixed : issue with cell controls on fixed rows, fixed cols
+- Fixed : issue with Navigation.AllowCtrlEnter = false
+- Fixed : issue with virtual cells & AllCells[] access
+- Fixed : issue with gradient selection colors and gradient cell colors
+
+Update : TDBAdvGrid v2.1.0.0
+----------------------------
+- New :  Added SaveColumnPositions, LoadColumnPositions
+- Improved : unicode editing
+- Update : compatibility with TAdvStringGrid v3.4
+
+Update : TAdvAppStyler v1.1.1.0
+-------------------------------
+- New : Added OnChange event
+- New : Added AutoThemeAdapt capability
+- New : Added capability to handle frames in TAdvFormStyler
+
+Update : TAdvToolBar v2.0.0.3
+-----------------------------
+- New : Readonly property IsCompact:boolean exposed for toolbar
+- Improved : automatic imagelist assignment on AdvGlowButton insert at designtime
+- Improved : Office 2007 styles for floating toolbars
+- Fixed : issue with removing toolbar at design time
+- Fixed : issue with shortcut key on AdvToolBarMenuButton
+- Fixed : issue with event handling on AdvToolBarMenuButton
+- Fixed : issue with invoking modal forms from compact toolbar
+- Fixed : issue with removing ToolBar.DisabledImages imagelist at designtime
+- Fixed : issue with removing ToolBar.Menu at designtime
+
+Update : TWebUpdate v1.7.0.1
+----------------------------
+- Improved : OnDownloadedWhatsNew, OnDownloadedEULA triggered from wizard
+
+Update : TAdvOfficePager v1.1.1.0
+---------------------------------
+- New : Added OnResize event
+- New : Added FreeOnClose property
+- New : Added PopupMenu property on TAdvOfficePage
+- Fixed : issue with TAdvGlowButton painting on pager
+- Fixed : issue with anchored controls
+- Fixed : issue with page reorder in object treeview
+
+Update : TParamCheckList v1.3.0.4
+---------------------------------
+- Fixed : issue with popup menu selection
+
+Update : TWebPost v1.0.3.0
+--------------------------
+- Improved : timeout & error handling
+
+Update : TInspectorBar v1.5.1.0
+-------------------------------
+- New : Home,End,Prior,Next keys can be used to navigate panels
+- New : Shortcut for item on properties panel starts inplace edit
+
+Update : TAdvColumnGrid v3.1.0.1
+--------------------------------
+- Fixed : issue with Bands color handling & cell property settings
+
+Update : TAdvOutlookList v1.3.5.1
+---------------------------------
+- New : Tag & Data properties added in TOutlookGroup
+
+
+***********************************************
+TMS Component pack v3.9 : update May 27, 2006
+***********************************************
+
+Update : TAdvStringGrid v3.4.0.0
+--------------------------------
+- New : OfficeHint property (for TMS Component Pack users only)
+- New : Office 2007 Luna & Obsidian styles added
+- New : AddAdvProgress, RemoveAdvProgress & grid.ProgressAppearance for adding sophisticated progress bars in grid
+- New : AddCheckBoxColumn, RemoveCheckBoxColumn procedures added
+- New : property Gradients[col,row] to set gradient direction
+- New : public property LoadFirstRow added to control loading first line with LoadFromCSV(), InsertFromCSV()
+- New : method grid.SortSettings.Remove to immediately remove sort indicators
+- New : SelectedRowCount, SelectedRow[i]: boolean; interface for more convenient access to disjunct selected rows
+- Improved : keyboard scroll behaviour with SearchFooter visible
+- Improved : RowModified is persisted when grid is sorted
+- Improved : disjunct cell keyboard interface : ctrl - space + space to select
+- Improved : MouseActions.RangeSelectAndEdit behaviour
+- Various smaller fixes & code improvements 
+
+Update : TAdvColumnGrid v3.1
+----------------------------
+- Fixed issue with LoadColumnPosition
+- Compatibility release with TAdvStringGrid v3.4
+
+New : TAdvToolBarPager v1.0
+---------------------------
+- Office 2007 style page control
+
+New : TAdvFormStyler, TAdvAppStyler v1.0
+----------------------------------------
+- Form-wide or application wide component styler. 
+  For information, see http://www.tmssoftware.com/go/?atbdev3
+
+Update : TSectionListBox v1.9.0.2
+---------------------------------
+- Fixed : issue with OnExpandSection, OnContractSection
+
+Update : TAdvOutlookList v1.3.5.0
+---------------------------------
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : TMS ToolPanels v1.4.0.0
+--------------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : Added Font, ParentFont property in TAdvToolPanelTab
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : TMS Advanced Menus v2.0
+--------------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : TWebCopy v1.5.0.5
+--------------------------
+- Fixed : OnFileDateCheck event declaration
+
+Update : TAdvAlertWindow v1.5.0.0
+---------------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : THTMListbox v1.8.0.2
+-----------------------------
+- Fixed : issue with initial scrollbar display on component load
+
+Update : TPlannerCalendar, TPlannerCalendarGroup v1.7.0.0
+---------------------------------------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+- New : FirstDate, LastDate functions added in TPlannerCalendar
+- New : FirstDate, LastDate, MonthCount added in TPlannerCalendarGroup
+
+Update : TTodoList v1.3.0.0
+---------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : TAdvMemo v2.1.0.0
+--------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+
+Update : T(DB)Planner v2.5.0.9
+------------------------------
+- New : Added Office 2007 Luna & Obsidian styles 
+- New : AdvFormStyler, AdvAppStyler interface added
+- Fixed : issue with timelines with non visible display start & end
+- Fixed : issue with PositionProps and active completion indication
+- Fixed : issue with DirectMove
+- Fixed : issues with Planner Recurrency handler
+
+
+***********************************************
+TMS Component pack v3.9 : update May 8, 2006
+***********************************************
+
+New : TMS Component Pack project group files
+
+Update : TMS Advanced ToolBars & AdvMenus v2.0
+----------------------------------------------
+- New : Office 2007 Ribbon toolbar style support
+- New : Office 2007 style hints & menu appearance
+
+Update : TAdvStringGrid v3.3.2.9
+--------------------------------
+- Fixed : issue with MemoEditLink memo positioning in Delphi 2005 or higher
+- Fixed : issue with ScrollInView for grid without fixed rows
+- Fixed : issue with KeepHorizScroll and Indexed sorting
+- Fixed : issue with unicode inplace editing with arrow keys
+- Fixed : issue with coordinate in OnCanEditCell for F2 key when hidden columns are used
+- Fixed : fix for TAdvColumnGrid AdvanceOnEnter with hidden columns
+- Fixed : issue with SizeWhileTyping
+
+Update : TPlanner v2.5.0.7
+--------------------------
+- Fixed : issue with PositionProps and active completion indication
+
+Update : TAdvMemo v2.0.1.2
+--------------------------
+- New : Added properties FocusMemo to TAdvMemoFindDialog, TAdvMemoReplaceDialog
+- Fixed : issue with Shift tab with use with MemoSource
+- Fixed : Renamed TAdvPhytonMemoStyler to TAdvPythonMemoStyler
+
+Update : THTMLRadioGroup, THTMLCheckGroup v1.4.5.2
+--------------------------------------------------
+- Fixed : issue with ShadowColor, ShadowOffset initialization for HTMLRadioGroup, HTMLCheckGroup
+
+Update : TInspectorBar v1.4.0.6
+-------------------------------
+- Fixed : memory leak issue
+
+Update : TAdvAlertWindow v1.4.0.8
+---------------------------------
+- New : center position capability added
+
+Update : TWebCopy v1.5.0.4
+--------------------------
+- Fixed : issue with KeepConnect and ftp change dir
+
+***********************************************
+TMS Component pack v3.8 : update Apr 22, 2006
+***********************************************
+Update : TAdvTabSet v1.5.0.1
+----------------------------
+- Fixed issue with auto tab sizing during programmatic tab text setting
+
+Update : TAdvGlowButton v1.1.0.0
+--------------------------------
+- New : separate dropdown button hot & down effect
+- New : transparent mode
+- Improved : painting
+
+Update : TAdvOutlookList v1.3.0.0
+---------------------------------
+- New : property HideSelection
+- New : property GroupColumnDisplay
+- New : functions ItemAtXY, GroupAtXY
+- New : VCL drag & drop support
+- New : GroupImageIndex to set image for grouped column
+- New : Lookup for direct or incremental keyboard lookup in a selected column
+
+Update : TAdvMemo v2.0.1.1
+--------------------------
+- Fixed : memo checker issue on empty memo
+- Fixed : Ctrl-Backspace for delete word for first word of line
+- New : Added CloseDialog method in AdvMemoFindDialog, AdvMemoReplaceDialog
+
+Update : TAdvPanel v1.6.1.1
+---------------------------
+- Fixed : issue with TAdvPanelStyler and URL hover colors
+
+Update : TWebPost v1.0.2.0
+--------------------------
+- New : property WaitResponse added
+
+Update : TSectionListBox v1.9.0.1
+---------------------------------
+- Fixed : issue with SubItems.Move()
+
+Update : THTMLTreeView v1.1.0.3
+-------------------------------
+- Improved : OnAnchorEnter event triggering
+
+Update : TInspectorBar v1.4.0.5
+-------------------------------
+- Fixed : issue with design time removing of editlinks
+- Fixed : issue with setting Panel.ItemIndex to -1 
+
+Update : TAdvListView v1.6.2.2
+------------------------------
+- Fixed : issue with PrintSettings.RepeatHeaders
+
+Update : ToolPanels v1.3.5.1
+----------------------------
+- Fixed : issue with width/height changes in floating panels
+
+Update : TAdvColumnGrid v3.0.1.0
+--------------------------------
+- New : Added property PrintFontCustom: boolean in ColumnItem
+
+Update : TAdvStringGrid v3.3.2.7
+--------------------------------
+- Fixed : caret display issue for normal inplace editors
+- Fixed : issue with ShowSelection = false and disjunct row select during mousedown
+- Fixed : issue with checkbox click with grid with goRowSelect = true
+- Fixed : CellsLoaded called after LoadFromXML
+- Fixed : issue with column stretch, horiz. prop. scrollbar
+- Fixed : KeepHorizScroll with SelectOnRightClick issue
+- Fixed : issue with RemoveSelectedRows in non disjunct row selection mode
+- Fixed : issue with PreciseCheckBoxCheck & hidden columns
+
+Update : TPlanner / TDBPlanner 2.5.0.6
+--------------------------------------
+- Improved : header & header group painting
+- Improved : position zoom handling with PositionAutoSize = true
+- Fixed : issue with completion calculation with header items
+
+
+***********************************************
+TMS Component pack v3.8 : update Apr 1, 2006
+***********************************************
+New : TAdvGlowButton v1.0.5.1
+-----------------------------
+- Office 2007 style, Windows Vista style button
+- Complex gradients support
+- Soft button state transition painting
+- Antialiased button text rendering support
+- PNG, Bitmap and ImageList button glyph support
+- Bottom or right aligned dropdown button support
+- Full color & gradient customization support
+
+Update : TAdvCodeList v2.0.0.1
+------------------------------
+- Fixed: issue with hints for TAdvCodeList on secondary forms
+
+Update : TAdvStringGrid v3.3.2.5
+--------------------------------
+- Improved : AutoSizeRow with virtual checkboxes
+- Improved : fixed column sizing cursor behaviour
+- Improved : Tab handling for readonly grids
+- Fixed : issue with column stretching and proportional scrollbars
+- Fixed : issue with OnComboChange for Unicode combobox inplace editor
+- Fixed : issue with AutoSizeRow with Unicode cells
+- Fixed : issue with date inplace editor height for large cells
+- Improved : LoadFromXML uses now LoadCell virtual proc.
+- Fixed : issue with column index in combochange events for hidden columns
+- Fixed : issue for very small row heights with PrintSettings.NoAutoSizeRows = true
+- Fixed : issue with custom checkbox control painting for Bidi RightToLeft mode
+- Improved : auto tab advance in scenarios with custom fixed, readonly cells
+
+Update : TAdvOutlookList v1.2.1.0
+---------------------------------
+- New : Method DeleteGroup(Index) added
+- Fixed : issue with GroupIndex function
+
+Update : TAdvColumnGrid v3.0.1.0
+--------------------------------
+- New : Added property PrintFontCustom: boolean in ColumnItem
+
+Update : TAdvDBLookupCombobox v1.4.0.4
+--------------------------------------
+- Fixed : issue with FilterField and empty FilterValue
+
+Update : TParamTreeview v1.3.0.3
+--------------------------------
+- Fixed : context menu selection in inplace editors
+- Fixed : use of & character editing in EDIT types
+
+Update : TWebUpdate v1.7
+------------------------
+- New : OnBeforePost event added
+- New : View in Notepad popup for What's new & EULA in wizard
+- Fixed : CAB extraction issue with multi level directory hierarchy
+- Improved : WebUpdate.OnSuccess triggered from wizard execution
+
+Update : TAdvNavBar v1.3.8.1
+----------------------------
+- Fixed : issue with remove panel in Delphi 2006
+
+Update : TAdvMenus v1.2.3.2
+---------------------------
+- Fixed : issue with identical MDI child names
+
+Update : THTMListbox v1.8.0.1
+-----------------------------
+- Fixed : issue with item sizing in Delphi 5, C++Builder 5
+
+Update : TAdvAlertWindow v1.4.7.0
+---------------------------------
+- New : Added URLColor property
+- Improved : fade thread handling
+
+Update : TAdvPanel v1.6.1.0
+---------------------------
+- New : Added property ScrollSmooth to control painting behaviour during scroll
+
+Update : TAdvMemo v2.0.0.2
+--------------------------
+- Fixed : issue with StylerManager font saving
+- Fixed : issue with autocompletion position in Delphi 2005, 2006
+
+
+***********************************************
+TMS Component pack v3.8 : update Mar 8, 2006
+***********************************************
+Update : TAdvStringGrid v3.3.2.1
+--------------------------------
+- Improved: floating point detection with auto numeric alignment
+
+Update : TCABFile
+-----------------
+- Improved: archiving of files in hierarchical directories
+
+***********************************************
+TMS Component pack v3.8 : update Mar 4, 2006
+***********************************************
+Update : TAdvMemo v2.0
+----------------------
+- New : Codefolding support
+- Improved : various code optimizations & enhancements in TAdvMemo & TAdvCodeList
+
+Update : TAdvToolBar v1.4.6
+---------------------------
+ - New : property DropDownButton added in TAdvToolBarMenuButton
+
+Update : TAdvOutlookList v1.2
+-----------------------------
+- New: property Visible in Columns
+- New: stFloat sort style
+- New: GroupShowCount property
+- New: function GroupIndex(Group: TOutlookGroup): integer; to get index of a group
+
+Update : TAdvListView v1.6.2.1
+------------------------------
+- New : OnDrawDetailProp event added
+- New : SaveWithHTML parameter added in all Save functions
+
+Update : T(DB)Planner / T(DB)PlannerMonthView v2.5.0.5
+------------------------------------------------------
+- Fixed: issue with BYMONTH recurrency
+- Fixed: selected weekend color painting issue
+- Improved: PlannerItem.Cursor behaviour identical to Planner
+
+Update : TPlannerCalendar / TPlannerCalendarGroup v1.6.6.6
+----------------------------------------------------------
+- Fixed: issue with multiselect in PlannerCalendarGroup
+- Improved: property storage
+
+Update : TAdvStringGrid v3.3.2.0
+--------------------------------
+- New: Filter support added for ignoring logic symbols between quotes
+- New: SearchFooter.Font property
+- Improved: editing/cell selection with SearchFooter visible
+- Fixed: issue with selection of cells after paste of cell block
+- Fixed: issue with EditorEnabled & backspace key in inplace spin edit
+
+Update : TDBAdvGrid v2.0.6.2
+----------------------------
+- Fixed: issue with use of Field.OnSetText
+
+Update : TAdvColumnGrid v3.0.0.11
+---------------------------------
+- Fixed: issue with design time PrintFont setting
+- Fixed: issue with direct cell font properties use during printing
+- Fixed: issue with per cell alignment control
+
+Update : ToolPanels v1.3.5.0
+----------------------------
+- New: type ssInstant to SlideSpeed property
+
+Update : TAdvPanel v1.6.0.5
+---------------------------
+- Improved: painting during scroll
+
+Update : TParamTreeView v1.3.0.2
+--------------------------------
+- Fixed: parameter handling on multiline nodes
+
+Update : THotSpotImage v1.2.3.0
+-------------------------------
+- New: OnPaint event added
+
+
+***********************************************
+TMS Component pack v3.8 : update Feb 13, 2006
+***********************************************
+Update : TMS Planner Components v2.5.0.3
+----------------------------------------
+- Fixed: issue with painting in multimonth mode in Delphi 2006
+- Fixed: HourLineColor issue with DisplayStart
+- Fixed: issue with customgroups and scrolling
+- Fixed: issue with focus painting on PlannerMonthView
+- Fixed: issue with OnItemSelect 
+
+Update : TAdvStringGrid v3.3.1.2
+--------------------------------
+- Fixed: issue with ActiveCellShow and zero fixed columns and/or rows
+
+Update : TAdvCodeList 1.7.0.1
+-----------------------------
+- Fixed: Assignment in TCodeBlock added for use in frames
+
+Update : TAdvTreeComboBox 1.1.0.3
+---------------------------------
+- Improved: treeview selection consistency
+
+Update : TWebUpdate v1.6.8.0
+----------------------------
+- New: French messages added
+
+
+***********************************************
+TMS Component pack v3.8 : update Feb 8, 2006
+***********************************************
+Update : TMS Planner Components v2.5.0.1
+----------------------------------------
+- New: XLS export interface to Flexcel (http://www.tmssoftware.com/go/?flexcel)
+- New: Capability to link more than two items
+- New: Capability to store link information automatically in database
+- New: Capability to autosize positions based on nr of conflicts in position
+- New: Different lines for full hours
+- New: Programmatic scroll to time
+- New: Planner actions for cut/copy/paste/insert/delete
+- New: PlannerItem link indication in caption and via trackbar
+- New: Sticky select method for selecting multiple Planner Items
+- New: Custom header grouping, with configurable number of positions per group
+- New: UserMode for easy control of ready-only, edit-only Planner setup
+- New: Single/Multiple timeslot selection capability
+- New: Header & SideBar active timeslot display capability
+- New: Events for header position sizing & height sizing
+- New: PlannerItem unselect event
+- New: Ctrl-drag to copy items in Planner capability
+- New: TPlannerItem.ControlValue[] property for easier access in HTML form inplace editors
+- New: Unicode support for TPlannerItem Caption & Text
+- New: Current TimeIndicator in the SideBar
+- New: Dual timezone indication in sidebar time axis.
+- New: Hour/minute font size ratio control
+- New: Rotated header text & wordwrapped text in vertical mode
+- New: Design time helper for most common settings
+- New: Automatic select / edit control for inserted Planner Items
+- New: Completion display formatting control
+- New: day & caption alignment control in PlannerMonthView
+- New: FindFirst/FindNext/HasItem functions in PlannerMonthView
+- New: Selection as full day or caption only in PlannerMonthView
+- New: Gradient Today indication in PlannerMonthView
+- New: Recurrency editor easy translation capabilities added
+- New: Automatic ResourceMap update on position drag & drop
+- New: Automatic ResourceMap to ResourceDataSource binding
+- New: Demo with full SQL implementation of DB update/insert/delete
+- Various smaller code improvements, fixes and enhancements
+
+Update : TMS AdvToolBar & AdvMenus v1.4
+---------------------------------------
+- New : TAdvToolBarCustomizer : component for runtime configuration of toolbars with easy translatable dialog
+- Various smaller fixes and improvements
+
+Update : TAdvStringGrid v3.3.1.1
+--------------------------------
+- Improved: node drawing
+- Fixed: issue with loading from XML & special characters
+- Fixed: small painting issue with active cells
+- Fixed: ShowModified applies for checkbox modifications too now
+- Improved: OnGetFloatFormat event for decimal number formatting
+- Improved: ScrollProportional behaviour during wheel zoom
+- Fixed: issue with goTabs for fixed cells inside grid  
+- New: OnReplaceClose event added in TAdvGridReplaceDialog
+- New: OnFindClose event added in TAdvGridFindDialog
+
+Update : TDBAdvGrid v2.0.6.1
+----------------------------
+- Fixed: issue with anchored grid in master/detail update
+
+Update : TAdvDBLookupComboBox v1.4.0.2
+--------------------------------------
+- Improved: in TAdvDBLookupComboBox.Destroy
+- Fixed: issue with AV in specific connection to non active dataset
+
+Update : TAdvOutlookList v1.6.1.1
+---------------------------------
+- New: Added function GroupIndex(Group: TOutlookGroup): integer;
+
+Update : TAdvEdit v2.7.0.2
+--------------------------
+- Fixed: Issue with transparent = true in VCL.NET
+
+Update : TDBHTMLRadioGroup v1.0.0.1
+-----------------------------------
+- Fixed: Issue with dataset edit mode
+
+Update : TAdvSpinEdit v1.4.1.0
+------------------------------
+- New: Added events OnUpClick, OnDownClick
+
+Update : TAdvNavBar v1.3.8.0
+----------------------------
+- New: Added Tag property in TAdvNavBarPanelSection
+
+Update : TTodoList v1.2.4.2
+---------------------------
+- Fixed: issue with OnItemRightClick for empty todolist
+
+Update : TPlannerCalendar & TPlannerCalendarGroup v1.6.6.3
+----------------------------------------------------------
+- Fixed: issue with date selection in TPlannerCalendarGroup
+
+Update : TAdvListView v1.6.1.2
+------------------------------
+- Improved: header ownerdraw alignment handling
+
+Update : TAdvPanel & TAdvPanelGroup v1.6.0.3
+--------------------------------------------
+- Improved: paint during scroll of TAdvPanelGroup
+
+Update : TWebUpdate v1.6.7.0
+----------------------------
+- Fixed: Trigger OnSuccess event from wizard fixed
+
+Update : TAdvPageControl v1.5.0.2
+---------------------------------
+- Improved: image position in tab for left & right mode
+
+Update : TAdvFontComboBox 1.3.1.0
+---------------------------------
+- New: Added aftFixedPitch & aftProportional in AllowedFontTypes
+
+Update : THTMLabel v1.7.1.1
+---------------------------
+- Fixed: issue with MouseMove event handler
+
+
+***********************************************
+TMS Component pack v3.7 : update Jan 7, 2006
+***********************************************
+Update : TAdvStringGrid v3.3.0.3
+--------------------------------
+- Fixed: issue with tabbed editing with merged cells
+- Fixed: issue with scrollinview on last row
+- Fixed: issue with editing in partially visible merged cells 
+
+Update : TDBAdvGrid v2.0.6.0
+----------------------------
+- New: Added property ShowDesignHelper
+- Fixed: issue with triggering OnCanDeleteRow
+- Fixed: issue with footer calculation for PageMode = false
+
+Update : TAdvColumnGrid v3.0.0.10
+---------------------------------
+- New: Added property PrintBorderCustom: boolean in ColumnItem
+
+Update : TAdvSpinEdit v1.4.0.2
+------------------------------
+- Fixed: issue with display with Ctl3D = false
+
+Update : TAdvEdit v2.7.0.1
+--------------------------
+- Fixed: issue with DefaultHandling and return key in forms with KeyPreview
+
+Update : TAdvDBLookupComboBox v1.4
+----------------------------------
+- New: property LookupColumn added
+- New: FixedColor, FixedColorTo added in TDBColumnItem
+- New: ShowGridHeader property added
+
+Update : TAdvTableSelector v1.3.3.0
+-----------------------------------
+- New: Added property TextTable, TextCaption to TAdvTableSelector
+
+Update : TPlannerCalendar v1.6.6.2 
+----------------------------------
+- Fixed: painting issue with hovering and ShowGotoToday = true
+
+Update : TAdvPanel v1.6.0.1
+---------------------------
+- Fixed: issue with caption visibility with styler
+
+Update : TAdvToolBar v1.3.0.2
+-----------------------------
+- Fixed: issue with control positioning for runtime toolbar creation
+
+Update : TWebCopy v1.5.0.3
+--------------------------
+- Fixed: issue with FtpFindFirstFile and closing handle
+
+
+
+***********************************************
+TMS Component pack v3.7 : update Dec 18, 2005
+***********************************************
+
+Update : TAdvStringGrid v3.3
+----------------------------
+- New: TAdvGridCSVPager component to create paging CSV grids & new sample application
+- New: OnEditChange event triggered for non default inplace editors edComboEdit, edSpinEdit, edEditBtn
+- Improved: row remove speed
+- Fixed: Issue with RemoveCols for grid with hidden columns
+
+Update : TInspectorBar 1.4.0.3
+------------------------------
+- New: Autoscroll for psButtons InspectorPanel for click on partially visible items
+- New: Autoscroll for psButtons InspectorPanel for setting ItemIndex 
+
+Update : TAdvPanel v1.6.0.1
+---------------------------
+- Fixed: caption visibility with styler
+
+Update : TAdvSpinEdit v1.4.0.1 
+------------------------------
+- Improved: float formatting OnExit for keyboard entry
+
+***********************************************
+TMS Component pack v3.7 : update Dec 12, 2005
+***********************************************
+Update : small improvements & compatibility fixes for Delphi 2006, C++Builder 2006
+
+Update : TAdvToolBar v1.3.6
+---------------------------
+- New : Persistence of toolbar visibility states
+
+Update : TDBAdvGrid v2.0.5.0
+----------------------------
+- New : OnColumnPopup event added for adding per column popup menus
+
+***********************************************
+TMS Component pack v3.7 : update Dec 3, 2005
+***********************************************
+
+New: Support for Delphi 2006 & C++Builde 2006 added
+
+Update : TAdvStringGrid v3.2.0.5
+--------------------------------
+- Fix for use of OnGetEditText with normal inplace editor
+- Fix issue with fixed cells for grouping & hidden columns
+- Fix for autosizecolumns with float formatted cells
+- Fix for OnExit event call with auto advance editbtn editor
+- Fix for floatingfooter background color synchronisation
+- Fix issue with OnPrintSetRowHeight default height
+- Fix node tree drawing issue on last row of grid
+
+Update : TAdvDBLookupComboBox v1.3
+----------------------------------
+- New: Added capability to work without datasource
+- New: AutoSize capability in Columns added
+- New: Sort works on text, numeric & date values
+- New: OnDropDown, OnCloseUp events added
+- New: ReturnIsTab added
+- New: FocusColor property added
+- New: Imagelist image display support in dropdown list
+- New: Full XP themed on Windows XP
+
+Update : TAdvToolBar v1.3.5
+---------------------------
+- New:  Automatic MDI close/min/max buttons in ToolBar
+- Improved: ToolBar button painting
+
+Update : TAdvPanel v1.6
+-----------------------
+- New: OnMouseLeave, OnMouseEnter events
+- New: Optional panel StatusBar capability
+- New: Left side vertical oriented caption
+- New: Styler automatic theme color adaption
+- New: Hover colors for panel caption close/minmax buttons
+- New: Collaps/expand panel from full caption click
+
+Update : TAdvTabSet & TAdvPageControl v1.5
+------------------------------------------
+- New: TabStyle tsDelphi on TAdvPageControl to emulate Delphi 2005 tab look
+- New: drag & drop code sample for TAdvPageControl added
+
+Update : TAdvOutlookList v1.1.5.0
+---------------------------------
+- New: function FirstSelectedItem: POGLItem
+- New: function NextSelectedItem(Item: POGLItem): POGLItem
+- New: property SelectedCount: integer;
+- Fixed issue with use on Frames
+
+Update : TInspectorBar v1.4.0.1
+-------------------------------
+- Fixed issue with ShowFocus on checkbox items
+- Fixed double OnEditUpdate event for checkboxes
+
+
+***********************************************
+TMS Component pack v3.6 : update Oct 30, 2005
+***********************************************
+Update : TAdvStringGrid v3.2.0.3
+--------------------------------
+- New: ControlLook.CheckAlwaysActive, ControlLook.RadioAlwaysActive added
+- New: edUniMemo inplace editor
+- New: SearchFooter.SearchActiveColumnOnly added
+- New: SearchFooter.SearchColumn property added
+- Fix in LoadFromXML
+- Fix in edUnitEditBtn inplace editor with ESC key
+- Fix for paste in normal cell editor
+- Fix for scroll on visible inplace editor issue
+- Fix for merged cell editing
+
+Update : TAdvOutlookList v1.1.0.0
+---------------------------------
+- New: property SortGroups added
+- New: property GroupItemHeight added
+- New: ShowNodes added
+- New: SortType stCustom added with event OnCustomCompare
+- New: functions SelectAll, CollapseAll and ExpandAll added
+- New: event OnGroupDblClick added
+- Improved: Text is drawn vertically centered in items.
+- Improved: Column order is persisted when setting GroupColumn.
+- Fixed:  Resizing Column with mouse, click event is now not triggered
+
+Update : TAdvMenus v1.2.2.1
+---------------------------
+- Improved: painting for Bidi RightToLeft style
+
+Update : TAdvMemo v1.7.0.1
+--------------------------
+- New: RTF export
+- Improved: painting with wordwrap style
+
+Update : TMS Graphics v1.3.2.1
+------------------------------
+- New: ShowHint property exposed in TAdvFontComboBox & TAdvOfficeComboBox
+
+Update : TMS ToolPanels v1.3.4.0
+--------------------------------
+- Improved: sectionimage painting with auto adapt height to image height
+- Fixed: controls alignment issue within bottom toolpanels 
+
+Update : TAdvAlertWindow v1.4.6.0
+---------------------------------
+- Fixed: issue with auto hiding
+- New: OnAlertClick event added
+
+Update : TPlannerCalendar & TPlannerDatePicker v1.6.6.1
+-------------------------------------------------------
+- New: OnDragOver, OnDragDrop, OnEndDrag, OnStartDrag added in TPlannerCalendarGroup
+- Fixed: issue with SelDate parameter in OnDaySelect
+
+Update : TAdvCardList v1.1.0.1
+------------------------------
+- New: custom inplace editor interface
+- New: DirectEdit mode
+- New: Image support for card caption
+- New: OnCardRightClick event added
+- New: OnCardItemRightClick event added
+- New: Ctrl-A to select all added
+- Fixed: issue with multiselect
+
+Update : TWebDate v1.1.0.1
+--------------------------
+- Fix: property FileName use/update
+
+Update : TMS TAdvToolBar v1.3.0.1
+---------------------------------
+- New: Messages & hints for DB navigator toolbar based on VDBConsts
+- Improvemed: in Office 2003 style appearance
+- Fixed: ToolBarControls[] property to access controls
+
+***********************************************
+TMS Component pack v3.6 : update Sep 24, 2005
+***********************************************
+
+New : TAdvOutlookList v1.0
+--------------------------
+- New Outlook list control
+
+Update : TAdvPageControl v1.4.7.2
+---------------------------------
+- Improved: painting for pagecontrol without pages
+
+Update : TAdvCardList v1.1.0.0
+------------------------------
+- New: GotoSelectedAutomatic property added
+- New: Delayed card loading added for faster scrolling operation
+- New: custom inplace editor interface
+- New: DirectEdit mode
+- New: Image support for card caption
+- New: OnCardRightClick event added
+- New: OnCardItemRightClick event added
+- Improved: OnCardEndEdit called when picture has been edited
+- Improved: image drawing in isStretchedProp mode
+- Improved: combo & datepicker edit control positioning
+- Improved: handling of CancelEditing
+- Improved: change in sequence of code for OnCanEditCell to allow dynamic template changes
+- Fixed: issue with ItemList assign
+
+Update : ToolPanels v1.3.3.0
+----------------------------
+- Improved: hosting in ActiveForms support
+
+Update : TMS Advanced Menus & Toolbars v1.3
+-------------------------------------------
+- New: DisabledImages support added  	
+- New: Dockpanel height lock capability added to restrict the toolbar height to the designed height
+- New: methods: MoveToolBarControl, InsertToolBarControl, AddToolBarControl, IndexOfToolbarControl
+- New: public property ToolBarControls[index]: TControl
+- New: public property ToolBarControlCount: integer;
+- New: property TAdvDockPanel.UseRunTimeHeight to set design time dockpanel size identical to runtime size
+- New: Support for MDI menu merging with MergeMenu, UnMergeMenu methods
+- Improved: use on frames, imagelist switching between small/large glyph sets, checked menu items with image
+
+Update : TAdvStringGrid v3.1.1.0
+--------------------------------
+- New: OnDateTimeChange event added
+- Fixed: issue with rich edit inplace editing & size while typing
+- Improved: dropdown button for combobox appearance
+- Fixed: issue with printing with hidden columns, fixed col = 0, 
+
+Update : THTMLHint v1.3.5.0
+---------------------------
+- New: support for gradient hint background
+
+Update : TCabFile v1.4.0.3
+--------------------------
+- Fixed: issue for file timestamp handling
+
+***********************************************
+TMS Component pack v3.6 : update Sep 10, 2005
+***********************************************
+Update : TAdvStringGrid v3.1.0.0
+--------------------------------
+- New: TAdvGridRTFIO component for native export as RTF (rich text) file
+- New: DragScrollOptions property to control scrolling during mouse drag operations
+- New: Event OnCanClick cell
+- New: 3 new sample applications
+- Improved: Subgrouping
+- Improved: DirectEdit handling
+
+Update : TCheckListEdit v1.2.2.1
+--------------------------------
+- Fixed issue with setting Checked[] property from OnChange event
+
+Update : TLUComboBox, TLUEdit v2.2.0.1
+--------------------------------------
+- Improved handling of ESC key
+- Improved lookup value persistence
+
+Update : TWebCopy v1.5.0.2
+--------------------------
+- Improved : graceful degrade when server cannot return proper file timestamp
+
+Update : THTMLCheckGroup v1.4.5.1
+--------------------------------
+- Added ReadOnly[index]:boolean property
+
+Update : TDBPlannerDatePicker v1.4.0.2
+--------------------------------------
+- Improvement with dataset update
+
+Update : TPlanner, TDBPlanner v2.2.1.6
+--------------------------------------
+- Improved by weekday recurrency handling 
+
+***********************************************
+TMS Component pack v3.6 : update Aug 27, 2005
+***********************************************
+Update : TAdvStringGrid v3.0.0.8
+--------------------------------
+- Improved : SaveToAscii, SaveToFixed use SaveHiddenCells property now
+- Fixed : issue with progressbar printing
+- Fixed : issue with background display on grids with FixedCols = 0
+- Fixed : clipboard event sequence inconsistency
+- Fixed : issue with OLE drag & drop + disjunct row selection in same grid
+- Fixed : issue with SelectionTextColor in combination with hidden columns
+
+TPlannerCalendar v1.6.0.1
+-------------------------
+- Fixed : issue with TSelDateItem.Assign
+
+TPlannerMonthView v1.2.0.7
+--------------------------
+- Fixed : issue with OnItemEnter, OnItemExit events
+
+***********************************************
+TMS Component pack v3.6 : update Aug 21, 2005
+***********************************************
+Update : TAdvStringGrid v3.0.0.6
+--------------------------------
+- Fixed : BidiMode RightToLeft footer paint
+- Fixed : parent node find function 
+- Improved : HTML control editing
+
+Update : TDBAdvGrid v2.0.4.0
+----------------------------
+- Improved : column property persistence in DFM
+
+Update : TPlanner v2.2.1.5
+--------------------------
+- Fixed : issue with footer text height & vertical alignment
+
+Update : TMS Parameter Components
+---------------------------------
+- Fixed : timepicker daycrossing handling
+
+Update : TEditListBox
+---------------------
+- Fixed : OnKeyPress event handler
+
+Update : TAdvFontComboBox
+-------------------------
+- Improved : moved LoadFontNames to public section for runtime control creation
+
+
+***********************************************
+TMS Component pack v3.6 : update Aug 15, 2005
+***********************************************
+Update : TAdvStringGrid v3.0.0.5
+--------------------------------
+- New : Added SearchFooter.AutoSearch property
+- Improved : balloon hint handling
+- Fixed : issue with virtual cell editing
+- Fixed : issue with wordwrap initialization for individual cells
+- Fixed : issue with AutoNumAlign
+- Fixed : issue with incorrect OnExit event during inplace editing
+- Fixed : issue with hidden columns & unicode editing
+- Fixed : memory leak issue with RowColor[] property
+- Fixed : LoadFromXML for XML files with data only in attributes
+- Fixed : Issue with Alignment[] property
+- Fixed : text display issue in cell with nodes
+
+Update : TAdvColumnGrid v3.0.0.3
+--------------------------------
+- Fixed : issue with column headers during column insert & delete
+
+Update : TDBAdvGrid v2.0.3.1
+----------------------------
+- Fixed : issue with moving unicode columns
+- Fixed : issue with MouseActions.AllSelect = true
+
+Update : TInspectorBar v1.4
+---------------------------
+- New : Keyboard shortcuts for items added
+- New : Style property added for Office 2003/Visual Studio .NET 2005 appearance
+- New : Optional automatic color adaption to selected Windows XP color theme
+- New : Added ImageAlign property
+- New : Event OnPanelOpened added,
+- New : ShowMemoField, ShowPictureField added in TDBInspectorBar to show DB memo & picture BLOBS
+- New : JPEG support for DB images
+- New : Enhanced Node appearance
+- New : MaxLength property added for items
+- New : Event OnItemValue added for virtual item values
+- New : Auto repeat functionality in DB Navigator
+
+Update : THTMLButtons v1.4.5
+----------------------------
+- New : added Transparent property in THTMLCheckBox & THTMLRadioButton
+
+Update : TAdvPageControl v1.4.7.1
+---------------------------------
+- Fixed : issue with bottom border painting for right side tabs
+- New : FullRefresh public property to force full tabsheet refresh on resize 
+
+Update : TDateLabel v1.1
+------------------------
+- New : RefreshEnabled, RefreshInterval properties added  
+
+Update : TPlannerMonthView v1.2.0.5
+-----------------------------------
+- Fixed : issue with week number display and DateAtXY proc
+
+Update : TAdvToolPanel v3.1.1
+-----------------------------------
+- New : Whidbey style added
+
+Update : TAdvToolButton v1.2.1
+-----------------------------------
+- New : Whidbey style added
+
+Update : TMS Graphics v1.3.2
+-----------------------------------
+- New : Whidbey appearance style added
+
+Update : TTodolist v1.2.4
+-----------------------------------
+- New : Whidbey style added
+
+Update : TAdvNavBar v1.3.6
+-----------------------------------
+- New : Whidbey style changeable at design time
+
+Update : TAdvDBLookupComboBox v1.2.1.0
+--------------------------------------
+- New : XP style dropdown button
+
+New : TFolderDialog v1.0
+------------------------
+- New : shell dialog wrapper to pick folders
+
+Update : TCheckListEdit v1.2.2.0
+--------------------------------
+- New : XP style dropdown button
+
+Update : TParamCheckList
+------------------------
+- Fixed : XP style disabled checkbox drawing
+
+***********************************************
+TMS Component pack v3.6 : update July 22, 2005
+***********************************************
+Update : TAdvToolBar & TAdvMenus v1.2.0.2
+-----------------------------------------
+- Improved : Shortcut handling for toolbar buttons
+- Improved : floating toolbar visibility tracking
+
+Update : TAdvStringGrid v3.0.0.2
+--------------------------------
+- Improved : new grid styles in gallery
+- Fixed : issue with column & row moving in small grids
+- Fixed : issue with unicode button editor inplace edit control
+- Fixed : issue with goRowSelect range select and checkboxes
+- Fixed : issue with SelectionTextColor for fixed right columns
+
+Update : TAdvProgressBar v1.1
+-----------------------------
+- Improved : exposed mouse events
+
+Update : TWebPost v1.0.1.0
+--------------------------
+- Improved : handling of post through https
+
+Update : TAdvEdit, TAdvSpinEdit, TAdvComboBox, TAdvEditBtn, TAdvLUEdit
+----------------------------------------------------------------------
+- New: FocusColor, FocusBorderColor capabilities
+- Improved: DFM property storage
+
+Update : TPlannerDBMaskDatePicker v1.5
+--------------------------------------
+- Fixed : issue with mask handling during edit
+
+
+***********************************************
+TMS Component pack v3.6 : update July 13, 2005
+***********************************************
+Update : TAdvStringGrid v3.0
+----------------------------
+- New: AppendToDoc method, export by appending to existing MS Word DOC file with insert at bookmark option
+- New: AppendToAscii method, export by appending to existing ASCII file 
+- New: CopyToClipboardAsHTML method, copies grid as HTML on the clipboard
+- New: Balloon hints for cells
+- New: Support for multi column sorting in grouped grid
+- New: SubGroup method to add subgroups in grouped grid
+- New: RangeIndicator cell type
+- New: Automatic modified row indication in fixed column
+- New: Wordwrap control per cell
+- New: Firefox style search pane
+- New: XML Import
+- New: Built-in Hotmail style row selection
+- New: Active row indication for full row
+- New: Sort styles ssAlphaNumeric, ssAlphaNumericNoCase
+- New: edUniEditBtn Unicode inplace editor with embedded button
+- New: Always visible vertical, horizontal or both scrollbars
+- New: OnAutoAdvance event to control advance on enter behaviour
+- New: Support for background display over full background, also non cell grid background and background gradient
+- New: InsertNormalRow, RemoveNormalRow methods to insert/remove non-child rows in a grid with nodes
+- New: Progress bar with formatted display of value and non percentage values
+- New: Keyboard left/right arrow to open/close nodes in grid
+- New: RemoveAllComments, RemoveAllMarkers added
+- New: Support for hints on floating footer added
+- New: Custom floating footer painting support added with OnFooterPaint event
+- New: OnFindDOne, OnReplaceDone, OnDialogKeyDown events added in TAdvGridFindDialog, TAdvGridReplaceDialog
+- New: MouseActions.SizeFixedRow added to enable sizing of fixed rows
+- New: MouseActions.NoScrollOnPartialRow property added to prevent auto scroll on partial visible row click
+- New: Grid gallery of visual appearance settings
+- New: Gradient selection color capability
+- New: Filter selection to filter on virtual cell text or grid cells text
+- New: property DefaultEditor
+- New: OnSelectionResized event added
+- New: Title attribute support for anchors added for setting custom hints for HTML hyperlinks
+- New: EditLink.PopupLeft, EditLink.PopupTop properties added to control popup editor position
+- New: TMemoEditLink.SelectAll property added to control selection in inplace memo editor
+- New: Public property PrintSettings.FixedCellsAlways to print fixed cells in case of PrintSelectedRows, PrintSelectedCols
+- Improved: BidiMode RightToLeft support
+- Improved: XML export
+- Improved: HTML export optimized with use of CSS
+- Improved: Optimized DFM property storage
+- Improved: tab key handling in grid with readonly cells
+- Improved: disjunct selection with shift/non shift Home/End key
+- Improved: grouping summary & header display with additional underline capability
+- Improved: HintShowLargeText functionality
+- Improved: Navigation.AllowInsertRow, Navigation.AllowDeleteRow support for grids with nodes
+- Improved: Navigation.AutoGotoincremental behaviour with timer based lookup reset
+- Improved: Print option added to print with default paper orientation instead of forced orientation
+- Improved: Shift row selection now possible with MouseActions.RowSelect = true
+- Improved: Row / column moving for multiple fixed rows / columns
+- Improved: Node display
+- Improved: Grouping with group row merging & column merge combined
+- Fixed: issue with drag & drop arrow color on Windows XP themed apps
+
+Update : TDBAdvGrid v2.0.3.0
+----------------------------
+- New : AutoCreateColumns, AutoRemoveColumns property
+- Various smaller fixes & improvements
+
+Update : TAdvToolBar & TAdvMenus v1.2.0.1
+-----------------------------------------
+- Improved : RichFormat action support
+- Improved : ShowCaption property added in TAdvToolBarMenuButton
+
+Update : TAdvNavBar v1.3.5
+--------------------------
+- New : Visual Studio .NET 2005 color scheme added
+- Improved : cursor handling over splitter 
+
+Update : TAdvAlertWindow v1.4.5
+-------------------------------
+- New: Style property added
+- New: asWhidbey (VS.NET 2005) style added
+- Improved: anchor click handling with scroll text
+
+Update : ToolPanels v1.3.1.5
+----------------------------
+- Fixed : issue with name on internal TAdvToolPanelTab form
+- Fixed : issue with panelform location on Delphi 2005
+
+Update : THTMLabel v1.7.1.0
+---------------------------
+- New : property HTMLSize
+
+Update : TAdvMemo v1.6.1.1
+--------------------------
+- Fixed : issue with programmatically setting selection
+
+Update : THTMLHint v1.3.0.1
+---------------------------
+- Fixed : issue with handling application hint events
+
+
+***********************************************
+TMS Component pack v3.5 : update July 2, 2005
+***********************************************
+Update : TAdvToolBar & TAdvMenus v1.2
+-------------------------------------
+- New : Whidbey (VS.NET 2005) style added
+- New : Support for use of common stylers for multiple forms on datamodules or other forms
+- New : Stylers LoadFromFile, SaveToFile methods added
+- Improved : multimonitor & Delphi 2005 support
+
+Update : THTMLHint v1.3.0.1
+---------------------------
+- Improved : application hint event handling
+
+Update : T(DB)PlannerCalendar & T(DB)PlannerDatePicker v1.6
+-----------------------------------------------------------
+- New : Built-in ISO week number calculation support added
+- New : Smart key up/down in datepickers
+- New : OnCellDraw event added for TPlannerCalendarGroup
+- New : OnDblClick event added for TPlannerCalendarGroup
+- New : VS.NET 2005 (Whidbey) appearance style
+
+Update : THTMLPopup v1.2
+------------------------
+- New : property AutoSizeType
+
+Update : TAdvMemo v1.6.1.0
+--------------------------
+- New : FindAndReplace method added
+
+Update : THotSpotImage v1.2
+---------------------------
+- Improved : support for very large images
+
+Update : TPlanner, TDBPlanner v2.2.1.3
+--------------------------------------
+- Fixed : issue with TDBDaySource active time display
+- Fixed : rotated header drawing with sidebar on top
+- Improved : Improved plCustomList time handling
+- Improved : Balloon handling
+
+Update : TPlannerMonthView v1.2.0.4
+-----------------------------------
+- Fixed : issue with OnDaySelect with item scroll enabled
+
+Update : TDBAdvGrid v2.0.2.5
+----------------------------
+- Fixed : stack overflow issue during scroll 
+
+***********************************************
+TMS Component pack v3.5 : update June 11, 2005
+***********************************************
+Update : TParamLabel, TParamTreeView, TParamListBox, TParamCheckList v1.3.0.1
+-----------------------------------------------------------------------------
+- Improved : mask editor mask property handling
+
+Update : TColumnListBox, TColumnComboBox v1.2.1.0
+-------------------------------------------------
+- New : Added Items.LoadFromFile, Items.SaveToFile methods
+
+Update : TWebPost v1.0.1.0
+--------------------------
+- Improved : handling of post through https
+
+Update : TTodoList v1.2.3.1
+---------------------------
+- Fixed : Sort issue with category column 
+
+Update : TWebCopy v1.5.0.1
+--------------------------
+- Improved : handling for keeping FTP connections active
+
+Update : TAdvTreeComboBox v1.1.0.1
+----------------------------------
+- Fixed : workaround for Delphi 2005 dropdown position issue
+
+Update : TAdvStringGrid v2.8.8.4
+--------------------------------
+- Fixed : issue with mousewheel scrolling
+- Fixed : issue with Unicode stream persistence
+
+Update : TDBAdvGrid v2.0.2.4
+----------------------------
+- Fixed : issue with Find for non sequenced datasets
+- Fixed : issue with AutoSizeRows
+- Fixed : issue with Escape handling for inplace editing
+
+Update : TAdvToolbar v1.1.1.0
+-----------------------------
+- New : bsCustom style in OfficeStyler & bsUser in FantasyStyler available
+- Fixed : resizing of toolbar issue
+- Fixed : color issue with stylers
+- Fixed : issue with ParentStyler property setting
+
+Update : TAdvMenu v1.1.0.2
+--------------------------
+- Fixed : issues with multimonitor setup
+
+Update : TAdvCardList v1.0.2.0
+------------------------------
+- Fixed : issue with display condition handling
+
+
+***********************************************
+TMS Component pack v3.5 : update May 16, 2005
+***********************************************
+Update : TDBAdvGrid v2.0.2.2
+----------------------------
+- Fixed : OnGetText issue with PageMode = false
+- Fixed : Find method for non sequenced datasets
+
+Update : TAdvToolBar v1.1.0.1
+-----------------------------
+- New : TDBAdvToolBarButton added
+- New : ToolBar DB Navigator support added
+- Fixed : issue with customize menu on Delphi 2005
+
+Update : TCheckListEdit v1.2
+----------------------------
+- New : Property DropDownPopupMenu added
+
+Update : TAdvPageControl v1.4.7.0
+---------------------------------
+- Fixed : issue with use as docksite
+
+Update : TAdvMemo v1.6.0.19
+---------------------------
+- Improved : behaviour of next/previous word
+- Fixed : SetBreakPoint, SetBookMark no longer triggers OnChange incorrectly
+
+
+***********************************************
+TMS Component pack v3.5 : update May 16, 2005
+***********************************************
+Update : TDBAdvGrid v2.0.2.1
+----------------------------
+- Added TADOQuery support for sorting added
+- Fixed issue with immediate Cancel after insert
+- Fixed issue with Append for Nexus DB
+- Fixed issue with Column calculations        
+
+Update : TAdvStringGrid v2.8.8.3
+--------------------------------
+- Fixed : issues for descendent TDBAdvGrid component
+
+Update :  TChartLink v1.1.0.0
+-----------------------------
+- New : support for chart links for grids with nodes
+
+Update : TAdvCardList, TDBAdvCardList v1.0.1.0
+----------------------------------------------
+- New : Support for BLOB JPEG image display in TDBAdvCardList added
+
+Update : TMS Graphics components v1.3.1.0
+-----------------------------------------
+- New : ShowDropDown, HideDropDown methods added in AdvXXXSelectors
+- New : ShowGradientDirection property added in the AdvGradientDirectionSelector component
+- New : AdvBrushStyleSelector.SelectedBrushStyle, AdvPenStyleSelector.SelectedPenStyle properties added
+- Improved : color dropdown positioning in Delphi 2005
+
+
+***********************************************
+TMS Component pack v3.5 : update May 7, 2005
+***********************************************
+Update : TAdvToolBar v1.0.1.1
+----------------------------
+- Improvement : TAdvDockPanel PopupMenu uses correct menu styler
+
+Update : TMoneyEdit v1.1.0.1
+----------------------------
+- Fix : for Delphi 2005 display issue
+
+Update : TAdvDBLookupComboBox v1.2.0.1
+--------------------------------------
+- Fix : for Delphi 2005 display issue
+
+Update : TAdvStringGrid v2.8.8.3
+-------------------------------
+- Fix : for printing issue
+
+***********************************************
+TMS Component pack v3.5 : update May 4, 2005
+***********************************************
+Update : TAdvToolBar v1.0.1.0
+----------------------------
+- New : TextAutoOptionMenu, TextOptionMenu properties added in TAdvToolBar
+- Fix : Rootitem autosize fix for Delphi 5 / C++Builder 5
+
+Update: TAdvCardList v1.0.0.1
+-----------------------------
+- Fix : item assignment fix for Delphi 5 / C++Builder 5
+
+Update : TAdvComboBox v1.1.0.1
+------------------------------
+- Fix : runtime visible change also reflected for associated label
+
+***********************************************
+TMS Component pack v3.5 : update Apr 30, 2005
+***********************************************
+New : TMS Advanced ToolBars v1.0.0.0
+------------------------------------
+- New : Office 2003 style toolbar system
+
+New : TAdvCardList & TDBAdvCardList v1.0
+----------------------------------------
+- New : Outlook 2003 style card view control
+
+New : TPictureList v1.0
+-----------------------
+- New : Picture listbox control
+
+Update : THTMLStatusBar v1.2.0.1
+--------------------------------
+- Fix : corrected destructor handling
+
+Update : TDBAdvNavigator v1.2.0.1
+---------------------------------
+- Improved: exposed Bookmark as public property to allow bookmark reset during dataset changes
+
+Update : TMoneyEdit v1.1.0.1
+----------------------------
+- Fix : Delphi 2005 calculator positioning
+
+Update : TAdvStringGrid v2.8.8.2
+--------------------------------
+- Fix : incorrect node handling with goRowSelect = true option
+- Fix : Unicode cell hint handling
+- New : Added functions TotalRowCount, TotalColCount
+
+Update : TAdvMemo v1.6.0.17
+---------------------------
+- Fix : highlighting whole words
+- Fix : SetFocus handling
+
+Update : TWebImage v1.1.0.1
+---------------------------
+- Fix : issue with vertical stretch draw
+- Fix : issue with Visible property
+
+Update : TWebCopy v1.5.0.1
+--------------------------
+- Fix : improved handling for keeping FTP connections
+ 
+Update : TWebUpdate languages
+-----------------------------
+- Improved : German language support
+
+Update : TAdvNavBar v1.3.0.3
+----------------------------
+- New : added esCustom style
+
+Update : TAdvAlertWindow v1.4.0.1
+---------------------------------
+- Fix : issue with incorrect autosize solved
+
+Update : TAdvMoneyEdit v1.1.0.2
+-------------------------------
+- Fix : issue with calculator position in Delphi 2005
+- Fix : non numeric key handling
+
+Update : TAdvProgressBar v1.1.0.1
+---------------------------------
+- Fix : issue with Visible property
+
+
+***********************************************
+TMS Component pack v3.4 : update Mar 9, 2005
+***********************************************
+Update : TAdvProgressBar v1.1
+-----------------------------
+- New : infinite mode
+- New : Min/Max properties
+- New : position text formatting capabilities
+
+Update : TAdvStringGrid v2.8.8.1
+--------------------------------
+- Fixed : issue with TopRows calculation in RemoveRows
+
+Update : TColumnComboBox v1.3.0.3
+---------------------------------
+- Improved : disabled font display
+
+Update : TAdvNavBar v1.3.0.3
+----------------------------
+- New : esCustom style
+
+Update : TDBPlanner v2.2.1.1
+----------------------------
+- Fixed : issue with recurrency generator in monthly recurrency by day in month mode
+
+***********************************************
+TMS Component pack v3.4 : update Mar 5, 2005
+***********************************************
+Update : TWebUpdate v1.6.5
+--------------------------
+- New : support for Swedish, Norwegian, Hungarian languages
+- New : log file name customizable
+- Improved : support for not fully specified version numbers
+- Improved : update version time indication in the wizard
+
+Update : TWebCopy v1.5
+----------------------
+- New : authenticated HTTP download support
+- New : automatic FTP server connection persistence between multi file downloads & uploads
+
+Update : TAdvPageControl & TAdvTabSet v1.4.0.4
+----------------------------------------------
+- Improved : fix for tab width control
+
+Update : TAdvStringGrid v2.8.8.0
+--------------------------------
+- Fixed : Ctrl-A select all with disjunct row selection mode
+- Fixed : message handling for edUnitEditBtn inplace editor
+- New : Added MouseActions.WheelIncrement property
+- New : Added MouseActions.WheelAction property
+
+Update : TDBAdvGrid v2.0.1.1
+----------------------------
+- Fixed : Last Record delete issue when RefreshOnDelete = true
+- Fixed : issue with ColumnSize.Stretch, ColumnHide causes AV when Insert Record
+- Fixed : OnCanEditCell issue
+
+Update : TAdvMemo v1.6.0.14
+---------------------------
+- Improved : autocompletion handling with dot in procedures
+- Fixed : bookmarks for line insert/remove
+
+Update : TAdvNavBar v1.3.0.2
+----------------------------
+- Fixed : enforcing MouseLeave message when mouse is over splitter  
+
+Update : TPlanner v2.2.1.1
+--------------------------
+- Fixed : GetCellTime() procedure for TimeLine mode
+
+Update : TPlannerCalendar v1.5.0.1
+----------------------------------
+- Improved : event font color initialisation
+- Improved : mouse handling for browser glyphs
+
+Update : TAdvMoneyEdit v1.2.0.2
+-------------------------------
+- Improved : dropdown calculator handling
+
+Update : TAdvFontComboBox v1.1
+------------------------------
+- New : property AllowFontTypes added
+- Improved : OnSelect event handling
+- Improved : dropdown handling
+
+Update : THTMLTreeView v1.1.0.2
+-------------------------------
+- Fix : solved issue for drawing with Windows XP visual themes enabled
+
+
+***********************************************
+TMS Component pack v3.4 : update Feb 12, 2005
+***********************************************
+Update : TAdvDirectoryEdit, TAdvFileNameEdit
+--------------------------------------------
+- New: capability to open file or directory picker with F4
+
+Update : TColumnComboBox v1.3.0.2
+--------------------------------
+- Improved: non incremental lookup handling for cycling through matching items
+
+Update : TAdvPageControl v1.4.0.3
+---------------------------------
+- Fixed: OnChange event triggered when tab is closed
+
+Update : TAdvAlertWindow v1.4.0.0
+---------------------------------
+- New: Background image support added
+- New: Mini scrollers support added
+- New: Position persistence added
+- New: Custom paint event added
+
+Update : TTodoList & TDBTodoList v1.2.3.0
+-----------------------------------------
+- New: Added MaxLength property in TodoItem
+- New: ClearListOnImport property added
+- New: OnItemRightClick event added
+- Improved: ImportFromCSV 
+
+Update : TDBAdvGrid v2.0.1.0
+----------------------------
+- New: DataSetTypeAuto property added to let TDBAdvGrio select datasettype itself
+- New: EditPostMode property to control post per row or post per cell
+- Improved: append & post handling through DBNavigator
+- Fixed: design time issue with invalid field reference
+
+***********************************************
+TMS Component pack v3.4 : update Feb 5, 2005
+***********************************************
+Update : TAdvStringGrid v2.8.7.4
+--------------------------------
+- Fixed: RemoveRows() combined with use of CellControls
+- Fixed: RangeSelectAndEdit issue with hidden columns and F2 handling
+- Fixed: issue with original cell value restore upon ESC
+
+Update : TDBAdvGrid v2.0.0.4
+----------------------------
+- Fixed: issue with readonly boolean field checkbox columns
+- Fixed: issue with keydown append when there is no VScrollBar
+- Fixed: Replace .AsString with .Text to triger Field.OnGetText event  
+- Fixed: issue with showing Invalid DataSetType message when DataSet is empty
+
+Update : T(DB)Planner v2.2.1 & T(DB)PlannerMonthView v1.2
+---------------------------------------------------------
+- New: recurrency support added for TDBPlannerMonthView
+- New: printing support added for T(DB)PlannerMonthView
+- New: balloon tooltip support added for T(DB)PlannerMonthView
+- New: automatic XP visual style adaption added for T(DB)PlannerMonthView
+- New: T(DB)Planner single position resizing capability added
+- New: T(DB)Planner balloon tooltips for header items added
+- Various smaller code improvements & enhancements
+
+Update : T(DB)PlannerCalendar, T(DB)PlannerDatePicker v1.5
+----------------------------------------------------------
+- New : AutoThemeAdapt property in Calendar, DatePicker, CalendarGroup
+- New : XP themed dropdown button added in DatePicker
+- New : Hover & down date color in Calendar, DatePicker, CalendarGroup added
+- New : Design time selectable Office 2003 blue, silver, olive theme look and more ...
+
+Update : THTMLStatusBar v1.2
+----------------------------
+- New : psImage, psImageList, psAnimate, psEllipsText, psFileEllipsText panels
+- New : OnPanelClick, OnPanelRightClick, OnPanelDblClick events
+- New : Delphi 2005 support
+- New : Progress bar with prefix/suffix text setting
+- New : Progress bar with percentage or absolute progress display
+- New : HTMLOffsetX, HTMLOffsetY properties to control position of HTML formatted text in panels
+- New : Panel Enabled property 
+
+Update : TAdvTreeComboBox v1.1
+------------------------------
+- New : XP visual styles support
+- Improved : tree dropdown button handling
+
+Update : TAdvEditBtn, TAdvMaskEditBtn v1.3
+------------------------------------------
+- New : XP style dropdown button
+
+Update : TAdvPageControl v1.4.0.2
+---------------------------------
+- Fixed: active font display when tab background bitmaps are used
+- Fixed: memory leak in imagelist handling fixed
+
+
+***********************************************
+TMS Component pack v3.4 : update Jan 8, 2005
+***********************************************
+Update : TAdvStringGrid v2.8.7.2
+------------------------------
+- Improvements in SaveToDoc, SaveToXLS
+- Improved readonly cell handling with merged cells
+- Improved column sizing with column stretching enabled in scrolled grid 
+
+Update : TDBAdvGrid v2.0.0.2
+--------------------------
+- Improved handling of FixedRows > 1
+- Improvement for Columns[].Header handling with PageMode = false
+
+Update : TAdvMemo v1.6.0.9
+--------------------------
+- Fixed Delphi 2005 issue with autocompletion showing
+- Fixed handling of underscores in autocompletion
+- Improved autocompletion dropdown positioning
+
+Update : TAdvSpinEdit v1.3.0.1
+------------------------------
+- Added capability to add floating point numbers in sptFloat style without 0 before decimal separator
+
+Update : TAdvPreviewDialog v1.3
+-------------------------------
+- New CloseAfterPrint property added
+
+Update : TMoneyEdit v1.1
+------------------------
+- Improved OnChange event handling
+
+Update : TAdvNavBar v1.3.0.1
+----------------------------
+- Improved splitter position control when resizing height 
+
+Update : TDBTodoList v1.2
+-------------------------
+- Improved handling of TotalTime field
+
+Update : TPlanner v2.2.0.6
+--------------------------
+- Improved sidebar painting
+
+
+***********************************************
+TMS Component pack v3.4 : update Dec 30, 2004
+***********************************************
+Update : TAdvStringGrid v2.8.6.0
+--------------------------------
+- New : Navigation.AppendOnArrowDown property in TAdvStringGrid and all descendent classes
+- New : OnGetDisplWideText event for using virtual unicode text in grids
+- Various smaller code improvements & optimizations
+
+Update : TAdvColumnGrid v2.2.0.6
+--------------------------------
+- New : HeaderAlignment, HeaderFont in TAdvColumnGrid
+- Various smaller code improvements & optimizations
+
+New : TDBAdvGrid v2.0
+---------------------
+- Replacement for TDBAdvStringGrid v1.7
+- New : Full column based property management for TDBAdvGrid (like TAdvColumnGrid)
+- New : Easier design-time setup
+- New : built-in DB lookup editors
+- Improved : checkbox display, BLOB image display in TDBAdvGrid
+- Improved : faster operation & less memory usage for TDBAdvGrid
+
+Update : TPlanner / TDBPlanner v2.2.0.6
+---------------------------------------
+- HTML rendering engine improvement for stretched images
+- Improvement for HalfDayPeriodMode
+
+Update : TodoList / TDBTodoList v1.2.2.0
+----------------------------------------
+- New : TotalTimeField added for DB-binding
+
+Update : TAdvNavBar v1.3
+------------------------
+- New : SmallImages property to set separate images for shortcut tab
+- New : DownTextColor, HoverTextColor to set color for text in down & hover state
+- New : Style property to select Office appearance at design time
+ 
+New : TMS Graphics components 
+--------------------------------
+- New : TAdvTableSelector
+- New : TAdvCharacterSelector
+
+Update : TAdvEdit v2.6.2.1
+--------------------------
+- Improved : fix for decimalseparator entry when multiple characters are selected
+
+Update : TCABFiles v1.4.0.1
+---------------------------
+- Improved : handling for empty subfolders
+
+Update : TAdvMoneyEdit v1.1.0.1
+-------------------------------
+- Improved : decimal entry handling
+
+Update : ToolPanels v1.3.1.2
+----------------------------
+- Improved :handling of Toolpanels on non-form parent controls
+
+Update: TAdvMemo v1.6.0.7
+-------------------------
+- Improved : clipboard handling
+
+Update : TWebUpdateWizard
+-------------------------
+- Improved : wait cursor handling
+
+
+
+***********************************************
+TMS Component pack v3.3 : update Dec 5, 2004
+***********************************************
+
+Update : TPlannerCalendar
+-------------------------
+- OnDblClick event added
+
+Update : TAdvEdit
+-----------------
+- Fix for border drawing with focus color in XP themed forms
+
+Update : TAdvStringGrid v2.8.5.0
+--------------------------------
+- New : Support for masked & password HTML form controls added
+- New : Option to do column calculations in floating footer taking hidden rows in account or not
+- New : Built-in datetime and time sort format support (D7 or higher)
+- Improved MouseActions.RowSelect handling with scrolling
+- Improved PasteSelectionFromClipboard procedure
+- Improved drag&drop with Internet Explorer
+- Improved HTML forms handling with tab key navigation
+- Smaller code improvements & optimizations
+
+Update : TvCalendar
+-------------------
+- Fix for appointments with empty subjects
+
+Update : TAdvMemo v1.6.0.6
+--------------------------
+- Improved printing support
+
+Update : TWebUpdateWizard
+-------------------------
+- Improved hourglass cursor handling
+
+Update : TAdvNavBar v1.2
+------------------------
+- New : TAdvNavBar.MovePanel(FromIndex, ToIndex) method added for runtime panel reordering
+- New : design time reordering of TAdvNavBar panels through PanelIndex added
+
+Update : TAdvListView v1.6.0.1
+------------------------------
+- New : support for rich text in detail view
+
+Update : TAdvMainMenu & TAdvPopupMenu v1.1
+------------------------------------------
+- Improved : Office 2003 appearance
+- Improved : MDI application compatibility
+
+Update : TMS Graphics components v1.1
+-------------------------------------
+- New : TAdvTextColorSelector : Outlook 2003 style text color selector
+- New : TAdvFontComboBox with properties to control display and glyph for Truetype, Fixed, PostScript fonts
+
+Update : TPlanner / TDBPlanner v2.2.0.5 
+---------------------------------------
+- Improved : Halfdayperiod mode handling
+- Improved : custom time list handling
+
+
+***********************************************
+TMS Component pack v3.3 : update Nov 16, 2004
+***********************************************
+- New : support for Delphi 2005 Win32
+- New : support for Delphi 2005 VCL.NET 
+
+***********************************************
+TMS Component pack v3.3 : update Oct 30, 2004
+***********************************************
+New : TMS TAdvMainMenu , TAdvPopup v1.0
+---------------------------------------
+- New : Menus with advanced color settings, menu stylers
+
+New : TMS Graphics components v1.0
+----------------------------------
+- Modern looking & flexible components for selecting various typical properties of graphic elements.
+- Office XP or Office 2003 styles with automatic XP color theme adaption and lots of color customizations for creating new styles
+- Font selector with recently used indication option, lookup, font preview
+- Generic combobox with recently used control & lookup
+- Color selector in 3 styles : discrete, color cube, color spectrum
+- Pen width selector
+- Pen style selector
+- Brush selector
+- Shadow selector
+- Border selector
+- Gradient style selector
+- Generic tool selector  
+
+Update : TAdvStringGrid v2.8.3.0
+--------------------------------
+- New : TAdvGridExcelIO.Options.ExportHiddenColumns added
+- Improved : inplace spin editor handling
+- Improved : Excel export handling
+
+Update : TPlanner / TDBPlanner v2.2.0.4 
+---------------------------------------
+- New : PositionGapColor property added
+- Improved : header & footer painting
+- Various smaller enhancements & code optimizations
+
+Update : TAdvMemo v1.6.0.5
+--------------------------
+- New : ActiveLineSettings.ActiveLineAtCursor property added
+- Improved : clipboard paste handling
+- Various smaller enhancements & code optimizations
+
+Update : TAdvPageControl & TAdvTabSet v1.4 
+------------------------------------------
+- New : Background color support for TAdvTabSheet
+- New : custom close glyph on tabs in TAdvPageControl and TAdvTabSet
+- New : FreeOnClose property for TAdvPageControl to automatically free the tabsheet upon close
+
+Update : TAdvAlertWindow v1.3.3.2
+---------------------------------
+- Improved : font initialization for paint
+
+Update : TWebUpdate v1.6.3.1
+----------------------------
+- Improved : last update date registry saving
+
+Update : TWebCopy v1.4.0.1
+--------------------------
+- Improved : file progress indications for files > 2GB
+
+Update : TAdvNavBar v1.1.0.2
+----------------------------
+- Improved : small property setting fix
+
+Update : TInspectorBar v1.3.1.1
+-------------------------------
+- Improved : inplace editing with editor with attached button improvement
+
+Update : TPlannerCalendar, TDBPlannerCalendar, TPlannerDatePicker, TDBPlannerDatePicker v1.4
+--------------------------------------------------------------------------------------------
+- New : InActiveDays property to control what days of the week are considered weekend days.
+- New : TPlannerDBDatePicker : single DB field DB-aware datepicker with support for null-date entry
+- New : TPlannerDBMaskDatePicker : single DB field masked DB-aware datepicker with support for null-date entry
+- Various smaller improvements and code optimizations
+
+Update : ToolPanels v1.3.1.1
+----------------------------
+- Improved : issue with auto slide-in solved
+
+
+
+***********************************************
+TMS Component pack v3.2 : update Oct 9, 2004
+***********************************************
+
+Update : TAdvEdit 2.6.1.0
+-------------------------
+- New : OnLookupIndexSelect event added
+
+Update : THotSpotImage 1.2.1.0
+------------------------------
+- Improved : programmatic setting of hover/down images
+
+Update : TInspectorBar 1.3.1.0
+------------------------------
+- Improved : OnEditBtnClick event handling
+
+Update : THTMLButton v1.4.1.0
+-----------------------------
+- New : BorderColor property
+
+Update : TAdvMemo / TDBAdvMemo v1.6.0.4
+---------------------------------------
+- Improved printing
+- Improved DB-aware version
+
+Update : TAdvStringGrid v2.8.2.1
+--------------------------------
+- New : FloatingFooter.OnCalcFooter event added
+- Improved node handling
+- Improved filter handling with filter for text with ? and * with \ escape character
+- Improved row hiding/unhiding flexibility
+
+Update TPlanner / TDBPlanner v2.2.0.3
+-------------------------------------
+- Improved : recurrency handling
+
+Update : TWebUpdate v1.6.3.0
+----------------------------
+- Improved : Extra information logged
+
+
+***********************************************
+TMS Component pack v3.2 : update Sep 25, 2004
+***********************************************
+
+Update : TPlanner / TDBPlanner v2.2
+-----------------------------------
+- New: built-in recurrency support
+- New: demo for TDBPlanner recurrency support
+- New: support for Delphi 8 VCL.NET added
+- Various smaller code improvements & enhancements
+
+Update: TAdvMemo v1.6
+---------------------
+- New : extended style configuration (Default extension, description, extensionlist & filter, brackstart, bracketend)
+- New : TAdvINIMemoStyler, TAdvXMLMemoStyler : styler components for INI and XML files
+- New : TAdvMemoStylerManager component
+- New : Active line indication and active line marker
+- New : Block indent / unindent function
+- New : BlockShow to show code blocks (ie. Pascal begin/end or C++,C# { } blocks)
+- New : EnhancedHomeKey : when true, go to first letter of previous word
+- New : Gutter display line number formatting capabilities and automatic XP theme adaption
+- New : Markers offers unlimited nr. of bookmarks and bookmark indication, bookmark
+- New : PrintLineNumbers in Print options
+- New : RightMarginColor : property to set right margin line color
+- New : ShowRightMargin : property to control visibility of right margin
+- New : SmartTabs: automatically go to the next column of the previous line with Tab key when true
+- New : TrimTrailingSpaces: when true, spaces are trimmed automatically from the end of the line
+- New : UseStyler: property to quickly enable/disable a styler
+- New : Save memo settings to file / Load from file
+- New : Save style settings to and from file
+- New : Accepts file dropped on the memo
+- New : Scroll hints
+- New : Addict spell check support
+- New : automatic color adaption to Windows XP theme colors (when used on Windows XP)
+- New : demos for autocompletion and Addict spell check
+
+Update : TWebUpdate v1.6.2.0
+----------------------------
+- Extra status logging added
+
+Update : TAdvStringGrid v2.8.2.1
+--------------------------------
+- FloatingFooter.OnCalcFooter event added
+- Improved node handling
+- Improved filter handling with filter for text with ? and * with \ escape character
+
+Update : THotSpotImage v1.2.1.0
+-------------------------------
+- Memory leak fix
+
+Update : TAdvPanel v1.5.0.0
+---------------------------
+- Caption drawing with end ellipsis added
+
+Update : TTodoList v1.2.1.0
+---------------------------
+- Small paint fix
+
+Update : ToolPanels v1.3.1.1
+----------------------------
+- Fix with slide in/out caused by fast clicking on ToolPanel
+
+
+***********************************************
+TMS Component pack v3.1 : update Sep 6, 2004
+***********************************************
+- New: version number property for Object Inspector added to all components
+
+Update : TAdvAlertWindow
+------------------------
+- New : OnAutoHide event
+
+
+***********************************************
+TMS Component pack v3.1 : update Aug 21, 2004
+***********************************************
+Update : T(DB)Planner & T(DB)PlannerMonthView v2.
+-------------------------------------------------
+- New: FocusColor property added in TPlannerMonthView
+- Various smaller improvements & fixes
+
+Update : TAdvStringGrid v2.8.1.1
+--------------------------------
+- New: TAdvGridExcelIO border export support added
+- New: TAdvGridExcelIO node import / export support added
+- New: TAdvGridExcelIO control to overwrite existing files in XLS export or not
+- New: TAdvStringGrid NoDefaultDraw public property added
+- New: TAdvStringGrid auto XP theme color adaption
+- Improved: TAdvStringGrid OnEndColumnSize triggered after sizing of a fixed column
+- Improved: TAdvStringGrid active cell display
+- Improved: Unicode text printing
+- Various smaller improvements & fixes
+
+Update : TPlannerCalendar
+--------------------------
+- Property Date: TDateTime added in TPlannerCalendarGroup to set single select date
+
+Update : TAdvMemo
+-----------------
+- Improved wordwrap handling
+
+Update : ToolPanels
+-------------------
+- Slide in/out events handlers triggered for programmatic slide in/out
+
+Update : TAdvPanel
+------------------
+- Improved caption background image drawing with shadow border
+
+Update : TWebUpdate
+-------------------
+- Spanish, Danish & Italian language support added
+
+
+***********************************************
+TMS Component pack v3.1 : update Jul 31, 2004
+***********************************************
+Update : TTodoList & TDBTodoList v1.2
+-------------------------------------
+- New: Category column support
+- New: XP style checkboxes & support for automatic XP theme color adaption
+- New: Horizontal scroll support
+- New: tdCompletion column can be edited with keyboard as well (F2)
+- New: MultiSelect capability
+- New: Column reorder capability
+- New: TotalTime column can be edited with floating point spinedit to enter floats instead of ints
+- New: Property UseTab to allow tabbing inside TodoList
+- New: Property SelectionColorTo added for gradient selection display
+- New: ActiveItemColor to show items due for today in special color
+- New: Property ActiveColumnColor to set background color of cell with focus in TodoListItem
+- New: General purpose Tag property added in TTodoColumnItem class
+- New: ImageIndex property added in TTodoColumnItem class
+- New: ImportFromCSV, ExportToCSV functions added
+- New: HeaderColor, HeaderColorTo, HeaderHeight, HeaderImages properties
+- New: HandleGlyph property
+- New: Capability to put images in the header
+- New: GridLineColor, GridLineStyle property
+- New: Initial VCL.NET support
+- New: PreviewColor, PreviewColorTo properties added
+- New: StretchLastColumn property added
+- Improved: design time support
+
+Update : ToolPanels v1.3
+------------------------
+- New: Sections and SectionItems capability in TAdvToolPanel with expandable sections and automatic panel control positioning.
+- New: TAdvToolPanel background gradient and background image capability
+- New: Office 2003 look with automatic Windows XP theme color adaption
+- New: TAdvToolPanel caption gradient look
+- New: TAdvToolPanel caption button
+- Improved: docking behaviour
+
+Update : TWebUpdate v1.6
+------------------------
+- New : Auto login handling for http password protected sites
+- New : Capture patcher output to log file
+- New : Autorun and autostart for wizard
+- New : Animation during patcher run
+- New : hide patcher console window
+- New : fix for cab extract file timestamp
+- New : Multilanguage wizard support, English, French, Dutch, German, Portugese
+- New : Agent property
+- New : Customizable wizard billboard
+- New : LanguageID property added to allow 'What's new' and 'EULA' files customized per language
+- New : Mandatory vs non mandatory application components support added
+- New : Hidden vs non hidden application components support added
+- New : Automatic removal of CAB & Patch files after extract
+- New : Enhanced logging for easier tracing of update process
+- New : Added control file for processing CAB, LZ-expanded, Patch files after application shutdown
+- New : TMS WebUpdate developers guide
+- Improved : UpdateBuilder for building update process control files
+
+Update : TDBAdvNavigator v1.2
+-----------------------------
+- New: Office 2003 style buttons
+- New: Automatic XP theme color adaption
+- New: option for custom glyph sizes
+
+Update : THTMLTreeview
+----------------------
+- New : capability to show hints automatically showing full text of partially visible nodes
+
+New: TAdvRepeatButton
+---------------------
+- TAdvToolButton with auto repeated click feature
+
+Update : TAdvStringGrid v2.8.0.0.2
+---------------------------------
+- Small fixes / code improvements
+- Support for search with wildcards from TAdvGridFindDialog
+
+Update : TPlanner / TDBPlanner v2.1.0.3
+---------------------------------------
+- Small fixes / code improvements
+
+Minor fixes for:
+----------------
+- TPlannerMonthView, TDBPlannerMonthView, TPlannerWaitList
+- TPlannerCalendar
+- TPlannerDatePicker
+- TMoneyEdit, TDBMoneyEdit
+- TAdvAlertWindow
+- TDBAdvStringGrid
+- TColumnListBox
+- TColumnComboBox
+- TAdvToolButton
+- TParamTreeview
+- TAdvMemo
+
+***********************************************
+TMS Component pack v3.1 : update Jul 16, 2004
+***********************************************
+
+Minor fixes for:
+----------------
+- TPlannerMonthView, TDBPlannerMonthView
+- TPlanner, TDBPlanner
+- TAdvMemo
+- TVCalendar
+- TAdvSpinEdit
+
+***********************************************
+TMS Component pack v3.1 : update Jul 6, 2004
+***********************************************
+Update: TAdvToolButton
+----------------------
+- New: Auto XP theme adaption
+
+***********************************************
+TMS Component pack v3.1 : update Jul 5, 2004
+***********************************************
+Updated Delphi 8 support
+------------------------
+- TAdvColumnGrid support added
+- Parameter controls support added
+
+Update : TAdvAlertWindow
+------------------------
+- Always on top style added
+- IsVisible property added
+- New design time HTML property editor for alert messages
+
+Update : TDBPlannerMonthView
+--------------------------
+- Improved handling of time values in ItemStartTime, ItemEndTime
+
+Update: TAdvStringGrid
+----------------------
+- Improved native XLS export with formulas
+- Improved cell button handling
+
+
+***********************************************
+TMS Component pack v3.1 : update Jul 2, 2004
+***********************************************
+
+New: Delphi 8 support
+---------------------
+- Preliminary package for Delphi 8, VCL.NET
+  with major components supported 
+
+New: TPlannerMonthView, TDBPlannerMonthView
+-------------------------------------------
+- New month calendar view planner components
+
+Update: TPlanner, TDBPlanner v2.1
+---------------------------------
+- New: AutoThemeAdapt added
+- New: Footer.CompletionType added
+- New: OnPlannerSideProp event added
+- New: Delphi 8 support
+- Smaller improvements & fixes
+
+Update: TAdvStringGrid v2.8
+---------------------------
+- New: Delphi 8 support
+- Smaller improvements & fixes
+
+Update: TAdvNavBar v1.1
+--------------------
+- Outlook 2003 style navigational control
+- New: Auto XP theme adaption
+- New: fixed icon tab can be on top or bottom of the AdvNavBar
+- New: AdvNavBarPanel.TabVisible property for easy runtime hiding of panels added
+- Improved: design time section editing 
+
+Update: TAdvAlertWindow v1.2
+----------------------------
+- New: popup menu & popup button
+- New: color configurable for each alert
+- New: Automatic XP theme adaption
+- Improved : positioning with new ScreenMarginX, ScreenMarginY properties
+
+Misc. improvements
+------------------
+- Delphi 8 support for various components added
+- TCalPanel:  Improved hint handling
+- TPlannerCalendar : OnCellDraw event added
+- TPlannerCalendarGroup : improved date selection handling
+- TColumnComboBox : ShowLookup property added
+- TAdvPicture : improved handling of clearing picture
+- New TLUComboEditLink editlink componet for TAdvStringGrid
+- Memoryleak in TAdvTreeComboBox solved
+- TAdvTabSet improved runtime adding / removing tabs
+
+***********************************************
+TMS Component pack v3.0 : update May 27, 2004
+***********************************************
+
+New: TAdvNavBar v1.0
+--------------------
+- Outlook 2003 style navigational control
+
+New: TAdvAlertWindow v1.0
+-------------------------
+- Outlook 2003 style popup alert window
+
+Update : TPlanner/TDBPlanner v2.0.0.4
+-------------------------------------
+- Various smaller code improvements
+
+Misc. Improvements
+------------------
+TAdvEdit : label paint issue solved
+TAdvCombo : combobox dropdown button in XP style improved
+TInspectorBar : enhanced handling speed when InspectorBar has many items
+THTMLStatusBar : improved progress bar handling
+TAdvPageControl : bitmap paint issue solved
+TAdvStringGrid : inplace memo edit control improvement, improved auto advance edit
+
+
+***********************************************
+TMS Component pack v3.0 : update April 27, 2004
+***********************************************
+Update : TAdvMemo v1.5.0.4
+--------------------------
+- Improvements to printing, clipboard cut
+
+Update : TAdvStringGrid v2.7.0.5
+--------------------------------
+- Improved XLS import / export
+- Various misc. improvements
+
+Update : TAdvToolButton v1.2
+----------------------------
+- New : direct presetting of styles at design time from right-click menu 
+- New : dropdown button capability
+- New : automatic shadow generation
+- New : gradients and border color control in various states 
+- New : rounded corners
+- New : normal button & checkbox type behaviour 
+
+New : organisation
+------------------
+- Separate design time code package 
+
+
+
+***********************************************
+TMS Component pack v2.9 : update April 10, 2004
+***********************************************
+
+Update : TAdvMemo v1.5
+----------------------
+- New : Delphi 8 VCL.NET support
+- New : Drag & drop support
+- New : AdvCodeList component
+- New : wordwrap support (no wordwrap, wordwrap on memo width, wordwrap on right margin)
+- New : HideSelection property added
+- New : Code block start/end highlighting while typing
+- New : ActiveLineColor, ActiveLineTextColor properties added
+- New : BreakpointColor, BreakpointTextColor
+- New : Modified property
+- New : Exposed Options from AdvMemoFindDialog, AdvMemoFindReplaceDialog
+- New : events OnReplaceDone, OnFindDone from AdvMemoFindDialog, AdvMemoFindReplaceDialog
+- New : Actions for most common editor actions.
+- New : sample application showing the use of TAdvMemoSource, TAdvCodeList and using the TAdvMemo actions
+- Improved : various code optimizations & enhancements
+
+Update : TAdvPageControl & TAdvTabSet v1.2
+------------------------------------------
+- New : support for vertical AdvTabSet display 
+- New : drag & drop tab moving in TAdvTabSet
+- New : extra control for setting text margins in tab (left, right, top margin)
+- New : events for controlling tab close, new OnCanClose event
+- New : property to control lowered selected tab display
+- Improved : VS.NET-style scroll & close button drawing
+
+Misc. Improvements
+------------------
+- TInspectorBar
+- TAdvSpinEdit 
+- TPlannerCalendar
+- TTreeList
+- TAdvEdit
+- TDBLuCombo
+- TAdvDirectoryEdit
+- FileControls 
+
+***********************************************
+TMS Component pack v2.9 : update March 15, 2004
+***********************************************
+
+New components:
+
+- TAdvTabSet
+- TExeInfo
+- TMacroRecorder
+
+Updated components:
+
+- THTMLStatusBar v1.3 : new progress style capabilities
+
+- TAdvPageControl v1.1 : enhanced VS.NET tab look
+
+- TAdvStringGrid v2.7.0.4 : improved node handling
+
+- TWebImage : fixed resource leak problem
+
+- TAdvGridExcelIO : fix for non TObject use of grid.Objects
+
+- TInspectorBar : new CaptionColor, CaptionFont for display 
+  control of caption in psProperties panel style
+
+**********************************************
+TMS Component pack v2.8 : update March 6, 2004
+**********************************************
+
+Update: TPlanner / TDBPlanner v2.0.0.3
+--------------------------------------
+- Improvements & fixes in TPlanner / TDBPlanner
+
+Update: TAdvStringGrid v2.7.0.3
+-------------------------------
+- Improvements & fixes in TAdvStringGrid / TAdvGridExcelIO
+
+Update: TInspectorBar / TDBInspectorBar 
+---------------------------------------
+- Exposed inplace editors, Combo, Spin, ColorCombo, DateTimePicker, Edit, EditBtn
+- Improvements & fixes 
+
+Update: HTML engine
+-------------------
+- Fixed BODY bgcolor drawing
+
+Update: TDBAdvSpin
+------------------
+- Improved DB update handling
+
+Update: THTMLPopup
+------------------
+- New: MarginX, MarginY properties to set X,Y text margins in html popup
+- New: RollUpSpace property to add space between taskbar and html popup in rollup state
+
+Update: TAdvDirectoryEdit
+-------------------------
+- Exposed ClickButton method to enable programmatic directory listbox showing
+
+Update: TParamTreeView
+----------------------
+- Improved list parameter handling
+
+
+***************************************************
+TMS Component pack v2.8 : update February 2, 2004
+***************************************************
+
+Update: TPlanner / TDBPlanner v2.0.0.2
+--------------------------------------
+- Improvements & fixes in TPlanner / TDBPlanner
+
+Update: TAdvStringGrid v2.7.0.2
+-------------------------------
+- New methods InsertSheet, RemoveSheet, AddSheet added in TAdvGridWorkbook
+- Improvements & fixes in TAdvStringGrid 
+- Improved sample edit link components
+
+Update: TInspectorBar v1.3
+--------------------------
+- New : Event to control automatic inserting of control properties in RTTIInspectorBar
+- New : Password inplace editing
+- New : Hi resolution icon support
+- New : Bitmap support
+- New : Single and Multiselect item support
+- New : InspectorPanel visibility control added
+- New : Editable labels added
+- New : Item & Panel shortcut support added
+
+Updates
+-------
+- HTMLCheckBox repaint issue with right-alignment solved
+- TPlannerCalendar issue with week numbers solved
+- TAdvEditBtn update with edit button font solved
+- TCalPanel issue with mouse handling solved
+- TPlannerDatePicker issue with stay on top forms solved
+- TDBAdvSpinEdit issue with DB handling solved
+- Improved TAdvMemo Pascal language styler
+- Improved handling of fixed fonts for TAdvMemo
+- THTMLTreeList improved drawing
+- TTreeList improved method to set text at node
+- TWebUpdate improved binary patch handling
+- TWebUpdateWizard autmatic mode added
+- TAdvFileNameEdit exposed ClickButton method
+
+
+***************************************************
+TMS Component pack v2.8 : update December 21, 2003
+***************************************************
+New: TAdvPageControl v1.0
+-------------------------
+Advanded PageControl with:
+- close button in tab
+- color per tab, hover color, selected tab color
+- customize border color, tab height, hover border color
+- customize tab font color per tab
+- support for gradients in tabs  
+- custom tab background bitmap and hot tab background bitmap
+- support for top, left, right, bottom tabs
+
+New: TPlannerMaskerDatePicker
+-----------------------------
+- version of the TPlannerDatePicker with masked input edit
+
+Update: TLayeredForm
+--------------------
+- Fix for memory leak
+
+Update: Miscellanous
+--------------------
+- Various smaller improvements & fixes in several components
+
+
+***************************************************
+TMS Component pack v2.8 : update December 15, 2003
+***************************************************
+Update : TPlanner v2.0
+----------------------
+- New disjunct selection
+- New gradients in header
+- New property to set linecolor in sidebar
+- New support for rotated text for vertical header
+- New gradient occupied showing in sidebar
+- New fixed time items
+- New ShowSelection property
+- New header runtime resize
+- New vertical header section resize
+- New footer
+- New completion display in footer
+- New attachement & url glyph exposed
+- New multi item images direction added
+- New clearbackgroundcolors method added
+- New property TPlannerItem.trackselectcolor property added
+- New planner trackonly display added
+- New planner.hintpause property
+- New OnItemCreated, OnItemDeleted event added
+- New planner.autoinsdel property added
+- New waitlist component
+- New drag & drop from header to planner and vice versa
+- New header items with anchors supported
+- New selection draw over background items
+- New direct delete button in planneritem caption
+- New custom hints in planner header
+- New support for custom border color between positions
+- New timeline mode with partial day display
+- New hexagon display adapt with partial displayed items
+- New showoccupiedinpositiongap property added
+- New control to display positiongap in specified positions only
+- New OnPlannerBeforePositionZoom event added
+- New balloon hints
+- New styles property editor
+- New OnPlannerBeforeKeydown added
+- New skinned items
+- New groupgaponly added
+- New support for HTML formatted print header & footer
+- New OnPrintFooter, OnPrintHeader events added
+- Improved item completion display
+- Improved header drawing
+- Improved HTML export
+- Improved sidebar display for halfdayperiod
+
+Update : TDBPlanner v2.0
+------------------------
+- New TDBActiveDaySource component
+- New TDBDisjunctDaySource component
+- New ResourceMap property in TDBItemSource
+- New OnTimeToFields, OnFieldsToTime in TDBItemSource
+- New AutoHeaderupdate, NumberOfResources in TimeLineSource
+
+Update : TAdvStringGrid v2.7.0.1
+--------------------------------
+- New MouseActions.SelectOnRightClick added
+- Improved OnEndColumnSize triggered after sizing of a fixed column
+
+Update: Miscellanous
+--------------------
+- Various smaller improvements & fixes in several components
+
+
+***************************************************
+TMS Component pack v2.7 : update October 21, 2003
+***************************************************
+Update: TAdvStringGrid v2.6.0.3
+-------------------------------
+- New Windows XP like listview look
+- New SaveToHTMLString function
+- New property ControlLook.NoDisabledCheckRadioLook
+- Improved SaveToHTML
+- Improved disjunct selection
+- Improved drag & drop handling
+- Improved SaveColPositions / LoadColPositions handling
+- Smaller improvements & fixes
+
+Update: ToolPanels v1.2
+-----------------------
+- New: support for top & bottom aligned toolpanels
+- New: support to customize panel close & lock buttons
+- New: property to control display of Lock and Close button on a panel
+- New: event OnAllowTabHide to modify behaviour
+- New: programmatic control for Lock, Hidden state
+- New: programmatic control to slide in and slide out a panel
+
+Update: TAdvEdit v2.6
+---------------------
+- New: multi-lookup, allowing to add multiple entries in the edit box with multiple lookup (like Outlook XP email entry edit control)
+- Improved: Shift case entry
+- Improved: attached label positioning
+
+Update: THTMListBox
+-------------------
+- Improved wordwrapping
+
+Update: TInspectorBar
+---------------------
+- Added support to handle imagelists for psLargeIcon style
+
+Update: TAdvPicture
+-------------------
+- Fixed issue with LoadFromFile
+
+Update: TCheckDirectoryList
+---------------------------
+- Fixed issue with dbl click handling
+
+Update: Miscellanous
+--------------------
+- Various smaller improvements & fixes in several components
+
+
+
+***************************************************
+TMS Component pack v2.7 : update September 8, 2003
+***************************************************
+Update: TAdvStringGrid v2.6.0.2
+-------------------------------
+- Minor fixes and improvements
+
+New: TAdvProgressBar v1.0
+-------------------------
+- Advanced progressbar
+
+Update: TGradientLabel v1.1
+---------------------------
+- New : Vertical orientation support
+
+Update: TAdvEdit v2.5
+---------------------
+- New : OnMouseEnter, OnMouseLeave events
+- New : OnURLClick event
+- New : runt-time auto history for lookup
+- New : etValidChars edit type added
+
+Update: TAdvPanel
+-----------------
+- New : Property LineSpacing added
+
+Update: Miscellanous
+--------------------
+- Various smaller improvements & fixes in several components
+
+
+***************************************************
+TMS Component pack v2.7 : update August 23, 2003
+***************************************************
+Update: TAdvStringGrid v2.6.0.1
+-------------------------------
+- Minor fixes and improvements
+
+Update: TAdvMemo v1.4
+---------------------
+- New : AutoCorrect capability added
+- New : Bookmark support added
+- New : WantTab property added
+- New : Autocompletion with colored text and images
+- New : RightMargin support added
+- New : Extra events for AutoCompletion added
+- New : styler for text with emoticons added
+- New : Literal output character support added
+- New : OnHintForToken event added
+- New : OnHintForWord event added
+- New : OnWordComplete event added
+- New : OnGetParameterHint event added
+- New : TAdvMemoSource component added for seemingless switching multiple text files with a single memo control
+- New : syntax stylers for C#, Perl, Pyton
+- Improved : Shift Tab handling and Tab handling in overwrite mode improved
+
+Update: TAdvListView v1.6
+--------------------------
+- Improved HTML export
+
+Update: ToolPanels v1.0
+-----------------------
+- New : event OnPanelHide added
+
+Update: TPlannerCalendarGroup
+-----------------------------
+- Improved adding of events with hints added
+
+Update: THTMLTreeview
+---------------------
+- Improvement in painting
+
+Update: TAdvEdit
+----------------
+- Improved handling of form with use of KeyPreview
+
+
+***************************************************
+TMS Component pack v2.7 : update August 10, 2003
+***************************************************
+
+Update: TAdvStringGrid v2.6.0.0
+-------------------------------
+- Native Excel file (97,2000,XP) reading / writing (based on FlexCel technology) with new included TAdvGridExcelIO component
+- Improved support for cell controls
+- Smaller improvements & fixes
+
+New: ToolPanels v1.0
+--------------------
+- Consists of a container TAdvToolPanelTab and TAdvToolPanel
+- The TAdvToolPanelTab manages TAdvToolPanel slide-in / slide-out, docking and lock / unlock of panels
+- Extensive tab look control, including intelligent stretched tab backgrounds
+- Supports code-less docking from one TAdvToolPanelTab to another
+- Can automatically save and restore panels state from INI file or registry 
+
+Improvements
+------------
+- Smaller improvements for TAdvEdit, Parameter controls, PlannerCalendar, 
+  TWebCopy, TWebData, TTodoList, InspectorBars, TAdvColumnGrid, TAdvListView,
+  TAdvSpinEdit, TAdvMemo, TAdvEditBtn, TWebUpdate
+
+***************************************************
+TMS Component pack v2.7 : update June 9, 2003
+***************************************************
+
+Update: TAdvStringGrid v2.5.0.0
+-------------------------------
+- New :  Undo/redo for cell edits capability
+- New : Multilevel nodes
+- New : Fixed cell editing
+- New : Grouping with summary lines and automatic coloring, merging
+- New : Support for detail rows with embedded controls
+- New : Filtering with suffix / prefix ignoring for conditions for numbers supported
+- New : Filtering with selectable logic operations between multiple filter conditions
+- Improved : Significantly improved filter speed
+- New : Always visible comboboxes 
+- New : QUnSort method added to undo sorts
+- New : SortSettings InitSortDirection & UndoSort for tristate sort setting (ascending / descending / undo)
+- New : ReadOnly[Col,Row]: Boolean property added to control read-only cells by properties
+- New : MouseActions.PreciseCheckBoxCheck property added to make checkbox clicks sensitive on checkbox area only
+- New : MouseActions.CheckAllCheck property added to check / uncheck all checkboxes per column by header checkbox
+- New : MouseActions.NodeAllExpandContract property added to expand / contract all nodes by header node click
+- New : Persistent disjunct row selections with hidden rows / filtered grids
+- New : XP node style
+- New : XP fixed cell look
+- Improved : progressbar appearance, XP style progress bar + progressbar margins properties
+- New : FindWide function for Unicode find added
+- New : MouseActions.DirectDateDrop property added
+- New : SaveToBinFile, SaveToBinStream uses public SaveFixedCells property
+- New : Progress event added for SaveToBinFile, SaveToBinStream
+- New : IsSelSuperscript, IsSelSubScript methods added to detect rich text subscript / superscript in cells
+- New : Exposed internal incremental search text
+- New : OnBeforecontractNode, OnBeforeExpandNode events added
+- New : Navigation.TabToEndAtEnd property added
+- New : Preview dialog : PrintSelection property added to show preview of selected cells only
+- Improved : LookupItems + combobox items used for inplace comboedit
+- Improved : support for time editing with no entry for seconds
+- Improved : Support for merged cells in floating footer added
+- Improved : support for row moving with visible floating footer
+- Improved : Multiline clipboard copy & paste with Excel supported
+- Improved : proportional & flat scrolling style
+- Improved : All fixed columns can be sized
+- New : Grid design time preference save & restore
+- New : MouseActions.MoveRowOnNodeClick added controls whether cell selection changes or not on node click
+- New : Gradient cells with Colors[col,row] and ColorsTo[col,row] properties
+- New : Find function for empty cells with "" capability added
+- New : helper function GetXLSSheets() to assist for LoadFromXLSSheet method
+- Improved : Custom inplace editors use goTabs style
+- New : UseDisplayFont & FixedFont setting in grid PrintSettings
+- New : Navigation.SkipFixedCells added for keyboard navigation control with fixed cells in grid
+- Improved : Column moving synchronised through hidden rows
+- Improved : selection resizing and new OnSelectionResize event
+- New : Removing rows while rows are hidden or filtered support added
+- Improved : Automatic numeric alignment in printing
+- New : OnCellValidateWide added for validation of unicode editing
+- New : Simultaneous use of RowSelect mode and nodes capability added
+- Lots of smaller optimizations and improvements
+
+
+***************************************************
+TMS Component pack v2.6 : update Apr 29, 2003
+***************************************************
+Update : TAdvMemo v1.3
+----------------------
+- New : configurable parameter hints
+- New : configurable auto completion
+- New : extra settings for printing
+- New : design time property editor
+- New : auto begin/end block marking
+- New : toggle gutter line numbers on and off
+- New : gutter gradient
+- New : error marking
+- New : various new methods
+- Improved : speed, drawing & new keyboard shortcuts, Ctrl-F, Ctrl-H, Shift-Ctrl-End, Shift-Ctrl-Home
+
+Update : TAdvListView v1.6
+--------------------------
+- New : OnURLClick to choose custom handling of URL clicks or built-in handling
+- New : Capability to add progress bars in cells
+- Improved : painting
+- Improved : HTML export
+- Various smaller improvements
+
+Update : TAdvStringGrid v2.4.0.6
+--------------------------------
+- Improved : small fixes and optimizations
+
+Update : TDBAdvStringGrid 1.7.0.8
+---------------------------------
+- Improved : small fixes and optimizations
+
+Update : TPlanner 1.7.0.5 / TDBPlanner v1.5.0.5
+-----------------------------------------------
+- Improved : small fixes and optimizations
+
+***************************************************
+TMS Component pack v2.6 : update Mar 31, 2003
+***************************************************
+New : TAdvTreeComboBox v1.0
+---------------------------
+- Combobox with true treeview dropdown
+
+New : THTMLCredit v1.0
+----------------------
+- Supports a subset of the HTML formatting tags (see the mini HTML reference)
+- Supports various images embedded in HTML formatted text.
+- Support for new gradient paragraphs 
+- Enables to set auto scroll speed, scroll step and scrollposition
+
+Update : TDBAdvNavigator v1.1
+-----------------------------
+- New : Large & small button style
+- New : Horizontal & vertical button orientation
+- New : Extra search, set bookmark & get bookmark button added
+
+Update : TMS Parameter Controls v1.3
+------------------------------------
+- New : various built-in inplace editors: 
+       - normal edit, spin edit, mask edit
+       - popup list, popup menu
+       - datepicker, timeselector
+       - input query 
+       - directory picker
+       - capability to use custom inplace editors
+       - toggle value
+- New : design time property editors for parameter definition
+- New : various methods for handling setting and getting parameter values
+- New : parameter hint attributes
+- New : empty parameter property
+- New : hovering in all parameter controls
+- New : autosizing parameter edit control
+- New : auto advance on return 
+- New : developers guide
+
+Update : TMS InspectorBar v1.2
+------------------------------
+- New : Password inplace editing
+- New : Hi resolution icon support
+- New : Bitmap support in addition to icons
+- New : Single and Multiselect item support
+- New : InspectorPanel visibility control added
+- New : Editable labels added
+- New : Item & Panel shortcut support added
+- Various smaller improvements ...
+
+Update : TAdvStringGrid v2.4.0.5
+--------------------------------
+- Maintenance update
+
+Update : TPlanner v1.7.0.3 & TDBPlanner 1.5.0.3
+-----------------------------------------------
+- Maintenance update
+
+Update : TCheckListEdit v1.1
+----------------------------
+- Improvement to position wide dropdown 
+
+Update : TAdvListView v1.55
+---------------------------
+- Item and header drawing improvements
+- New HeaderColor property
+
+Update : TAdvMemo 1.2
+---------------------
+Improvement for C++Builder compatibility
+
+Update : THTMLStaticText
+------------------------
+- Improved painting
+- Improved anchor handling
+
+Update : THTMLHint
+------------------
+- Fix for HTMLHint use on non main form
+
+Update : TWebUpdate
+-------------------
+- Improved handling of cancelled updates
+
+Update : TAdvMaskEdit
+---------------------
+- Improved handling of borderstyle property 
+
+Update : TPlannerCalendar
+-------------------------
+- Improved handling of min. & max. dates
+
+Update : TAdvDirectoryEdit
+--------------------------
+- Added capability to browse for folder without creating a new folder
+
+
+***************************************************
+TMS Component pack v2.5 : update Feb 13, 2003
+***************************************************
+Update : TPlanner v1.5.0.3 & TDBPlanner v1.7.0.3
+------------------------------------------------
+- Maintenance update
+
+Update : TAdvStringGrid v2.4.0.4
+--------------------------------
+- Maintenance update
+
+Update : TDBAdvStringGrid v1.7.0.7
+----------------------------------
+- Maintenance update
+
+Update : TAdvMemo v1.2
+----------------------
+- New : URL aware
+- New : proportional scrollbars
+- New : Print support
+- New : SaveToHTML and CopyHTMLToClipboard functions added
+- New : SQL highlighter
+- New : Find & replace dialogs
+- New : Ctrl-A, Ctrl-PageUp,Ctrl-Home,Ctrl-End, Ctrl-PageDown shortcuts added
+- New : DB-aware version TDBAdvMemo
+- Improved : faster rendering
+- Improved : tab handling
+
+
+Update : TPlannerCalendar, TPlannerCalendarGroup, TPlannerDatePicker v1.3
+-------------------------------------------------------------------------
+- New : Gradient in caption and calendar
+- New : Soft XP style border drawing
+- New : Event for dynamic change of event look
+- New : Goto today indication added
+- New : Event fontcolor property added
+- New : Possibility to add glyphs for next/prev month and year
+- New : Datepicker and DBDatePicker inherit all TAdvEdit features such as focus, modified color, flat look and much more
+
++ Various smaller updates and fixes in components
+
+***************************************************
+TMS Component pack v2.5 : update Jan 12, 2003
+***************************************************
+Update : TAdvStringGrid v2.4.0.3
+--------------------------------
+- Improved printing with merged cells
+- small improvements
+
+Update : TPlanner v1.5.0.1 & TDBPlanner v1.7.0.1
+------------------------------------------------
+- Maintenance update
+
+Update : TAdvEdit v2.4
+----------------------
+- New : Outlook style Lookup
+
+Update : TAdvPanel v1.5
+----------------------- 
+- New : Caption & Panel Gradients 
+- New : BorderShadow / BorderColor
+- New : Buffered property added
+- New : TAdvPanelStyler component
+- New : Caption button position can be controlled
+- Improved drawing
+  
+Update : TAdvPanelGroup v1.5
+----------------------------
+- New : methods AddPanel, InsertPanel, RemovePanel, MovePanel
+- New : DefaultPanel settings
+- New : Columns support 
+- Improved panel positioning
+
+New : TGradientLabel v1.0
+-------------------------
+- New : Label with gradient background or gradient line 
+
+Update : TAdvDBLookupComboBox v1.1
+----------------------------------
+- New : Property DropSizeable added
+- Improved code
+  
+***************************************************
+TMS Component pack v2.5 : update Dec 18, 2002
+***************************************************
+Update : TAdvMemo v1.1
+----------------------
+- New : Basic syntax highlighting
+- New : Gutter breakpoint, executable code and active sourcecode line display
+- New : mousewheel support
+- Improved : faster painting
+- Improved : keyboard handling
+
+***************************************************
+TMS Component pack v2.5 : update Dec 17, 2002
+***************************************************
+Update : TPlanner v1.7 & TDBPlanner v1.5
+----------------------------------------
+- New : Timeline mode
+- New : Active cell indication in sidebar
+- New : Completion display
+- New : PositionZoom in horizontal mode
+- New : Header popup & item popup handling
+- New : Alarm times relative to event start or end time or both
+- New : Support for virtual notes text
+- New : Transparent overlapable background items
+- New : Grid cellrectangle function added
+- New : Design time property preference handling
+- New : OnPlannerIsActive event added
+- New : ItemSelection property added to control item selection methods and improved selection
+- New : LineColor setting in PlannerHeader added
+- New : Pen style selection for planner grid cells through OnPlannerBottomLine possible
+- New : Display.CurrentPosFrom, Display.CurrentPosTo properties added
+- New : Custom time interval display
+- New : TDBHalfDayPeriodSource & TDBTimeLineSource 
+- New : RefreshItem function added for single appointment reload in DBPlanner 
+- New : Event OnItemsRead added in TDBxxxSource components
+- Improved : Bitmap background drawing
+- Improved : Additional AM/PM display capabilities in SideBar
+- Improved : Sidebar display for better readability in high resolution time display
+- Improved : Printing 
+- Improved : HTML export
+- Updated : over 50 pages printable PDF developers guide for registered users
+- Lots of smaller improvements + optimizations ...
+
+New : TDBAdvLookupCombo v1.0
+----------------------------
+- Multi column DB lookup combobox
+- Can perform type-ahead lookup on multiple columns
+- Allows filtering of lookup listsource for limited selection lookups
+- Allows sorting on columns in lookup dropdown
+- Various settings for column display & dropdown behaviour
+- Attached label with position control and optional display of listfield
+
+Update : TAdvSpinEdit
+---------------------
+- Improved label positioning
+- LabelAlwaysEnabled property added
+- Signed property added
+
+Update : TAdvMaskEdit, TDBAdvMaskEdit
+-------------------------------------
+- Improved color handling
+
+Update : TAdvCombo
+------------------
+- Improved flat underline to match AdvEdit underline
+
+Update : TAdvStringGrid v2.4.0.2
+--------------------------------
+- Improved SaveToHTML with Font export
+- Improved edFloat and edFloatEditBtn decimal/thousand separator handling
+- Improved SaveToXLSSheet
+- SaveVirtCells public property added
+- Improved HTML engine for lists and hidden text tags
+
+Update : TCheckListEdit
+-----------------------
+- OnClose event added
+- Public property DroppedDown added
+
+Update : THTMLStatusbar
+-----------------------
+- Fix for vertical centered drawing in narrow status bar
+
+Update : TWebUpdate   
+-------------------
+-  TWebUpdate UpdateCOnnect = wucNone added to disable any checks or trials to connect
+
+Update : TColumnListBox
+-----------------------
+- Improved default access to collection items
+  
+Update : TAdvListview
+---------------------
+- Pubic property StretchColumn added
+- Improved header drawing
+
+
+***************************************************
+TMS Component pack v2.4 : update Nov 9, 2002
+***************************************************
+Update : TAdvStringGrid v2.4
+----------------------------
+- AllColCount, AllRowCount properties added
+- Improved XML export with & character
+- Improved handling quoted text in CSV import/export
+- ClearNormalRows, ClearNormalCols functions added
+- Improved SizeWhileTyping
+- OnEndRowSize triggered during SizeWhileTyping
+- Improved indication on row/column moving
+- SetColumnOrder, ResetColumnOrder methods added
+- SaveColPositions, LoadColPositions methods added
+- MouseActions.NoAutoRangeScroll property added
+- RemoveAllNodes method added
+- virtual method LoadCell added 
+- OnGetFloatFormat event added
+- Unicode display & editing support added
+- Enhanced control for AutoNumberCol, AutoNumberRow
+- CellControls[] property to add any control into a cell
+- Autopositioning find dialog
+- Improved find function with tests for empty strings & use of quotes
+- Public property SaveWithHTML added
+- Tab navigation direction control added
+- Auto tab to next control on form after tabbing through complete grid
+- PrintSelection method added
+- Print preview of selection only capability added
+- ProgressPie indicators added
+- Combined drawing of images & sort indicator
+- Index sort glyph properties added
+- OnPrintCancel event added
+- Readonly cell control for merged cells fixed - based on topleft cell settings
+- Find & Replace dialog for grid added
+- Disjunct column selection, column printing, column clipboard handling
+
+Update : TAdvColumnGrid v2.4
+----------------------------
+- FloatFormat property added in Columns
+- Combined filtering & sorting from column header capability added
+
+Update : TAdvMemo
+-----------------
+- New : Anchors property added
+
+Update : HTMLHint
+-----------------
+- Improved multimonitor support
+
+Update : TParamTreeview
+-----------------------
+- New : WordWrap property 
+
+Update : TWebPost
+-----------------
+- New : support to specify port number added
+
+Update : TInspectorBar
+----------------------
+- Improved Wordwrap in psButtons style
+
+Update : TAdvSpinEdit
+---------------------
+- Improved label positioning
+
+***************************************************
+TMS Component pack v2.4 : update Oct 21, 2002
+***************************************************
+Update : TWebUpdate v1.5
+------------------------
+- New : includes Web update wizard
+- New : separately callable steps in update process
+- New : HTTP keep alive setting
+- New : auto compare with local file dates capability
+- New : dynamic URL change per file
+- New : OnSuccess event after download of all updated files
+- New : Control to update only existing files and not install new files
+- New : Option to keep CAB or Patch files after update
+- New : List of file details for update
+- New : total update download size property
+- New : short update description field
+- New : log to file capability
+- Improved : CAB extraction 
+- Improved : EULA dialog handling
+- Improved : update registry only after success
+
+Update : TAdvEdit v2.3
+----------------------
+- Improved ShowModified handling 
+- Improved default key handling
+
+Update : TWebData v1.0
+----------------------
+- Improved handling of multiple threaded instances
+
+
+***************************************************
+TMS Component pack v2.4 : update Oct 7, 2002
+***************************************************
+Update : TInspectorBars v1.1
+----------------------------
+- New : Added support for nodes
+- New : Variable item height
+- New : visible and hidden items
+- New : help panel
+- New : HTML formatted text support in items
+- New : Indent control per item
+- New : Improved editing support
+- New : several new events for edit handling
+- New : auto scroll inside InspectorPanel
+- New : always-open InspectorPanel style
+- New : subproperty handling in RTTIInspectorBar
+- New : full width hovering style
+- New : various new properties for finetuning colors
+- New : shows items in modified style when edited
+- Numerous smaller improvements
+
+New : TAdvMemo v1.0
+-------------------
+- Lightweight memo control with configurable syntax highlighting
+- Highlighting for HTML, Javascript, Web, CSS and Pascal included
+- Undo and redo functions
+- Optional gutter
+- Clipboard operations
+
+New : TAdvShaper v1.0
+---------------------
+- Easy to use component that turns any form into the shape of a complex shaped bitmap 
+  with very fast algorithm
+- As simple as loading the bitmap and setting the mask color to turn a form into a 
+  complex bitmap shape
+
+Update : THotSpotImage v1.1
+---------------------------
+- Added : supports zooming
+- Added : allows to specify cursor over hotspots
+- Added : allows to show hotspots clicked
+- Improved : faster hotspot detection algorithm
+- Improved : hotspot hover image drawing
+
+Update : THTMLTreeView 
+----------------------
+- SelectionNFColor, SelectionNFFontColor added
+- Right click select improvement 
+- Anchor font size problem solved
+
+Update : THTMLTreeList 
+----------------------
+- Column access improvement
+
+Update : TParamTreeview
+-----------------------
+- Anchor font size problem solved
+
+Update : TAdvCombo 
+------------------
+- New : attached label
+- New : FlatLineColor, FlatParentColor
+- Improved flat style control, underline color
+- Improved XP look 
+
+Update : TAdvEditBtn
+--------------------
+- Improved XP style handling & flat underline style
+  
+Update : TAdvEdit
+-----------------
+- Errormarkers, improved flat style
+- Enhanced color control for various modes of the edit control
+
+Update : TAdvSpinEdit
+---------------------
+- New : control to show seconds in time spin mode
+- New : set minute and second increment in time spin mode
+- Improved XP look
+
+Update : TAdvMoneyEdit
+----------------------
+- Combines TMoneyEdit with TAdvEdit
+
+Update : THTMLCheckBox
+----------------------
+- Checkbox state & OnClick event handling correction
+
+Update :TColumnComboBox
+-----------------------
+- Fix combo edit part paint issue
+
+Update : THTMListBox
+--------------------
+- Improved handling of very high HTML text in listbox
+
+Update : THTMLStaticText
+------------------------
+- Improved design time painting
+
+Update : THTMLPopup 
+-------------------
+- Improved autosize
+
+Update : THTMLHint
+------------------
+- Corrected handling for multiscreen use
+
+
+***************************************************
+TMS Component pack v2.3 : update Aug 29, 2002
+***************************************************
+Update : TPlanner v1.6.0.2 TDBPlanner v1.4.0.2
+----------------------------------------------
+- Maintenance update with various improvements:
+- Improved : multi-day, multi-resource handling
+- Improved : multi-month mode handling
+- Improved : item editor handling
+- Improved : multiday and day crossing handling in day mode
+- Improved : HTML rendering
+- Added : Gradient sidebar, gradient step control, gradient direction in PlannerItem caption control 
+
+Update: TAdvStringGrid v2.3.0.7
+-------------------------------
+- Added : IndexColor property for SortSettings to control color of sort indicator for indexed sorts
+- Fixed problem with range selection & editing combined with read only cells
+- Further small fixes and improvements
+
+***************************************************
+TMS Component pack v2.3 : update Aug 9, 2002
+***************************************************
+
+Update TAdvEdit, TDBAdvEdit, TAdvLUEdit, TDBAdvLUEdit, TAdvMaskEdit, TDBAdvMaskEdit
+-----------------------------------------------------------------------------------
+- New : TDBAdvMaskEdit component
+- Improved focus color and enabled color handling
+- Improved DB aware version of TAdvEdit
+- Added FocusBorder and FlatLineColor properties in TAdvMaskEdit
+
+Update : THTMLPopup v1.1
+------------------------
+- New : AutoSize capability
+- New : always on top capability
+- New : RollUp and RollDown methods
+
+***************************************************
+TMS Component pack v2.3 : update July 9, 2002
+***************************************************
+
+Update TPlanner v1.6
+--------------------
+- New : Overlapped items on background items
+- New : over 50 pages printable PDF developers guide for registered users
+- New : 3 popup item editors & interfaces for custom popup editors
+- New : interface for custom drawing appointments or events and sample drawer class
+- New : OnItemClipboardAction event added for tracking clipboard actions in inplace editing
+- New : Bands property to control coloring banding in planner grid
+- New : new AM/PM time indication modes & AM/PM display position control
+- New : OnExit, OnEnter events for planner 
+- New : IndicateNonVisibleItems property to show indicators for non visible appointments in sidebar
+- New : OnItemPlaceUpdate event added for dynamic item placement changing
+- New : PlannerItem.ItemRect read-only property added for easier custom inplace item handling
+- New : TPlannerItem Shadow & global ShadowColor setting
+- New : Gradient item captions & gradient planner caption
+- New : PositionProps Use property to control using or not using the PositionProps
+- New : OnHeaderStartEdit, OnHeaderEndEdit event added
+- New : sample application for popup editor handling
+- New : Indy based alarm email sender
+- Improved precision time handling
+- Improved editing of large items
+- Improved printing
+
+Update TDBPlanner v1.4
+----------------------
+- New : Multimonth DB mode, can be used as year mode DBPlanner
+- New : sample applications for DBIsam, Apollo, BDE, Access, Interbase
+- Improved clipboard handling in DB aware mode
+- Improved DBDaySource DB handling
+
+Update TAdvPanel & TAdvPanelGroup v1.4
+--------------------------------------
+- New : smooth expand / collaps of panel
+- New : C++Builder 6 support
+- New : SavePositions/LoadPositions for TAdvPanelGroup
+- Improved : alignment of controls in panel
+- Improved : Panel caption drawing and mouse handling
+
+
+***************************************************
+TMS Component pack v2.3 : update June 10, 2002
+***************************************************
+
+Update : TAdvStringGrid v2.3.0.1
+--------------------------------
+- New : mini HTML form support in cells.
+- New : ssCheckBox sort style added
+- New : OnClipboardBeforePasteCell event added
+- New : FilterRow method added for row per row filtering
+- New : ShowNullDates public property to control display of null dates
+- Improved : edit with tabs in grid with hidden columns
+- Improved : spin editor handling
+- Improved : columnsize handling in automatic columnsizing with grid size
+- Improved : inplace edit handling in automatic columnsizing with grid size
+- Improved : LoadFromMDB method 
+
+Update : TDBAdvStringGrid v1.7.0.1
+----------------------------------
+- Improved DB-aware handling with various database engines
+- DB Editing capability with PageMode active
+- Improved Floating footer handling with DB
+
+Update : TAdvColumnGrid v2.2.0.7
+--------------------------------
+- Improved checkbox handling 
+- Improved column move handling
+
+Update : TCABFile v1.4
+--------------------------------
+- Fix for CAB file decompression handling 
+
+
+***************************************************
+TMS Component pack v2.2 : update May 11, 2002
+***************************************************
+
+- Support added for Delphi 6 Personal and C++Builder 6 Personal editions
+
+***************************************************
+TMS Component pack v2.2 : update May 1, 2002
+***************************************************
+
+New : TUniHTMLabel, TUniHTMListbox, TUniHTMLCombobox
+----------------------------------------------------
+- label, listbox & combobox with support for Unicode HTML formatted text
+
+Update : TAdvStringGrid v2.2.0.8
+--------------------------------
+- Corrected image drawing issue in floating footer
+- Changed behaviour for ssNumeric sort style when used with non-numeric data
+- Improved AutoSizeCells
+- Disjunct row selection & sort improvement
+- Improved ActiveCellShow behaviour
+- Improved All cell and Column selection
+
+Update : TCABFile v1.4
+----------------------
+- Added methods to automatically add full directories to the CAB file
+
+***************************************************
+TMS Component pack v2.2 : update April 17, 2002
+***************************************************
+
+Update : TAdvStringGrid v2.2.0.7
+--------------------------------
+- Save/Load nodes with LoadFromBinFile / SaveToBinFile issue solved
+- Improved handling of Alt-Dn for combobox dropdown activation with keyboard
+- Improved vertical alignment handling for printing
+- Improved checkbox & image alignment handling for printing
+- Improved BiDi support for inplace editing
+- Fix for selected rich text painting
+- Improved printsettings dialog handling
+
+***************************************************
+TMS Component pack v2.2 : update April 10, 2002
+***************************************************
+
+Update : TAdvColumnGrid v2.2
+----------------------------
+- Added SaveColumnPositions / LoadColumnPosition methods
+- Added CreateColumns function to create descendent extended grid column properties
+- Added C++Builder 6 support
+- Inherits all new TAdvStringGrid features and improvements
+
+Update : TAdvStringGrid v2.2.0.6
+--------------------------------
+- Fixed IsXMergedCell, IsYMergedCell function calls
+- Fixed border drawing with styles Flat and Look glTmS, glSoft combined
+- Fixed CopyToClipboard / CutToClipboard with disjunct row selection
+- Added TMSGradientFrom / TMSGradientTo public properties for glTMS look gradient control
+
+Update : THTMLCheckBox 
+----------------------
+- Drawing issue solved with Windows XP visual style
+
+***************************************************
+TMS Component pack v2.2 : update April 2, 2002
+***************************************************
+
+Update : TAdvStringGrid v2.2.0.5
+--------------------------------
+- New version numbering for easier version identification
+- HideUnSelectedRows, RemoveUnSelectedRows method added
+- Significantly improved performance with LoadFromCSV
+- SplitAllCells method added
+- XYOffset public property for text/RTF/HTML position control
+- RangeSelectAndEdit property added in MouseActions allows range selection & editing simultanously
+- KeepHorizScroll property added to prevent scrollback with row selection
+- Improved handling of empty cells with date inplace editor & sorting
+- Column stretch on selectable column
+- Inplace or popup memo with scrollbar support
+- Improved & faster display with nodes
+- GetParentRow, InsertChildRow, RemoveChildRow methods added to add rows in grid with nodes
+- PrintSelectedRows, PrintPreviewSelectedRows
+- Preview dialog with PrintSelectedRows property
+- Translatable preview & find dialog 
+- Printer setup dialog capability from preview dialog
+- Improved OLE drag&drop with disjunct row drag&drop support
+- Hide comment indicator with clNone color
+- Improved alignment & autosizing with rotated text
+- OnResize event added
+- Cell level persistent color, fontcolor, fontstyle, fontsize, fontname, alignment properties
+- Improved virtual cell handling with filtering & hiding rows
+- Improved floating footer handling
+- Improved CSV file delimiter guess
+- glClassic and glTMS looks added
+- ActiveCellColor property added
+- SelectionResizer property added
+- Improved smart clipboard functionality
+- SaveToBinFile, LoadFromBinFile methods for saving full grid cell info
+- SaveToBinStream, LoadFromBinStream methods 
+- Full formatted cell clipboard support including images, checkbox, buttons, colors, comments ...
+- Improved virtual cell handling
+- Public properties MinRowHeight, MaxRowHeight, MinColWidth, MaxColWidth for AutoSizeRow,AutoSizeCol methods
+- NoAutoSizeRows property added under PrintSettings
+- New sample applications
+- C++Builder 6 support
+- Improved printing support
+- PrintSettings.PageNumberOffset & PrintSettings.MaxPagesOffset properties added
+- OnCustomCellDraw & OnCustomCellSize events added and demo 52 for custom drawing & printing support through these new events
+- In DragDropSettings, OleCopyAlways and OleColumnDragDrop properties added
+- Background bitmap style bcAll added
+- Windows XP shaded hint support
+- Built-in HTML formatted cell comment / hints support
+- Improved BIDI mode support
+- Capability to search in hidden cells added
+
+
+***************************************************
+TMS Component pack v2.1 : update March 19, 2002
+***************************************************
+
+Update : TPlannerCalendar v1.2
+------------------------------
+- Improved support for C++Builder 6
+
+New : TWebConnect v1.0
+----------------------
+- Component to connect to/disconnect from the Internet and check
+  the internet connection state
+
+Update : TWebCopy v1.4
+----------------------
+- Added support to copy only newer files
+
+New : THotSpotImage v1.0
+------------------------
+- Hotspot image component for Delphi 5,6 & C++Builder 5,6

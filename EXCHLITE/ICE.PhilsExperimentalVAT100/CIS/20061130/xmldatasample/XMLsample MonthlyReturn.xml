@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- v1.0 28/11/2005 -->
+
+<GovTalkMessage xmlns="http://www.govtalk.gov.uk/CM/envelope">
+	<EnvelopeVersion>2.0</EnvelopeVersion>
+	<Header>
+		<MessageDetails>
+			<Class>IR-CIS-CIS300MR</Class>
+			<Qualifier>request</Qualifier>
+			<Function>submit</Function>
+			<CorrelationID />
+			<Transformation>XML</Transformation>
+			<GatewayTest>1</GatewayTest>
+		</MessageDetails>
+		<SenderDetails>
+			<IDAuthentication>
+				<SenderID>as advised by SDS team</SenderID>
+				<Authentication>
+					<Method>clear</Method>
+					<Role>principal</Role>
+					<Value>as advised by SDS team</Value>
+				</Authentication>
+			</IDAuthentication>
+		</SenderDetails>
+	</Header>
+	<GovTalkDetails>
+		<Keys>
+			<Key Type="TaxOfficeNumber">as advised by SDS team</Key>
+			<Key Type="TaxOfficeReference">as advised by SDS team</Key>
+		</Keys>
+		<TargetDetails>
+			<Organisation>IR</Organisation>
+		</TargetDetails>
+		<ChannelRouting>
+			<Channel>
+				<URI>your 4 digit vendor ID</URI>
+				<Product>your product name</Product>
+				<Version>version number of product</Version>
+			</Channel>
+		</ChannelRouting>
+	</GovTalkDetails>
+	<Body>
+		<IRenvelope xmlns="http://www.govtalk.gov.uk/taxation/CISreturn">
+			<IRheader>
+				<Keys>
+					<Key Type="TaxOfficeNumber">as advised by SDS team</Key>
+					<Key Type="TaxOfficeReference">as advised by SDS team</Key>
+				</Keys>
+				<PeriodEnd>2007-05-05</PeriodEnd>
+				<DefaultCurrency>GBP</DefaultCurrency>
+				<IRmark Type="generic"></IRmark>
+				<Sender>Partnership</Sender>
+			</IRheader>
+			<CISreturn>
+				<Contractor>
+					<UTR>4325648152</UTR>
+					<AOref>123PP87654321</AOref>
+				</Contractor>
+				<Subcontractor>
+					<TradingName>Foundations</TradingName>
+					<UTR>1234567890</UTR>
+					<NINO>JK901234D</NINO>
+					<VerificationNumber>V1234567890A</VerificationNumber>
+					<TotalPayments>2000.00</TotalPayments>
+					<CostOfMaterials>500.00</CostOfMaterials>
+					<TotalDeducted>450.33</TotalDeducted>
+				</Subcontractor>
+				<Declarations>
+					<EmploymentStatus>yes</EmploymentStatus>
+					<Verification>yes</Verification>
+					<InformationCorrect>yes</InformationCorrect>
+					<Inactivity>yes</Inactivity>
+				</Declarations>
+			</CISreturn>
+		</IRenvelope>
+	</Body>
+</GovTalkMessage>

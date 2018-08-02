@@ -1,0 +1,37 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="VAfZI89PIwrw8e6iADsx2w==" identitycol="PositionId" reclen="228" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_date_changed" fullfieldname="f_date_changed" typename="DelphiString" size="9" elements="1" id="-1" columnname="chDateChanged" collation="0"/>
+        <schemafield fieldname="f_time_changed" fullfieldname="f_time_changed" typename="DelphiString" size="7" elements="1" id="-1" columnname="chTimeChanged" collation="0"/>
+        <schemafield fieldname="f_curr_number" fullfieldname="f_curr_number" typename="int16" size="2" elements="1" id="-1" columnname="chCurrNumber" collation="0"/>
+        <schemafield fieldname="f_stop_key" fullfieldname="f_stop_key" typename="char" size="1" elements="1" id="-1" columnname="chStopKey" collation="1"/>
+        <schemafield fieldname="f_daily_rate" fullfieldname="f_daily_rate" typename="double" size="8" elements="1" id="-1" columnname="chDailyRate" collation="0"/>
+        <schemafield fieldname="f_company_rate" fullfieldname="f_company_rate" typename="double" size="8" elements="1" id="-1" columnname="chCompanyRate" collation="0"/>
+        <schemafield fieldname="f_invert" fullfieldname="f_invert" typename="bool1" size="1" elements="1" id="-1" columnname="chInvert" collation="0"/>
+        <schemafield fieldname="f_float" fullfieldname="f_float" typename="bool1" size="1" elements="1" id="-1" columnname="chFloat" collation="0"/>
+        <schemafield fieldname="f_tri_number" fullfieldname="f_tri_number" typename="int16" size="2" elements="1" id="-1" columnname="chTriangulationNumber" collation="0"/>
+        <schemafield fieldname="f_tri_rate" fullfieldname="f_tri_rate" typename="double" size="8" elements="1" id="-1" columnname="chTriangulationRate" collation="0"/>
+        <schemafield fieldname="f_description" fullfieldname="f_description" typename="DelphiString" size="12" elements="1" id="-1" columnname="chDescription" collation="0"/>
+        <schemafield fieldname="f_symbol_screen" fullfieldname="f_symbol_screen" typename="DelphiString" size="4" elements="1" id="-1" columnname="chSymbolScreen" collation="0"/>
+        <schemafield fieldname="f_symbol_print" fullfieldname="f_symbol_print" typename="DelphiString" size="4" elements="1" id="-1" columnname="chSymbolPrint" collation="0"/>
+        <schemafield fieldname="f_user" fullfieldname="f_user" typename="DelphiString" size="11" elements="1" id="-1" columnname="chUser" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_date_changed</item>
+                <item size="-1" computedcolumnname="">f_time_changed</item>
+                <item size="-1" computedcolumnname="">f_curr_number</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_curr_number</item>
+                <item size="-1" computedcolumnname="">f_date_changed</item>
+                <item size="-1" computedcolumnname="">f_time_changed</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

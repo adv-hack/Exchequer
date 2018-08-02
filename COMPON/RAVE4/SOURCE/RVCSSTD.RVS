@@ -1,0 +1,220 @@
+module RVCsStd;
+
+definition
+
+import
+  RVClass,
+  RVData,
+  SysFunc;
+
+type
+  TRaveFont = record
+    Name: string;
+    Size: double;
+    Color: TColor;
+  end TRaveFont;
+
+  TRaveFontMaster = class(TRaveComponent)
+  protected
+    function GetFont: TRaveFont;
+    function SetFont(Value: TRaveFont);
+  public
+    property Font: TRaveFont read GetFont write SetFont;
+  end TRaveFontMaster;
+
+  TRavePageNumInit = class(TRaveComponent)
+  protected
+    function GetInitValue: integer;
+    function SetInitValue(Value: integer);
+    function GetInitDataView: TRaveBaseDataView;
+    function SetInitDataView(Value: TRaveBaseDataView);
+    function GetInitDataField: TRaveFieldName;
+    function SetInitDataField(Value: TRaveFieldName);
+  public
+    property InitValue: integer read GetInitValue write SetInitValue;
+    property InitDataView: TRaveBaseDataView read GetInitDataView write SetInitDataView;
+    property InitDataField: TRaveFieldName read GetInitDataField write SetInitDataField;
+  end TRavePageNumInit;
+
+  TRaveCustomText = class(TRaveControl)
+  protected
+    function GetFontMirror: TRaveFontMaster;
+    function SetFontMirror(Value: TRaveFontMaster);
+    function GetColor: TColor;
+    function SetColor(Value: TColor);
+    function GetFont: TRaveFont;
+    function SetFont(Value: TRaveFont);
+  public
+    property FontMirror: TRaveFontMaster read GetFontMirror write SetFontMirror;
+    property Color: TColor read GetColor write SetColor;
+    property Font: TRaveFont read GetFont write SetFont;
+  end TRaveCustomText;
+
+  TRaveText = class(TRaveCustomText)
+  protected
+    function GetRotation: integer;
+    function SetRotation(Value: integer);
+    function GetTruncate: boolean;
+    function SetTruncate(Value: boolean);
+  public
+    property Rotation: integer read GetRotation write SetRotation;
+    property Truncate: boolean read GetTruncate write SetTruncate;
+  end TRaveText;
+
+  TRaveSection = class(TRaveContainerControl)
+  protected
+    function GetWasteFit: boolean;
+    function SetWasteFit(Value: boolean);
+  public
+    property WasteFit: boolean read GetWasteFit write SetWasteFit;
+  end TRaveSection;
+
+  TMatchSide = (msWidth,msHeight,msBoth,msInside);
+
+  TRaveBaseImage = class(TRaveControl)
+  protected
+    function GetMatchSide: TMatchSide;
+    function SetMatchSide(Value: TMatchSide);
+    function GetFileLink: TFileName;
+    function SetFileLink(Value: TFileName);
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+  public
+    function ImageName: string;
+    function ImageFilter: string;
+    property MatchSide: TMatchSide read GetMatchSide write SetMatchSide;
+    property FileLink: TFileName read GetFileLink write SetFileLink;
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+  end TRaveBaseImage;
+
+  TRaveGraphicImage = class(TRaveBaseImage)
+  protected
+//    function GetImage: TGraphic;
+//    function SetImage(Value: TGraphic);
+  public
+    function ImageName: string;
+    function ImageFilter: string;
+//    property Image: TGraphic read GetImage write SetImage;
+  end TRaveGraphicImage;
+
+  TRaveBitmap = class(TRaveGraphicImage)
+  end TRaveBitmap;
+
+  TRaveMetaFile = class(TRaveGraphicImage)
+  end TRaveMetaFile;
+
+  TRaveMailMergeItem = class
+  protected
+    function GetCaseMatters: boolean;
+    function SetCaseMatters(Value: boolean);
+    function GetReplaceString: string;
+    function SetReplaceString(Value: string);
+    function GetSearchToken: string;
+    function SetSearchToken(Value: string);
+  public
+    property CaseMatters: boolean read GetCaseMatters write SetCaseMatters;
+    property ReplaceString: string read GetReplaceString write SetReplaceString;
+    property SearchToken: string read GetSearchToken write SetSearchToken;
+  end TRaveMailMergeItem;
+
+  TRaveMemo = class(TRaveCustomText)
+  protected
+    function GetContainsRTF: boolean;
+    function SetContainsRTF(Value: boolean);
+    function GetExpandParent: boolean;
+    function SetExpandParent(Value: boolean);
+//    function GetMailMergeItems: TRavePersistentList;
+//    function SetMailMergeItems(Value: TRavePersistentList);
+    function GetMemoText: TRaveMemoString;
+    function SetMemoText(Value: TRaveMemoString);
+    function GetTruncate: boolean;
+    function SetTruncate(Value: boolean);
+  public
+    property ContainsRTF: boolean read GetContainsRTF write SetContainsRTF;
+    property ExpandParent: boolean read GetExpandParent write SetExpandParent;
+//    property MailMergeItems: TRavePersistentList read GetMailMergeItems write SetMailMergeItems;
+    property Text: TRaveMemoString read GetMemoText write SetMemoText;
+    property Truncate: boolean read GetTruncate write SetTruncate;
+  end TRaveMemo;
+
+implementation
+
+// TRaveFontMaster
+
+  function TRaveFontMaster.GetFont: TRaveFont; external;
+  function TRaveFontMaster.SetFont(Value: TRaveFont); external;
+
+// TRavePageNumInit
+
+  function TRavePageNumInit.GetInitValue: integer; external;
+  function TRavePageNumInit.SetInitValue(Value: integer); external;
+  function TRavePageNumInit.GetInitDataView: TRaveBaseDataView; external;
+  function TRavePageNumInit.SetInitDataView(Value: TRaveBaseDataView); external;
+  function TRavePageNumInit.GetInitDataField: TRaveFieldName; external;
+  function TRavePageNumInit.SetInitDataField(Value: TRaveFieldName); external;
+
+// TRaveCustomText
+
+  function TRaveCustomText.GetFontMirror: TRaveFontMaster; external;
+  function TRaveCustomText.SetFontMirror(Value: TRaveFontMaster); external;
+  function TRaveCustomText.GetColor: TColor; external;
+  function TRaveCustomText.SetColor(Value: TColor); external;
+  function TRaveCustomText.GetFont: TRaveFont; external;
+  function TRaveCustomText.SetFont(Value: TRaveFont); external;
+
+// TRaveText
+
+  function TRaveText.GetRotation: integer; external;
+  function TRaveText.SetRotation(Value: integer); external;
+  function TRaveText.GetTruncate: boolean; external;
+  function TRaveText.SetTruncate(Value: boolean); external;
+
+// TRaveSection
+
+  function TRaveSection.GetWasteFit: boolean; external;
+  function TRaveSection.SetWasteFit(Value: boolean); external;
+
+// TRaveBaseImage
+
+  function TRaveBaseImage.GetMatchSide: TMatchSide; external;
+  function TRaveBaseImage.SetMatchSide(Value: TMatchSide); external;
+  function TRaveBaseImage.GetFileLink: TFileName; external;
+  function TRaveBaseImage.SetFileLink(Value: TFileName); external;
+  function TRaveBaseImage.GetDataField: TRaveFieldName; external;
+  function TRaveBaseImage.SetDataField(Value: TRaveFieldName); external;
+  function TRaveBaseImage.GetDataView: TRaveBaseDataView; external;
+  function TRaveBaseImage.SetDataView(Value: TRaveBaseDataView); external;
+
+// TRaveGraphicImage
+
+//  function TRaveGraphicImage.GetImage: TGraphic; external;
+//  function TRaveGraphicImage.SetImage(Value: TGraphic); external;
+  function TRaveGraphicImage.ImageName: string; external;
+  function TRaveGraphicImage.ImageFilter: string; external;
+
+// TRaveMailMergeItem
+
+  function TRaveMailMergeItem.GetCaseMatters: boolean; external;
+  function TRaveMailMergeItem.SetCaseMatters(Value: boolean); external;
+  function TRaveMailMergeItem.GetReplaceString: string; external;
+  function TRaveMailMergeItem.SetReplaceString(Value: string); external;
+  function TRaveMailMergeItem.GetSearchToken: string; external;
+  function TRaveMailMergeItem.SetSearchToken(Value: string); external;
+
+// TRaveMemo
+
+  function TRaveMemo.GetContainsRTF: boolean; external;
+  function TRaveMemo.SetContainsRTF(Value: boolean); external;
+  function TRaveMemo.GetExpandParent: boolean; external;
+  function TRaveMemo.SetExpandParent(Value: boolean); external;
+//  function TRaveMemo.GetMailMergeItems: TRavePersistentList; external;
+//  function TRaveMemo.SetMailMergeItems(Value: TRavePersistentList); external;
+  function TRaveMemo.GetMemoText: TRaveMemoString; external; // Result:=RaveSelf.Text;
+  function TRaveMemo.SetMemoText(Value: TRaveMemoString); external; // RaveSelf.Text:=Value;
+  function TRaveMemo.GetTruncate: boolean; external;
+  function TRaveMemo.SetTruncate(Value: boolean); external;
+
+end RVCsStd;

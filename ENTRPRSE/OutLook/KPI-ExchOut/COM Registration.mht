@@ -1,0 +1,836 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: COM Registration
+Date: Fri, 23 Jan 2009 11:50:44 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C97D50.D2A341A0"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5512
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C97D50.D2A341A0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.evocorp.com/Delphi/ADDClassRegistration.htm
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>COM Registration</TITLE>
+<META content=3D"MSHTML 6.00.6000.16674" name=3DGENERATOR>
+<META content=3DFrontPage.Editor.Document name=3DProgId>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1252">
+<META=20
+content=3D"delphi, com, activex, class, registration, itypelib, =
+loadregtypelib, registry, clsid, libid, sample, code, download"=20
+name=3Dkeywords><LINK href=3D"http://www.evocorp.com/styles/default.css" =
+
+type=3Dtext/css rel=3Dstylesheet></HEAD>
+<BODY>
+<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"95%" align=3Dcenter =
+border=3D0>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle width=3D"100%" colSpan=3D3>
+      <P align=3Dcenter></P></TD></TR>
+  <TR height=3D8>
+    <TD width=3D"100%" colSpan=3D3>
+      <P align=3Dcenter><IMG height=3D94=20
+      src=3D"http://www.evocorp.com/Images/Advanced-Delphi-Logo.jpg" =
+width=3D400=20
+      border=3D0></P></TD></TR>
+  <TR>
+    <TD class=3Dtopline vAlign=3Dtop width=3D"100%" colSpan=3D3><!-- =
+NAVIGATION --><!-- TOP BUTTONS -->
+      <TABLE class=3Dbottomline width=3D"100%" align=3Dleft>
+        <TBODY>
+        <TR><!-- EvoCorp Home -->
+          <TD noWrap height=3D15>&nbsp;<A=20
+            href=3D"http://www.evocorp.com/default.htm">EvoCorp=20
+            Home</A>&nbsp;&nbsp; </TD>
+          <TD noWrap height=3D15>&nbsp;<A=20
+            =
+href=3D"http://www.evocorp.com/Delphi/AdvancedDelphi.htm">Delphi::Advance=
+</A>=20
+          </TD>
+          <TD width=3D"100%"></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=3Dtop>
+      <P align=3Dleft>&nbsp;</P>
+      <P><FONT size=3D1>
+      <SCRIPT type=3Dtext/javascript><!--
+		google_ad_client =3D "pub-6366222469213987";
+		google_ad_width =3D 120;
+		google_ad_height =3D 600;
+		google_ad_format =3D "120x600_as";
+		google_color_border =3D "000000";
+		google_color_bg =3D "F0F0F0";
+		google_color_link =3D "0000FF";
+		google_color_url =3D "008000";
+		google_color_text =3D "000000";
+		//--></SCRIPT>
+
+      <SCRIPT =
+src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"=20
+      type=3Dtext/javascript>
+	    </SCRIPT>
+      </FONT></P>
+      <P>&nbsp;</P></TD>
+    <TD width=3D20>&nbsp;&nbsp;&nbsp;</TD>
+    <TD vAlign=3Dtop width=3D"100%">
+      <P><FONT size=3D2></FONT>&nbsp;</P>
+      <P><B>Ensuring your Classes are Registered</B></P>
+      <P>One of the things I've noticed when developing applications =
+reliant on=20
+      third party COM components is that the effort required to ensure =
+those=20
+      components are installed properly can be a tedious task and is =
+more often=20
+      than not commonly overlooked. </P>
+      <P>This is especially true of distributed COM applications that =
+must=20
+      ensure all distributed components have their classes registered on =
+not=20
+      just the server, but on <I>all</I> client machines as well. Some=20
+      developers work around this by stating that their product requires =
+another=20
+      product to be installed beforehand in order for their software to =
+work,=20
+      avoiding building into their application the simple piece of logic =
+that=20
+      goes and checks the for existence of that software.</P>
+      <P>The <A title=3D"Click here to download the COM Class =
+registration unit"=20
+      =
+href=3D"http://www.evocorp.com/Downloads/AxRegistration.pas">AxRegistrati=
+on</A>=20
+      unit contains three methods that make checking for the existence =
+and=20
+      registration of COM classes and type libraries easier. They =
+are:</P>
+      <P>
+      <TABLE class=3Dbox width=3D"100%"><!-- ComClassesRegistered =
+Definition -->
+        <TBODY>
+        <TR>
+          <TD class=3Dboxshadedlight vAlign=3Dtop><IMG height=3D15 =
+src=3D"" width=3D15=20
+            border=3D0> </TD>
+          <TD width=3D"100%">
+            <TABLE width=3D"100%">
+              <TBODY>
+              <TR>
+                <TD class=3Dblankshadedlight=20
+                  width=3D"100%"><B>ComClassesRegistered</B></TD></TR>
+              <TR>
+                <TD width=3D"100%"><FONT size=3D1>The =
+ComClassesRegistered method=20
+                  checks whether a list of classes (identified by their =
+Class=20
+                  ID) has been registered on the current machine. This =
+includes=20
+                  a check of the registry and whether or not each class =
+has an=20
+                  associated type library registered against it. </FONT>
+                  <P><FONT size=3D1>The function returns false if at =
+least one of=20
+                  the classes listed in the ClassList parameter is not=20
+                  registered, and fills the UnregisteredClassList =
+parameter with=20
+                  the complete list of classes found not to be =
+registered. The=20
+                  function returns true if all classes have been be =
+registered.=20
+                  </FONT></P>
+                  <P><B><FONT size=3D1>Method Definition</FONT></B></P>
+                  <P><FONT style=3D"FONT-SIZE: 9pt"=20
+                  face=3D"Courier New"><B>function</B>=20
+                  ComClassesRegistered(<B>const</B> ClassList: =
+<B>array</B>=20
+                  <B>of</B> TCLSID;<BR>&nbsp; <B>var</B> =
+UnregisteredClassList:=20
+                  TClassIdArray): Boolean;</FONT></P>
+                  <P><B><FONT size=3D1>Example</FONT></B></P>
+                  <P><FONT style=3D"FONT-SIZE: 9pt"=20
+                  face=3D"Courier New"><B>uses</B><BR>&nbsp; Dialogs, =
+ActiveX, <A=20
+                  =
+href=3D"http://www.evocorp.com/Downloads/AxRegistration.pas">AxRegistrati=
+on</A>;<BR>&nbsp;<BR><B>procedure</B>=20
+                  CheckInternetExplorerRegistered;<BR><B>var</B> =
+MissingClasses:=20
+                  TClassIDArray;<BR>&nbsp;&nbsp;&nbsp; i:=20
+                  Integer;<BR><B>begin</B><BR>&nbsp; <B>if</B> =
+<B>not</B>=20
+                  ComClassesRegistered([CLASS_InternetExplorer,=20
+                  CLASS_WebBrowser],<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+                  MissingClasses) <B>then</B><BR>&nbsp;&nbsp;&nbsp; =
+<B>for</B> i=20
+                  :=3D Low(MissingClasses) <B>to</B> =
+High(MissingClasses)=20
+                  <B>do</B><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+ShowMessage(<FONT=20
+                  color=3D#008080>'Class '</FONT> +=20
+                  GuidToString(MissingClasses[i]) +=20
+                  <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT=20
+                  color=3D#008080>' is not registered on this=20
+                  machine.'</FONT>);<BR><B>end</B>; </FONT><FONT=20
+                  =
+size=3D1><BR>&nbsp;</FONT></P></TD></TR></TBODY></TABLE></TD></TR><!-- =
+TypeLibraryRegistered Definition -->
+        <TR>
+          <TD class=3Dboxshadedlight vAlign=3Dtop><IMG height=3D15 =
+src=3D"" width=3D15=20
+            border=3D0> </TD>
+          <TD width=3D"100%">
+            <TABLE width=3D"100%">
+              <TBODY>
+              <TR>
+                <TD class=3Dblankshadedlight=20
+                  =
+width=3D"100%"><B>TypeLibrariesRegistered</B></TD></TR>
+              <TR>
+                <TD width=3D"100%"><FONT size=3D1>Similar to the=20
+                  ComClassesRegistered method, above, the=20
+                  TypeLibrariesRegistered method checks whether or not a =
+list of=20
+                  type libraries has been registered on the current =
+machine, and=20
+                  that each type library can actually be loaded. Each =
+type=20
+                  library presented to this function is identified by =
+it's type=20
+                  library GUID, and the major and minor version numbers =
+of that=20
+                  library.</FONT>
+                  <P><FONT size=3D1>The function returns false if at =
+least one of=20
+                  the type libraries listed in the TypeLibList paramater =
+is not=20
+                  registered, and fills the UnregisteredTypeLibs =
+parameter with=20
+                  the complete list of type libraries found not to be=20
+                  registered. The function returns true if all type =
+libraries=20
+                  have been registered and can be loaded.</FONT></P>
+                  <P><B><FONT size=3D1>Method Definition</FONT></B></P>
+                  <P><FONT style=3D"FONT-SIZE: 9pt"=20
+                  face=3D"Courier New"><B>function</B>=20
+                  TypeLibrariesRegistered(<B>const</B> TypeLibList:=20
+                  TTypeLibArray;<BR>&nbsp; <B>var</B> =
+UnregisteredTypeLibs:=20
+                  TTypeLibArray; <B>const</B> LanguageCode: LCID =3D =
+<FONT=20
+                  color=3D#0000ff>0</FONT>;<BR>&nbsp; <B>const</B>=20
+                  FailOnLanguageCodeMismatch: Boolean =3D False):=20
+                  =
+Boolean;</FONT><BR>&nbsp;</P></TD></TR></TBODY></TABLE></TD></TR><!-- =
+RegisterTypeLibrary Definition -->
+        <TR>
+          <TD class=3Dboxshadedlight vAlign=3Dtop><IMG height=3D15 =
+src=3D"" width=3D15=20
+            border=3D0> </TD>
+          <TD width=3D"100%">
+            <TABLE width=3D"100%">
+              <TBODY>
+              <TR>
+                <TD class=3Dblankshadedlight=20
+                  width=3D"100%"><B>RegisterTypeLibrary</B></TD></TR>
+              <TR>
+                <TD width=3D"100%"><FONT size=3D1>The =
+RegisterTypeLibrary method=20
+                  is used to register type library ALibraryFileName on =
+the=20
+                  current machine. ALibraryFileName can represent a =
+physical COM=20
+                  server (such as an EXE, DLL or OCX), or can be a type =
+library=20
+                  definition file only (such as Delphi's TLB). Because =
+this=20
+                  function can register type library definition files it =
+is=20
+                  particularly useful for automated registration of =
+class=20
+                  information on client machines for distributed COM =
+(DCOM)=20
+                  applications.</FONT>
+                  <P><FONT size=3D1>If the type library ALibraryFileName =
+cannot be=20
+                  loaded or registered, this method throws an exception=20
+                  identifying whether the error occurred on the load or=20
+                  registration of the type library, and contains the OLE =
+error=20
+                  code associated with the failure.</FONT></P>
+                  <P><B><FONT size=3D1>Method Definition</FONT></B></P>
+                  <P><FONT style=3D"FONT-SIZE: 9pt"=20
+                  face=3D"Courier New"><B>procedure</B>=20
+                  RegisterTypeLibrary(<B>const</B> ALibraryFileName:=20
+                  =
+WideString);</FONT></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABL=
+E>&nbsp;
+      <P>The only caveat of this code is that on NT oriented platforms, =
+you=20
+      <FONT color=3D#800000>must have administrator privileges</FONT> =
+for proper=20
+      registry access, otherwise these functions might fail due to =
+access=20
+      problems.</P>
+      <P><B>Requirements</B></P>
+      <UL>
+        <LI>Delphi 6=20
+        <LI>Administrator Access on the Client Machine </LI></UL>
+      <P><B>Download Code</B></P>
+      <P><A title=3D"Click here to download the file AxRegistration.pas" =
+
+      =
+href=3D"http://www.evocorp.com/Downloads/AxRegistration.pas">AxRegistrati=
+on.pas</A>=20
+      can be downloaded <A=20
+      title=3D"Click here to download the file AxRegistration.pas"=20
+      =
+href=3D"http://www.evocorp.com/Downloads/AxRegistration.pas">here</A>.</P=
+>
+      <P></P></TD>
+  <TR>
+    <TD class=3Dblankshadeddark width=3D"100%" colSpan=3D3 =
+height=3D1></TD></TR>
+  <TR>
+    <TD width=3D"100%" colSpan=3D3>
+      <P align=3Dcenter><FONT size=3D1>Microsoft Internet Explorer is a =
+registered=20
+      trademark of Microsoft Corporation.<BR>&nbsp;</FONT></P></TD>
+  <TR>
+    <TD class=3Dblankshadeddark width=3D"100%" colSpan=3D3=20
+height=3D1></TD></TR></TBODY></TABLE></BODY></HTML>
+
+------=_NextPart_000_0000_01C97D50.D2A341A0
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://www.evocorp.com/Images/Advanced-Delphi-Logo.jpg
+
+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
+/9k=
+
+------=_NextPart_000_0000_01C97D50.D2A341A0
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.evocorp.com/styles/default.css
+
+BODY {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Tahoma, Arial; BACKGROUND-COLOR: =
+#ffffff
+}
+TD {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Tahoma, Arial
+}
+A:link {
+	CURSOR: hand; COLOR: #0000cc; TEXT-DECORATION: none
+}
+A:active {
+	CURSOR: hand; COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	CURSOR: hand; COLOR: #7f007f; TEXT-DECORATION: none
+}
+A:hover {
+	CURSOR: hand; COLOR: #0000ff; TEXT-DECORATION: underline
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; FONT-FAMILY: Verdana, Tahoma, Arial
+}
+.blank {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px; BACKGROUND-COLOR: #ffffff
+}
+.blankshadedlight {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px; BACKGROUND-COLOR: #f0f0f0
+}
+.blankshadedverylight {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px; BACKGROUND-COLOR: #f7f7f7
+}
+.blankshadeddark {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px; BACKGROUND-COLOR: #cccccc
+}
+.blankbox {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#ffffff 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#ffffff 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ffffff 1px solid; =
+BACKGROUND-COLOR: #ffffff
+}
+.box {
+	BORDER-RIGHT: #999999 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #ffffff
+}
+.boxshadedlight {
+	BORDER-RIGHT: #999999 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #f0f0f0
+}
+.boxshadeddark {
+	BORDER-RIGHT: #999999 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #cccccc
+}
+.blankboxshadedlight {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#ffffff 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#ffffff 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ffffff 1px solid; =
+BACKGROUND-COLOR: #f0f0f0
+}
+.menubox {
+	BORDER-RIGHT: #999999 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 1px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #f7f7f7
+}
+.codetext {
+	FONT-SIZE: 10pt; FONT-FAMILY: Courier New
+}
+.leftpaddedcell12 {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 12px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px
+}
+.leftpaddedcell16 {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 16px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px
+}
+.leftpaddedcell24 {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 24px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px
+}
+.leftpaddedcell32 {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 32px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px
+}
+.leftpaddedcell48 {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 48px; PADDING-BOTTOM: 2px; =
+PADDING-TOP: 2px
+}
+.spacedout {
+	BORDER-RIGHT: #999999 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: =
+#999999 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: =
+#999999 0px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #999999 0px solid; =
+BACKGROUND-COLOR: #ffffff
+}
+.leftbordershadedlight {
+	BORDER-RIGHT: #999999 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 0px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 0px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 0px solid; =
+BACKGROUND-COLOR: #f0f0f0
+}
+.bottomline {
+	BORDER-RIGHT: #999999 0px solid; BORDER-TOP: #999999 0px solid; =
+BORDER-LEFT: #999999 0px solid; BORDER-BOTTOM: #999999 1px solid
+}
+.bottomlinelight {
+	BORDER-RIGHT: #f0f0f0 0px solid; BORDER-TOP: #f0f0f0 0px solid; =
+BORDER-LEFT: #f0f0f0 0px solid; BORDER-BOTTOM: #f0f0f0 1px solid
+}
+.bottomlineverylight {
+	BORDER-RIGHT: #f7f7f7 0px solid; BORDER-TOP: #f7f7f7 0px solid; =
+BORDER-LEFT: #f7f7f7 0px solid; BORDER-BOTTOM: #f7f7f7 1px solid
+}
+.bottomlinedark {
+	BORDER-RIGHT: #666666 0px solid; BORDER-TOP: #666666 0px solid; =
+BORDER-LEFT: #666666 0px solid; BORDER-BOTTOM: #666666 1px solid
+}
+.bottomlineverydark {
+	BORDER-RIGHT: #333333 0px solid; BORDER-TOP: #333333 0px solid; =
+BORDER-LEFT: #333333 0px solid; BORDER-BOTTOM: #333333 1px solid
+}
+.bottomlineblack {
+	BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 0px solid; =
+BORDER-LEFT: #000000 0px solid; BORDER-BOTTOM: #000000 1px solid
+}
+.bottomlineshadedlight {
+	BORDER-RIGHT: #999999 0px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 0px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 0px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #f0f0f0
+}
+.bottomlineshadedverylight {
+	BORDER-RIGHT: #999999 0px solid; PADDING-RIGHT: 2px; BORDER-TOP: =
+#999999 0px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: =
+#999999 0px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; =
+BACKGROUND-COLOR: #f7f7f7
+}
+.topline {
+	BORDER-RIGHT: #999999 0px solid; BORDER-TOP: #999999 1px solid; =
+BORDER-LEFT: #999999 0px solid; BORDER-BOTTOM: #999999 0px solid
+}
+.toplineblack {
+	BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 1px solid; =
+BORDER-LEFT: #000000 0px solid; BORDER-BOTTOM: #000000 0px solid
+}
+.topandbottomline {
+	BORDER-RIGHT: #999999 0px solid; BORDER-TOP: #999999 1px solid; =
+BORDER-LEFT: #999999 0px solid; BORDER-BOTTOM: #999999 1px solid
+}
+
+------=_NextPart_000_0000_01C97D50.D2A341A0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pagead2.googlesyndication.com/pagead/show_ads.js
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+  <head>
+    <link rel=3D"stylesheet" =
+href=3D"http://www.mailcontrol.com/cobrand/blackspider/blackspider.css" =
+type=3D"text/css"/>
+    <link rel=3D"shortcut icon" =
+href=3D"http://www.mailcontrol.com/images/wd_accessdenied.ico" =
+type=3D"image/x-icon">
+    <title>Access denied</title>
+  </head>
+  <body>
+    <div style=3D"text-align:center"><img alt=3D'Access denied' =
+src=3D'http://www.mailcontrol.com/images/wd_accessdenied_sml.png' =
+width=3D'80' height=3D'80'></div>
+    <p>You have been refused access to the following site or =
+page:<br/>http://pagead2.googlesyndication.com/pagead/show_ads.js</p>
+    <p>Please refer to the IRIS Group Email, Internet and Password =
+Policy.</p>
+    <p>Matched categories:=0A=
+<DL class=3D"category_list">=0A=
+<DT>Advertisements</DT><DD>Sites that provide advertising graphics or =
+other ad content files.</DD>=0A=
+</DL></p>
+    <hr/>
+    <img src=3D"http://www.mailcontrol.com/images/websense-tag.jpg" =
+width=3D"237" height=3D"53" align=3D"left" border=3D"0" =
+alt=3D"Websense"><p class=3D"x-small">
+Make sure you have read and understood the IRIS Group Email, Internet =
+and Password Policy.</p>
+  </body>
+</html>
+------=_NextPart_000_0000_01C97D50.D2A341A0--

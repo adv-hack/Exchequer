@@ -1,0 +1,68 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="263">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="serial_no" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SerialNo" collation="1" />
+    <schemafield fieldname="batch_no" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="BatchNo" collation="1" />
+    <schemafield fieldname="in_doc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="InDoc" collation="1" />
+    <schemafield fieldname="out_doc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="OutDoc" collation="1" />
+    <schemafield fieldname="sold" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="Sold"/>
+    <schemafield fieldname="date_in" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="DateIn"  />
+    <schemafield fieldname="cost_price" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CostPrice"/>
+    <schemafield fieldname="sale_price" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="SalePrice"/>
+    <schemafield fieldname="stock_folio" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="StockFolio"/>
+    <schemafield fieldname="date_out" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="DateOut"  />
+    <schemafield fieldname="sold_line" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="SoldLine"/>
+    <schemafield fieldname="cost_currency" fullfieldname="" typename="BYTE" size="1" elements="1" id="0" columnname="CostCurrency"/>
+    <schemafield fieldname="sale_currency" fullfieldname="" typename="BYTE" size="1" elements="1" id="0" columnname="SaleCurrency"/>
+    <schemafield fieldname="buy_line" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="BuyLine"/>
+    <schemafield fieldname="batch_rec" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="BatchRec"/>
+    <schemafield fieldname="buy_qty" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="BuyQty"/>
+    <schemafield fieldname="qty_used" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="QtyUsed"/>
+    <schemafield fieldname="batch_child" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="BatchChild"/>
+    <schemafield fieldname="in_mloc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="InMLoc" collation="1" />
+    <schemafield fieldname="out_mloc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="OutMLoc" collation="1" />
+    <schemafield fieldname="ser_c_rates1" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="SerCompanyRate"/>
+    <schemafield fieldname="ser_c_rates2" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="SerDailyRate"/>
+    <schemafield fieldname="in_ord_doc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="InOrdDoc" collation="1" />
+    <schemafield fieldname="out_ord_doc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="OutOrdDoc" collation="1" />
+    <schemafield fieldname="in_ord_line" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="InOrdLine"/>
+    <schemafield fieldname="out_ord_line" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="OutOrdLine"/>
+    <schemafield fieldname="n_line_count" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="NLineCount"/>
+    <schemafield fieldname="note_folio" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="NoteFolio"/>
+    <schemafield fieldname="date_use_x" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="DateUseX"  />
+    <schemafield fieldname="suse_o_rate" fullfieldname="" typename="BYTE" size="1" elements="1" id="0" columnname="SUseORate"/>
+    <schemafield fieldname="tri_rates" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="TriRates"/>
+    <schemafield fieldname="tri_euro" fullfieldname="" typename="BYTE" size="1" elements="1" id="0" columnname="TriEuro"/>
+    <schemafield fieldname="tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="TriInvert"/>
+    <schemafield fieldname="tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="TriFloat"/>
+    <schemafield fieldname="spare2" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="Spare2"  />
+    <schemafield fieldname="child_n_folio" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="ChildNFolio"/>
+    <schemafield fieldname="in_bin_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="InBinCode" collation="1" />
+    <schemafield fieldname="return_sno" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="ReturnSNo"/>
+    <schemafield fieldname="batch_ret_qty" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="BatchRetQty"/>
+    <schemafield fieldname="ret_doc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="RetDoc" collation="1" />
+    <schemafield fieldname="ret_doc_line" fullfieldname="" typename="long" size="4" elements="1" id="0" columnname="RetDocLine"/>
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>stock_folio</item>
+				<item>sold</item>
+        <item>serial_no</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>serial_no</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isclustered="0" isunique="0">
+			<indexfields>
+				<item>batch_no</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

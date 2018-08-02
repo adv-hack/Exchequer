@@ -1,0 +1,45 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="612" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="scFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="scFolioNo" />        
+        <schemafield fieldname="scSalesCode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="scSalesCode" />        
+        <schemafield fieldname="scDescription" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" collation="1" columnname="scDescription" />        
+        <schemafield fieldname="scSalesCodeType" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="scSalesCodeType" />        
+        <schemafield fieldname="scDefCommissionBasis" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="scDefCommissionBasis" />        
+        <schemafield fieldname="scStatus" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="scStatus" />        
+        <schemafield fieldname="scEntSupplierCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" collation="1" columnname="scEntSupplierCode" />        
+        <schemafield fieldname="scEntGLCode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="scEntGLCode" />        
+        <schemafield fieldname="scEntCostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="scEntCostCentre" />        
+        <schemafield fieldname="scEntDepartment" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="scEntDepartment" />        
+        <schemafield fieldname="scEntInvCurrency" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="scEntInvCurrency" />        
+        <schemafield fieldname="scDefCommission" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="scDefCommission" />        
+        <schemafield fieldname="scDefCommissionType" fullfieldname="" typename="byte" size="1" elements="1" id="-1" columnname="scDefCommissionType" />        
+        <schemafield fieldname="scDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="scDummyChar" />        
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>scFolioNo</item>
+                <item>scDummyChar</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>scSalesCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>scDescription</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="3" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>scEntSupplierCode</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

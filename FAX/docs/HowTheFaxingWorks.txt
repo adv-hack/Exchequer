@@ -1,0 +1,51 @@
+When running enterprise ecomms the faxing works as follows...
+
+
+FAXBTRV.DLL
+-----------
+
+1. When you send a fax in enterprise it first calls the function "OpenFaxFileWithPath" in 
+FAXBTRV.DLL. It passes in the path to open the file from - I assume this path is aquired
+from the enterprise system setup.
+
+2. The Function "GetUniqueRef" is then called to get the number to be entered in the 
+FaxDocName (e.g. 00000G). "Exchequer Enterprise Fax" is then appended to the end of this
+number to create the FaxDocName.
+
+3. "InsertFaxDetails" is now called. This adds a record into FAXES.DAT which includes such
+details as : The name of the print job which we will be giving to the printer driver when
+we actually go to print this fax.
+
+4. "CloseFaxFile" is now called which closes FAXES.DAT.
+
+Note : The FAXBTRV.DLL that is used, comes from the DIR specified in the general settings. 
+e.g. something like c:\excheqr\entrprse\faxsrv.
+
+
+FAXCLNT.EXE
+-----------
+
+1. The Next thing that happens is that Enterprise says "Print the fax".
+
+2. The event "ApdFaxDriverDocStart" now fires. This appears to happen BEFORE any printing
+to the driver happens.
+
+3. In "ApdFaxDriverDocStart" we check to see if the server is running, if it is not we will 
+pop-up a message (only the first time).
+
+4. We now define the filename that we are going to use for this fax (sequentially numbered)
+so we can have a link between the database record, and the APF filename.
+
+5. We now Check to see if there is a record in the database which has the same name as
+ApdFaxDriver.DocName. This should be found if you are faxing from enterprise. If the record 
+in the database could not be found, then we pop-up a dialog asking where to send the fax.
+
+Note : In Windows 2000 it changes the name of the print job. Therefore, when we go to look 
+for it, it isn't there, so it pops-up the Fax Info dialog.
+
+6. The event "ApdFaxDriverDocEnd" is now fired. This happens immediately after the fax has 
+been printed to the driver.
+
+
+Now there is an entry in the database pointing to an APF filename, so that the sender can 
+find the fax and send it.

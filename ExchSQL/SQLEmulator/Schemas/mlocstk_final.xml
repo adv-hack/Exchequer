@@ -1,0 +1,552 @@
+<schemarecord version="14" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="1302">
+	<recordfields>
+		<schemafield fieldname="fixed" fullfieldname="fixed" typename="MLOCSTK_FIXED" size="0" elements="1" id="-1" columnname="" />
+		<schemafield fieldname="var" fullfieldname="var" typename="MLOCSTK_VAR" size="0" elements="1" id="-1" columnname="" />
+	</recordfields>
+	<fixedfields>
+		<schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix" />
+		<schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+		<schemafield fieldname="var_code1" fullfieldname="var_code1" typename="DelphiEmbeddedCaseSensitiveString" size="31" elements="1" id="-1" columnname="varCode1" />
+		<schemafield fieldname="var_code2" fullfieldname="var_code2" typename="DelphiEmbeddedCaseSensitiveString" size="46" elements="1" id="-1" columnname="varCode2" />
+		<schemafield fieldname="var_code3" fullfieldname="var_code3" typename="DelphiEmbeddedCaseSensitiveString" size="32" elements="1" id="-1" columnname="varCode3" />
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes>
+		<recordtype name="MLocLoc" id="0" stringid="CC">
+			<schemafields>
+				<schemafield fieldname="lo_addr1" fullfieldname="lo_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr1"/>
+				<schemafield fieldname="lo_addr2" fullfieldname="lo_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr2"/>
+				<schemafield fieldname="lo_addr3" fullfieldname="lo_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr3"/>
+				<schemafield fieldname="lo_addr4" fullfieldname="lo_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr4"/>
+				<schemafield fieldname="lo_addr5" fullfieldname="lo_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="LoAddr5"/>
+				<schemafield fieldname="lo_tel" fullfieldname="lo_tel" typename="DelphiString" size="26" elements="1" id="0" columnname="LoTel"/>
+				<schemafield fieldname="lo_fax" fullfieldname="lo_fax" typename="DelphiString" size="26" elements="1" id="0" columnname="LoFax"/>
+				<schemafield fieldname="lo_email" fullfieldname="lo_email" typename="DelphiString" size="101" elements="1" id="0" columnname="Loemail"/>
+				<schemafield fieldname="lo_modem" fullfieldname="lo_modem" typename="DelphiString" size="26" elements="1" id="0" columnname="LoModem"/>
+				<schemafield fieldname="lo_contact" fullfieldname="lo_contact" typename="DelphiString" size="31" elements="1" id="0" columnname="LoContact"/>
+				<schemafield fieldname="lo_currency" fullfieldname="lo_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LoCurrency"/>
+				<schemafield fieldname="lo_area" fullfieldname="lo_area" typename="DelphiString" size="6" elements="1" id="0" columnname="LoArea"/>
+				<schemafield fieldname="lo_rep" fullfieldname="lo_rep" typename="DelphiString" size="6" elements="1" id="0" columnname="LoRep"/>
+				<schemafield fieldname="lo_tag" fullfieldname="lo_tag" typename="bool1" size="1" elements="1" id="0" columnname="LoTag"/>
+				<schemafield fieldname="lo_nominal1" fullfieldname="lo_nominal1" typename="long" size="4" elements="1" id="0" columnname="LoNominal1"/>
+				<schemafield fieldname="lo_nominal2" fullfieldname="lo_nominal2" typename="long" size="4" elements="1" id="0" columnname="LoNominal2"/>
+				<schemafield fieldname="lo_nominal3" fullfieldname="lo_nominal3" typename="long" size="4" elements="1" id="0" columnname="LoNominal3"/>
+				<schemafield fieldname="lo_nominal4" fullfieldname="lo_nominal4" typename="long" size="4" elements="1" id="0" columnname="LoNominal4"/>
+				<schemafield fieldname="lo_nominal5" fullfieldname="lo_nominal5" typename="long" size="4" elements="1" id="0" columnname="LoNominal5"/>
+				<schemafield fieldname="lo_nominal6" fullfieldname="lo_nominal6" typename="long" size="4" elements="1" id="0" columnname="LoNominal6"/>
+				<schemafield fieldname="lo_nominal7" fullfieldname="lo_nominal7" typename="long" size="4" elements="1" id="0" columnname="LoNominal7"/>
+				<schemafield fieldname="lo_nominal8" fullfieldname="lo_nominal8" typename="long" size="4" elements="1" id="0" columnname="LoNominal8"/>
+				<schemafield fieldname="lo_nominal9" fullfieldname="lo_nominal9" typename="long" size="4" elements="1" id="0" columnname="LoNominal9"/>
+				<schemafield fieldname="lo_nominal10" fullfieldname="lo_nominal10" typename="long" size="4" elements="1" id="0" columnname="LoNominal10"/>
+				<schemafield fieldname="lo_cc_dep1" fullfieldname="lo_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LoDepartment" collation="1"/>
+				<schemafield fieldname="lo_cc_dep2" fullfieldname="lo_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LoCostCentre" collation="1"/>
+				<schemafield fieldname="lo_use_price" fullfieldname="lo_use_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUsePrice"/>
+				<schemafield fieldname="lo_use_nom" fullfieldname="lo_use_nom" typename="bool1" size="1" elements="1" id="0" columnname="LoUseNom"/>
+				<schemafield fieldname="lo_use_cc_dep" fullfieldname="lo_use_cc_dep" typename="bool1" size="1" elements="1" id="0" columnname="LoUseCCDep"/>
+				<schemafield fieldname="lo_use_supp" fullfieldname="lo_use_supp" typename="bool1" size="1" elements="1" id="0" columnname="LoUseSupp"/>
+				<schemafield fieldname="lo_use_bin_loc" fullfieldname="lo_use_bin_loc" typename="bool1" size="1" elements="1" id="0" columnname="LoUseBinLoc"/>
+				<schemafield fieldname="lo_n_line_count" fullfieldname="lo_n_line_count" typename="long" size="4" elements="1" id="0" columnname="LoNLineCount"/>
+				<schemafield fieldname="lo_use_c_price" fullfieldname="lo_use_c_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUseCPrice"/>
+				<schemafield fieldname="lo_use_r_price" fullfieldname="lo_use_r_price" typename="bool1" size="1" elements="1" id="0" columnname="LoUseRPrice"/>
+				<schemafield fieldname="lo_wopwipgl" fullfieldname="lo_wopwipgl" typename="long" size="4" elements="1" id="0" columnname="LoWOPWIPGL"/>
+				<schemafield fieldname="lo_return_gl" fullfieldname="lo_return_gl" typename="long" size="4" elements="1" id="0" columnname="LoReturnGL"/>
+				<schemafield fieldname="lo_p_return_gl" fullfieldname="lo_p_return_gl" typename="long" size="4" elements="1" id="0" columnname="LoPReturnGL"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="MStkLoc" id="1" stringid="CD">
+			<schemafields>
+				<schemafield fieldname="ls_stk_code" fullfieldname="ls_stk_code" typename="DelphiString" size="21" elements="1" id="0" columnname="LsStkCode" collation="1"/>
+				<schemafield fieldname="ls_stk_folio" fullfieldname="ls_stk_folio" typename="long" size="4" elements="1" id="0" columnname="LsStkFolio"/>
+				<schemafield fieldname="ls_loc_code" fullfieldname="ls_loc_code" typename="DelphiString" size="11" elements="1" id="0" columnname="LsLocCode" collation="1"/>
+				<schemafield fieldname="ls_qty_in_stock" fullfieldname="ls_qty_in_stock" typename="double" size="8" elements="1" id="0" columnname="LsQtyInStock"/>
+				<schemafield fieldname="ls_qty_on_order" fullfieldname="ls_qty_on_order" typename="double" size="8" elements="1" id="0" columnname="LsQtyOnOrder"/>
+				<schemafield fieldname="ls_qty_alloc" fullfieldname="ls_qty_alloc" typename="double" size="8" elements="1" id="0" columnname="LsQtyAlloc"/>
+				<schemafield fieldname="ls_qty_picked" fullfieldname="ls_qty_picked" typename="double" size="8" elements="1" id="0" columnname="LsQtyPicked"/>
+				<schemafield fieldname="ls_qty_min" fullfieldname="ls_qty_min" typename="double" size="8" elements="1" id="0" columnname="LsQtyMin"/>
+				<schemafield fieldname="ls_qty_max" fullfieldname="ls_qty_max" typename="double" size="8" elements="1" id="0" columnname="LsQtyMax"/>
+				<schemafield fieldname="ls_qty_freeze" fullfieldname="ls_qty_freeze" typename="double" size="8" elements="1" id="0" columnname="LsQtyFreeze"/>
+				<schemafield fieldname="ls_ro_qty" fullfieldname="ls_ro_qty" typename="double" size="8" elements="1" id="0" columnname="LsRoQty"/>
+				<schemafield fieldname="ls_ro_date" fullfieldname="ls_ro_date" typename="DelphiString" size="9" elements="1" id="0" columnname="LsRoDate"/>
+				<schemafield fieldname="ls_ro_cc_dep1" fullfieldname="ls_ro_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LsRoDepartment" collation="1"/>
+				<schemafield fieldname="ls_ro_cc_dep2" fullfieldname="ls_ro_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LsRoCostCentre" collation="1"/>
+				<schemafield fieldname="ls_cc_dep1" fullfieldname="ls_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="LsDepartment" collation="1"/>
+				<schemafield fieldname="ls_cc_dep2" fullfieldname="ls_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="LsCostCentre" collation="1"/>
+				<schemafield fieldname="ls_bin_loc" fullfieldname="ls_bin_loc" typename="DelphiString" size="11" elements="1" id="0" columnname="LsBinLoc"/>
+				<schemafield fieldname="currency1" fullfieldname="currency1" typename="BYTE" size="1" elements="1" id="0" columnname="Currency1"/>
+				<schemafield fieldname="sales_price1" fullfieldname="sales_price1" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice1"/>
+				<schemafield fieldname="currency2" fullfieldname="currency2" typename="BYTE" size="1" elements="1" id="0" columnname="Currency2"/>
+				<schemafield fieldname="sales_price2" fullfieldname="sales_price2" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice2"/>
+				<schemafield fieldname="currency3" fullfieldname="currency3" typename="BYTE" size="1" elements="1" id="0" columnname="Currency3"/>
+				<schemafield fieldname="sales_price3" fullfieldname="sales_price3" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice3"/>
+				<schemafield fieldname="currency4" fullfieldname="currency4" typename="BYTE" size="1" elements="1" id="0" columnname="Currency4"/>
+				<schemafield fieldname="sales_price4" fullfieldname="sales_price4" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice4"/>
+				<schemafield fieldname="currency5" fullfieldname="currency5" typename="BYTE" size="1" elements="1" id="0" columnname="Currency5"/>
+				<schemafield fieldname="sales_price5" fullfieldname="sales_price5" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice5"/>
+				<schemafield fieldname="currency6" fullfieldname="currency6" typename="BYTE" size="1" elements="1" id="0" columnname="Currency6"/>
+				<schemafield fieldname="sales_price6" fullfieldname="sales_price6" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice6"/>
+				<schemafield fieldname="currency7" fullfieldname="currency7" typename="BYTE" size="1" elements="1" id="0" columnname="Currency7"/>
+				<schemafield fieldname="sales_price7" fullfieldname="sales_price7" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice7"/>
+				<schemafield fieldname="currency8" fullfieldname="currency8" typename="BYTE" size="1" elements="1" id="0" columnname="Currency8"/>
+				<schemafield fieldname="sales_price8" fullfieldname="sales_price8" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice8"/>
+				<schemafield fieldname="currency9" fullfieldname="currency9" typename="BYTE" size="1" elements="1" id="0" columnname="Currency9"/>
+				<schemafield fieldname="sales_price9" fullfieldname="sales_price9" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice9"/>
+				<schemafield fieldname="currency10" fullfieldname="currency10" typename="BYTE" size="1" elements="1" id="0" columnname="Currency10"/>
+				<schemafield fieldname="sales_price10" fullfieldname="sales_price10" typename="DelphiReal" size="6" elements="1" id="0" columnname="SalesPrice10"/>
+				<schemafield fieldname="ls_ro_price" fullfieldname="ls_ro_price" typename="double" size="8" elements="1" id="0" columnname="LsRoPrice"/>
+				<schemafield fieldname="ls_ro_currency" fullfieldname="ls_ro_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LsRoCurrency"/>
+				<schemafield fieldname="ls_cost_price" fullfieldname="ls_cost_price" typename="double" size="8" elements="1" id="0" columnname="LsCostPrice"/>
+				<schemafield fieldname="ls_p_currency" fullfieldname="ls_p_currency" typename="BYTE" size="1" elements="1" id="0" columnname="LsPCurrency"/>
+				<schemafield fieldname="ls_def_nom1" fullfieldname="ls_def_nom1" typename="long" size="4" elements="1" id="0" columnname="LsDefNom1"/>
+				<schemafield fieldname="ls_def_nom2" fullfieldname="ls_def_nom2" typename="long" size="4" elements="1" id="0" columnname="LsDefNom2"/>
+				<schemafield fieldname="ls_def_nom3" fullfieldname="ls_def_nom3" typename="long" size="4" elements="1" id="0" columnname="LsDefNom3"/>
+				<schemafield fieldname="ls_def_nom4" fullfieldname="ls_def_nom4" typename="long" size="4" elements="1" id="0" columnname="LsDefNom4"/>
+				<schemafield fieldname="ls_def_nom5" fullfieldname="ls_def_nom5" typename="long" size="4" elements="1" id="0" columnname="LsDefNom5"/>
+				<schemafield fieldname="ls_def_nom6" fullfieldname="ls_def_nom6" typename="long" size="4" elements="1" id="0" columnname="LsDefNom6"/>
+				<schemafield fieldname="ls_def_nom7" fullfieldname="ls_def_nom7" typename="long" size="4" elements="1" id="0" columnname="LsDefNom7"/>
+				<schemafield fieldname="ls_def_nom8" fullfieldname="ls_def_nom8" typename="long" size="4" elements="1" id="0" columnname="LsDefNom8"/>
+				<schemafield fieldname="ls_def_nom9" fullfieldname="ls_def_nom9" typename="long" size="4" elements="1" id="0" columnname="LsDefNom9"/>
+				<schemafield fieldname="ls_def_nom10" fullfieldname="ls_def_nom10" typename="long" size="4" elements="1" id="0" columnname="LsDefNom10"/>
+				<schemafield fieldname="ls_stk_flg" fullfieldname="ls_stk_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsStkFlg"/>
+				<schemafield fieldname="ls_min_flg" fullfieldname="ls_min_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsMinFlg"/>
+				<schemafield fieldname="ls_temp_supp" fullfieldname="ls_temp_supp" typename="DelphiString" size="11" elements="1" id="0" columnname="LsTempSupp"/>
+				<schemafield fieldname="ls_supplier" fullfieldname="ls_supplier" typename="DelphiString" size="11" elements="1" id="0" columnname="LsSupplier" collation="1"/>
+				<schemafield fieldname="ls_last_used" fullfieldname="ls_last_used" typename="DelphiString" size="9" elements="1" id="0" columnname="LsLastUsed"/>
+				<schemafield fieldname="ls_qty_posted" fullfieldname="ls_qty_posted" typename="double" size="8" elements="1" id="0" columnname="LsQtyPosted"/>
+				<schemafield fieldname="ls_qty_take" fullfieldname="ls_qty_take" typename="double" size="8" elements="1" id="0" columnname="LsQtyTake"/>
+				<schemafield fieldname="ls_ro_flg" fullfieldname="ls_ro_flg" typename="bool1" size="1" elements="1" id="0" columnname="LsROFlg"/>
+				<schemafield fieldname="ls_last_time" fullfieldname="ls_last_time" typename="DelphiString" size="7" elements="1" id="0" columnname="LsLastTime"/>
+				<schemafield fieldname="ls_qty_alloc_wor" fullfieldname="ls_qty_alloc_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyAllocWOR"/>
+				<schemafield fieldname="ls_qty_issue_wor" fullfieldname="ls_qty_issue_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyIssueWOR"/>
+				<schemafield fieldname="ls_qty_pick_wor" fullfieldname="ls_qty_pick_wor" typename="double" size="8" elements="1" id="0" columnname="LsQtyPickWOR"/>
+				<schemafield fieldname="ls_wopwipgl" fullfieldname="ls_wopwipgl" typename="long" size="4" elements="1" id="0" columnname="LsWOPWIPGL"/>
+				<schemafield fieldname="ls_s_warranty" fullfieldname="ls_s_warranty" typename="BYTE" size="1" elements="1" id="0" columnname="LsSWarranty"/>
+				<schemafield fieldname="ls_s_warranty_type" fullfieldname="ls_s_warranty_type" typename="BYTE" size="1" elements="1" id="0" columnname="LsSWarrantyType"/>
+				<schemafield fieldname="ls_m_warranty" fullfieldname="ls_m_warranty" typename="BYTE" size="1" elements="1" id="0" columnname="LsMWarranty"/>
+				<schemafield fieldname="ls_m_warranty_type" fullfieldname="ls_m_warranty_type" typename="BYTE" size="1" elements="1" id="0" columnname="LsMWarrantyType"/>
+				<schemafield fieldname="ls_qty_p_return" fullfieldname="ls_qty_p_return" typename="double" size="8" elements="1" id="0" columnname="LsQtyPReturn"/>
+				<schemafield fieldname="ls_return_gl" fullfieldname="ls_return_gl" typename="long" size="4" elements="1" id="0" columnname="LsReturnGL"/>
+				<schemafield fieldname="ls_re_stock_pcnt" fullfieldname="ls_re_stock_pcnt" typename="double" size="8" elements="1" id="0" columnname="LsReStockPcnt"/>
+				<schemafield fieldname="ls_re_stock_gl" fullfieldname="ls_re_stock_gl" typename="long" size="4" elements="1" id="0" columnname="LsReStockGL"/>
+				<schemafield fieldname="ls_bom_ded_comp" fullfieldname="ls_bom_ded_comp" typename="bool1" size="1" elements="1" id="0" columnname="LsBOMDedComp"/>
+				<schemafield fieldname="ls_qty_return" fullfieldname="ls_qty_return" typename="double" size="8" elements="1" id="0" columnname="LsQtyReturn"/>
+				<schemafield fieldname="ls_p_return_gl" fullfieldname="ls_p_return_gl" typename="long" size="4" elements="1" id="0" columnname="LsPReturnGL"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="SdbStkRec" id="2" stringid="N*">
+			<schemafields>
+				<schemafield fieldname="sd_stk_folio" fullfieldname="sd_stk_folio" typename="long" size="4" elements="1" id="0" columnname="SdStkFolio"/>
+				<schemafield fieldname="sd_folio" fullfieldname="sd_folio" typename="long" size="4" elements="1" id="0" columnname="SdFolio"/>
+				<schemafield fieldname="sd_supp_code" fullfieldname="sd_supp_code" typename="DelphiString" size="11" elements="1" id="0" columnname="SdSuppCode" collation="1"/>
+				<schemafield fieldname="sd_alt_code" fullfieldname="sd_alt_code" typename="DelphiString" size="21" elements="1" id="0" columnname="SdAltCode"/>
+				<schemafield fieldname="sd_ro_currency" fullfieldname="sd_ro_currency" typename="BYTE" size="1" elements="1" id="0" columnname="SdROCurrency"/>
+				<schemafield fieldname="sd_ro_price" fullfieldname="sd_ro_price" typename="double" size="8" elements="1" id="0" columnname="SdRoPrice"/>
+				<schemafield fieldname="sd_n_line_count" fullfieldname="sd_n_line_count" typename="long" size="4" elements="1" id="0" columnname="SdNLineCount"/>
+				<schemafield fieldname="sd_last_used" fullfieldname="sd_last_used" typename="DelphiString" size="9" elements="1" id="0" columnname="SdLastUsed"/>
+				<schemafield fieldname="sd_over_ro" fullfieldname="sd_over_ro" typename="bool1" size="1" elements="1" id="0" columnname="SdOverRO"/>
+				<schemafield fieldname="sd_desc" fullfieldname="sd_desc" typename="DelphiString" size="36" elements="1" id="0" columnname="SdDesc"/>
+				<schemafield fieldname="sd_last_time" fullfieldname="sd_last_time" typename="DelphiString" size="7" elements="1" id="0" columnname="SdLastTime"/>
+				<schemafield fieldname="sd_over_min_ecc" fullfieldname="sd_over_min_ecc" typename="bool1" size="1" elements="1" id="0" columnname="SdOverMinEcc"/>
+				<schemafield fieldname="sd_min_ecc_qty" fullfieldname="sd_min_ecc_qty" typename="double" size="8" elements="1" id="0" columnname="SdMinEccQty"/>
+				<schemafield fieldname="sd_over_line_qty" fullfieldname="sd_over_line_qty" typename="bool1" size="1" elements="1" id="0" columnname="SdOverLineQty"/>
+				<schemafield fieldname="sd_line_qty" fullfieldname="sd_line_qty" typename="double" size="8" elements="1" id="0" columnname="SdLineQty"/>
+				<schemafield fieldname="sd_line_no" fullfieldname="sd_line_no" typename="long" size="4" elements="1" id="0" columnname="SdLineNo"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="CuStkRec"  id="3" stringid="TP">
+			<schemafields>
+				<schemafield fieldname="cs_cust_code" fullfieldname="cs_cust_code" typename="DelphiString" size="11" elements="1" id="0" columnname="CsCustCode" collation="1"/>
+				<schemafield fieldname="cs_stock_code" fullfieldname="cs_stock_code" typename="DelphiString" size="21" elements="1" id="0" columnname="CsStockCode" collation="1"/>
+				<schemafield fieldname="cs_stk_folio" fullfieldname="cs_stk_folio" typename="long" size="4" elements="1" id="0" columnname="CsStkFolio"/>
+				<schemafield fieldname="cs_so_qty" fullfieldname="cs_so_qty" typename="double" size="8" elements="1" id="0" columnname="CsSOQty"/>
+				<schemafield fieldname="cs_last_date" fullfieldname="cs_last_date" typename="DelphiString" size="9" elements="1" id="0" columnname="CsLastDate"/>
+				<schemafield fieldname="cs_line_no" fullfieldname="cs_line_no" typename="long" size="4" elements="1" id="0" columnname="CsLineNo"/>
+				<schemafield fieldname="cs_last_price" fullfieldname="cs_last_price" typename="double" size="8" elements="1" id="0" columnname="CsLastPrice"/>
+				<schemafield fieldname="cs_lp_curr" fullfieldname="cs_lp_curr" typename="BYTE" size="1" elements="1" id="0" columnname="CsLPCurr"/>
+				<schemafield fieldname="cs_job_code" fullfieldname="cs_job_code" typename="DelphiString" size="11" elements="1" id="0" columnname="CsJobCode" collation="1"/>
+				<schemafield fieldname="cs_ja_code" fullfieldname="cs_ja_code" typename="DelphiString" size="11" elements="1" id="0" columnname="CsJACode" collation="1"/>
+				<schemafield fieldname="cs_loc_code" fullfieldname="cs_loc_code" typename="DelphiString" size="6" elements="1" id="0" columnname="CsLocCode" collation="1"/>
+				<schemafield fieldname="cs_nom_code" fullfieldname="cs_nom_code" typename="long" size="4" elements="1" id="0" columnname="CsNomCode"/>
+				<schemafield fieldname="cs_cc_dep1" fullfieldname="cs_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="CsDepartment" collation="1"/>
+				<schemafield fieldname="cs_cc_dep2" fullfieldname="cs_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="CsCostCentre" collation="1"/>
+				<schemafield fieldname="cs_qty" fullfieldname="cs_qty" typename="double" size="8" elements="1" id="0" columnname="CsQty"/>
+				<schemafield fieldname="cs_net_value" fullfieldname="cs_net_value" typename="double" size="8" elements="1" id="0" columnname="CsNetValue"/>
+				<schemafield fieldname="csdiscount" fullfieldname="csdiscount" typename="double" size="8" elements="1" id="0" columnname="CsDiscount"/>
+				<schemafield fieldname="cs_vat_code" fullfieldname="cs_vat_code" typename="char" size="1" elements="1" id="0" columnname="CsVATCode"/>
+				<schemafield fieldname="cs_cost" fullfieldname="cs_cost" typename="double" size="8" elements="1" id="0" columnname="CsCost"/>
+				<schemafield fieldname="cs_desc1" fullfieldname="cs_desc1" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc1"/>
+				<schemafield fieldname="cs_desc2" fullfieldname="cs_desc2" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc2"/>
+				<schemafield fieldname="cs_desc3" fullfieldname="cs_desc3" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc3"/>
+				<schemafield fieldname="cs_desc4" fullfieldname="cs_desc4" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc4"/>
+				<schemafield fieldname="cs_desc5" fullfieldname="cs_desc5" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc5"/>
+				<schemafield fieldname="cs_desc6" fullfieldname="cs_desc6" typename="DelphiString" size="36" elements="1" id="0" columnname="CsDesc6"/>
+				<schemafield fieldname="cs_vat" fullfieldname="cs_vat" typename="double" size="8" elements="1" id="0" columnname="CsVAT"/>
+				<schemafield fieldname="cs_prx_pack" fullfieldname="cs_prx_pack" typename="bool1" size="1" elements="1" id="0" columnname="CsPrxPack"/>
+				<schemafield fieldname="cs_qty_pack" fullfieldname="cs_qty_pack" typename="double" size="8" elements="1" id="0" columnname="CsQtyPack"/>
+				<schemafield fieldname="cs_qty_mul" fullfieldname="cs_qty_mul" typename="double" size="8" elements="1" id="0" columnname="CsQtyMul"/>
+				<schemafield fieldname="cs_disc_ch" fullfieldname="cs_disc_ch" typename="char" size="1" elements="1" id="0" columnname="CsDiscCh"/>
+				<schemafield fieldname="cs_entered" fullfieldname="cs_entered" typename="bool1" size="1" elements="1" id="0" columnname="CsEntered"/>
+				<schemafield fieldname="cs_use_pack" fullfieldname="cs_use_pack" typename="bool1" size="1" elements="1" id="0" columnname="CsUsePack"/>
+				<schemafield fieldname="cs_show_case" fullfieldname="cs_show_case" typename="bool1" size="1" elements="1" id="0" columnname="CsShowCase"/>
+				<schemafield fieldname="cs_line_type" fullfieldname="cs_line_type" typename="BYTE" size="1" elements="1" id="0" columnname="CsLineType"/>
+				<schemafield fieldname="cs_price_mul_x" fullfieldname="cs_price_mul_x" typename="double" size="8" elements="1" id="0" columnname="CsPriceMulX"/>
+				<schemafield fieldname="cs_vat_inc_flg" fullfieldname="cs_vat_inc_flg" typename="char" size="1" elements="1" id="0" columnname="CsVATIncFlg"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="TeleSRec"  id="4" stringid="TK">
+			<schemafields>
+				<schemafield fieldname="tc_cust_code" fullfieldname="tc_cust_code" typename="DelphiString" size="11" elements="1" id="0" columnname="TcCustCode" collation="1"/>
+				<schemafield fieldname="tc_doc_type" fullfieldname="tc_doc_type" typename="BYTE" size="1" elements="1" id="0" columnname="TcDocType"/>
+				<schemafield fieldname="tc_curr" fullfieldname="tc_curr" typename="BYTE" size="1" elements="1" id="0" columnname="TcCurr"/>
+				<schemafield fieldname="tc_cx_rate1" fullfieldname="tc_cx_rate1" typename="DelphiReal" size="6" elements="1" id="0" columnname="TcCXCompanyRate"/>
+				<schemafield fieldname="tc_cx_rate2" fullfieldname="tc_cx_rate2" typename="DelphiReal" size="6" elements="1" id="0" columnname="TcCXDailyRate"/>
+				<schemafield fieldname="tc_old_your_ref" fullfieldname="tc_old_your_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="TcOldYourRef"/>
+				<schemafield fieldname="tc_ly_ref" fullfieldname="tc_ly_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="TcLYRef"/>
+				<schemafield fieldname="tc_cc_dep1" fullfieldname="tc_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="TcDepartment" collation="1"/>
+				<schemafield fieldname="tc_cc_dep2" fullfieldname="tc_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="TcCostCentre" collation="1"/>
+				<schemafield fieldname="tc_loc_code" fullfieldname="tc_loc_code" typename="DelphiString" size="6" elements="1" id="0" columnname="TcLocCode" collation="1"/>
+				<schemafield fieldname="tc_job_code" fullfieldname="tc_job_code" typename="DelphiString" size="11" elements="1" id="0" columnname="TcJobCode" collation="1"/>
+				<schemafield fieldname="tc_ja_code" fullfieldname="tc_ja_code" typename="DelphiString" size="11" elements="1" id="0" columnname="TcJACode" collation="1"/>
+				<schemafield fieldname="tc_d_addr1" fullfieldname="tc_d_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="TcDAddr1"/>
+				<schemafield fieldname="tc_d_addr2" fullfieldname="tc_d_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="TcDAddr2"/>
+				<schemafield fieldname="tc_d_addr3" fullfieldname="tc_d_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="TcDAddr3"/>
+				<schemafield fieldname="tc_d_addr4" fullfieldname="tc_d_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="TcDAddr4"/>
+				<schemafield fieldname="tc_d_addr5" fullfieldname="tc_d_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="TcDAddr5"/>
+				<schemafield fieldname="tc_t_date" fullfieldname="tc_t_date" typename="DelphiString" size="9" elements="1" id="0" columnname="TcTDate"/>
+				<schemafield fieldname="tc_del_date" fullfieldname="tc_del_date" typename="DelphiString" size="9" elements="1" id="0" columnname="TcDelDate"/>
+				<schemafield fieldname="tc_net_total" fullfieldname="tc_net_total" typename="double" size="8" elements="1" id="0" columnname="TcNetTotal"/>
+				<schemafield fieldname="tc_vat_total" fullfieldname="tc_vat_total" typename="double" size="8" elements="1" id="0" columnname="TcVATTotal"/>
+				<schemafield fieldname="tc_disc_total" fullfieldname="tc_disc_total" typename="double" size="8" elements="1" id="0" columnname="TcDiscTotal"/>
+				<schemafield fieldname="tc_last_opo" fullfieldname="tc_last_opo" typename="DelphiString" size="11" elements="1" id="0" columnname="TcLastOpo"/>
+				<schemafield fieldname="tc_in_prog" fullfieldname="tc_in_prog" typename="bool1" size="1" elements="1" id="0" columnname="TcInProg"/>
+				<schemafield fieldname="tc_trans_nat" fullfieldname="tc_trans_nat" typename="BYTE" size="1" elements="1" id="0" columnname="TcTransNat"/>
+				<schemafield fieldname="tc_trans_mode" fullfieldname="tc_trans_mode" typename="BYTE" size="1" elements="1" id="0" columnname="TcTransMode"/>
+				<schemafield fieldname="tc_del_terms" fullfieldname="tc_del_terms" typename="DelphiString" size="4" elements="1" id="0" columnname="TcDelTerms"/>
+				<schemafield fieldname="tc_ctrl_code" fullfieldname="tc_ctrl_code" typename="long" size="4" elements="1" id="0" columnname="TcCtrlCode"/>
+				<schemafield fieldname="tc_vat_code" fullfieldname="tc_vat_code" typename="char" size="1" elements="1" id="0" columnname="TcVATCode"/>
+				<schemafield fieldname="tc_ord_mode" fullfieldname="tc_ord_mode" typename="BYTE" size="1" elements="1" id="0" columnname="TcOrdMode"/>
+				<schemafield fieldname="tc_scale_mode" fullfieldname="tc_scale_mode" typename="BYTE" size="1" elements="1" id="0" columnname="TcScaleMode"/>
+				<schemafield fieldname="tc_line_count" fullfieldname="tc_line_count" typename="long" size="4" elements="1" id="0" columnname="TcLineCount"/>
+				<schemafield fieldname="tc_was_new" fullfieldname="tc_was_new" typename="bool1" size="1" elements="1" id="0" columnname="TcWasNew"/>
+				<schemafield fieldname="tc_use_o_rate" fullfieldname="tc_use_o_rate" typename="BYTE" size="1" elements="1" id="0" columnname="TcUseORate"/>
+				<schemafield fieldname="tc_def_nom_code" fullfieldname="tc_def_nom_code" typename="long" size="4" elements="1" id="0" columnname="TcDefNomCode"/>
+				<schemafield fieldname="tc_vat_inc_flg" fullfieldname="tc_vat_inc_flg" typename="char" size="1" elements="1" id="0" columnname="TcVATIncFlg"/>
+				<schemafield fieldname="tc_set_disc" fullfieldname="tc_set_disc" typename="double" size="8" elements="1" id="0" columnname="TcSetDisc"/>
+				<schemafield fieldname="tc_gen_mode" fullfieldname="tc_gen_mode" typename="BYTE" size="1" elements="1" id="0" columnname="TcGenMode"/>
+				<schemafield fieldname="tc_tag_no" fullfieldname="tc_tag_no" typename="BYTE" size="1" elements="1" id="0" columnname="TcTagNo"/>
+				<schemafield fieldname="tc_lock_addr" fullfieldname="tc_lock_addr" typename="long" size="4" elements="1" id="0" columnname="TcLockAddr"/>
+				<schemafield fieldname="spare2" fullfieldname="spare2" typename="binary" size="316" elements="1" id="0" columnname="Spare2"/>
+				<schemafield fieldname="tc_your_ref" fullfieldname="tc_your_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="TcYourRef"/>
+                <schemafield fieldname="tc_delivery_postcode" fullfieldname="tc_delivery_postcode" typename="DelphiString" size="21" elements="1" id="0" columnname="TcDeliveryPostCode" ></schemafield>
+                <schemafield fieldname="tc_country" fullfieldname="tc_country" typename="DelphiString" size="3" elements="1" id="0"  columnname="tcDeliveryCountry" collation="1"></schemafield>
+				<schemafield fieldname="tc_ssd_process" fullfieldname="tc_ssd_process" typename="char" size="1" elements="1" id="0" columnname="TcSSDProcess"/>
+				<schemafield fieldname="tc_tax_region" fullfieldname="tc_tax_region" typename="int32" size="4" elements="1" id="0" columnname="TcTaxRegion"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="EMUCnvRec"  id="5" stringid="ED">
+			<schemafields>
+				<schemafield fieldname="em_was_curr" fullfieldname="em_was_curr" typename="long" size="4" elements="1" id="0" columnname="EmWasCurr"/>
+				<schemafield fieldname="em_was_cx_rate1" fullfieldname="em_was_cx_rate1" typename="DelphiReal" size="6" elements="1" id="0" columnname="EmWasCXRate1"/>
+				<schemafield fieldname="em_was_cx_rate2" fullfieldname="em_was_cx_rate2" typename="DelphiReal" size="6" elements="1" id="0" columnname="EmWasCXRate2"/>
+				<schemafield fieldname="em_now_rate1" fullfieldname="em_now_rate1" typename="DelphiReal" size="6" elements="1" id="0" columnname="EmNowRate1"/>
+				<schemafield fieldname="em_now_rate2" fullfieldname="em_now_rate2" typename="DelphiReal" size="6" elements="1" id="0" columnname="EmNowRate2"/>
+				<schemafield fieldname="em_doc_ref" fullfieldname="em_doc_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="EmDocRef"/>
+				<schemafield fieldname="em_nom_code" fullfieldname="em_nom_code" typename="long" size="4" elements="1" id="0" columnname="EmNomCode"/>
+				<schemafield fieldname="em_orig_value" fullfieldname="em_orig_value" typename="double" size="8" elements="1" id="0" columnname="EmOrigValue"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="PassDefRec"  id="6" stringid="PD">
+			<schemafields>
+				<schemafield fieldname="pw_exp_mode" fullfieldname="pw_exp_mode" typename="BYTE" size="1" elements="1" id="0" columnname="PWExpMode"/>
+				<schemafield fieldname="pw_exp_days" fullfieldname="pw_exp_days" typename="int16" size="2" elements="1" id="0" columnname="PWExPDays"/>
+				<schemafield fieldname="pw_exp_date" fullfieldname="pw_exp_date" typename="DelphiString" size="9" elements="1" id="0" columnname="PWExpDate"/>
+				<schemafield fieldname="dir_cust" fullfieldname="dir_cust" typename="DelphiString" size="11" elements="1" id="0" columnname="DirCust"/>
+				<schemafield fieldname="dir_supp" fullfieldname="dir_supp" typename="DelphiString" size="11" elements="1" id="0" columnname="DirSupp"/>
+				<schemafield fieldname="max_sales_a" fullfieldname="max_sales_a" typename="double" size="8" elements="1" id="0" columnname="MaxSalesA"/>
+				<schemafield fieldname="max_purch_a" fullfieldname="max_purch_a" typename="double" size="8" elements="1" id="0" columnname="MaxPurchA"/>
+				<schemafield fieldname="cc_dep1" fullfieldname="cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="Department" collation="1"/>
+				<schemafield fieldname="cc_dep2" fullfieldname="cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="CostCentre" collation="1"/>
+				<schemafield fieldname="loc" fullfieldname="loc" typename="DelphiString" size="11" elements="1" id="0" columnname="Loc"/>
+				<schemafield fieldname="sales_bank" fullfieldname="sales_bank" typename="long" size="4" elements="1" id="0" columnname="SalesBank"/>
+				<schemafield fieldname="purch_bank" fullfieldname="purch_bank" typename="long" size="4" elements="1" id="0" columnname="PurchBank"/>
+				<schemafield fieldname="report_prn" fullfieldname="report_prn" typename="DelphiString" size="51" elements="1" id="0" columnname="ReportPrn"/>
+				<schemafield fieldname="form_prn" fullfieldname="form_prn" typename="DelphiString" size="51" elements="1" id="0" columnname="FormPrn"/>
+				<schemafield fieldname="or_prns1" fullfieldname="or_prns1" typename="bool1" size="1" elements="1" id="0" columnname="OrPrns1"/>
+				<schemafield fieldname="or_prns2" fullfieldname="or_prns2" typename="bool1" size="1" elements="1" id="0" columnname="OrPrns2"/>
+				<schemafield fieldname="cc_dep_rule" fullfieldname="cc_dep_rule" typename="BYTE" size="1" elements="1" id="0" columnname="CCDepRule"/>
+				<schemafield fieldname="loc_rule" fullfieldname="loc_rule" typename="BYTE" size="1" elements="1" id="0" columnname="LocRule"/>
+				<schemafield fieldname="email_addr" fullfieldname="email_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailAddr"/>
+				<schemafield fieldname="pw_time_out" fullfieldname="pw_time_out" typename="int16" size="2" elements="1" id="0" columnname="PWTimeOut"/>
+				<schemafield fieldname="loaded" fullfieldname="loaded" typename="bool1" size="1" elements="1" id="0" columnname="Loaded"/>
+				<schemafield fieldname="user_name" fullfieldname="user_name" typename="DelphiString" size="51" elements="1" id="0" columnname="UserName"/>
+				<schemafield fieldname="uc_pr" fullfieldname="uc_pr" typename="BYTE" size="1" elements="1" id="0" columnname="UCPr"/>
+				<schemafield fieldname="uc_yr" fullfieldname="uc_yr" typename="BYTE" size="1" elements="1" id="0" columnname="UCYr"/>
+				<schemafield fieldname="udisp_pr_mnth" fullfieldname="udisp_pr_mnth" typename="bool1" size="1" elements="1" id="0" columnname="UDispPrMnth"/>
+				<schemafield fieldname="show_gl_codes" fullfieldname="show_gl_codes" typename="bool1" size="1" elements="1" id="0" columnname="ShowGLCodes"/>
+				<schemafield fieldname="show_stock_code" fullfieldname="show_stock_code" typename="bool1" size="1" elements="1" id="0" columnname="ShowStockCode"/>
+				<schemafield fieldname="show_product_type" fullfieldname="show_product_type" typename="bool1" size="1" elements="1" id="0" columnname="ShowProductType"/>
+				<schemafield fieldname="user_status" fullfieldname="user_status" typename="BYTE" size="1" elements="1" id="0" columnname="UserStatus"/>
+				<schemafield fieldname="password_salt" fullfieldname="password_salt" typename="DelphiString" size="17" elements="1" id="0" columnname="PasswordSalt"/>
+				<schemafield fieldname="password_hash" fullfieldname="password_hash" typename="DelphiString" size="65" elements="1" id="0" columnname="PasswordHash"/>
+				<schemafield fieldname="window_user_id" fullfieldname="window_user_id" typename="DelphiString" size="101" elements="1" id="0" columnname="WindowUserId"/>
+				<schemafield fieldname="security_question_id" fullfieldname="security_question_id" typename="long" size="4" elements="1" id="0" columnname="SecurityQuestionId"/>
+				<schemafield fieldname="security_answer" fullfieldname="security_answer" typename="DelphiString" size="140" elements="1" id="0" columnname="SecurityAnswer"/>
+				<schemafield fieldname="force_password_change" fullfieldname="force_password_change" typename="bool1" size="1" elements="1" id="0" columnname="ForcePasswordChange"/>
+				<schemafield fieldname="login_failure_count" fullfieldname="login_failure_count" typename="long" size="4" elements="1" id="0" columnname="LoginFailureCount"/>
+				<schemafield fieldname="highlight_PII_fields" fullfieldname="highlight_PII_fields" typename="bool1" size="1" elements="1" id="0" columnname="HighlightPIIFields"/>
+				<schemafield fieldname="highlight_PII_colour" fullfieldname="highlight_PII_colour" typename="long" size="4" elements="1" id="0" columnname="HighlightPIIColour"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="AllocCRec"  id="7" stringid="XC">
+			<schemafields>
+				<schemafield fieldname="arc_bank_nom" fullfieldname="arc_bank_nom" typename="long" size="4" elements="1" id="0" columnname="ArcBankNom"/>
+				<schemafield fieldname="arc_ctrl_nom" fullfieldname="arc_ctrl_nom" typename="long" size="4" elements="1" id="0" columnname="ArcCtrlNom"/>
+				<schemafield fieldname="arc_pay_curr" fullfieldname="arc_pay_curr" typename="BYTE" size="1" elements="1" id="0" columnname="ArcPayCurr"/>
+				<schemafield fieldname="arc_inv_curr" fullfieldname="arc_inv_curr" typename="BYTE" size="1" elements="1" id="0" columnname="ArcInvCurr"/>
+				<schemafield fieldname="spare1" fullfieldname="spare1" typename="binary" size="4" elements="1" id="0" columnname="Spare1"/>
+				<schemafield fieldname="arc_cc_dep1" fullfieldname="arc_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="ArcDepartment"/>
+				<schemafield fieldname="arc_cc_dep2" fullfieldname="arc_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="ArcCostCentre"/>
+				<schemafield fieldname="arc_sort_by" fullfieldname="arc_sort_by" typename="BYTE" size="1" elements="1" id="0" columnname="ArcSortBy"/>
+				<schemafield fieldname="arc_auto_total" fullfieldname="arc_auto_total" typename="bool1" size="1" elements="1" id="0" columnname="ArcAutoTotal"/>
+				<schemafield fieldname="arc_sd_days_over" fullfieldname="arc_sd_days_over" typename="int16" size="2" elements="1" id="0" columnname="ArcSDDaysOver"/>
+				<schemafield fieldname="arc_from_trans" fullfieldname="arc_from_trans" typename="bool1" size="1" elements="1" id="0" columnname="ArcFromTrans"/>
+				<schemafield fieldname="arc_old_your_ref" fullfieldname="arc_old_your_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcOldYourRef"/>
+				<schemafield fieldname="arc_cheque_no2" fullfieldname="arc_cheque_no2" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcChequeNo2"/>
+				<schemafield fieldname="spare3" fullfieldname="spare3" typename="binary" size="10" elements="1" id="0" columnname="Spare3"/>
+				<schemafield fieldname="arc_force_new" fullfieldname="arc_force_new" typename="bool1" size="1" elements="1" id="0" columnname="ArcForceNew"/>
+				<schemafield fieldname="arc_sort2_by" fullfieldname="arc_sort2_by" typename="BYTE" size="1" elements="1" id="0" columnname="ArcSort2By"/>
+				<schemafield fieldname="arc_total_own" fullfieldname="arc_total_own" typename="double" size="8" elements="1" id="0" columnname="ArcTotalOwn"/>
+				<schemafield fieldname="arc_trans_value" fullfieldname="arc_trans_value" typename="double" size="8" elements="1" id="0" columnname="ArcTransValue"/>
+				<schemafield fieldname="arc_tag_count" fullfieldname="arc_tag_count" typename="long" size="4" elements="1" id="0" columnname="ArcTagCount"/>
+				<schemafield fieldname="arc_tag_run_date" fullfieldname="arc_tag_run_date" typename="DelphiString" size="9" elements="1" id="0" columnname="ArcTagRunDate"/>
+				<schemafield fieldname="arc_tag_run_yr" fullfieldname="arc_tag_run_yr" typename="BYTE" size="1" elements="1" id="0" columnname="ArcTagRunYr"/>
+				<schemafield fieldname="arc_tag_run_pr" fullfieldname="arc_tag_run_pr" typename="BYTE" size="1" elements="1" id="0" columnname="ArcTagRunPr"/>
+				<schemafield fieldname="arc_srcpi_ref" fullfieldname="arc_srcpi_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcSRCPIRef"/>
+				<schemafield fieldname="arc_inc_sdisc" fullfieldname="arc_inc_sdisc" typename="bool1" size="1" elements="1" id="0" columnname="ArcIncSDisc"/>
+				<schemafield fieldname="arc_total" fullfieldname="arc_total" typename="double" size="8" elements="1" id="0" columnname="ArcTotal"/>
+				<schemafield fieldname="arc_variance" fullfieldname="arc_variance" typename="double" size="8" elements="1" id="0" columnname="ArcVariance"/>
+				<schemafield fieldname="arc_settle_d" fullfieldname="arc_settle_d" typename="double" size="8" elements="1" id="0" columnname="ArcSettleD"/>
+				<schemafield fieldname="arc_trans_date" fullfieldname="arc_trans_date" typename="DelphiString" size="9" elements="1" id="0" columnname="ArcTransDate"/>
+				<schemafield fieldname="arc_ud1" fullfieldname="arc_ud1" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD1"/>
+				<schemafield fieldname="arc_ud2" fullfieldname="arc_ud2" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD2"/>
+				<schemafield fieldname="arc_ud3" fullfieldname="arc_ud3" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD3"/>
+				<schemafield fieldname="arc_ud4" fullfieldname="arc_ud4" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD4"/>
+				<schemafield fieldname="arc_job_code" fullfieldname="arc_job_code" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcJobCode"/>
+				<schemafield fieldname="arc_anal_code" fullfieldname="arc_anal_code" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcAnalCode"/>
+				<schemafield fieldname="arc_del_addr1" fullfieldname="arc_del_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcDelAddr1"/>
+				<schemafield fieldname="arc_del_addr2" fullfieldname="arc_del_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcDelAddr2"/>
+				<schemafield fieldname="arc_del_addr3" fullfieldname="arc_del_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcDelAddr3"/>
+				<schemafield fieldname="arc_del_addr4" fullfieldname="arc_del_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcDelAddr4"/>
+				<schemafield fieldname="arc_del_addr5" fullfieldname="arc_del_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcDelAddr5"/>
+				<schemafield fieldname="arc_inc_var" fullfieldname="arc_inc_var" typename="bool1" size="1" elements="1" id="0" columnname="ArcIncVar"/>
+				<schemafield fieldname="arc_our_ref" fullfieldname="arc_our_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcOurRef"/>
+				<schemafield fieldname="arc_cx_rate1" fullfieldname="arc_cx_rate1" typename="DelphiReal" size="6" elements="1" id="0" columnname="ArcCompanyRate"/>
+				<schemafield fieldname="arc_cx_rate2" fullfieldname="arc_cx_rate2" typename="DelphiReal" size="6" elements="1" id="0" columnname="ArcDailyRate"/>
+				<schemafield fieldname="arc_opo_name" fullfieldname="arc_opo_name" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcOpoName"/>
+				<schemafield fieldname="arc_start_date" fullfieldname="arc_start_date" typename="DelphiString" size="9" elements="1" id="0" columnname="ArcStartDate"/>
+				<schemafield fieldname="arc_start_time" fullfieldname="arc_start_time" typename="DelphiString" size="7" elements="1" id="0" columnname="ArcStartTime"/>
+				<schemafield fieldname="arc_win_log_in" fullfieldname="arc_win_log_in" typename="DelphiString" size="51" elements="1" id="0" columnname="ArcWinLogIn"/>
+				<schemafield fieldname="arc_locked" fullfieldname="arc_locked" typename="BYTE" size="1" elements="1" id="0" columnname="ArcLocked"/>
+				<schemafield fieldname="arc_sales_mode" fullfieldname="arc_sales_mode" typename="bool1" size="1" elements="1" id="0" columnname="ArcSalesMode"/>
+				<schemafield fieldname="arc_cust_code" fullfieldname="arc_cust_code" typename="DelphiString" size="11" elements="1" id="0" columnname="ArcCustCode"/>
+				<schemafield fieldname="arc_use_os_ndx" fullfieldname="arc_use_os_ndx" typename="bool1" size="1" elements="1" id="0" columnname="ArcUseOSNdx"/>
+				<schemafield fieldname="arc_own_trans_value" fullfieldname="arc_own_trans_value" typename="double" size="8" elements="1" id="0" columnname="ArcOwnTransValue"/>
+				<schemafield fieldname="arc_own_settle_d" fullfieldname="arc_own_settle_d" typename="double" size="8" elements="1" id="0" columnname="ArcOwnSettleD"/>
+				<schemafield fieldname="arc_fin_var" fullfieldname="arc_fin_var" typename="bool1" size="1" elements="1" id="0" columnname="ArcFinVar"/>
+				<schemafield fieldname="arc_fin_set_d" fullfieldname="arc_fin_set_d" typename="bool1" size="1" elements="1" id="0" columnname="ArcFinSetD"/>
+				<schemafield fieldname="arc_sort_d" fullfieldname="arc_sort_d" typename="bool1" size="1" elements="1" id="0" columnname="ArcSortD"/>
+				<schemafield fieldname="spare4" fullfieldname="spare4" typename="binary" size="5" elements="1" id="0" columnname="Spare4"/>
+				<schemafield fieldname="arc_alloc_full" fullfieldname="arc_alloc_full" typename="bool1" size="1" elements="1" id="0" columnname="ArcAllocFull"/>
+				<schemafield fieldname="arc_check_fail" fullfieldname="arc_check_fail" typename="bool1" size="1" elements="1" id="0" columnname="ArcCheckFail"/>
+				<schemafield fieldname="arc_charge1_gl" fullfieldname="arc_charge1_gl" typename="long" size="4" elements="1" id="0" columnname="ArcCharge1GL"/>
+				<schemafield fieldname="arc_charge2_gl" fullfieldname="arc_charge2_gl" typename="long" size="4" elements="1" id="0" columnname="ArcCharge2GL"/>
+				<schemafield fieldname="arc_charge1_amt" fullfieldname="arc_charge1_amt" typename="double" size="8" elements="1" id="0" columnname="ArcCharge1Amt"/>
+				<schemafield fieldname="arc_charge2_amt" fullfieldname="arc_charge2_amt" typename="double" size="8" elements="1" id="0" columnname="ArcCharge2Amt"/>
+				<schemafield fieldname="spare" fullfieldname="spare" typename="binary" size="51" elements="1" id="0" columnname="Spare"/>
+				<schemafield fieldname="arc_your_ref" fullfieldname="arc_your_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="ArcYourRef"/>
+				<schemafield fieldname="arc_ud5"  fullfieldname="arc_ud5"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD5"/>
+				<schemafield fieldname="arc_ud6"  fullfieldname="arc_ud6"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD6"/>
+				<schemafield fieldname="arc_ud7"  fullfieldname="arc_ud7"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD7"/>
+				<schemafield fieldname="arc_ud8"  fullfieldname="arc_ud8"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD8"/>
+				<schemafield fieldname="arc_ud9"  fullfieldname="arc_ud9"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD9"/>
+				<schemafield fieldname="arc_ud10" fullfieldname="arc_ud10" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD10"/>
+				<schemafield fieldname="arc_use_ppd" fullfieldname="arc_use_ppd" typename="bool1" size="1" elements="1" id="0" columnname="ArcUsePPD"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="brBinRec"  id="8" stringid="IR">
+			<schemafields>
+				<schemafield fieldname="br_in_doc" fullfieldname="br_in_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrInDoc" collation="1"/>
+				<schemafield fieldname="br_out_doc" fullfieldname="br_out_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrOutDoc" collation="1"/>
+				<schemafield fieldname="br_sold" fullfieldname="br_sold" typename="bool1" size="1" elements="1" id="0" columnname="BrSold"/>
+				<schemafield fieldname="br_date_in" fullfieldname="br_date_in" typename="DelphiString" size="9" elements="1" id="0" columnname="BrDateIn"/>
+				<schemafield fieldname="br_bin_cost" fullfieldname="br_bin_cost" typename="double" size="8" elements="1" id="0" columnname="BrBinCost"/>
+				<schemafield fieldname="br_bin_cap" fullfieldname="br_bin_cap" typename="double" size="8" elements="1" id="0" columnname="BrBinCap"/>
+				<schemafield fieldname="spare5" fullfieldname="spare5" typename="Binary" size="1" elements="1" id="0" columnname="Spare5"/>
+				<schemafield fieldname="br_stk_folio" fullfieldname="br_stk_folio" typename="long" size="4" elements="1" id="0" columnname="BrStkFolio"/>
+				<schemafield fieldname="br_date_out" fullfieldname="br_date_out" typename="DelphiString" size="9" elements="1" id="0" columnname="BrDateOut"/>
+				<schemafield fieldname="br_sold_line" fullfieldname="br_sold_line" typename="long" size="4" elements="1" id="0" columnname="BrSoldLine"/>
+				<schemafield fieldname="br_buy_line" fullfieldname="br_buy_line" typename="long" size="4" elements="1" id="0" columnname="BrBuyLine"/>
+				<schemafield fieldname="br_batch_rec" fullfieldname="br_batch_rec" typename="bool1" size="1" elements="1" id="0" columnname="BrBatchRec"/>
+				<schemafield fieldname="br_buy_qty" fullfieldname="br_buy_qty" typename="double" size="8" elements="1" id="0" columnname="BrBuyQty"/>
+				<schemafield fieldname="br_qty_used" fullfieldname="br_qty_used" typename="double" size="8" elements="1" id="0" columnname="BrQtyUsed"/>
+				<schemafield fieldname="br_batch_child" fullfieldname="br_batch_child" typename="bool1" size="1" elements="1" id="0" columnname="BrBatchChild"/>
+				<schemafield fieldname="br_in_mloc" fullfieldname="br_in_mloc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrInMLoc"/>
+				<schemafield fieldname="br_out_mloc" fullfieldname="br_out_mloc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrOutMLoc"/>
+				<schemafield fieldname="br_out_ord_doc" fullfieldname="br_out_ord_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrOutOrdDoc" collation="1"/>
+				<schemafield fieldname="br_in_ord_doc" fullfieldname="br_in_ord_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="BrInOrdDoc" collation="1"/>
+				<schemafield fieldname="br_in_ord_line" fullfieldname="br_in_ord_line" typename="long" size="4" elements="1" id="0" columnname="BrInOrdLine"/>
+				<schemafield fieldname="br_out_ord_line" fullfieldname="br_out_ord_line" typename="long" size="4" elements="1" id="0" columnname="BrOutOrdLine"/>
+				<schemafield fieldname="br_cur_cost" fullfieldname="br_cur_cost" typename="BYTE" size="1" elements="1" id="0" columnname="BrCurCost"/>
+				<schemafield fieldname="br_priority" fullfieldname="br_priority" typename="DelphiString" size="11" elements="1" id="0" columnname="BrPriority"/>
+				<schemafield fieldname="br_bin_sell" fullfieldname="br_bin_sell" typename="double" size="8" elements="1" id="0" columnname="BrBinSell"/>
+				<schemafield fieldname="br_Ser_CRates1" fullfieldname="br_Ser_CRates1" typename="DelphiReal" size="6" elements="1" id="0" columnname="brSerCompanyRate"/>
+				<schemafield fieldname="br_Ser_CRates2" fullfieldname="br_Ser_CRates2" typename="DelphiReal" size="6" elements="1" id="0" columnname="brSerDailyRate"/>
+				<schemafield fieldname="br_suse_o_rate" fullfieldname="br_suse_o_rate" typename="BYTE" size="1" elements="1" id="0" columnname="BrSUseORate"/>
+				<schemafield fieldname="brSer_TriRates" fullfieldname="brSer_TriRates" typename="double" size="8" elements="1" id="0" columnname="brSerTriRates"/>
+				<schemafield fieldname="brSer_TriEuro" fullfieldname="brSer_TriEuro" typename="BYTE" size="1" elements="1" id="0" columnname="brSerTriEuro"/>
+				<schemafield fieldname="brSer_TriInvert" fullfieldname="brSer_TriInvert" typename="bool1" size="1" elements="1" id="0" columnname="brSerTriInvert"/>
+				<schemafield fieldname="brSer_TriFloat" fullfieldname="brSer_TriFloat" typename="bool1" size="1" elements="1" id="0" columnname="brSerTriFloat"/>
+				<schemafield fieldname="brSer_Spare" fullfieldname="Spare" typename="binary" size="10" elements="1" id="0" columnname="brSerSpare"/>
+				<schemafield fieldname="br_date_use_x" fullfieldname="br_date_use_x" typename="DelphiString" size="9" elements="1" id="0" columnname="BrDateUseX"/>
+				<schemafield fieldname="br_cur_sell" fullfieldname="br_cur_sell" typename="BYTE" size="1" elements="1" id="0" columnname="BrCurSell"/>
+				<schemafield fieldname="br_uom" fullfieldname="br_uom" typename="DelphiString" size="11" elements="1" id="0" columnname="BrUOM"/>
+				<schemafield fieldname="br_hold_flg" fullfieldname="br_hold_flg" typename="BYTE" size="1" elements="1" id="0" columnname="BrHoldFlg"/>
+				<schemafield fieldname="br_tag_no" fullfieldname="br_tag_no" typename="BYTE" size="1" elements="1" id="0" columnname="BrTagNo"/>
+				<schemafield fieldname="br_return_bin" fullfieldname="br_return_bin" typename="bool1" size="1" elements="1" id="0" columnname="BrReturnBin"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="BnkRHRec"  id="9" stringid="K1">
+			<schemafields>
+				<schemafield fieldname="br_stat_date" fullfieldname="br_stat_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrStatDate"/>
+				<schemafield fieldname="br_stat_ref" fullfieldname="br_stat_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="BrStatRef"/>
+				<schemafield fieldname="br_bank_acc" fullfieldname="br_bank_acc" typename="DelphiString" size="16" elements="1" id="0" columnname="BrBankAcc"/>
+				<schemafield fieldname="br_bank_currency" fullfieldname="br_bank_currency" typename="BYTE" size="1" elements="1" id="0" columnname="BrBankCurrency"/>
+				<schemafield fieldname="br_bank_user_id" fullfieldname="br_bank_user_id" typename="DelphiString" size="11" elements="1" id="0" columnname="BrBankUserID"/>
+				<schemafield fieldname="br_create_date" fullfieldname="br_create_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrCreateDate"/>
+				<schemafield fieldname="br_create_time" fullfieldname="br_create_time" typename="DelphiString" size="7" elements="1" id="0" columnname="BrCreateTime"/>
+				<schemafield fieldname="br_stat_bal" fullfieldname="br_stat_bal" typename="double" size="8" elements="1" id="0" columnname="BrStatBal"/>
+				<schemafield fieldname="br_open_bal" fullfieldname="br_open_bal" typename="double" size="8" elements="1" id="0" columnname="BrOpenBal"/>
+				<schemafield fieldname="br_close_bal" fullfieldname="br_close_bal" typename="double" size="8" elements="1" id="0" columnname="BrCloseBal"/>
+				<schemafield fieldname="br_status" fullfieldname="br_status" typename="BYTE" size="1" elements="1" id="0" columnname="BrStatus"/>
+				<schemafield fieldname="br_int_ref" fullfieldname="br_int_ref" typename="long" size="4" elements="1" id="0" columnname="BrIntRef"/>
+				<schemafield fieldname="br_glcode" fullfieldname="br_glcode" typename="long" size="4" elements="1" id="0" columnname="BrGLCode"/>
+				<schemafield fieldname="br_stat_folio" fullfieldname="br_stat_folio" typename="long" size="4" elements="1" id="0" columnname="BrStatFolio"/>
+				<schemafield fieldname="br_recon_date" fullfieldname="br_recon_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrReconDate"/>
+				<schemafield fieldname="br_recon_ref" fullfieldname="br_recon_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="BrReconRef"/>
+				<schemafield fieldname="br_init_seq" fullfieldname="br_init_seq" typename="BYTE" size="1" elements="1" id="0" columnname="BrInitSeq"/>
+				<schemafield fieldname="br_group_by" fullfieldname="br_group_by" typename="BYTE" size="1" elements="1" id="0" columnname="BrGroupBy"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="BnkRDRec"  id="10" stringid="K2">
+			<schemafields>
+				<schemafield fieldname="br_pay_ref" fullfieldname="br_pay_ref" typename="DelphiEmbeddedCaseSensitiveString" size="11" elements="1" id="0" columnname="BrPayRef" collation="1" />
+				<schemafield fieldname="br_line_date" fullfieldname="br_line_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrLineDate"/>
+				<schemafield fieldname="br_match_ref" fullfieldname="br_match_ref" typename="DelphiString" size="17" elements="1" id="0" columnname="BrMatchRef" collation="1"/>
+				<schemafield fieldname="br_value" fullfieldname="br_value" typename="double" size="8" elements="1" id="0" columnname="BrValue"/>
+				<schemafield fieldname="br_line_no" fullfieldname="br_line_no" typename="long" size="4" elements="1" id="0" columnname="BrLineNo"/>
+				<schemafield fieldname="br_stat_id" fullfieldname="br_stat_id" typename="DelphiString" size="5" elements="1" id="0" columnname="BrStatId"/>
+				<schemafield fieldname="br_stat_line" fullfieldname="br_stat_line" typename="long" size="4" elements="1" id="0" columnname="BrStatLine"/>
+				<schemafield fieldname="br_cust_code" fullfieldname="br_cust_code" typename="DelphiString" size="11" elements="1" id="0" columnname="BrCustCode" collation="1"/>
+				<schemafield fieldname="br_period" fullfieldname="br_period" typename="BYTE" size="1" elements="1" id="0" columnname="BrPeriod"/>
+				<schemafield fieldname="br_year" fullfieldname="br_year" typename="BYTE" size="1" elements="1" id="0" columnname="BrYear"/>
+				<schemafield fieldname="br_CX_Rate1" fullfieldname="br_CX_Rate1" typename="DelphiReal" size="6" elements="1" id="0" columnname="brCompanyRate"/>
+				<schemafield fieldname="br_CX_Rate2" fullfieldname="br_CX_Rate2" typename="DelphiReal" size="6" elements="1" id="0" columnname="brDailyRate"/>
+				<schemafield fieldname="br_l_use_o_rate" fullfieldname="br_l_use_o_rate" typename="BYTE" size="1" elements="1" id="0" columnname="BrLUseORate"/>
+				<schemafield fieldname="brCur_TriRate" fullfieldname="brCur_TriRate" typename="double" size="8" elements="1" id="0" columnname="brCurTriRate"/>
+				<schemafield fieldname="brCur_TriEuro" fullfieldname="brCur_TriEuro" typename="BYTE" size="1" elements="1" id="0" columnname="brCurTriEuro"/>
+				<schemafield fieldname="brCur_TriInvert" fullfieldname="brCur_TriInvert" typename="bool1" size="1" elements="1" id="0" columnname="brCurTriInvert"/>
+				<schemafield fieldname="brCur_TriFloat" fullfieldname="brCur_TriFloat" typename="bool1" size="1" elements="1" id="0" columnname="brCurTriFloat"/>
+				<schemafield fieldname="brCur_Spare" fullfieldname="brCur_Spare" typename="binary" size="10" elements="1" id="0" columnname="brCurSpare"/>
+				<schemafield fieldname="br_old_your_ref" fullfieldname="br_old_your_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="BrOldYourRef"/>
+				<schemafield fieldname="br_trans_value" fullfieldname="br_trans_value" typename="double" size="8" elements="1" id="0" columnname="BrTransValue"/>
+				<schemafield fieldname="br_cc_dep1" fullfieldname="br_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="BrDepartment" collation="1"/>
+				<schemafield fieldname="br_cc_dep2" fullfieldname="br_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="BrCostCentre" collation="1"/>
+				<schemafield fieldname="br_nom_code" fullfieldname="br_nom_code" typename="long" size="4" elements="1" id="0" columnname="BrNomCode"/>
+				<schemafield fieldname="br_sri_nom_code" fullfieldname="br_sri_nom_code" typename="long" size="4" elements="1" id="0" columnname="BrSRINomCode"/>
+				<schemafield fieldname="br_folio_link" fullfieldname="br_folio_link" typename="long" size="4" elements="1" id="0" columnname="BrFolioLink"/>
+				<schemafield fieldname="br_vat_code" fullfieldname="br_vat_code" typename="char" size="1" elements="1" id="0" columnname="BrVATCode"/>
+				<schemafield fieldname="br_vat_amount" fullfieldname="br_vat_amount" typename="double" size="8" elements="1" id="0" columnname="BrVATAmount"/>
+				<schemafield fieldname="br_trans_date" fullfieldname="br_trans_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrTransDate"/>
+				<schemafield fieldname="br_is_new_trans" fullfieldname="br_is_new_trans" typename="bool1" size="1" elements="1" id="0" columnname="BrIsNewTrans"/>
+				<schemafield fieldname="br_line_status" fullfieldname="br_line_status" typename="BYTE" size="1" elements="1" id="0" columnname="BrLineStatus"/>
+				<schemafield fieldname="spare6" fullfieldname="spare6" typename="binary" size="493" elements="1" id="0" columnname="Spare6"/>
+				<schemafield fieldname="br_your_ref" fullfieldname="br_your_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="BrYourRef"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="BACSDbRec" id="11" stringid="K3">
+			<schemafields>
+				<schemafield fieldname="br_acc_nom" fullfieldname="br_acc_nom" typename="long" size="4" elements="1" id="0" columnname="BrAccNOM"/>
+				<schemafield fieldname="br_bank_prod" fullfieldname="br_bank_prod" typename="uint16" size="2" elements="1" id="0" columnname="BrBankProd"/>
+				<schemafield fieldname="br_pay_path" fullfieldname="br_pay_path" typename="DelphiString" size="61" elements="1" id="0" columnname="BrPayPath"/>
+				<schemafield fieldname="br_pay_file_name" fullfieldname="br_pay_file_name" typename="DelphiString" size="61" elements="1" id="0" columnname="BrPayFileName"/>
+				<schemafield fieldname="br_rec_file_name" fullfieldname="br_rec_file_name" typename="DelphiString" size="61" elements="1" id="0" columnname="BrRecFileName"/>
+				<schemafield fieldname="br_stat_path" fullfieldname="br_stat_path" typename="DelphiString" size="61" elements="1" id="0" columnname="BrStatPath"/>
+				<schemafield fieldname="br_swift_ref1" fullfieldname="br_swift_ref1" typename="DelphiString" size="61" elements="1" id="0" columnname="BrSwiftRef1"/>
+				<schemafield fieldname="br_swift_ref2" fullfieldname="br_swift_ref2" typename="DelphiString" size="61" elements="1" id="0" columnname="BrSwiftRef2"/>
+				<schemafield fieldname="br_swift_ref3" fullfieldname="br_swift_ref3" typename="DelphiString" size="61" elements="1" id="0" columnname="BrSwiftRef3"/>
+				<schemafield fieldname="br_swift_bic" fullfieldname="br_swift_bic" typename="DelphiString" size="12" elements="1" id="0" columnname="BrSwiftBIC"/>
+				<schemafield fieldname="br_route_code" fullfieldname="br_route_code" typename="DelphiString" size="36" elements="1" id="0" columnname="BrRouteCode"/>
+				<schemafield fieldname="br_charge_inst" fullfieldname="br_charge_inst" typename="DelphiString" size="6" elements="1" id="0" columnname="BrChargeInst"/>
+				<schemafield fieldname="br_route_method" fullfieldname="br_route_method" typename="char" size="1" elements="1" id="0" columnname="BrRouteMethod"/>
+				<schemafield fieldname="br_last_use_date" fullfieldname="br_last_use_date" typename="DelphiString" size="9" elements="1" id="0" columnname="BrLastUseDate"/>
+				<schemafield fieldname="br_old_sort_code" fullfieldname="br_old_sort_code" typename="DelphiString" size="7" elements="1" id="0" columnname="BrOldSortCode"/>
+				<schemafield fieldname="br_old_account_code" fullfieldname="br_old_account_code" typename="DelphiString" size="13" elements="1" id="0" columnname="BrOldAccountCode"/>
+				<schemafield fieldname="br_bank_ref" fullfieldname="br_bank_ref" typename="DelphiString" size="19" elements="1" id="0" columnname="BrBankRef"/>
+				<schemafield fieldname="br_bacs_user_id" fullfieldname="br_bacs_user_id" typename="DelphiString" size="11" elements="1" id="0" columnname="BrBACSUserID"/>
+				<schemafield fieldname="br_bacs_currency" fullfieldname="br_bacs_currency" typename="BYTE" size="1" elements="1" id="0" columnname="BrBACSCurrency"/>
+				<schemafield fieldname="br_user_id2" fullfieldname="br_user_id2" typename="DelphiString" size="31" elements="1" id="0" columnname="BrUserID2"/>
+				<schemafield fieldname="br_sort_code_ex" fullfieldname="br_sort_code_ex" typename="DelphiString" size="13" elements="1" id="0" columnname="BrSortCodeEx"/>
+				<schemafield fieldname="br_account_code_ex" fullfieldname="br_account_code_ex" typename="DelphiString" size="26" elements="1" id="0" columnname="BrAccountCodeEx"/>
+        <schemafield fieldname="br_bank_sort_code" fullfieldname="br_bank_sort_code" typename="DelphiEmbeddedCaseSensitiveString" size="23" elements="1" id="0" columnname="BrBankSortCode" />
+        <schemafield fieldname="br_bank_account_code" fullfieldname="br_bank_account_code" typename="DelphiEmbeddedCaseSensitiveString" size="55" elements="1" id="0" columnname="BrBankAccountCode" />
+				<schemafield fieldname="br_userid_ex" fullfieldname="br_userid_ex" typename="binary" size="55" elements="1" id="0" columnname="brUserIdEx"/>
+				<schemafield fieldname="br_userid2_ex" fullfieldname="br_userid2_ex" typename="binary" size="55" elements="1" id="0" columnname="brUserId2Ex"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="eBankHRec"  id="12" stringid="K4">
+			<schemafields>
+				<schemafield fieldname="eb_acc_nom" fullfieldname="eb_acc_nom" typename="long" size="4" elements="1" id="0" columnname="EbAccNOM"/>
+				<schemafield fieldname="eb_stat_ref" fullfieldname="eb_stat_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="EbStatRef"/>
+				<schemafield fieldname="eb_stat_ind" fullfieldname="eb_stat_ind" typename="uint16" size="2" elements="1" id="0" columnname="EbStatInd"/>
+				<schemafield fieldname="eb_source_file" fullfieldname="eb_source_file" typename="DelphiString" size="101" elements="1" id="0" columnname="EbSourceFile"/>
+				<schemafield fieldname="eb_int_ref" fullfieldname="eb_int_ref" typename="long" size="4" elements="1" id="0" columnname="EbIntRef"/>
+				<schemafield fieldname="eb_stat_date" fullfieldname="eb_stat_date" typename="DelphiString" size="9" elements="1" id="0" columnname="EbStatDate"/>
+			</schemafields>
+		</recordtype>
+		<recordtype name="eBankLRec"  id="13" stringid="K5">
+			<schemafields>
+				<schemafield fieldname="eb_line_no" fullfieldname="eb_line_no" typename="long" size="4" elements="1" id="0" columnname="EbLineNo"/>
+				<schemafield fieldname="eb_line_date" fullfieldname="eb_line_date" typename="DelphiString" size="9" elements="1" id="0" columnname="EbLineDate"/>
+				<schemafield fieldname="eb_line_ref" fullfieldname="eb_line_ref" typename="DelphiString" size="41" elements="1" id="0" columnname="EbLineRef"/>
+				<schemafield fieldname="eb_line_value" fullfieldname="eb_line_value" typename="double" size="8" elements="1" id="0" columnname="EbLineValue"/>
+				<schemafield fieldname="eb_line_int_ref" fullfieldname="eb_line_int_ref" typename="long" size="4" elements="1" id="0" columnname="EbLineIntRef"/>
+				<schemafield fieldname="eb_match_str" fullfieldname="eb_match_str" typename="DelphiString" size="31" elements="1" id="0" columnname="EbMatchStr"/>
+				<schemafield fieldname="eb_glcode" fullfieldname="eb_glcode" typename="long" size="4" elements="1" id="0" columnname="EbGLCode"/>
+				<schemafield fieldname="eb_line_ref2" fullfieldname="eb_line_ref2" typename="DelphiString" size="41" elements="1" id="0" columnname="EbLineRef2"/>
+				<schemafield fieldname="eb_line_status" fullfieldname="eb_line_status" typename="BYTE" size="1" elements="1" id="0" columnname="EbLineStatus"/>
+			</schemafields>
+		</recordtype>
+	</recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode1Computed">var_code1</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode2Computed">var_code2</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode3Computed">var_code3</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>

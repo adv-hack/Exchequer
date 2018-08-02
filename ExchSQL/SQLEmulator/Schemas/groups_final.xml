@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="iqcdF4mcn3TKcpWySJb8Mg" identitycol="PositionId" recordfieldname="" reclen="682">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_gr_group_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="grGroupCode" collation="1"/>
+	<schemafield fieldname="f_gr_group_name" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="grGroupName" collation="1"/>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_gr_group_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_gr_group_name</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

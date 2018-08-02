@@ -1,0 +1,120 @@
+[FileVersion]
+Version=6.0
+[Compiler]
+A=8
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=0
+K=0
+L=1
+M=0
+N=1
+O=0
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=Win32 Shell Controls
+[Directories]
+OutputDir=
+UnitOutputDir=
+PackageDLLOutputDir=X:\ENTRPRSE\CD.Vista\ShellControls.D2005\
+PackageDCPOutputDir=
+SearchPath=
+Packages=vcl;rtl;vclx;VclSmp;vclshlctrls;HMESL1;DBMBtrieve;EnCommon;indy;SpellCheck4ModalPackage;dbrtl;RPRV40D6;RPRT40D6;bdertl;EnterTab
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=
+HostApplication=
+Launcher=
+UseLauncher=0
+DebugCWD=
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=1
+Locale=1033
+CodePage=1252
+[Version Info Keys]
+CompanyName=Borland Software Corporation
+FileDescription=Borland Win32 Shell Controls
+FileVersion=1.0.0.0
+InternalName=VCLSHLCTRLS90
+LegalCopyright=Copyright © 2000-2002 Borland Software Corporation
+LegalTrademarks=
+OriginalFilename=VCLSHLCTRLS90.BPL
+ProductName=Borland Delphi
+ProductVersion=9.0
+[Excluded Packages]
+c:\program files\borland\delphi6\Projects\Bpl\FILECTRL.bpl=(untitled)
+c:\program files\borland\delphi6\Bin\dclocx60.bpl=Borland Sample Imported ActiveX Controls
+C:\WINDOWS\system32\ibevnt60.bpl=Borland Interbase Event Alerter Component
+c:\program files\borland\delphi6\Bin\dclnet60.bpl=Borland Internet Components
+C:\Program Files\Borland\Delphi6\Bin\dcldb60.bpl=Borland Database Components
+c:\program files\borland\delphi6\Bin\dclbde60.bpl=Borland BDE DB Components
+C:\Program Files\Borland\Delphi6\Bin\dbx60.bpl=Borland SQL Explorer UI Package
+c:\program files\borland\delphi6\Bin\dclado60.bpl=Borland ADO DB Components
+c:\program files\borland\delphi6\Bin\DCLIB60.bpl=InterBase Data Access Components
+C:\Program Files\Borland\Delphi6\Bin\dclmid60.bpl=Borland MyBase DataAccess Components
+c:\program files\borland\delphi6\Bin\dclqrt60.bpl=QuickReport Components
+c:\program files\borland\delphi6\Bin\dcltee60.bpl=TeeChart Components
+c:\program files\borland\delphi6\Bin\dcldss60.bpl=Borland Decision Cube Components
+c:\program files\borland\delphi6\Bin\dcltqr60.bpl=TeeChart for QuickReport Components
+c:\program files\borland\delphi6\Bin\dclclxdb60.bpl=Borland CLX Database Components
+C:\Program Files\Borland\Delphi6\Bin\dclclxstd60.bpl=Borland CLX Standard Components
+c:\program files\borland\delphi6\Bin\dclmcn60.bpl=Borland DataSnap Connection Components
+c:\program files\borland\delphi6\Bin\DCLNMF60.bpl=NetMasters Fastnet Tools
+c:\program files\borland\delphi6\Bin\dcldbx60.bpl=Borland dbExpress Components
+c:\program files\borland\delphi6\Bin\dclie60.bpl=Internet Explorer Components
+c:\program files\borland\delphi6\Bin\dcldbxcds60.bpl=Borland Local DBX ClientDataset Components
+C:\Program Files\Borland\Delphi6\Bin\dclcds60.bpl=Borland Base Cached ClientDataset Component
+c:\program files\borland\delphi6\Bin\DBWEBXPRT.BPL=Borland Web Wizard Package
+c:\program files\borland\delphi6\Bin\dclwbm60.bpl=Borland InternetExpress Components
+c:\program files\borland\delphi6\Bin\dclwebsnap60.bpl=Borland WebSnap Components
+c:\program files\borland\delphi6\Bin\dclindy60.bpl=Internet Direct (Indy) for D6 Property and Component Editors
+c:\program files\borland\delphi6\Bin\dclbdecds60.bpl=Borland Local BDE ClientDataset Components
+c:\program files\borland\delphi6\Bin\dclsoap60.bpl=Borland Soap Components
+c:\Program Files\BORLAND\Delphi6\Projects\Bpl\COMPD6.bpl=ESL Form Designer Components
+X:\COMPON\TSpellers\SpellCheck4ModalPackage.bpl=Exchequer Spell Checking for Modal Forms
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[HistoryLists\hlBPLOutput]
+Count=2
+Item0=X:\ENTRPRSE\CD.Vista\ShellControls.D2005\
+Item1=.\

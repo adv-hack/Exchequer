@@ -1,0 +1,87 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Add2Tools.WSE - Adds an Item into the Enterprise Tools menu
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=ICONSTOOLS
+  Value=B
+  Flags=00000010
+end
+item: Remark
+end
+item: Set Variable
+  Variable=TOOLNAME
+  Value=Configure User-Defined Field Plug-In
+end
+item: Set Variable
+  Variable=TOOLCOMMAND
+  Value=%ENTDIR%\USERHADM.EXE
+end
+item: Set Variable
+  Variable=TOOLPARAMS
+end
+item: Set Variable
+  Variable=TOOLSTARTDIR
+  Value=%ENTDIR%\
+end
+item: Remark
+end
+item: Remark
+  Text=Call DLL to Add to Tools
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddToToolsMenu
+  Return Variable=0
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=FUNCRES
+  Value=0
+  Flags=00000001
+end
+item: Display Message
+  Title=Error Adding To Tools Menu
+  Text=Could not add the item into the tools menu (Wise7_AddToToolsMenu) using the following parameters :
+  Text=
+  Text=TOOLNAME : %TOOLNAME%
+  Text=TOOLCOMMAND : %TOOLCOMMAND%
+  Text=TOOLPARAMS : %TOOLPARAMS%
+  Text=TOOLSTARTDIR : %TOOLSTARTDIR%
+  Text=FUNCRES : %FUNCRES%
+  Text=
+  Flags=00000100
+end
+item: End Block
+end
+item: End Block
+end

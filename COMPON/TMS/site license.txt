@@ -1,0 +1,54 @@
+TMS component site license agreement
+------------------------------------
+
+TMS component license agreement between
+TMS software and holder of the component license.
+
+The license of the component gives you the right
+to :
+
+- using the component for development of applications
+  or any type of software module in general by all
+  developers within the company holding the license.
+- sell any commercial compiled application with
+  the control, published by the company holding
+  the license.
+- make modifications to the source code of
+  component for own use.
+- use the component and source code on all development
+  systems used by all developers in the company
+  holding the license.
+- request future versions of the component
+  at any time either through the web or by email
+  for a full version cycle of the component or max.
+  3 years after purchase.
+- access to priority email support by all
+  developers in the company holding the license.
+- sell any number of applications in any quantity without
+  any additional run-time fees required
+- change at any time the number of developers using
+  the TMS software components within the company holding
+  the license
+- notify TMS software at any time to allow new developers
+  within the company to access the priority email support
+- allow any number of developers within the company holding
+  the license to access the web based interface for obtaining
+  product updates.
+
+The license agreement prevents you from :
+
+- distributing parts or full source code of
+  any component from TMS software.
+- using parts or full source code of components
+  from the TMS software for creating any type of
+  other components that are distributed or sold with
+  or without source code.
+- changing the source code of any component from 
+  TMS software and sell or distribute this as
+  a modified product.
+- creating a descendant compiled product such as
+  OCX or ActiveX control and sell or distribute
+  this as a product
+- using the control in applications sold with
+  different publisher name than the company holding
+  the license

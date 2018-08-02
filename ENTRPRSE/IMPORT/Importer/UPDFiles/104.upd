@@ -1,0 +1,7 @@
+[Version]
+Version=9.0.104
+
+[Employee]
+F028=EM.ContractorType            0456    I 0001 O   Contractor Type                                    default=0                                                                                                    comment=For S-Types employess : 0-4(0='N/A', 1='Soletrader', 2='Partnership', 3='Trust', 4='Company')
+F029=EM.Spare                     0457    C 0255 N   Padding                                            default=                                                                                                     comment=
+F030=EM.LastChar                  0712    C 0001 N   Padding                                            default=                                                                                                     comment=

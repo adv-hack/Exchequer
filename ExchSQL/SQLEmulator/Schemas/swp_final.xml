@@ -1,0 +1,17 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="256" disablega="0" commandtimeout="100" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_field_2" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="101" elements="1" id="-1" columnname="f_field_2"/>
+    </fixedfields>
+    <defaultrecordtype>
+        <schemafield fieldname="image" fullfieldname="image" typename="image" size="155" elements="1" id="0" columnname="image_0" collation="0"/>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0">
+            <indexfields>
+                <item computedcolumnname="f_field_2Computed">f_field_2</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

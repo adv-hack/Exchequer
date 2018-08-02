@@ -1,0 +1,9 @@
+[Version]
+Version=6.00.071.069
+
+[Trans Line]
+F097=TL.BDMode                    0615    B 0001 N   Backdoor Mode                                      default=                                                                                                     comment=
+F098=TL.Spare                     0616    C 0244 N   Padding                                            default=                                                                                                     comment=
+F099=TL.BatchNo                   0860    S 0010 O   Batch No                                           default=                                                                                                     comment=
+F100=TL.Spare2                    0871    C 0003 N   Padding                                            default=                                                                                                     comment=
+F101=TL.LastChar                  0874    C 0001 N   Padding                                            default=                                                                                                     comment=

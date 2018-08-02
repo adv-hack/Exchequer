@@ -1,0 +1,312 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Do Workgroup Stuff
+end
+item: Remark
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTERDIR%\EntStart.EXE
+  Flags=00000100
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Flags=00000100
+end
+item: Read INI Value
+  Variable=WGROUPINSTALLED
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Section=Workgroup
+  Item=Installed
+  Default=N
+end
+item: Read INI Value
+  Variable=WG_LICKEY
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Section=Workgroup
+  Item=LicenceKey
+end
+item: Read INI Value
+  Variable=PSQLVERSION
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Section=Workgroup
+  Item=Version
+end
+item: Read INI Value
+  Variable=PVVERSION
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Section=ClientServer
+  Item=EngineVersion
+end
+item: If/While Statement
+  Variable=WGROUPINSTALLED
+  Value=Y
+  Flags=00000100
+end
+item: Remark
+end
+item: Remark
+  Text=Non Client-Server - Workgroup Engine
+end
+item: Edit Registry
+  Total Keys=1
+  Key=Software\Exchequer\Enterprise
+  New Value=2
+  New Value=
+  Value Name=BtrieveMode
+  Root=2
+  Data Type=3
+end
+item: Remark
+end
+item: Remark
+  Text=Install Win\System files required by P.SQL v8 Workgroup Engine
+end
+item: Include Script
+  Pathname=WSP8SYS.WSE
+end
+item: Remark
+end
+item: Remark
+  Text=Work out the paths to use
+end
+item: Set Variable
+  Variable=V_REGDIR
+  Value=%ENTERDIR%
+end
+item: Set Variable
+  Variable=V_BINDIR
+  Value=%V_REGDIR%\BIN
+end
+item: Remark
+end
+item: Remark
+  Text=Pervasive.SQL v8 - Add BIN directory to PATH
+end
+item: Add Directory to Path
+  Directory=%V_BINDIR%
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=Update the PATH for this .EXE to include the \BIN dir off Enterprise
+end
+item: Set Variable
+  Variable=V_MAINDIR
+  Value=%ENTERDIR%
+end
+item: Call DLL Function
+  Pathname=%ENTERDIR%\WSTATION\SETUP.DLL
+  Function Name=SCD_SetEnvPath
+  Return Variable=0
+end
+item: Remark
+end
+item: Remark
+  Text=Register the P.SQL 8 WGE COM Objects in V_REGDIR
+end
+item: Set Variable
+  Variable=WG_VERSION
+  Value=%PSQLVERSION%
+end
+item: Call DLL Function
+  Pathname=%ENTERDIR%\ENTCOMP2.DLL
+  Function Name=SCD_SetupWorkgroupCOM
+  Return Variable=0
+end
+item: Remark
+end
+item: Remark
+  Text=Create the MKDE\LOG directory
+end
+item: Set Variable
+  Variable=V_EXCHLOCAL
+end
+item: Call DLL Function
+  Pathname=%ENTERDIR%\ENTCOMP2.DLL
+  Function Name=SCD_CalcExchLocal
+  Return Variable=0
+end
+item: Set Variable
+  Variable=ENTSTARTDIR
+  Value=%V_EXCHLOCAL%
+end
+item: Create Directory
+  Pathname=%ENTSTARTDIR%
+end
+item: Create Directory
+  Pathname=%ENTSTARTDIR%MKDE\
+end
+item: Create Directory
+  Pathname=%ENTSTARTDIR%MKDE\LOG\
+end
+item: Remark
+end
+item: Remark
+  Text=Record the local directory in HKEY_LOCAL_MACHINE\SOFTWARE\Exchequer\Enterprise\LocalDir
+end
+item: Edit Registry
+  Total Keys=1
+  Key=Software\Exchequer\Enterprise
+  New Value=%ENTSTARTDIR%
+  New Value=
+  Value Name=LocalDir
+  Root=2
+end
+item: Remark
+end
+item: Remark
+  Text=Register the Licence String
+end
+item: Execute Program
+  Pathname=%V_BINDIR%\CLILCADM.EXE
+  Command Line=-a %WG_LICKEY%
+  Default Directory=%V_BINDIR%
+  Flags=00001010
+end
+item: Remark
+end
+item: Remark
+end
+remarked item: Remark
+  Text=....Install Pervasive Workgroup Locator
+end
+remarked item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\CUST\~PVSW~.LOC
+  Flags=00000100
+end
+remarked item: Copy Local File
+  Source=%ENTDIR%\CUST\~PVSW~.LOC
+  Destination=%ENTDIR%\WORKFLOW\~PVSW~.LOC
+  Description=Pervasive Workgroup Locator
+  Flags=0000000011000010
+end
+remarked item: Set File Attributes
+  Pathname=%ENTDIR%\WORKFLOW\~PVSW~.LOC
+  Flags=00010001
+end
+remarked item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: Else Statement
+end
+item: Read INI Value
+  Variable=PVVERSION
+  Pathname=%ENTERDIR%\WSTATION\Setup.USR
+  Section=ClientServer
+  Item=EngineVersion
+end
+item: If/While Statement
+  Variable=PVVERSION
+  Value=3
+  Flags=00000100
+end
+item: Remark
+end
+item: Remark
+  Text=Install Win\System files required by P.SQL v8 Workgroup Engine
+end
+item: Include Script
+  Pathname=WSP8SYS.WSE
+end
+item: Remark
+end
+item: Remark
+  Text=Work out the paths to use
+end
+item: Set Variable
+  Variable=V_REGDIR
+  Value=%ENTERDIR%
+end
+item: Set Variable
+  Variable=V_BINDIR
+  Value=%V_REGDIR%\BIN
+end
+item: Remark
+end
+item: Remark
+  Text=Pervasive.SQL v8 - Add BIN directory to PATH
+end
+item: Add Directory to Path
+  Directory=%V_BINDIR%
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=Update the PATH for this .EXE to include the \BIN dir off Enterprise
+end
+item: Set Variable
+  Variable=V_MAINDIR
+  Value=%ENTERDIR%
+end
+item: Call DLL Function
+  Pathname=%ENTERDIR%\WSTATION\SETUP.DLL
+  Function Name=SCD_SetEnvPath
+  Return Variable=0
+end
+item: Remark
+end
+item: Remark
+  Text=Register BIN\MKC.DLL
+end
+item: Check if File/Dir Exists
+  Pathname=%V_BINDIR%\MKC.DLL
+  Flags=01000100
+end
+item: Self-Register OCXs/DLLs
+  Description=%V_BINDIR%\MKC.DLL
+  Flags=00000001
+end
+item: Self-Register OCXs/DLLs
+  Description=Registering Components
+end
+item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Configure Btrieve
+end
+item: Call DLL Function
+  Pathname=%INST%\TCMSETUP.DLL
+  Function Name=RegisterBtrieve
+  Return Variable=0
+end
+item: Set Variable
+  Variable=BTDONE
+  Value=TRUE
+end

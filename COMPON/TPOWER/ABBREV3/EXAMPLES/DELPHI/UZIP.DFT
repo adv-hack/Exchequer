@@ -1,0 +1,96 @@
+object Form1: TForm1
+  Left = 305
+  Top = 216
+  Width = 335
+  Height = 193
+  Caption = 'Zipper Example'
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object AbMeter1: TAbMeter
+    Left = 112
+    Top = 104
+    Width = 177
+    Height = 16
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clNavy
+  end
+  object AbMeter2: TAbMeter
+    Left = 112
+    Top = 128
+    Width = 177
+    Height = 16
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clNavy
+  end
+  object Label1: TLabel
+    Left = 16
+    Top = 104
+    Width = 64
+    Height = 13
+    Caption = 'Item Progress'
+  end
+  object Label2: TLabel
+    Left = 16
+    Top = 128
+    Width = 80
+    Height = 13
+    Caption = 'Archive Progress'
+  end
+  object Button1: TButton
+    Left = 115
+    Top = 64
+    Width = 75
+    Height = 25
+    Caption = '&Add...'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 9
+    Top = 8
+    Width = 288
+    Height = 49
+    BorderStyle = bsNone
+    Ctl3D = False
+    Lines.Strings = (
+      'This example adds files to an archive called TEST.ZIP. The '
+      'AutoSave property of the TAbZipper is set to true so the files'
+      'are physically added to the archive as they are added.')
+    ParentColor = True
+    ParentCtl3D = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object AbZipper1: TAbZipper
+    ArchiveProgressMeter = AbVCLMeterLink2
+    ItemProgressMeter = AbVCLMeterLink1
+    AutoSave = True
+    FileName = 'C:\TEST.ZIP'
+    Left = 56
+    Top = 48
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'zip'
+    Filter = 'All Files|*.*'
+    Left = 24
+    Top = 48
+  end
+  object AbVCLMeterLink1: TAbVCLMeterLink
+    Meter = AbMeter1
+    Left = 284
+    Top = 96
+  end
+  object AbVCLMeterLink2: TAbVCLMeterLink
+    Meter = AbMeter2
+    Left = 284
+    Top = 128
+  end
+end

@@ -1,0 +1,54 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:curr"
+            targetNamespace="urn:www-iris-co-uk:curr" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="currrec">
+    <xsd:sequence>
+      <xsd:element name='name' type='xsd:string'/>
+      <xsd:element name='screensymb' type='xsd:string'/>
+      <xsd:element name='printersymb' type='xsd:string'/>
+      <xsd:element name='dailyrate' type='xsd:double'/>
+      <xsd:element name='companyrate' type='xsd:double'/>
+      <xsd:element name='trieuro' type='xsd:integer'/>
+      <xsd:element name='trirates' type='xsd:double'/>
+      <xsd:element name='triinvert' type='tns:boolean2'/>
+      <xsd:element name='trifloat' type='tns:boolean2'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="currpage">
+    <xsd:sequence>
+      <xsd:element name='pageno' type='xsd:integer' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='currrec' type='tns:currrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='currpage' type='tns:currpage' minOccurs='3' maxOccurs='3' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='curr'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='curr' type='tns:curr'/>
+
+</xsd:schema>

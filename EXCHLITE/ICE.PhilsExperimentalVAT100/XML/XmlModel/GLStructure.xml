@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:glstructure xmlns:val="urn:www-iris-co-uk:glstructure">
+<message guid="" number="" count="" source="" destination="" flag="">
+  <glrec>
+    <arrayindex/>
+    <glcode/>
+  </glrec>    
+</message>
+</val:glstructure>

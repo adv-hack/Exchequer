@@ -1,0 +1,38 @@
+This file summarizes changes made between Async Professional 4.00
+and 4.01
+
+Bugs Fixed
+---------------------------------------------------------------------
+Low-level/port components
+  - Data triggers couldn't be found
+  - SendBreak bypasses RS485 processing
+
+Fax components
+  - Forcing Class1 fails
+  - Errant ShowMessage in the idShellConverter
+  - Untrappable exception if FaxFileList contains invalid files
+  - Dial command invalid
+
+FTP components
+  - AV on exit
+
+Paging components
+  - Invalid phone number/SMS center for intra-national calls
+
+TAPI/VoIP components
+  - AV on creation with non-English versions of W2K
+  - OLE error on call connection
+
+
+Enhancements Made
+---------------------------------------------------------------------
+Fax components
+  - Add support for literal '$' in replacable tags
+  - TApdReceiveFax.FaxFile not updated in OnFaxFinish
+
+TAPI components
+  - Filtered extra RINGING message after connection
+
+RAS components
+  - Add IsRasAvailable method
+  

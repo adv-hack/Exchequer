@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:periods xmlns:val="urn:www-iris-co-uk:periods">
+<message guid="" number="0" count="0" source="" destination="" flag="0" plugin="" datatype="0" desc="" xsl="" xsd="" startperiod="0" startyear="0" endperiod="0" endyear="0">
+  <periodrec>
+    <settings>
+      <useplugin/>
+    </settings>
+    <periodlist>
+      <period>
+        <id/>
+        <date/>
+      </period>
+    </periodlist>
+  </periodrec>
+</message>
+</val:periods>

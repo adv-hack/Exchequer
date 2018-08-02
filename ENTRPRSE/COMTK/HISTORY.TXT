@@ -1,0 +1,38 @@
+TEST
+
+Enterprise COM Toolkit Version History
+======================================
+
+Version & Date
+==============
+
+
+TKCOM-b500.100 - Ent 5.00 Mods Phase 1
+======================================
+HM:  Changed TBatchTHRec.Tagged to SmallInt from WordBool to support the new
+     Tag No's
+
+HM:  Applied SavePos/RestorePos mods to:-
+
+       IAccountDiscount.Save
+       IGeneralLedger.Save
+       IJob.Save
+       ILocation.Save
+       INotes.Save
+       IQuantityBreak.Save
+       IStockLocation.Save
+       ITransaction.Save
+
+     Note: IStock.Save done in v4.32.037 and IAccount.Save in v4.32.041
+
+HM:  ?
+
+
+------------------------------------------------------------------------------
+
+TKCOM-v4.32.041 - 12/10/01
+==========================
+HM:  Added SavePos/RestorePos to IAccount.Save to workaround the old position
+     loss problem first identified with Stock
+
+

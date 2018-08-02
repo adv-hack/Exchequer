@@ -1,0 +1,602 @@
+<registrar log_state="0" log_location="0" temp_cachesize="100" temp_emulator="1" temp_trace="1" gc_interval="5" cache_countdown="10" lock_retries="5" verifyvalue="fICCIkBb8yTs1z7lI5W4mw==" system="1" profile="0" track_threads="0" lockwaitinterval="100" lockinitialdelay="0" updatetimeoutretries="5" updatetimeoutinterval="100">
+    <relative_schema_location>\schemas</relative_schema_location>
+    <log_filename>%TEMP%\iris_log.txt</log_filename>
+    <errorlog_filename>%TEMP%\iris_error.txt</errorlog_filename>
+    <schemaconfigs>
+        <schemaconfig schema_filename="ACCOUNTCONTACT.XML" btrieve_filename="ACCOUNTCONTACT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="ACCOUNTCONTACTROLE.XML" btrieve_filename="ACCOUNTCONTACTROLE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="ALLOCWIZARDSESSION.XML" btrieve_filename="ALLOCWIZARDSESSION.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="ANALYSISCODEBUDGET.XML" btrieve_filename="ANALYSISCODEBUDGET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="ANONYMISATIONDIARY.XML" btrieve_filename="ANONYMISATIONDIARY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="BANKREC_FINAL.XML" btrieve_filename="" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CCDEPTV_FINAL.XML" btrieve_filename="CCDEPTV.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="COLSET.XML" btrieve_filename="COLSET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="COMMSSN_FINAL.XML" btrieve_filename="COMMSSN.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="COMPANY_FINAL.XML" btrieve_filename="COMPANY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CONTACTROLE.XML" btrieve_filename="CONTACTROLE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CONTACT_FINAL.XML" btrieve_filename="CONTACT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CURRENCYHISTORY.XML" btrieve_filename="CURRENCYHISTORY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CUSTOMERDISCOUNT.XML" btrieve_filename="CUSTOMERDISCOUNT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CUSTOMERSTOCKANALYSIS.XML" btrieve_filename="CUSTOMERSTOCKANALYSIS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CUSTOMFIELDS.XML" btrieve_filename="CUSTOMFIELDS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="CUSTSUPP_FINAL.XML" btrieve_filename="CUSTSUPP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="DETAILS_FINAL.XML" btrieve_filename="DETAILS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="DOCUMENT_FINAL.XML" btrieve_filename="DOCUMENT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="DICTIONARY_FINAL.XML" btrieve_filename="DICTNARY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EBUS_FINAL.XML" btrieve_filename="EBUS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="DETAILS_FINAL.XML" btrieve_filename="EBUSDETL.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="DOCUMENT_FINAL.XML" btrieve_filename="EBUSDOC.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EBUSLKUP_FINAL.XML" btrieve_filename="EBUSLKUP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EBUSNOTE_FINAL.XML" btrieve_filename="EBUSNOTE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EMPPAY_FINAL.XML" btrieve_filename="EMPPAY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EXCHQCHK_FINAL.XML" btrieve_filename="EXCHQCHK.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EXCHQNUM_FINAL.XML" btrieve_filename="EXCHQNUM.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EXCHQSS_FINAL.XML" btrieve_filename="EXCHQSS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="EXSTKCHK_FINAL.XML" btrieve_filename="EXSTKCHK.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="FAXES_FINAL.XML" btrieve_filename="FAXES.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="FIFO.XML" btrieve_filename="FIFO.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="FINANCIALMATCHING.XML" btrieve_filename="FINANCIALMATCHING.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="FORMS_IMAGE.XML" btrieve_filename="" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="GLBUDGETHISTORY.XML" btrieve_filename="GLBUDGETHISTORY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="GROUPCMP_FINAL.XML" btrieve_filename="GROUPCMP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="GROUPS_FINAL.XML" btrieve_filename="GROUPS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="GROUPUSR_FINAL.XML" btrieve_filename="GROUPUSR.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="HISTORY_FINAL.XML" btrieve_filename="HISTORY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="IMPORTJOB_FINAL.XML" btrieve_filename="IMPORTJOB.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="JOBCTRL_FINAL.XML" btrieve_filename="JOBCTRL.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="JOBDET_FINAL.XML" btrieve_filename="JOBDET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="JOBHEAD_FINAL.XML" btrieve_filename="JOBHEAD.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="JOBMISC_FINAL.XML" btrieve_filename="JOBMISC.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="JOBTOTALSBUDGET.XML" btrieve_filename="JOBTOTALSBUDGET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="LBIN_FINAL.XML" btrieve_filename="LBIN.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="LHEADER_FINAL.XML" btrieve_filename="LHEADER.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="LLINES_FINAL.XML" btrieve_filename="LLINES.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="LOCATION.XML" btrieve_filename="LOCATION.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="LSERIAL_FINAL.XML" btrieve_filename="LSERIAL.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="MCPAY_FINAL.XML" btrieve_filename="MCPAY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="MLOCSTK_FINAL.XML" btrieve_filename="MLOCSTK.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="MULTIBUY_FINAL.XML" btrieve_filename="MULTIBUY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="NOMINAL_FINAL.XML" btrieve_filename="NOMINAL.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="NOMVIEW_FINAL.XML" btrieve_filename="NOMVIEW.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="OPVATPAY_FINAL.XML" btrieve_filename="OPVATPAY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="ORDERPAYMENTSMATCHING.XML" btrieve_filename="ORDERPAYMENTSMATCHING.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PAAUTH_FINAL.XML" btrieve_filename="PAAUTH.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PACOMP_FINAL.XML" btrieve_filename="PACOMP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PAEAR_FINAL.XML" btrieve_filename="PAEAR.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PAGLOBAL_FINAL.XML" btrieve_filename="PAGLOBAL.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PAPERSIZE_FINAL.XML" btrieve_filename="PAPRSIZE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PARSET.XML" btrieve_filename="PARSET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PAUSER_FINAL.XML" btrieve_filename="PAUSER.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PPCUST_FINAL.XML" btrieve_filename="PPCUST.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PPDEBT_FINAL.XML" btrieve_filename="PPDEBT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="PPSETUP_FINAL.XML" btrieve_filename="PPSETUP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="QTYBREAK.XML" btrieve_filename="QTYBREAK.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="REGIONTAXCODES.XML" btrieve_filename="REGIONTAXCODES.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SALECODE_FINAL.XML" btrieve_filename="SALECODE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SCHEDCFG_FINAL.XML" btrieve_filename="SCHEDCFG.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SCHEDULE_FINAL.XML" btrieve_filename="SCHEDULE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SCTYPE_FINAL.XML" btrieve_filename="SCTYPE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SENT_FINAL.XML" btrieve_filename="SENT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SENTLINE_FINAL.XML" btrieve_filename="SENTLINE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SENTLINE_FINAL.XML" btrieve_filename="SENTSYS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SERIALBATCH.XML" btrieve_filename="SERIALBATCH.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SETTINGS_FINAL.XML" btrieve_filename="SETTINGS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SORTTEMP_FINAL.XML" btrieve_filename="" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SORTVIEW_FINAL.XML" btrieve_filename="SORTVIEW.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="STOCK_FINAL.XML" btrieve_filename="STOCK.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="STOCKLOCATION.XML" btrieve_filename="STOCKLOCATION.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="STOCKTAXCODES.XML" btrieve_filename="STOCKTAXCODES.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SVUSRDEF_FINAL.XML" btrieve_filename="SVUSRDEF.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SWF_FINAL.XML" btrieve_filename="" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SWP_FINAL.XML" btrieve_filename="" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="SYSTEMSETUP.XML" btrieve_filename="SYSTEMSETUP.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="TAXCODES.XML" btrieve_filename="TAXCODES.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="TAXREGIONS.XML" btrieve_filename="TAXREGIONS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="TILLNAME_FINAL.XML" btrieve_filename="TILLNAME.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="TOOLS_FINAL.XML" btrieve_filename="TOOLS.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="0">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="TRANSACTIONNOTE.XML" btrieve_filename="TRANSACTIONNOTE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="UDENTITY_FINAL.XML" btrieve_filename="UDENTITY.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="UDFIELD_FINAL.XML" btrieve_filename="UDFIELD.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="UDITEM_FINAL.XML" btrieve_filename="UDITEM.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="VAT100.XML" btrieve_filename="VAT100.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="VATOPT_FINAL.XML" btrieve_filename="VATOPT.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="VATPRD_FINAL.XML" btrieve_filename="VATPRD.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="VRWSEC_FINAL.XML" btrieve_filename="VRWSEC.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="VRWTREE_FINAL.XML" btrieve_filename="VRWTREE.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+        <schemaconfig schema_filename="WINSET.XML" btrieve_filename="WINSET.DAT" trace="1" initial_create="0" verify="0" emulator_type="1" dbType="1">
+            <emulator_params>
+                <param>100</param>
+            </emulator_params>
+        </schemaconfig>
+    </schemaconfigs>
+    <wildcard_schemas>
+        <mapentry>
+            <key>***.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>****.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>*****.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>******.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>*******.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>********.EFD</key>
+            <value>FORMS_IMAGE.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REC*.DAT</key>
+            <value>BANKREC_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REC**.DAT</key>
+            <value>BANKREC_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REC***.DAT</key>
+            <value>BANKREC_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REC****.DAT</key>
+            <value>BANKREC_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REC*****.DAT</key>
+            <value>BANKREC_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REP*.DAT</key>
+            <value>SWP_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REP**.DAT</key>
+            <value>SWP_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REP***.DAT</key>
+            <value>SWP_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REP****.DAT</key>
+            <value>SWP_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>REP*****.DAT</key>
+            <value>SWP_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>FD*.DAT</key>
+            <value>SWF_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>FD**.DAT</key>
+            <value>SWF_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>FD***.DAT</key>
+            <value>SWF_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>FD****.DAT</key>
+            <value>SWF_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>FD*****.DAT</key>
+            <value>SWF_FINAL.XML</value>
+        </mapentry>
+        <mapentry>
+            <key>SORTV*********************.DAT</key>
+            <value>SORTTEMP_FINAL.XML</value>
+        </mapentry>
+    </wildcard_schemas>
+</registrar>

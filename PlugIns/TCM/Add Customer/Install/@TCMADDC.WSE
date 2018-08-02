@@ -1,0 +1,379 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Title=Setup
+  Flags=01000100
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000000000110001001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Pages Modified=00101000000000100000000000000000
+  Extra Pages=00000000000000000000000000110000
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+  Variable Name1=_INIT_WINDOW_
+  Variable Default1=HIDE
+  Variable Flags1=00001000
+end
+item: Remark
+end
+item: Remark
+  Text=....Setup.Wse - Installation script for Plug-In :       / /     T C M   A d d   C u s t o m e r     / /  
+end
+item: Remark
+end
+item: Set Variable
+  Variable=PASSWORD
+  Value=1967
+end
+item: Remark
+end
+item: Custom Graphic
+  Y Position=5
+  Width=635
+  Height=68
+  Flags=0000000000101000
+  item: Text
+    Text=Exchequer TCM Add Customer Plug-In
+    Rectangle=0 0 635 68
+    Flags=01100110
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Extra Flags=00000001
+    Name=Arial
+    Font Style=-27 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Custom Graphic
+  Y Position=16389
+  Width=627
+  Height=22
+  Flags=0000000000101000
+  item: Text
+    Text=Copyright © Advanced Business Software & Solutions Limited 2016
+    Rectangle=3 2 627 22
+    Pen Color=16777215
+    Pen Style=6
+    Pen Width=1
+    Name=Arial
+    Font Style=-13 0 0 0 400 0 0 0 0 3 2 1 34
+  end
+end
+item: Remark
+end
+item: Remark
+  Text=....Initialise Variables
+end
+item: Set Variable
+  Variable=PLUGINDESC
+  Value=Exchequer TCM Add Customer Plug-In
+end
+item: Set Variable
+  Variable=DIALOG
+  Value=010
+end
+item: Set Variable
+  Variable=ENTDIR
+end
+item: Set Variable
+  Variable=FUNCRES
+end
+item: Set Variable
+  Variable=INSTTYPE
+  Value=A
+end
+item: Set Variable
+  Variable=DLG_FWD
+end
+item: Set Variable
+  Variable=DLG_BACK
+end
+item: Set Variable
+  Variable=ICONSTOOLS
+end
+item: Set Variable
+  Variable=PROGGROUP
+end
+item: Remark
+end
+item: Remark
+  Text=....Valid Installation Dir
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_GetEnterpriseDir
+  Variables Added=ENTERDIR FUNCRES
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function OK
+end
+item: Else Statement
+end
+item: Display Message
+  Title=Wise7_GetEnterpriseDir Error
+  Text=Wise7_GetEnterpriseDir returned a value of %FUNCRES%
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Get Default Program Group Name from Enterpise Setup INI file
+end
+item: Read INI Value
+  Variable=PROGGROUP
+  Pathname=%ENTDIR%\WSTATION\SETUP.USR
+  Section=Workstation
+  Item=GroupName
+  Default=Exchequer
+end
+item: Remark
+end
+item: Remark
+  Text=....Main Wizard Loop
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=000
+  Flags=00010001
+end
+item: Remark
+end
+item: Remark
+  Text=....Show Welcome.............................................010
+end
+item: Include Script
+  Pathname=Welcome.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Licence Agreement........................................020
+end
+item: Include Script
+  Pathname=Agree.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Ready To Install.............................................100
+end
+item: Include Script
+  Pathname=Ready.wse
+end
+item: Remark
+end
+item: Remark
+  Text=....Exit Installation
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=999
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Installs Files
+end
+item: Include Script
+  Pathname=Files.wse
+end
+item: Remark
+end
+item: Remark
+end
+item: Remark
+  Text=Update IniFile for Plug-In
+end
+item: Set Variable
+  Variable=PLUGIN
+  Value=EnterpriseTradePlugIn.Addcustomer
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddTCMPlugIn
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling Wise7_AddTCMPlugIn :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=Add LST file to REPLFILE.LST
+end
+item: Set Variable
+  Variable=ENTDIR
+  Value=%ENTDIR%TRADE\
+end
+item: Set Variable
+  Variable=LSTFILE
+  Value=TCMCUSTM.LST
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddLSTFileToReplFile
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling Wise7_AddLSTFileToReplFile :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=Add LST file to REPLFILE.LST
+end
+item: Set Variable
+  Variable=LSTFILE
+  Value=ADDCSTPI.LST
+end
+item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_AddLSTFileToReplFile
+  Return Variable=0
+  Flags=00000010
+end
+item: Remark
+  Text=Function Successful
+end
+item: Else Statement
+end
+item: Remark
+  Text=Function Failed - Display error message
+end
+item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling Wise7_AddLSTFileToReplFile :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+item: Exit Installation
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Finished
+end
+item: Custom Dialog Set
+  Name=All Done
+  item: Dialog
+    Title=Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=&Finish
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=10 13 92 149
+      Destination Dialog=1
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=x:\PlugIns\Graphics\\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 195 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Setup Complete
+    end
+    item: Static
+      Rectangle=95 30 251 41
+      Create Flags=01010000000000000000000000000000
+      Text=The Setup has been completed successfully.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 46 251 90
+      Create Flags=01010000000000000000000000000000
+      Text=Please note that this install has only updated the network copy of the TCM. To update each local machine, you will need to run the "Update Trade Counter Module" icon, which should be in the Startup program group of each local workstation.
+    end
+  end
+end

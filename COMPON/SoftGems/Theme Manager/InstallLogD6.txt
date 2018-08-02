@@ -1,0 +1,271 @@
+***************************************
+BEGIN: Unregistering Component Package
+***************************************
+
+Cleaning Known Package Registry Entry
+
+Reading Packages:
+c:\program files\borland\delphi6\Bin\dclado60.bpl
+$(Delphi)\Bin\dcldb60.bpl
+$(Delphi)\Bin\dclstd60.bpl
+c:\program files\borland\delphi6\Bin\dclbde60.bpl
+$(Delphi)\Bin\dbx60.bpl
+$(Delphi)\Bin\dclmid60.bpl
+$(SystemRoot)\system32\ibevnt60.bpl
+c:\program files\borland\delphi6\Bin\dclqrt60.bpl
+c:\program files\borland\delphi6\Bin\dcltee60.bpl
+c:\program files\borland\delphi6\Bin\dcldss60.bpl
+c:\program files\borland\delphi6\Bin\dcltqr60.bpl
+c:\program files\borland\delphi6\Bin\dclclxdb60.bpl
+$(Delphi)\Bin\dclclxstd60.bpl
+c:\program files\borland\delphi6\Bin\dclmcn60.bpl
+c:\program files\borland\delphi6\Bin\dclsmpedit60.bpl
+c:\program files\borland\delphi6\Bin\applet60.bpl
+c:\program files\borland\delphi6\Bin\dclemacsedit60.bpl
+c:\program files\borland\delphi6\Bin\dclact60.bpl
+c:\program files\borland\delphi6\Bin\dcl31w60.bpl
+c:\program files\borland\delphi6\Bin\dclsmp60.bpl
+c:\program files\borland\delphi6\Bin\dclocx60.bpl
+C:\Develop\Entrprse\SDK\Custom\COM\COMPON.D6\ENTCOMD6.bpl
+$(Delphi)\Projects\Bpl\HMESL1.bpl
+c:\program files\borland\delphi6\Bin\dclcds60.bpl
+c:\program files\borland\delphi6\Bin\dclbdecds60.bpl
+c:\program files\borland\delphi6\Bin\dclshlctrls60.bpl
+c:\program files\borland\delphi6\Bin\dclindy60.bpl
+$(Delphi)\Projects\Bpl\EnterTab.bpl
+$(SystemRoot)\system32\RPRV40D6.bpl
+$(SystemRoot)\system32\RPRT40D6.bpl
+X:\COMPON\MultiList\DBMBtrieve.bpl
+X:\COMPON\RAVE4\D6\RPDT40.bpl
+$(Delphi)\Projects\Bpl\EverButton.bpl
+c:\program files\borland\delphi6\Projects\Bpl\A403_D60.bpl
+c:\program files\borland\delphi6\Bin\DCLIB60.bpl
+ 
+Stripping off path and extension
+dclado60
+dcldb60
+dclstd60
+dclbde60
+dbx60
+dclmid60
+ibevnt60
+dclqrt60
+dcltee60
+dcldss60
+dcltqr60
+dclclxdb60
+dclclxstd60
+dclmcn60
+dclsmpedit60
+applet60
+dclemacsedit60
+dclact60
+dcl31w60
+dclsmp60
+dclocx60
+ENTCOMD6
+HMESL1
+dclcds60
+dclbdecds60
+dclshlctrls60
+dclindy60
+EnterTab
+RPRV40D6
+RPRT40D6
+DBMBtrieve
+RPDT40
+EverButton
+A403_D60
+DCLIB60
+ 
+Reading Packages to remove
+ThemeManagerD6
+ThemeManagerD6D
+ 
+Stripping off path and extension
+ThemeManagerD6
+ThemeManagerD6D
+ 
+Scanning for previously installed packages....
+Known Package Registry Entry Cleaned
+
+Cleaning Disabled Package Registry Entry
+
+Reading Packages:
+ 
+Stripping off path and extension
+ 
+Reading Packages to remove
+ThemeManagerD6
+ThemeManagerD6D
+ 
+Stripping off path and extension
+ThemeManagerD6
+ThemeManagerD6D
+ 
+Scanning for previously installed packages....
+Disabled Package Registry Entry Cleaned
+
+Reading Search Path Registry Entry
+C:\Program Files\Borland\Delphi6\Lib
+C:\Program Files\Borland\Delphi6\Bin
+C:\Program Files\Borland\Delphi6\Imports
+C:\Program Files\Borland\Delphi6\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+    
+    
+Writing Search Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\Lib
+$(Delphi)\Bin
+$(Delphi)\Imports
+$(Delphi)\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Search Path
+Search Path Registry Entry written
+
+Reading Browse Path Registry Entry
+C:\Program Files\Borland\Delphi6\source\vcl
+C:\Program Files\Borland\Delphi6\source\rtl\Corba
+C:\Program Files\Borland\Delphi6\source\rtl\Corba40
+C:\Program Files\Borland\Delphi6\source\rtl\Sys
+C:\Program Files\Borland\Delphi6\source\rtl\Win
+C:\Program Files\Borland\Delphi6\source\rtl\common
+C:\Program Files\Borland\Delphi6\source\Internet
+C:\Program Files\Borland\Delphi6\source\clx
+    
+    
+Writing Browse Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\source\vcl
+$(Delphi)\source\rtl\Corba
+$(Delphi)\source\rtl\Corba40
+$(Delphi)\source\rtl\Sys
+$(Delphi)\source\rtl\Win
+$(Delphi)\source\rtl\common
+$(Delphi)\source\Internet
+$(Delphi)\source\clx
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Browsing Path
+Browse Path Registry Entry written
+
+***************************************
+END: Unregistering Component Package
+***************************************
+
+
+***************************************
+BEGIN: Compiling Component Package
+***************************************
+Creating temp compile folder
+Folder Created: C:\DOCUME~1\CSANDO~1.EXC\LOCALS~1\Temp\ESetup
+
+Creating DCC32 config file
+Compiling....
+
+Borland Delphi Version 14.0
+Copyright (c) 1983,2001 Borland Software Corporation
+ThemeManagerD6.dpk(1) ThemeManagerD6.dpk(31) ThemeManagerD6.dpk(32) ThemeManagerD6.dpk(34) ThemeManagerD6.dpk(34) ThemeManagerD6.dpk(34) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(1) X:\COMPON\SoftGems\THEME_~1\Source\Compilers.inc(384) 
+X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(62) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(63) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(1)  X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(40) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(40) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(40) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(40) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(41) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(1)   X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(58) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(512) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(1024) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(1096) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(1100) X:\COMPON\SoftGems\THEME_~1\Source\UxTheme.pas(1263) 
+X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(41) X:\COMPON\SoftGems\THEME_~1\Source\TmSchema.pas(1)  X:\COMPON\SoftGems\THEME_~1\Source\TmSchema.pas(512) X:\COMPON\SoftGems\THEME_~1\Source\TmSchema.pas(1024) X:\COMPON\SoftGems\THEME_~1\Source\TmSchema.pas(1536) X:\COMPON\SoftGems\THEME_~1\Source\TmSchema.pas(1640) 
+X:\COMPON\SoftGems\THEME_~1\Source\Compilers.inc(384) 
+X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(45) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(129) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(470) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(472) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(641) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(1153) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(1665) X:\COMPON\SoftGems\THEME_~1\Source\ThemeSrv.pas(2061) 
+X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(65) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(129) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(282) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(284) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(284) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(288) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(641) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(1153) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(1665) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(2177) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(2689) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgr.pas(3023) 
+ThemeManagerD6.dpk(39) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(1) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(37) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(39) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(61) X:\COMPON\SoftGems\THEME_~1\Source\ThemeMgrDB.pas(296) 
+ThemeManagerD6.dpk(39) ThemeManagerD6.dpk(39) ThemeManagerD6.dpk(39) ThemeManagerD6.dpk(39) ThemeManagerD6.dpk(41) ThemeManagerD6.dpk(42) 
+9097 lines, 1.50 seconds, 45192 bytes code, 549 bytes data.
+
+
+Compiling....
+
+Borland Delphi Version 14.0
+Copyright (c) 1983,2001 Borland Software Corporation
+ThemeManagerD6D.dpk(1) ThemeManagerD6D.dpk(32) ThemeManagerD6D.dpk(34) ThemeManagerD6D.dpk(34) ThemeManagerD6D.dpk(34) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(1) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(33) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(35) X:\COMPON\SoftGems\THEME_~1\Design\ThemeManagerReg.pas(53) 
+ThemeManagerD6D.dpk(35) ThemeManagerD6D.dpk(37) ThemeManagerD6D.dpk(38) 
+93 lines, 0.34 seconds, 3064 bytes code, 125 bytes data.
+
+
+ 
+Adding Package BPL to Registry
+Adding: $(Delphi)\Projects\Bpl\ThemeManagerD6D.bpl
+***************************************
+END: Compiling Component Package
+***************************************
+
+***************************************
+BEGIN: Registering Component Package Paths
+***************************************
+
+Reading Search Path Registry Entry
+Search Path Registry Entry Read...
+C:\Program Files\Borland\Delphi6\Lib
+C:\Program Files\Borland\Delphi6\Bin
+C:\Program Files\Borland\Delphi6\Imports
+C:\Program Files\Borland\Delphi6\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+ 
+Adding Package source path:
+   X:\COMPON\SoftGems\Theme Manager\Source
+
+    
+Writing Search Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\Lib
+$(Delphi)\Bin
+$(Delphi)\Imports
+$(Delphi)\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+X:\COMPON\SoftGems\Theme Manager\Source
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Search Path
+Search Path Registry Entry written
+
+***************************************
+END: Registering Component Package Paths
+***************************************
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:historybal xmlns:val="urn:www-iris-co-uk:historybal">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <historybalrec>
+           <period/>   <!--:  String[5];  {* Period; [+/-]N or YTD *} -->
+           <year/>     <!--:  String[5];  {* Year; [+/-]N *}     -->
+           <currency/> <!--:  SmallInt;   {* 0-30 *}             -->
+           <value/>    <!--:  Double;     {* Returned value *}   -->
+           <commitval/> <!--:  Double;                          -->
+        </historybalrec>
+    </message>
+</val:historybal>

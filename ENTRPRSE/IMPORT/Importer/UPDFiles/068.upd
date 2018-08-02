@@ -1,0 +1,13 @@
+[Version]
+Version=6.00.071.068
+
+[Trans Header]
+F013=TH.OldYourRef                0069    S 0010 N   Old Your Ref                                       default=                                                                                                     comment=
+F110=TH.Internal                  1030    C 0035 N   Internal Use Only                                  default=                                                                                                     comment=
+F111=TH.YourRef                   1065    S 0020 O   Your Ref                                           default=                                                                                                     comment=
+F112=TH.Spare                     1085    C 0300 N   Padding                                            default=                                                                                                     comment=
+F113=TH.PadChar13                 1385    C 0001 N   Padding                                            default=                                                                                                     comment=
+F114=TH.LastChar                  1386    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+
+

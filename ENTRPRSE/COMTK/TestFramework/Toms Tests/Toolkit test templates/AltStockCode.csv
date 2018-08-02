@@ -1,0 +1,4 @@
+"Duplicate record exists, record not stored",C:\ComTKExes\AltStockCodeTest.exe,Y,Y,30005,N,"3,5"
+"Invalid Customer or Supplier code",C:\ComTKExes\AltStockCodeTest.exe,Y,Y,30002,N,"3,30002"
+"Equivalent, Superseded By or Opportunity code must be valid stock code.",C:\ComTKExes\AltStockCodeTest.exe,Y,Y,30007,N,"3,30007"
+Add,C:\ComTKExes\AltStockCodeTest.exe,Y,Y,0,N,"3,0"

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:trans xmlns:val="urn:www-iris-co-uk:trans">
+  <message guid="" number="" count="" source="" destination="" flag="">
+    <threc>
+      <runno/>     <!--:  Longint;     { Read Only, posting Run No. } -->
+      <custcode/>  <!--:  String[6];   { Lookup Account Code } -->
+      <ourref/>    <!--:  String[9];   { Doc Number } -->
+      <folionum/>  <!--:  Longint;     { Audit No.} -->
+      <currency/>  <!--:  SmallInt;    { Currency of Document } -->
+      <acyr/>
+      <acpr/>      <!--:  SmallInt;    { Posting Period & Yr } -->
+      <duedate/>   <!--:  String[8];   { Date Transaction Due } -->
+      <transdate/> <!--:  String[8];   { Transaction / Tax Point Date } -->
+      <corate/>    <!--:  Double;      { Company Currency Rate } -->
+      <vatrate/>   <!--:  Double;      { Daily/Tax Rate } -->
+      <yourref><![CDATA[]]></yourref>   <!--:  String[10];  { Account Ref - free text} -->
+      <longyrref><![CDATA[]]></longyrref> <!--:  String[20];  { Additional reference field } -->
+      <linecount/> <!--:  LongInt;     { Transaction line count } -->
+      <transdoched/> <!--:  String[3];   { Transaction Type, ie 'SIN' } -->
+      <invvatanal> <!--:  Array[0..24]of { Change from 16 to 20 in v4.31  }  Double;      { VAT Analysis S E Z 1 to 9 T X B C F G R W Y } -->
+        <invvatanal1/>
+        <invvatanal2/>
+        <invvatanal3/>
+        <invvatanal4/>
+        <invvatanal5/>
+        <invvatanal6/>
+        <invvatanal7/>
+        <invvatanal8/>
+        <invvatanal9/>
+        <invvatanal10/>
+        <invvatanal11/>
+        <invvatanal12/>
+        <invvatanal13/>
+        <invvatanal14/>
+        <invvatanal15/>
+        <invvatanal16/>
+        <invvatanal17/>
+        <invvatanal18/>
+        <invvatanal19/>
+        <invvatanal20/>
+        <invvatanal21/>
+        <invvatanal22/>
+        <invvatanal23/>
+        <invvatanal24/>
+      </invvatanal>
+      <invnetval/> <!--:  Double;      { Total Posting Value of Transaction } -->
+      <invvat/>    <!--:  Double;      { Total Tax Content } -->
+      <discsetl/>  <!--:  Double;      { Discount Avail/Take } -->
+      <discsetam/> <!-- :  Double;      { Actual Value of Settle Discount } -->
+      <discamount/> <!--:  Double;      { Discount Amount     } -->
+      <discdays/>  <!--:  SmallInt;    { No Days Disc Avail } -->
+      <disctaken/> <!--:  WordBool;    { Discount Taken } -->
+      <settled/>   <!--:  Double;      { R/O Amount Paid Off } -->
+      <transnat/>  <!--:  SmallInt;    { VAT Nature of Transaction } -->
+      <transmode/> <!--:  SmallInt;    { VAT Mode of Transport     } -->
+      <holdflg/>   <!--:  SmallInt;    { Hold Status } -->
+      <totalweight/> <!--:  Double;      { Order Weight Details } -->
+      <daddr>     <!--:  Array[1..5] of  String[30];{ Delivery Address } -->
+        <daddr1><![CDATA[]]></daddr1>
+        <daddr2><![CDATA[]]></daddr2>
+        <daddr3><![CDATA[]]></daddr3>
+        <daddr4><![CDATA[]]></daddr4>
+        <daddr5><![CDATA[]]></daddr5>
+      </daddr>
+      <totalcost/> <!--:  Double;      { Total value of cost prices for profitablity } -->
+      <printeddoc/> <!--:  WordBool;    {* R/O This Document has been printed *} -->
+      <manvat/>    <!--:  WordBool;    {* If Set, prevents re-calclation of VAT *} -->
+      <delterms/>  <!--:  String[3];   {* VAT Delivery Terms *} -->
+      <opname/>    <!--:  String[10];  {* Operators User Name *} -->
+      <djobcode/>  <!--:  String[10];  {* Default Document Job Code *} -->
+      <djobanal/>  <!--:  String[10];  {* Default Document Anal Code *} -->
+      <totordos/>  <!--:  Double;      {* Value of Order Outstanding *} -->
+      <docuser1><![CDATA[]]></docuser1>
+      <docuser2><![CDATA[]]></docuser2> <!-- :  String[20];  {* User def fields *} -->
+      <batchlink/>   <!--:  String[6];   {* Employee Code for TSH *} -->
+      <tagged/>    <!--:  SmallInt;    {* Doc Mark- Read Only *} -->
+      <thnolabels/> <!--:   SmallInt;    {* No. of labels to be printed *} -->
+      <ctrlnom/>   <!--:  LongInt;     {* Debtor/Creditor Control Nominal *} -->
+      <docuser3><![CDATA[]]></docuser3>  <!--:  String[30];  {* User def field 3 *} -->
+      <docuser4><![CDATA[]]></docuser4>  <!--:  String[30];  {* User def field 4 *} -->
+      <ssdprocess/> <!--:  Char;        {* SSD process flag *} -->
+      <extsource/> <!--:  SmallInt;    {* If transaction created externaly where from *} -->
+      <postdate/>  <!--:  String[8];   {* Date posted, used for EC + SSD *} -->
+      <porpicksor/> <!--:  WordBool;    {* Back to Back SOR/POR auto picks SOR *} -->
+      <bdiscount/> <!--:  Double;      {* Amount of discount applied via batch *} -->
+      <prepostflg/> <!--:  SmallInt;    {* Used to indicate on Noms if posting should generate any associated
+                                   transactions, for example, if an auto reversing NOM should generate
+                                   its auto reversal *}  -->
+      <allocstat/> <!--:  Char;        {* Outstanding Flag,
+                                   "C"=Outstanding Sales Transaction
+                                   "S"=Outstanding Purchase Transaction *}  -->
+      <sopkeeprate/> <!--: WordBool;    {* Whether to keep a fixed exchange rate *}  -->
+      <timecreate/> <!--: String[6]; -->
+      <timechange/> <!--: String[6]; -->
+      <cistax/>   <!--: Double;       {*Total amount of CIS tax to be deducted *} -->
+      <cisdeclared/> <!--: Double;       {* Total amount of CIS declared on vouchers, correlates to Currsettled at time of voucher production *} -->
+      <cismanualtax/> <!--: Boolean;      {* Tax was overridden by manual adjustment, do not auto calculate *} -->
+      <cisdate/>  <!--: String[8];     {* Date of next voucher run *} -->
+      <totalcost2/> <!--: Double;       {* Cost appotrionment from outside costs, included in GP *} -->
+      <cisempl/>  <!--: String[10];   {* Employe code used for this CIS Entry *} -->
+      <cisgross/> <!--: Double;       {* Basis of CIS Tax *} -->
+      <cisholder/> <!--: Byte;         {* >0 Document is a CIS carrier generated from another process like
+                                    self billing (2) or retentions (1).
+                                    Has no lines of its own which would generate CIS, but is required
+                                     to place in CIS returns *} -->
+      <nomvatio/>  <!--: Char;        {0 = N/A, I = Input, O = Output} -->
+      <autoinc/>   <!--: SmallInt; //Read-only -->
+      <autoincby/> <!--: Char; //Read-only -->
+      <autoenddate/> <!--: String[8]; //Read-only -->
+      <autoendpr/> <!--: SmallInt; //Read-only -->
+      <autoendyr/> <!--: SmallInt; //Read-only -->
+      <autopost/>  <!--: WordBool; //Read-only -->
+      <thautotransaction/> <!--: WordBool; //Indicates an auto-daybook transaction. Read-only -->
+      <thdeliveryrunno/>   <!--: String[12]; //Read-only -->
+      <thexternal/>        <!--: WordBool; //if true, transaction created externally. Read-only -->
+      <thsettledvat/>      <!--: Double; //Amount of vat settled. Read-only -->
+      <thvatclaimed/>      <!--: Double; //Amount of vat claimed. Read-only -->
+      <thpickingrunno/>    <!--: longint; //Read-only -->
+      <thdeliverynoteref/> <!--: String[10]; //OurRef of deliveryNote. Read-only -->
+      <thvatcompanyrate/>  <!--: Double; //Read-only -->
+      <thvatdailyrate/>    <!--: Double; //Read-only -->
+      <thpostcompanyrate/> <!--: Double; //Read-only -->
+      <thpostdailyrate/>   <!--: Double; //Read-only -->
+      <thpostdiscamount/>  <!--: Double; //Read-only -->
+      <thpostdisctaken/>   <!--: WordBool; //Read-only -->
+      <thlastdebtchaseletter/> <!--: longint; //Read-only -->
+      <threvaluationadjustment/> <!--: Double; //Read-only -->
+      <tlinerec>
+        <lineno/>      <!--::  LongInt;     { Array / Line No} -->
+        <nomcode/>     <!--::  LongInt;     { Nominal Code } -->
+        <currency/>    <!--::  SmallInt;    { Transaction Currency [0-30]} -->
+        <corate/>      <!--::  Double;      { Line Currency Company Exchange Rate } -->
+        <vatrate/>     <!--::  Double;      { Line Currency Daily Exchange Rate } -->
+        <cc/>          <!--::  String[3];   { Cost Centre Code } -->
+        <dep/>         <!--::  String[3];   { Department Code } -->
+        <stockcode/>   <!--::  String[16];  { Stock Code } -->
+        <qty/>         <!--::  Double;      { Qty!} -->
+        <qtymul/>      <!--::  Double;      { Qty Multiplier Factor } -->
+        <netvalue/>    <!--::  Double;      { Line Total excluding Tax } -->
+        <discount/>    <!--::  Double;      { Amount/% } -->
+        <vatcode/>     <!--::  Char;        { VATCode } -->
+        <vat/>         <!--::  Double;      { Tax Line Content } -->
+        <payment/>     <!--::  WordBool;    { Line Type  } -->
+        <discountchr/> <!--::  Char;        { Flag to indicate if disc is amount or % } -->
+        <qtywoff/>    <!--:                { Total Qty Written OFF } -->
+        <qtydel/>     <!--:                { Total Qty Physicaly delivered +WOFF - Qty = OS } -->
+        <costprice/>   <!--::  Double; -->
+        <custcode/>    <!--::  String[6];   { Account Code } -->
+        <linedate/>    <!--::  String[8];   { Line Transaction date. SPOP= Delivery Date } -->
+        <item/>        <!--::  String[3]; -->
+        <desc><![CDATA[]]></desc>        <!--::  String[55];  { Line Desc } -->
+        <lweight/>     <!--::  Double;      { Weight of Sales Unit in Kg} -->
+        <mlocstk/>     <!--::  String[3];   { Multi stock location code *} -->
+  
+        <jobcode/>     <!--::  String[10];  { Job Code } -->
+        <analcode/>    <!--::  String[10];  { Job Analysis Code } -->
+        <tshccurr/>    <!--::  SmallInt;    { Charge Currency for Job Costing Time Sheet } -->
+  
+        <docltlink/>   <!--::  SmallInt;    { Doc Line Type Link } -->
+        <kitlink/>     <!--::  LongInt;     { Folio No. of parent Stock code for kit line } -->
+        <folionum/>    <!--::  LongInt;     { Folio No. Of Transaction header } -->
+  
+        <linetype/>    <!--::  Char;        { Transaction Line Type } -->
+  
+        <reconcile/>   <!--::  Byte;        { Status of item for reconciling ie cleared etc } -->
+  
+        <soplink/>     <!--::  LongInt;     { Folio No. of Parent Order Line *} -->
+        <soplineno/>   <!--::  LongInt;     { Folio No. of Prarent ABSLineNo *} -->
+  
+        <abslineno/>   <!--::  LongInt;     { Absolute, non moveable line no. *} -->
+  
+        <lineuser1><![CDATA[]]></lineuser1>  <!--::  String[30];  {* Line user def 1 *} -->
+        <lineuser2><![CDATA[]]></lineuser2>  <!--::  String[30];  {* Line user def 2 *} -->
+        <lineuser3><![CDATA[]]></lineuser3>  <!--::  String[30];  {* Line user def 3 *} -->
+        <lineuser4><![CDATA[]]></lineuser4>  <!--::  String[30];  {* Line user def 4 *} -->
+        <ssduplift/>  <!--::  Double;      {* Intrastat uplift % *} -->
+        <ssdcommod/>  <!--::  String[8];   {* SSD Commodity code - Numbers Only *} -->
+        <ssdspunit/>  <!--::  Double;      {* SSD unit into sales unit *} -->
+        <ssduseline/> <!--::  WordBool;    {* Take the ssd values from the line *} -->
+        <pricemulx/>  <!--::  Double;      {* Price rate multiplier to get price per *} -->
+  
+        <qtypick/>    <!--::  Double;      {* Picked Quantity *} -->
+        <vatincflg/>  <!--::  Char;        {* VAT Include flag *} -->
+  
+        <qtypwoff/>   <!--::  Double;      {* Pick WriteOff Qty *} -->
+  
+        <rtnerrcode/> <!--::  SmallInt;    {* Return Error Code *} -->
+        <ssdcountry/> <!--::  string[5]; -->
+  
+        <incnetvalue/> <!--: Double; -->
+  
+        <autoLinetype/> <!--: Byte;         {Line has been auto manufactured. 0 = Not auto line. -->
+                                      <!--  1 = via customisation -->
+                                      <!--  2 = via CIS routine } -->
+        <cisratecode/> <!--: Char;         {Valid CIS Tax rate code} -->
+        <sisrate/>     <!--: Double;       {CIS % rate aplied} -->
+        <costapport/>  <!--: Double;       {Cost apportionment value} -->
+        <nomvattype/>  <!--: Byte;         {0 = N/A, 1 = Auto, 2 = Manual} -->
+  
+        <binqty/>      <!--: Double;       {Bin Quantity for Multi-Bin support} -->
+  
+        <tlaltstockfolio/>    <!--: longint;  //Folio of Alternate Stock Code. Read-only -->
+        <tlrunno/>            <!--: longint;  //Transaction Run Number. Read-only -->
+        <tlstockdeductqty/>   <!--: Double;   //Qty to deduct from stock. Read-only -->
+        <tluseqtymul/>        <!--: WordBool; //Whether to use the Qty Multiplier. Read-only -->
+        <tlserialqty/>        <!--: Double;   //Number of serial nos required. Read-only -->
+        <tlpricebypack/>      <!--: WordBool;  //Read-only -->
+        <tlreconciliationdate/> <!--: String[8]; //Date line was reconciled. Read-only -->
+        <tlb2blinkfolio/>
+        <tlb2blineno/>        <!--: longint; //Folio number and line number of back-to-back equiv.Read-only -->
+        <tlcosdailyrate/>     <!--: Double;  //Daily rate for Cost-of-Sales conversion. Read-only -->
+        <tlqtypack/>          <!--: Double; -->
+      </tlinerec>
+    </threc>
+  </message>
+</val:trans>

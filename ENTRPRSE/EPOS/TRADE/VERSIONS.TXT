@@ -1,0 +1,37 @@
+Trade Counter Module - Version History
+======================================
+
+v5.50.220 (24/03/03)
+--------------------
+Renumbered Version for 1st v5.50 CD Build
+
+
+v5.50.226 (24/04/03)
+--------------------
+Renumbered Version for last v5.50 CD Build
+
+
+v5.50.227 (20/05/03)
+--------------------
+Custom text added for cheque button on the tender screen (Newbridge)
+
+
+v5.52.236 (20/01/04)
+--------------------
+Added new ITradeEventTender2 interface into TCM Customisation
+Added new hook point, HOOK_TenderOnShow.
+Added new hook point, HOOK_TenderOnShowChange.
+
+b5.60.237 (16/02/04)
+--------------------
+The User Name should now be automatically populated if you have enterprise enhanced security enabled, and if your windows logon matches a username in the Enterprise User Database.
+Non-TCM Find has been expanded to work in exactly the same way as the TCM find, i.e you can use the fields to find on a specific customer, transaction ourref, etc.
+
+
+b5.60.238 (23/02/04)
+--------------------
+Fixed Customisation bug. Dynamically Changing TXType from Picked to Unpicked and vice versa now works.
+
+
+
+

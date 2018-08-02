@@ -1,0 +1,148 @@
+module RVCsBars;
+
+definition
+
+import
+  SysFunc,
+  RVClass,
+  RVData,
+  RVCsStd;
+
+type
+  TCodePage128 = (cpCodeA, cpCodeB, cpCodeC);
+  TBarCodeRotation = (Rot0, Rot90, Rot180, Rot270);
+
+  TRaveBaseBarCode = class(TRaveControl)
+  protected
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetAutoSize: boolean;
+    function SetAutoSize(Value: boolean);
+    function GetFont: TRaveFont;
+    function SetFont(Value: TRaveFont);
+    function GetText: string;
+    function SetText(Value: string);
+    function SetBarCodeJustify(Value: TPrintJustify);
+    function GetBarCodeJustify: TPrintJustify;
+    function SetBarWidth(Value: TRaveUnits);
+    function GetBarWidth: TRaveUnits;
+    function SetBarHeight(Value: TRaveUnits);
+    function GetBarHeight: TRaveUnits;
+    function GetBarTop: TRaveUnits;
+    function SetBarTop(Value: TRaveUnits);
+    function SetTextJustify(Value: TPrintJustify);
+    function GetTextJustify: TPrintJustify;
+    function SetUseChecksum(Value: boolean);
+    function GetUseChecksum: boolean;
+    function SetWideFactor(Value: TRaveFloat);
+    function GetWideFactor: TRaveFloat;
+    function SetPrintReadable(Value: boolean);
+    function GetPrintReadable: boolean;
+    function SetPrintChecksum(Value: boolean);
+    function GetPrintChecksum: boolean;
+    function SetPrintTop(Value: boolean);
+    function GetPrintTop: boolean;
+    function SetBarCodeRotation(Value: TBarCodeRotation);
+    function GetBarCodeRotation: TBarCodeRotation;
+  public
+    property Text: string read GetText write SetText;
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property AutoSize: boolean read GetAutoSize write SetAutoSize;
+    property BarCodeJustify: TPrintJustify read GetBarCodeJustify write SetBarCodeJustify;
+    property Font: TRaveFont read GetFont write SetFont;
+    property BarWidth: TRaveUnits read GetBarWidth write SetBarWidth;
+    property BarHeight: TRaveUnits read GetBarHeight write SetBarHeight;
+    property BarTop: TRaveUnits read GetBarTop write SetBarTop;
+    property TextJustify: TPrintJustify read GetTextJustify write SetTextJustify;
+    property UseChecksum: boolean read GetUseChecksum write SetUseChecksum;
+    property WideFactor: TRaveFloat read GetWideFactor write SetWideFactor;
+    property PrintReadable: boolean read GetPrintReadable write SetPrintReadable;
+    property PrintChecksum: boolean read GetPrintChecksum write SetPrintChecksum;
+    property PrintTop: boolean read GetPrintTop write SetPrintTop;
+    property BarCodeRotation: TBarCodeRotation read GetBarCodeRotation write SetBarCodeRotation;
+  end TRaveBaseBarCode;
+
+  TRavePostNetBarCode = class(TRaveBaseBarCode)
+  end TRavePostNetBarCode;
+
+  TRaveI2of5BarCode = class(TRaveBaseBarCode)
+  end TRaveI2of5BarCode;
+
+  TRaveCode39BarCode = class(TRaveBaseBarCode)
+  protected
+    function SetExtended(Value: boolean);
+    function GetExtended: boolean;
+  public
+    property Extended: boolean read GetExtended write SetExtended;
+  end TRaveCode39BarCode;
+
+  TRaveCode128BarCode = class(TRaveBaseBarCode)
+  protected
+    function SetCodePage(Value: TCodePage128);
+    function GetCodePage: TCodePage128;
+    function SetOptimize(Value: boolean);
+    function GetOptimize: boolean;
+  public
+    property CodePage: TCodePage128 read GetCodePage write SetCodePage;
+    property Optimize: boolean read GetOptimize write SetOptimize;
+  end TRaveCode128BarCode;
+
+  TRaveUPCBarCode = class(TRaveBaseBarCode)
+  end TRaveUPCBarCode;
+
+  TRaveEANBarCode = class(TRaveBaseBarCode)
+  end TRaveEANBarCode;
+
+implementation
+
+// TRaveBaseBarCode
+
+  function TRaveBaseBarCode.GetDataField: TRaveFieldName; external;
+  function TRaveBaseBarCode.SetDataField(Value: TRaveFieldName); external;
+  function TRaveBaseBarCode.GetDataView: TRaveBaseDataView; external;
+  function TRaveBaseBarCode.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveBaseBarCode.GetAutoSize: boolean; external;
+  function TRaveBaseBarCode.SetAutoSize(Value: boolean); external;
+  function TRaveBaseBarCode.GetFont: TRaveFont; external;
+  function TRaveBaseBarCode.SetFont(Value: TRaveFont); external;
+  function TRaveBaseBarCode.GetText: string; external;
+  function TRaveBaseBarCode.SetText(Value: string); external;
+  function TRaveBaseBarCode.SetBarCodeJustify(Value: TPrintJustify); external;
+  function TRaveBaseBarCode.GetBarCodeJustify: TPrintJustify; external;
+  function TRaveBaseBarCode.SetBarWidth(Value: TRaveUnits); external;
+  function TRaveBaseBarCode.GetBarWidth: TRaveUnits; external;
+  function TRaveBaseBarCode.SetBarHeight(Value: TRaveUnits); external;
+  function TRaveBaseBarCode.GetBarHeight: TRaveUnits; external;
+  function TRaveBaseBarCode.GetBarTop: TRaveUnits; external;
+  function TRaveBaseBarCode.SetBarTop(Value: TRaveUnits); external;
+  function TRaveBaseBarCode.SetTextJustify(Value: TPrintJustify); external;
+  function TRaveBaseBarCode.GetTextJustify: TPrintJustify; external;
+  function TRaveBaseBarCode.SetUseChecksum(Value: boolean); external;
+  function TRaveBaseBarCode.GetUseChecksum: boolean; external;
+  function TRaveBaseBarCode.SetWideFactor(Value: TRaveFloat); external;
+  function TRaveBaseBarCode.GetWideFactor: TRaveFloat; external;
+  function TRaveBaseBarCode.SetPrintReadable(Value: boolean); external;
+  function TRaveBaseBarCode.GetPrintReadable: boolean; external;
+  function TRaveBaseBarCode.SetPrintChecksum(Value: boolean); external;
+  function TRaveBaseBarCode.GetPrintChecksum: boolean; external;
+  function TRaveBaseBarCode.SetPrintTop(Value: boolean); external;
+  function TRaveBaseBarCode.GetPrintTop: boolean; external;
+  function TRaveBaseBarCode.SetBarCodeRotation(Value: TBarCodeRotation); external;
+  function TRaveBaseBarCode.GetBarCodeRotation: TBarCodeRotation; external;
+
+// TRaveCode39BarCode
+
+  function TRaveCode39BarCode.SetExtended(Value: boolean); external;
+  function TRaveCode39BarCode.GetExtended: boolean; external;
+
+// TRaveCode128BarCode
+
+  function TRaveCode128BarCode.SetCodePage(Value: TCodePage128); external;
+  function TRaveCode128BarCode.GetCodePage: TCodePage128; external;
+  function TRaveCode128BarCode.SetOptimize(Value: boolean); external;
+  function TRaveCode128BarCode.GetOptimize: boolean; external;
+
+end RVCsBars;

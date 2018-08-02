@@ -1,0 +1,536 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Pervasive.SQL 2000i SDK - Service Pack 3 Release Readme</title>
+
+<style>
+
+body	{       font-size: 80%;    			
+		font-family: Verdana, Arial, Helvetica, MS Sans Serif;
+                margin-right: 10em; 
+                margin-left: 5 em }
+
+
+a:link		{ font-family: Verdana; color: #008000; } 
+
+a:active	{ font-family: Verdana; color: #8FBC8B; }
+
+a:visited 	{ font-family: Verdana; color: #996699; }
+
+a:hover         { font-family: Verdana; color: #FFFFFF; background-color: #996699; }
+
+p		{ font-family: Verdana; 
+                  margin-top: .6em; 
+                  margin-bottom: .6em;
+                  margin-left: 1em	}
+
+h1	        { font-size: 160%; 
+	          margin-bottom: .5em;
+                  border-bottom: medium black solid; }
+
+h2	        { font-size: 140%; 
+	          margin-top: 1.5em;
+                  margin-bottom: .5em }
+
+h3              { font-size: 110%; 
+                  margin-top: 1.2em;  
+                  margin-bottom: .5em }
+
+h4              { font-size: 105%; 
+                  margin-top: 1.2em;
+                  margin-bottom: .5em }
+
+h5              { font-size: 100%;
+                  margin-top: 1.2em;
+                  margin-bottom: .5em }
+
+big             { font-weight: bold; 
+                  font-size: 105%}
+
+ol              { margin-top: .6em; 
+                  margin-bottom: 0em; 
+                  margin-left: 4em }	
+
+ul              { margin-top: .6em;  
+                  margin-bottom: 0em; 
+                  list-style-type: square; 
+                  font-family: Verdana;  }	
+
+ul li            { font-family: Verdana; } 
+
+p li             { font-family: Verdana;  
+                   margin-bottom: 0em; 
+                   list-style-type: square } 
+
+li p             { font-family: Verdana;  }
+
+
+table            { font-size: 100%;
+                   cell-padding: 10;
+                   margin-top: 1em;
+                   margin-left: 5em;
+                   margin-right: 5em; }
+
+th               { text-align: left;
+                   background: #D3D3D3;
+                   font-family: Verdana; 
+                   vertical-align: bottom; }
+
+tr               { vertical-align: top }
+
+td               { font-family: Verdana; 
+                   vertical-align: top }	
+
+strong           { color: maroon;
+                   font-weight: bold; 
+                   text-decoration: none; }
+
+p.note           { background-color: #FFFFEE;
+                   border: medium silver solid;
+                   padding: 1%;
+                   margin-left: 10em;
+                   margin-right: 10em; }
+
+pre              { font-family: Courier;
+                   font-size: 70%;
+                   margin-top: 1.2em;
+                   margin-bottom: 1.5em;
+                   color: blue;
+                   margin-left: 5em; }
+
+code             { font-family: Courier;
+                   font-size: 70%; 
+                   color: blue;
+                   margin-left: 5em }
+
+p.question       {font-weight: bold;
+                  color: red}
+
+</style>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<a NAME="top"></a>
+
+
+<h1 align=center>Pervasive.SQL 2000i Software Developer
+Kit (SDK)
+<br />
+Service Pack 3 Release - September 2001
+<br />
+READSDK.HTM
+</h1>
+
+<h2>Contents</h2>
+
+1. <a href="#welcome">Welcome</a>
+<br>2. <a href="#requirements">General Information</a>
+<br>3. <a href="#links">Links to Other Information</a>
+<br>4. <a href="#kissues">Known Issues</a>
+<br>5. <a href="#docupdt">Documentation</a>
+<br>6. <a href="#techsupp">Technical Support</a>
+<br>7. <a href="#dsclaim">Disclaimer</a>
+<p>
+
+
+<hr><a NAME="welcome"></a>
+
+<h2>1. Welcome</h2>
+
+<p>Welcome to the Pervasive.SQL 2000i Software Developer Kit (SDK). This
+SDK contains all the necessary software components and tools to develop
+Pervasive.SQL database applications.
+</p>
+
+<p>Service Pack 3 version of the SDK includes the following features:</p>
+
+
+<table cellpadding=10 border=1 width=550>
+
+<th>Feature</th><th>Description</th><th>Described in manuals</th>
+
+
+<tr>
+<td valign=top><b>ADO/OLE DB support</b></td>
+<td>
+<P>
+The Pervasive OLE DB provider marks the next level of connectivity for developers using Microsoft Visual Studio and other tools. The Pervasive OLE DB Provider is level 2.5-compliant provider for use with OLE DB consumers, including ActiveX Data Objects (ADO),  Microsoft’s latest high-level data model for Visual Basic, Visual C/C++, and Active Server Pages.
+</P>
+<p>
+The Visual Basic version of the PVideo sample application uses the new OLE DB driver.
+</P>
+</td>
+<td valign=top><i>Programmer's Guide</i>, <i>Visual Programmer's Reference</i>
+<p>see also <a href="readme_oledb.html"">OLE DB Readme</a>, <a href="#links">Links to
+Other Information</a>
+</td>
+</tr>
+
+<tr>
+<td valign=top>
+<b>Pervasive Direct Access Components for Delphi and C++ Builder</b></td>
+<td>
+<P>
+Pervasive Direct Access Components for Delphi and C++ Builder allows Borland Delphi and C++ Builder 
+developers to seamlessly access a Pervasive data source from within either Inprise/Borland development environment.  By implementing the TDataSet classes, the data aware components within these environments will be able to take full advantage of a Pervasive data source with higher performance than using the built in access to ODBC via the Borland Database Engine (BDE).  
+</P>
+<p>
+The components support direct Btrieve access via the TPvTable class, which implements the TTable database object.  A PVideo example is provided in the SDK for both Delphi and C++ Builder 3, 4, and 5.
+</P>
+</td>
+<td valign=top>
+<i>Visual Programmer's Reference</i> contains installation instructions
+<p>
+see also <a href="readme_pdac.htm"">PDAC Readme</a>,<a href="#links">Links to Other Information</a>
+</td>
+</tr>
+
+
+
+<tr>
+<td valign=top>
+<b>JDBC driver and Java Class Library Enhancements</b>
+</td>
+<td>
+<p>
+New interfaces in the Pervasive Java Class Library provide support for Binary Large Objects or BLOBs. BLOB support allows Java developers the ability to represent large binary files such as GIF, JPEG, and WAV files as Java objects that can then be stored in and retrieved from the database. A Java object serialization example is included.  
+</p>
+
+<p>
+The new Pervasive.SQL JDBC driver gives developers the benefit of a standard data interface, remote data access, and support across all platforms supporting the JVM.  You can use the server, workgroup, or workstation engine in conjunction with this driver.
+</p>
+</td>
+
+<td valign=top>
+<i>Programmer's Guide</i>, <i>API Programmer's Reference</i>
+<p>see also <a href="readme_jdbc.html"">JDBC Readme</a></p>
+
+</td>
+</tr>
+
+
+<tr>
+<td valign=top><b>Tuning Interfaces</b></td>
+<td>
+<p>
+The Distributed Tuning Objects (DTO) and Distributed Tuning Interface (DTI) gives developers an unprecedented level of access to information about Pervasive.SQL database engines.  The major categories of interfaces supported are:
+</p>
+
+<ul>
+<li><b>Connection</b> - establish and discard connections to remote database servers</li>
+<li><b>Configuration</b> - settings for the database engines</li>
+<li><b>Monitoring and Diagnostics</b> - engine statistics and resource usage</li>
+<li><b>Catalog</b> - manage database catalog information (database names, table names, table properties, etc.)</li>
+</ul>
+
+<p>
+DTI is a procedural interface and can be used with C or Delphi.
+</p>
+
+<p>
+DTO is a COM-based set of objects and can be used with any
+IDE that supports COM, including Visual Basic, Visual C++, Delphi, and C++ Builder.
+</p>
+
+</td>
+<td valign=top>
+<p><i>API Programmer's Reference</i> (DTI)</p>
+<p><i>Visual Programmer's Reference</i> (DTO)</p>
+<p>see also <a href="readme_dti.html"">DTI Readme</a>, <a href="readme_dto.html"">DTO Readme</a></p>
+</td>
+</tr>
+
+<tr>
+<td valign=top><b>Samples</b></td>
+<td>
+<p>
+Service Pack 3 includes the following samples:
+</p>
+<ul>
+<li>Pvideo for Visual C 6.0 - uses ADO</li>
+<li>Pvideo for Delphi</li>
+<li>DTO for Visual Basic</li>
+<li>DTI for Visual C 6.0 and Delphi 5</li>
+</ul>
+</td>
+<td>
+see the <code>\SAMPLES</code> folder under your SDK installation folder
+<P>
+See also <A HREF="http://www.pervasive.com/componentzone" TARGET="SECONDARY">Pervasive ComponentZone</A> 
+for additional sample code.
+</P>
+</td>
+</tr>
+
+
+
+</table>
+
+
+
+<p><br>Return to <a href="#top">top</a> of page.
+
+
+</ul>
+
+<hr>
+
+<h2>
+<a NAME="requirements"></a>
+2. General Information</h2>
+The SDK supports both the server and workstation/workgroup engines of Pervasive.SQL 2000i.
+
+<p class=note>
+<b>Important:</b> If you have an earlier version of Pervasive.SQL 2000 SDK installed on your system, 
+you should remove it using the Control Panel before installing the Pervasive.SQL 2000i SDK.
+
+
+<p>Server engines are available for:
+</p>
+<ul>
+<li>Windows 2000, Windows NT 4.0</li>
+<li>NetWare 3.2, 4.11 and higher, and 5.0</li>
+<li>Linux</li>
+</ul>
+
+<p>
+Workstation/Workgroup engines are available for:
+</p>
+
+<ul>
+<li>Windows 2000</li>
+<li>Windows NT 4.0</li>
+<li>Windows 9X, Windows ME</li>
+</ul>
+
+<p>
+Client applications may run on:
+</p>
+
+<ul>
+<li>Windows 3.1, Windows 9X, Windows NT 4.0, Windows 2000</li>
+<li>DOS 5.x, 6.x.</li>
+</ul>
+
+<h3>Visit the Developer Center</h3>
+<p>
+Pervasive is committed to bringing you the tools, information, and resources to take advantage of 
+Pervasive.SQL.
+<p>
+Come join us at our <b>DeveloperZone</b>, the web resource for all your development needs: 
+information, updates, samples, tools, and more:
+<p>
+<a href="http://www.pervasive.com/developerzone" TARGET="SECONDARY">
+http://www.pervasive.com/developerzone</a>
+<p>
+While you’re there, join Pervasive <b>DevWire</b> and <b>TechWire</b>, two email newsletters that are your best source of news for Pervasive web and database developers! Up to date information delivered right to your desktop! Sign up on the Subscription Center at <a href="http://www.pervasive.com/support/subscription.asp" TARGET="SECONDARY">
+http://www.pervasive.com/support/subscription.asp</a>
+
+
+
+
+
+
+<p><br>Return to <a href="#top">top</a> of page.</td>
+</tr>
+
+<tr>
+
+<td>
+
+<hr>
+
+<a NAME="links"></a>
+
+<h2>3. Links to Other Information</h2>
+<p>
+You may find the following web sites of interest in learning about the technologies
+present in this SDK:
+
+<p>
+
+<table cellpadding=10 border=1 width=500>
+<TR>
+<td>
+<b>Pervasive Developer Zone</b> - Developer news, updates, samples
+</td>
+<td>
+<a href="http://www.pervasive.com/developerzone" TARGET="SECONDARY">http://www.pervasive.com/developerzone</a>
+</td>
+</TR>
+
+
+<TR>
+<td>
+<b>Pervasive Component Zone</b> - Developer community samples
+</td>
+<td>
+<a href="http://www.pervasive.com/componentzone" TARGET="SECONDARY">http://www.pervasive.com/componentzone</a>
+</td>
+</TR>
+
+
+<tr>
+<td>
+<b>JDBC API Page</b> - Sun Microsystems
+</td>
+<td>
+<a href="http://java.sun.com/products/jdbc" TARGET="SECONDARY">http://java.sun.com/products/jdbc</a>
+</td>
+</TR>
+
+<tr>
+<td>
+<b>Microsoft Universal Data Access Site</b> - for introduction
+to Microsoft solutions such as ADO and OLE DB
+</td>
+<td>
+<a href="http://www.microsoft.com/data" TARGET="SECONDARY">http://www.microsoft.com/data</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<b>Borland Programming Tools</b> - Information and resources for Delphi and C++ Builder development
+</td>
+<td>
+<a href="http://www.borland.com" TARGET="SECONDARY">http://www.borland.com</a>
+</td>
+</TR>
+
+<tr>
+<td>
+<b>Pervasive DevTalk</b> - Developer community technical discussion and support forum
+</td>
+<td>
+<a href="http://www.pervasive.com/devtalk" TARGET="SECONDARY">http://www.pervasive.com/devtalk</a>
+</td>
+</TR>
+
+
+</table>
+
+<p>
+Return to <a href="#top">top</a> of page.
+
+
+<hr>
+
+
+
+<a NAME="kissues"></a>
+
+<h2>4. Known Issues</h2>
+<p>
+With the Service Pack 3 release, the Pervasive.SQL SDK issues are documented in separate readmes for
+the components. 
+</p>
+
+<ol>
+<li><a href="readme_activex.html">ActiveX Readme</a></li>
+<li><a href="readme_oledb.html">OLE DB</a></li>
+<li><a href="readme_dti.html">Distributed Tuning Interface Readme</a></li>
+<li><a href="readme_dto.html">Distributed Tuning Objects Readme</a></li>
+<li><a href="readme_pdac.htm">Pervasive Direct Access Components</a></li>
+<li><a href="readme_jcl.html">Java Class Library</a></li>
+<li><a href="readme_jdbc.html">JDBC</a></li>
+</ol>
+<p>
+Return to <a href="#top">top</a> of page.
+</p>
+
+
+<hr />
+
+
+
+<a NAME="docupdt"></a>
+<h2>5. Documentation</h2>
+
+<p>
+Online documents in HTML Help format are provided in the SDK. The master 
+help file <b>PSDK2000.CHM</b> includes the complete set of online documents for both your Pervasive.SQL engine 
+and the SDK, including an integrated table of contents, index, and glossary. You can load PSDK2000.CHM via
+the Windows Start menu: 
+</p>
+
+<p>
+<b>Start</b> | <b>Programs</b> | <b>Pervasive</b> |<b>Pervasive.SQL SDK</b> | <b>Documentation</b>
+</p>
+
+<p>In addition to the installed manuals, you can view the current documentation online at the
+Pervasive Developer Network Library, which you can reach at
+<a href="http://www.pervasive.com/library">http://www.pervasive.com/library</a></p>
+
+<p>A README document (this document) in HTML format is included in the
+SDK. There is also a duplicate version in plain text format (<a href="./readsdk.txt">readsdk.txt</a>). 
+</p>
+
+<p>Please visit <a href="ftp://ftp.pervasive.com/documentation/updates">
+ftp://ftp.pervasive.com/documentation/updates</a>
+for any product documentation that may be updated between product releases.
+</p>
+
+
+<p>
+Return to <a href="#top">top</a> of page.
+</p>
+
+
+
+
+
+
+<hr /><a NAME="techsupp"></a>
+<h2>6. Technical Support</h2>
+
+<ul>
+<li>
+For technical support, browse to <a href="http://www.pervasive.com/devtalk" TARGET="SECONDARY">
+http://www.pervasive.com/devtalk</a> or open an e-mail incident at 
+<a href="http://www.pervasive.com/support/support_email.asp" target="SECONDARY">Pervasive Online Support</a>.
+</li>
+
+<li>
+You can also visit <a href="http://www.pervasive.com/company/contact" TARGET="SECONDARY">http://www.pervasive.com/company/contact</a>
+on the Pervasive Home Page for this information.</li>
+
+</ul>
+<p>
+Return to <a href="#top">top</a> of page.
+</p>
+
+<hr><a NAME="dsclaim"></a>
+
+<h2>7. Disclaimer</h2>
+<tt>PERVASIVE SOFTWARE INC. LICENSES THE SOFTWARE AND DOCUMENTATION PRODUCT
+TO YOU OR YOUR COMPANY SOLELY ON AN "AS IS" BASIS AND SOLELY IN ACCORDANCE
+WITH THE TERMS AND CONDITIONS OF THE ACCOMPANYING LICENSE AGREEMENT. PERVASIVE
+SOFTWARE INC. MAKES NO OTHER WARRANTIES WHATSOEVER, EITHER EXPRESS OR IMPLIED,
+REGARDING THE SOFTWARE OR THE CONTENT OF THE DOCUMENTATION; PERVASIVE SOFTWARE
+INC. HEREBY EXPRESSLY STATES AND YOU OR YOUR COMPANY ACKNOWLEDGES THAT
+PERVASIVE SOFTWARE INC. DOES NOT MAKE ANY WARRANTIES, INCLUDING, FOR EXAMPLE,
+WITH RESPECT TO MERCHANTABILITY, TITLE, OR FITNESS FOR ANY PARTICULAR PURPOSE
+OR ARISING FROM COURSE OF DEALING OR USAGE OF TRADE, AMONG OTHERS.</tt>
+<p>&copy; Copyright 2001 Pervasive Software Inc. All Rights Reserved.
+<br>
+<hr>
+
+
+
+
+<h3 align=center>** End of READSDK.HTM **</h3>
+
+<p align=center>
+<font size=-1>Part number 106-003656-004
+</font>
+</p>
+
+
+</body>
+</html>

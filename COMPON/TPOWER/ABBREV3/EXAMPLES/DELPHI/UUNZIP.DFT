@@ -1,0 +1,94 @@
+object Form1: TForm1
+  Left = 196
+  Top = 107
+  Width = 346
+  Height = 219
+  Caption = 'Unzipper Example'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  PixelsPerInch = 96
+  TextHeight = 13
+  object AbMeter1: TAbMeter
+    Left = 144
+    Top = 128
+    Width = 150
+    Height = 16
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clNavy
+  end
+  object AbMeter2: TAbMeter
+    Left = 144
+    Top = 152
+    Width = 150
+    Height = 16
+    Orientation = moHorizontal
+    UnusedColor = clBtnFace
+    UsedColor = clNavy
+  end
+  object Label1: TLabel
+    Left = 24
+    Top = 128
+    Width = 64
+    Height = 13
+    Caption = 'Item Progress'
+  end
+  object Label2: TLabel
+    Left = 24
+    Top = 152
+    Width = 80
+    Height = 13
+    Caption = 'Archive Progress'
+  end
+  object Button1: TButton
+    Left = 120
+    Top = 88
+    Width = 75
+    Height = 25
+    Caption = '&Unzip...'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 10
+    Top = 8
+    Width = 303
+    Height = 57
+    BorderStyle = bsNone
+    Ctl3D = False
+    Lines.Strings = (
+      'This example simply extracts all files from a ZIP archive. '
+      'Click the Unzip button and choose a ZIP file. The contents '
+      'of the file will be extracted to the current directory.')
+    ParentColor = True
+    ParentCtl3D = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'zip'
+    Filter = 
+      'PKZip Archives (*.zip)|*.ZIP|Self Extracting Archives (*.exe)|*.' +
+      'EXE'
+    Left = 8
+    Top = 72
+  end
+  object AbUnZipper1: TAbUnZipper
+    ArchiveProgressMeter = AbVCLMeterLink2
+    ItemProgressMeter = AbVCLMeterLink1
+    Left = 40
+    Top = 72
+  end
+  object AbVCLMeterLink1: TAbVCLMeterLink
+    Meter = AbMeter1
+    Left = 292
+    Top = 116
+  end
+  object AbVCLMeterLink2: TAbVCLMeterLink
+    Meter = AbMeter2
+    Left = 292
+    Top = 148
+  end
+end

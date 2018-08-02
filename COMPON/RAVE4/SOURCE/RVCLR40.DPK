@@ -1,0 +1,17 @@
+package RVCLR40;
+
+{$DESCRIPTION 'Rave 4.0 Report Components'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, RVCL40, RVCLS40;
+
+contains
+  RVCsData,
+  RVCsRpt,
+  RVPEBand,
+  RVPERLoc,
+  RVPEDMS,
+  RVPECalc;
+
+end.

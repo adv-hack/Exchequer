@@ -1,0 +1,199 @@
+/* VERSION: 1.0.0.2 */
+
+USE [IRISCommunicationEngine]
+GO
+/****** Object:  Table [dbo].[CIS]    Script Date: 11/16/2006 11:48:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CIS]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[CIS](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Outbox_Id] [int] NOT NULL,
+	[Outbox_Guid] [varchar](38) NOT NULL,
+	[IrMark] [varchar](32) NULL,
+	[CorrelationId] [varchar](48) NULL,
+	[ClassType] [varchar](255) NULL,
+	[Polling] [int] NULL CONSTRAINT [DF_CIS_Polling]  DEFAULT ((5)),
+	[Redirection] [varchar](max) NULL,
+	[FileGuid] [varchar](38) NULL,
+ CONSTRAINT [PK_CIS_1] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC,
+	[Outbox_Id] ASC,
+	[Outbox_Guid] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+
+GO
+SET ANSI_PADDING OFF
+GO
+USE [IRISCommunicationEngine]
+GO
+ALTER TABLE [dbo].[CIS]  WITH CHECK ADD  CONSTRAINT [FK_CIS_Outbox1] FOREIGN KEY([Outbox_Id], [Outbox_Guid])
+REFERENCES [dbo].[Outbox] ([Id], [Guid])
+ON DELETE CASCADE
+GO
+
+
+
+GO
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CISCompanyDetail]') AND type in (N'U'))
+BEGIN
+DROP TABLE [dbo].[CISCompanyDetail]
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EmailAccounts]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[EmailAccounts](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[YourEmail] [varchar](255) NOT NULL,
+	[EmailSystem_ID] [int] NOT NULL,
+	[YourName] [varchar](50) NULL,
+	[ServerType] [varchar](16) NULL,
+	[IsDefault] [bit] NULL CONSTRAINT [DF_Table_1_Default]  DEFAULT ((0)),
+	[IncomingServer] [varchar](255) NULL,
+	[OutgoingServer] [varchar](255) NULL,
+	[Username] [varchar](32) NULL,
+	[Password] [varchar](255) NULL,
+	[IncomingPort] [int] NULL CONSTRAINT [DF_EmailAccounts_IncomingPort]  DEFAULT ((110)),
+	[OutgoingPort] [int] NULL CONSTRAINT [DF_EmailAccounts_OutgoingPort]  DEFAULT ((25)),
+	[Authentication] [bit] NULL CONSTRAINT [DF_EmailAccounts_Authentication]  DEFAULT ((0)),
+	[OutgoingUsername] [varchar](32) NULL,
+	[OutgoingPassword] [varchar](255) NULL,
+	[UseSSLIncomingPort] [bit] NULL CONSTRAINT [DF_EmailAccounts_UseSSLIncomingPort]  DEFAULT ((0)),
+	[UseSSLOutgoingPort] [bit] NULL CONSTRAINT [DF_EmailAccounts_UseSSLOutgoingPort]  DEFAULT ((0)),
+	[MailBoxName] [varchar](50) NULL,
+	[MailBoxSeparator] [char](1) NULL CONSTRAINT [DF_EmailAccounts_MailBoxSeparator]  DEFAULT ('/'),
+ CONSTRAINT [PK_EmailAccounts] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC,
+	[YourEmail] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EmailSystem]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[EmailSystem](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ServerType] [varchar](16)  NOT NULL,
+	[Description] [varchar](255) NOT NULL,
+	[IncomingGuid] [varchar](38) NOT NULL,
+	[OutgoingGuid] [varchar](38) NOT NULL,
+	[IsActive] [bit] NULL CONSTRAINT [DF_EmailSystem_IsActive]  DEFAULT ((0)),
+ CONSTRAINT [PK_EmailSystem] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC,
+	[ServerType] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+
+
+
+
+GO
+SET ANSI_PADDING OFF
+GO
+USE [IRISCommunicationEngine]
+GO
+
+/****** Update sytem table column size ******/
+ALTER TABLE [dbo].[system] 
+  ALTER COLUMN [value] [varchar](255) NOT NULL   
+GO
+
+/******  change user password field for supporting encrypted values ***/
+ALTER TABLE [dbo].[users] 
+  ALTER COLUMN [password] [varchar](64) NOT NULL   
+GO
+
+
+/****** Update inbox table column size ******/
+ALTER TABLE [dbo].[inbox]
+  DROP CONSTRAINT [DF_Inbox_TotalItems]
+GO
+
+ALTER TABLE [dbo].[inbox]
+  ALTER COLUMN [TotalItems] [int] NOT NULL  
+GO
+
+ALTER TABLE [dbo].[inbox]
+  ADD CONSTRAINT [DF_Inbox_TotalItems]  
+  DEFAULT 0 FOR [TotalItems] 
+GO
+
+ALTER TABLE [dbo].[inbox]
+   ADD [TotalDone] [int] NOT NULL CONSTRAINT [DF_Outbox_TotalDone]  DEFAULT ((0))
+GO
+
+/****** Update outbox table column size ******/
+ALTER TABLE [dbo].[outbox]
+  DROP CONSTRAINT [DF__Outbox__TotalIte__300424B4]
+GO
+
+ALTER TABLE [dbo].[outbox]
+  ALTER COLUMN [TotalItems] [int] NOT NULL 
+GO
+
+ALTER TABLE [dbo].[outbox]
+  ADD CONSTRAINT [DF__Outbox__TotalIte__300424B4]  
+  DEFAULT 0 FOR [TotalItems]
+GO
+
+ALTER TABLE [dbo].[outbox]
+  ADD [TotalDone] [int] NOT NULL CONSTRAINT [DF_Inbox_TotalDone]  DEFAULT ((0))
+GO
+
+delete from [dbo].system where description = N'manager'
+GO
+
+
+/****** check version and add value if not exists ******/
+IF NOT EXISTS (SELECT value FROM [dbo].[system] WHERE description = N'version')
+  insert into [dbo].[system] (description, value) values (N'version', N'1.0.0.0')
+GO
+
+
+/****** IAOO can have same company code for <> directories installation ******/
+
+IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[Company]') AND name = N'IX_Company_ExCode')
+BEGIN
+
+  DROP INDEX [dbo].[Company].[IX_Company_ExCode] 
+
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[Company]') AND name = N'IX_Company_ExCode')
+BEGIN
+CREATE NONCLUSTERED INDEX [IX_Company_ExCode] ON [dbo].[Company] 
+(
+	[ExCode] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+END
+GO
+
+ALTER LOGIN [GHJHyhjghIRISICEhdskjJ432!] WITH CHECK_EXPIRATION = OFF;
+go
+
+ALTER LOGIN [GHJHyhjghIRISICEhdskjJ432!] WITH CHECK_POLICY = OFF;
+go
+
+
+update [dbo].[system] set value = N'1.0.0.2' where description = N'version'
+
+GO

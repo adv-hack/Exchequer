@@ -1,0 +1,4 @@
+"Add a Sales Quote with at least one line.",C:\ComTKExes\PurchaseOrderTest.exe,Y,Y,0,N,0
+"Copy and save the previous Quote",C:\ComTKExes\PurchaseOrderTest.exe,Y,Y,0,N,1
+"Convert the first quote to an Order",C:\ComTKExes\PurchaseOrderTest.exe,Y,Y,0,N,2
+"Convert the second quote to an Invoice.",C:\ComTKExes\PurchaseOrderTest.exe,Y,Y,0,N,3

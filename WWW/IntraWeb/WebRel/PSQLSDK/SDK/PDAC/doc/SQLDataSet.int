@@ -1,0 +1,607 @@
+unit sqldataset;
+
+
+interface
+
+uses
+  windows, messages, sysutils, classes, graphics, controls, forms, dialogs,
+  db, dbconsts, pvconst, stdvcl, pvparser, pvtables, pvodbc, sqlmisc,
+  pvsqltables
+{$IfDef Codesite}
+  , csintf
+{$EndIf}
+{$Ifdef PvDelphi6Up}
+  , variants, fmtbcd
+{$EndIf}
+  ;
+const
+
+{ TPvSQLDataSet flags }
+
+  ptiUnknown = -1;
+  ptiInput = 0;
+  ptiInputOutput = 1;
+  ptiOutput = 2;
+  ptiResult = 3;
+
+  ftiUnknown = -1;
+  ftiBCD = 0;
+  ftiBlob = 1;
+  ftiBoolean = 2;
+  ftiCurrency = 3;
+  ftiCursor = 4;
+  ftiDate = 5;
+  ftiDateTime = 6;
+  ftiFloat = 7;
+  ftiGraphic = 8;
+  ftiInteger = 9;
+  ftiMemo = 10;
+  ftiSmallint = 11;
+  ftiString = 12;
+  ftiTime = 13;
+  ftiWord = 14;
+
+  SQLMAXSPNAMELEN = 255;
+
+  SQL_initReplace = 1;
+  SQL_initInsert = 2;
+
+type
+
+  TSQLDataSetOnSetFieldEvent = procedure(Field: TField; Buffer: Pointer; var Continue: boolean) of object;
+
+  PRecordStruct = ^TRecordStruct;
+  TRecordStruct = record
+    RecBufSize: Word;
+    BookmarkOfs: Word;
+    BookmarkSize: Word;
+  end;
+
+  TUpdateType = (utModify, utInsert, utDelete, utInit);
+
+  TPvSQLCursorManager = class;
+  TPvSQLDataSet = class;
+
+{ TPvDataSetUpdateObject}
+
+  TPvDataSetUpdateObject = class(TComponent)
+  protected
+    function GetDataSet: TPvSQLDataSet; virtual; abstract;
+    function GetSQL(UpdateKind: TUpdateKind): TStrings; virtual; abstract;
+    procedure SetDataSet(ADataSet: TPvSQLDataSet); virtual; abstract;
+    procedure Apply(UpdateKind: TUpdateKind); virtual; abstract;
+    property DataSet: TPvSQLDataSet read GetDataSet write SetDataSet;
+  end;
+
+{ TPvSQLDataSet }
+
+  TPvSQLDataSet = class(TPvDataSet)
+  private
+{$ifdef PDAC_NEWCU}
+    // 28531 - moved these to "protected" members of base class
+    //FFirstRecord, FLastRecord: boolean;
+{$else}
+    FFirstRecord, FLastRecord: boolean;
+{$endif}
+    FLookupFilterParser: PvParser.TExprParser;
+    FLookupFilterParseVerifier: TParseVerifier;
+    FColumns: TSQLColumnInfoCollection;
+    FOnSetField: TSQLDataSetOnSetFieldEvent;
+    FCursorManager: TPvSQLCursorManager;
+    FUpdateObject: TPvDataSetUpdateObject;
+    function GetDBHandle: SQLHDBC;
+    function GetDatabase: TPvSqlDatabase;
+    function GetColumns: TSQLColumnInfoCollection;
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+    function PSExecuteStatement(const ASQL: string; AParams: TParams;
+      ResultSet: Pointer = nil): Integer; override;
+//    procedure PSGetAttributes(List: TList); override; // not need to impl now
+    function PSIsSQLSupported: Boolean; override;
+    function PSUpdateRecord(UpdateKind: TUpdateKind; Delta: TDataSet): Boolean; override;
+{$Endif}
+  protected
+    //27355 - shenders: moved FPrepared from "private" to "protected"
+    FPrepared: Boolean;
+    FHandle: SQLHSTMT;
+    FLoadBlobOnOpen: boolean;
+    function DoFiltering(RecBuf: Pointer): boolean; override;
+    procedure AddFieldDesc(FieldDesc: TSQLColumnInfo; ARequired: Boolean
+{$Ifdef PvDelphi3}
+    ; FieldNo: Word
+{$EndIf}
+    );
+{$Ifndef PvDelphi5Up}
+    function BCDToCurr(BCD: Pointer; var Curr: Currency): Boolean; override;
+
+//26522 - shenders: Added default parameters for D4 call
+{$IfDef PvDelphi4Up}
+    function CurrToBCD(const Curr: Currency; BCD: Pointer; Precision: Integer = 32;
+      Decimals: Integer = 4): Boolean; override;
+{$Else}
+    function CurrToBCD(const Curr: Currency; BCD: Pointer; Precision,
+      Decimals: Integer): Boolean; override;
+{$EndIf}
+{$EndIf}
+    procedure Check(Status: SQLRETURN);
+    procedure CheckHandle;
+    procedure CloseCursor; override;
+    function CreateHandle: SQLHSTMT; virtual;
+    procedure DestroyHandle; virtual;
+    function GetActiveRecBuf(var RecBuf: PChar): Boolean; override;
+    function GetCanModify: Boolean; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    function GetSessions: TPvAbsSessionList; override;
+    procedure InitBufferPointers(GetProps: Boolean); override;
+    procedure InternalInitFieldDefs; override;
+    function IsMayBeSlow: boolean; override;
+    function IsHandleNull: boolean; override;
+
+    procedure CacheUpdatesApplyModified(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure CacheUpdatesApplyInserted(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure CacheUpdatesApplyDeleted(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+
+    function PvGetRecord(Buffer: PChar; GetMode: TGetMode; DoCheck: Boolean): TGetResult; override;
+    function PvInternalMoveFirst(DoCheck: boolean): TGetResult; override;
+    function PvInternalMoveLast(DoCheck: boolean): TGetResult; override;
+    function PvInternalMoveNext(DoCheck: boolean): TGetResult; override;
+    function PvInternalMovePrev(DoCheck: boolean): TGetResult; override;
+    procedure PvInternalPost; override;
+    procedure PvInternalCancel; override;
+    procedure PvInternalAddRecord(Buffer: Pointer; Append: Boolean); override;
+    procedure PvInternalInsert; override;
+    procedure PvInternalEdit; override;
+    procedure PvInternalDelete; override;
+    procedure PvInternalRefresh; override;
+    procedure PvInternalGotoBookmark(Bookmark: TBookmark); override;
+    function PvInternalBookmarkValid(Bookmark: TBookmark): Boolean; override;
+    procedure InternalOpen; override;
+    procedure InternalClose; override;
+    function IsCursorOpen: Boolean; override;
+    function LocateRecord(const KeyFields: string; const AKeyValues: Variant;
+      Options: TLocateOptions; SyncCursor: Boolean): Boolean; override;
+    procedure OpenCursor(InfoQuery: Boolean); override;
+    procedure SetFieldData(Field: TField; Buffer: Pointer); override;
+    procedure SetFieldConstrains;
+    procedure SetUpdateObject(Value: TPvDataSetUpdateObject);
+
+    procedure PvGetBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure PvPutBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    function RetrieveBlobColumn(FieldNo: integer; var BlobBuffer: Pointer;
+      var BufferSize: Longint): boolean;
+    function SetBlobColumn(FieldNo: integer; BlobBuffer: Pointer;
+      BufferSize: Longint; IsOldValue: boolean): boolean;
+    function GetTableName(FieldNo: integer): string;
+    function GetWhereClause(TableName: string; IsOldValue: boolean): string;
+    function ColumnInTable(TableName, ColumnName: string): boolean;
+
+    function GetRecNo: Longint; override;
+    procedure SetRecNo(Value: Integer); override;
+    function GetRecordCount: Longint; override;
+    property Columns: TSQLColumnInfoCollection read GetColumns;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    function CompareBookmarks(Bookmark1, Bookmark2: TBookmark): Integer; override;
+    function CreateBlobStream(Field: TField; Mode: TBlobStreamMode): TStream; override;
+    function GetFieldData(Field: TField; Buffer: Pointer): Boolean; override;
+    function IsSequenced: Boolean; override;
+
+    procedure AppendRecord(const Values: array of const);
+    procedure InsertRecord(const Values: array of const);
+
+    property Handle: SQLHSTMT read FHandle;
+    property DBHandle: SQLHDBC read GetDBHandle;
+    property Database: TPvSqlDatabase read GetDatabase;
+    property UpdateObject: TPvDataSetUpdateObject read FUpdateObject write SetUpdateObject;
+    property OnSetField: TSQLDataSetOnSetFieldEvent read FOnSetField write FOnSetField;
+  end;
+
+{ TPvSQLCursorManager }
+
+  TPvSQLCursorManager = class
+  private
+    FDataSet: TPvSQLDataSet;
+    FCounter: SQLINTEGER;
+    FRecords: TList;
+    FRecordStruct: TRecordStruct;
+    FInitUpdate: SQLSMALLINT;
+    FOldRecBuff: PChar;
+    FNewRecBuff: PChar;
+    FWhereClause: string;
+    FState: TGetResult;
+    FBlobBuffer: TList;
+    FBlobSize: TList;
+    RecNo: SQLINTEGER;
+    procedure SetInitUpdate(Value: SQLSMALLINT);
+    function GetRecordCount: SQLINTEGER;
+    function ApplyUpdates(UpdateType: TUpdateType; RecordBuffer: PChar): SQLRETURN;
+  public
+    constructor Create(AOwner: TPvSQLDataSet; Handle: SQLHSTMT;
+      RecordStruct: PRecordStruct);
+    destructor Destroy; override;
+    function GetCurrent(Buffer: PChar): TGetResult;
+    function GetPrev(Buffer: PChar): TGetResult;
+    function GetNext(Buffer: PChar): TGetResult;
+    function MoveFirst: TGetResult;
+    function MoveLast: TGetResult;
+    function MoveNext: TGetResult;
+    function MovePrev: TGetResult;
+    function GotoBookmark(VirtualBookmark: SQLINTEGER): TGetResult;
+    function DeleteRecord(Buffer: PChar): SQLRETURN;
+    function InsertRecord: SQLRETURN;
+    function Post(Buffer: PChar): SQLRETURN;
+    function Cancel: SQLRETURN;
+    property InitUpdate: SQLSMALLINT read FInitUpdate write SetInitUpdate default 0;
+    property DataSet: TPvSQLDataSet read FDataSet;
+    property RecordCount: SQLINTEGER read GetRecordCount;
+    property Records: TList read FRecords write FRecords;
+    property State: TGetResult read FState;
+  end;
+
+  pPvBLOBParamDesc = ^PvBLOBParamDesc;
+  PvBLOBParamDesc = packed record
+    pBlobBuffer     : Pointer;          { Blob buffer (client) }
+    ulBlobLen       : Integer;          { Length of the blob }
+    iUnUsed         : packed array[0..3] of Word;
+  end;
+
+  PPvServerDesc = ^TPvServerDesc;
+  TPvServerDesc = record
+    ParamName: string[SQLMAXSPNAMELEN];
+    BindType: TFieldType;
+  end;
+
+  PParamsDesc = ^TParamsDesc;
+  TParamsDesc = record
+    ValuePtr: SQLPOINTER;
+    SqlDataType: SQLSMALLINT;
+    SubType: SQLSMALLINT;
+    ParamSize: SQLINTEGER;
+    DecimalDigits: SQLSMALLINT;
+    BufferLength: SQLINTEGER;
+    LenOrIndPtr: PSQLINTEGER;
+  end;
+
+  TParamBindMode = (pbByName, pbByNumber);
+
+{$ifndef PvDelphi4Up}
+
+{ TParam }
+
+  TParams = class;
+
+  TParamType = (ptUnknown, ptInput, ptOutput, ptInputOutput, ptResult);
+
+  TParam = class(TPersistent)
+  private
+    FParamList: TParams;
+    FData: Variant;
+    FName: string;
+    FDataType: TFieldType;
+    FNull: Boolean;
+    FBound: Boolean;
+    FParamType: TParamType;
+
+    procedure InitValue;
+  protected
+    procedure AssignParam(Param: TParam);
+    procedure AssignTo(Dest: TPersistent); override;
+    function GetAsBCD: Currency;
+    function GetAsBoolean: Boolean;
+    function GetAsDateTime: TDateTime;
+    function GetAsFloat: Double;
+    function GetAsInteger: Longint;
+    function GetAsMemo: string;
+    function GetAsString: string;
+    function GetAsVariant: Variant;
+    function IsEqual(Value: TParam): Boolean;
+    function RecBufDataSize: Integer;
+    procedure RecBufGetData(Buffer: Pointer);
+    procedure SetAsBCD(Value: Currency);
+    procedure SetAsBlob(Value: TBlobData);
+    procedure SetAsBoolean(Value: Boolean);
+    procedure SetAsCurrency(Value: Double);
+    procedure SetAsDate(Value: TDateTime);
+    procedure SetAsDateTime(Value: TDateTime);
+    procedure SetAsFloat(Value: Double);
+    procedure SetAsInteger(Value: Longint);
+    procedure SetAsMemo(const Value: string);
+    procedure SetAsString(const Value: string);
+    procedure SetAsSmallInt(Value: LongInt);
+    procedure SetAsTime(Value: TDateTime);
+    procedure SetAsVariant(Value: Variant);
+    procedure SetAsWord(Value: LongInt);
+    procedure SetDataType(Value: TFieldType);
+    procedure SetText(const Value: string);
+  public
+    constructor Create(AParamList: TParams; AParamType: TParamType);
+    destructor Destroy; override;
+    procedure Assign(Source: TPersistent); override;
+    procedure AssignField(Field: TField);
+    procedure AssignFieldValue(Field: TField; const Value: Variant);
+    procedure Clear;
+    procedure GetData(Buffer: Pointer);
+    function GetDataSize: Integer;
+    procedure LoadFromFile(const FileName: string; BlobType: TBlobType);
+    procedure LoadFromStream(Stream: TStream; BlobType: TBlobType);
+    procedure SetBlobData(Buffer: Pointer; Size: Integer);
+    procedure SetData(Buffer: Pointer);
+    property AsBCD: Currency read GetAsBCD write SetAsBCD;
+    property AsBlob: TBlobData read GetAsString write SetAsBlob;
+    property AsBoolean: Boolean read GetAsBoolean write SetAsBoolean;
+    property AsCurrency: Double read GetAsFloat write SetAsCurrency;
+    property AsDate: TDateTime read GetAsDateTime write SetAsDate;
+    property AsDateTime: TDateTime read GetAsDateTime write SetAsDateTime;
+    property AsFloat: Double read GetAsFloat write SetAsFloat;
+    property AsInteger: LongInt read GetAsInteger write SetAsInteger;
+    property AsSmallInt: LongInt read GetAsInteger write SetAsSmallInt;
+    property AsMemo: string read GetAsMemo write SetAsMemo;
+    property AsString: string read GetAsString write SetAsString;
+    property AsTime: TDateTime read GetAsDateTime write SetAsTime;
+    property AsWord: LongInt read GetAsInteger write SetAsWord;
+    property Bound: Boolean read FBound write FBound;
+    property DataType: TFieldType read FDataType write SetDataType;
+    property IsNull: Boolean read FNull;
+    property Name: string read FName write FName;
+    property ParamType: TParamType read FParamType write FParamType;
+    property Text: string read GetAsString write SetText;
+    property Value: Variant read GetAsVariant write SetAsVariant;
+  end;
+
+{ TParams }
+
+  TParams = class(TPersistent)
+  private
+    FOwner: TComponent;
+    FItems: TList;
+    function GetParam(Index: Word): TParam;
+    function GetParamValue(const ParamName: string): Variant;
+    function GetVersion: Word;
+    procedure ReadBinaryData(Stream: TStream);
+    procedure SetParamValue(const ParamName: string;
+      const Value: Variant);
+    procedure WriteBinaryData(Stream: TStream);
+  protected
+    procedure AssignTo(Dest: TPersistent); override;
+    procedure DefineProperties(Filer: TFiler); override;
+  public
+    constructor Create(AOwner: TComponent); virtual;
+    destructor Destroy; override;
+    procedure Assign(Source: TPersistent); override;
+    procedure AssignValues(Value: TParams);
+    procedure AddParam(Value: TParam);
+    procedure RemoveParam(Value: TParam);
+    function CreateParam(FldType: TFieldType; const ParamName: string;
+      ParamType: TParamType): TParam;
+    function Count: Integer;
+    procedure Clear;
+    procedure GetParamList(List: TList; const ParamNames: string);
+    function IsEqual(Value: TParams): Boolean;
+    function ParseSQL(SQL: String; DoCreate: Boolean): String;
+    function ParamByName(const Value: string): TParam;
+    property Items[Index: Word]: TParam read GetParam; default;
+    property ParamValues[const ParamName: string]: Variant read GetParamValue write SetParamValue;
+    property Owner: TComponent read FOwner;
+  end;
+
+{$endif}
+
+{ TPvQuery }
+
+  TPvQuery = class(TPvSQLDataSet)
+  private
+    FSQL: TStrings;
+    FParams: TParams;
+    FParamsDesc: TList;
+    FText: string;
+    FDataLink: TDataLink;
+    FLocal: Boolean;
+    FRowsAffected: Integer;
+    FUniDirectional: Boolean;
+    FRequestLive: Boolean;
+    FSQLBinary: PChar;
+    FConstrained: Boolean;
+    FParamCheck: Boolean;
+    FCheckRowsAffected: Boolean;
+    // 30667 - shenders: added PassThrough SQL ability
+    FPassThrough: Boolean;
+    function CreateCursor(GenHandle: Boolean): SQLHSTMT;
+    procedure FreeStatement;
+    function GetQueryCursor(GenHandle: Boolean): SQLHSTMT;
+    procedure GetStatementHandle;
+    function GetRowsAffected: Integer;
+    procedure PrepareSQL;
+    procedure QueryChanged(Sender: TObject);
+    procedure ReadBinaryData(Stream: TStream);
+    procedure RefreshParams;
+    procedure SetDataSource(Value: TDataSource);
+    procedure SetQuery(Value: TStrings);
+    procedure SetParamsList(Value: TParams);
+    procedure SetQueryParams;
+    // 30667 - shenders: added PassThrough SQL ability
+    procedure SetPassThrough(Value: boolean);
+    procedure FreeQueryParams;
+    procedure SetParamsFromCursor;
+    procedure SetPrepared(Value: Boolean);
+    procedure SetPrepare(Value: Boolean);
+    procedure WriteBinaryData(Stream: TStream);
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+    procedure PSExecute; override;
+    function PSGetDefaultOrder: TIndexDef; override;
+    function PSGetParams: TParams; override;
+    function PSGetTableName: string; override;
+    procedure PSSetParams(AParams: TParams); override;
+    procedure PSSetCommandText(const CommandText: string); override;
+{$Endif}
+  protected
+    function CreateHandle: SQLHSTMT; override;
+    procedure DefineProperties(Filer: TFiler); override;
+    procedure DestroyHandle; override;
+    procedure Disconnect; override;
+    function GetDataSource: TDataSource; override;
+    function GetParamsCount: Word;
+    function SetDBFlag(Flag: Integer; Value: Boolean): Boolean; override;
+    property DataLink: TDataLink read FDataLink;
+    function PvParseSQL(List: TParams; SQL: String; DoCreate: Boolean): String;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure ExecSQL;
+{$Ifdef PvDelphi4Up}
+    procedure GetDetailLinkFields(MasterFields, DetailFields: TList); override;
+{$Endif}
+    function ParamByName(const Value: string): TParam;
+    procedure Prepare;
+    procedure UnPrepare;
+    property Prepared: Boolean read FPrepared write SetPrepare;
+    property ParamCount: Word read GetParamsCount;
+    property Local: Boolean read FLocal;
+    property Text: string read FText;
+    property RowsAffected: Integer read GetRowsAffected;
+    property SQLBinary: PChar read FSQLBinary write FSQLBinary;
+  published
+    property Constrained: Boolean read FConstrained write FConstrained default False;
+    property Constraints stored ConstraintsStored;
+    property DataSource: TDataSource read GetDataSource write SetDataSource;
+    property ParamCheck: Boolean read FParamCheck write FParamCheck default True;
+    property RequestLive: Boolean read FRequestLive write FRequestLive default False;
+    property SQL: TStrings read FSQL write SetQuery;
+    { This property must be listed after the SQL property for Delphi 1.0 compatibility }
+    property Params: TParams read FParams write SetParamsList;
+    // 30667 - shenders: added PassThrough SQL ability
+    property PassThrough: boolean read FPassThrough write SetPassThrough default false;
+    property UniDirectional: Boolean read FUniDirectional write FUniDirectional default False;
+    property UpdateMode;
+    property UpdateObject;
+    property LoadBlobOnOpen: boolean read FLoadBlobOnOpen write FLoadBlobOnOpen default true;
+end;
+
+{ TPvQueryDataLink }
+
+type
+  TPvQueryDataLink = class(TDataLink)
+  private
+    FQuery: TPvQuery;
+  protected
+    procedure ActiveChanged; override;
+    procedure RecordChanged(Field: TField); override;
+    procedure CheckBrowseMode; override;
+  public
+    constructor Create(AQuery: TPvQuery);
+  end;
+
+{ TPvStoredProc }
+
+  TPvStoredProc = class(TPvSQLDataSet)
+  private
+    FProcName: string;
+    FParams: TParams;
+    FParamsDesc: TList;
+    FQueryMode: Boolean;
+    FServerDescs: PChar;
+    FBindMode: TParamBindMode;
+    procedure BindParams;
+    function CheckServerParams: Boolean;
+    function CreateCursor(GenHandle: Boolean): SQLHSTMT;
+    procedure CreateParamDesc(GenParams: Boolean);
+    procedure FreeStatement;
+    function GetCursor(GenHandle: Boolean): SQLHSTMT;
+    procedure PrepareProc;
+    procedure SetParamsList(Value: TParams);
+    procedure SetServerParams;
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+    procedure PSExecute; override;
+    function PSGetParams: TParams; override;
+    function PSGetTableName: string; override;
+    procedure PSSetParams(AParams: TParams); override;
+    procedure PSSetCommandText(const CommandText: string); override;
+{$Endif}
+  protected
+    function CreateHandle: SQLHSTMT; override;
+    procedure Disconnect; override;
+    function GetParamsCount: Word;
+    function SetDBFlag(Flag: Integer; Value: Boolean): Boolean; override;
+    procedure SetProcName(const Value: string);
+    procedure SetPrepared(Value: Boolean);
+    procedure SetPrepare(Value: Boolean);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure CopyParams(Value: TParams);
+    function ParamByName(const Value: string): TParam;
+    function DescriptionsAvailable: Boolean;
+    procedure ExecProc;
+    procedure Prepare;
+    procedure GetResults;
+    procedure UnPrepare;
+    property ParamCount: Word read GetParamsCount;
+    property Prepared: Boolean read FPrepared write SetPrepare;
+  published
+    property StoredProcName: string read FProcName write SetProcName;
+    property Params: TParams read FParams write SetParamsList;
+    property ParamBindMode: TParamBindMode read FBindMode write FBindMode default pbByName;
+    property UpdateObject;
+  end;
+
+{ TPvUpdateSQL }
+
+  TPvUpdateSQL = class(TPvDataSetUpdateObject)
+  private
+    FDataSet: TPvSQLDataSet;
+    FQueries: array[TUpdateKind] of TPvQuery;
+    FSQLText: array[TUpdateKind] of TStrings;
+    function GetQuery(UpdateKind: TUpdateKind): TPvQuery;
+    function GetSQLIndex(Index: Integer): TStrings;
+    procedure SetSQL(UpdateKind: TUpdateKind; Value: TStrings);
+    procedure SetSQLIndex(Index: Integer; Value: TStrings);
+  protected
+    function GetDataSet: TPvSQLDataSet; override;
+    function GetSQL(UpdateKind: TUpdateKind): TStrings; override;
+    procedure SetDataSet(ADataSet: TPvSQLDataSet); override;
+    procedure SQLChanged(Sender: TObject);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure Apply(UpdateKind: TUpdateKind); override;
+    procedure ExecSQL(UpdateKind: TUpdateKind);
+    procedure SetParams(UpdateKind: TUpdateKind);
+    property DataSet;
+    property Query[UpdateKind: TUpdateKind]: TPvQuery read GetQuery;
+    property SQL[UpdateKind: TUpdateKind]: TStrings read GetSQL write SetSQL;
+  published
+    property ModifySQL: TStrings index 0 read GetSQLIndex write SetSQLIndex;
+    property InsertSQL: TStrings index 1 read GetSQLIndex write SetSQLIndex;
+    property DeleteSQL: TStrings index 2 read GetSQLIndex write SetSQLIndex;
+  end;
+
+{ TPvSQLBlobStream }
+
+  TPvSQLBlobStream = class(TPvBlobStream)
+  protected
+    FRecNo: integer;
+    FDetermineSizeState: boolean;
+    FBlobBuffer: Pointer;
+    FBufferSize: SQLINTEGER;
+    function GetBlobSize: Longint; override;
+    function IsEmptyDataSet(DataSet: TDataSet): boolean;
+  public
+    constructor Create(Field: TBlobField; Mode: TBlobStreamMode);
+    destructor Destroy; override;
+    function Read(var Buffer; Count: Longint): Longint; override;
+    function Write(const Buffer; Count: Longint): Longint; override;
+    procedure Truncate; override;
+  end;
+
+{$Ifndef PvDelphi6Up}
+{$Ifdef WITH_DESIGN_SUPPORT}
+procedure Register;
+{$Endif}
+{$Endif}
+
+implementation

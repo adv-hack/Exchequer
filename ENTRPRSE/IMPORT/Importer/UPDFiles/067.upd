@@ -1,0 +1,9 @@
+[Version]
+Version=5.71.070.067
+
+[Trans Line]
+F013=TL.Qty                       0069    D 0008 M   Qty                                                default=[I]1                                                                                                 comment=
+F014=TL.QtyMul                    0077    D 0008 M   Qty Multiplier                                     default=[I]1                                                                                                 comment=
+
+
+

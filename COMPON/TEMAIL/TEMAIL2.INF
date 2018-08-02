@@ -1,0 +1,37 @@
+[DSP upload]
+Filename=temail2.zip
+Replacements=temail2.zip
+Version=2.10.0
+FileURL=
+Description=TEmail is a MAPI component with source. It allows for easy but powerful distribution of MAPI email (<b>not</b> native SMTP !!), faxes and other data through MAPI clients like MS Exchange.
+Delphi 1.0=Y
+Delphi 2.0=Y
+Delphi 3.0=Y
+Delphi 4.0=Y
+C++Builder 1.0=Y
+C++Builder 3.0=Y
+File Status=Freeware
+Full Source=Included
+Category=InVisible Components
+Note=Extensive online documentation and demonstration programs are available.
+Additional info=HTML file ( extension htm )
+
+[DSP Support]
+DSP Support=Y
+
+[Versions available]
+Delphi 1.0=
+Delphi 2.0=
+Delphi 3.0=
+Delphi 4.0=
+C++Builder 1.0=
+C++Builder 3.0=
+
+[NetSales]
+ID=
+Info=
+
+[Uploader]
+Author name=Danny Heijl
+Author E-mail=Danny.Heijl@cevi.be
+Author URL=http://www.cevi.be/pp/danny/dhe.htm

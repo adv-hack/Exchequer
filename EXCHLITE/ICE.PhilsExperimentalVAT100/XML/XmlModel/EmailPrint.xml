@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:emailprint xmlns:val="urn:www-iris-co-uk:emailprint">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <emailprintinfo>
+           <empreview/>         <!--: WordBool;       { True=Preview Window, False=Send email }  -->
+           <emcoversheet/>      <!--: String[8];      { Enterprise Form Name for cover sheet } -->
+           <emsendername><![CDATA[]]></emsendername>      <!--: String[50];     { Sender's Name } -->
+           <emsenderaddr><![CDATA[]]></emsenderaddr>      <!--: String[50];     { Sender's Email Address } -->
+           <emsubject><![CDATA[]]></emsubject>         <!--: String[255];    { Subject } -->
+           <empriority/>        <!--: SmallInt;       { 0=Ignore, 1=Normal, 2=Urgent } -->
+           <emsendreader/>      <!--: SmallInt;       { 0=Don't Send Reader, 1=Send Reader, 2=Send Read + Insert Text Help } -->
+           <emcompress/>        <!--: WordBool;       { True = Compress attached forms in PK-ZIP file } -->
+        </emailprintinfo>
+    </message>
+</val:emailprint>

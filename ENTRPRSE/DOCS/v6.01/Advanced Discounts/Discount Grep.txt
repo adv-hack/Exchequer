@@ -1,0 +1,3419 @@
+
+X:\COMPON\GNOSTICE\RaveRender1.2\Demos\Visual\DM.pas
+     33	ItemsTableDiscount: TFloatField;
+     98	((100.0 - FieldByName('Discount').AsFloat) / 100.0);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\DBMDemo2\uBTRecords.pas
+     35	Discount     : Real;
+    269	csDiscount   :  Double;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\DrillDown\NOMLINEF.PAS
+    514	DeductD := Not Syss.SepDiscounts;
+   1543	if not DeductD then DeductD:= not Syss.SepDiscounts;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\DrillDown\SOPLINEF.PAS
+    388	Id1DiscF.Text:=PPR_PamountStr(Discount,DiscountChr);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\DrillDown\TRANSOPF.PAS
+    571	7  :  OutLine:=PPR_PamountStr(Discount,DiscountChr);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\BILLDET.PAS
+     28	lDiscount: TLabel;
+    110	TotDisc     := Round_Up (TotDisc + Discount - OrigDisc, RoundDecs);
+    137	TotDisc     := Round_Up (TotDisc + Discount, RoundDecs);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\BILLSPLT.PAS
+     38	panDiscount: TSBSPanel;
+    206	aColumns[0,4].ColPanel := panDiscount;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\CARDPROC.PAS
+    273	Calc_InvDisc :=(Round_Up(DivWChk((InvR.InvNetVal - PRata), 1 - Pcnt(InvR.Discount))
+    414	if (Pos ('Conversion to Split Discount', TheInv.TransDesc) = 1) then CPaid := Round_Up (CPaid
+    417	if (Pos ('Conversion from Split Discount', TheInv.TransDesc) = 1) Then CPaid := Round_Up (CPaid
+    718	LastDisc := Discount;
+   1099	Discount:=Cust.LastDisc
+   1101	Discount:=Syss.Markup
+   1105	Discount := 0.0;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\ENTSETUP.PAS
+     33	edDiscountNom: TEdit;
+     34	lDiscountNomDesc: TLabel;
+    112	NOM_DISCOUNT : lDiscountNomDesc.Caption := sGLDesc;
+    125	NominalExit(edDiscountNom);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\EOD.PAS
+     31	rTotalCardBalances, rDiscount, PostSpend, PostNet, PostVS, PostVAT : Real;
+    366	grDiscount := 0.0;
+    429	if (EXLocal.LCust.LastDisc <> 0) and (not Syss.UseMarkup) then Discount := EXLocal.LCust.LastDisc 
+    430	else Discount := Syss.Markup;
+    493	Discount   := 0.0;
+    515	procedure AddDiscount (EODRunNo : LongInt; DiscAmt  : Real; DiscRate : Real);
+    538	TransDesc  := 'Discount on sales';
+    548	Discount   := DiscRate;
+    592	sdDiscount := DetDisc;
+    649	rDiscount := 0;
+    732	itType := siType_Discount;
+    769	rDiscount := rDiscount + TillStrToReal(Value, Sign);
+    833	if siOverride then Rate := siDiscount
+    836	if (siGroup >= 1) and (siGroup <= 16) then Rate := GroupArray^ [siGroup].grDiscount;
+    855	if (ItType = siType_Discount) or ((itType = '?') and (itNumber in [8, 10])) then
+   1254	, NOM_FORFEIT, NOM_DISCOUNT, NOM_TILL_DEPOSIT, NOM_SALES);
+   1701	if (Round_Up(TillBalance + rDiscount, 2) <> Round_Up(PrevCBal, 2)) then begin
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\EXCHLINK.PAS
+     17	Function DoPost(iNomType : integer; sNomRef : string10; rValue, rDiscount : real; sHeaderDesc, sDesc : string) : string10;
+     20	Procedure AddNMTDiscount (GInv : InvRec);
+    127	Procedure TOEnterprise.AddNMTDiscount(GInv : InvRec);
+    326	Function TOEnterprise.DoPost(iNomType : integer; sNomRef : string10; rValue, rDiscount : real; sHeaderDesc, sDesc : string) : string10;
+    404	NetValue    := rValue + rDiscount;
+    419	NomCode := Syss.CNoms[NOM_DISCOUNT];
+    420	NetValue := - rDiscount;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\FUNCBOOK.PAS
+    133	4  : OutLine := MoneyToStr(Discount); 
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\FUNCDET.PAS
+     33	edDiscount: TCurrencyEdit;
+     35	lDiscount: TLabel;
+    122	edDiscount.Visible := Syss.UseSplDisc;
+    123	lDiscount.Visible := Syss.UseSplDisc;
+    363	if Syss.UseSplDisc then FuncBookIni.WriteString(sSection,'LastDiscount',MoneyToStr(Discount));
+    381	if Syss.UseSplDisc then Discount := StrToFloat(edDiscount.Text)
+    382	else Discount := 0;
+    398	if Syss.UseSplDisc then edDiscount.Text := MoneyToStr(Discount);
+    445	edDiscount.Text := FuncBookIni.ReadString(cSection,'LastDiscount','0');
+    446	if edDiscount.Text = '0' then edDiscount.Text := MoneyToStr(Syss.MarkUp);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\MAINF.PAS
+    185	ConverttoSplitDiscount1: TMenuItem;
+    186	ConvertfromSplitDiscount1: TMenuItem;
+   1049	ConverttoSplitDiscount1.Enabled := LoginMode = lmDebug;
+   1050	ConvertfromSplitDiscount1.Enabled := LoginMode = lmDebug;
+   1572	AddLineToFile('Type Number Group Name                          Override Discount Price', sExportFile);
+   1582	+ PadString(psRight,MoneyToStr(siDiscount),' ',9)
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\PLUDET.PAS
+     25	edDiscount: TCurrencyEdit;
+     26	lDiscount: TLabel;
+    111	edDiscount.Enabled := Syss.UseSplDisc;
+    112	lDiscount.Enabled := Syss.UseSplDisc;
+    196	edDiscount.Enabled := cbOverRide.Checked;
+    197	lDiscount.Enabled := cbOverRide.Checked;
+    296	if StrToFloat(edDiscount.Text) > 100 then
+    298	MessageDlg('Please input a valid discount rate.',mtWarning,[mbOk],0);
+    299	ActiveControl := edDiscount;
+    320	siDiscount := StrToFloat(edDiscount.Text);
+    328	lGroupDisc.Caption := MoneyToStr(LGroupRec.grDiscount);
+    332	edDiscount.Text := MoneyToStr(siDiscount);
+    351	edDiscount.Enabled := cbOverRide.Checked;
+    352	lDiscount.Enabled := cbOverRide.Checked;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\PLULIST.PAS
+     16	TDiscountInfo = class
+     49	panDiscountTitle: TSBSPanel;
+     50	panDiscount: TSBSPanel;
+    158	if ItemRec.siOverRide then OutLine := MoneyToStr(ItemRec.siDiscount) 
+    210	aColumns[0,4].ColPanel := panDiscount;
+    211	aColumns[0,4].HeadPanel := panDiscountTitle;
+    397	DiscountInfo : TDiscountInfo;
+    410	DiscountInfo := TDiscountInfo.Create;
+    411	DiscountInfo.Percent := LGroupRec.grDiscount;
+    412	cbGroup.Items.AddObject(IntToStr(LGroupRec.grArrayNo) + '. ' + LGroupRec.grName, DiscountInfo);
+    421	edGroupDisc.Text := MoneyToStr(TDiscountInfo(cbGroup.Items.Objects[cbGroup.ItemIndex]).Percent);
+    439	edGroupDisc.Text := MoneyToStr(TDiscountInfo(cbGroup.Items.Objects[cbGroup.ItemIndex]).Percent);
+    472	MessageDlg('You need to input a discount amount that is greater than or equal to zero.'
+    481	LGroupRec.grDiscount := StrToFloat(edGroupDisc.Text);
+    486	TDiscountInfo(cbGroup.Items.Objects[cbGroup.ItemIndex]).Percent := LGroupRec.grDiscount;
+    489	btnEditOK.Caption := 'Edit &Discount';
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\PROGRESS.PAS
+    540	If (Discount <> 0.0) Then
+    546	DiscAmount := -Round_Up (((Discount / 100) * ABS(InvNetVal)), 2)
+    549	DiscAmount := -Round_Up (((Discount / 100) * Abs(LCust.CurrBalance)), 2);
+    901	TechSuppLog('Convert Card Balances to Split Discounting')
+    904	TechSuppLog('Convert Card Balances to Normal Discounting');
+    953	Discount:=ExLocal.LCust.LastDisc
+    955	Discount:=Syss.Markup;
+    966	DiscAmount := -((Discount / 100) * ExLocal.LCust.CurrBalance);
+    968	TransDesc := 'Conversion to Split Discount';
+    977	TransDesc := 'Conversion from Split Discount';
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\REPORTS.PAS
+   1358	PrintLn('Card Discount Analysis');
+   1362	Print(#9 + #9 + 'Discount');
+   1450	SetHeader(sTitle, 'Group No.' + #9 + 'Group Name' + #9 + 'Sales' + #9 + 'Discount' + #9 + 'Net Sales');
+   1503	if Syss.UseSplDisc then Groups[GroupNo].rgDiscAmt  := Groups[GroupNo].rgDiscAmt  + sdDiscount;
+   1694	TransDesc + #9 + MoneyToStr(InvNetVal) + #9 + MoneyToStr(Discount));
+   1724	SetHeader('Function Booking Report', 'Card No.' + #9 + 'Member Name' + #9 + 'Description' + #9 + 'Amount' + #9 + 'Discount %');
+   1741	SetHeader('Saleable Items Listing', 'Group'#9'Type'#9'Number'#9'Description'#9'Override'#9'Discount %'#9'Price');
+   1774	Print(IntToStr(grArrayNo) + '. ' + TrimString(psRight,grName,' ') + '  -  ' + 'Discount % :  ' + MoneyToStr(grDiscount));
+   1799	+ #9 + MoneyToStr(siDiscount) + #9 + sPrice);
+   2518	SetHeader('Bill Splitting Report', 'Card No.' + #9 + 'Card Name' + #9 + 'Debit' + #9 + 'Discount'
+   2530	rIncentive, rDebits, rCredits, rBalance, rTotDebits, rTotDiscount, rTotCredits : real;
+   2536	rTotDiscount := 0;
+   2553	rTotDiscount := rTotDiscount + rIncentive;
+   2565	TheReport.Print(#9 + 'Totals : ' + #9 + MoneyToStr(rTotDebits) + #9 + MoneyToStr(rTotDiscount)
+   3388	18 : Result := 'Discount';
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\SALEITEM.PAS
+     22	siType_Discount     = '%';
+     76	NewGroup.grDiscount := Syss.Markup;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\SYSSETUP.PAS
+     72	edDefaultDiscount: TCurrencyEdit;
+    100	cbODDiscount: TCheckBox;
+    104	cbCalcDiscountOnGS: TCheckBox;
+    107	cb4mbDiscounts: TCheckBox;
+    129	procedure DiscountCheck(Sender: TObject);
+    163	edDefaultDiscount.displayformat := '#0.00';
+    192	cbODDiscount.Checked := ODDisc;
+    193	edDefaultDiscount.Text := MoneyToStr(Markup);
+    198	cbCalcDiscountOnGS.Checked := GrSalCalcDisc;
+    207	cb4mbDiscounts.Checked := FourMbDiscs;
+    247	edDiscountNom.Text := IntToStr(CNoms[NOM_DISCOUNT]);
+    301	if (UseSplDisc <> cbDiscByItem.Checked) then TechSuppLog('Split Discount Flag changed from '
+    306	ODDisc := cbODDiscount.Checked;
+    307	Markup := StrToFloat(edDefaultDiscount.Text);
+    312	GrSalCalcDisc := cbCalcDiscountOnGS.Checked;
+    341	FourMbDiscs := cb4mbDiscounts.Checked;
+    373	CNoms[NOM_DISCOUNT] := StrToIntDef(edDiscountNom.Text,0);
+    567	procedure TFrmSystemSetup.DiscountCheck(Sender: TObject);
+    569	if cb4mbDiscounts.Checked and cbDiscByItem.Checked then begin
+    570	if (MsgBox('You have turned on both 4MB Discounts AND Discounts by Item.'
+    571	+ #13#13 + 'Are you sure you want to do this ?' ,mtWarning,[mbYes,mbNo],mbNo,'Discounts Warning') = mrNo)
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\TXDETAIL.PAS
+     54	panDiscountTit: TSBSPanel;
+     57	panDiscount: TSBSPanel;
+     63	lTotDiscount: TLabel;
+     99	iTotDiscount : integer; 
+    129	iDiscount : integer;
+    138	iDiscount := PenceIt(sdDiscount);
+    139	OutLine := PenceToStr(iDiscount);
+    193	aColumns[0,4].ColPanel := panDiscount;
+    194	aColumns[0,4].HeadPanel := panDiscountTit;
+    309	if TXType = ttPaidIn then lTotDiscount.Caption := '0.00';
+    320	lTotDiscount.Caption := '0.00';
+    353	lTotDiscount.Caption := MoneyToStr(Incentive);
+    366	,mtConfirmation,[mbOK, mbCancel],mbOK,'Confirm Discount') = mrCancel
+    376	Discount := edIncentive.Value;
+    379	lTotDiscount.Caption := PenceToStr(Round(Calc_InvDisc(LInv,Pro_RataDisc(ExLocal.LInv, LInv, LCust)) * -100));
+    380	lEqValue.Caption := PenceToStr(PenceIt(edReceived.Value) + StrToPence(lTotDiscount.Caption));
+    440	if (LCust.LastDisc <> 0) and (not Syss.UseMarkup) then Discount := LCust.LastDisc
+    441	else Discount := Syss.Markup;
+    443	else Discount := 0.0;
+    564	Discount := edIncentive.Value;
+    583	edIncentive.Value := Discount;
+    586	if TXType = ttPaidIn then lTotDiscount.Caption := PenceToStr(PenceIt(DiscAmount) * -1);
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\VARCONST.PAS
+     87	NOM_DISCOUNT = 6;
+    150	'Sales Delivery Note', 'Settlement Discounts Given',
+    151	'Standard Discounts Given','Output VAT', 'Debtors Control A/C',
+    156	'Settlement Discounts Taken','Standard Discounts Taken','Input VAT',
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\VARREC.INC
+    129	Discount  :  Real;        
+    199	sdDiscount : Real;
+    380	siDiscount : Real;
+    416	grDiscount : Real;
+
+X:\COMPON\MultiList\CurrentlyUNUSED\NFTester2\XEXCHDLL.INC
+     39	Discount   : Double;
+    175	Discount    :  Double;      
+    180	DiscountChr :  Char;        
+
+X:\COMPON\MultiList\DevComp\uBTRecords.pas
+     35	Discount     : Real;
+    269	csDiscount   :  Double;
+
+X:\COMPON\MultiList\MultiListTestApp\DictRecord.pas
+     30	, 'User List', 'Discount Matrix', 'Job Notes', 'Serial / Batch', 'Analysis Codes'
+
+X:\COMPON\MultiList\uBTRecords.pas
+     35	Discount     : Real;
+    269	csDiscount   :  Double;
+
+X:\COMPON\RAVE4\DEMO\VISUAL\DM.PAS
+     33	ItemsTableDiscount: TFloatField;
+     98	((100.0 - FieldByName('Discount').AsFloat) / 100.0);
+
+X:\EBUS2\ADMIN\AdmnUtil.pas
+    132	function GetLineTotal(const FileLine: IDetail; UseLineDiscount : boolean;
+    415	function GetLineTotal(const FileLine: IDetail; UseLineDiscount : boolean;
+    421	Ex_GetLineTotal(@TLine, SizeOf(TLine), UseLineDiscount, SettleDiscPercent, Result);
+
+X:\EBUS2\ADMIN\DybkLine.pas
+     33	edtDiscount: Text8Pt;
+     78	procedure edtDiscountExit(Sender: TObject);
+     91	procedure edtDiscountEnter(Sender: TObject);
+    125	procedure SetDiscountDisplay(Discount : double; DiscChar : char);
+    232	SetDiscountDisplay(Discount, DiscountChr);
+    333	edtDiscount.ReadOnly := false;
+    334	edtDiscount.ReadOnly := false;
+    673	procedure TfrmTransactionLine.edtDiscountEnter(Sender: TObject);
+    675	CurDiscLine := edtDiscount.Text;
+    680	procedure TfrmTransactionLine.edtDiscountExit(Sender: TObject);
+    682	if CurDiscLine <> edtDiscount.Text then
+    687	ProcessInputPAmount(Discount, DiscountChr, edtDiscount.Text);
+    688	SetDiscountDisplay(Discount, DiscountChr);
+   1282	procedure TfrmTransactionLine.SetDiscountDisplay(Discount : double; DiscChar : char);
+   1285	edtDiscount.Text := DiscChar
+   1288	edtDiscount.Text := FloatToStrF(Ex_RoundUp((Discount * 100), 2), ffFixed, 18, 2) + '%'
+   1290	edtDiscount.Text := ToFixedDP(Discount, 2);
+   1418	FirstLine.Discount := DiscVal;
+   1419	FirstLine.DiscountChr := DiscChar;
+   1420	SetDiscountDisplay(FirstLine.Discount, FirstLine.DiscountChr);
+
+X:\EBUS2\ADMIN\DybkTrns.pas
+    396	6: if DiscountChr = '%' then
+    397	Result := FloatToStrF(Ex_RoundUp((Discount * 100), 2), ffFixed, 18, 2) + '%'
+    399	Result := ToFixedDP(Discount, 2);
+
+X:\EBUS2\ADMIN\JCDybktrns.pas
+    403	6: if DiscountChr = '%' then
+    404	Result := FloatToStrF(Ex_RoundUp((Discount * 100), 2), ffFixed, 18, 2) + '%'
+    406	Result := ToFixedDP(Discount, 2);
+
+X:\EBUS2\ADMIN\jfdbktrans.pas
+    342	6: if DiscountChr = '%' then
+    343	Result := FloatToStrF(Ex_RoundUp((Discount * 100), 2), ffFixed, 18, 2) + '%'
+    345	Result := ToFixedDP(Discount, 2);
+
+X:\EBUS2\ADMIN\Posttran.pas
+    806	Discount := Id.Discount;
+    807	DiscountChr := Id.DiscountChr;
+   1111	(PreserveLine.IdDiscAmount <> TLRec.Discount) or
+   1112	(PreserveLine.IdDiscChar <> TLRec.DiscountChr) or
+   1119	PreserveLine.IdDiscAmount := TLRec.Discount;
+   1120	PreserveLine.IdDiscChar := TLRec.DiscountChr;
+   1366	thLines[j].tlDiscount := LineObj.Fields.IdDiscAmount;
+
+X:\EBUS2\ADMIN\TKITUTIL.PAS
+     65	Discount := FileLine.Discount;
+     69	DiscountChr := FileLine.DiscountChr;
+
+X:\EBUS2\EBUSSET\SYSSETUP.PAS
+    234	cmbDiscountTX: TComboBox;
+    509	cmbDiscountTX.ItemIndex := CompDiscount - 1;
+    734	if cmbDiscountTX.ItemIndex = -1 then
+    736	NewActiveControl := cmbDiscountTX;
+    737	sMessage := 'Discount Transaction Line';
+    778	sMessage := 'Discount Stock Code';
+    834	CompDiscount := cmbDiscountTX.ItemIndex + 1;
+   1404	if Pos('DISCOUNT',UpperCase(cmbDiscountTX.Items[iPos])) <> 0
+   1405	then CompDiscount := iPos + 1;
+   1774	cmbDiscountTX.Items.Assign(cmbFreightTX.Items);
+
+X:\EBUS2\EXPORT\Dragcust.pas
+    111	WriteNum(Discount,6,2);     
+
+X:\EBUS2\EXPORT\Exprtcsv.pas
+    784	73:      WriteNum(BDiscount,13,2);
+    816	12:      WriteNum(Discount,13,2);
+    820	16:      WriteString(DiscountChr);
+   1012	29:     WriteNum(Discount,10,2);
+
+X:\EBUS2\SHARED\_USEDLLU.PAS
+    440	USEDISCOUNT : WORDBOOL;
+   1039	USEDISCOUNT : WORDBOOL;
+
+X:\EBUS2\SHARED\Ebusvar.pas
+     66	DefaultDiscDesc    = 'Discount';
+    117	CompDiscount         : byte;       
+
+X:\EBUS2\XML\Xmlconst.pas
+    212	XML_DISCOUNT_AMOUNT = 'AmountDiscount';
+    214	XML_DISCOUNT_PERCENT = 'PercentDiscount';
+    249	XML_TAX_RATE_SETTLE = 'SettlementDiscountAtRate';
+    260	XML_SETTLE_DISC_TOTAL = 'SettlementDiscountTotal';
+    261	XML_DISCOUNTED_TAX_TOTAL = 'TaxableTotal';
+    267	XML_SETTLEMENT_DISCOUNT = 'SettlementDiscount';
+    362	BASDA_SPECIAL_DISCOUNT = 'SPD';
+    363	BASDA_LINE_DISCOUNT = 'LID';
+    364	BASDA_VOLUME_DISCOUNT = 'VOD';
+    365	BASDA_EARLY_SETTLE_DISCOUNT = 'ESD';
+    366	BASDA_RECIPE_DISCOUNT = 'RED'; 
+    367	BASDA_TRADE_DISCOUNT = 'TRD';
+
+X:\EBUS2\XML\XMLCust.pas
+     25	procedure WriteDiscountInfo;
+    229	DiscountInfo : TXmlDElement;
+    235	Settlement.AppendChild(Document.CreateElement('DiscountDays', IntToStr(DefSetDDays)));
+    236	DiscountInfo := Document.CreateElement(XML_DISCOUNT_PERCENT);
+    237	Settlement.AppendChild(DiscountInfo);
+    238	DiscountInfo.AppendChild(Document.CreateElement(XML_DISCOUNT_PERCENT, FloatToStr(DefSetDisc)));
+    244	procedure TWriteXMLCustomer.WriteDiscountInfo;
+    246	DiscountInfo : TXmlDElement;
+    247	DiscountTag,
+    248	DiscountType : string;
+    254	DiscountTag := XML_DISCOUNT_AMOUNT;
+    255	DiscountType := XML_AMOUNT;
+    259	DiscountTag := XML_DISCOUNT_PERCENT;
+    260	DiscountType := XML_PERCENTAGE;
+    262	DiscountInfo := Document.CreateElement(DiscountTag);
+    263	CustRoot.AppendChild(DiscountInfo);
+    264	DiscountInfo.AppendChild(Document.CreateElement(DiscountType, Format('%3.4f',[Discount])));
+    328	EnterpriseInfo.AppendChild(Document.CreateElement('DiscountBand', CDiscCh));
+    363	WriteDiscountInfo;
+
+X:\EBUS2\XML\XMLImp.pas
+    520	LId.DiscountChr := DiscountChr;
+    525	if (DiscountChr = #0) and (Qty <> 0) and (fDocType <> SOR) then
+    529	LId.Discount := Ex_RoundUp(Discount / (QtyMul * Qty), 2);
+    532	LId.Discount := Discount; 
+    706	DiscMap := CompDiscount;
+
+X:\EBUS2\XML\XmlParse.pas
+    134	procedure ReadDiscount(ParentNode : IXmlDOMNode;
+    135	var DiscountPercent, DiscountAmount : double);
+    149	procedure ReadDiscountDays(ParentNode   : IXmlDOMNode;
+    151	var DiscountDays : SmallInt);
+   1196	Discount,
+   1197	DiscountType : IXmlDOMNodeList;
+   1200	strDiscount : string;
+   1202	Discount := XMlDoc.getElementsByTagName(XSLQuery([XML_ORDER, XML_DISCOUNT_PERCENT]));
+   1203	for i := 0 to Discount.Length -1 do
+   1205	DiscountType := Discount.item[i].selectNodes(XML_TYPE);
+   1206	for j := 0 to DiscountType.Length -1 do
+   1207	if SafeSelectAttributeText(DiscountType.item[j], XML_CODE) =
+   1208	BASDA_EARLY_SETTLE_DISCOUNT then
+   1210	strDiscount := SafeSelectSingleNodeText(Discount.item[i], XML_PERCENTAGE);
+   1211	if strDiscount <> '' then
+   1213	fHeader^.DiscSetl := StrToFloat(strDiscount) / 100;
+   1222	procedure TXmlParse.ReadDiscount(ParentNode : IXmlDOMNode;
+   1223	var DiscountPercent, DiscountAmount : double);
+   1228	strDiscount : string;
+   1230	PercentDiscTag := ParentNode.selectNodes(XSLQuery([XML_DISCOUNT_PERCENT]));
+   1233	strDiscount := SafeSelectSingleNodeText(PercentDiscTag.item[i], XML_PERCENTAGE);
+   1234	if strDiscount <> '' then
+   1236	DiscountPercent := StrToFloat(strDiscount) / 100;
+   1241	AmountDiscTag := ParentNode.selectNodes(XSLQuery([XML_DISCOUNT_AMOUNT]));
+   1244	strDiscount := SafeSelectSingleNodeText(AmountDiscTag.item[i], XML_AMOUNT);
+   1245	if strDiscount <> '' then
+   1247	DiscountAmount := StrToFloat(strDiscount);
+   2197	fLines^[iLine].DiscountChr := DiscChar;
+   2199	fLines^[iLine].Discount := DiscVal / 100
+   2201	fLines^[iLine].Discount := DiscVal;
+   2246	procedure ProcessDiscount;
+   2250	DiscountPercent,
+   2251	DiscountAmount : double;
+   2253	DiscountPercent := 0;
+   2254	DiscountAmount := 0;
+   2255	ReadDiscount(CurTransLine, DiscountPercent, DiscountAmount);
+   2256	if DiscountPercent <> 0 then
+   2258	fLines^[iLineNum].Discount := DiscountPercent;
+   2259	fLines^[iLineNum].DiscountChr := '%';
+   2264	fLines^[iLineNum].Discount := DiscountAmount;
+   2266	fPresLineFields[iLineNum].IdDiscAmount := fLines^[iLineNum].Discount;
+   2267	fPresLineFields[iLineNum].IdDiscChar := fLines^[iLineNum].DiscountChr;
+   2480	ProcessDiscount;
+   2529	ProcessDiscount;
+   2569	Discount := 0;
+   2612	Discount := 0;
+   2655	if DiscountChr = '%' then
+   2656	Result :=  fLines^[i].Discount * NetValue
+   2658	Result := fLines^[i].Discount;
+   2716	if DiscountChr = '%' then
+   2806	XSLQuery([XML_INVOICE, XML_SETTLEMENT, XML_SETTLEMENT_DISCOUNT]));
+   2811	ReadDiscount(SettleDiscInfo[0], DiscSetl, DiscSetAm);
+   2819	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_INV, DiscDays);
+   2829	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_MONTH_END, DiscDays);
+   2841	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_DELIVERY, DiscDays);
+   2865	XSLQuery([XML_ORDER, XML_SETTLEMENT, XML_SETTLEMENT_DISCOUNT]));
+   2870	ReadDiscount(SettleDiscInfo[0], DiscSetl, DiscSetAm);
+   2878	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_INV, DiscDays);
+   2888	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_MONTH_END, DiscDays);
+   2900	ReadDiscountDays(SettleDiscInfo[0], XML_DAYS_FROM_DELIVERY, DiscDays);
+   3028	if AType = BASDA_LINE_DISCOUNT then
+   3104	procedure TXmlParse.ReadDiscountDays(ParentNode   : IXmlDOMNode;
+   3106	var DiscountDays : SmallInt);
+   3111	strDiscount : string;
+   3113	PercentDiscTag := ParentNode.selectNodes(XSLQuery([XML_DISCOUNT_PERCENT, XML_QUALIFYING_TERMS]));
+   3116	strDiscount := SafeSelectSingleNodeText(PercentDiscTag.item[i], DiscType);
+   3117	if strDiscount <> '' then
+   3119	DiscountDays := StrToInt(strDiscount);
+   3124	if DiscountDays = 0 then
+   3126	AmountDiscTag := ParentNode.selectNodes(XSLQuery([XML_DISCOUNT_AMOUNT, XML_QUALIFYING_TERMS]));
+   3129	strDiscount := SafeSelectSingleNodeText(AmountDiscTag.item[i], DiscType);
+   3130	if strDiscount <> '' then
+   3132	DiscountDays := StrToInt(strDiscount);
+
+X:\EBUS2\XML\XMLUTIL.PAS
+     86	function BASDADiscountTypeToDesc(const DiscountTypeCode : string) : string;
+    461	function BASDADiscountTypeToDesc(const DiscountTypeCode : string) : string;
+    463	Result := 'unknown discount type!';
+    464	if DiscountTypeCode = BASDA_SPECIAL_DISCOUNT then
+    465	Result := 'Special line discount';
+    466	if DiscountTypeCode = BASDA_LINE_DISCOUNT then
+    467	Result := 'Line discount';
+    468	if DiscountTypeCode = BASDA_VOLUME_DISCOUNT then
+    469	Result := 'Volume discount';
+    470	if DiscountTypeCode = BASDA_EARLY_SETTLE_DISCOUNT then
+    471	Result := 'Early settlement discount';
+    472	if DiscountTypeCode = BASDA_RECIPE_DISCOUNT then
+    473	Result := 'Derived discount';
+    474	if DiscountTypeCode = BASDA_TRADE_DISCOUNT then
+    475	Result := 'Trade discount';
+
+X:\EBUS2\XMLDLL\EntXml_TLB.pas
+     97	tlTypeDiscount = $00000004;
+    167	function  Get_thTotalLineDiscount: Double; safecall;
+    168	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    278	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    355	property thTotalLineDiscount: Double dispid 19;
+    483	function  Get_tlDiscount: Double; safecall;
+    484	procedure Set_tlDiscount(Value: Double); safecall;
+    578	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    642	property tlDiscount: Double dispid 12;
+
+X:\EBUS2\XMLDLL\XMLINV.PAS
+    335	Discount : TXmlDElement;
+    347	Discount.AppendChild(QualTerms);
+    366	SettleDiscInfo := Document.CreateElement(XML_SETTLEMENT_DISCOUNT);
+    369	Discount := Document.CreateElement(XML_DISCOUNT_PERCENT);
+    370	SettleDiscInfo.AppendChild(Discount);
+    372	Discount.AppendChild(Document.CreateElement(XML_PERCENTAGE,
+    375	Discount := Document.CreateElement(XML_DISCOUNT_AMOUNT);
+    376	SettleDiscInfo.AppendChild(Discount);
+    378	Discount.AppendChild(Document.CreateElement(XML_AMOUNT,
+    438	InvoiceTotal.AppendChild(Document.CreateElement(XML_DISCOUNTED_TAX_TOTAL,
+    497	WriteDiscountInfo(InvoiceLine, LineCount);
+
+X:\EBUS2\XMLDLL\XMLORD.PAS
+    194	Discount : TXmlDElement;
+    198	Discount := Document.CreateElement(XML_DISCOUNT_PERCENT);
+    199	Trans.AppendChild(Discount);
+    201	Discount.AppendChild(Document.CreateElement(XML_TYPE,
+    202	BASDADiscountTypeToDesc(BASDA_EARLY_SETTLE_DISCOUNT),
+    203	[XML_CODE], [BASDA_EARLY_SETTLE_DISCOUNT]));
+    204	Discount.AppendChild(Document.CreateElement(XML_PERCENTAGE,
+    337	WriteDiscountInfo(OrderLine, LineCount);
+
+X:\EBUS2\XMLDLL\xmlTrans.pas
+    108	procedure WriteDiscountInfo(ParentTag : TXmlDElement; LineCount : integer);
+    130	function CalcLineDiscountValue(LineNo : Integer) : Double;
+    920	procedure TWriteXMLTransaction.WriteDiscountInfo(ParentTag : TXmlDElement; LineCount : integer);
+    923	DiscountTag : TXmlDElement;
+    926	if not ZeroFloat(Discount) then
+    928	if DiscountChr = '%' then
+    930	DiscountTag := Document.CreateElement(XML_DISCOUNT_PERCENT);
+    931	ParentTag.AppendChild(DiscountTag);
+    932	DiscountTag.AppendChild(Document.CreateElement(XML_TYPE,
+    933	BASDADiscountTypeToDesc(BASDA_RECIPE_DISCOUNT), [XML_CODE], [BASDA_RECIPE_DISCOUNT]));
+    934	DiscountTag.AppendChild(Document.CreateElement(XML_PERCENTAGE,
+    935	CostToStr(Discount * 100)))
+    939	DiscountTag := Document.CreateElement(XML_DISCOUNT_AMOUNT);
+    940	ParentTag.AppendChild(DiscountTag);
+    941	DiscountTag.AppendChild(Document.CreateElement(XML_TYPE,
+    942	BASDADiscountTypeToDesc(BASDA_RECIPE_DISCOUNT), [XML_CODE], [BASDA_RECIPE_DISCOUNT]));
+    943	DiscountTag.AppendChild(Document.CreateElement(XML_AMOUNT,
+    944	FloatToStrF(Discount * Qty * QtyMul, ffFixed, 5, 2)));
+   1320	if DiscountChr = '%' then
+   1321	DiscValue:=Round_Up(Discount * Total,2)
+   1323	DiscValue := Discount;
+   1333	function TWriteXMLTransaction.CalcLineDiscountValue(LineNo : integer) : Double;
+   1341	if DiscountChr = '%' then
+   1342	Result :=Round_Up(Discount * Total,2)
+   1344	Result := Discount;
+
+X:\EBUS2\XMLTRANS\Enterprise03_TLB.pas
+     74	tlTypeDiscount = $00000004;
+    242	function Get_tlDiscount: Double; safecall;
+    243	procedure Set_tlDiscount(Value: Double); safecall;
+    336	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    400	property tlDiscount: Double dispid 12;
+    554	function Get_thTotalLineDiscount: Double; safecall;
+    555	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    666	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    742	property thTotalLineDiscount: Double dispid 19;
+    921	property thTotalLineDiscount: Double dispid 19;
+
+X:\EBUS2\XMLTRANS\EntXml_TLB.pas
+     97	tlTypeDiscount = $00000004;
+    167	function  Get_thTotalLineDiscount: Double; safecall;
+    168	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    279	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    356	property thTotalLineDiscount: Double dispid 19;
+    485	function  Get_tlDiscount: Double; safecall;
+    486	procedure Set_tlDiscount(Value: Double); safecall;
+    580	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    644	property tlDiscount: Double dispid 12;
+
+X:\EBUS2\XMLTRANS\T2XLINE.PAS
+     60	function  Get_tlDiscount: Double; safecall;
+     61	procedure Set_tlDiscount(Value: Double); safecall;
+    398	Result := FTL.DiscountChr;
+    403	FTL.DiscountChr := ExtractChar(Value, ' ');
+    408	function TXmlTransactionLine.Get_tlDiscount: Double;
+    410	Result := FTL.Discount;
+    413	procedure TXmlTransactionLine.Set_tlDiscount(Value: Double);
+    415	FTL.Discount := Value;
+    501	4 : Result := tlTypeDiscount;
+    514	tlTypeDiscount  :  FTL.DocLTLink := 4;
+
+X:\EBUS2\XMLTRANS\T2XML.PAS
+     84	function Get_thTotalLineDiscount: Double; safecall;
+    124	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    316	Result := FTH.BDiscount;
+    321	FTH.BDiscount := Value;
+    649	function TXmlTransaction.Get_thTotalLineDiscount: Double;
+    654	procedure TXmlTransaction.Set_thTotalLineDiscount(Value: Double);
+
+X:\EBUS2\XMLTRANS\tran2xml_TLB.pas
+     97	tlTypeDiscount = $00000004;
+    170	function  Get_thTotalLineDiscount: Double; safecall;
+    171	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    251	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    312	property thTotalLineDiscount: Double dispid 19;
+    423	function  Get_tlDiscount: Double; safecall;
+    424	procedure Set_tlDiscount(Value: Double); safecall;
+    496	function  entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+    513	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    572	property tlDiscount: Double dispid 12;
+    611	function  entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+
+X:\EBUS2\XMLTRANS\XmlWrite_TLB.pas
+     67	tlTypeDiscount = $00000004;
+    163	function  Get_thTotalLineDiscount: Double; safecall;
+    164	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    275	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    352	property thTotalLineDiscount: Double dispid 19;
+    443	property thTotalLineDiscount: Double dispid 19;
+    556	function  Get_tlDiscount: Double; safecall;
+    557	procedure Set_tlDiscount(Value: Double); safecall;
+    651	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    715	property tlDiscount: Double dispid 12;
+
+X:\ELUpdate\20090209\ENTRPRSE\R&D\MiscU.pas
+    217	LDiscValue:=Discount;
+    251	Rnum:=Calc_PAmount(Round_Up(DiscBasis,UseDecs),LDiscValue,DiscountChr);
+    408	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    435	LineDiscount,
+    502	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,SetlDisc*Ord(DiscountChr<>PcntChr),DiscountChr,PcntChr)
+    504	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,SetlDisc,DiscountChr,PcntChr);
+    516	NetValue:=((NetValue-LineDiscount)*(VATRateStd+1))+LineDiscount
+    527	If (DiscountChr=PcntChr) then
+    536	Round_Up(LineDiscount,2);
+    548	NewTotal:=(NetValue-LineDiscount);
+    562	Round_Up(LineDiscount,2))*Qty,2)+VAT);
+    572	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,0,DiscountChr,PcntChr);
+    574	NewTotal:=(IncNetValue-LineDiscount)*Qty;
+   1542	LineDiscount,
+   1584	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,DiscSetl,DiscountChr,PcntChr);
+   1587	NetValue:=((NetValue-LineDiscount)*(SyssVAT.VATRates.VAT[GetIVATNo(VatIncFlg)].Rate+1))+LineDiscount
+   1680	Result:=DiscountGiven
+   1682	Result:=DiscountTaken;
+
+X:\ELUpdate\20090209\ENTRPRSE\R&D\RevalueU.pas
+   5657	ShowStatus(0,'Delete Discount Records.');
+
+X:\ELUpdate\20090211\ENTRPRSE\R&D\PostSp2U.pas
+   2848	ShowStatus(2,'Updating discount matricies.');
+   3711	ShowStatus(2,'Updating discount matricies.');
+   7070	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+   7073	If (Syss.SepDiscounts) and (LVal=0.0) and (IdDocHed=RUN) then 
+   7074	LVal:=Round_Up((LVal-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2);
+   8417	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ELUpdate\20090211\ENTRPRSE\R&D\RevalueU.pas
+   5657	ShowStatus(0,'Delete Discount Records.');
+
+X:\ELUpdate\20090211\SBSLIB\WIN\EXCOMMON\Varrec.pas
+     73	Discount   : Real;
+    440	BDiscount : Double;       
+    578	Discount   :  Real;        
+    586	DiscountChr:  Char;        
+   3624	SepDiscounts
+
+X:\ELUpdate\20090217\ENTRPRSE\R&D\PostSp2U.pas
+   2848	ShowStatus(2,'Updating discount matricies.');
+   3711	ShowStatus(2,'Updating discount matricies.');
+   7070	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+   7073	If (Syss.SepDiscounts) and (LVal=0.0) and (IdDocHed=RUN) then 
+   7074	LVal:=Round_Up((LVal-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2);
+   8417	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\AddNom\AddNomWizCustom.pas
+    155	oNom.thLines[iCurrentLine].tlDiscount := tlDiscount;
+
+X:\ENTRPRSE\Banking\_VARRec2U.pas
+    269	csDiscount   :  Double;
+
+X:\ENTRPRSE\Banking\Copy of TransLst.pas
+   2440	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+
+X:\ENTRPRSE\Banking\TransLst.pas
+    929	ThisAmount := DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)
+    931	ThisAmount  := ConvertValue(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0), LID.CXrate, LID.Currency);
+    958	btdAmount := DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)
+    960	btdAmount  := ConvertValue(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0), LID.CXrate, LID.Currency);
+   2977	LVal:=DetLTotal(MTExLocal^.LId,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+
+X:\ENTRPRSE\Compass\TDBFuncsClass.pas
+    226	Discount    := FWorkstationID;
+    645	Discount    := 0.0;
+
+X:\ENTRPRSE\COMTK\_VarRec2U.pas
+    269	csDiscount   :  Double;
+
+X:\ENTRPRSE\COMTK\DiscU3U.pas
+    654	If (DiscR<>Discount) then
+    655	DiscR:=Discount;
+    680	If (DiscR<>Discount) then
+    681	DiscR:=Discount;
+
+X:\ENTRPRSE\COMTK\Enterprise01_TLB.pas
+     80	IID_IAccountDiscount: TGUID = '{1F48FEA0-EAD8-11D4-A99D-0050DA3DF9AD}';
+    204	IID_IAccountDiscount2: TGUID = '{3AF9A146-8C42-4FF4-81C9-1B12F1DFDF73}';
+    524	TDiscountType = TOleEnum;
+    608	tlTypeDiscount = $00000004;
+    669	ssGLSettleDiscountGiven = $00000004;
+    670	ssGLSettleDiscountTaken = $00000005;
+    671	ssGLLineDiscountGiven = $00000006;
+    672	ssGLLineDiscountTaken = $00000007;
+   1592	IAccountDiscount = interface;
+   1593	IAccountDiscountDisp = dispinterface;
+   1840	IAccountDiscount2 = interface;
+   1841	IAccountDiscount2Disp = dispinterface;
+   2065	function Get_acDiscount: Double; safecall;
+   2066	procedure Set_acDiscount(Value: Double); safecall;
+   2071	function Get_acDiscountBand: WideString; safecall;
+   2072	procedure Set_acDiscountBand(const Value: WideString); safecall;
+   2197	function Get_acDiscounts: IAccountDiscount; safecall;
+   2216	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+   2219	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   2272	property acDiscounts: IAccountDiscount read Get_acDiscounts;
+   2300	property acDiscount: Double dispid 19;
+   2303	property acDiscountBand: WideString dispid 22;
+   2381	property acDiscounts: IAccountDiscount readonly dispid 86;
+   2425	function Get_thTotalLineDiscount: Double; safecall;
+   2426	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+   2556	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+   2630	property thTotalLineDiscount: Double dispid 19;
+   2912	function Get_tlDiscount: Double; safecall;
+   2913	procedure Set_tlDiscount(Value: Double); safecall;
+   2985	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+   3007	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   3070	property tlDiscount: Double dispid 12;
+   3109	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   3181	function Get_ssPercDiscounts: WordBool; safecall;
+   3185	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+   3193	function Get_ssSettlementDiscount: Double; safecall;
+   3291	property ssPercDiscounts: WordBool read Get_ssPercDiscounts;
+   3295	property ssSplitDiscountsInGL: WordBool read Get_ssSplitDiscountsInGL;
+   3303	property ssSettlementDiscount: Double read Get_ssSettlementDiscount;
+   3409	property ssPercDiscounts: WordBool readonly dispid 55;
+   3413	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   3421	property ssSettlementDiscount: Double readonly dispid 69;
+   5324	IAccountDiscount = interface(IDispatch)
+   5328	function Get_adType: TDiscountType; safecall;
+   5329	procedure Set_adType(Value: TDiscountType); safecall;
+   5358	function Add: IAccountDiscount; safecall;
+   5359	function Update: IAccountDiscount; safecall;
+   5360	function Clone: IAccountDiscount; safecall;
+   5365	property adType: TDiscountType read Get_adType write Set_adType;
+   5383	IAccountDiscountDisp = dispinterface
+   5386	property adType: TDiscountType dispid 3;
+   5408	function Add: IAccountDiscount; dispid 12;
+   5409	function Update: IAccountDiscount; dispid 13;
+   5410	function Clone: IAccountDiscount; dispid 14;
+   5445	function Get_qbType: TDiscountType; safecall;
+   5446	procedure Set_qbType(Value: TDiscountType); safecall;
+   5474	property qbType: TDiscountType read Get_qbType write Set_qbType;
+   5494	property qbType: TDiscountType dispid 3;
+   6818	property ssPercDiscounts: WordBool readonly dispid 55;
+   6822	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   6830	property ssSettlementDiscount: Double readonly dispid 69;
+   7072	property thTotalLineDiscount: Double dispid 19;
+   7440	property tlDiscount: Double dispid 12;
+   7479	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   8208	function Get_bbIncludeDiscountLines: WordBool; safecall;
+   8209	procedure Set_bbIncludeDiscountLines(Value: WordBool); safecall;
+   8224	property bbIncludeDiscountLines: WordBool read Get_bbIncludeDiscountLines write Set_bbIncludeDiscountLines;
+   8244	property bbIncludeDiscountLines: WordBool dispid 6;
+   9156	property tlDiscount: Double dispid 12;
+   9195	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  10893	property acDiscount: Double dispid 19;
+  10896	property acDiscountBand: WideString dispid 22;
+  10974	property acDiscounts: IAccountDiscount readonly dispid 86;
+  11595	function Get_saDiscount: Double; safecall;
+  11625	property saDiscount: Double read Get_saDiscount;
+  11651	property saDiscount: Double readonly dispid 14;
+  11718	property saDiscount: Double readonly dispid 14;
+  11833	property saDiscount: Double readonly dispid 14;
+  11944	property tlDiscount: Double dispid 12;
+  11983	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  12200	property ssPercDiscounts: WordBool readonly dispid 55;
+  12204	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  12212	property ssSettlementDiscount: Double readonly dispid 69;
+  12366	property thTotalLineDiscount: Double dispid 19;
+  13755	property qbType: TDiscountType dispid 3;
+  13781	IAccountDiscount2 = interface(IAccountDiscount)
+  13799	IAccountDiscount2Disp = dispinterface
+  13805	property adType: TDiscountType dispid 3;
+  13827	function Add: IAccountDiscount; dispid 12;
+  13828	function Update: IAccountDiscount; dispid 13;
+  13829	function Clone: IAccountDiscount; dispid 14;
+  14615	property ssPercDiscounts: WordBool readonly dispid 55;
+  14619	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  14627	property ssSettlementDiscount: Double readonly dispid 69;
+  14705	function Get_tlrDiscount: Double; safecall;
+  14706	procedure Set_tlrDiscount(Value: Double); safecall;
+  14739	property tlrDiscount: Double read Get_tlrDiscount write Set_tlrDiscount;
+  14772	property tlrDiscount: Double dispid 14;
+  14854	property tlDiscount: Double dispid 12;
+  14893	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  15086	property thTotalLineDiscount: Double dispid 19;
+  16263	property ssPercDiscounts: WordBool readonly dispid 55;
+  16267	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16275	property ssSettlementDiscount: Double readonly dispid 69;
+  16660	property thTotalLineDiscount: Double dispid 19;
+  16834	property ssPercDiscounts: WordBool readonly dispid 55;
+  16838	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16846	property ssSettlementDiscount: Double readonly dispid 69;
+
+X:\ENTRPRSE\COMTK\Enterprise04_TLB.pas
+     80	IID_IAccountDiscount: TGUID = '{463F7605-51FB-402E-A1C8-F6A08D9AE038}';
+    204	IID_IAccountDiscount2: TGUID = '{D19F07F9-63A4-443F-91E0-91FD24BAD1D7}';
+    524	TDiscountType = TOleEnum;
+    608	tlTypeDiscount = $00000004;
+    669	ssGLSettleDiscountGiven = $00000004;
+    670	ssGLSettleDiscountTaken = $00000005;
+    671	ssGLLineDiscountGiven = $00000006;
+    672	ssGLLineDiscountTaken = $00000007;
+   1592	IAccountDiscount = interface;
+   1593	IAccountDiscountDisp = dispinterface;
+   1840	IAccountDiscount2 = interface;
+   1841	IAccountDiscount2Disp = dispinterface;
+   2065	function Get_acDiscount: Double; safecall;
+   2066	procedure Set_acDiscount(Value: Double); safecall;
+   2071	function Get_acDiscountBand: WideString; safecall;
+   2072	procedure Set_acDiscountBand(const Value: WideString); safecall;
+   2197	function Get_acDiscounts: IAccountDiscount; safecall;
+   2216	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+   2219	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   2272	property acDiscounts: IAccountDiscount read Get_acDiscounts;
+   2300	property acDiscount: Double dispid 19;
+   2303	property acDiscountBand: WideString dispid 22;
+   2381	property acDiscounts: IAccountDiscount readonly dispid 86;
+   2425	function Get_thTotalLineDiscount: Double; safecall;
+   2426	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+   2556	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+   2630	property thTotalLineDiscount: Double dispid 19;
+   2912	function Get_tlDiscount: Double; safecall;
+   2913	procedure Set_tlDiscount(Value: Double); safecall;
+   2985	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+   3007	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   3070	property tlDiscount: Double dispid 12;
+   3109	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   3181	function Get_ssPercDiscounts: WordBool; safecall;
+   3185	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+   3193	function Get_ssSettlementDiscount: Double; safecall;
+   3291	property ssPercDiscounts: WordBool read Get_ssPercDiscounts;
+   3295	property ssSplitDiscountsInGL: WordBool read Get_ssSplitDiscountsInGL;
+   3303	property ssSettlementDiscount: Double read Get_ssSettlementDiscount;
+   3409	property ssPercDiscounts: WordBool readonly dispid 55;
+   3413	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   3421	property ssSettlementDiscount: Double readonly dispid 69;
+   5324	IAccountDiscount = interface(IDispatch)
+   5328	function Get_adType: TDiscountType; safecall;
+   5329	procedure Set_adType(Value: TDiscountType); safecall;
+   5358	function Add: IAccountDiscount; safecall;
+   5359	function Update: IAccountDiscount; safecall;
+   5360	function Clone: IAccountDiscount; safecall;
+   5365	property adType: TDiscountType read Get_adType write Set_adType;
+   5383	IAccountDiscountDisp = dispinterface
+   5386	property adType: TDiscountType dispid 3;
+   5408	function Add: IAccountDiscount; dispid 12;
+   5409	function Update: IAccountDiscount; dispid 13;
+   5410	function Clone: IAccountDiscount; dispid 14;
+   5445	function Get_qbType: TDiscountType; safecall;
+   5446	procedure Set_qbType(Value: TDiscountType); safecall;
+   5474	property qbType: TDiscountType read Get_qbType write Set_qbType;
+   5494	property qbType: TDiscountType dispid 3;
+   6818	property ssPercDiscounts: WordBool readonly dispid 55;
+   6822	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   6830	property ssSettlementDiscount: Double readonly dispid 69;
+   7072	property thTotalLineDiscount: Double dispid 19;
+   7440	property tlDiscount: Double dispid 12;
+   7479	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   8208	function Get_bbIncludeDiscountLines: WordBool; safecall;
+   8209	procedure Set_bbIncludeDiscountLines(Value: WordBool); safecall;
+   8224	property bbIncludeDiscountLines: WordBool read Get_bbIncludeDiscountLines write Set_bbIncludeDiscountLines;
+   8244	property bbIncludeDiscountLines: WordBool dispid 6;
+   9156	property tlDiscount: Double dispid 12;
+   9195	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  10887	property acDiscount: Double dispid 19;
+  10890	property acDiscountBand: WideString dispid 22;
+  10968	property acDiscounts: IAccountDiscount readonly dispid 86;
+  11589	function Get_saDiscount: Double; safecall;
+  11619	property saDiscount: Double read Get_saDiscount;
+  11645	property saDiscount: Double readonly dispid 14;
+  11712	property saDiscount: Double readonly dispid 14;
+  11827	property saDiscount: Double readonly dispid 14;
+  11938	property tlDiscount: Double dispid 12;
+  11977	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  12194	property ssPercDiscounts: WordBool readonly dispid 55;
+  12198	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  12206	property ssSettlementDiscount: Double readonly dispid 69;
+  12360	property thTotalLineDiscount: Double dispid 19;
+  13749	property qbType: TDiscountType dispid 3;
+  13775	IAccountDiscount2 = interface(IAccountDiscount)
+  13793	IAccountDiscount2Disp = dispinterface
+  13799	property adType: TDiscountType dispid 3;
+  13821	function Add: IAccountDiscount; dispid 12;
+  13822	function Update: IAccountDiscount; dispid 13;
+  13823	function Clone: IAccountDiscount; dispid 14;
+  14609	property ssPercDiscounts: WordBool readonly dispid 55;
+  14613	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  14621	property ssSettlementDiscount: Double readonly dispid 69;
+  14699	function Get_tlrDiscount: Double; safecall;
+  14700	procedure Set_tlrDiscount(Value: Double); safecall;
+  14733	property tlrDiscount: Double read Get_tlrDiscount write Set_tlrDiscount;
+  14766	property tlrDiscount: Double dispid 14;
+  14848	property tlDiscount: Double dispid 12;
+  14887	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  15080	property thTotalLineDiscount: Double dispid 19;
+  16257	property ssPercDiscounts: WordBool readonly dispid 55;
+  16261	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16269	property ssSettlementDiscount: Double readonly dispid 69;
+  16654	property thTotalLineDiscount: Double dispid 19;
+  16828	property ssPercDiscounts: WordBool readonly dispid 55;
+  16832	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16840	property ssSettlementDiscount: Double readonly dispid 69;
+
+X:\ENTRPRSE\COMTK\ExchCtk.Inc
+     40	Discount   : Double;
+    205	BDiscount :  Double;      
+    312	Discount    :  Double;      
+    317	DiscountChr :  Char;        
+   1013	PercentageDiscounts : WordBool;
+   1453	bbIncludeDiscountLines :  WordBool;
+
+X:\ENTRPRSE\COMTK\EXE\Enterprise04_TLB.pas
+     80	IID_IAccountDiscount: TGUID = '{463F7605-51FB-402E-A1C8-F6A08D9AE038}';
+    204	IID_IAccountDiscount2: TGUID = '{D19F07F9-63A4-443F-91E0-91FD24BAD1D7}';
+    524	TDiscountType = TOleEnum;
+    608	tlTypeDiscount = $00000004;
+    669	ssGLSettleDiscountGiven = $00000004;
+    670	ssGLSettleDiscountTaken = $00000005;
+    671	ssGLLineDiscountGiven = $00000006;
+    672	ssGLLineDiscountTaken = $00000007;
+   1592	IAccountDiscount = interface;
+   1593	IAccountDiscountDisp = dispinterface;
+   1840	IAccountDiscount2 = interface;
+   1841	IAccountDiscount2Disp = dispinterface;
+   2065	function Get_acDiscount: Double; safecall;
+   2066	procedure Set_acDiscount(Value: Double); safecall;
+   2071	function Get_acDiscountBand: WideString; safecall;
+   2072	procedure Set_acDiscountBand(const Value: WideString); safecall;
+   2197	function Get_acDiscounts: IAccountDiscount; safecall;
+   2216	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+   2219	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   2272	property acDiscounts: IAccountDiscount read Get_acDiscounts;
+   2300	property acDiscount: Double dispid 19;
+   2303	property acDiscountBand: WideString dispid 22;
+   2381	property acDiscounts: IAccountDiscount readonly dispid 86;
+   2425	function Get_thTotalLineDiscount: Double; safecall;
+   2426	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+   2556	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+   2630	property thTotalLineDiscount: Double dispid 19;
+   2912	function Get_tlDiscount: Double; safecall;
+   2913	procedure Set_tlDiscount(Value: Double); safecall;
+   2985	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+   3007	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   3070	property tlDiscount: Double dispid 12;
+   3109	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   3181	function Get_ssPercDiscounts: WordBool; safecall;
+   3185	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+   3193	function Get_ssSettlementDiscount: Double; safecall;
+   3291	property ssPercDiscounts: WordBool read Get_ssPercDiscounts;
+   3295	property ssSplitDiscountsInGL: WordBool read Get_ssSplitDiscountsInGL;
+   3303	property ssSettlementDiscount: Double read Get_ssSettlementDiscount;
+   3409	property ssPercDiscounts: WordBool readonly dispid 55;
+   3413	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   3421	property ssSettlementDiscount: Double readonly dispid 69;
+   5324	IAccountDiscount = interface(IDispatch)
+   5328	function Get_adType: TDiscountType; safecall;
+   5329	procedure Set_adType(Value: TDiscountType); safecall;
+   5358	function Add: IAccountDiscount; safecall;
+   5359	function Update: IAccountDiscount; safecall;
+   5360	function Clone: IAccountDiscount; safecall;
+   5365	property adType: TDiscountType read Get_adType write Set_adType;
+   5383	IAccountDiscountDisp = dispinterface
+   5386	property adType: TDiscountType dispid 3;
+   5408	function Add: IAccountDiscount; dispid 12;
+   5409	function Update: IAccountDiscount; dispid 13;
+   5410	function Clone: IAccountDiscount; dispid 14;
+   5445	function Get_qbType: TDiscountType; safecall;
+   5446	procedure Set_qbType(Value: TDiscountType); safecall;
+   5474	property qbType: TDiscountType read Get_qbType write Set_qbType;
+   5494	property qbType: TDiscountType dispid 3;
+   6818	property ssPercDiscounts: WordBool readonly dispid 55;
+   6822	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   6830	property ssSettlementDiscount: Double readonly dispid 69;
+   7072	property thTotalLineDiscount: Double dispid 19;
+   7440	property tlDiscount: Double dispid 12;
+   7479	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   8208	function Get_bbIncludeDiscountLines: WordBool; safecall;
+   8209	procedure Set_bbIncludeDiscountLines(Value: WordBool); safecall;
+   8224	property bbIncludeDiscountLines: WordBool read Get_bbIncludeDiscountLines write Set_bbIncludeDiscountLines;
+   8244	property bbIncludeDiscountLines: WordBool dispid 6;
+   9156	property tlDiscount: Double dispid 12;
+   9195	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  10887	property acDiscount: Double dispid 19;
+  10890	property acDiscountBand: WideString dispid 22;
+  10968	property acDiscounts: IAccountDiscount readonly dispid 86;
+  11589	function Get_saDiscount: Double; safecall;
+  11619	property saDiscount: Double read Get_saDiscount;
+  11645	property saDiscount: Double readonly dispid 14;
+  11712	property saDiscount: Double readonly dispid 14;
+  11827	property saDiscount: Double readonly dispid 14;
+  11938	property tlDiscount: Double dispid 12;
+  11977	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  12194	property ssPercDiscounts: WordBool readonly dispid 55;
+  12198	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  12206	property ssSettlementDiscount: Double readonly dispid 69;
+  12360	property thTotalLineDiscount: Double dispid 19;
+  13749	property qbType: TDiscountType dispid 3;
+  13775	IAccountDiscount2 = interface(IAccountDiscount)
+  13793	IAccountDiscount2Disp = dispinterface
+  13799	property adType: TDiscountType dispid 3;
+  13821	function Add: IAccountDiscount; dispid 12;
+  13822	function Update: IAccountDiscount; dispid 13;
+  13823	function Clone: IAccountDiscount; dispid 14;
+  14609	property ssPercDiscounts: WordBool readonly dispid 55;
+  14613	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  14621	property ssSettlementDiscount: Double readonly dispid 69;
+  14699	function Get_tlrDiscount: Double; safecall;
+  14700	procedure Set_tlrDiscount(Value: Double); safecall;
+  14733	property tlrDiscount: Double read Get_tlrDiscount write Set_tlrDiscount;
+  14766	property tlrDiscount: Double dispid 14;
+  14848	property tlDiscount: Double dispid 12;
+  14887	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+  15080	property thTotalLineDiscount: Double dispid 19;
+  16257	property ssPercDiscounts: WordBool readonly dispid 55;
+  16261	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16269	property ssSettlementDiscount: Double readonly dispid 69;
+  16654	property thTotalLineDiscount: Double dispid 19;
+  16828	property ssPercDiscounts: WordBool readonly dispid 55;
+  16832	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+  16840	property ssSettlementDiscount: Double readonly dispid 69;
+
+X:\ENTRPRSE\COMTK\JobSup2U.pas
+    537	Result:=Basis-DiscSetAm-DiscAmount-CISTax-BDiscount+(InvVAT*Ord(tMode<>2));
+    611	Function ISEq_DiscountPcnt(IdR     :  IDetail;
+    617	Result:=(LiveUplift) or (DiscountChr<>PcntChr) or ((JA_IsGrossInc(InvR,BOn)) and (SOPLink<>0)) and (Reconcile<>0);
+    625	Function Eq_DiscountPcnt(IdR     :  IDetail;
+    644	If ISEq_DiscountPcnt(IdR,InvR)  or (ForcePracGI(InvR,IdR)) then
+    682	Result:=Discount;
+    854	0  :  LineTotal:=LineTotal+Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOff);
+    857	RetDeduct:=RetDeduct+Round_Up((YTDNetValue)*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn)),2)
+    859	RetDeduct:=RetDeduct+Round_Up((LCtrlDbl+YTDNetValue)*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn)),2);
+    876	If (ISEq_DiscountPcnt(LId,InvR)) then 
+    877	DedTotal:=DedTotal+Round_Up((LCtrlDbl+YTDNetValue)*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn)),2)
+    879	DedTotal:=DedTotal+Round_Up((LCtrlDbl-(RetDeduct*Ord((Not ShowCase) )))*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOff)),2);
+    885	CompDisc:=CompDisc+Discount;
+   1082	LineTotal:=LineTotal+Round_Up((LineValue*Pcnt(IdR.Discount)),2);
+   1088	LineTotal:=LineTotal+Round_Up(UnitValue*Pcnt(IdR.Discount),2);
+   1119	If (InvR.InvDocHed In JAPJAPSplit) and (LineTotal=0.0) and (IdR.Discount<>0.0) and (Not Idr.ShowCase) and (JAbMode(InvR)=0) and (CalcJAPRetTotals(InvR,IdR,ExLocal,100,iMode)=0.0) then
+   1124	LineTotal:=LineTotal+Round_Up(GetJAPRetTotals(InvR,ExLocal,2,iMode)*Pcnt(IdR.Discount),2)*DocNotCnst;
+   1505	BDiscount:=BDiscount+Round_Up(NetValue,2);
+   1584	NetValue:=Round_Up(LineTotal*Pcnt(Discount),2);
+   1633	BDiscount:=0.0;
+   1676	If (DedRetMode>0) and (LId.Reconcile>0) and (LId.DiscountChr=PcntChr) and (Not LId.LiveUplift) then 
+   1926	DiscountChr:=PcntChr; 
+   2292	BDiscount:=0.0;
+   2424	If (Reconcile<>1) or (DiscountChr=PcntChr) then
+
+X:\ENTRPRSE\COMTK\OACDISC.PAS
+     14	TAccountDiscount = class(TBtrieveFunctions, IAccountDiscount, IAccountDiscount2, IBrowseInfo)
+     33	function  Get_adType: TDiscountType; safecall;
+     34	procedure Set_adType(Value: TDiscountType); safecall;
+     58	function  Add: IAccountDiscount; safecall;
+     59	function  Update: IAccountDiscount; safecall;
+     60	function  Clone: IAccountDiscount; safecall;
+    103	Constructor TAccountDiscount.Create (Const IType    : TInterfaceMode;
+    108	Inherited Create (ComServer.TypeLib, IAccountDiscount, BtrIntf);
+    131	Destructor TAccountDiscount.Destroy;
+    141	Procedure TAccountDiscount.InitObjects;
+    208	Procedure TAccountDiscount.SetStartKey (Const AccCode  : ShortString);
+    221	Procedure TAccountDiscount.CopyDataRecord;
+    228	Function TAccountDiscount.GetDataRecord (Const BtrOp : SmallInt; Const SearchKey : String = '') : Integer;
+    307	Function TAccountDiscount.AuthoriseFunction (Const FuncNo     : Byte;
+    340	function TAccountDiscount.Get_adCurrency: SmallInt;
+    345	procedure TAccountDiscount.Set_adCurrency(Value: SmallInt);
+    352	function TAccountDiscount.Get_adPrice: Double;
+    357	procedure TAccountDiscount.Set_adPrice(Value: Double);
+    364	function TAccountDiscount.Get_adStockCode: WideString;
+    369	procedure TAccountDiscount.Set_adStockCode(const Value: WideString);
+    376	function TAccountDiscount.Get_adType: TDiscountType;
+    385	Raise EValidation.Create ('Invalid Discount Type (' + FDiscRec.QBType + ')');
+    389	procedure TAccountDiscount.Set_adType(Value: TDiscountType);
+    398	Raise EValidation.Create ('Invalid Discount Type (' + IntToStr(Value) + ')');
+    404	function TAccountDiscount.Get_adDiscPercent: Double;
+    409	procedure TAccountDiscount.Set_adDiscPercent(Value: Double);
+    416	function TAccountDiscount.Get_adDiscValue: Double;
+    421	procedure TAccountDiscount.Set_adDiscValue(Value: Double);
+    428	function TAccountDiscount.Get_adMarkupMarginPercent: Double;
+    433	procedure TAccountDiscount.Set_adMarkupMarginPercent(Value: Double);
+    440	function TAccountDiscount.Get_adPriceBand: WideString;
+    445	procedure TAccountDiscount.Set_adPriceBand(const Value: WideString);
+    452	function TAccountDiscount.Get_adStockCodeI: IStock;
+    460	function TAccountDiscount.BuildIndex(const StockCode: WideString; Currency: Smallint): WideString;
+    467	procedure TAccountDiscount.InitNew (Const AccCode  : ShortString);
+    480	function TAccountDiscount.Add: IAccountDiscount;
+    482	AddO : TAccountDiscount;
+    486	AddO := TAccountDiscount.Create(imAdd, FToolkit, FBtrIntf, FDiscSubType);
+    494	procedure TAccountDiscount.Cancel;
+    503	Procedure TAccountDiscount.CloneDetails (Const DiscDets : CustDiscType; Const AccCode  : ShortString);
+    511	function TAccountDiscount.Clone: IAccountDiscount;
+    513	CloneO : TAccountDiscount;
+    519	CloneO := TAccountDiscount.Create(imClone, FToolkit, FBtrIntf, FDiscSubType);
+    527	function TAccountDiscount.Save: Integer;
+    572	Procedure TAccountDiscount.LoadDetails (Const DiscDets : CustDiscType;
+    584	function TAccountDiscount.Update: IAccountDiscount;
+    586	UpdateO : TAccountDiscount;
+    597	UpdateO := TAccountDiscount.Create(imUpdate, FToolkit, FBtrIntf, FDiscSubType);
+    610	function TAccountDiscount.Get_adQtyBreaks: IQuantityBreak;
+    653	Raise EInvalidMethod.Create ('The adQtyBreaks property is only available for Quantity Break Discounts');
+    659	function TAccountDiscount.Get_ibInterfaceMode: Integer;
+    665	function TAccountDiscount.Get_adDateEffectiveFrom: WideString;
+    670	function TAccountDiscount.Get_adDateEffectiveTo: WideString;
+    675	function TAccountDiscount.Get_adUseEffectiveDates: WordBool;
+    680	procedure TAccountDiscount.Set_adDateEffectiveFrom(
+    686	procedure TAccountDiscount.Set_adDateEffectiveTo(const Value: WideString);
+    691	procedure TAccountDiscount.Set_adUseEffectiveDates(Value: WordBool);
+
+X:\ENTRPRSE\COMTK\oAppView.pas
+    354	Result := FTrans^.BDiscount;
+    768	Result := ITransactionLine(FTransactionLine).tlDiscount;
+    908	ITransactionLine(FTransactionLine).tlDiscount := Value;
+
+X:\ENTRPRSE\COMTK\OB2B.PAS
+     26	function Get_bbIncludeDiscountLines: WordBool; safecall;
+     27	procedure Set_bbIncludeDiscountLines(Value: WordBool); safecall;
+    122	function TBackToBackOrder.Get_bbIncludeDiscountLines: WordBool;
+    124	Result := FDataRec.bbIncludeDiscountLines;
+    127	procedure TBackToBackOrder.Set_bbIncludeDiscountLines(Value: WordBool);
+    129	FDataRec.bbIncludeDiscountLines := Value;
+
+X:\ENTRPRSE\COMTK\OCSANAL.PAS
+    102	function Get_saDiscount: Double; safecall;
+    243	function TSalesAnalysis.Get_saDiscount: Double;
+    245	Result := FCuStkRec.csDiscount;
+
+X:\ENTRPRSE\COMTK\oCust.pas
+     25	FDiscountO      : TAccountDiscount;
+     26	FDiscountI      : IAccountDiscount;
+     83	function  Get_acDiscount: Double; safecall;
+     84	procedure Set_acDiscount(Value: Double); safecall;
+     89	function  Get_acDiscountBand: WideString; safecall;
+     90	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    186	function  Get_acDiscounts: IAccountDiscount; safecall;
+    366	FDiscountO := NIL;
+    367	FDiscountI := NIL;
+    973	function TAccount.Get_acDiscount: Double;
+    975	Result := FAccountRec.Discount;
+    978	procedure TAccount.Set_acDiscount(Value: Double);
+    980	FAccountRec.Discount := Value;
+    985	function TAccount.Get_acDiscountBand: WideString;
+    990	procedure TAccount.Set_acDiscountBand(const Value: WideString);
+   1002	Raise EValidation.Create ('Invalid Discount Band (' + CharVal + ')');
+   1777	function TAccount.Get_acDiscounts: IAccountDiscount;
+   1779	AuthoriseFunction(202, 'acDiscounts', 1);
+   1782	If (Not Assigned(FDiscountO)) Then Begin
+   1784	FDiscountO := TAccountDiscount.Create(imGeneral,
+   1789	FDiscountI := FDiscountO;
+   1792	FDiscountO.SetStartKey (FAccountRec.CustCode);
+   1794	Result := FDiscountI;
+
+X:\ENTRPRSE\COMTK\OJOBANAL.PAS
+    298	'D'  :  Result := tlTypeDiscount;
+    325	tlTypeDiscount  :  FJobAnalysisRec.LineType := 'D';
+
+X:\ENTRPRSE\COMTK\OLINE.PAS
+    100	function  Get_tlDiscount: Double; safecall;
+    101	procedure Set_tlDiscount(Value: Double); safecall;
+    172	function  entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+    676	Result := FTL.DiscountChr;
+    682	FTL.DiscountChr := ExtractChar(Value, ' ')
+    689	function TTransactionLine.Get_tlDiscount: Double;
+    691	Result := FTL.Discount;
+    694	procedure TTransactionLine.Set_tlDiscount(Value: Double);
+    697	FTL.Discount := Value
+    803	4 : Result := tlTypeDiscount;
+    830	tlTypeDiscount   :  FTL.DocLTLink := 4;
+   1262	function TTransactionLine.entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double;
+   1267	Res := EX_GETLINETOTAL(@FTL, SizeOf(FTL), ApplyDiscounts, SettleDiscPerc, Total);
+   1381	FTL.DiscountChr := ExStkPrRec.DiscChar;
+   1384	If (FTL.DiscountChr = '%') Then
+   1385	FTL.Discount := Round_Up(ExStkPrRec.DiscVal / 100, 4)
+   1387	FTL.Discount := ExStkPrRec.DiscVal
+   1800	FTL.Discount := AccR.Discount;
+   1802	If (AccR.CDiscCh In StkBandSet) Or (AccR.Discount <> 0) Then
+   1803	FTL.DiscountChr := AccR.CDiscCh;
+   2825	FTL.Discount := AnalR.JADeduct
+   2828	FTL.Discount := AnalR.JARetValue;
+   2830	FTL.DiscountChr := '%';
+   2835	FTL.DiscountChr := #0;
+   2855	FTL.Discount := IdR.Discount;
+   2856	FTL.DiscountChr := IdR.DiscountChr;
+
+X:\ENTRPRSE\COMTK\OQTYBRK.PAS
+     33	function  Get_qbType: TDiscountType; safecall;
+     34	procedure Set_qbType(Value: TDiscountType); safecall;
+    406	function TQuantityBreak.Get_qbType: TDiscountType;
+    415	Raise EValidation.Create ('Invalid Discount Type (' + FQtyBrkRec.QBType + ')');
+    419	procedure TQuantityBreak.Set_qbType(Value: TDiscountType);
+    428	Raise EValidation.Create ('Invalid Discount Type (' + IntToStr(Value) + ')');
+
+X:\ENTRPRSE\COMTK\OSETUP.PAS
+    421	function  Get_ssPercDiscounts: WordBool; safecall;
+    425	function  Get_ssSplitDiscountsInGL: WordBool; safecall;
+    433	function  Get_ssSettlementDiscount: Double; safecall;
+    784	function TSystemSetup.Get_ssPercDiscounts: WordBool;
+    934	function TSystemSetup.Get_ssSplitDiscountsInGL: WordBool;
+    936	Result := Syss.SepDiscounts
+    944	function TSystemSetup.Get_ssSettlementDiscount: Double;
+
+X:\ENTRPRSE\COMTK\oStock.pas
+    656	4 : Result := tlTypeDiscount;
+    669	tlTypeDiscount  :  FStock.StkLinkLT := 4;
+
+X:\ENTRPRSE\COMTK\OTRANS.PAS
+    142	function  Get_thTotalLineDiscount: Double; safecall;
+    143	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    840	Result := FTH.BDiscount;
+    846	FTH.BDiscount := Value
+   1295	function TTransaction.Get_thTotalLineDiscount: Double;
+   1300	procedure TTransaction.Set_thTotalLineDiscount(Value: Double);
+   2598	If (SystemSetupI.ssSettlementDiscount <> 0) Then Begin
+   2599	FTH.DiscSetl := Round_Up(SystemSetupI.ssSettlementDiscount/100,4);
+
+X:\ENTRPRSE\COMTK\OVIEWLNS.PAS
+    220	function Get_tlrDiscount: Double; safecall;
+    221	procedure Set_tlrDiscount(Value: Double); safecall;
+   1203	function TTransactionLineAsReturn.Get_tlrDiscount: Double;
+   1205	Result := FTransactionLine.tlDiscount;
+   1275	procedure TTransactionLineAsReturn.Set_tlrDiscount(Value: Double);
+   1277	FTransactionLine.tlDiscount := Value;
+
+X:\ENTRPRSE\COMTK\TKToSQLFields.pas
+    560	(SQLName:'f_discount';TKName:'acDiscount'),
+    563	(SQLName:'f_c_disc_ch';TKName:'acDiscountBand'),
+    658	(SQLName:'f_discount';TKName:'tlDiscount'),
+    664	(SQLName:'f_discount_chr';TKName:'tlDiscFlag'),
+    868	(SQLName:'f_disc_amount';TKName:'thTotalLineDiscount'),
+    982	(SQLName:'f_b_discount';TKName:'thBatchDiscAmount'),
+   1110	(SQLName:'comp_discount';TKName:'CompDiscount'),
+   2391	(SQLName:'sep_discounts';TKName:'SepDiscounts'),
+   2401	(SQLName:'nom_ctrl_discount_given';TKName:'NomCtrlDiscountGiven'),
+   2402	(SQLName:'nom_ctrl_discount_taken';TKName:'NomCtrlDiscountTaken'),
+   5025	(SQLName:'BDiscount';TKName:'BDiscount'),
+   5101	(SQLName:'lldiscount';TKName:'lldiscount'),
+   5127	(SQLName:'discount';TKName:'discount'),
+   5132	(SQLName:'discountchr';TKName:'discountchr'),
+   5509	(SQLName:'csdiscount';TKName:'saDiscount'),
+
+X:\ENTRPRSE\COMTK\TKToSQLFieldsChanged.pas
+    518	(SQLName:'f_discount';TKName:'acDiscount'),
+    521	(SQLName:'f_c_disc_ch';TKName:'acDiscountBand'),
+    617	(SQLName:'f_discount';TKName:'tlDiscount'),
+    623	(SQLName:'f_discount_chr';TKName:'tlDiscFlag'),
+    815	(SQLName:'f_disc_amount';TKName:'thTotalLineDiscount'),
+    929	(SQLName:'f_b_discount';TKName:'thBatchDiscAmount'),
+   1045	(SQLName:'comp_discount';TKName:'CompDiscount'),
+   2146	(SQLName:'sep_discounts';TKName:'SepDiscounts'),
+   2156	(SQLName:'nom_ctrl_discount_given';TKName:'NomCtrlDiscountGiven'),
+   2157	(SQLName:'nom_ctrl_discount_taken';TKName:'NomCtrlDiscountTaken'),
+   4547	(SQLName:'BDiscount';TKName:'BDiscount'),
+   4623	(SQLName:'lldiscount';TKName:'lldiscount'),
+   4649	(SQLName:'discount';TKName:'discount'),
+   4654	(SQLName:'discountchr';TKName:'discountchr'),
+   5012	(SQLName:'csdiscount';TKName:'CsDiscount'),
+
+X:\ENTRPRSE\Conversion\v600 Converter\571\VARREC2U571.PAS
+    269	csDiscount   :  Double;
+
+X:\ENTRPRSE\Conversion\v600 Converter\571\VarRec571.pas
+     41	Discount   : Real;
+    352	BDiscount : Double;       
+    419	Discount   :  Real;        
+    427	DiscountChr:  Char;        
+   2140	SepDiscounts
+   2843	BDiscount :  Double;      
+
+X:\ENTRPRSE\CTKDEMO\CUSTLIST\ACDISCF.PAS
+     10	TfrmAccountDiscounts = class(TForm)
+     11	lvDiscounts: TListView;
+     25	FDiscountsI  : IAccountDiscount;
+     29	procedure LoadDiscounts;
+     31	Procedure SetObjects (Const ToolkitI : IToolkit; Const IAccountDiscount : IAccountDiscount);
+     36	Procedure DisplayDiscounts (Const SourceCaption : ShortString;
+     38	Const iDiscounts    : IAccountDiscount);
+     46	Procedure DisplayDiscounts (Const SourceCaption : ShortString;
+     48	Const iDiscounts    : IAccountDiscount);
+     50	With TfrmAccountDiscounts.Create (Application.MainForm) Do
+     53	SetObjects (iToolkit, iDiscounts);
+     65	procedure TfrmAccountDiscounts.FormCreate(Sender: TObject);
+     67	FDiscountsI := NIL;
+     73	procedure TfrmAccountDiscounts.FormDestroy(Sender: TObject);
+     75	FDiscountsI := NIL;
+     81	procedure TfrmAccountDiscounts.SetObjects (Const ToolkitI : IToolkit; Const IAccountDiscount : IAccountDiscount);
+     84	FDiscountsI := IAccountDiscount;
+     86	If Assigned(FToolkitI) And Assigned(FDiscountsI) Then
+     88	LoadDiscounts;
+     93	procedure TfrmAccountDiscounts.LoadDiscounts;
+     97	With FToolkitI, FDiscountsI, lvDiscounts Do Begin
+    104	With lvDiscounts.Items.Add Do Begin
+    110	Data := Pointer(FDiscountsI.Position);
+    157	procedure TfrmAccountDiscounts.btnCloseClick(Sender: TObject);
+    164	procedure TfrmAccountDiscounts.DisplayDiscDetail (DlgMode : TDialogMode);
+    168	With lvDiscounts, oToolkit, FDiscountsI Do
+    174	FDiscountsI.Position := LongInt(Selected.Data);
+    179	MessageDlg ('The following error occured getting the Discount Details:-'#13#13 + QuotedStr(oToolkit.LastErrorString),
+    199	mdAdd  : DiscDetail := FDiscountsI.Add;
+    200	mdEdit : DiscDetail := FDiscountsI.Update;
+    201	mdView : DiscDetail := FDiscountsI.Clone;
+    210	If NeedRefresh Then LoadDiscounts;
+    213	ShowMessage ('The Discount Detail is not available - someone else may be editing it');
+    223	procedure TfrmAccountDiscounts.btnAddClick(Sender: TObject);
+    230	procedure TfrmAccountDiscounts.btnEditClick(Sender: TObject);
+    237	procedure TfrmAccountDiscounts.btnViewClick(Sender: TObject);
+
+X:\ENTRPRSE\CTKDEMO\CUSTLIST\DISCDETF.PAS
+     14	tabshDiscount: TTabSheet;
+     51	FDiscDetail  : IAccountDiscount;
+     57	procedure SetDiscDetail(const Value: IAccountDiscount);
+     61	Property DiscDetail : IAccountDiscount Read FDiscDetail Write SetDiscDetail;
+    105	procedure TfrmAcDiscDetlF.SetDiscDetail(const Value: IAccountDiscount);
+    115	Caption := 'Add New Discount'
+    117	Caption := 'Discount Record - ' + Trim(adStockCode);
+    119	PageControl1.ActivePage := tabshDiscount;
+    203	MessageDlg ('The following error occured saving the Discount Record:-'#13#13 + QuotedStr(oToolkit.LastErrorString),
+
+X:\ENTRPRSE\CTKDEMO\CUSTLIST\LISTF.PAS
+     22	btnDiscounts: TButton;
+     30	procedure btnDiscountsClick(Sender: TObject);
+    240	procedure TfrmCustList.btnDiscountsClick(Sender: TObject);
+    255	DisplayDiscounts ('Discounts for ' + Trim(acCode) + ' - ' + Trim(acCompany), oToolkit, acDiscounts)
+
+X:\ENTRPRSE\CTKDEMO\CUSTLIST\THDETF.PAS
+    250	edtNotTakenDisc.Text := Format('%0.2n', [thTotalLineDiscount]);
+    251	edtNotTakenTotal.Text := Format('%0.2n', [thNetValue + thTotalVAT - thTotalLineDiscount]);
+    255	edtTakenDisc.Text := Format('%0.2n', [thTotalLineDiscount + thSettleDiscAmount]);
+    256	edtTakenTotal.Text := Format('%0.2n', [thNetValue + thTotalVAT - thTotalLineDiscount - thSettleDiscAmount]);
+    262	RNum := thNetValue - thTotalLineDiscount;
+    303	If (tlDiscount <> 0.0) Then Begin
+    306	SubItems.Add(Format('%0.2f%s', [tlDiscount * 100, tlDiscFlag]))
+    309	SubItems.Add(Format('%0.2f%s', [tlDiscount, tlDiscFlag]))
+
+X:\ENTRPRSE\CTKDEMO\CUSTLIST\TLDETF.PAS
+     27	edtDiscount: TEdit;
+     71	procedure edtDiscountExit(Sender: TObject);
+    172	edtDiscount.ReadOnly := edtStockCode.ReadOnly;
+    219	edtDiscount.Text := Format('%0.2n', [tlDiscount * 100]) + '%'
+    221	edtDiscount.Text := Format('%0.2n', [tlDiscount]);
+    426	procedure TfrmLineDetail.edtDiscountExit(Sender: TObject);
+    430	If Not edtDiscount.ReadOnly Then Begin
+    432	TmpStr := Trim(edtDiscount.Text);
+    435	tlDiscount := 0.0;
+    442	tlDiscount := StrToFloat(TmpStr) / 100;
+    447	tlDiscount := StrToFloat(TmpStr);
+
+X:\ENTRPRSE\CUSTOM\COM\DELPHI5\Enterprise_TLB.pas
+    303	nmDiscountGiven = $00000004;
+    304	nmDiscountTaken = $00000005;
+    856	function  Get_acDiscount: Double; safecall;
+    857	procedure Set_acDiscount(Value: Double); safecall;
+    862	function  Get_acDiscountBand: WideString; safecall;
+    863	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    949	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    952	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1013	property acDiscount: Double dispid 18;
+   1016	property acDiscountBand: WideString dispid 21;
+   1118	function  Get_ssSepDiscounts: WordBool; safecall;
+   1220	property ssSepDiscounts: WordBool read Get_ssSepDiscounts;
+   1331	property ssSepDiscounts: WordBool readonly dispid 59;
+   2388	function  Get_tlDiscount: Double; safecall;
+   2389	procedure Set_tlDiscount(Value: Double); safecall;
+   2485	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2551	property tlDiscount: Double dispid 20;
+   3157	property acDiscount: Double dispid 18;
+   3160	property acDiscountBand: WideString dispid 21;
+   3918	property ssSepDiscounts: WordBool readonly dispid 59;
+   4089	property ssSepDiscounts: WordBool readonly dispid 59;
+   4382	property acDiscount: Double dispid 18;
+   4385	property acDiscountBand: WideString dispid 21;
+   4594	function  Get_teTotalDiscount: Double; safecall;
+   4595	procedure Set_teTotalDiscount(Value: Double); safecall;
+   4644	property teTotalDiscount: Double read Get_teTotalDiscount write Set_teTotalDiscount;
+   4687	property teTotalDiscount: Double dispid 17;
+   4762	property tlDiscount: Double dispid 20;
+   4844	function  Get_telDiscount: Double; safecall;
+   4845	procedure Set_telDiscount(Value: Double); safecall;
+   4890	property telDiscount: Double read Get_telDiscount write Set_telDiscount;
+   4930	property telDiscount: Double dispid 17;
+   5805	property tlDiscount: Double dispid 20;
+   6157	property ssSepDiscounts: WordBool readonly dispid 59;
+   6673	property tlDiscount: Double dispid 20;
+   7248	property tlDiscount: Double dispid 20;
+
+X:\ENTRPRSE\CUSTOM\COM\DELPHI6\Enterprise_TLB.pas
+    319	nmDiscountGiven = $00000004;
+    320	nmDiscountTaken = $00000005;
+    874	function Get_acDiscount: Double; safecall;
+    875	procedure Set_acDiscount(Value: Double); safecall;
+    880	function Get_acDiscountBand: WideString; safecall;
+    881	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    967	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    970	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1031	property acDiscount: Double dispid 18;
+   1034	property acDiscountBand: WideString dispid 21;
+   1136	function Get_ssSepDiscounts: WordBool; safecall;
+   1238	property ssSepDiscounts: WordBool read Get_ssSepDiscounts;
+   1349	property ssSepDiscounts: WordBool readonly dispid 59;
+   2406	function Get_tlDiscount: Double; safecall;
+   2407	procedure Set_tlDiscount(Value: Double); safecall;
+   2503	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2569	property tlDiscount: Double dispid 20;
+   3175	property acDiscount: Double dispid 18;
+   3178	property acDiscountBand: WideString dispid 21;
+   3936	property ssSepDiscounts: WordBool readonly dispid 59;
+   4107	property ssSepDiscounts: WordBool readonly dispid 59;
+   4400	property acDiscount: Double dispid 18;
+   4403	property acDiscountBand: WideString dispid 21;
+   4612	function Get_teTotalDiscount: Double; safecall;
+   4613	procedure Set_teTotalDiscount(Value: Double); safecall;
+   4662	property teTotalDiscount: Double read Get_teTotalDiscount write Set_teTotalDiscount;
+   4705	property teTotalDiscount: Double dispid 17;
+   4780	property tlDiscount: Double dispid 20;
+   4862	function Get_telDiscount: Double; safecall;
+   4863	procedure Set_telDiscount(Value: Double); safecall;
+   4908	property telDiscount: Double read Get_telDiscount write Set_telDiscount;
+   4948	property telDiscount: Double dispid 17;
+   5823	property tlDiscount: Double dispid 20;
+   6175	property ssSepDiscounts: WordBool readonly dispid 59;
+   6691	property tlDiscount: Double dispid 20;
+   7266	property tlDiscount: Double dispid 20;
+   8001	property ssSepDiscounts: WordBool readonly dispid 59;
+
+X:\ENTRPRSE\CUSTOM\COM\DELPHI7\Enterprise_TLB.pas
+    318	nmDiscountGiven = $00000004;
+    319	nmDiscountTaken = $00000005;
+    871	function Get_acDiscount: Double; safecall;
+    872	procedure Set_acDiscount(Value: Double); safecall;
+    877	function Get_acDiscountBand: WideString; safecall;
+    878	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    964	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    967	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1028	property acDiscount: Double dispid 18;
+   1031	property acDiscountBand: WideString dispid 21;
+   1133	function Get_ssSepDiscounts: WordBool; safecall;
+   1235	property ssSepDiscounts: WordBool read Get_ssSepDiscounts;
+   1346	property ssSepDiscounts: WordBool readonly dispid 59;
+   2403	function Get_tlDiscount: Double; safecall;
+   2404	procedure Set_tlDiscount(Value: Double); safecall;
+   2500	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2566	property tlDiscount: Double dispid 20;
+   3172	property acDiscount: Double dispid 18;
+   3175	property acDiscountBand: WideString dispid 21;
+   3933	property ssSepDiscounts: WordBool readonly dispid 59;
+   4104	property ssSepDiscounts: WordBool readonly dispid 59;
+   4397	property acDiscount: Double dispid 18;
+   4400	property acDiscountBand: WideString dispid 21;
+   4609	function Get_teTotalDiscount: Double; safecall;
+   4610	procedure Set_teTotalDiscount(Value: Double); safecall;
+   4659	property teTotalDiscount: Double read Get_teTotalDiscount write Set_teTotalDiscount;
+   4702	property teTotalDiscount: Double dispid 17;
+   4777	property tlDiscount: Double dispid 20;
+   4859	function Get_telDiscount: Double; safecall;
+   4860	procedure Set_telDiscount(Value: Double); safecall;
+   4905	property telDiscount: Double read Get_telDiscount write Set_telDiscount;
+   4945	property telDiscount: Double dispid 17;
+   5820	property tlDiscount: Double dispid 20;
+   6172	property ssSepDiscounts: WordBool readonly dispid 59;
+   6688	property tlDiscount: Double dispid 20;
+   7263	property tlDiscount: Double dispid 20;
+
+X:\ENTRPRSE\CUSTOM\DEMOHOOK\EXCHDLL.INC
+     40	Discount   : Double;
+    192	BDiscount :  Double;      
+    229	Discount    :  Double;      
+    234	DiscountChr :  Char;        
+
+X:\ENTRPRSE\CUSTOM\DEMOHOOK\TAXCALCU.PAS
+    179	entRound(entCalc_PcntPcnt(tlNetValue,tlDiscount,SetlDisc,tlDiscFlag,'%'),2);
+    282	tlDiscount:=entRound((TaxRateLine/100),4)+entRound((SetlDisc/100),4);
+
+X:\ENTRPRSE\CUSTOM\DEMOHOOK\TESTDLLU.PAS
+   1544	Discount    := 0.0;                 
+   2469	Discount    := 0.0;                         
+   2494	Discount    := 0.0;
+
+X:\ENTRPRSE\CUSTOM\DEMOHOOK\USEDLLU.PAS
+    436	USEDISCOUNT : WORDBOOL;
+    979	USEDISCOUNT : WORDBOOL;
+
+X:\ENTRPRSE\CUSTOM\DiscDecsHook\Handleru.pas
+     46	AddAboutString ('Set Line Discount decimals to Line Net Value decimals. v1.01 ');
+
+X:\ENTRPRSE\CUSTOM\UPLIFT\TAXCALCU.PAS
+    154	entRound(entCalc_PcntPcnt(tlNetValue,tlDiscount,SetlDisc,tlDiscFlag,'%'),2);
+    232	tlDiscount:=(TaxRateLine/100)+(SetlDisc/100);
+
+X:\ENTRPRSE\CUSTOM\VATHOOK\GSTCALCU.PAS
+     88	entRound(entCalc_PcntPcnt(tlNetValue,tlDiscount,SetlDisc,tlDiscFlag,'%'),2);
+
+X:\ENTRPRSE\CUSTOM\VATHOOK\TAXCALCU.PAS
+     83	entRound(entCalc_PcntPcnt(tlNetValue,tlDiscount,SetlDisc,tlDiscFlag,'%'),2);
+
+X:\ENTRPRSE\Dictionary\DictRecord.pas
+     30	, 'User List', 'Discount Matrix', 'Job Notes', 'Serial / Batch', 'Analysis Codes'
+
+X:\ENTRPRSE\DLLTK\AlignU.pas
+    208	Msg (120, 'Discount', GotErr);
+    351	Msg (256, 'BDiscount', GotErr);
+    424	Msg (312, 'Discount', GotErr);
+    429	Msg (316, 'DiscountChr', GotErr);
+   1114	Msg(2350, 'PercentageDiscounts', GotErr);
+
+X:\ENTRPRSE\DLLTK\BT1SUPU.PAS
+    790	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\BTS1.pas
+   1381	DiscValue:=Calc_PAmount(Round_Up(NetValue,Syss.NoNetDec),Discount,DiscountChr);
+   2199	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\BTSUP1.PAS
+   1015	DiscValue:=Round_Up(Pcnt(Discount)*NetValue,2)
+
+X:\ENTRPRSE\DLLTK\DLL01U.pas
+    106	FUNCTION TESTDISCOUNT  :  SMALLINT;
+    189	Discount:=CustR.Discount;
+    462	Discount:=ExCustRec.Discount;
+   1934	function CheckDiscountBelongs : Boolean;
+   2090	While (TempRes = 0) and CheckDiscountBelongs and Not DateConflictFound do
+   2725	FUNCTION TESTDISCOUNT  :  SMALLINT;
+
+X:\ENTRPRSE\DLLTK\DLLCONV.PAS
+    390	if WordBoolToBool(TkRec.bbIncludeDiscountLines) then
+    540	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+
+X:\ENTRPRSE\DLLTK\DLLCONV1.PAS
+    390	if WordBoolToBool(TkRec.bbIncludeDiscountLines) then
+    534	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+
+X:\ENTRPRSE\DLLTK\DllErrU.PAS
+    166	30004  : TmpStr:='Invalid Discount Type';
+    167	30005  : TmpStr:='Discount Type is Special Price and Unit Price should not be Zero';
+    231	30108 : TmpStr:='Invalid Line discount character.  Must be %,A-H';
+   1552	20001        : Result := 'The record specified is not a discount record';
+   1553	20002        : Result := 'The record identified for deletion has different details to the discount record passsed in';
+   1554	20003        : Result := 'Error locking discount record';
+   1555	21000..21999 : Result := Format('Btrieve Error %d loading specified Discount Record at RecPos', [TErCode - 21000]);
+   1556	22000..22999 : Result := Format('Btrieve Error %d deleting specified Discount Record', [TErCode - 21000]);
+
+X:\ENTRPRSE\DLLTK\DllMiscU.pas
+    711	PercentageDiscounts := BoolToWordBool(Syss.DefPcDisc);
+
+X:\ENTRPRSE\DLLTK\DLLTH_UP.PAS
+    138	UseDiscount : WORDBOOL;
+    230	FUNCTION EX_REMOVEDISCOUNTS(P      : POINTER;
+    232	UseDiscount : WORDBOOL;
+    588	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+   1021	Discount:=EntId.Discount;
+   1025	DiscountChr:=EntId.DiscountChr;
+   1300	BDiscount:=InvR.BDiscount;
+   1918	BDiscount:=ExInvRec.BDiscount;
+   2222	If (ExIdRec.DiscountChr = '%') Then
+   2224	Discount:= Round_Up(ExIdRec.Discount, ExSyss.DiscountDec + 2)         
+   2227	Discount:= Round_Up(ExIdRec.Discount, ExSyss.DiscountDec);         
+   2257	DiscountChr:=ExIdRec.DiscountChr   
+   2259	DiscountChr := '%';
+   2824	Discount:=0;
+   2826	DiscountChr:=C0;
+   3483	TDiscR:=Id.Discount;
+   3484	TDiscCh:=Id.DiscountChr;
+   3693	ValidCheck:=(DiscountChr In StkBandSet+[#0,#32,PcntChr]);
+   6943	USEDISCOUNT : WORDBOOL;
+   6964	if WordBoolToBool(UseDiscount) then UseDiscStr := 'true' else UseDiscStr := 'false';
+   6969	'UseDiscount: ' + UseDiscStr + #10#13 +
+   6984	LineTotal := InvLTotal(ID, WordBoolToBool(UseDiscount), SettleDisc);
+   7410	function EX_REMOVEDISCOUNTS(P      : POINTER;
+   7412	USEDISCOUNT : WORDBOOL;
+   7424	if WordBoolToBool(UseDiscount) then UseDiscStr := 'true' else UseDiscStr := 'false';
+   7427	ShowMessage ('Ex_RemoveDiscounts:' + #10#13 +
+   7429	'UseDiscount: ' + UseDiscStr + #10#13 +
+   7449	LineTotal := InvLTotalND(ID, WordBoolToBool(UseDiscount), SettleDisc, -1);
+   8226	ValidCheck:=(DiscountChr In StkBandSet+[#0,#32,PcntChr]); 
+   8359	((LineNo = -2) and (Discount = 0));
+   8371	ValidCheck:=(EmptyKey(AnalCode,JobCodeLen)) and ((LineNo = -2) and (Discount = 0));
+   8624	if ((Id.LineNo = -2) or (Id.LineNo = -3)) and  (Id.DiscountChr = '%') then
+   8653	TmpId.DiscountChr := #0; 
+
+X:\ENTRPRSE\DLLTK\DLLTH01B.PAS
+    129	UseDiscount : WORDBOOL;
+    335	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    590	Discount:=Id.Discount;
+    594	DiscountChr:=Id.DiscountChr;
+    793	BDiscount:=Inv.BDiscount;
+   1080	BDiscount:=ExInvRec.BDiscount;
+   1118	Discount:=ExIdRec.Discount;
+   1127	DiscountChr:=ExIdRec.DiscountChr;
+   1555	Discount:=0;
+   1557	DiscountChr:=C0;
+   2406	ValidCheck:=(DiscountChr In StkBandSet+[#0,#32,PcntChr]);
+   3808	USEDISCOUNT : WORDBOOL;
+   3817	if UseDiscount then UseDiscStr := 'true' else UseDiscStr := 'false';
+   3822	'UseDiscount: ' + UseDiscStr + #10#13 +
+   3840	LineTotal := InvLTotal(ID, UseDiscount, SettleDisc);
+
+X:\ENTRPRSE\DLLTK\DLLTH01C.PAS
+    133	UseDiscount : WORDBOOL;
+    348	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    603	Discount:=Id.Discount;
+    607	DiscountChr:=Id.DiscountChr;
+    808	BDiscount:=Inv.BDiscount;
+   1198	BDiscount:=ExInvRec.BDiscount;
+   1237	Discount:=ExIdRec.Discount;
+   1246	DiscountChr:=ExIdRec.DiscountChr;
+   1682	Discount:=0;
+   1684	DiscountChr:=C0;
+   2545	ValidCheck:=(DiscountChr In StkBandSet+[#0,#32,PcntChr]);
+   4114	USEDISCOUNT : WORDBOOL;
+   4123	if UseDiscount then UseDiscStr := 'true' else UseDiscStr := 'false';
+   4128	'UseDiscount: ' + UseDiscStr + #10#13 +
+   4146	LineTotal := InvLTotal(ID, UseDiscount, SettleDisc);
+
+X:\ENTRPRSE\DLLTK\DLLTH01U.PAS
+    133	UseDiscount : WORDBOOL;
+    348	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    603	Discount:=Id.Discount;
+    607	DiscountChr:=Id.DiscountChr;
+    808	BDiscount:=Inv.BDiscount;
+   1198	BDiscount:=ExInvRec.BDiscount;
+   1237	Discount:=ExIdRec.Discount;
+   1246	DiscountChr:=ExIdRec.DiscountChr;
+   1682	Discount:=0;
+   1684	DiscountChr:=C0;
+   2545	ValidCheck:=(DiscountChr In StkBandSet+[#0,#32,PcntChr]);
+   4114	USEDISCOUNT : WORDBOOL;
+   4123	if UseDiscount then UseDiscStr := 'true' else UseDiscStr := 'false';
+   4128	'UseDiscount: ' + UseDiscStr + #10#13 +
+   4146	LineTotal := InvLTotal(ID, UseDiscount, SettleDisc);
+
+X:\ENTRPRSE\DLLTK\ENTDLL32.DPR
+    255	EX_REMOVEDISCOUNTS INDEX 152,         
+
+X:\ENTRPRSE\DLLTK\ExchDll.Inc
+     41	Discount   : Double;
+    205	BDiscount :  Double;      
+    292	Discount    :  Double;      
+    297	DiscountChr :  Char;        
+    947	PercentageDiscounts: WordBool;
+   1352	bbIncludeDiscountLines :  WordBool;
+
+X:\ENTRPRSE\DLLTK\FIFOLU.PAS
+    202	If (Syss.SepDiscounts) then 
+    205	Rnum:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\FIFOLU_N.PAS
+    172	If (Syss.SepDiscounts) then 
+    175	Rnum:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\FIFOLU_O.PAS
+    106	Rnum:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\InitDLLU.pas
+    475	DiscountDec := 2
+    477	DiscountDec := IntStr(GenStr);
+    683	If ExSyss.DiscountDec = 0 then
+    684	ExSyss.DiscountDec := 2;
+   1877	DiscountDec := intVal
+   1943	26: strValue := IntToStr(DiscountDec);
+
+X:\ENTRPRSE\DLLTK\RecInfo.Inc
+    147	120  : Result := CalcRecPos (@CU, @Cu.Discount);
+    279	256  : Result := CalcRecPos (@TH, @Th.BDiscount);
+    335	312  : Result := CalcRecPos (@TL, @TL.Discount);
+    339	316  : Result := CalcRecPos (@TL, @TL.DiscountChr);
+    813	2350 : Result := CalcRecPos (@Sys^, @Sys.PercentageDiscounts);
+
+X:\ENTRPRSE\DLLTK\STOCKDED.PAS
+    284	Discount:=0;
+    286	DiscountChr:=C0;
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\_DELVRUNU.PAS
+    596	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+    948	PLDisc:=Calc_PAmount(Round_Up(NetValue,Syss.NoCOSDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\_MISCU.PAS
+    235	Rnum:=Calc_PAmount(Round_Up(DiscBasis,UseDecs),Discount,DiscountChr);
+    379	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    406	LineDiscount,
+    473	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,SetlDisc*Ord(DiscountChr<>PcntChr),DiscountChr,PcntChr)
+    475	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,SetlDisc,DiscountChr,PcntChr);
+    487	NetValue:=((NetValue-LineDiscount)*(VATRateStd+1))+LineDiscount
+    498	If (DiscountChr=PcntChr) then
+    507	Round_Up(LineDiscount,2);
+    519	NewTotal:=(NetValue-LineDiscount);
+    533	Round_Up(LineDiscount,2))*Qty,2)+VAT);
+    543	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,0,DiscountChr,PcntChr);
+    545	NewTotal:=(IncNetValue-LineDiscount)*Qty;
+   1460	LineDiscount,
+   1502	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,DiscSetl,DiscountChr,PcntChr);
+   1505	NetValue:=((NetValue-LineDiscount)*(SyssVAT.VATRates.VAT[GetIVATNo(VatIncFlg)].Rate+1))+LineDiscount
+   1598	Result:=DiscountGiven
+   1600	Result:=DiscountTaken;
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\_RETSUP1U.PAS
+    970	Calc_StockPrice(Stock,Cust,Inv.Currency,Qty,Inv.TransDate, NetValue,Discount,DiscountChr,MLocStk,Flg,0);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\_STOCKU.PAS
+  10947	1  :  Del_Discount(0,ExLocal.LStock.StockCode,Self);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\_SYSU2.PAS
+     32	Function PPR_PamountStr(Discount  :  Real;
+     36	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+    299	Function PPR_PamountStr(Discount  :  Real;
+    320	If (Discount=0) and (Not (DiscCh In StkBandSet)) then
+    325	GenStr:=FormatFloat(GenPcnt2dMask,Discount*100)
+    340	GenStr:=FormatFloat(GenDiscMask,Discount);
+    344	GenStr:=FormatFloat(GenRealMask,Discount);
+    360	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+    411	Discount:=Rnum;
+    414	Discount:=Pcnt(Discount);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\ALCITEMU.PAS
+     84	Discount1: TMenuItem;
+    277	Procedure SetDiscount(Mode  :  Byte);
+   1796	LInv.BDiscount:=ariOrigSetDisc;
+   1927	CustomDlg(Self,'Part Allocate','Not allowed with settlement discount.',
+   1928	'It is not possible to part allocate a transaction if settlement discount has been applied.'+#13+
+   1929	'Please remove the settlement discount first, before attempting to part allocate.',
+   2151	' settlement discount of '+FormatCurFloat(GenRealMask,tmpVariance,BOff,0)+'.'+#13+#13+
+   2152	'Please confirm you wish to complete this allocation by generating a settlement discount.';
+   2158	' currency variance or settlement discount of '+FormatCurFloat(GenRealMask,tmpVariance,BOff,0)+'.'+#13+#13+
+   2290	Procedure TAllocItems.SetDiscount(Mode  :  Byte);
+   2371	LInv.BDiscount:=ariOrigSetDisc;
+   2403	SetDiscount(0)
+   2406	'It is not possible to alter the discount while a transaction is settled.'+#13+
+   2407	'Unallocate the transaction first, then adjust the discount, and re-allocate.',
+   2635	GenStr:='Not all of this '+DDownTitle+' has been allocated. If you wish to settle the remainder against variance or settlement discount, '+
+   2638	GenStr:='Not all of this '+DDownTitle+' has been allocated. If you wish to settle the remainder against settlement discount, '+
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\CONVDOCU.PAS
+    929	Discount:=0;
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\DelvRunU.pas
+    728	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+    883	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+   1373	PLDisc:=Calc_PAmount(Round_Up(NetValue,Syss.NoCOSDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\DISCU3U.PAS
+    624	If (DiscR<>Discount) then
+    625	DiscR:=Discount;
+    650	If (DiscR<>Discount) then
+    651	DiscR:=Discount;
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\Discu4u.pas
+    172	MsgForm:=CreateMessageDialog('Please Wait...'+#13+#13+'Recalculating Discounts.',mtInformation,[]);
+    222	Calc_StockPrice(Stock,Cust,LInv.Currency,Qty,LInv.TransDate, NetValue,Discount,DiscountChr,MLocStk,Flg,Mode);
+    518	Calc_UPriceDisc(TStock,MiscRecs^,TStock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,1);
+    525	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+    645	Calc_UPriceDisc(Stock,DiscRec,Stock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,2);
+    646	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+    797	Calc_UPriceDisc(Stock,MiscRecs^,Stock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,Mode);
+    798	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\InvCTSuU.pas
+    475	DiscValue:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+    933	Discount:=0;
+    935	DiscountChr:=C0;
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\StockU.pas
+  10928	1  :  Del_Discount(0,ExLocal.LStock.StockCode,Self);
+
+X:\ENTRPRSE\DLLTK\TEMPPAS\Sysu2.pas
+     32	Function PPR_PamountStr(Discount  :  Real;
+     36	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+     40	Procedure  ProcessInputDPAmount(Var  Discount  :  Double;
+    311	Function PPR_PamountStr(Discount  :  Real;
+    332	If (Discount=0) and (Not (DiscCh In StkBandSet)) then
+    337	GenStr:=FormatFloat(GenPcnt2dMask,Discount*100)
+    352	GenStr:=FormatFloat(GenDiscMask,Discount);
+    356	GenStr:=FormatFloat(GenRealMask,Discount);
+    372	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+    423	Discount:=Rnum;
+    426	Discount:=Pcnt(Discount);
+    431	Procedure  ProcessInputDPAmount(Var  Discount  :  Double;
+    441	R:=Discount;  FD:=Syss.DefPcDisc;
+    447	Discount:=R;
+
+X:\ENTRPRSE\DLLTK\TESTDLLU.PAS
+    528	procedure GetCustDiscount(TCustCode  :  ShortString);
+   1621	Discount    := 0.0;                 
+   1646	Discount    := 0.0;                 
+   2589	Discount    := 0.0;                         
+   2614	Discount    := 0.0;
+   3823	procedure TForm1.GetCustDiscount(TCustCode  :  ShortString);
+   3962	GetCustDiscount(Cu_Code.Text);
+
+X:\ENTRPRSE\DLLTK\TESTDU.PAS
+   1039	Discount    := 0.0;
+   1059	Discount    := 0.0;
+
+X:\ENTRPRSE\DLLTK\TESTEDIT.PAS
+    630	procedure GetCustDiscount(TCustCode  :  ShortString);
+   1811	Discount    := 0.0;                 
+   1838	Discount    := 0.0;                 
+   2791	Discount    := 0.0;                         
+   2816	Discount    := 0.0;
+   4051	procedure TForm1.GetCustDiscount(TCustCode  :  ShortString);
+   4190	GetCustDiscount(Cu_Code.Text);
+
+X:\ENTRPRSE\DLLTK\TkToExch.inc
+    289	BDiscount:=ExInvRec.BDiscount;
+    345	DiscountDec : Byte )  :  Integer;
+    579	If (ExIdRec.DiscountChr = '%') Then
+    581	Discount:= Round_Up(ExIdRec.Discount, DiscountDec + 2)         
+    584	Discount:= Round_Up(ExIdRec.Discount, DiscountDec);         
+    614	DiscountChr:=ExIdRec.DiscountChr   
+    616	DiscountChr := '%';
+
+X:\ENTRPRSE\DLLTK\Uplift.pas
+    217	DiscValue:=Calc_PAmount(Round_Up(NetValue,Syss.NoNetDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\DLLTK\UseDLLU.pas
+    450	USEDISCOUNT : WORDBOOL;
+    558	function EX_REMOVEDISCOUNTS(P      : POINTER;
+    560	USEDISCOUNT : WORDBOOL;
+   1178	USEDISCOUNT : WORDBOOL;
+   1306	function EX_REMOVEDISCOUNTS(P      : POINTER;
+   1308	USEDISCOUNT : WORDBOOL;
+
+X:\ENTRPRSE\DLLTK\VarCnst3.pas
+     93	'Discount_Decimals',
+    213	DiscountDec : Byte; 
+
+X:\ENTRPRSE\DLLTK\VBRECTST.DPR
+     72	If (Discount <> DblTest) Then Begin
+     73	ShowMessage ('Error in TBatchCURec.Discount - ' + Format ('%f10.5    %f10.5', [DblTest, Discount]));
+
+X:\ENTRPRSE\DLLTK\VBTEST16.DPR
+     69	If (Discount <> DblTest) Then Begin
+     70	ShowMessage ('Error in TBatchCURec.Discount - ' + Format ('%f10.5    %f10.5', [DblTest, Discount]));
+
+X:\ENTRPRSE\DRILLDN\NOMLINEF.PAS
+    505	DeductD := Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\DRILLDN\SOPLINEF.PAS
+    389	Id1DiscF.Text:=PPR_PamountStr(Discount,DiscountChr);
+
+X:\ENTRPRSE\DRILLDN\TRANSOPF.PAS
+    571	7  :  OutLine:=PPR_PamountStr(Discount,DiscountChr);
+
+X:\ENTRPRSE\EARNIE\_USEDLLU.PAS
+    444	USEDISCOUNT : WORDBOOL;
+   1059	USEDISCOUNT : WORDBOOL;
+
+X:\ENTRPRSE\EPOS\POSSETUP\EODREP.PAS
+     36	Discount : real;
+    362	+ 'Price' + #9 + 'Discount' + #9 + sVATText + ' Amt.' + #9 + 'Total' + #9;
+    420	LineInfo.Discount := Discount;
+    457	ID.Discount := ID.Discount * -1;
+    470	Discount := rBeforeDisc - rAfterDisc;
+    471	if IdDocHed in [SRF,SCR] then Discount := Discount * -1;
+    482	rMoneyInTheBank := NetValue + VAT - Discount;
+    590	procedure PrintLine(sDesc : string; rQty, rNetValue, rDiscount, rVAT, rMoneyInTheBank
+    603	If ZeroFloat(rQty) and ZeroFloat(rNetValue) and ZeroFloat(rDiscount)
+    613	+ #9 + MoneyToStr(rDiscount, 2, bBlankIfZero)
+    625	+ #9 + MoneyToStr(rDiscount, 2, bBlankIfZero)
+    656	rMoneyInTheBank := NetValue + VAT - Discount;
+    675	PrintLine(#9#9#9 + sTitle, Qty, NetValue, Discount, VAT, rMoneyInTheBank, CostPrice
+    777	Discount := Discount + TheLineInfo.Discount;
+    800	rMoneyInTheBank := NetValue + VAT - Discount;
+    832	NextLineInfo.Discount := NextLineInfo.Discount + TheLineInfo.Discount;
+    840	PrintLine(#9#9 + StockCode + #9 + Desc, Qty, NetValue, Discount, VAT, rMoneyInTheBank
+    854	else if Copy(CurrentLineInfo.Desc,1,20) = 'Discount (write-off)' then TenderTotals.WrittenOff := TenderTotals.WrittenOff + CurrentLineInfo.NetValue;
+
+X:\ENTRPRSE\EPOS\POSSETUP\SSetup.pas
+    135	rbEntDiscounts: TRadioButton;
+    136	rbTCMDiscounts: TRadioButton;
+    407	case DiscountType of
+    408	0 : rbTCMDiscounts.Checked := TRUE;
+    409	1 : rbEntDiscounts.Checked := TRUE;
+    545	DiscountType := Ord(rbEntDiscounts.Checked);
+
+X:\ENTRPRSE\EPOS\POSSETUP\TXRep.pas
+     28	SettlementDiscount : Real;
+
+X:\ENTRPRSE\EPOS\SHARED\EPOSCNST.PAS
+     47	DT_DISCOUNT_AMOUNT = #0;
+    112	DiscountType : byte;                
+    168	TAllowedTo = (atRunTradeCounter, atWriteOff, atDoDiscounts, atTakeDeposits, atEnterNegQty
+
+X:\ENTRPRSE\EPOS\SHARED\EPOSPROC.PAS
+    421	BDiscount := BDiscount * -1;
+
+X:\ENTRPRSE\EPOS\SHARED\LayRec.PAS
+     73	llDiscount : double;
+
+X:\ENTRPRSE\EPOS\TRADE\CalcPric.pas
+      8	; bResetDiscount : boolean = TRUE);
+     72	procedure CalcStockPrice(var TheTXRec : TTXRec; var TheTXLineRec : TTXLineRec; bResetDiscount : boolean = TRUE);
+     80	rPrevQty, rSaveDiscount : real;
+     85	DiscountChr := ' ';
+     86	Discount := 0;
+     87	DoDiscountLineTotal(ATXLineRec, ATKTLRec, 1, Result, FALSE, FALSE);
+    127	if SetupRecord.DiscountType = 0 then begin
+    133	if zerofloat(TheTXLineRec.TKStockPriceRec.DiscVal) then VatForOneTKTLRec.NetValue := Round_Up(TheTXLineRec.rPreEPOSDiscount + Ltktlrec.VAT, 2)
+    134	else VatForOneTKTLRec.NetValue := Round_Up(TheTXLineRec.rPreEPOSDiscount + Ltktlrec.VAT, TKSysRec.PriceDP);
+    151	if (SetupRecord.DiscountType = 0) and TheTXLineRec.bVATinclusive then begin
+    154	Case VatForOneTKTLRec.DiscountChr of
+    155	DT_DISCOUNT_AMOUNT : TheTXLineRec.rNetPrice := TheTXLineRec.rNetPrice - VatForOneTKTLRec.Discount;
+    159	- ((TheTXLineRec.rNetPrice + VatForOneTKTLRec.VAT) * VatForOneTKTLRec.Discount);
+    169	if not HOOK_TXLineBeforeCalcStockPrice then bResetDiscount := TRUE;
+    209	DiscountChr := cDiscount;
+    210	Discount := rDiscount;
+    211	if cDiscount = DT_PERCENTAGE then Discount := Discount / 100;
+    221	rPreEPOSDiscount := NetValue;
+    224	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, 1, rNetPrice, FALSE) = 0
+    226	rDiscAmount := Round_Up(Round_Up(rPreEPOSDiscount
+    233	VatTKTLRec.NetValue := rPreEPOSDiscount;
+    241	case DiscountChr of
+    242	DT_DISCOUNT_AMOUNT : begin
+    243	rNetPrice := NetValue - Discount;
+    244	rPreEPOSDiscount := NetValue;
+    251	Discount    := 0;
+    252	DiscountChr := ' ';
+    257	NetValue := rPreEPOSDiscount;
+    259	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rLineNetTotal, TRUE) = 0
+    264	LTKTLRec.DiscountChr := ' ';
+    265	LTKTLRec.Discount := 0;
+    266	LTKTLRec.NetValue := rPreEPOSDiscount;
+    267	rSaveDiscount := rDiscount;
+    268	rDiscount := 0;
+    269	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rNonDiscLineNetTotal, TRUE) = 0
+    271	rDiscount := rSaveDiscount;
+    286	Case SetupRecord.DiscountType of
+    317	if (cDiscount = DT_OVERRIDE_PRICE)  then
+    319	TKStockPriceRec.Price := rDiscount;
+    356	if DiscChar = DT_DISCOUNT_AMOUNT then Discount := DiscVal
+    357	else Discount := DiscVal / 100;
+    358	DiscountChr := DiscChar;
+    362	if (cDiscount = DT_OVERRIDE_PRICE) then
+    364	Discount := 0;
+    365	discountchr := DT_DISCOUNT_AMOUNT;
+    389	iStatus := Ex_RemoveDiscounts(@LTKTLRec, sizeof(LTKTLRec), TRUE, 0.0, rNetPrice);
+    397	rPreEPOSDiscount := rNetPrice;
+    404	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, 1, rNetPrice, FALSE) = 0
+    407	if (TheTXLineRec.cDiscount = DT_OVERRIDE_PRICE) then TKTLRec.Discount := LTKTLRec.Discount;
+    410	rDiscAmount := Round_Up(Round_Up(rPreEPOSDiscount
+    417	VatTKTLRec.NetValue := rPreEPOSDiscount;
+    422	case DiscountChr of
+    423	DT_DISCOUNT_AMOUNT : begin
+    424	rNetPrice := NetValue - Discount;
+    425	rPreEPOSDiscount := NetValue;
+    440	else NetValue := rPreEPOSDiscount;
+    445	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rLineNetTotal, TRUE) = 0
+    450	LTKTLRec.DiscountChr := ' ';
+    451	LTKTLRec.Discount := 0;
+    452	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rNonDiscLineNetTotal, TRUE, FALSE) = 0
+    467	if zerofloat(TheTXLineRec.TKStockPriceRec.DiscVal) then VatTKTLRec.NetValue := Round_Up(rPreEPOSDiscount + Ltktlrec.VAT, 2)
+    468	else VatTKTLRec.NetValue := Round_Up(rPreEPOSDiscount + Ltktlrec.VAT, TKSysRec.PriceDP);
+    471	case cDiscount of
+    472	DT_PERCENTAGE : VatTKTLRec.Discount := thetxlinerec.rdiscount / 100;
+    473	DT_DISCOUNT_AMOUNT : VatTKTLRec.Discount := thetxlinerec.rdiscount;
+    476	VatTKTLRec.DiscountChr := cDiscount;
+    491	else ShowTKError('Ex_RemoveDiscounts', 152, iStatus);
+    530	if (cDiscount = DT_OVERRIDE_PRICE)  then
+    532	TKStockPriceRec.Price := rDiscount;
+    535	if bResetDiscount then begin
+    536	cDiscount := DiscChar;
+    537	rDiscount := DiscVal;
+    576	case cDiscount of
+    577	DT_DISCOUNT_AMOUNT : Discount := rDiscount;
+    578	DT_PERCENTAGE : Discount := rDiscount / 100; 
+    581	DiscountChr := cDiscount;
+    608	if bResetDiscount then begin
+    611	if rDiscount = 0 then sDiscount := '-'
+    613	case cDiscount of
+    614	DT_PERCENTAGE : sDiscount := MoneyToStr(rDiscount) + ' %';
+    615	DT_DISCOUNT_AMOUNT, ' ' : sDiscount := sCurrencySym + ' ' + MoneyToStr(rDiscount);
+    616	DT_OVERRIDE_PRICE : sDiscount := 'override';
+    617	else sDiscount := '-';
+    624	rPreEPOSDiscount := WorkOutNetPriceOfOne(TheTXLineRec, LTKTLRec); 
+    626	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, 1, rNetPrice, FALSE) = 0
+    628	rDiscAmount := Round_Up(Round_Up(rPreEPOSDiscount
+    641	VatTKTLRec.NetValue := rPreEPOSDiscount; 
+    643	case DiscountChr of
+    644	DT_DISCOUNT_AMOUNT : begin
+    645	rNetPrice := NetValue - Discount;
+    646	rPreEPOSDiscount := NetValue;
+    654	Discount    := 0;
+    655	DiscountChr := ' ';
+    665	If bVATInclusive then NetValue := rPreEPOSDiscount
+    668	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rLineNetTotal, TRUE) = 0
+    673	LTKTLRec.DiscountChr := ' ';
+    674	LTKTLRec.Discount := 0;
+    678	If bVATInclusive then NetValue := rPreEPOSDiscount
+    681	if DoDiscountLineTotal(TheTXLineRec, LTKTLRec, TKTLRec.Qty, rNonDiscLineNetTotal, TRUE, FALSE) = 0
+   1239	rPreEPOSDiscount := rNetPrice;
+   1242	if rDiscount > 0 then begin
+   1243	case cDiscount of
+   1244	DT_OVERRIDE_PRICE : rNetPrice := rDiscount; 
+   1245	DT_PERCENTAGE : rNetPrice := rNetPrice * ((100 - rDiscount) / 100); 
+   1246	DT_DISCOUNT_AMOUNT : rNetPrice := rNetPrice - rDiscount; 
+   1253	rDiscAmount := Round_Up(Round_Up(rPreEPOSDiscount
+
+X:\ENTRPRSE\EPOS\TRADE\Custom\OCUST.PAS
+     24	, pIdxacDiscount, pIdxacDiscountBand, pIdxacDocDeliveryMode, pIdxacDrCrGL
+     83	function Get_acDiscount: Double; safecall;
+     84	procedure Set_acDiscount(Value: Double); safecall;
+     89	function Get_acDiscountBand: WideString; safecall;
+     90	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    201	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    204	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+    719	function TTradeEventCustomer.Get_acDiscount: Double;
+    721	Result := TTradeEventData(oEventData).LTXRec.LCust.Discount;
+    724	procedure TTradeEventCustomer.Set_acDiscount(Value: Double);
+    727	AuthoriseProperty (pIdxacDiscount, 'acDiscount');
+    728	TTradeEventData(oEventData).LTXRec.LCust.Discount := CustomSetReal(TTradeEventData(oEventData).LTXRec.LCust.Discount, Value, FDataChanged);
+    732	function TTradeEventCustomer.Get_acDiscountBand: WideString;
+    737	procedure TTradeEventCustomer.Set_acDiscountBand(const Value: WideString);
+    740	AuthoriseProperty (pIdxacDiscountBand, 'acDiscountBand');
+
+X:\ENTRPRSE\EPOS\TRADE\Custom\OENTSYS.PAS
+    255	function Get_ssPercDiscounts: WordBool; safecall;
+    259	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+    267	function Get_ssSettlementDiscount: Double; safecall;
+    515	function TTradeEntSetup.Get_ssPercDiscounts: WordBool;
+    665	function TTradeEntSetup.Get_ssSplitDiscountsInGL: WordBool;
+    667	Result := Syss.SepDiscounts;
+    675	function TTradeEntSetup.Get_ssSettlementDiscount: Double;
+
+X:\ENTRPRSE\EPOS\TRADE\Custom\OLINE.PAS
+     18	, pIdxtlDepartment, pIdxtlDiscFlag, pIdxtlDiscount, pIdxtlGLCode, pIdxtlInclusiveVATCode
+     70	function Get_tlDiscount: Double; safecall;
+     71	procedure Set_tlDiscount(Value: Double); safecall;
+    278	pIdxtlDiscount, pIdxtlDiscFlag : begin
+    531	Result := lTXLineRec.cDiscount;
+    540	lTXLineRec.TKTLRec.DiscountChr := ExtractChar(CustomSetString(lTXLineRec.TKTLRec.DiscountChr
+    543	lTXLineRec.cDiscount := ExtractChar(CustomSetString(lTXLineRec.cDiscount, Value, FDataChanged), ' ');
+    544	SetDiscountDesc(lTXLineRec^);
+    553	function TTradeEventTransLine.Get_tlDiscount: Double;
+    556	Result := Round_Up(lTXLineRec.rDiscount, TKSysRec.PriceDP);
+    559	procedure TTradeEventTransLine.Set_tlDiscount(Value: Double);
+    562	AuthoriseProperty(pIdxtlDiscount, 'tlDiscount');
+    565	case lTXLineRec.cDiscount of
+    566	'%' : lTXLineRec.TKTLRec.Discount := CustomSetReal(lTXLineRec.TKTLRec.Discount, Value / 100, FDataChanged);
+    567	#0, ' ' : lTXLineRec.TKTLRec.Discount := CustomSetReal(lTXLineRec.TKTLRec.Discount, Value, FDataChanged);
+    582	lTXLineRec.rDiscount := CustomSetReal(lTXLineRec.rDiscount, Value, FDataChanged);
+    583	SetDiscountDesc(lTXLineRec^);
+    739	Result := Round_Up(lTXLineRec.rPreEPOSDiscount, TKSysRec.PriceDP);
+    749	lTXLineRec.rPreEPOSDiscount := CustomSetReal(lTXLineRec.rPreEPOSDiscount, Value, FDataChanged);
+   1247	, lTXLineRec.TKTLRec.DiscountChr = '£');
+
+X:\ENTRPRSE\EPOS\TRADE\Custom\OTILL.PAS
+     61	function Get_ssDiscountType: TTradeDiscountType; safecall;
+    290	function TTradeTCMSetupTill.Get_ssDiscountType: TTradeDiscountType;
+    292	case lSetupRecord.DiscountType of
+    293	0 : Result := dtAdditionalTCMDiscounts;
+    294	1 : Result := dtEnterpriseDiscounts;
+
+X:\ENTRPRSE\EPOS\TRADE\Custom\OTRANS.PAS
+     23	, pIdxthProcess, pIdxthTagNo, pIdxthTotalCost, pIdxthTotalLineDiscount
+     89	function Get_thTotalLineDiscount: Double; safecall;
+     90	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    437	Result := Round_Up(TTradeEventData(oEventData).LTXRec.TKTXHeader.BDiscount , TKSysRec.PriceDP);
+    446	TTradeEventData(oEventData).LTXRec.TKTXHeader.BDiscount
+    447	:= CustomSetReal(TTradeEventData(oEventData).LTXRec.TKTXHeader.BDiscount, Value, FDataChanged);
+    982	function TTradeEventTransaction.Get_thTotalLineDiscount: Double;
+    987	procedure TTradeEventTransaction.Set_thTotalLineDiscount(Value: Double);
+    990	AuthoriseProperty (pIdxthTotalLineDiscount, 'thTotalLineDiscount');
+
+X:\ENTRPRSE\EPOS\TRADE\EnterpriseTrade_TLB.pas
+    127	tlTypeDiscount = $00000004;
+    247	TTradeDiscountType = TOleEnum;
+    249	dtAdditionalTCMDiscounts = $00000000;
+    250	dtEnterpriseDiscounts = $00000001;
+    339	ssGLSettleDiscountGiven = $00000004;
+    340	ssGLSettleDiscountTaken = $00000005;
+    341	ssGLLineDiscountGiven = $00000006;
+    342	ssGLLineDiscountTaken = $00000007;
+    975	function Get_thTotalLineDiscount: Double; safecall;
+    976	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+   1060	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+   1125	property thTotalLineDiscount: Double dispid 19;
+   1319	function Get_tlDiscount: Double; safecall;
+   1320	procedure Set_tlDiscount(Value: Double); safecall;
+   1406	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   1467	property tlDiscount: Double dispid 12;
+   1553	function Get_acDiscount: Double; safecall;
+   1554	procedure Set_acDiscount(Value: Double); safecall;
+   1559	function Get_acDiscountBand: WideString; safecall;
+   1560	procedure Set_acDiscountBand(const Value: WideString); safecall;
+   1671	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+   1674	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1749	property acDiscount: Double dispid 19;
+   1752	property acDiscountBand: WideString dispid 22;
+   2822	function Get_ssPercDiscounts: WordBool; safecall;
+   2826	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+   2834	function Get_ssSettlementDiscount: Double; safecall;
+   2930	property ssPercDiscounts: WordBool read Get_ssPercDiscounts;
+   2934	property ssSplitDiscountsInGL: WordBool read Get_ssSplitDiscountsInGL;
+   2942	property ssSettlementDiscount: Double read Get_ssSettlementDiscount;
+   3046	property ssPercDiscounts: WordBool readonly dispid 55;
+   3050	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   3058	property ssSettlementDiscount: Double readonly dispid 69;
+   3129	function Get_ssDiscountType: TTradeDiscountType; safecall;
+   3164	property ssDiscountType: TTradeDiscountType read Get_ssDiscountType;
+   3208	property ssDiscountType: TTradeDiscountType readonly dispid 21;
+
+X:\ENTRPRSE\EPOS\TRADE\LINEDISC.PAS
+     14	TFrmLineDiscount = class(TForm)
+     21	edDiscount: TCurrencyEdit;
+     35	procedure edDiscountExit(Sender: TObject);
+     47	FrmLineDiscount: TFrmLineDiscount;
+     55	procedure TFrmLineDiscount.FormKeyPress(Sender: TObject; var Key: Char);
+     60	procedure TFrmLineDiscount.FormKeyDown(Sender: TObject; var Key: Word;
+     84	procedure TFrmLineDiscount.btnOKClick(Sender: TObject);
+     86	edDiscount.value := StrToFloatDef(edDiscount.text,0);
+     88	if (not (rbOverride.Checked and (edDiscount.value = 0) and (not AllowedTo(atSetPriceToZero))))
+     89	and (not (rbPercent.Checked and (edDiscount.value = 100) and (not AllowedTo(atSetPriceToZero))))
+     90	and (not (rbAmount.Checked and (edDiscount.value = FrmTXLine.TXLineRec.rPreEPOSDiscount) and (not AllowedTo(atSetPriceToZero))))
+     97	procedure TFrmLineDiscount.FormCreate(Sender: TObject);
+    100	edDiscount.displayformat := '#########0.00'; 
+    101	edDiscount.displayformat := '#########0.' + StringOfChar('0',TKSysRec.PriceDP); 
+    104	procedure TFrmLineDiscount.rbPercentClick(Sender: TObject);
+    107	edDiscount.displayformat := '#########0.00';
+    110	procedure TFrmLineDiscount.rbAmountClick(Sender: TObject);
+    113	edDiscount.displayformat := '#########0.' + StringOfChar('0',TKSysRec.PriceDP);
+    116	procedure TFrmLineDiscount.rbOverrideClick(Sender: TObject);
+    119	edDiscount.displayformat := '#########0.' + StringOfChar('0',TKSysRec.PriceDP);
+    122	procedure TFrmLineDiscount.edDiscountExit(Sender: TObject);
+    124	if rbPercent.Checked and  (StrToFloatDef(edDiscount.text,0) > 100) then edDiscount.text := '100.00';
+    127	procedure TFrmLineDiscount.Button2Click(Sender: TObject);
+    132	procedure TFrmLineDiscount.Label1Click(Sender: TObject);
+    138	procedure TFrmLineDiscount.Label2Click(Sender: TObject);
+    144	procedure TFrmLineDiscount.lOverrideClick(Sender: TObject);
+
+X:\ENTRPRSE\EPOS\TRADE\LOGIN.PAS
+    434	aAllowedTo[atDoDiscounts] := CheckSecurity(333);
+
+X:\ENTRPRSE\EPOS\TRADE\NonStock.pas
+     21	btnDiscount: TIAeverButton;
+     55	procedure btnDiscountClick(Sender: TObject);
+    109	btnDiscount.Visible := aAllowedTo[atDoDiscounts];
+    121	else edPrice.Value := rPreEPOSDiscount;
+    211	VK_F4 : btnDiscountClick(nil);
+    219	procedure TFrmNonStockItem.btnDiscountClick(Sender: TObject);
+    221	if btnDiscount.visible then begin
+    223	with TFrmLineDiscount.Create(Self) do begin
+    227	case cDiscount of
+    229	DT_DISCOUNT_AMOUNT  : rbAmount.Checked := TRUE;
+    232	edDiscount.Value := rDiscount;
+    245	if rbPercent.Checked then cDiscount := DT_PERCENTAGE
+    246	else if rbAmount.Checked then cDiscount := DT_DISCOUNT_AMOUNT;
+    249	rDiscount := edDiscount.Value;
+    262	case cDiscount of
+    263	DT_PERCENTAGE : sDiscount := MoneyToStr(rDiscount) + ' %';
+    264	DT_DISCOUNT_AMOUNT  : sDiscount := sCurrencySym + ' ' + MoneyToStr(rDiscount);
+    343	if cDiscount = DT_OVERRIDE_PRICE then begin
+    344	cDiscount := DT_DISCOUNT_AMOUNT;
+    345	rDiscount := 0;
+
+X:\ENTRPRSE\EPOS\TRADE\SETTDISC.PAS
+     75	MyMsgBox('You have entered an invalid Settlement Discount amount.' + #13#13 +
+     76	'Please enter a valid amount.',mtInformation,[mbOK],mbOK,'Settlement Discount');
+
+X:\ENTRPRSE\EPOS\TRADE\TENDER.PAS
+     56	panSettDiscount: TPanel;
+     59	btnSettDiscount: TIAeverButton;
+     65	lSettDiscount: TLabel;
+     79	procedure btnSettDiscountClick(Sender: TObject);
+    533	VK_F8 : btnSettDiscountClick(nil);
+    632	if TXRec.TKTXHeader.DiscTaken then lSettDiscount.Caption := 'Taken'
+    633	else lSettDiscount.Caption := 'Not Taken';
+   1158	Case SetupRecord.DiscountType of
+   1162	if bVATInclusive and (cDiscount = DT_PERCENTAGE) then
+   1164	if bNonStock then TKTLRec.NetValue := rPreEPOSDiscount;
+   1167	TKTLRec.NetValue := rPreEPOSDiscount;
+   1172	if cDiscount = DT_OVERRIDE_PRICE then
+   1181	if bVATInclusive or bBOMComponent  or bNonStock  then TKTLRec.NetValue := rPreEPOSDiscount
+   1252	if bVATInclusive and (SetupRecord.DiscountType = 0) then
+   1254	case cDiscount of
+   1255	DT_DISCOUNT_AMOUNT  : TKTLRec.NetValue := rNetPrice + rDiscAmount;
+   1267	if not ((SetupRecord.DiscountType = 1) and (cDiscount = DT_OVERRIDE_PRICE))
+   1613	TKTLines[LineCount].Desc := 'Discount (write-off)';
+   1916	procedure TFrmTender.btnSettDiscountClick(Sender: TObject);
+   1930	if TKTXHeader.DiscTaken then lSettDiscount.Caption := 'Taken'
+   1931	else lSettDiscount.Caption := 'Not Taken';
+
+X:\ENTRPRSE\EPOS\TRADE\TXHEAD.PAS
+    350	panSettDiscount.Visible := not ZeroFloat(TKTXHeader.DiscSetl) and ((TenderMode = tmAdd) or ((TenderMode <> tmAdd) and TKTXHeader.DiscTaken));
+    351	btnSettDiscount.Visible := panSettDiscount.Visible;
+    546	sDiscount := '-';
+   1347	sDiscount := '-';
+   1349	rPreEPOSDiscount := 0;
+   1695	if ZeroFloat(Discount) then Result.cDiscount := ' '
+   1696	else Result.cDiscount := DiscountChr;
+   1697	if Result.cDiscount = ' ' then Result.cDiscount := DT_DISCOUNT_AMOUNT;  
+   1699	Result.rDiscount := Discount * (1 + (99 * Ord(Result.cDiscount = DT_PERCENTAGE)));
+   1701	Result.rPreEPOSDiscount := NetValue;
+   1728	case Result.cDiscount of
+   1730	Result.sDiscount := MoneyToStr(Result.rDiscount) + ' %';
+   1731	Result.rNetPrice := Result.rPreEPOSDiscount * ((100 - Result.rDiscount) / 100)
+   1734	DT_DISCOUNT_AMOUNT, ' ' : begin
+   1735	Result.sDiscount := sCurrencySym + ' ' + MoneyToStr(Result.rDiscount);
+   1736	Result.rNetPrice := Result.rPreEPOSDiscount - Result.rDiscount;
+   1739	DT_OVERRIDE_PRICE : Result.sDiscount := 'override';
+   1740	else Result.sDiscount := '-';
+   1743	Result.rDiscAmount := Result.rPreEPOSDiscount - Result.rNetPrice;
+   1780	DoDiscountLineTotal(LTXLineRec, LTKTLRec, Result.TKTLRec.Qty, Result.rLineNetTotal, TRUE);
+   1856	if bFind and (TKTLines[iPos].Desc = 'Discount (write-off)') then TXRec.rWrittenOff := TXRec.rWrittenOff
+   1862	if bFind and (TKTLines[iPos].Desc <> 'Discount (write-off)') then TXRec.rDepositsTaken := TXRec.rDepositsTaken + TKTLines[iPos].NetValue;
+   1933	and ZeroFloat(NewTXLineRec.rDiscount) then
+   1935	NewTXLineRec.cDiscount := DT_OVERRIDE_PRICE;
+   1936	NewTXLineRec.sDiscount := 'override';
+   1945	NewTXLineRec.rDiscount := NewTXLineRec.rNetPrice;
+   1946	NewTXLineRec.rPreEPOSDiscount := NewTXLineRec.rNetPrice;
+   1983	if (TKTLines[iPos].Desc = 'Discount (write-off)') then begin 
+   2022	if (TKTLines[iPos].Desc = 'Discount (write-off)') then TXRec.rWrittenOff := TXRec.rWrittenOff + ABS(TKTLines[iPos].NetValue)
+   2423	if Trim(TKTLRec.StockCode) = '' then llPrice := rPreEPOSDiscount
+   2434	llDiscType := cDiscount;
+   2436	llDiscount := rDiscount;
+   2437	llDiscDesc := sDiscount;
+   2636	cDiscount := LayLine.llDiscType;
+   2638	rDiscount := LayLine.llDiscount;
+   2640	sDiscount := LayLine.llDiscDesc;
+
+X:\ENTRPRSE\EPOS\TRADE\TXLINE.PAS
+     25	btnDiscount: TIAeverButton;
+     77	procedure btnDiscountClick(Sender: TObject);
+    162	procedure TFrmTXLine.btnDiscountClick(Sender: TObject);
+    164	if btnDiscount.enabled then begin
+    165	ActiveControl := btnDiscount;
+    166	with TFrmLineDiscount.Create(Self) do begin
+    177	case cDiscount of
+    179	DT_DISCOUNT_AMOUNT  : rbAmount.Checked := TRUE;
+    182	edDiscount.Value := rDiscount;
+    189	if rbPercent.Checked then cDiscount := DT_PERCENTAGE
+    190	else if rbAmount.Checked then cDiscount := DT_DISCOUNT_AMOUNT
+    191	else if rbOverride.Checked then cDiscount := DT_OVERRIDE_PRICE;
+    193	rDiscount := edDiscount.Value;
+    195	case cDiscount of
+    196	DT_PERCENTAGE : sDiscount := MoneyToStr(rDiscount) + ' %';
+    197	DT_DISCOUNT_AMOUNT  : sDiscount := sCurrencySym + ' ' + MoneyToStr(rDiscount);
+    198	DT_OVERRIDE_PRICE : sDiscount := 'override';
+    241	sDiscount := '-';
+    275	VK_F4 : btnDiscountClick(btnDiscount);
+    342	btnDiscount.Visible := aAllowedTo[atDoDiscounts];
+    343	btnDiscount.Enabled := btnDiscount.Visible and TXLineRec.bStockOK and (edQuantity.Value <> 0);
+    620	CalcStockPrice(TXRec, TXLineRec, bQtyChanged and (SetupRecord.DiscountType = 1));
+
+X:\ENTRPRSE\EPOS\TRADE\TXRecs.pas
+     45	rDiscount : real;
+     46	cDiscount : char;
+     47	sDiscount : string20;
+     51	rPreEPOSDiscount : real;
+     86	procedure RecalcLine(TheTXRec : TTXRec; bResetDiscount : Boolean);
+     92	; Quantity : real; bResetDiscounts : boolean = TRUE);
+     93	function DoDiscountLineTotal(var TheTXLineRec : TTXLineRec; var TheTKTLRec : TBatchTLRec
+    103	; bResetDiscount : Boolean);
+    107	procedure SetDiscountDesc(var TheTXLineRec : TTXLineRec);
+    124	procedure TTXLineInfo.RecalcLine(TheTXRec : TTXRec; bResetDiscount : Boolean);
+    126	CalcStockPrice(TheTXRec, TXLineRec, bResetDiscount);
+    131	; Quantity : real; bResetDiscounts : boolean = TRUE);
+    181	CalcStockPrice(TheTXRec, TheTXLineRec, bResetDiscounts);
+    189	function DoDiscountLineTotal(var TheTXLineRec : TTXLineRec; var TheTKTLRec : TBatchTLRec
+    197	case cDiscount of
+    201	Discount := rDiscount / 100;
+    202	DiscountChr := cDiscount;
+    205	DT_DISCOUNT_AMOUNT :
+    207	Discount := rDiscount;
+    208	DiscountChr := cDiscount;
+    219	Discount := 0;
+    220	DiscountChr := DT_DISCOUNT_AMOUNT;
+    234	Result := Ex_RemoveDiscounts(@TheTKTLRec, sizeof(TheTKTLRec), TRUE, 0.0, rTotal);
+    235	ShowTKError('Ex_RemoveDiscounts', 152, Result);
+    305	cDiscount := DT_PERCENTAGE;
+    310	sDiscount := '-';
+    337	SubItems[2] := sDiscount;
+    339	Case SetupRecord.DiscountType of
+    341	1 : SubItems[3] := FloatToStrF(rPreEPOSDiscount, ffFixed, 15, TKSysRec.PriceDP);
+    405	Case cDiscount of
+    407	DiscountChr := DT_PERCENTAGE;
+    408	Discount := rDiscount / 100;
+    411	DT_DISCOUNT_AMOUNT : begin
+    412	DiscountChr := ' ';
+    413	Discount := rDiscAmount;
+    419	DiscountChr := ' ';
+    423	if (SetupRecord.DiscountType <> 0) then Discount := 0;
+    524	procedure RecalcAllTXLines(var TheTXRec : TTXRec; var TheListView : TListView; bResetDiscount : Boolean);
+    533	if TXLineRec.bNonStock then TXLineRec.rNetPrice := TXLineRec.rPreEPOSDiscount;
+    534	RecalcLine(TheTXRec, bResetDiscount);
+    682	procedure SetDiscountDesc(var TheTXLineRec : TTXLineRec);
+    686	case cDiscount of
+    688	sDiscount := MoneyToStr(rDiscount) + ' %';
+    691	DT_DISCOUNT_AMOUNT, ' ' : begin
+    692	sDiscount := sCurrencySym + ' ' + MoneyToStr(rDiscount);
+    695	DT_OVERRIDE_PRICE : sDiscount := 'override';
+
+X:\ENTRPRSE\FORMDES2\DICLINKU.PAS
+    526	TmpField:=Form_Real(Discount,0,5);
+    661	1047  : TmpField:=PPR_PAmountStr(Discount, CDiscCh);
+   2544	Rnum:=BDiscount-ITotal(TInv^);
+   2560	Rnum:=BDiscount;
+   2649	2273       : TmpField := Form_Real(AppValTotals(@Inv).avtDiscountPercentage,13,6);
+   2656	2278       : TmpField := Form_Real(AppValTotals(@Inv).avtDiscountCertified,13,6);
+   2658	2279       : TmpField := Form_Real(AppValTotals(@Inv).avtDiscountCertifiedYTD,13,6);
+   3265	3026  :  TmpField:=Form_Real(Discount,0,5);       
+   3309	3061  :  TmpField:=PPR_PAmountStr(Discount, DiscountChr);
+   5840	Function Link_Discounts(DictNo  :  LongInt)  :  Str255;
+   5960	Link_Discounts := TmpField;
+   6580	TmpField:=Link_Discounts(DictNo);
+
+X:\ENTRPRSE\FORMDES2\oAppVals.pas
+     20	FDiscountCertified : Double;               
+     21	FDiscountCertifiedYTD : Double;            
+     22	FDiscountPercentage : Double;              
+     65	Property avtDiscountCertified : Double Read FDiscountCertified;
+     67	Property avtDiscountCertifiedYTD : Double Read FDiscountCertifiedYTD;
+     69	Property avtDiscountPercentage : Double Read FDiscountPercentage;
+    200	Result:=Basis-DiscSetAm-DiscAmount-CISTax-BDiscount+(InvVAT*Ord(tMode<>2));
+    276	FJxAContrasTotal := FJxAContrasTotal + InvR.BDiscount;
+    313	FRetentionPercentage := Id.Discount;
+    326	FDiscountPercentage := Id.Discount;
+    330	FDiscountCertified := FDiscountCertified + Id.NetValue;
+    331	FDiscountCertifiedYTD := FDiscountCertifiedYTD + Id.QtyPWOff;
+    348	FCITBPercentage := Id.Discount;
+    442	FDiscountCertified := 0.0;                                 
+    443	FDiscountCertifiedYTD := 0.0;                              
+    444	FDiscountPercentage := 0.0;                                
+
+X:\ENTRPRSE\FormTK\Enterprise01_TLB.pas
+     81	IID_IAccountDiscount: TGUID = '{1F48FEA0-EAD8-11D4-A99D-0050DA3DF9AD}';
+    389	TDiscountType = TOleEnum;
+    482	tlTypeDiscount = $00000004;
+    530	ssGLSettleDiscountGiven = $00000004;
+    531	ssGLSettleDiscountTaken = $00000005;
+    532	ssGLLineDiscountGiven = $00000006;
+    533	ssGLLineDiscountTaken = $00000007;
+    817	IAccountDiscount = interface;
+    818	IAccountDiscountDisp = dispinterface;
+   1046	function Get_acDiscount: Double; safecall;
+   1047	procedure Set_acDiscount(Value: Double); safecall;
+   1052	function Get_acDiscountBand: WideString; safecall;
+   1053	procedure Set_acDiscountBand(const Value: WideString); safecall;
+   1178	function Get_acDiscounts: IAccountDiscount; safecall;
+   1197	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+   1200	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1253	property acDiscounts: IAccountDiscount read Get_acDiscounts;
+   1281	property acDiscount: Double dispid 19;
+   1284	property acDiscountBand: WideString dispid 22;
+   1362	property acDiscounts: IAccountDiscount readonly dispid 86;
+   1406	function Get_thTotalLineDiscount: Double; safecall;
+   1407	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+   1537	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+   1611	property thTotalLineDiscount: Double dispid 19;
+   1893	function Get_tlDiscount: Double; safecall;
+   1894	procedure Set_tlDiscount(Value: Double); safecall;
+   1966	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; safecall;
+   1988	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2051	property tlDiscount: Double dispid 12;
+   2090	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   2162	function Get_ssPercDiscounts: WordBool; safecall;
+   2166	function Get_ssSplitDiscountsInGL: WordBool; safecall;
+   2174	function Get_ssSettlementDiscount: Double; safecall;
+   2272	property ssPercDiscounts: WordBool read Get_ssPercDiscounts;
+   2276	property ssSplitDiscountsInGL: WordBool read Get_ssSplitDiscountsInGL;
+   2284	property ssSettlementDiscount: Double read Get_ssSettlementDiscount;
+   2390	property ssPercDiscounts: WordBool readonly dispid 55;
+   2394	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   2402	property ssSettlementDiscount: Double readonly dispid 69;
+   4305	IAccountDiscount = interface(IDispatch)
+   4309	function Get_adType: TDiscountType; safecall;
+   4310	procedure Set_adType(Value: TDiscountType); safecall;
+   4339	function Add: IAccountDiscount; safecall;
+   4340	function Update: IAccountDiscount; safecall;
+   4341	function Clone: IAccountDiscount; safecall;
+   4346	property adType: TDiscountType read Get_adType write Set_adType;
+   4364	IAccountDiscountDisp = dispinterface
+   4367	property adType: TDiscountType dispid 3;
+   4389	function Add: IAccountDiscount; dispid 12;
+   4390	function Update: IAccountDiscount; dispid 13;
+   4391	function Clone: IAccountDiscount; dispid 14;
+   4426	function Get_qbType: TDiscountType; safecall;
+   4427	procedure Set_qbType(Value: TDiscountType); safecall;
+   4455	property qbType: TDiscountType read Get_qbType write Set_qbType;
+   4475	property qbType: TDiscountType dispid 3;
+   5594	property tlDiscount: Double dispid 12;
+   5633	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   5940	property ssPercDiscounts: WordBool readonly dispid 55;
+   5944	property ssSplitDiscountsInGL: WordBool readonly dispid 59;
+   5952	property ssSettlementDiscount: Double readonly dispid 69;
+   6158	property thTotalLineDiscount: Double dispid 19;
+   6615	property tlDiscount: Double dispid 12;
+   6654	function entLineTotal(ApplyDiscounts: WordBool; SettleDiscPerc: Double): Double; dispid 50;
+   7509	function Get_bbIncludeDiscountLines: WordBool; safecall;
+   7510	procedure Set_bbIncludeDiscountLines(Value: WordBool); safecall;
+   7525	property bbIncludeDiscountLines: WordBool read Get_bbIncludeDiscountLines write Set_bbIncludeDiscountLines;
+   7545	property bbIncludeDiscountLines: WordBool dispid 6;
+
+X:\ENTRPRSE\FUNCS\CTKUtilImplementation.inc
+    126	oToLineEx.tlDiscount := oFromLineEx.tlDiscount;
+    206	oToTransEx.thTotalLineDiscount:= oFromTransEx.thTotalLineDiscount;
+
+X:\ENTRPRSE\FUNCS\SQLFields.pas
+    341	GetDBColumnName('Custsupp.dat', 'f_discount', '') + ',' + 
+    425	GetDBColumnName('Details.dat', 'f_discount', '') + ',' + 
+    431	GetDBColumnName('Details.dat', 'f_discount_chr', '') + ',' + 
+    681	GetDBColumnName('Document.dat', 'f_b_discount', '') + ',' + 
+    754	GetDBColumnName('Ebus.dat', 'comp_discount', 'EC') + ',' + 
+   1407	GetDBColumnName('ExchqSS.dat', 'sep_discounts', 'SYS') + ',' + 
+   1417	GetDBColumnName('ExchqSS.dat', 'nom_ctrl_discount_given', 'SYS') + ',' + 
+   1418	GetDBColumnName('ExchqSS.dat', 'nom_ctrl_discount_taken', 'SYS') + ',' + 
+   3136	GetDBColumnName('Lheader.dat', 'BDiscount', '') + ',' + 
+   3198	GetDBColumnName('Llines.dat', 'lldiscount', '') + ',' + 
+   3224	GetDBColumnName('Llines.dat', 'discount', '') + ',' + 
+   3229	GetDBColumnName('Llines.dat', 'discountchr', '') + ',' + 
+   3503	GetDBColumnName('Mlocstk.dat', 'csdiscount', 'TP') + ',' + 
+
+X:\ENTRPRSE\FUNCS\TkTransForm.pas
+    121	If (tlDiscount <> 0.0) Then
+    122	mlLines.DesignColumns[6].Items.Add(Format('%0.2n%s', [tlDiscount * 100, tlDiscFlag]))
+
+X:\ENTRPRSE\MULTCOMP\Entdatau.pas
+   1123	Process (ctCDisc, pmAdd, Key, 'Customer Discounts', Nil);
+   1135	Process (ctSDisc, pmAdd, Key, 'Supplier Discounts', Nil);
+
+X:\ENTRPRSE\MULTCOMP\ODBCPOSF.PAS
+    167	Add ('Discount,' + IntToStr (CalcRecPos (@TheRec, @TheRec.Discount)) + ',' + IntToStr (SizeOf (TheRec.Discount)));
+    329	Add ('BDiscount,' + IntToStr (CalcRecPos (@TheRec, @TheRec.BDiscount)) + ',' + IntToStr (SizeOf (TheRec.BDiscount)));
+    358	Add ('Discount,' + IntToStr (CalcRecPos (@TheRec, @TheRec.Discount)) + ',' + IntToStr (SizeOf (TheRec.Discount)));
+    364	Add ('DiscountChr,' + IntToStr (CalcRecPos (@TheRec, @TheRec.DiscountChr)) + ',' + IntToStr (SizeOf (TheRec.DiscountChr)));
+
+X:\ENTRPRSE\MULTCOMP\UPGRADES\PWUPG1U.PAS
+    107	PassDesc:'Sales - Allow Discount to exceed Sale';
+    213	PassDesc:'Trade Counter - Allow Discount Override';
+
+X:\ENTRPRSE\MULTCOMP\UPGRADES\PWUPG2U.PAS
+    343	PassDesc:'Customer Discounts - Check';
+    347	PassDesc:'Supplier Discounts - Add';
+    366	PassDesc:'Customer Discounts - Check';
+
+X:\ENTRPRSE\MULTCOMP\UPGRADES\PWUpG5U.PAS
+    166	PassDesc:'Job Costing - Sales Applications - Allow Override of Discounts on Application';
+    179	PassDesc:'Job Costing - Purchase Applications - Allow Override of Discounts on Application';
+
+X:\ENTRPRSE\MULTCOMP\UPGRADES\SETPWORD.PAS
+    380	PassDesc:'Sales - Allow Discount to exceed Sale';
+    565	PassDesc:'Customer Details - Discounts'),
+    576	PassDesc:'Supplier Details - Discounts'),
+    907	PassDesc:'Customer Discounts - Add';
+    911	PassDesc:'Customer Discounts - Edit';
+    915	PassDesc:'Customer Discounts - Delete';
+    919	PassDesc:'Customer Discounts - Copy';
+    923	PassDesc:'Customer Discounts - Check';
+    947	PassDesc:'Supplier Discounts - Add';
+    951	PassDesc:'Supplier Discounts - Edit';
+    955	PassDesc:'Supplier Discounts - Delete';
+    959	PassDesc:'Supplier Discounts - Copy';
+    963	PassDesc:'Supplier Discounts - Check';
+    996	PassDesc:'Stock Discounts - Add';
+   1000	PassDesc:'Stock Discounts - Edit';
+   1004	PassDesc:'Stock Discounts - Delete';
+   1008	PassDesc:'Stock Discounts - Copy';
+   1012	PassDesc:'Stock Discounts - Check';
+   1093	PassDesc:'Batch Payments - Allow Discount Override';
+   1097	PassDesc:'Batch Receipts - Allow Discount Override';
+   1171	PassDesc:'Trade Counter - Allow Discount Override';
+
+X:\ENTRPRSE\OLE\Oleservr.pas
+   6083	38     : MiscStr := PPR_PamountStr(Discount,CDiscCh);
+   6557	ProcessInputPAmount(LCust.Discount,LCust.CDiscCH,NewStr);
+   6564	ProcessInputPAmount(LCust.Discount,LCust.CDiscCH,NewStr);
+
+X:\ENTRPRSE\OLE\SalePric.pas
+    550	If (DiscR<>Discount) then
+    551	DiscR:=Discount;
+
+X:\ENTRPRSE\OutLook\KPI-ExchOut\AccountForm.pas
+    336	TAB_DISCOUNTS   =  4;
+
+X:\ENTRPRSE\OutLook\KPI-TopAcs\AccountForm.pas
+    322	TAB_DISCOUNTS   =  4;
+
+X:\ENTRPRSE\OutLook\KPI-TopPrd\TindleCommon.pas
+     29	LIN_DISCOUNT      =  6; 
+     82	FDiscount:  string;
+     90	FTotalDiscount: double;
+    100	property Discount:    string read FDiscount    write FDiscount;
+    111	constructor create(const LineDesc:   string; const LineQty: string; const UnitValue: string; const Discount: string;
+    221	result := 'RT,LinkRef,LineDesc,Qty,UnitPrice,Discount,VATCode,Dept,GLCode,UDF2,UDF3';
+    224	constructor TTransLine.create(const LineDesc:   string; const LineQty: string; const UnitValue: string; const Discount: string;
+    231	FDiscount  := Discount;
+    242	result := format('FL,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s"', [LinkRef, LineDesc, LineQty, UnitValue, Discount,
+
+X:\ENTRPRSE\Prototypes\LOADMOD\EnterMod\Enterprise_TLB.pas
+    288	nmDiscountGiven = $00000004;
+    289	nmDiscountTaken = $00000005;
+    790	function Get_acDiscount: Double; safecall;
+    791	procedure Set_acDiscount(Value: Double); safecall;
+    796	function Get_acDiscountBand: WideString; safecall;
+    797	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    883	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    886	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+    947	property acDiscount: Double dispid 18;
+    950	property acDiscountBand: WideString dispid 21;
+   1052	function Get_ssSepDiscounts: WordBool; safecall;
+   1154	property ssSepDiscounts: WordBool read Get_ssSepDiscounts;
+   1265	property ssSepDiscounts: WordBool readonly dispid 59;
+   2322	function Get_tlDiscount: Double; safecall;
+   2323	procedure Set_tlDiscount(Value: Double); safecall;
+   2419	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2485	property tlDiscount: Double dispid 20;
+   3091	property acDiscount: Double dispid 18;
+   3094	property acDiscountBand: WideString dispid 21;
+   3852	property ssSepDiscounts: WordBool readonly dispid 59;
+   4023	property ssSepDiscounts: WordBool readonly dispid 59;
+   4316	property acDiscount: Double dispid 18;
+   4319	property acDiscountBand: WideString dispid 21;
+   4528	function Get_teTotalDiscount: Double; safecall;
+   4529	procedure Set_teTotalDiscount(Value: Double); safecall;
+   4578	property teTotalDiscount: Double read Get_teTotalDiscount write Set_teTotalDiscount;
+   4621	property teTotalDiscount: Double dispid 17;
+   4696	property tlDiscount: Double dispid 20;
+   4778	function Get_telDiscount: Double; safecall;
+   4779	procedure Set_telDiscount(Value: Double); safecall;
+   4824	property telDiscount: Double read Get_telDiscount write Set_telDiscount;
+   4864	property telDiscount: Double dispid 17;
+   5739	property tlDiscount: Double dispid 20;
+   6091	property ssSepDiscounts: WordBool readonly dispid 59;
+   6607	property tlDiscount: Double dispid 20;
+
+X:\ENTRPRSE\R&D\AITI1U.PAS
+    191	GenStr:='Discounted'
+
+X:\ENTRPRSE\R&D\ALCITEMU.PAS
+     84	Discount1: TMenuItem;
+    288	Procedure SetDiscount(Mode  :  Byte);
+   1990	LInv.BDiscount:=ariOrigSetDisc;
+   2153	CustomDlg(Self,'Part Allocate','Not allowed with settlement discount.',
+   2154	'It is not possible to part allocate a transaction if settlement discount has been applied.'+#13+
+   2155	'Please remove the settlement discount first, before attempting to part allocate.',
+   2385	' settlement discount of '+FormatCurFloat(GenRealMask,tmpVariance,BOff,0)+'.'+#13+#13+
+   2386	'Please confirm you wish to complete this allocation by generating a settlement discount.';
+   2392	' currency variance or settlement discount of '+FormatCurFloat(GenRealMask,tmpVariance,BOff,0)+'.'+#13+#13+
+   2524	Procedure TAllocItems.SetDiscount(Mode  :  Byte);
+   2614	LInv.BDiscount:=ariOrigSetDisc;
+   2653	SetDiscount(0)
+   2656	'It is not possible to alter the discount while a transaction is settled.'+#13+
+   2657	'Unallocate the transaction first, then adjust the discount, and re-allocate.',
+   2911	GenStr:='Not all of this '+DDownTitle+' has been allocated. If you wish to settle the remainder against variance or settlement discount, '+
+   2914	GenStr:='Not all of this '+DDownTitle+' has been allocated. If you wish to settle the remainder against settlement discount, '+
+
+X:\ENTRPRSE\R&D\AllocS2U.pas
+    423	GenStr:='When allocating an existing credit, you must take the settlement discount of an unposted transaction manualy before allocating it.'
+    425	GenStr:='It is not possible to take any settlement discount when allocating an existing credit. '+
+    426	'Create a new allocation if you wish to take this discount.';
+    428	Write_PostLogDD(OurRef+' has '+FormatCurFloat(GenRealMask,DiscSetAm,BOff,Currency)+' of settlement discount available.',BOn,OurRef,0);
+    481	ariOrigSetDisc:=EInv.BDiscount*TransCnst;
+    845	BDiscount:=PaySDOV;
+   1099	PDiscGL:=Syss.NomCtrlCodes[DiscountGiven]
+   1101	PDiscGL:=Syss.NomCtrlCodes[DiscountTaken];
+   1495	DocBDicsount:=BDiscount;
+   1497	BDiscount:=ariOrigSetDisc;
+   1502	BDiscount:=BDiscount*DocNotCnst;
+   1506	BDiscount:=DocBDicsount;
+   1880	LInv.BDiscount:=ariOrigSetDisc;
+
+X:\ENTRPRSE\R&D\BACS2U.PAS
+   1134	BDiscount:=PaySDOV;
+   1329	PDiscGL:=Syss.NomCtrlCodes[DiscountGiven]
+   1331	PDiscGL:=Syss.NomCtrlCodes[DiscountTaken];
+   1611	If (BDiscount<>0.0) and (BDiscount=DiscSetAm) and (IncSDisc) and (RunNo=0) and (Settled=0.0) then
+   1619	BDiscount:=0.0;
+   1637	DocIThen:=DocThen+(Round_Up(Conv_TCurr(BDiscount,XRate(CXRate,BOff,Currency),Currency,UOR,BOff),2)
+   1640	DocINow:=DocNow+(Round_Up(BDiscount,2)*DiscSign);
+   1699	BatchNow:=0; BatchThen:=0; BDiscount:=0.0;
+
+X:\ENTRPRSE\R&D\BANKRS2U.PAS
+    339	LVal:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0),2);
+    399	LVal:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0),2);
+    482	If (Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2) <> Round_Up(BankValue,2)) then
+    652	CheckValue:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2);
+   1283	BankValue:=Round_Up(DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst,2);
+
+X:\ENTRPRSE\R&D\BatchlnU.pas
+    273	LineDiscount,
+    298	LineDiscount:=Calc_PcntPcnt(NetValue,0.0,SetDisc,#0,PcntChr)
+    300	LineDiscount:=Calc_PcntPcnt(IncNetValue,0.0,SetDisc,#0,PCntChr);
+    325	Round_Up(LineDiscount,2);
+    337	NewTotal:=(NetValue-LineDiscount);
+    352	Round_Up(LineDiscount,2)),2)+LineVAT);
+    365	LineDiscount:=0.0;
+    367	NewTotal:=(IncNetValue-LineDiscount);
+    673	Discount:=Round_Up(DivWChk(DiscAmount,InvNetVal),2);
+    675	DiscountChr:=PcntChr;
+
+X:\ENTRPRSE\R&D\BITI1U.PAS
+    140	If (BDiscount<>0.0) then
+    141	GenStr:='Discounted'
+
+X:\ENTRPRSE\R&D\BPayLstU.pas
+    554	WasSDSet:=(BDiscount<>0.0);
+    575	If (Tagged=1) or (UnTagged) or (BDiscount<>0.0) or (WasSDSet) then  
+
+X:\ENTRPRSE\R&D\BPYITEMU.PAS
+     86	Discount1: TMenuItem;
+   1169	BDiscount:=0.0;
+   1176	BDiscount:=DiscSetAm;
+   1193	DiscSetAm:=BDiscount;
+   1195	DiscConv:=Round_Up(Conv_TCurr(BDiscount,XRate(CXRate,BOff,Currency),Currency,UOR,BOff),2);
+   1202	DiscVar:=Round_Up(Conv_TCurr(BDiscount,XRate(CXRate,BOff,Currency),Currency,UOR,BOff),2);
+   1620	Discount1.Enabled:=SDiscBtn.Enabled;
+   2667	EDisc:=Round_Up(Currency_ConvFT(Conv_TCurr(EInv.BDiscount,XRate(CXRate,BOff,Currency),Currency,UOR,BOff),0,PayCurr,
+   2678	PAValue:=BDiscount;
+   2686	BDiscount:=PAValue;
+   2700	IDisc:=Round_Up(Currency_ConvFT(Conv_TCurr(BDiscount,XRate(CXRate,BOff,Currency),Currency,UOR,BOff),0,PayCurr,
+   2822	If (BDiscount=0.0) then
+   2828	ShowMessage('It is not possible to part allocate a transaction if settlement discount has been applied.'+#13+
+   2829	'Please remove the settlement discount first, before attempting to part allocate.');
+   2863	ShowMessage('It is not possible to adjust the settlement discount on a part allocated transaction.'+#13+
+   2864	'Please remove the allocation first, before attempting to adjust the discount.');
+
+X:\ENTRPRSE\R&D\Btsupu1.pas
+   1352	Discount:=0;
+   1355	Discount:=0;
+
+X:\ENTRPRSE\R&D\Btsupu2.pas
+    993	Add('B Band Price (less discount)');
+
+X:\ENTRPRSE\R&D\CLPALMCU.PAS
+    145	Caption:='Additional Discount';
+    146	PALab.Caption:='Settlement Discount in '+BCurSymb;
+
+X:\ENTRPRSE\R&D\CLPALU.PAS
+     96	Caption:='Additional Discount';
+     97	PALab.Caption:='Settlement Discount in '+BCurSymb;
+
+X:\ENTRPRSE\R&D\Comnu2.pas
+    426	Rnum:=Calc_PAmount(Round_Up(DiscBasis,UseDecs),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\Convdocu.pas
+    664	BDiscount:=BDiscount*DocCnst;
+   1029	Discount:=0;
+
+X:\ENTRPRSE\R&D\Copy of Custr3u.pas
+    292	Discount1: TMenuItem;
+   2859	DiscF.Text:=PPR_PamountStr(Discount,CDiscCh);
+   3022	ProcessInputPAmount(Discount,CDiscCH,DiscF.Text);
+   4721	PropTit     :  Array[0..2] of Str10 = ('Record','Ledger','Discount List');
+   8741	1  :  Del_Discount(1,ExLocal.LCust.CustCode,Self);
+
+X:\ENTRPRSE\R&D\Copy of OIDETAIL.PAS
+     69	Function  GetDiscount : Real; Override;
+     70	Procedure SetDiscount(Value : Real); Override;
+     81	Function  GetDiscountChr : Char; Override;
+     82	Procedure SetDiscountChr(Value : Char); Override;
+    974	Function TInvLine.GetDiscount : Real;
+    977	Result := DataRec.Discount
+    980	EntSys.DataAccessErrDlg(True, InvLineErrStr + 'Discount');
+    984	Procedure TInvLine.SetDiscount(Value : Real);
+    987	If (DataRec.Discount <> Value) Then Begin
+    988	DataRec.Discount := Value;
+    993	EntSys.DataAccessErrDlg(False, InvLineErrStr + 'Discount');
+   1110	Function TInvLine.GetDiscountChr : Char;
+   1113	Result := DataRec.DiscountChr
+   1120	Procedure TInvLine.SetDiscountChr(Value : Char);
+   1123	If (DataRec.DiscountChr <> Value) Then Begin
+   1125	DataRec.DiscountChr := Value;
+   1886	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\Currncyu.pas
+    633	ITotEqL:=(Round_Up(IGTot,2)+Round_Up(IVTot,2)-Round_Up(PDis,2)-(Round_Up(LDis,2)*Ord(Syss.SepDiscounts))-Round_up(SDis,2));
+
+X:\ENTRPRSE\R&D\CUSTABSU.PAS
+     65	cuNomCtrlType = (CUInVAT,CUOutVAT,CUDebtors,CUCreditors,CUDiscountGiven,CUDiscountTaken,
+    363	Function  GetSepDiscounts : Boolean; Virtual; Abstract;
+    473	Property ssSepDiscounts : Boolean Read GetSepDiscounts;
+    698	Function  GetDiscount : Real; Virtual; Abstract;
+    699	Procedure SetDiscount(Value : Real); Virtual; Abstract;
+    829	Property acDiscount : Real Read GetDiscount Write SetDiscount;
+    832	Property acDiscountBand : Char Read GetCDiscCh Write SetCDiscCh;
+    937	Function  GetDiscount : Real; Virtual; Abstract;
+    938	Procedure SetDiscount(Value : Real); Virtual; Abstract;
+    949	Function  GetDiscountChr : Char; Virtual; Abstract;
+    950	Procedure SetDiscountChr(Value : Char); Virtual; Abstract;
+   1042	Property tlDiscount : Real Read GetDiscount Write SetDiscount;
+   1048	Property tlDiscFlag : Char Read GetDiscountChr Write SetDiscountChr;
+   2833	Function GetDiscount : Double; Virtual; Abstract;
+   2834	Procedure SetDiscount (Value : Double); Virtual; Abstract;
+   2882	Property telDiscount : Double Read GetDiscount Write SetDiscount;
+   2939	Function GetTotalDiscount : Double; Virtual; Abstract;
+   2940	Procedure SetTotalDiscount (Value : Double); Virtual; Abstract;
+   2992	Property teTotalDiscount : Double Read GetTotalDiscount Write SetTotalDiscount;
+
+X:\ENTRPRSE\R&D\CuStkA2U.pas
+    404	Rnum2:=csDiscount;
+    415	csDiscount:=Rnum2;
+
+X:\ENTRPRSE\R&D\CUSTKA5U.PAS
+    182	Discount:=TSR.csDiscount;
+    183	DiscountChr:=TSR.csDiscCh;
+    215	TSR.csDiscount:=Discount;
+    216	TSR.csDiscCh:=DiscountChr;
+
+X:\ENTRPRSE\R&D\CUSTKT2U.PAS
+    710	t2DiscF.Text:=PPR_PamountStr(csDiscount,csDiscCh);
+    779	Rnum:=csDiscount;
+    783	csDiscount:=Rnum;
+   1841	Rnum2:=csDiscount;
+   1847	csDiscount:=Rnum2;
+   1921	csNetValue:=Get_StkPrice(LStock.SaleBands,csDiscount,csDiscCh,TeleSHed^.TeleSRec.TcCurr,LStock.SellUnit,
+
+X:\ENTRPRSE\R&D\Custr3u.pas
+    292	Discount1: TMenuItem;
+   1460	TAB_DISCOUNTS = 5;
+   1545	TAB_DISCOUNTS : begin
+   3155	DiscF.Text:=PPR_PamountStr(Discount,CDiscCh);
+   3318	ProcessInputPAmount(Discount,CDiscCH,DiscF.Text);
+   5031	PropTit     :  Array[0..2] of Str10 = ('Record','Ledger','Discount List');
+   9129	1  :  Del_Discount(1,ExLocal.LCust.CustCode,Self);
+
+X:\ENTRPRSE\R&D\DelQDiscU.PAS
+     42	procedure Del_Discount(IdMode  :  Byte;
+    210	Ok2Cont:=(CustomDlg(Self,'Please Confirm!','Apply to all Discounts',
+    211	'By ticking Every Applicable Discount Record, you have chosen to '+
+    272	procedure Del_Discount(IdMode  :  Byte;
+
+X:\ENTRPRSE\R&D\DELVRUNU.PAS
+    728	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+    883	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+   1379	PLDisc:=Calc_PAmount(Round_Up(NetValue,Syss.NoCOSDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\DISCU3U.PAS
+    631	If (DiscR<>Discount) then
+    632	DiscR:=Discount;
+    657	If (DiscR<>Discount) then
+    658	DiscR:=Discount;
+
+X:\ENTRPRSE\R&D\Discu4u.pas
+    175	MsgForm:=CreateMessageDialog('Please Wait...'+#13+#13+'Recalculating Discounts.',mtInformation,[]);
+    232	Calc_StockPrice(Stock,Cust,LInv.Currency,Qty,LInv.TransDate, NetValue,Discount,DiscountChr,MLocStk,Flg,Mode);
+    531	Calc_UPriceDisc(TStock,MiscRecs^,TStock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,1);
+    538	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+    658	Calc_UPriceDisc(Stock,DiscRec,Stock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,2);
+    659	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+    810	Calc_UPriceDisc(Stock,MiscRecs^,Stock.PCurrency,1,NetValue,Discount,DiscountChr,MLocStk,Mode);
+    811	DiscP:=Calc_PAmount(Round_Up(NetValue,UseNDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\EntComCu_TLB.pas
+    233	function  Get_acDiscount: Double; safecall;
+    234	procedure Set_acDiscount(Value: Double); safecall;
+    239	function  Get_acDiscountBand: WideString; safecall;
+    240	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    326	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    329	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+    390	property acDiscount: Double dispid 18;
+    393	property acDiscountBand: WideString dispid 21;
+
+X:\ENTRPRSE\R&D\Enterprise_TLB.pas
+    310	nmDiscountGiven = $00000004;
+    311	nmDiscountTaken = $00000005;
+    867	function Get_acDiscount: Double; safecall;
+    868	procedure Set_acDiscount(Value: Double); safecall;
+    873	function Get_acDiscountBand: WideString; safecall;
+    874	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    960	property acDiscount: Double read Get_acDiscount write Set_acDiscount;
+    963	property acDiscountBand: WideString read Get_acDiscountBand write Set_acDiscountBand;
+   1024	property acDiscount: Double dispid 18;
+   1027	property acDiscountBand: WideString dispid 21;
+   1129	function Get_ssSepDiscounts: WordBool; safecall;
+   1231	property ssSepDiscounts: WordBool read Get_ssSepDiscounts;
+   1342	property ssSepDiscounts: WordBool readonly dispid 59;
+   2399	function Get_tlDiscount: Double; safecall;
+   2400	procedure Set_tlDiscount(Value: Double); safecall;
+   2496	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+   2562	property tlDiscount: Double dispid 20;
+   3168	property acDiscount: Double dispid 18;
+   3171	property acDiscountBand: WideString dispid 21;
+   3929	property ssSepDiscounts: WordBool readonly dispid 59;
+   4100	property ssSepDiscounts: WordBool readonly dispid 59;
+   4393	property acDiscount: Double dispid 18;
+   4396	property acDiscountBand: WideString dispid 21;
+   4605	function Get_teTotalDiscount: Double; safecall;
+   4606	procedure Set_teTotalDiscount(Value: Double); safecall;
+   4655	property teTotalDiscount: Double read Get_teTotalDiscount write Set_teTotalDiscount;
+   4698	property teTotalDiscount: Double dispid 17;
+   4773	property tlDiscount: Double dispid 20;
+   4855	function Get_telDiscount: Double; safecall;
+   4856	procedure Set_telDiscount(Value: Double); safecall;
+   4901	property telDiscount: Double read Get_telDiscount write Set_telDiscount;
+   4941	property telDiscount: Double dispid 17;
+   5816	property tlDiscount: Double dispid 20;
+   6168	property ssSepDiscounts: WordBool readonly dispid 59;
+   6684	property tlDiscount: Double dispid 20;
+   7259	property tlDiscount: Double dispid 20;
+   7994	property ssSepDiscounts: WordBool readonly dispid 59;
+
+X:\ENTRPRSE\R&D\EVENT1U.PAS
+    357	ExLocal.LId.Discount:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscount;
+    358	ExLocal.LId.DiscountChr:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscflag;
+    381	ExLocal.LId.Discount:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscount;
+    382	ExLocal.LId.DiscountChr:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscflag;
+
+X:\ENTRPRSE\R&D\ExtGetU.pas
+    737	DeductD:=Not Syss.SepDiscounts;
+    905	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+   1198	Rnum:=DetLTotal(Id,(Syss.SepDiscounts or (Id.IdDocHed=RUN)),BOff,0.0);
+   2580	MsgForm:=CreateMessageDialog('Please Wait.... Updating discounts.',mtInformation,[mbAbort]);
+   2620	InpOk:=InputQuery('Copy Discounts','Copy from which stock record?',SCode);
+   2644	MsgForm:=CreateMessageDialog('Please Wait.... Copying discounts.',mtInformation,[]);
+   2885	mbRet:=MessageDlg('Please confirm you wish to copy discount to the same type accounts.',mtConfirmation,[mbYes,mbNo],0);
+   2891	MsgForm:=CreateMessageDialog('Please Wait.... Updating discounts.',mtInformation,[mbAbort]);
+   2938	InpOk:=InputQuery('Copy Discounts','Copy from which account record?',SCode);
+   2963	MsgForm:=CreateMessageDialog('Please Wait.... Copying discounts.',mtInformation,[]);
+
+X:\ENTRPRSE\R&D\Fifol2u.pas
+    161	If (Syss.SepDiscounts) then 
+    164	Rnum:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\Invctsuu.pas
+    504	DiscValue:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+    964	Discount:=0;
+    966	DiscountChr:=C0;
+   1995	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\Invfsu2u.pas
+    411	NetValue:=Get_StkPrice(SaleBands,Discount,DiscountChr,LInv.Currency,SellUnit,QtyMul,UsePack);
+    418	Discount,DiscountChr,MLocStk,Flg,0);
+    452	Discount,DiscountChr,IdR.MLocStk,Flg,0);
+    659	Discount:=LCust.Discount;
+    661	If (LCust.CDiscCh In StkBandSet) or (Discount<>0) then
+    662	DiscountChr:=LCust.CDiscCh;
+    841	Discount:=0.0;
+
+X:\ENTRPRSE\R&D\INVFSUPU.PAS
+    496	Discount,DiscountChr,Flg);
+    608	OldDiscCh:=DiscountChr;
+    610	If (Discount=0) and (InvLTotal(Id,Off,0)<>0) and (DiscountChr=C0)
+    614	Discount:=Cust.Discount; DiscountChr:=Cust.CDiscCh;
+    620	ProcessInputPAmount(Discount,DiscountChr,fpos[L],Term,Tc);
+    624	If (Not EmptyKey(StockCode,Fpos[SICdNo])) and (OldDiscCh<>DiscountChr)
+    626	and (DiscountChr In StkBandSet) then
+    631	NetValue:=Get_StkPrice(Stock.SaleBands,Discount,DiscountChr,Inv.Currency,Stock.SellUnit,
+   1091	Discount,DiscountChr,Flg);
+   1261	OldDiscCh:=DiscountChr;
+   1263	If (Discount=0) and (InvLTotal(Id,Off,0)<>0) and (DiscountChr=C0)
+   1267	Discount:=Cust.Discount; DiscountChr:=Cust.CDiscCh;
+   1273	ProcessInputPAmount(Discount,DiscountChr,fpos[L],Term,Tc);
+   1279	If (Not EmptyKey(StockCode,Fpos[SICdNo])) and (OldDiscCh<>DiscountChr)
+   1281	(DiscountChr In StkBandSet) then
+   1286	NetValue:=Get_StkPrice(Stock.SaleBands,Discount,DiscountChr,Inv.Currency,Stock.SellUnit,
+
+X:\ENTRPRSE\R&D\JAPI1U.pas
+    305	If (DiscountChr=PcntChr) then
+    306	OutLine:=FormatFloat(GenPcnt2dMask,Discount)
+    308	FormatFloat(GenRealMask,Discount);
+
+X:\ENTRPRSE\R&D\JAPLne2U.pas
+   1151	JADedF.Value:=Discount;
+   1163	JARVF.Value:=Discount;
+   1222	Discount:=Round_Up(JADedF.Value,2);
+   1236	Discount:=JARVF.Value;
+   1859	If (LId.DiscountChr=PcntChr) and (Not LId.LiveUplift) then
+   2098	DiscountChr:=PcntChr; 
+
+X:\ENTRPRSE\R&D\JCAppD2U.PAS
+   2530	I5ContraF.Value:=BDiscount;
+
+X:\ENTRPRSE\R&D\JobPAppU.pas
+   1569	and ((LoopCtrl=1) or ((LoopCtrl>1) and (Discount=IdR.Discount) and (DiscountChr=IdR.DiscountChr) and (JAPDedType=IdR.JAPDedType) and (COSNomCode=IdR.COSNomCode)))
+
+X:\ENTRPRSE\R&D\JobSup2U.pas
+    540	Result:=Basis-DiscSetAm-DiscAmount-CISTax-BDiscount+(InvVAT*Ord(tMode<>2));
+    624	Function ISEq_DiscountPcnt(IdR     :  IDetail;
+    630	Result:=(LiveUplift) or (DiscountChr<>PcntChr) or ((JA_IsGrossInc(InvR,BOn)) and (SOPLink<>0)) and (Reconcile<>0);
+    638	Function Eq_DiscountPcnt(IdR     :  IDetail;
+    659	If ISEq_DiscountPcnt(IdR,InvR)  or (ForcePracGI(InvR,IdR)) then
+    698	Result:=Discount;
+    892	0  :  LineTotal:=LineTotal+Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOff,BOff);
+    895	RetDeduct:=RetDeduct+Round_Up((YTDNetValue)*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn,BOff)),2)
+    911	CalcEquivPcnt:=Round_Up(CalcEquivPcnt*Pcnt(LId.Discount),2);
+    919	RetDeduct:=RetDeduct+Round_Up(RDRatio*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn,UseThisValue)),2);
+    940	LineTotal:=LineTotal+Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOff,BOff);
+    951	If (ISEq_DiscountPcnt(LId,InvR))  and (Not ShowCase)  then 
+    966	CalcEquivPcnt:=Round_Up(CalcEquivPcnt*Pcnt(LId.Discount),2);
+    975	DedTotal:=DedTotal+Round_Up(RDRatio*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOn,UseThisValue)),2);
+    979	DedTotal:=DedTotal+Round_Up((LCtrlDbl-(RetDeduct*Ord((Not ShowCase) )))*Pcnt(Eq_DiscountPcnt(LId,InvR,ExLocal,InvR.PDiscTaken,BOff,BOff)),2);
+    985	CompDisc:=CompDisc+Discount;
+   1184	LineTotal:=LineTotal+Round_Up((LineValue*Pcnt(IdR.Discount)),2);
+   1199	LineTotal:=LineTotal+Round_Up(LineValue*Pcnt(IdR.Discount),2);
+   1233	If (InvR.InvDocHed In JAPJAPSplit) and (LineTotal=0.0) and (IdR.Discount<>0.0) and (Not Idr.ShowCase) and (JAbMode(InvR)=0) and (CalcJAPRetTotals(InvR,IdR,ExLocal,100,iMode)=0.0) then
+   1238	LineTotal:=LineTotal+Round_Up(GetJAPRetTotals(InvR,ExLocal,2,iMode)*Pcnt(IdR.Discount),2)*DocNotCnst;
+   1648	BDiscount:=BDiscount+Round_Up(NetValue,2);
+   1727	NetValue:=Round_Up(LineTotal*Pcnt(Discount),2);
+   1776	BDiscount:=0.0;
+   1819	If (DedRetMode>0) and (LId.Reconcile>0) and (LId.DiscountChr=PcntChr) and (Not LId.LiveUplift) then 
+   2072	DiscountChr:=PcntChr; 
+   2453	BDiscount:=0.0;
+   2588	If (Reconcile<>1) or (DiscountChr=PcntChr) then
+
+X:\ENTRPRSE\R&D\LEDGSUPU.PAS
+    793	mbRet:=MessageDlg('A Settlement discount of '+FormatCurFloat(GenRealMask,DiscSetAm,BOn,Currency)+' is available.'+
+    794	#13+#13+'Do you wish to take this discount?',mtConfirmation,[mbYes,mbNo],0);
+    799	mbRet:=MessageDlg('A Settlement discount of '+FormatCurFloat(GenRealMask,DiscSetAm,BOn,Currency)+' is available.'+
+    800	#13+#13+'A manual adjustment is required in order to take this discount.',mtInformation,[mbOk],0);
+    832	mbRet:=MessageDlg('WARNING!'+#13+'A Settlement discount of '+FormatCurFloat(GenRealMask,DiscSetAm,BOn,Currency)+' has already been taken.'+
+    833	#13+#13+'Do you wish to cancel this discount?',mtWarning,[mbYes,mbNo],0);
+
+X:\ENTRPRSE\R&D\MiscU.pas
+    217	LDiscValue:=Discount;
+    251	Rnum:=Calc_PAmount(Round_Up(DiscBasis,UseDecs),LDiscValue,DiscountChr);
+    408	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+    435	LineDiscount,
+    502	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,SetlDisc*Ord(DiscountChr<>PcntChr),DiscountChr,PcntChr)
+    504	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,SetlDisc,DiscountChr,PcntChr);
+    516	NetValue:=((NetValue-LineDiscount)*(VATRateStd+1))+LineDiscount
+    527	If (DiscountChr=PcntChr) then
+    536	Round_Up(LineDiscount,2);
+    548	NewTotal:=(NetValue-LineDiscount);
+    562	Round_Up(LineDiscount,2))*Qty,2)+VAT);
+    572	LineDiscount:=Calc_PcntPcnt(IncNetValue,Discount,0,DiscountChr,PcntChr);
+    574	NewTotal:=(IncNetValue-LineDiscount)*Qty;
+   1542	LineDiscount,
+   1584	LineDiscount:=Calc_PcntPcnt(NetValue,Discount,DiscSetl,DiscountChr,PcntChr);
+   1587	NetValue:=((NetValue-LineDiscount)*(SyssVAT.VATRates.VAT[GetIVATNo(VatIncFlg)].Rate+1))+LineDiscount
+   1680	Result:=DiscountGiven
+   1682	Result:=DiscountTaken;
+
+X:\ENTRPRSE\R&D\MSWORD95.PAS
+    292	TmpField:=PPR_PAmountStr(Id.Discount, Id.DiscountChr);
+
+X:\ENTRPRSE\R&D\OBJPRCEU.PAS
+    659	If ((Discount<>0) or (CDiscCh<>#0)) then
+    661	DiscR:=Discount;
+
+X:\ENTRPRSE\R&D\OCUST.PAS
+     64	Function  GetDiscount : Real; Override;
+     65	Procedure SetDiscount(Value : Real); Override;
+    842	Function TCustomer.GetDiscount : Real;
+    845	Result := DataRec.Discount
+    848	EntSys.DataAccessErrDlg(True, CustObjStr + 'Discount');
+    852	Procedure TCustomer.SetDiscount(Value : Real);
+    855	If (DataRec.Discount <> Value) Then Begin
+    856	DataRec.Discount := Value;
+    861	EntSys.DataAccessErrDlg(False, CustObjStr + 'Discount');
+    921	EntSys.DataAccessErrDlg(True, CustObjStr + 'DiscountBand');
+    934	EntSys.CustomException (CustObjStr + 'DiscountBand');
+    938	EntSys.DataAccessErrDlg(False, CustObjStr + 'DiscountBand');
+   1799	EntSys.DataAccessErrDlg(True, CustObjStr + 'Default Settlement Discount');
+   1818	EntSys.DataAccessErrDlg(False, CustObjStr + 'Default Settlement Discount');
+
+X:\ENTRPRSE\R&D\OIDETAIL.PAS
+     69	Function  GetDiscount : Real; Override;
+     70	Procedure SetDiscount(Value : Real); Override;
+     81	Function  GetDiscountChr : Char; Override;
+     82	Procedure SetDiscountChr(Value : Char); Override;
+   1009	Function TInvLine.GetDiscount : Real;
+   1012	Result := DataRec.Discount
+   1015	EntSys.DataAccessErrDlg(True, InvLineErrStr + 'Discount');
+   1019	Procedure TInvLine.SetDiscount(Value : Real);
+   1022	If (DataRec.Discount <> Value) Then Begin
+   1023	DataRec.Discount := Value;
+   1028	EntSys.DataAccessErrDlg(False, InvLineErrStr + 'Discount');
+   1145	Function TInvLine.GetDiscountChr : Char;
+   1148	Result := DataRec.DiscountChr
+   1155	Procedure TInvLine.SetDiscountChr(Value : Char);
+   1158	If (DataRec.DiscountChr <> Value) Then Begin
+   1160	DataRec.DiscountChr := Value;
+   1921	Rnum:=Calc_PAmount(Round_Up(PriceEach,UseDecs),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\OSETUP.PAS
+    143	Function  GetSepDiscounts : Boolean; Override;
+    826	Function TSetup.GetSepDiscounts : Boolean;
+    828	Result := Syss.SepDiscounts
+
+X:\ENTRPRSE\R&D\OTELEHDR.PAS
+     58	Function GetTotalDiscount : Double; Override;
+     59	Procedure SetTotalDiscount (Value : Double); Override;
+    442	function TTelesales.GetTotalDiscount: Double;
+    447	EntSys.DataAccessErrDlg(True, ObjErrStr + 'TotalDiscount');
+    450	procedure TTelesales.SetTotalDiscount(Value: Double);
+    452	EntSys.NotImplException ('TAbsTelesales.teTotalDiscount');
+
+X:\ENTRPRSE\R&D\OTELELIN.PAS
+     54	Function GetDiscount : Double; Override;
+     55	Procedure SetDiscount (Value : Double); Override;
+    420	function TTelesalesLine.GetDiscount: Double;
+    423	Result := DataRec.csDiscount
+    425	EntSys.DataAccessErrDlg(True, ObjErrStr + 'Discount');
+    428	procedure TTelesalesLine.SetDiscount(Value: Double);
+    430	EntSys.NotImplException ('TAbsTelesalesLine.telDiscount');
+
+X:\ENTRPRSE\R&D\PAYITI1U.PAS
+    473	DeductD:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\R&D\PostingU.pas
+   2099	CtrlSet[DiscCtrl]:=Syss.NomCtrlCodes[DiscountGiven];
+   2107	CtrlSet[DiscCtrl]:=Syss.NomCtrlCodes[DiscountTaken];
+   2440	NetValue:=NetValue+DetLTotal(Idr,Not Syss.SepDiscounts,BOff,0.0);
+   4889	Discount:=Discount+CrDr[BOn];    
+   5925	LPost_To_Nominal(FullNomKey(NomCode),NetValue,Discount,0,Currency,PYr,PPr,1,BOff,BOff,BOff,
+   5971	LPost_To_CCNominal(FullNomKey(NomCode),NetValue,Discount,0,Currency,PYr,PPr,1,BOff,BOff,BOff,
+   5976	LPost_To_CCNominal(FullNomKey(NomCode),NetValue,Discount,0,Currency,PYr,PPr,1,BOff,BOff,BOff,
+   6132	CTot:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+   6138	If (Syss.SepDiscounts) then
+   6139	LineDisc:=Round_Up((CTot-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2)
+   6227	If (Syss.SepDiscounts) and (LineDisc<>0.0) then
+   6530	LPost_To_Nominal(FullNomKey(NomCode),NetValue,Discount,0,Currency,PYr,PPr,1,BOff,BOff,BOff,CXRate,PreviousBal,NomCode,UseORate);
+   7182	If (Syss.SepDiscounts) then
+   7753	CrDr[BOff]:=NetValue; CrDr[BOn]:=Discount;
+  10066	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+  10070	If (Syss.SepDiscounts) then
+  10071	LineDisc:=Round_Up((LVal-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2)
+  10105	If ((Syss.SepDiscounts) and (LineDisc<>0.0) and (CtrlSet[LDiscCtrl]<>0)) or ((IdDocHed=RUN) and (LineDisc<>0.0)) then
+
+X:\ENTRPRSE\R&D\PostSp2U.pas
+   2848	ShowStatus(2,'Updating discount matricies.');
+   3711	ShowStatus(2,'Updating discount matricies.');
+   7070	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+   7073	If (Syss.SepDiscounts) and (LVal=0.0) and (IdDocHed=RUN) then 
+   7074	LVal:=Round_Up((LVal-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2);
+   8417	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\R&D\PWARY.PAS
+    148	tCaption:='Customer Discounts';
+    323	tCaption:='Supplier Discounts';
+    601	tCaption:='Quantity Break Discounts';
+
+X:\ENTRPRSE\R&D\RECEPU.PAS
+   2503	'Please check you have taken any variance / settlement discount now, as these '+
+   2762	ShowMessage('Automatic lines could not be generated for Variance, or Settlement Discount'+#13+
+
+X:\ENTRPRSE\R&D\RECNT1U.PAS
+    411	DeductD:=Not Syss.SepDiscounts;
+    538	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0)*Cnst;
+    770	LVal:=DetLTotal(Id,Not Syss.SepDiscounts,BOff,0.0);
+    899	Rnum:=DetLTotal(Id,Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\R&D\REPORT2U.PAS
+    619	Summary:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\R&D\REPORT3U.PAS
+   1418	Summary:=Not Syss.SepDiscounts;
+   1457	Summary:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\R&D\REPORT5U.PAS
+    502	TBo:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\R&D\REPORT6U.PAS
+   1011	If (DiscR<>Discount) then
+   1012	DiscR:=Discount;
+   1196	Disc:=LCust.Discount;
+
+X:\ENTRPRSE\R&D\REPORT7U.PAS
+    325	TBo:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\R&D\REPORTCU.PAS
+   2147	Linetot[3]:=LineTot[3]+DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\R&D\REPORTIU.PAS
+    499	Rnum2:=BDiscount*DocCnst[InvDocHed]*DocNotCnst;
+    505	Rnum2:=Round_Up(Conv_TCurr(BDiscount,XRate(CXRate,BOff,Currency),Currency,0,BOff),2)*
+    512	Rnum2:=BDiscount*DocCnst[InvDocHed]*DocNotCnst;
+
+X:\ENTRPRSE\R&D\RetLineU.pas
+   1456	Id3DiscF.Text:=PPR_PamountStr(Discount,DiscountChr);
+   1511	ProcessInputPAmount(Discount,DiscountChr,Id3DiscF.Text);
+   2582	Discount,DiscountChr,MLocStk,Flg,0);
+
+X:\ENTRPRSE\R&D\RetSup1U.pas
+    963	Discount:=0.0;
+    964	DiscountChr:=#0;
+   1061	Discount:=0.0;
+   1062	DiscountChr:=#0;
+   1077	Discount:=0.0;
+   1078	DiscountChr:=#0;
+   1087	Discount:=0.0;
+   1088	DiscountChr:=#0;
+   1192	Calc_StockPrice(Stock,Cust,Inv.Currency,Qty,Inv.TransDate,NetValue ,Discount,DiscountChr,MLocStk,Flg,0);
+   1340	Discount:=0.0;
+   1341	DiscountChr:=#0;
+
+X:\ENTRPRSE\R&D\RevalueU.pas
+   5657	ShowStatus(0,'Delete Discount Records.');
+
+X:\ENTRPRSE\R&D\SALETI1U.PAS
+    203	7  :  OutLine:=PPR_PamountStr(Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\SALETX2U.PAS
+   6198	PossMsg^[8]:='Discount value larger than Invoice value!';
+
+X:\ENTRPRSE\R&D\Saltxl2u.pas
+    873	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+   1229	DiscP:=Calc_PAmount(Round_Up(NetValue,Syss.NoCosDec),Discount,DiscountChr);
+
+X:\ENTRPRSE\R&D\SETNCC.PAS
+    222	GLCCAry[DiscountGiven]:=GL5F;
+    223	GLCCAry[DiscountTaken]:=GL6F;
+    241	GLSDAry[DiscountGiven]:=SD5F;
+    242	GLSDAry[DiscountTaken]:=SD6F;
+
+X:\ENTRPRSE\R&D\SOPCT4U.PAS
+    499	LineCost:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\R&D\SOPCT5U.PAS
+    946	Id.Discount:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscount;
+    947	Id.DiscountChr:=EntSysObj.TransAction.thLines.thCurrentLine.tlDiscFlag;
+
+X:\ENTRPRSE\R&D\StkQtyU.pas
+    764	3    :  Caption:='Discount Record for : '+dbFormatName(CustCode,Company);
+    953	EMsg:='Default Discount';
+    968	EMsg:='Default Discount';
+   1539	ShowMessage('That discount type is not allowed for suppliers.');
+   1553	ShowMessage('That discount type is not allowed for suppliers.');
+
+X:\ENTRPRSE\R&D\StockU.pas
+  11368	1  :  Del_Discount(0,ExLocal.LStock.StockCode,Self);
+
+X:\ENTRPRSE\R&D\SysSetU.pas
+   1019	SLF.Checked:=SepDiscounts;
+   1553	SepDiscounts:=SLF.Checked;
+
+X:\ENTRPRSE\R&D\Sysu2.pas
+     27	Function PPR_PamountStr(Discount  :  Real;
+     31	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+     35	Procedure  ProcessInputDPAmount(Var  Discount  :  Double;
+    307	Function PPR_PamountStr(Discount  :  Real;
+    328	If (Discount=0) and (Not (DiscCh In StkBandSet)) then
+    333	GenStr:=FormatFloat(GenPcnt2dMask,Discount*100)
+    348	GenStr:=FormatFloat(GenDiscMask,Discount);
+    352	GenStr:=FormatFloat(GenRealMask,Discount);
+    368	Procedure  ProcessInputPAmount(Var  Discount  :  Real;
+    419	Discount:=Rnum;
+    422	Discount:=Pcnt(Discount);
+    427	Procedure  ProcessInputDPAmount(Var  Discount  :  Double;
+    437	R:=Discount;  FD:=Syss.DefPcDisc;
+    443	Discount:=R;
+
+X:\ENTRPRSE\R&D\Tsti1U.pas
+    353	Dnum:=Round_Up(csNetValue-Calc_PAmount(Round_Up(csNetValue,Syss.NoNetDec),csDiscount,csDiscCh),
+    666	csDiscount, csDiscCh),
+
+X:\ENTRPRSE\R&D\Txlineu.pas
+   2113	Id1DiscF.Text:=PPR_PamountStr(Discount,DiscountChr);
+   2186	ProcessInputPAmount(Discount,DiscountChr,Id1DiscF.Text);
+   2219	ProcessInputPAmount(Discount,DiscountChr,Id3DiscF.Text);
+   2871	Discount,DiscountChr,MLocStk,Flg,0);
+   2979	If (Discount=0) and (Id1LTotF.Value<>0) and (DiscountChr=C0)
+   2983	Discount:=LCust.Discount; DiscountChr:=LCust.CDiscCh;
+   3010	and (LInv.InvDocHed In SalesSplit) and (DiscountChr In StkBandSet) then
+   3013	NetValue:=Get_StkPrice(LStock.SaleBands,Discount,DiscountChr,LInv.Currency,LStock.SellUnit,
+   3162	If (ExLocal.LId.DiscountChr=#0) then
+   3163	BalNow:=BalNow-ExLocal.LId.Discount;
+   3257	If (ExLocal.LId.DiscountChr=#0) then
+   3258	BalNow:=BalNow-ExLocal.LId.Discount;
+   4022	BalNow:=InvLTotal(ExLocal.LId,Not Syss.SepDiscounts,0);
+
+X:\ENTRPRSE\R&D\UNPOSTU.PAS
+   2956	NetValue:=NetValue+(DetLTotal(Idr,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst);
+   3078	CTot:=DetLTotal(LId,(Not Syss.SepDiscounts) or (IdDocHed=Run),BOff,0.0)*DocNotCnst;
+   3284	CTot:=DetLTotal(LId,(Not Syss.SepDiscounts) or (IdDocHed=Run),BOff,0.0)*DocNotCnst;
+
+X:\ENTRPRSE\R&D\ZCUST.PAS
+     50	function  Get_acDiscount: Double; safecall;
+     51	procedure Set_acDiscount(Value: Double); safecall;
+     56	function  Get_acDiscountBand: WideString; safecall;
+     57	procedure Set_acDiscountBand(const Value: WideString); safecall;
+    411	function TCOMCustomer.Get_acDiscount: Double;
+    413	Result := FAccount.acDiscount;
+    416	procedure TCOMCustomer.Set_acDiscount(Value: Double);
+    418	FAccount.acDiscount := Value;
+    447	function TCOMCustomer.Get_acDiscountBand: WideString;
+    449	Result := FAccount.acDiscountBand;
+    452	procedure TCOMCustomer.Set_acDiscountBand(const Value: WideString);
+    460	FAccount.acDiscountBand := TheChar;
+
+X:\ENTRPRSE\R&D\ZLINE.PAS
+     51	function  Get_tlDiscount: Double; safecall;
+     52	procedure Set_tlDiscount(Value: Double); safecall;
+    383	function TCOMTransactionLine.Get_tlDiscount: Double;
+    385	Result := FLineObj.tlDiscount;
+    388	procedure TCOMTransactionLine.Set_tlDiscount(Value: Double);
+    390	FLineObj.tlDiscount := Value;
+
+X:\ENTRPRSE\R&D\zSetup.pas
+    242	function  Get_ssSepDiscounts: WordBool; safecall;
+   1525	function TCOMSetup.Get_ssSepDiscounts: WordBool;
+   1527	Result := FD5Setup.ssSepDiscounts;
+
+X:\ENTRPRSE\R&D\ZTELEHDR.PAS
+     51	function Get_teTotalDiscount: Double; safecall;
+     52	procedure Set_teTotalDiscount(Value: Double); safecall;
+    327	function TCOMTeleSales.Get_teTotalDiscount: Double;
+    329	Result := FTelesales.teTotalDiscount;
+    332	procedure TCOMTeleSales.Set_teTotalDiscount(Value: Double);
+    334	FTelesales.teTotalDiscount := Value;
+
+X:\ENTRPRSE\R&D\ZTELELIN.PAS
+     48	function Get_telDiscount: Double; safecall;
+     49	procedure Set_telDiscount(Value: Double); safecall;
+    296	function TCOMTeleSalesLine.Get_telDiscount: Double;
+    298	Result := FTelesales.telDiscount;
+    301	procedure TCOMTeleSalesLine.Set_telDiscount(Value: Double);
+    303	FTelesales.telDiscount := Value;
+
+X:\ENTRPRSE\Scheduler\Engine\REPORT2U.PAS
+    625	Summary:=Not Syss.SepDiscounts;
+
+X:\ENTRPRSE\Scheduler\Temp\Btsupu2.pas
+    993	Add('B Band Price (less discount)');
+
+X:\ENTRPRSE\Scheduler\Temp\PostSp2U.pas
+   2789	ShowStatus(2,'Updating discount matricies.');
+   3652	ShowStatus(2,'Updating discount matricies.');
+   6712	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+   6715	If (Syss.SepDiscounts) and (LVal=0.0) and (IdDocHed=RUN) then 
+   6716	LVal:=Round_Up((LVal-DetLTotal(LId,Syss.SepDiscounts,BOff,0.0))*DocNotCnst,2);
+   8039	LVal:=DetLTotal(LId,Not Syss.SepDiscounts,BOff,0.0);
+
+X:\ENTRPRSE\SpecFunc\EntDef\SPEF3U.PAS
+     98	'Set SOR/SDN Settlement discount from Trade Terms1 (Bentley)',
+    119	'Convert Manual Settlement Discount (Bentley)',
+    122	'Set Cust Settlement Discount from S-Setup',
+    123	'Set Supp Settlement Discount from S-Setup',
+    164	'Remove Corrupted Acount & Stock Discount Records',
+
+X:\ENTRPRSE\SpecFunc\EntDef\SPEF4U.PAS
+    571	NoValue:=((Id.Qty=0.0) or ((Id.NetValue=0.0) and (Id.Discount=0.0)));
+
+X:\ENTRPRSE\SpecFunc\EntDef\spef5u.pas
+    644	Write_FixLogFmt(FNum,'Unable to delete Discount record '+KeyS+', report error '+Form_Int(Status,0),0);
+    651	Write_FixLogFmt(FNum,'Deleted Discount Record record '+KeyS,0);
+
+X:\ENTRPRSE\SpecFunc\EXCHDLL.INC
+     40	Discount   : Double;
+    192	BDiscount :  Double;      
+    224	Discount    :  Double;      
+    229	DiscountChr :  Char;        
+
+X:\ENTRPRSE\SpecFunc\USEDLLU.PAS
+    436	USEDISCOUNT : WORDBOOL;
+    962	USEDISCOUNT : WORDBOOL;
+
+X:\ENTRPRSE\VRW\Common\GlobalTypes.pas
+     67	User_List, Discount_Matrix, Job_Notes,
+
+X:\ENTRPRSE\VRW\Common\RWOPENF.PAS
+    164	DataFilesL^[14]:='Discount Matrix';       
+
+X:\ENTRPRSE\VRW\EntRW\SelectDBFieldF.pas
+    135	FFileDesc := 'Discount Fields';
+
+X:\EXCHLITE\ICE\Source\Common\Backup_01\uCustImport.pas
+    206	discount := _GetValue(pXmlNode, 'discount');
+
+X:\EXCHLITE\ICE\Source\Common\Backup_01\uDripfeedExport.pas
+    158	XMLWriter.AddLeafTag('acdiscount',           Discount);
+    161	XMLWriter.AddLeafTag('acdiscountband',       CDiscCh);
+    741	XMLWriter.AddLeafTag('thtotallinediscount', oTrans.thTotalLineDiscount);
+    860	XMLWriter.AddLeafTag('tldiscount',            tlDiscount);
+
+X:\EXCHLITE\ICE\Source\Common\Backup_02\uTransactionExport.pas
+    569	XMLWriter.AddLeafTag('thtotallinediscount', oTrans.thTotalLineDiscount);
+    677	XMLWriter.AddLeafTag('tldiscount',            tlDiscount);
+
+X:\EXCHLITE\ICE\Source\Common\uCustExport.pas
+    235	_AddLeafNode(lRecNode, 'acdiscount',           Discount);
+    238	_AddLeafNode(lRecNode, 'acdiscountband',       CDiscCh);
+
+X:\EXCHLITE\ICE\Source\Common\uCustImport.pas
+    204	discount     := _GetNodeValue(Node, 'acdiscount');
+    209	Aux := _GetNodeValue(Node, 'acdiscountband');
+
+X:\EXCHLITE\ICE\Source\Common\uDripfeedExport.pas
+    163	XMLWriter.AddLeafTag('acdiscount',           Discount);
+    166	XMLWriter.AddLeafTag('acdiscountband',       CDiscCh);
+    758	XMLWriter.AddLeafTag('thtotallinediscount', oTrans.thTotalLineDiscount);
+    882	XMLWriter.AddLeafTag('tldiscount',            tlDiscount);
+
+X:\EXCHLITE\ICE\Source\Common\uDripfeedImport.pas
+    156	TransLine.tlDiscount           := _GetNodeValue(LineNode, 'tldiscount');
+    530	discount     := _GetNodeValue(Node, 'acdiscount');
+    535	Aux := _GetNodeValue(Node, 'acdiscountband');
+    848	oAdd.thTotalLineDiscount := _GetNodeValue(Node, 'thtotallinediscount');
+
+X:\EXCHLITE\ICE\Source\Common\uOpeningBalanceDB.pas
+     64	DiscountRec = record
+    166	Discount:       DiscountRec;
+    167	DiscountFile:   Disc_FileDef;
+    202	TOBDiscount = class(TObject)
+    525	function TOBDiscount.Add(DocType: DocTypes; Amount: Double;
+    529	FillChar(Discount, SizeOf(Discount), 0);
+    530	Discount.OBalCode  := BuildOBalCode(DocType, Id.CustCode, Id.Currency, Accum.CtrlGL, Id.PYr);
+    531	Discount.DocType   := DocType;
+    532	Discount.CustCode  := LJVar(Id.CustCode, SizeOf(Id.CustCode));
+    533	Discount.Currency  := Id.Currency;
+    534	Discount.DiscSetAm := Amount;
+    535	Discount.OurRef    := OurRef;
+    536	Result := Add_Rec(F[DiscF], DiscF, Discount, 0);
+    541	function TOBDiscount.CreateFile(DataPath: string): LongInt;
+    559	function TOBDiscount.InitFile: LongInt;
+    568	FillChar(DiscountFile, FileSpecLen[Idx], 0);
+    569	with DiscountFile do
+    571	FileSpecLen[Idx] := Sizeof(DiscountFile);
+    572	RecLen           := Sizeof(Discount);
+    581	KeyBuff[1].KeyPos     := BtKeyPos(@Discount.OBalCode, @Discount) + 1;
+    582	KeyBuff[1].KeyLen     := SizeOf(Discount.OBalCode) - 1;
+    589	FileRecLen[Idx]  := Sizeof(Discount);
+    590	RecPtr[Idx]      := @Discount;
+    591	FileSpecOfs[Idx] := @DiscountFile;
+    594	FillChar(Discount, FileRecLen[Idx], 0);
+
+X:\EXCHLITE\ICE\Source\Common\uOpeningBalanceExport.pas
+     34	TAccumulatorAddMode = (aamFromLine, aamFromTransaction, aamFromNominal, aamForDiscount, aamForCurrency);
+     48	OBDiscount: TOBDiscount;
+     70	function CreateDiscountFile: Integer;
+     77	function FindDiscount: Boolean;
+     80	procedure AddDiscount;
+    135	OBDiscount := TOBDiscount.Create;
+    165	OBDiscount.Free;
+    372	FuncRes := CreateDiscountFile;
+    376	'Cannot create Settlement Discount file',
+    388	'Cannot open Settlement Discount file',
+    542	function TOpeningBalanceExport.CreateDiscountFile: Integer;
+    544	Result := OBDiscount.InitFile;
+    546	Result := OBDiscount.CreateFile(DataPath);
+    650	if not FindDiscount then
+    651	AddDiscount;
+    870	aamForDiscount:
+    890	if not (Mode in [aamFromNominal, aamForDiscount, aamForCurrency]) then
+    909	procedure TOpeningBalanceExport.AddDiscount;
+    915	FuncRes := OBDiscount.Add(TargetDocType, oTrans.thSettleDiscAmount, oTrans.thOurRef);
+    918	DoLogMessage('TOpeningBalanceExport.AddDiscount: Cannot add record',
+   1034	function TOpeningBalanceExport.FindDiscount: Boolean;
+   1041	FuncRes := Find_Rec(B_GetEq, F[DiscF], DiscF, Discount, 0, Key);
+   1180	FuncRes := Find_Rec(B_GetGEq, F[DiscF], DiscF, Discount, 0, Key);
+   1181	while (FuncRes = 0) and (Discount.OBalCode = OBalCode) do
+   1183	Amount := Amount + Discount.DiscSetAm;
+   1184	FuncRes := Find_Rec(B_GetNext, F[DiscF], DiscF, Discount, 0, Key);
+   1195	Accum.Id.Desc     := 'Discount adjustment';
+   1196	AddAccumulator(aamForDiscount);
+   1792	XMLWriter.AddLeafTag('thtotallinediscount', oTrans.thTotalLineDiscount);
+   1874	XMLWriter.AddLeafTag('tldiscount',            tlDiscount);
+
+X:\EXCHLITE\ICE\Source\Common\uOpeningBalanceImport.pas
+    149	TransLine.tlDiscount           := _GetNodeValue(LineNode, 'tldiscount');
+    799	oAdd.thTotalLineDiscount := _GetNodeValue(Node, 'thtotallinediscount');
+
+X:\EXCHLITE\ICE\Source\Common\uSystemSettingsExport.pas
+    121	_SetNodeValueByName(RecNode, 'sspercdiscounts',                   DefPcDisc);
+    125	_SetNodeValueByName(RecNode, 'sssplitdiscountsingl',              SepDiscounts);
+    133	_SetNodeValueByName(RecNode, 'sssettlementdiscount',              SettleDisc);
+
+X:\EXCHLITE\ICE\Source\Common\uSystemSettingsImport.pas
+    134	DefPcDisc      := _GetNodeValue(pNode, 'sspercdiscounts');
+    138	SepDiscounts   := _GetNodeValue(pNode, 'sssplitdiscountsingl');
+    146	SettleDisc     := _GetNodeValue(pNode, 'sssettlementdiscount');
+
+X:\EXCHLITE\ICE\Source\Common\uTransactionExport.pas
+    569	XMLWriter.AddLeafTag('thtotallinediscount', oTrans.thTotalLineDiscount);
+    677	XMLWriter.AddLeafTag('tldiscount',            tlDiscount);
+
+X:\EXCHLITE\ICE\Source\Common\uTransactionImport.pas
+    119	TransLine.tlDiscount           := _GetNodeValue(LineNode, 'tldiscount');
+    366	oAdd.thTotalLineDiscount := _GetNodeValue(Node, 'thtotallinediscount');
+
+X:\FAX\FAXSEND.XMAPI\__VARREC2U.PAS
+    224	csDiscount   :  Double;
+
+X:\SBSLIB\WIN\EXCOMMON\VARCNST3.PAS
+    199	DataFilesL^[14]:='Discount Matrix';       
+
+X:\SBSLIB\WIN\EXCOMMON\Varcomnu.pas
+     29	NomCtrlType    =  (InVAT,OutVAT,Debtors,Creditors,DiscountGiven,DiscountTaken,
+    241	'Settlement Discounts Given','Standard Discounts Given','Output VAT',
+    247	'Settlement Discounts Taken','Standard Discounts Taken','Input VAT',
+
+X:\SBSLIB\WIN\EXCOMMON\Varrec.pas
+     73	Discount   : Real;
+    440	BDiscount : Double;       
+    578	Discount   :  Real;        
+    586	DiscountChr:  Char;        
+   3624	SepDiscounts
+
+X:\SBSLIB\WIN\EXCOMMON\VARREC2U.PAS
+    272	csDiscount   :  Double;
+
+X:\SQL\CompassMD\Client\ucBase.pas
+    810	Sql.Add('CreditLimit,Discount,CreditStatus,CustCC,CDiscCh,CustDep,EECMember,IncStat,');
+    884	Sql.Add('CreditLimit,Discount,CreditStatus,CustCC,CDiscCh,CustDep,EECMember,IncStat,');
+    971	Sql.Add('Currency = 1,VATCode = ''UATCode'',PayTerms = 1,CreditLimit = 1,Discount = 1,');
+   1006	Sql.Add('PostDate = ''PostDate'',PORPickSOR = 1,BDiscount = 1,PrePostFlg = 1,');
+   1023	Sql.Add('StockCode = ''UtockCode'',Qty = 1,QtyMul = 1,NetValue = 1,Discount = 1,');
+   1024	Sql.Add('VATCode = ''U'',VAT = 1,Payment = 1,DiscountChr = ''U'',QtyWOFF = 1,QtyDel = 1,');
+   1080	Sql.Add('Currency = 1,VATCode = ''UATCode'',PayTerms = 1,CreditLimit = 1,Discount = 1,');
+   1115	Sql.Add('PostDate = ''PostDate'',PORPickSOR = 1,BDiscount = 1,PrePostFlg = 1,');
+   1132	Sql.Add('StockCode = ''UtockCode'',Qty = 1,QtyMul = 1,NetValue = 1,Discount = 1,');
+   1133	Sql.Add('VATCode = ''U'',VAT = 1,Payment = 1,DiscountChr = ''U'',QtyWOFF = 1,QtyDel = 1,');
+
+X:\SQL\CompassMD\Server\usBase.pas
+    811	Sql.Add('ExtSource SMALLINT, PostDate VARCHAR(8) CASE, PORPickSOR BIT NOT NULL, BDiscount DOUBLE, ');
+    827	Sql.Add('QtyMul DOUBLE, NetValue DOUBLE, Discount DOUBLE, VATCode CHAR(1) CASE, VAT DOUBLE, ');
+    828	Sql.Add('Payment BIT NOT NULL, DiscountChr CHAR(1) CASE, QtyWOFF DOUBLE, QtyDel DOUBLE, ');
+    857	Sql.Add('Discount DOUBLE, CreditStatus SMALLINT, CustCC VARCHAR(3) CASE, ');
+    896	Sql.Add('DocUser3,DocUser4,SSDProcess,ExtSource,PostDate,PORPickSOR,BDiscount,PrePostFlg,');
+    908	Sql.Add('Currency,CoRate,VATRate,CC,Dep,StockCode,Qty,QtyMul,NetValue,Discount,VATCode,');
+    909	Sql.Add('VAT,Payment,DiscountChr,QtyWOFF,QtyDel,CostPrice,CustCode,LineDate,Item,');
+    949	Sql.Add('ExtSource SMALLINT, PostDate VARCHAR(8), PORPickSOR BIT NOT NULL, BDiscount FLOAT, ');
+    967	Sql.Add('QtyMul FLOAT, NetValue FLOAT, Discount FLOAT, VATCode CHAR(1), VAT FLOAT, ');
+    968	Sql.Add('Payment BIT NOT NULL, DiscountChr CHAR(1), QtyWOFF FLOAT, QtyDel FLOAT, ');
+    999	Sql.Add('Discount FLOAT, CreditStatus SMALLINT, CustCC VARCHAR(3), ');
+   1036	Sql.Add('DocUser3,DocUser4,SSDProcess,ExtSource,PostDate,PORPickSOR,BDiscount,PrePostFlg,');
+   1049	Sql.Add('Currency,CoRate,VATRate,CC,Dep,StockCode,Qty,QtyMul,NetValue,Discount,VATCode,');
+   1050	Sql.Add('VAT,Payment,DiscountChr,QtyWOFF,QtyDel,CostPrice,CustCode,LineDate,Item,');
+
+X:\SQL\DBTester\EXCHDLL.INC
+     40	Discount   : Double;
+    198	BDiscount :  Double;      
+    235	Discount    :  Double;      
+    240	DiscountChr :  Char;        
+
+X:\SQL\DBTester\USEDLLU.PAS
+    450	USEDISCOUNT : WORDBOOL;
+    558	function EX_REMOVEDISCOUNTS(P      : POINTER;
+    560	USEDISCOUNT : WORDBOOL;
+   1091	USEDISCOUNT : WORDBOOL;
+   1219	function EX_REMOVEDISCOUNTS(P      : POINTER;
+   1221	USEDISCOUNT : WORDBOOL;
+
+X:\SQL\DBTester\uTransforms.pas
+     53	FieldByName('Discount').AsFloat:= Discount;
+    169	FieldByName('BDiscount').AsFloat:= BDiscount;
+    195	FieldByName('Discount').AsFloat:= Discount;
+    199	FieldByName('DiscountChr').AsString:= DiscountChr;
+
+X:\SQL\ELNavlist\NavRecU.pas
+     67	Discount   : Real;
+    426	BDiscount : Double;       
+    532	Discount   :  Real;        
+    540	DiscountChr:  Char;        
+
+X:\WWW\IntraWeb\SMSCredits\Enterprise03_TLB.pas
+     71	tlTypeDiscount = $00000004;
+    226	function Get_tlDiscount: Double; safecall;
+    227	procedure Set_tlDiscount(Value: Double); safecall;
+    320	property tlDiscount: Double read Get_tlDiscount write Set_tlDiscount;
+    384	property tlDiscount: Double dispid 12;
+    538	function Get_thTotalLineDiscount: Double; safecall;
+    539	procedure Set_thTotalLineDiscount(Value: Double); safecall;
+    650	property thTotalLineDiscount: Double read Get_thTotalLineDiscount write Set_thTotalLineDiscount;
+    726	property thTotalLineDiscount: Double dispid 19;

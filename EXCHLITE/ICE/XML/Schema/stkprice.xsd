@@ -1,0 +1,41 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:stkprice"
+            targetNamespace="urn:www-iris-co-uk:stkprice" >
+            
+  <xsd:complexType name="stkpricerec">
+    <xsd:sequence>
+      <xsd:element name='stockcode' type='xsd:string'/>
+      <xsd:element name='custcode' type='xsd:string'/>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='qty' type='xsd:double'/>
+      <xsd:element name='price' type='xsd:double'/>
+      <xsd:element name='discval' type='xsd:double'/>
+      <xsd:element name='discchar' type='xsd:string'/>
+      <xsd:element name='loccode' type='xsd:string'/>
+      
+      <xsd:element name='pricedate' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='stkpricerec' type='tns:stkpricerec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='stkprice'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='stkprice' type='tns:stkprice'/>
+
+</xsd:schema>

@@ -1,0 +1,1 @@
+sqlcmd -d master -S P002957\IRISSOFTWARE -i icedb.txt

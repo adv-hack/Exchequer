@@ -1,0 +1,93 @@
+APRO v4.01
+Compiler : Delphi 6
+Operating System : Windows NT 5.0 Service Pack 2
+Device: COM2
+Time      Type      SubType       Data      OtherData
+--------  --------  ------------  --------  ---------
+0000.011  TrDatChg  Avail         00000001  
+0000.011  TrgHdAlc  Window        000C0444  
+0000.507  TrgHdAlc  Method        00000000  
+0000.507  TrigAllc  Status        00000009  (Modem status)
+0000.507  TrigAllc  Status        00000011  (Modem status)
+0000.507  TrigAllc  Status        00000019  (Modem status)
+0000.507  TrigAllc  Status        00000021  (Modem status)
+0000.507  TrDatChg  Status        00000021  [00][80][00][00]
+0000.525  TrgHdAlc  Method        00000000  
+0002.542  Dispatch  WriteCom      00000005  ATZ[0D][0A]
+0002.542  TrigAllc  Data          00000028  OK
+0002.542  TrigAllc  Data          00000030  ERROR
+0002.542  TrigAllc  Data          00000038  CONNECT
+0002.542  TrigAllc  Data          00000040  BUSY
+0002.542  TrigAllc  Data          00000048  VOICE
+0002.542  TrigAllc  Data          00000050  NO[20]CARRIER
+0002.542  TrigAllc  Data          00000058  NO[20]DIALTONE
+0002.550  Dispatch  ReadCom       00000004  ATZ[0D]
+0002.550  Trigger   Avail         00000004  
+0002.681  Dispatch  ReadCom       00000006  [0D][0A]OK[0D][0A]
+0002.681  Trigger   Avail         00000002  
+0002.681  Trigger   Data          00000028  
+0002.681  Trigger   Avail         00000004  
+0002.682  Dispatch  WriteCom      00000011  ATDT07958879889[0D][0A]
+0002.696  Dispatch  ReadCom       0000000E  ATDT0795887988
+0002.697  Trigger   Avail         0000000E  
+0002.703  Dispatch  ReadCom       00000002  9[0D]
+0002.703  Trigger   Avail         00000002  
+0017.839  Dispatch  ReadCom       0000000E  [0D][0A]CONNECT[20]1440
+0017.839  Trigger   Avail         00000002  
+0017.839  Trigger   Data          00000038  
+0017.839  TrigAllc  Data          00000060  ID=
+0017.839  TrigAllc  Data          00000068  [06][0D]
+0017.839  TrigAllc  Data          00000070  [1B][04][0D]
+0017.839  TrigAllc  Data          00000078  [15][0D]
+0017.839  Dispatch  WriteCom      00000001  [0D]
+0017.840  Trigger   Avail         0000000C  
+0017.854  Dispatch  ReadCom       0000000E  0/ARQ/V32/LAPM
+0017.854  Trigger   Avail         0000000E  
+0017.855  Trigger   Status        00000021  
+0017.860  Dispatch  ReadCom       00000002  [0D][0A]
+0017.860  Trigger   Avail         00000002  
+0017.947  Dispatch  ReadCom       00000005  [0D][0D]ID=
+0017.947  Trigger   Avail         00000002  
+0017.947  Trigger   Data          00000060  
+0017.947  Dispatch  WriteCom      00000005  [1B]PG1[0D]
+0017.947  Trigger   Avail         00000003  
+0018.249  Dispatch  ReadCom       00000002  11
+0018.249  Trigger   Avail         00000002  
+0018.270  Dispatch  ReadCom       0000000C  0[20]1.8[0D][06][0D][1B][p[0D]
+0018.270  Trigger   Avail         00000006  
+0018.270  Trigger   Data          00000068  
+0018.270  TrigDisp  Data          00000060  
+0018.270  TrigDisp  Data          00000068  
+0018.270  TrigDisp  Data          00000078  
+0018.270  TrigDisp  Data          00000070  
+0018.270  TrigAllc  Data          00000080  [1B][p
+0018.270  TrigAllc  Data          00000088  [06][0D]
+0018.270  TrigAllc  Data          00000090  [15][0D]
+0018.270  TrigAllc  Data          00000098  [1E][0D]
+0018.270  Trigger   Avail         00000002  
+0018.270  Trigger   Data          00000080  
+0018.271  Dispatch  WriteCom      00000016  [02]07887503010[0D]PS1[0D][03]32:
+                                            [0D]
+0018.271  Trigger   Avail         00000004  
+0018.599  Dispatch  ReadCom       00000002  21
+0018.599  Trigger   Avail         00000002  
+0018.622  Dispatch  ReadCom       0000000E  1[20]Message[20]acce
+0018.623  Trigger   Avail         0000000E  
+0018.634  Dispatch  ReadCom       00000007  pted[0D][06][0D]
+0018.634  Trigger   Avail         00000005  
+0018.634  Trigger   Data          00000088  
+0018.634  TrigDisp  Data          00000080  
+0018.634  TrigDisp  Data          00000088  
+0018.634  TrigDisp  Data          00000090  
+0018.634  TrigDisp  Data          00000098  
+0018.634  TrigAllc  Data          000000A0  [1B][04][0D]
+0018.634  Dispatch  WriteCom      00000002  [04][0D]
+0018.634  Dispatch  WriteCom      0000000C  +++~~~ATH0[0D][0A]
+0018.640  Dispatch  WriteCom      00000002  [04][0D]
+0018.640  Dispatch  WriteCom      0000000C  +++~~~ATH0[0D][0A]
+0018.640  TrigDisp  Status        00000009  (Modem status)
+0018.640  TrigDisp  Status        00000011  (Modem status)
+0018.640  TrigDisp  Status        00000019  (Modem status)
+0018.640  TrigDisp  Status        00000021  (Modem status)
+0018.640  TrgHdDsp  Method        00000000  
+0018.640  TrgHdDsp  Method        00000000  

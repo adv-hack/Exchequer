@@ -1,0 +1,212 @@
+<schemarecord tldformat="3" version="12" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="QpKSnaKQm/wXAqXx4aMsvw==" identitycol="PositionId" reclen="1086" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_folio_ref" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlFolioNum" collation="0"/>
+        <schemafield fieldname="f_line_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlLineNo" collation="0"/>
+        <schemafield fieldname="f_posted_run" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlRunNo" collation="0"/>
+        <schemafield fieldname="f_nom_code" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlGLCode" collation="0"/>
+        <schemafield fieldname="f_nom_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlNominalMode" collation="0"/>
+        <schemafield fieldname="f_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlCurrency" collation="0"/>
+        <schemafield fieldname="f_p_yr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlYear" collation="0"/>
+        <schemafield fieldname="f_p_pr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlPeriod" collation="0"/>
+        <schemafield fieldname="f_department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="tlDepartment" collation="1"/>
+        <schemafield fieldname="f_cost_centre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="tlCostCentre" collation="1"/>
+        <schemafield fieldname="f_stock_code" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="tlStockCode" collation="0"/>
+        <schemafield fieldname="f_abs_line_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlABSLineNo" collation="0"/>
+        <schemafield fieldname="f_line_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlLineType" collation="0"/>
+        <schemafield fieldname="f_id_doc_hed" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlDocType" collation="0"/>
+        <schemafield fieldname="f_dll_update" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlDLLUpdate" collation="0"/>
+        <schemafield fieldname="f_old_ser_qty" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="tlOldSerialQty" collation="0"/>
+        <schemafield fieldname="f_qty" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQty" collation="0"/>
+        <schemafield fieldname="f_qty_mul" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQtyMul" collation="0"/>
+        <schemafield fieldname="f_net_value" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlNetValue" collation="0"/>
+        <schemafield fieldname="f_discount" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlDiscount" collation="0"/>
+        <schemafield fieldname="f_vat_code" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlVATCode" collation="0"/>
+        <schemafield fieldname="f_vat" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlVATAmount" collation="0"/>
+        <schemafield fieldname="f_payment" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlPaymentCode" collation="0"/>
+        <schemafield fieldname="f_old_p_bal" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlOldPBal" collation="0"/>
+        <schemafield fieldname="f_reconcile" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlRecStatus" collation="0"/>
+        <schemafield fieldname="f_discount_chr" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlDiscFlag" collation="0"/>
+        <schemafield fieldname="f_qty_woff" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQtyWOFF" collation="0"/>
+        <schemafield fieldname="f_qty_del" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQtyDel" collation="0"/>
+        <schemafield fieldname="f_cost_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlCost" collation="0"/>
+        <schemafield fieldname="f_cust_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="tlAcCode" collation="0"/>
+        <schemafield fieldname="f_p_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="tlLineDate" collation="0"/>
+        <schemafield fieldname="f_item" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="tlItemNo" collation="0"/>
+        <schemafield fieldname="f_description" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" columnname="tlDescription" collation="0"/>
+        <schemafield fieldname="f_job_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="tlJobCode" collation="1"/>
+        <schemafield fieldname="f_anal_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="tlAnalysisCode" collation="1"/>
+        <schemafield fieldname="f_cx_rate1" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlCompanyRate" collation="0"/>
+        <schemafield fieldname="f_cx_rate2" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlDailyRate" collation="0"/>
+        <schemafield fieldname="f_l_weight" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlUnitWeight" collation="0"/>
+        <schemafield fieldname="f_deduct_qty" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlStockDeductQty" collation="0"/>
+        <schemafield fieldname="f_kit_link" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlBOMKitLink" collation="0"/>
+        <schemafield fieldname="f_sop_link" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlSOPFolioNum" collation="0"/>
+        <schemafield fieldname="f_sop_line_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlSOPABSLineNo" collation="0"/>
+        <schemafield fieldname="f_m_loc_stk" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="tlLocation" collation="1"/>
+        <schemafield fieldname="f_qty_pick" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQtyPicked" collation="0"/>
+        <schemafield fieldname="f_qty_pw_off" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlQtyPickedWO" collation="0"/>
+        <schemafield fieldname="f_use_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlUsePack" collation="0"/>
+        <schemafield fieldname="f_serial_qty" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlSerialQty" collation="0"/>
+        <schemafield fieldname="f_cos_nom_code" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlCOSNomCode" collation="0"/>
+        <schemafield fieldname="f_doc_p_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="tlOurRef" collation="1"/>
+        <schemafield fieldname="f_doc_lt_link" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlDocLTLink" collation="0"/>
+        <schemafield fieldname="f_prx_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlPrxPack" collation="0"/>
+        <schemafield fieldname="f_qty_pack" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlQtyPack" collation="0"/>
+        <schemafield fieldname="f_recon_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="tlReconciliationDate" collation="0"/>
+        <schemafield fieldname="f_show_case" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlShowCase" collation="0"/>
+        <schemafield fieldname="f_sdb_folio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlSdbFolio" collation="0"/>
+        <schemafield fieldname="f_o_base_equiv" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlOriginalBaseValue" collation="0"/>
+        <schemafield fieldname="f_use_o_rate" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlUseOriginalRates" collation="0"/>
+        <schemafield fieldname="f_line_user1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField1" collation="0"/>
+        <schemafield fieldname="f_line_user2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField2" collation="0"/>
+        <schemafield fieldname="f_line_user3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField3" collation="0"/>
+        <schemafield fieldname="f_line_user4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField4" collation="0"/>
+        <schemafield fieldname="f_ssd_uplift" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlSSDUpliftPerc" collation="0"/>
+        <schemafield fieldname="f_ssd_country" fullfieldname="" typename="DelphiString" size="6" elements="1" id="-1" columnname="tlSSDCountry" collation="0"/>
+        <schemafield fieldname="f_vat_inc_flg" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlInclusiveVATCode" collation="0"/>
+        <schemafield fieldname="f_ssd_commod" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="tlSSDCommodCode" collation="0"/>
+        <schemafield fieldname="f_ssdsp_unit" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlSSDSalesUnit" collation="0"/>
+        <schemafield fieldname="f_price_mulx" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlPriceMultiplier" collation="0"/>
+        <schemafield fieldname="f_b2b_link" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlB2BLinkFolio" collation="0"/>
+        <schemafield fieldname="f_b2b_line_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlB2BLineNo" collation="0"/>
+        <schemafield fieldname="f_tri_rates" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlTriRates" collation="0"/>
+        <schemafield fieldname="f_tri_euro" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlTriEuro" collation="0"/>
+        <schemafield fieldname="f_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlTriInvert" collation="0"/>
+        <schemafield fieldname="f_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlTriFloat" collation="0"/>
+        <schemafield fieldname="f_spare1" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="tlSpare1" collation="0"/>
+        <schemafield fieldname="f_ssd_use_line" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlSSDUseLineValues" collation="0"/>
+        <schemafield fieldname="f_previous_bal" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlPreviousBalance" collation="0"/>
+        <schemafield fieldname="f_live_uplift" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlLiveUplift" collation="0"/>
+        <schemafield fieldname="f_cos_conv_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlCOSDailyRate" collation="0"/>
+        <schemafield fieldname="f_inc_net_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlVATIncValue" collation="0"/>
+        <schemafield fieldname="f_auto_line_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlLineSource" collation="0"/>
+        <schemafield fieldname="f_cis_rate_code" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlCISRateCode" collation="0"/>
+        <schemafield fieldname="f_cis_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlCISRate" collation="0"/>
+        <schemafield fieldname="f_cost_apport" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlCostApport" collation="0"/>
+        <schemafield fieldname="f_nomio_flg" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlNOMIOFlag" collation="0"/>
+        <schemafield fieldname="f_bin_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlBinQty" collation="0"/>
+        <schemafield fieldname="f_cis_adjust" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlCISAdjustment" collation="0"/>
+        <schemafield fieldname="f_jap_ded_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlDeductionType" collation="0"/>
+        <schemafield fieldname="f_serial_ret_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlSerialReturnQty" collation="0"/>
+        <schemafield fieldname="f_bin_ret_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlBinReturnQty" collation="0"/>
+        <schemafield fieldname="f_discount2" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlDiscount2" collation="0"/>
+        <schemafield fieldname="f_discount2_chr" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlDiscount2Chr" collation="0"/>
+        <schemafield fieldname="f_discount3" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="tlDiscount3" collation="0"/>
+        <schemafield fieldname="f_discount3_chr" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="tlDiscount3Chr" collation="0"/>
+        <schemafield fieldname="f_discount3_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="tlDiscount3Type" collation="0"/>
+        <schemafield fieldname="f_ecservice" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlECService" collation="0"/>
+        <schemafield fieldname="f_service_start_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="tlServiceStartDate" collation="0"/>
+        <schemafield fieldname="f_service_end_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="tlServiceEndDate" collation="0"/>
+        <schemafield fieldname="f_ecsales_tax_reported" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlECSalesTaxReported" collation="0"/>
+        <schemafield fieldname="f_purchase_service_tax" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlPurchaseServiceTax" collation="0"/>
+        <schemafield fieldname="f_reference" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="tlReference" collation="1"/>
+        <schemafield fieldname="f_receipt_no" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="tlReceiptNo" collation="1"/>
+        <schemafield fieldname="f_from_postcode" fullfieldname="" typename="DelphiString" size="16" elements="1" id="-1" columnname="tlFromPostCode" collation="1"/>
+        <schemafield fieldname="f_to_postcode" fullfieldname="" typename="DelphiString" size="16" elements="1" id="-1" columnname="tlToPostCode" collation="1"/>
+        <schemafield fieldname="f_line_user5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField5" collation="0"/>
+        <schemafield fieldname="f_line_user6" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField6" collation="0"/>
+        <schemafield fieldname="f_line_user7" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField7" collation="0"/>
+        <schemafield fieldname="f_line_user8" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField8" collation="0"/>
+        <schemafield fieldname="f_line_user9" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField9" collation="0"/>
+        <schemafield fieldname="f_line_user10" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="tlUserField10" collation="0"/>
+        <schemafield fieldname="f_threshold_code" fullfieldname="" typename="DelphiString" size="13" elements="1" id="-1" columnname="tlThresholdCode" collation="1"/>
+        <schemafield fieldname="f_materials_only_retention" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="tlMaterialsOnlyRetention" collation="0"/>
+        <schemafield fieldname="f_intrastat_notc" fullfieldname="" typename="DelphiString" size="3" elements="1" id="-1" columnname="tlIntrastatNoTC" collation="1"/>
+        <schemafield fieldname="f_tax_region" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlTaxRegion" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_folio_ref</item>
+                <item size="-1" computedcolumnname="">f_line_no</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_posted_run</item>
+                <item size="-1" computedcolumnname="">f_nom_code</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="f_nom_mode,f_currency,f_p_yr,f_p_pr">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_nom_code</item>
+                <item size="-1" computedcolumnname="">f_nom_mode</item>
+                <item size="-1" computedcolumnname="">f_currency</item>
+                <item size="-1" computedcolumnname="">f_p_yr</item>
+                <item size="-1" computedcolumnname="">f_p_pr</item>
+                <item size="-1" computedcolumnname="">f_posted_run</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="3" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="tlStockCodeComputed">f_stock_code</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="4" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_line_type</item>
+                <item size="-1" computedcolumnname="tlStockCodeComputed">f_stock_code</item>
+                <item size="-1" computedcolumnname="">f_p_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="5" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_folio_ref</item>
+                <item size="-1" computedcolumnname="">f_abs_line_no</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="6" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_line_type</item>
+                <item size="-1" computedcolumnname="">f_cust_code</item>
+                <item size="-1" computedcolumnname="tlStockCodeComputed">f_stock_code</item>
+                <item size="-1" computedcolumnname="">f_p_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="7" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_nom_code</item>
+                <item size="-1" computedcolumnname="">f_nom_mode</item>
+                <item size="-1" computedcolumnname="">f_reconcile</item>
+                <item size="-1" computedcolumnname="">f_currency</item>
+                <item size="-1" computedcolumnname="">f_p_yr</item>
+                <item size="-1" computedcolumnname="">f_p_pr</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="8" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="tlStockCodeComputed">f_stock_code</item>
+                <item size="-1" computedcolumnname="">f_p_date</item>
+                <item size="-1" computedcolumnname="">f_folio_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="9" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_cust_code</item>
+                <item size="-1" computedcolumnname="">f_ecservice</item>
+                <item size="-1" computedcolumnname="">f_service_start_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="10" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_cust_code</item>
+                <item size="-1" computedcolumnname="">f_doc_p_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="11" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_doc_p_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="12" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_p_yr</item>
+                <item size="-1" computedcolumnname="">f_p_pr</item>
+                <item size="-1" computedcolumnname="">f_doc_p_ref</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

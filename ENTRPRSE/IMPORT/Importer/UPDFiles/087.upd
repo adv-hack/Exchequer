@@ -1,0 +1,75 @@
+[Version]
+Version=6.01.000.087
+
+[Record Types]
+MD=MultiBuy Discount
+
+[Detail Recs]
+MD=MultiBuy Discount
+
+
+[Field Defs]
+MultiBuy Discount=MD
+MD=Yes
+
+[Field Maps]
+MD=
+
+[Trans Line]
+F100=TL.SerialNo                  0871    S 0020 O   Serial No                                          default=                                                                                                     comment=
+F101=TL.tlMultiBuyDiscount        0892    D 0008 O   Multi-Buy Discount Value                           default=                                                                                                     comment=                 
+F102=TL.PadChar19                 0900    C 0001 N   Padding                                            default=                                                                                                     comment=
+F103=TL.tlMultiBuyDiscountChr     0901    C 0001 O   Multi-Buy Discount Flag                            default=                                                                                                     comment=
+F104=TL.tlTransValueDiscount      0902    D 0008 O   Transaction Discount Value                         default=                                                                                                     comment=
+F105=TL.PadChar20                 0910    C 0001 N   Padding                                            default=                                                                                                     comment=
+F106=TL.tlTransValueDiscountChr   0911    C 0001 O   Transaction Discount Flag                          default=                                                                                                     comment=
+F107=TL.tlTransValueDiscountType  0912    C 0001 O   Transaction Discount Type                          default=                                                                                                     comment=
+F108=TL.tlMBDList                 0914    L 0004 N   Internal                                           default=                                                                                                     comment=
+F109=TL.Spare2                    0918    C 0003 N   Padding                                            default=                                                                                                     comment=
+F110=TL.LastChar                  0921    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+
+
+[MultiBuy Discount]
+F001=MD.mbdOwnerType              0001    C 0001 M   Owner Type                                         default=                                                                                                     comment=
+F002=MD.mbdDiscountType           0002    C 0001 M   Discount Type                                      default=                                                                                                     comment=
+F003=MD.mbdAcCode                 0003    S 0006 O   Account Code                                       default=                                                                                                     comment=
+F004=MD.mbdStockCode              0010    S 0016 M   Stock Code                                         default=                                                                                                     comment=
+F005=MD.mbdCurrency               0027    I 0002 O   Currency                                           default=                                                                                                     comment=
+F006=MD.mbdStartDate              0029    S 0008 O   Effective Start Date                               default=                                                                                                     comment=
+F007=MD.mbdEndDate                0038    S 0008 O   Effective End Date                                 default=                                                                                                     comment=
+F008=MD.mbdUseDates               0047    W 0002 O   Use Effective Dates                                default=                                                                                                     comment=
+F009=MD.mbdBuyQty                 0049    D 0008 M   Buy Quantity                                       default=                                                                                                     comment=
+F010=MD.mbdRewardValue            0057    D 0008 M   Reward Value                                       default=                                                                                                     comment=
+
+[Discount Matrix]
+F003=DM.DiscType                  0025    C 0001 O   Discount Type                                      default=                                                                                                     comment=B, P, M, U, Q, V
+
+F018=DM.VBThreshold               0105    D 0008 O   VBD Threshold Amount                               default=                                                                                                     comment=
+F019=DM.VBCurrency                0113    I 0002 O   VBD Currency                                       default=                                                                                                     comment=
+F020=DM.Spare                     0115    C 0195 N   Padding                                            default=                                                                                                     comment=
+F021=DM.LastChar                  0310    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+
+
+[MD]
+S001=MD.RecType                   0001    C 0002 F   Record Type                                        default=MD                                                                                                   comment=
+
+
+[Global Record Type]
+MD=
+
+[Import Settings]
+Apply Value-Based Discounts=Yes
+Apply Multi-Buy Discounts=Yes 
+
+[Apply Value-Based Discounts]
+Type=FixedList
+Yes=
+No=
+
+[Apply Multi-Buy Discounts]
+Type=FixedList
+Yes=
+No=
+

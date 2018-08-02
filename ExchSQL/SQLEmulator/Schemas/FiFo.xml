@@ -1,0 +1,41 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="109">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="fifo_stk_folio" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="FIFOStkFolio"/>
+    <schemafield fieldname="fifo_doc_abs_no" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="FIFODocAbsNo"/>
+    <schemafield fieldname="fifo_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="FIFODate"  />
+    <schemafield fieldname="fifo_qty_left" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="FIFOQtyLeft"/>
+    <schemafield fieldname="fifo_doc_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="FIFODocRef" collation="1" />
+    <schemafield fieldname="fifo_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="FIFOQty"/>
+    <schemafield fieldname="fifo_cost" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="FIFOCost"/>
+    <schemafield fieldname="fifo_curr" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="FIFOCurr"/>
+    <schemafield fieldname="fifo_cust" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="FIFOCust" collation="1" />
+    <schemafield fieldname="fifo_mloc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="FIFOMLoc" collation="1" />
+    <schemafield fieldname="fifo_c_rates1" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="FIFOCompanyRate"/>
+    <schemafield fieldname="fifo_c_rates2" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="FIFODailyRate"/>
+    <schemafield fieldname="fifo_use_o_rate" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="FIFOUseORate"/>
+    <schemafield fieldname="fifo_tri_rates" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="FIFOTriRates"/>
+    <schemafield fieldname="fifo_tri_euro" fullfieldname="" typename="BYTE" size="1" elements="1" id="-1" columnname="FIFOTriEuro"/>
+    <schemafield fieldname="fifo_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="FIFOTriInvert"/>
+    <schemafield fieldname="fifo_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="FIFOTriFloat"/>
+    <schemafield fieldname="fifo_tri_spare" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="FIFOTriSpare"  />
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>fifo_stk_folio</item>
+				<item>fifo_date</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>fifo_doc_ref</item>
+				<item>fifo_stk_folio</item>
+				<item>fifo_doc_abs_no</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

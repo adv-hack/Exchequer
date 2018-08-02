@@ -1,0 +1,174 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{890A67C6-231F-40D2-9104-C52C364E6329}</ProjectGuid>
+			<MainSource>RVPkgD2010.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Release</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DesignOnlyPackage>true</DesignOnlyPackage>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DependencyCheckOutputName>C:\Documents and Settings\All Users\Документы\RAD Studio\7.0\Bpl\RVPkgD2010.bpl</DCC_DependencyCheckOutputName>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_Description>TRichView for Delphi 2010</DCC_Description>
+			<GenPackage>true</GenPackage>
+			<DCC_S>false</DCC_S>
+			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
+			<GenDll>true</GenDll>
+			<DCC_N>false</DCC_N>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="RVPkgD2010.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="rvregcool.dcr"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="vclimg.dcp"/>
+			<DCCReference Include="designide.dcp"/>
+			<DCCReference Include="CRVData.pas"/>
+			<DCCReference Include="CRVFData.pas"/>
+			<DCCReference Include="CRVPP.pas"/>
+			<DCCReference Include="CtrlImg.pas"/>
+			<DCCReference Include="DLines.pas"/>
+			<DCCReference Include="PtblRV.pas"/>
+			<DCCReference Include="PtRVData.pas"/>
+			<DCCReference Include="RichView.pas"/>
+			<DCCReference Include="RVAnimate.pas"/>
+			<DCCReference Include="RVBack.pas"/>
+			<DCCReference Include="RVClasses.pas"/>
+			<DCCReference Include="RVCodePages.pas"/>
+			<DCCReference Include="RVCtrlData.pas"/>
+			<DCCReference Include="RVDataList.pas"/>
+			<DCCReference Include="RVDocParams.pas"/>
+			<DCCReference Include="RVDragDrop.pas"/>
+			<DCCReference Include="RVDsgn.pas">
+				<Form>frmRVDesign</Form>
+			</DCCReference>
+			<DCCReference Include="RVEdit.pas"/>
+			<DCCReference Include="RVERVData.pas"/>
+			<DCCReference Include="RVFMisc.pas"/>
+			<DCCReference Include="RVFuncs.pas"/>
+			<DCCReference Include="RVGetText.pas"/>
+			<DCCReference Include="RVGetTextW.pas"/>
+			<DCCReference Include="RVGifAnimate2007.pas"/>
+			<DCCReference Include="RVItem.pas"/>
+			<DCCReference Include="RVLabelItem.pas"/>
+			<DCCReference Include="RVLinear.pas"/>
+			<DCCReference Include="RVMapWht.pas"/>
+			<DCCReference Include="RVMarker.pas"/>
+			<DCCReference Include="RVMisc.pas"/>
+			<DCCReference Include="RVNote.pas"/>
+			<DCCReference Include="RVOfficeCnv.pas"/>
+			<DCCReference Include="RVPopup.pas"/>
+			<DCCReference Include="RVPP.pas"/>
+			<DCCReference Include="RVReg.pas"/>
+			<DCCReference Include="RVReport.pas"/>
+			<DCCReference Include="RVResize.pas"/>
+			<DCCReference Include="RVRTF.pas"/>
+			<DCCReference Include="RVRTFErr.pas"/>
+			<DCCReference Include="RVRTFProps.pas"/>
+			<DCCReference Include="RVRVData.pas"/>
+			<DCCReference Include="RVScroll.pas"/>
+			<DCCReference Include="RVSEdit.pas"/>
+			<DCCReference Include="RVSeqItem.pas"/>
+			<DCCReference Include="RVSer.pas"/>
+			<DCCReference Include="RVStr.pas"/>
+			<DCCReference Include="RVStyle.pas"/>
+			<DCCReference Include="RVSubData.pas"/>
+			<DCCReference Include="RVTable.pas"/>
+			<DCCReference Include="RVThread.pas"/>
+			<DCCReference Include="RVTInplace.pas"/>
+			<DCCReference Include="RVTypes.pas"/>
+			<DCCReference Include="RVUndo.pas"/>
+			<DCCReference Include="RVUni.pas"/>
+			<DCCReference Include="RVWordPaint.pas"/>
+			<DCCReference Include="RVXPTheme.pas"/>
+			<DCCReference Include="RVWinGrIn.pas"/>
+			<DCCReference Include="RVGrIn.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">RVPkgD2010.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

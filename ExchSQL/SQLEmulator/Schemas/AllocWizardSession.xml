@@ -1,0 +1,85 @@
+<schemarecord version="3" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="794">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="arc_cust_supp" fullfieldname="arc_cust_supp" typename="char" size="1" elements="1" id="-1"  columnname="arcCustSupp" collation="1"></schemafield>
+    <schemafield fieldname="arc_bank_nom" fullfieldname="arc_bank_nom" typename="long" size="4" elements="1" id="-1" columnname="ArcBankNom"/>
+    <schemafield fieldname="arc_ctrl_nom" fullfieldname="arc_ctrl_nom" typename="long" size="4" elements="1" id="-1" columnname="ArcCtrlNom"/>
+    <schemafield fieldname="arc_pay_curr" fullfieldname="arc_pay_curr" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcPayCurr"/>
+    <schemafield fieldname="arc_inv_curr" fullfieldname="arc_inv_curr" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcInvCurr"/>
+    <schemafield fieldname="arc_cc_dep1" fullfieldname="arc_cc_dep1" typename="DelphiString" size="4" elements="1" id="-1" columnname="ArcDepartment"/>
+    <schemafield fieldname="arc_cc_dep2" fullfieldname="arc_cc_dep2" typename="DelphiString" size="4" elements="1" id="-1" columnname="ArcCostCentre"/>
+    <schemafield fieldname="arc_sort_by" fullfieldname="arc_sort_by" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcSortBy"/>
+    <schemafield fieldname="arc_auto_total" fullfieldname="arc_auto_total" typename="bool1" size="1" elements="1" id="-1" columnname="ArcAutoTotal"/>
+    <schemafield fieldname="arc_sd_days_over" fullfieldname="arc_sd_days_over" typename="int16" size="2" elements="1" id="-1" columnname="ArcSDDaysOver"/>
+    <schemafield fieldname="arc_from_trans" fullfieldname="arc_from_trans" typename="bool1" size="1" elements="1" id="-1" columnname="ArcFromTrans"/>
+    <schemafield fieldname="arc_old_your_ref" fullfieldname="arc_old_your_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcOldYourRef"/>
+    <schemafield fieldname="arc_cheque_no2" fullfieldname="arc_cheque_no2" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcChequeNo2"/>
+    <schemafield fieldname="arc_force_new" fullfieldname="arc_force_new" typename="bool1" size="1" elements="1" id="-1" columnname="ArcForceNew"/>
+    <schemafield fieldname="arc_sort2_by" fullfieldname="arc_sort2_by" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcSort2By"/>
+    <schemafield fieldname="arc_total_own" fullfieldname="arc_total_own" typename="double" size="8" elements="1" id="-1" columnname="ArcTotalOwn"/>
+    <schemafield fieldname="arc_trans_value" fullfieldname="arc_trans_value" typename="double" size="8" elements="1" id="-1" columnname="ArcTransValue"/>
+    <schemafield fieldname="arc_tag_count" fullfieldname="arc_tag_count" typename="long" size="4" elements="1" id="-1" columnname="ArcTagCount"/>
+    <schemafield fieldname="arc_tag_run_date" fullfieldname="arc_tag_run_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="ArcTagRunDate"/>
+    <schemafield fieldname="arc_tag_run_yr" fullfieldname="arc_tag_run_yr" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcTagRunYr"/>
+    <schemafield fieldname="arc_tag_run_pr" fullfieldname="arc_tag_run_pr" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcTagRunPr"/>
+    <schemafield fieldname="arc_srcpi_ref" fullfieldname="arc_srcpi_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcSRCPIRef"/>
+    <schemafield fieldname="arc_inc_sdisc" fullfieldname="arc_inc_sdisc" typename="bool1" size="1" elements="1" id="-1" columnname="ArcIncSDisc"/>
+    <schemafield fieldname="arc_total" fullfieldname="arc_total" typename="double" size="8" elements="1" id="-1" columnname="ArcTotal"/>
+    <schemafield fieldname="arc_variance" fullfieldname="arc_variance" typename="double" size="8" elements="1" id="-1" columnname="ArcVariance"/>
+    <schemafield fieldname="arc_settle_d" fullfieldname="arc_settle_d" typename="double" size="8" elements="1" id="-1" columnname="ArcSettleD"/>
+    <schemafield fieldname="arc_trans_date" fullfieldname="arc_trans_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="ArcTransDate"/>
+    <schemafield fieldname="arc_ud1" fullfieldname="arc_ud1" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcUD1"/>
+    <schemafield fieldname="arc_ud2" fullfieldname="arc_ud2" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcUD2"/>
+    <schemafield fieldname="arc_ud3" fullfieldname="arc_ud3" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcUD3"/>
+    <schemafield fieldname="arc_ud4" fullfieldname="arc_ud4" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcUD4"/>
+    <schemafield fieldname="arc_job_code" fullfieldname="arc_job_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcJobCode"/>
+    <schemafield fieldname="arc_anal_code" fullfieldname="arc_anal_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcAnalCode"/>
+    <schemafield fieldname="arc_pay_details1" fullfieldname="arc_pay_details1" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcPayDetails1"/>
+    <schemafield fieldname="arc_pay_details2" fullfieldname="arc_pay_details2" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcPayDetails2"/>
+    <schemafield fieldname="arc_pay_details3" fullfieldname="arc_pay_details3" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcPayDetails3"/>
+    <schemafield fieldname="arc_pay_details4" fullfieldname="arc_pay_details4" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcPayDetails4"/>
+    <schemafield fieldname="arc_pay_details5" fullfieldname="arc_pay_details5" typename="DelphiString" size="31" elements="1" id="-1" columnname="ArcPayDetails5"/>
+    <schemafield fieldname="arc_inc_var" fullfieldname="arc_inc_var" typename="bool1" size="1" elements="1" id="-1" columnname="ArcIncVar"/>
+    <schemafield fieldname="arc_our_ref" fullfieldname="arc_our_ref" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcOurRef"/>
+    <schemafield fieldname="arc_cx_rate1" fullfieldname="arc_cx_rate1" typename="DelphiReal" size="6" elements="1" id="-1" columnname="ArcCompanyRate"/>
+    <schemafield fieldname="arc_cx_rate2" fullfieldname="arc_cx_rate2" typename="DelphiReal" size="6" elements="1" id="-1" columnname="ArcDailyRate"/>
+    <schemafield fieldname="arc_opo_name" fullfieldname="arc_opo_name" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcOpoName"/>
+    <schemafield fieldname="arc_start_date" fullfieldname="arc_start_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="ArcStartDate"/>
+    <schemafield fieldname="arc_start_time" fullfieldname="arc_start_time" typename="DelphiString" size="7" elements="1" id="-1" columnname="ArcStartTime"/>
+    <schemafield fieldname="arc_win_log_in" fullfieldname="arc_win_log_in" typename="DelphiString" size="51" elements="1" id="-1" columnname="ArcWinLogIn"/>
+    <schemafield fieldname="arc_locked" fullfieldname="arc_locked" typename="BYTE" size="1" elements="1" id="-1" columnname="ArcLocked"/>
+    <schemafield fieldname="arc_sales_mode" fullfieldname="arc_sales_mode" typename="bool1" size="1" elements="1" id="-1" columnname="ArcSalesMode"/>
+    <schemafield fieldname="arc_cust_code" fullfieldname="arc_cust_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="ArcCustCode"/>
+    <schemafield fieldname="arc_use_os_ndx" fullfieldname="arc_use_os_ndx" typename="bool1" size="1" elements="1" id="-1" columnname="ArcUseOSNdx"/>
+    <schemafield fieldname="arc_own_trans_value" fullfieldname="arc_own_trans_value" typename="double" size="8" elements="1" id="-1" columnname="ArcOwnTransValue"/>
+    <schemafield fieldname="arc_own_settle_d" fullfieldname="arc_own_settle_d" typename="double" size="8" elements="1" id="-1" columnname="ArcOwnSettleD"/>
+    <schemafield fieldname="arc_fin_var" fullfieldname="arc_fin_var" typename="bool1" size="1" elements="1" id="-1" columnname="ArcFinVar"/>
+    <schemafield fieldname="arc_fin_set_d" fullfieldname="arc_fin_set_d" typename="bool1" size="1" elements="1" id="-1" columnname="ArcFinSetD"/>
+    <schemafield fieldname="arc_sort_d" fullfieldname="arc_sort_d" typename="bool1" size="1" elements="1" id="-1" columnname="ArcSortD"/>
+    <schemafield fieldname="arc_alloc_full" fullfieldname="arc_alloc_full" typename="bool1" size="1" elements="1" id="-1" columnname="ArcAllocFull"/>
+    <schemafield fieldname="arc_check_fail" fullfieldname="arc_check_fail" typename="bool1" size="1" elements="1" id="-1" columnname="ArcCheckFail"/>
+    <schemafield fieldname="arc_charge1_gl" fullfieldname="arc_charge1_gl" typename="long" size="4" elements="1" id="-1" columnname="ArcCharge1GL"/>
+    <schemafield fieldname="arc_charge2_gl" fullfieldname="arc_charge2_gl" typename="long" size="4" elements="1" id="-1" columnname="ArcCharge2GL"/>
+    <schemafield fieldname="arc_charge1_amt" fullfieldname="arc_charge1_amt" typename="double" size="8" elements="1" id="-1" columnname="ArcCharge1Amt"/>
+    <schemafield fieldname="arc_charge2_amt" fullfieldname="arc_charge2_amt" typename="double" size="8" elements="1" id="-1" columnname="ArcCharge2Amt"/>
+    <schemafield fieldname="arc_your_ref" fullfieldname="arc_your_ref" typename="DelphiString" size="21" elements="1" id="-1" columnname="ArcYourRef"/>
+    <schemafield fieldname="arc_ud5"  fullfieldname="arc_ud5"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD5"/>
+    <schemafield fieldname="arc_ud6"  fullfieldname="arc_ud6"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD6"/>
+    <schemafield fieldname="arc_ud7"  fullfieldname="arc_ud7"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD7"/>
+    <schemafield fieldname="arc_ud8"  fullfieldname="arc_ud8"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD8"/>
+    <schemafield fieldname="arc_ud9"  fullfieldname="arc_ud9"  typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD9"/>
+    <schemafield fieldname="arc_ud10" fullfieldname="arc_ud10" typename="DelphiString" size="31" elements="1" id="0" columnname="ArcUD10"/>
+  	<schemafield fieldname="arc_use_ppd" fullfieldname="arc_use_ppd" typename="bool1" size="1" elements="1" id="0" columnname="ArcUsePPD"/>
+	</fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+        <item>arc_cust_supp</item>
+				<item>arc_cust_code</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

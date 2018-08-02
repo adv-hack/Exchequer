@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="/ZqUr8Pk9n1taT9aLTg5Jg" identitycol="PositionId" recordfieldname="" reclen="29">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_count_type" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="ssCountType" collation="1"/>
+    <schemafield fieldname="f_next_count_size" fullfieldname="" typename="int8" size="1" elements="1" id="-1" columnname="ssNextCount_size"/>
+    <schemafield fieldname="f_next_count" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="ssNextCount"/>
+    <schemafield fieldname="f_last_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ssLastValue"/>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item size="3" computedcolumnname="ssCountTypeComputed">f_count_type</item> 
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

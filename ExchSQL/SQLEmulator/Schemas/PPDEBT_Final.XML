@@ -1,0 +1,37 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="136" recordfieldname="">
+  <recordfields/>
+  <fixedfields>
+      <schemafield fieldname="ppdFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="ppdFolioNo" />
+      <schemafield fieldname="ppdCustCode" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="7" elements="1" id="-1" collation = "1" columnname="ppdCustCode" />
+      <schemafield fieldname="ppdValueFrom" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppdValueFrom" />
+      <schemafield fieldname="ppdValueTo" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppdValueTo" />
+      <schemafield fieldname="ppdCharge" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ppdCharge" />
+      <schemafield fieldname="ppdDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="ppdDummyChar" />
+      <schemafield fieldname="ppdValueFromStr" fullfieldname="" typename="DelphiString" size="26" elements="1" id="-1" collation = "1" columnname="ppdValueFromStr" />
+      <schemafield fieldname="ppdSpare" fullfieldname="" typename="binary" size="74" elements="1" id="-1" columnname="ppdSpare" />        
+  </fixedfields>
+  <defaultrecordtype>        
+  </defaultrecordtype>
+  <recordtypes/>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+      <indexfields>
+        <item computedcolumnname="ppdCustCodeComputed">ppdCustCode</item>
+        <item>ppdValueFrom</item>
+        <item>ppdDummyChar</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="1" isclustered="0" >
+      <indexfields>
+        <item>ppdFolioNo</item>
+        <item>ppdDummyChar</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isunique="1" isclustered="0" >
+      <indexfields>
+        <item computedcolumnname="ppdCustCodeComputed">ppdCustCode</item>
+        <item>ppdValueFromStr</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

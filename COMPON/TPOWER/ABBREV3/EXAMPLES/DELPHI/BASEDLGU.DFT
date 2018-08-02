@@ -1,0 +1,52 @@
+object BaseDlg: TBaseDlg
+  Left = 244
+  Top = 129
+  ActiveControl = OkBtn
+  BorderStyle = bsDialog
+  Caption = 'BaseDlg'
+  ClientHeight = 179
+  ClientWidth = 289
+  Font.Color = clBlack
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  PixelsPerInch = 96
+  Position = poScreenCenter
+  OnShow = FormShow
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 8
+    Top = 8
+    Width = 177
+    Height = 161
+    Shape = bsFrame
+    IsControl = True
+  end
+  object DirectoryListBox1: TDirectoryListBox
+    Left = 24
+    Top = 24
+    Width = 145
+    Height = 129
+    ItemHeight = 16
+    TabOrder = 0
+    OnChange = DirectoryListBox1Change
+  end
+  object CancelBtn: TButton
+    Left = 204
+    Top = 142
+    Width = 77
+    Height = 27
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 1
+  end
+  object OkBtn: TButton
+    Left = 204
+    Top = 110
+    Width = 77
+    Height = 27
+    Caption = '&Ok'
+    ModalResult = 1
+    TabOrder = 2
+  end
+end

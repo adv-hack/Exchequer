@@ -1,0 +1,227 @@
+<schemarecord tldformat="4" version="4" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="3l18H5AMCnNRwbONosnxJQ==" identitycol="PositionId" reclen="283" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="rec_pfix,sub_type">
+    <recordfields>
+        <schemafield fieldname="fixed" fullfieldname="fixed" typename="EXCHQCHK_FIXED" size="0" elements="1" id="-1" columnname="" collation="0"/>
+        <schemafield fieldname="var" fullfieldname="var" typename="EXCHQCHK_VAR" size="0" elements="1" id="-1" columnname="" collation="0"/>
+    </recordfields>
+    <fixedfields>
+        <schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix" collation="0"/>
+        <schemafield fieldname="sub_type" fullfieldname="sub_type" typename="uint8" size="1" elements="1" id="-1" columnname="SubType" collation="0"/>
+        <schemafield fieldname="exchqchk_code1" fullfieldname="exchqchk_code1" typename="DelphiEmbeddedCaseSensitiveString" size="13" elements="1" id="-1" columnname="EXCHQCHKcode1" collation="0"/>
+        <schemafield fieldname="exchqchk_code2" fullfieldname="exchqchk_code2" typename="binary" size="10" elements="1" id="-1" columnname="EXCHQCHKcode2" collation="0"/>
+        <schemafield fieldname="exchqchk_code3" fullfieldname="exchqchk_code3" typename="DelphiEmbeddedCaseSensitiveString" size="12" elements="1" id="-1" columnname="EXCHQCHKcode3" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes>
+        <recordtype name="PassEntryType" id="0" stringid="P*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="access" fullfieldname="access" typename="binary" size="244" elements="1" id="0" columnname="Access" collation="0"/>
+                <schemafield fieldname="last_pno" fullfieldname="last_pno" typename="BYTE" size="1" elements="1" id="0" columnname="LastPno" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="PassListType" id="1" stringid="L*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="pass_desc" fullfieldname="pass_desc" typename="binary" size="69" elements="1" id="0" columnname="PassDesc" collation="0"/>
+                <schemafield fieldname="pass_page" fullfieldname="pass_page" typename="BYTE" size="1" elements="1" id="0" columnname="PassPage" collation="0"/>
+                <schemafield fieldname="pass_lno" fullfieldname="pass_lno" typename="long" size="4" elements="1" id="0" columnname="PassLNo" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="NotesTypeNA" id="2" stringid="N*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="note_folio" fullfieldname="note_folio" typename="DelphiEmbeddedCaseSensitiveString" size="11" elements="1" id="0" columnname="NoteFolio" collation="0"/>
+                <schemafield fieldname="n_type" fullfieldname="n_type" typename="char" size="1" elements="1" id="0" columnname="NType" collation="0"/>
+                <schemafield fieldname="spare1" fullfieldname="spare1" typename="binary" size="2" elements="1" id="0" columnname="Spare1" collation="0"/>
+                <schemafield fieldname="line_no" fullfieldname="line_no" typename="long" size="4" elements="1" id="0" columnname="LineNumber" collation="0"/>
+                <schemafield fieldname="note_line" fullfieldname="note_line" typename="DelphiString" size="101" elements="1" id="0" columnname="NoteLine" collation="0"/>
+                <schemafield fieldname="note_user" fullfieldname="note_user" typename="DelphiString" size="11" elements="1" id="0" columnname="NoteUser" collation="0"/>
+                <schemafield fieldname="tmp_imp_code" fullfieldname="tmp_imp_code" typename="DelphiString" size="17" elements="1" id="0" columnname="TmpImpCode" collation="0"/>
+                <schemafield fieldname="show_date" fullfieldname="show_date" typename="bool1" size="1" elements="1" id="0" columnname="ShowDate" collation="0"/>
+                <schemafield fieldname="repeat_no" fullfieldname="repeat_no" typename="int16" size="2" elements="1" id="0" columnname="RepeatNo" collation="0"/>
+                <schemafield fieldname="note_for" fullfieldname="note_for" typename="DelphiString" size="11" elements="1" id="0" columnname="NoteFor" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="MatchPayTypeTP" id="12" stringid="T*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="settled_val" fullfieldname="settled_val" typename="binary" size="5" elements="1" id="0" columnname="SettledVal" collation="0"/>
+                <schemafield fieldname="own_c_val" fullfieldname="own_c_val" typename="DelphiReal" size="6" elements="1" id="0" columnname="OwnCVal" collation="0"/>
+                <schemafield fieldname="m_currency" fullfieldname="m_currency" typename="BYTE" size="1" elements="1" id="0" columnname="MCurrency" collation="0"/>
+                <schemafield fieldname="match_type" fullfieldname="match_type" typename="char" size="1" elements="1" id="0" columnname="MatchType" collation="0"/>
+                <schemafield fieldname="old_alt_ref" fullfieldname="old_alt_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="OldAltRef" collation="0"/>
+                <schemafield fieldname="r_currency" fullfieldname="r_currency" typename="BYTE" size="1" elements="1" id="0" columnname="RCurrency" collation="0"/>
+                <schemafield fieldname="rec_own_c_val" fullfieldname="rec_own_c_val" typename="double" size="8" elements="1" id="0" columnname="RecOwnCVal" collation="0"/>
+                <schemafield fieldname="alt_ref" fullfieldname="alt_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="AltRef" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="BillMatType" id="19" stringid="BM" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="qty_used" fullfieldname="qty_used" typename="binary" size="5" elements="1" id="0" columnname="QtyUsed" collation="0"/>
+                <schemafield fieldname="qty_cost" fullfieldname="qty_cost" typename="DelphiReal" size="6" elements="1" id="0" columnname="QtyCost" collation="0"/>
+                <schemafield fieldname="q_currency" fullfieldname="q_currency" typename="BYTE" size="1" elements="1" id="0" columnname="QCurrency" collation="0"/>
+                <schemafield fieldname="full_stk_code" fullfieldname="full_stk_code" typename="DelphiString" size="21" elements="1" id="0" columnname="FullStkCode" collation="1"/>
+                <schemafield fieldname="free_issue" fullfieldname="free_issue" typename="bool1" size="1" elements="1" id="0" columnname="FreeIssue" collation="0"/>
+                <schemafield fieldname="qty_time" fullfieldname="qty_time" typename="long" size="4" elements="1" id="0" columnname="QtyTime" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="BacsCtype" id="20" stringid="XC" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="bacs_tag_run_no" fullfieldname="tag_run_no" typename="binary" size="3" elements="1" id="0" columnname="BACSTagRunNo" collation="0"/>
+                <schemafield fieldname="pay_type" fullfieldname="pay_type" typename="char" size="1" elements="1" id="0" columnname="PayType" collation="0"/>
+                <schemafield fieldname="bacs_bank_nom" fullfieldname="bank_nom" typename="long" size="4" elements="1" id="0" columnname="BACSBankNom" collation="0"/>
+                <schemafield fieldname="pay_curr" fullfieldname="pay_curr" typename="BYTE" size="1" elements="1" id="0" columnname="PayCurr" collation="0"/>
+                <schemafield fieldname="inv_curr" fullfieldname="inv_curr" typename="BYTE" size="1" elements="1" id="0" columnname="InvCurr" collation="0"/>
+                <schemafield fieldname="cq_start" fullfieldname="cq_start" typename="long" size="4" elements="1" id="0" columnname="CQStart" collation="0"/>
+                <schemafield fieldname="age_type" fullfieldname="age_type" typename="BYTE" size="1" elements="1" id="0" columnname="AgeType" collation="0"/>
+                <schemafield fieldname="age_int" fullfieldname="age_int" typename="int16" size="2" elements="1" id="0" columnname="AgeInt" collation="0"/>
+                <schemafield fieldname="tag_status" fullfieldname="tag_status" typename="bool1" size="1" elements="1" id="0" columnname="TagStatus" collation="0"/>
+                <schemafield fieldname="total_tag0" fullfieldname="total_tag0" typename="double" size="8" elements="1" id="0" columnname="TotalTag0" collation="0"/>
+                <schemafield fieldname="total_tag1" fullfieldname="total_tag1" typename="double" size="8" elements="1" id="0" columnname="TotalTag1" collation="0"/>
+                <schemafield fieldname="total_tag2" fullfieldname="total_tag2" typename="double" size="8" elements="1" id="0" columnname="TotalTag2" collation="0"/>
+                <schemafield fieldname="total_tag3" fullfieldname="total_tag3" typename="double" size="8" elements="1" id="0" columnname="TotalTag3" collation="0"/>
+                <schemafield fieldname="total_tag4" fullfieldname="total_tag4" typename="double" size="8" elements="1" id="0" columnname="TotalTag4" collation="0"/>
+                <schemafield fieldname="tag_as_date" fullfieldname="tag_as_date" typename="DelphiString" size="9" elements="1" id="0" columnname="TagAsDate" collation="0"/>
+                <schemafield fieldname="tag_count" fullfieldname="tag_count" typename="long" size="4" elements="1" id="0" columnname="TagCount" collation="0"/>
+                <schemafield fieldname="tag_cc_dep1" fullfieldname="tag_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="TagDepartment" collation="0"/>
+                <schemafield fieldname="tag_cc_dep2" fullfieldname="tag_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="TagCostCentre" collation="0"/>
+                <schemafield fieldname="tag_run_date" fullfieldname="tag_run_date" typename="DelphiString" size="9" elements="1" id="0" columnname="TagRunDate" collation="0"/>
+                <schemafield fieldname="tag_run_yr" fullfieldname="tag_run_yr" typename="BYTE" size="1" elements="1" id="0" columnname="TagRunYr" collation="0"/>
+                <schemafield fieldname="tag_run_pr" fullfieldname="tag_run_pr" typename="BYTE" size="1" elements="1" id="0" columnname="TagRunPr" collation="0"/>
+                <schemafield fieldname="sales_mode" fullfieldname="sales_mode" typename="bool1" size="1" elements="1" id="0" columnname="SalesMode" collation="0"/>
+                <schemafield fieldname="last_inv" fullfieldname="last_inv" typename="long" size="4" elements="1" id="0" columnname="LastInv" collation="0"/>
+                <schemafield fieldname="srcpi_ref" fullfieldname="srcpi_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="SRCPIRef" collation="0"/>
+                <schemafield fieldname="last_tag_run_no" fullfieldname="last_tag_run_no" typename="long" size="4" elements="1" id="0" columnname="LastTagRunNo" collation="0"/>
+                <schemafield fieldname="tag_ctrl_code" fullfieldname="tag_ctrl_code" typename="long" size="4" elements="1" id="0" columnname="TagCtrlCode" collation="0"/>
+                <schemafield fieldname="use_ac_cc" fullfieldname="use_ac_cc" typename="bool1" size="1" elements="1" id="0" columnname="UseAcCC" collation="0"/>
+                <schemafield fieldname="set_c_qatp" fullfieldname="set_c_qatp" typename="bool1" size="1" elements="1" id="0" columnname="SetCQatP" collation="0"/>
+                <schemafield fieldname="inc_s_disc" fullfieldname="inc_s_disc" typename="bool1" size="1" elements="1" id="0" columnname="IncSDisc" collation="0"/>
+                <schemafield fieldname="sd_days_over" fullfieldname="sd_days_over" typename="int16" size="2" elements="1" id="0" columnname="SDDaysOver" collation="0"/>
+                <schemafield fieldname="show_log" fullfieldname="show_log" typename="bool1" size="1" elements="1" id="0" columnname="ShowLog" collation="0"/>
+                <schemafield fieldname="use_os_ndx" fullfieldname="use_os_ndx" typename="bool1" size="1" elements="1" id="0" columnname="UseOsNdx" collation="0"/>
+                <schemafield fieldname="bacsc_liu_count" fullfieldname="liu_count" typename="long" size="4" elements="1" id="0" columnname="BACSCLIUCount" collation="0"/>
+                <schemafield fieldname="your_ref" fullfieldname="your_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="YourRef" collation="0"/>
+                <schemafield fieldname="apply_ppd" fullfieldname="apply_ppd" typename="bool1" size="1" elements="1" id="0" columnname="ApplyPPD" collation="0"/>
+                <schemafield fieldname="intended_payment_date" fullfieldname="intended_payment_date" typename="DelphiString" size="9" elements="1" id="0" columnname="IntendedPaymentDate" collation="0"/>
+                <schemafield fieldname="ppd_expiry_tolerance_days" fullfieldname="ppd_expiry_tolerance_days" typename="BYTE" size="1" elements="1" id="0" columnname="PPDExpiryToleranceDays" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="BankCtype" id="21" stringid="MT" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="tag_run_no" fullfieldname="tag_run_no" typename="binary" size="3" elements="1" id="0" columnname="TagRunNo" collation="0"/>
+                <schemafield fieldname="bank_nom" fullfieldname="bank_nom" typename="long" size="4" elements="1" id="0" columnname="BankNom" collation="0"/>
+                <schemafield fieldname="bank_cr" fullfieldname="bank_cr" typename="BYTE" size="1" elements="1" id="0" columnname="BankCr" collation="0"/>
+                <schemafield fieldname="recon_opo" fullfieldname="recon_opo" typename="DelphiString" size="11" elements="1" id="0" columnname="ReconOpo" collation="0"/>
+                <schemafield fieldname="entry_tot_dr" fullfieldname="entry_tot_dr" typename="double" size="8" elements="1" id="0" columnname="EntryTotDr" collation="0"/>
+                <schemafield fieldname="entry_tot_cr" fullfieldname="entry_tot_cr" typename="double" size="8" elements="1" id="0" columnname="EntryTotCr" collation="0"/>
+                <schemafield fieldname="entry_date" fullfieldname="entry_date" typename="DelphiString" size="9" elements="1" id="0" columnname="EntryDate" collation="0"/>
+                <schemafield fieldname="nom_ent_typ" fullfieldname="nom_ent_typ" typename="char" size="1" elements="1" id="0" columnname="NomEntTyp" collation="0"/>
+                <schemafield fieldname="all_match_ok" fullfieldname="all_match_ok" typename="bool1" size="1" elements="1" id="0" columnname="AllMatchOk" collation="0"/>
+                <schemafield fieldname="match_count" fullfieldname="match_count" typename="long" size="4" elements="1" id="0" columnname="MatchCount" collation="0"/>
+                <schemafield fieldname="match_o_bal" fullfieldname="match_o_bal" typename="double" size="8" elements="1" id="0" columnname="MatchOBal" collation="0"/>
+                <schemafield fieldname="man_tot_dr" fullfieldname="man_tot_dr" typename="double" size="8" elements="1" id="0" columnname="ManTotDr" collation="0"/>
+                <schemafield fieldname="man_tot_cr" fullfieldname="man_tot_cr" typename="double" size="8" elements="1" id="0" columnname="ManTotCr" collation="0"/>
+                <schemafield fieldname="man_run_no" fullfieldname="man_run_no" typename="long" size="4" elements="1" id="0" columnname="ManRunNo" collation="0"/>
+                <schemafield fieldname="man_change" fullfieldname="man_change" typename="bool1" size="1" elements="1" id="0" columnname="ManChange" collation="0"/>
+                <schemafield fieldname="man_count" fullfieldname="man_count" typename="long" size="4" elements="1" id="0" columnname="ManCount" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="BankCtype" id="31" stringid="FP" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="tag_run_no" fullfieldname="tag_run_no" typename="binary" size="3" elements="1" id="0" columnname="TagRunNo" collation="0"/>
+                <schemafield fieldname="bank_nom" fullfieldname="bank_nom" typename="long" size="4" elements="1" id="0" columnname="BankNom" collation="0"/>
+                <schemafield fieldname="bank_cr" fullfieldname="bank_cr" typename="BYTE" size="1" elements="1" id="0" columnname="BankCr" collation="0"/>
+                <schemafield fieldname="recon_opo" fullfieldname="recon_opo" typename="DelphiString" size="11" elements="1" id="0" columnname="ReconOpo" collation="0"/>
+                <schemafield fieldname="entry_tot_dr" fullfieldname="entry_tot_dr" typename="double" size="8" elements="1" id="0" columnname="EntryTotDr" collation="0"/>
+                <schemafield fieldname="entry_tot_cr" fullfieldname="entry_tot_cr" typename="double" size="8" elements="1" id="0" columnname="EntryTotCr" collation="0"/>
+                <schemafield fieldname="entry_date" fullfieldname="entry_date" typename="DelphiString" size="9" elements="1" id="0" columnname="EntryDate" collation="0"/>
+                <schemafield fieldname="nom_ent_typ" fullfieldname="nom_ent_typ" typename="char" size="1" elements="1" id="0" columnname="NomEntTyp" collation="0"/>
+                <schemafield fieldname="all_match_ok" fullfieldname="all_match_ok" typename="bool1" size="1" elements="1" id="0" columnname="AllMatchOk" collation="0"/>
+                <schemafield fieldname="match_count" fullfieldname="match_count" typename="long" size="4" elements="1" id="0" columnname="MatchCount" collation="0"/>
+                <schemafield fieldname="match_o_bal" fullfieldname="match_o_bal" typename="double" size="8" elements="1" id="0" columnname="MatchOBal" collation="0"/>
+                <schemafield fieldname="man_tot_dr" fullfieldname="man_tot_dr" typename="double" size="8" elements="1" id="0" columnname="ManTotDr" collation="0"/>
+                <schemafield fieldname="man_tot_cr" fullfieldname="man_tot_cr" typename="double" size="8" elements="1" id="0" columnname="ManTotCr" collation="0"/>
+                <schemafield fieldname="man_run_no" fullfieldname="man_run_no" typename="long" size="4" elements="1" id="0" columnname="ManRunNo" collation="0"/>
+                <schemafield fieldname="man_change" fullfieldname="man_change" typename="bool1" size="1" elements="1" id="0" columnname="ManChange" collation="0"/>
+                <schemafield fieldname="man_count" fullfieldname="man_count" typename="long" size="4" elements="1" id="0" columnname="ManCount" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="AllocFileType" id="23" stringid="A*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="alloc_sf" fullfieldname="alloc_sf" typename="binary" size="5" elements="1" id="0" columnname="AllocSF" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="CostCtrType" id="24" stringid="C*" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="cc_desc" fullfieldname="cc_desc" typename="binary" size="19" elements="1" id="0" columnname="CCDesc" collation="0"/>
+                <schemafield fieldname="cc_tag" fullfieldname="cc_tag" typename="bool1" size="1" elements="1" id="0" columnname="CCTag" collation="0"/>
+                <schemafield fieldname="last_access" fullfieldname="last_access" typename="DelphiString" size="9" elements="1" id="0" columnname="LastAccess" collation="0"/>
+                <schemafield fieldname="n_line_count" fullfieldname="n_line_count" typename="long" size="4" elements="1" id="0" columnname="NLineCount" collation="0"/>
+                <schemafield fieldname="hide_ac" fullfieldname="hide_ac" typename="BYTE" size="1" elements="1" id="0" columnname="HideAC" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="MoveNomType" id="26" stringid="MN" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="mn_move_code" fullfieldname="mn_move_code" typename="binary" size="3" elements="1" id="0" columnname="MoveCodeNom" collation="0"/>
+                <schemafield fieldname="mn_move_from" fullfieldname="mn_move_from" typename="long" size="4" elements="1" id="0" columnname="MoveFromNom" collation="0"/>
+                <schemafield fieldname="mn_move_to" fullfieldname="mn_move_to" typename="long" size="4" elements="1" id="0" columnname="MoveToNom" collation="0"/>
+                <schemafield fieldname="mn_move_type" fullfieldname="mn_move_type" typename="char" size="1" elements="1" id="0" columnname="MoveTypeNom" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="MoveStkType" id="27" stringid="MS" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="move_code" fullfieldname="move_code" typename="binary" size="16" elements="1" id="0" columnname="MoveCodeStk" collation="0"/>
+                <schemafield fieldname="m_from_code" fullfieldname="m_from_code" typename="DelphiString" size="17" elements="1" id="0" columnname="MoveFromStk" collation="0"/>
+                <schemafield fieldname="m_to_code" fullfieldname="m_to_code" typename="DelphiString" size="17" elements="1" id="0" columnname="MoveToStk" collation="0"/>
+                <schemafield fieldname="new_stk_code" fullfieldname="new_stk_code" typename="DelphiString" size="17" elements="1" id="0" columnname="NewStkCode" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="VSecureType" id="28" stringid="LV" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="stuff" fullfieldname="stuff" typename="binary" size="205" elements="1" id="0" columnname="Stuff" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="BacsUtype" id="29" stringid="XU" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="opo_name" fullfieldname="opo_name" typename="binary" size="10" elements="1" id="0" columnname="OpoName" collation="0"/>
+                <schemafield fieldname="start_date" fullfieldname="start_date" typename="DelphiString" size="9" elements="1" id="0" columnname="StartDate" collation="0"/>
+                <schemafield fieldname="start_time" fullfieldname="start_time" typename="DelphiString" size="7" elements="1" id="0" columnname="StartTime" collation="0"/>
+                <schemafield fieldname="win_log_name" fullfieldname="win_log_name" typename="DelphiString" size="51" elements="1" id="0" columnname="WinLogName" collation="0"/>
+                <schemafield fieldname="win_cpu_name" fullfieldname="win_cpu_name" typename="DelphiString" size="51" elements="1" id="0" columnname="WinCPUName" collation="0"/>
+                <schemafield fieldname="bacsu_liu_count" fullfieldname="liu_count" typename="long" size="4" elements="1" id="0" columnname="BACSULIUCount" collation="0"/>
+            </schemafields>
+        </recordtype>
+        <recordtype name="MoveCtrlType" id="30" stringid="LM" tldformat="0" tldoverride="0" redundant="0">
+            <schemafields>
+                <schemafield fieldname="s_code_old" fullfieldname="s_code_old" typename="binary" size="13" elements="1" id="0" columnname="SCodeOld" collation="0"/>
+                <schemafield fieldname="s_code_new" fullfieldname="s_code_new" typename="DelphiString" size="21" elements="1" id="0" columnname="SCodeNew" collation="0"/>
+                <schemafield fieldname="move_stage" fullfieldname="move_stage" typename="BYTE" size="1" elements="1" id="0" columnname="MoveStage" collation="0"/>
+                <schemafield fieldname="old_n_code" fullfieldname="old_n_code" typename="long" size="4" elements="1" id="0" columnname="OldNCode" collation="0"/>
+                <schemafield fieldname="new_n_code" fullfieldname="new_n_code" typename="long" size="4" elements="1" id="0" columnname="NewNCode" collation="0"/>
+                <schemafield fieldname="n_typ_old" fullfieldname="n_typ_old" typename="char" size="1" elements="1" id="0" columnname="NTypOld" collation="0"/>
+                <schemafield fieldname="n_typ_new" fullfieldname="n_typ_new" typename="char" size="1" elements="1" id="0" columnname="NTypNew" collation="0"/>
+                <schemafield fieldname="move_key1" fullfieldname="move_key1" typename="DelphiString" size="51" elements="1" id="0" columnname="MoveKey1" collation="0"/>
+                <schemafield fieldname="move_key2" fullfieldname="move_key2" typename="DelphiString" size="51" elements="1" id="0" columnname="MoveKey2" collation="0"/>
+                <schemafield fieldname="was_mode" fullfieldname="was_mode" typename="BYTE" size="1" elements="1" id="0" columnname="WasMode" collation="0"/>
+                <schemafield fieldname="s_grp_new" fullfieldname="s_grp_new" typename="DelphiString" size="21" elements="1" id="0" columnname="SGrpNew" collation="0"/>
+                <schemafield fieldname="s_user" fullfieldname="s_user" typename="DelphiString" size="11" elements="1" id="0" columnname="SUser" collation="0"/>
+                <schemafield fieldname="fin_stage" fullfieldname="fin_stage" typename="bool1" size="1" elements="1" id="0" columnname="FinStage" collation="0"/>
+                <schemafield fieldname="prog_counter" fullfieldname="prog_counter" typename="long" size="4" elements="1" id="0" columnname="ProgCounter" collation="0"/>
+                <schemafield fieldname="mis_cust" fullfieldname="mis_cust" typename="bool1" size="1" elements="1" id="0" columnname="MIsCust" collation="0"/>
+                <schemafield fieldname="mlist_rec_addr" fullfieldname="mlist_rec_addr" typename="long" size="4" elements="1" id="0" columnname="MListRecAddr" collation="0"/>
+            </schemafields>
+        </recordtype>
+    </recordtypes>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">rec_pfix</item>
+                <item size="-1" computedcolumnname="">sub_type</item>
+                <item size="-1" computedcolumnname="Exchqchkcode1Computed">exchqchk_code1</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">rec_pfix</item>
+                <item size="-1" computedcolumnname="">sub_type</item>
+                <item size="-1" computedcolumnname="Exchqchkcode3Computed">exchqchk_code3</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

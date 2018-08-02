@@ -1,0 +1,276 @@
+***************************************
+BEGIN: Unregistering Component Package
+***************************************
+
+Cleaning Known Package Registry Entry
+
+Reading Packages:
+c:\program files\borland\delphi6\Bin\dclado60.bpl
+$(Delphi)\Bin\dcldb60.bpl
+$(Delphi)\Bin\dclstd60.bpl
+c:\program files\borland\delphi6\Bin\dclbde60.bpl
+$(Delphi)\Bin\dbx60.bpl
+$(Delphi)\Bin\dclmid60.bpl
+C:\WINDOWS\system32\ibevnt60.bpl
+c:\program files\borland\delphi6\Bin\dclqrt60.bpl
+c:\program files\borland\delphi6\Bin\dcltee60.bpl
+c:\program files\borland\delphi6\Bin\dcldss60.bpl
+c:\program files\borland\delphi6\Bin\dcltqr60.bpl
+c:\program files\borland\delphi6\Bin\dclclxdb60.bpl
+$(Delphi)\Bin\dclclxstd60.bpl
+c:\program files\borland\delphi6\Bin\dclmcn60.bpl
+c:\program files\borland\delphi6\Bin\dclsmpedit60.bpl
+c:\program files\borland\delphi6\Bin\applet60.bpl
+c:\program files\borland\delphi6\Bin\dclemacsedit60.bpl
+c:\program files\borland\delphi6\Bin\dclact60.bpl
+c:\program files\borland\delphi6\Bin\dcl31w60.bpl
+c:\program files\borland\delphi6\Bin\dclsmp60.bpl
+c:\program files\borland\delphi6\Bin\dclocx60.bpl
+C:\Develop\Entrprse\SDK\Custom\COM\COMPON.D6\ENTCOMD6.bpl
+$(Delphi)\Projects\Bpl\HMESL1.bpl
+c:\program files\borland\delphi6\Bin\dclcds60.bpl
+c:\program files\borland\delphi6\Bin\dclbdecds60.bpl
+c:\program files\borland\delphi6\Bin\dclshlctrls60.bpl
+c:\program files\borland\delphi6\Bin\dclindy60.bpl
+$(Delphi)\Projects\Bpl\EnterTab.bpl
+C:\WINDOWS\system32\RPRV40D6.bpl
+C:\WINDOWS\system32\RPRT40D6.bpl
+X:\COMPON\MultiList\DBMBtrieve.bpl
+X:\COMPON\RAVE4\D6\RPDT40.bpl
+$(Delphi)\Projects\Bpl\EverButton.bpl
+c:\program files\borland\delphi6\Projects\Bpl\A403_D60.bpl
+c:\program files\borland\delphi6\Bin\DCLIB60.bpl
+$(Delphi)\Projects\Bpl\ThemeManagerD6D.bpl
+ 
+Stripping off path and extension
+dclado60
+dcldb60
+dclstd60
+dclbde60
+dbx60
+dclmid60
+ibevnt60
+dclqrt60
+dcltee60
+dcldss60
+dcltqr60
+dclclxdb60
+dclclxstd60
+dclmcn60
+dclsmpedit60
+applet60
+dclemacsedit60
+dclact60
+dcl31w60
+dclsmp60
+dclocx60
+ENTCOMD6
+HMESL1
+dclcds60
+dclbdecds60
+dclshlctrls60
+dclindy60
+EnterTab
+RPRV40D6
+RPRT40D6
+DBMBtrieve
+RPDT40
+EverButton
+A403_D60
+DCLIB60
+ThemeManagerD6D
+ 
+Reading Packages to remove
+VirtualTreesD6
+VirtualTreesD6D
+ 
+Stripping off path and extension
+VirtualTreesD6
+VirtualTreesD6D
+ 
+Scanning for previously installed packages....
+Known Package Registry Entry Cleaned
+
+Cleaning Disabled Package Registry Entry
+
+Reading Packages:
+ 
+Stripping off path and extension
+ 
+Reading Packages to remove
+VirtualTreesD6
+VirtualTreesD6D
+ 
+Stripping off path and extension
+VirtualTreesD6
+VirtualTreesD6D
+ 
+Scanning for previously installed packages....
+Disabled Package Registry Entry Cleaned
+
+Reading Search Path Registry Entry
+C:\Program Files\Borland\Delphi6\Lib
+C:\Program Files\Borland\Delphi6\Bin
+C:\Program Files\Borland\Delphi6\Imports
+C:\Program Files\Borland\Delphi6\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+X:\COMPON\SoftGems\Theme Manager\Source
+    
+    
+Writing Search Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\Lib
+$(Delphi)\Bin
+$(Delphi)\Imports
+$(Delphi)\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+X:\COMPON\SoftGems\Theme Manager\Source
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Search Path
+Search Path Registry Entry written
+
+Reading Browse Path Registry Entry
+C:\Program Files\Borland\Delphi6\source\vcl
+C:\Program Files\Borland\Delphi6\source\rtl\Corba
+C:\Program Files\Borland\Delphi6\source\rtl\Corba40
+C:\Program Files\Borland\Delphi6\source\rtl\Sys
+C:\Program Files\Borland\Delphi6\source\rtl\Win
+C:\Program Files\Borland\Delphi6\source\rtl\common
+C:\Program Files\Borland\Delphi6\source\Internet
+C:\Program Files\Borland\Delphi6\source\clx
+    
+    
+Writing Browse Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\source\vcl
+$(Delphi)\source\rtl\Corba
+$(Delphi)\source\rtl\Corba40
+$(Delphi)\source\rtl\Sys
+$(Delphi)\source\rtl\Win
+$(Delphi)\source\rtl\common
+$(Delphi)\source\Internet
+$(Delphi)\source\clx
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Browsing Path
+Browse Path Registry Entry written
+
+***************************************
+END: Unregistering Component Package
+***************************************
+
+
+***************************************
+BEGIN: Compiling Component Package
+***************************************
+Creating temp compile folder
+Folder Created: C:\DOCUME~1\CSANDO~1.EXC\LOCALS~1\Temp\ESetup
+
+Creating DCC32 config file
+Compiling....
+
+Borland Delphi Version 14.0
+Copyright (c) 1983,2001 Borland Software Corporation
+VirtualTreesD6.dpk(1) VirtualTreesD6.dpk(31) VirtualTreesD6.dpk(32) VirtualTreesD6.dpk(34) VirtualTreesD6.dpk(34) VirtualTreesD6.dpk(34) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(1) X:\COMPON\SoftGems\VIRTUA~1\Source\Compilers.inc(384)  
+X:\COMPON\SoftGems\VIRTUA~1\Source\VTConfig.inc(23) 
+X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(68) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(69) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(72) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(82) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(107) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(619) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(1131) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(1643) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(2155) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(2667) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3179) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3182) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3183) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3183) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3183) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3183) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3183) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3187) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3187) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3188) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3189) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3190) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3192) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(3691) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(4203) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(4715) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(5227) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(5739) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(6251) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(6763) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(7275) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(7787) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(8299) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(8811) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(9323) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(9835) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(10347) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(10859) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(11371) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(11883) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(12395) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(12907) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(13419) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(13931) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(14443) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(14955) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(15467) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(15979) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(16491) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(17003) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(17515) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(18027) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(18539) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(19051) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(19563) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(20075) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(20587) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(21099) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(21611) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(22123) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(22635) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(23147) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(23659) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(24171) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(24683) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(25195) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(25707) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(26219) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(26731) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(27243) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(27755) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(28267) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(28779) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(29291) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(29803) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(30315) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(30827) X:\COMPON\SoftGems\VIRTUA~1\Source\VirtualTrees.pas(31124) 
+VirtualTreesD6.dpk(36) X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(1) X:\COMPON\SoftGems\VIRTUA~1\Source\Compilers.inc(384)   
+X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(73) X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(75) X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(129) X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(132) X:\COMPON\SoftGems\VIRTUA~1\Source\VTHeaderPopup.pas(252) 
+VirtualTreesD6.dpk(36) VirtualTreesD6.dpk(38) VirtualTreesD6.dpk(40) 
+32207 lines, 1.12 seconds, 277372 bytes code, 1161 bytes data.
+
+
+Compiling....
+
+Borland Delphi Version 14.0
+Copyright (c) 1983,2001 Borland Software Corporation
+VirtualTreesD6D.dpk(1) VirtualTreesD6D.dpk(32) VirtualTreesD6D.dpk(34) VirtualTreesD6D.dpk(34) VirtualTreesD6D.dpk(34) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(1) X:\COMPON\SoftGems\VIRTUA~1\Source\Compilers.inc(384)     
+X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(18) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(20) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(24) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(25) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(27) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(41) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(45) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(47) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(129) X:\COMPON\SoftGems\VIRTUA~1\Design\VirtualTreesReg.pas(630) 
+VirtualTreesD6D.dpk(35) VirtualTreesD6D.dpk(37) VirtualTreesD6D.dpk(39) 
+1054 lines, 0.75 seconds, 13960 bytes code, 161 bytes data.
+
+
+ 
+Adding Package BPL to Registry
+Adding: $(Delphi)\Projects\Bpl\VirtualTreesD6D.bpl
+***************************************
+END: Compiling Component Package
+***************************************
+
+***************************************
+BEGIN: Registering Component Package Paths
+***************************************
+
+Reading Search Path Registry Entry
+Search Path Registry Entry Read...
+C:\Program Files\Borland\Delphi6\Lib
+C:\Program Files\Borland\Delphi6\Bin
+C:\Program Files\Borland\Delphi6\Imports
+C:\Program Files\Borland\Delphi6\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+X:\COMPON\SoftGems\Theme Manager\Source
+ 
+Adding Package source path:
+   X:\COMPON\SoftGems\Virtual Treeview\Source
+
+    
+Writing Search Path Registry Entry
+Removing extra characters and blank lines
+Formatting.....
+$(Delphi)\Lib
+$(Delphi)\Bin
+$(Delphi)\Imports
+$(Delphi)\Projects\Bpl
+c:\develop\entrprse\sdk\custom\com\compon.d6
+X:\SBSLIB\WIN\WIN32
+X:\BESPOKE\FUNCS
+X:\ENTRPRSE\FUNCS
+X:\COMPON\Standard
+X:\COMPON\RAVE4\SOURCE
+X:\COMPON\RAVE4\D6
+X:\COMPON\TPOWER\ABBREV3
+X:\COMPON\GNOSTICE\RaveRender1.2\Source
+x:\compon\multilist
+X:\COMPON\EVERBUTT\tiaeverbutton
+X:\COMPON\TPOWER\APRO4.03
+X:\COMPON\SoftGems\Theme Manager\Source
+X:\COMPON\SoftGems\Virtual Treeview\Source
+Writing to Key: Software\Borland\Delphi\6.0\Library  Value: Search Path
+Search Path Registry Entry written
+
+***************************************
+END: Registering Component Package Paths
+***************************************
+

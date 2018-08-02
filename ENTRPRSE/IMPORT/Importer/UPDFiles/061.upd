@@ -1,0 +1,12 @@
+[Version]
+Version=5.70.065.061
+
+[Employee]
+F025=EM.UTRCode                   0429    S 0010 O X Unique Tax Ref                                     default=                                                                                                     comment=                                                                                                    
+F026=EM.VerificationNo            0440    S 0013 O X HMRC Verification No.                              default=                                                                                                     comment=                                                                                                    
+F027=EM.Tagged                    0454    W 0002 O X Tagged for processing                              default=                                                                                                     comment=                                                                                                    
+F028=EM.Spare                     0456    C 0255 N   Padding                                            default=                                                                                                     comment=                                                                                                    
+F029=EM.LastChar                  0711    C 0001 N   Padding                                            default=                                                                                                     comment=                                                                                                    
+
+[Certificate Expiry Date]
+VRule=isDateFormat

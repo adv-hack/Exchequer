@@ -1,0 +1,37 @@
+====================================================
+= HOW TO UPGRADE FROM OLDER VERSIONS TO XDOM 3.2.1 =
+====================================================
+
+
+How to update your old Delphi code
+----------------------------------
+
+1. First you will have to uninstall the old 
+   components as described below.
+4. Install the components from 'XDOM_2_3.pas' 
+   as described in 'readme.html'.
+5. Reload your projects and remove each reference
+   to XDOM in the uses clauses of a unit and
+   replace it by a reference to XDOM_2_3, if
+   that is not done automatically by the Delphi
+   Shell.
+6. Adjust your source code. For a detailed 
+   documentation of all classes see 'manual.txt'. 
+   
+
+How to uninstall old XDOM components
+------------------------------------
+
+1. Choose "Components | Install Packages". 
+   A new dialog is launched.
+2. Choose the package where you previously 
+   installed the components, and open it 
+   for modification.
+3. Choose 'XDOM' from the list of installed
+   components, and hit the 'remove' button.
+4. Hit the 'recompile' button.
+5. Close the package window, and next confirm
+   that the modifications should be saved. 
+6. Remove all files starting with 'XDOM.'
+   from the directory where you previously
+   extracted the old zip archive.

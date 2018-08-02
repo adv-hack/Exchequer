@@ -1,0 +1,7 @@
+[Version]
+Version=5.71.066.064
+
+[Job Analysis]
+F012=JA.RevenueType               0069    B 0001 O   Revenue Type                                       default=0                                                                                                    comment=0-8,only used if Category/Type=Revenue/Revenue
+
+

@@ -1,0 +1,60 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:jh"
+            targetNamespace="urn:www-iris-co-uk:jh" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="jhrec">
+    <xsd:sequence>
+      <xsd:element name='jobcode' type='xsd:string'/>
+      <xsd:element name='jobdesc' type='xsd:string'/>
+      <xsd:element name='jobfolio' type='xsd:integer'/>
+      <xsd:element name='custcode' type='xsd:string'/>
+      <xsd:element name='jobcat' type='xsd:string'/>
+      <xsd:element name='jobaltcode' type='xsd:string'/>
+      <xsd:element name='completed' type='tns:boolean2'/>
+      <xsd:element name='contact' type='xsd:string'/>
+      <xsd:element name='jobman' type='xsd:string'/>
+      <xsd:element name='chargetype' type='xsd:string'/>
+      <xsd:element name='quoteprice' type='xsd:double'/>
+      <xsd:element name='currprice' type='xsd:integer'/>
+      <xsd:element name='startdate' type='xsd:string'/>
+      <xsd:element name='enddate' type='xsd:string'/>
+      <xsd:element name='revedate' type='xsd:string'/>
+      <xsd:element name='sorref' type='xsd:string'/>
+      <xsd:element name='vatcode' type='xsd:string'/>
+      <xsd:element name='jobanal' type='xsd:string'/>
+      <xsd:element name='jobtype' type='xsd:string'/>
+      <xsd:element name='jobstat' type='xsd:string'/>
+      <xsd:element name='userdef1' type='xsd:string'/>
+      <xsd:element name='userdef2' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='jhrec' type='tns:jhrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='jh'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='jh' type='tns:jh'/>
+
+</xsd:schema>

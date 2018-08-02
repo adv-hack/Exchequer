@@ -1,0 +1,14 @@
+eBusiness System Setup Module Version History
+
+
+b431.101
+--------
+Recompiled for Long filename support
+
+
+b431.102
+--------
+Changed import frequency default to 0.
+Company code added into the Company combo.
+You can now edit the Email responce text files.
+Paul added a new tab in company settings - "Charges"

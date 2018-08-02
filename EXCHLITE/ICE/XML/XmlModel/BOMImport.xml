@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:bomimport xmlns:val="urn:www-iris-co-uk:bomimport">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <bomimportrec>
+         <pstockcode/>  <!--:  String[16];  { Parent Stock Code } -->
+         <mstockcode/>  <!--:  String[16];  { BOM  Stock Code } -->
+         <qtyused/>     <!--:  Double;      { Quantity Used } -->
+         <deletestat/>  <!--:  WordBool;    { Delete current BOM Lines Status } -->
+    </bomimportrec>
+</message>
+</val:bomimport>

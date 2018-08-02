@@ -1,0 +1,1095 @@
+<schemarecord version="10" tldformat="4" tldthreshold="0" recordfieldname="id_code" identitycol="PositionId" reclen="1787" >
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="EXCHQSS_FIXED" size="0" elements="1" id="-1" columnname="" />
+    <schemafield fieldname="var" fullfieldname="var" typename="EXCHQSS_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+    <schemafield fieldname="id_code" fullfieldname="id_code" typename="DelphiEmbeddedCaseSensitiveString" size="4" elements="1" id="-1" columnname="IDCode" />
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="SysRec" id="0" stringid="SYS" >
+      <schemafields>
+        <schemafield fieldname="opt" fullfieldname="opt" typename="char" size="1" elements="1" id="0" columnname="Opt"  />
+        <schemafield fieldname="o_mon_wk1" fullfieldname="o_mon_wk1" typename="binary" size="7" elements="1" id="0" columnname="OMonWk1"/>
+        <schemafield fieldname="prin_yr" fullfieldname="prin_yr" typename="BYTE" size="1" elements="1" id="0" columnname="PrinYr"/>
+        <schemafield fieldname="filt_sno_bin_loc" fullfieldname="filt_sno_bin_loc" typename="bool1" size="1" elements="1" id="0" columnname="FiltSNoBinLoc"/>
+        <schemafield fieldname="keep_bin_hist" fullfieldname="keep_bin_hist" typename="bool1" size="1" elements="1" id="0" columnname="KeepBinHist"/>
+        <schemafield fieldname="use_bk_theme" fullfieldname="use_bk_theme" typename="bool1" size="1" elements="1" id="0" columnname="UseBKTheme"/>
+        <schemafield fieldname="user_name" fullfieldname="user_name" typename="DelphiString" size="46" elements="1" id="0" columnname="UserName"  />
+        <schemafield fieldname="audit_yr" fullfieldname="audit_yr" typename="BYTE" size="1" elements="1" id="0" columnname="AuditYr"/>
+        <schemafield fieldname="audit_pr" fullfieldname="audit_pr" typename="BYTE" size="1" elements="1" id="0" columnname="AuditPr"/>
+        <schemafield fieldname="spare6" fullfieldname="spare6" typename="BYTE" size="1" elements="1" id="0" columnname="Spare6"/>
+        <schemafield fieldname="man_rocp" fullfieldname="man_rocp" typename="bool1" size="1" elements="1" id="0" columnname="ManROCP"/>
+        <schemafield fieldname="vat_curr" fullfieldname="vat_curr" typename="BYTE" size="1" elements="1" id="0" columnname="VATCurr"/>
+        <schemafield fieldname="no_cos_dec" fullfieldname="no_cos_dec" typename="BYTE" size="1" elements="1" id="0" columnname="NoCosDec"/>
+        <schemafield fieldname="curr_base" fullfieldname="curr_base" typename="BYTE" size="1" elements="1" id="0" columnname="CurrBase"/>
+        <schemafield fieldname="mute_beep" fullfieldname="mute_beep" typename="bool1" size="1" elements="1" id="0" columnname="MuteBeep"/>
+        <schemafield fieldname="show_stk_gp" fullfieldname="show_stk_gp" typename="bool1" size="1" elements="1" id="0" columnname="ShowStkGP"/>
+        <schemafield fieldname="auto_val_stk" fullfieldname="auto_val_stk" typename="bool1" size="1" elements="1" id="0" columnname="AutoValStk"/>
+        <schemafield fieldname="del_pick_only" fullfieldname="del_pick_only" typename="bool1" size="1" elements="1" id="0" columnname="DelPickOnly"/>
+        <schemafield fieldname="use_m_loc" fullfieldname="use_m_loc" typename="bool1" size="1" elements="1" id="0" columnname="UseMLoc"/>
+        <schemafield fieldname="edit_sin_ser" fullfieldname="edit_sin_ser" typename="bool1" size="1" elements="1" id="0" columnname="EditSinSer"/>
+        <schemafield fieldname="warn_y_ref" fullfieldname="warn_y_ref" typename="bool1" size="1" elements="1" id="0" columnname="WarnYRef"/>
+        <schemafield fieldname="use_loc_del" fullfieldname="use_loc_del" typename="bool1" size="1" elements="1" id="0" columnname="UseLocDel"/>
+        <schemafield fieldname="post_cc_nom" fullfieldname="post_cc_nom" typename="bool1" size="1" elements="1" id="0" columnname="PostCCNom"/>
+        <schemafield fieldname="al_tol_val" fullfieldname="al_tol_val" typename="double" size="8" elements="1" id="0" columnname="AlTolVal"/>
+        <schemafield fieldname="al_tol_mode" fullfieldname="al_tol_mode" typename="BYTE" size="1" elements="1" id="0" columnname="AlTolMode"/>
+        <schemafield fieldname="debt_l_mode" fullfieldname="debt_l_mode" typename="BYTE" size="1" elements="1" id="0" columnname="DebtLMode"/>
+        <schemafield fieldname="auto_gen_var" fullfieldname="auto_gen_var" typename="bool1" size="1" elements="1" id="0" columnname="AutoGenVar"  />
+        <schemafield fieldname="auto_gen_disc" fullfieldname="auto_gen_disc" typename="bool1" size="1" elements="1" id="0" columnname="AutoGenDisc"  />
+        <schemafield fieldname="use_module_sec" fullfieldname="use_module_sec" typename="bool1" size="1" elements="1" id="0" columnname="UseModuleSec"  />
+        <schemafield fieldname="protect_post" fullfieldname="protect_post" typename="bool1" size="1" elements="1" id="0" columnname="ProtectPost"  />
+        <schemafield fieldname="use_pick4_all" fullfieldname="use_pick4_all" typename="bool1" size="1" elements="1" id="0" columnname="UsePick4All"  />
+        <schemafield fieldname="big_stk_tree" fullfieldname="big_stk_tree" typename="bool1" size="1" elements="1" id="0" columnname="BigStkTree"  />
+        <schemafield fieldname="big_job_tree" fullfieldname="big_job_tree" typename="bool1" size="1" elements="1" id="0" columnname="BigJobTree"  />
+        <schemafield fieldname="show_qty_stree" fullfieldname="show_qty_stree" typename="bool1" size="1" elements="1" id="0" columnname="ShowQtySTree"  />
+        <schemafield fieldname="protect_y_ref" fullfieldname="protect_y_ref" typename="bool1" size="1" elements="1" id="0" columnname="ProtectYRef"  />
+        <schemafield fieldname="purch_ui_date" fullfieldname="purch_ui_date" typename="bool1" size="1" elements="1" id="0" columnname="PurchUIDate"  />
+        <schemafield fieldname="use_uplift_nc" fullfieldname="use_uplift_nc" typename="bool1" size="1" elements="1" id="0" columnname="UseUpliftNC"  />
+        <schemafield fieldname="use_wiss4_all" fullfieldname="use_wiss4_all" typename="bool1" size="1" elements="1" id="0" columnname="UseWIss4All"  />
+        <schemafield fieldname="use_stdwop" fullfieldname="use_stdwop" typename="bool1" size="1" elements="1" id="0" columnname="UseSTDWOP"  />
+        <schemafield fieldname="use_sales_anal" fullfieldname="use_sales_anal" typename="bool1" size="1" elements="1" id="0" columnname="UseSalesAnal"  />
+        <schemafield fieldname="post_ccd_combo" fullfieldname="post_ccd_combo" typename="bool1" size="1" elements="1" id="0" columnname="PostCCDCombo"  />
+        <schemafield fieldname="use_class_toolb" fullfieldname="use_class_toolb" typename="bool1" size="1" elements="1" id="0" columnname="UseClassToolB"/>
+        <schemafield fieldname="wop_stk_cop_mode" fullfieldname="wop_stk_cop_mode" typename="BYTE" size="1" elements="1" id="0" columnname="WOPStkCopMode"/>
+        <schemafield fieldname="usr_cntry_code" fullfieldname="usr_cntry_code" typename="DelphiString" size="4" elements="1" id="0" columnname="USRCntryCode"  />
+        <schemafield fieldname="no_net_dec" fullfieldname="no_net_dec" typename="BYTE" size="1" elements="1" id="0" columnname="NoNetDec"/>
+        <schemafield fieldname="deb_trig" fullfieldname="deb_trig" typename="binary" size="3" elements="1" id="0" columnname="DebTrig"  />
+        <schemafield fieldname="bk_theme_no" fullfieldname="bk_theme_no" typename="BYTE" size="1" elements="1" id="0" columnname="BKThemeNo"/>
+        <schemafield fieldname="use_gl_class" fullfieldname="use_gl_class" typename="bool1" size="1" elements="1" id="0" columnname="UseGLClass"/>
+        <schemafield fieldname="spare4" fullfieldname="spare4" typename="binary" size="1" elements="1" id="0" columnname="Spare4"  />
+        <schemafield fieldname="no_inv_lines" fullfieldname="no_inv_lines" typename="BYTE" size="1" elements="1" id="0" columnname="NoInvLines"/>
+        <schemafield fieldname="wks_o_due" fullfieldname="wks_o_due" typename="BYTE" size="1" elements="1" id="0" columnname="WksODue"/>
+        <schemafield fieldname="c_pr" fullfieldname="c_pr" typename="BYTE" size="1" elements="1" id="0" columnname="CPr"/>
+        <schemafield fieldname="c_yr" fullfieldname="c_yr" typename="BYTE" size="1" elements="1" id="0" columnname="CYr"/>
+        <schemafield fieldname="o_audit_date" fullfieldname="o_audit_date" typename="DelphiString" size="7" elements="1" id="0" columnname="OAuditDate"/>
+        <schemafield fieldname="trade_term" fullfieldname="trade_term" typename="bool1" size="1" elements="1" id="0" columnname="TradeTerm"/>
+        <schemafield fieldname="sta_sep_cr" fullfieldname="sta_sep_cr" typename="bool1" size="1" elements="1" id="0" columnname="StaSepCr"/>
+        <schemafield fieldname="sta_age_mthd" fullfieldname="sta_age_mthd" typename="BYTE" size="1" elements="1" id="0" columnname="StaAgeMthd"/>
+        <schemafield fieldname="sta_ui_date" fullfieldname="sta_ui_date" typename="bool1" size="1" elements="1" id="0" columnname="StaUIDate"/>
+        <schemafield fieldname="sep_run_post" fullfieldname="sep_run_post" typename="bool1" size="1" elements="1" id="0" columnname="SepRunPost"/>
+        <schemafield fieldname="qu_alloc_flg" fullfieldname="qu_alloc_flg" typename="bool1" size="1" elements="1" id="0" columnname="QUAllocFlg"/>
+        <schemafield fieldname="dead_bom" fullfieldname="dead_bom" typename="bool1" size="1" elements="1" id="0" columnname="DeadBOM"/>
+        <schemafield fieldname="auth_mode" fullfieldname="auth_mode" typename="char" size="1" elements="1" id="0" columnname="AuthMode"  />
+        <schemafield fieldname="intra_stat" fullfieldname="intra_stat" typename="bool1" size="1" elements="1" id="0" columnname="IntraStat"/>
+        <schemafield fieldname="anal_stk_desc" fullfieldname="anal_stk_desc" typename="bool1" size="1" elements="1" id="0" columnname="AnalStkDesc"/>
+        <schemafield fieldname="auto_stk_val" fullfieldname="auto_stk_val" typename="char" size="1" elements="1" id="0" columnname="AutoStkVal"  />
+        <schemafield fieldname="auto_bill_up" fullfieldname="auto_bill_up" typename="bool1" size="1" elements="1" id="0" columnname="AutoBillUp"/>
+        <schemafield fieldname="auto_cq_no" fullfieldname="auto_cq_no" typename="bool1" size="1" elements="1" id="0" columnname="AutoCQNo"/>
+        <schemafield fieldname="inc_not_due" fullfieldname="inc_not_due" typename="bool1" size="1" elements="1" id="0" columnname="IncNotDue"/>
+        <schemafield fieldname="use_batch_tot" fullfieldname="use_batch_tot" typename="bool1" size="1" elements="1" id="0" columnname="UseBatchTot"/>
+        <schemafield fieldname="use_stock" fullfieldname="use_stock" typename="bool1" size="1" elements="1" id="0" columnname="UseStock"/>
+        <schemafield fieldname="auto_notes" fullfieldname="auto_notes" typename="bool1" size="1" elements="1" id="0" columnname="AutoNotes"/>
+        <schemafield fieldname="hide_menu_opt" fullfieldname="hide_menu_opt" typename="bool1" size="1" elements="1" id="0" columnname="HideMenuOpt"/>
+        <schemafield fieldname="use_cc_dep" fullfieldname="use_cc_dep" typename="bool1" size="1" elements="1" id="0" columnname="UseCCDep"/>
+        <schemafield fieldname="no_hold_disc" fullfieldname="no_hold_disc" typename="bool1" size="1" elements="1" id="0" columnname="NoHoldDisc"/>
+        <schemafield fieldname="auto_pr_calc" fullfieldname="auto_pr_calc" typename="bool1" size="1" elements="1" id="0" columnname="AutoPrCalc"/>
+        <schemafield fieldname="stop_bad_dr" fullfieldname="stop_bad_dr" typename="bool1" size="1" elements="1" id="0" columnname="StopBadDr"/>
+        <schemafield fieldname="use_pay_in" fullfieldname="use_pay_in" typename="bool1" size="1" elements="1" id="0" columnname="UsePayIn"/>
+        <schemafield fieldname="use_passwords" fullfieldname="use_passwords" typename="bool1" size="1" elements="1" id="0" columnname="UsePasswords"/>
+        <schemafield fieldname="print_reciept" fullfieldname="print_reciept" typename="bool1" size="1" elements="1" id="0" columnname="PrintReciept"/>
+        <schemafield fieldname="extern_cust" fullfieldname="extern_cust" typename="bool1" size="1" elements="1" id="0" columnname="ExternCust"/>
+        <schemafield fieldname="no_qty_dec" fullfieldname="no_qty_dec" typename="BYTE" size="1" elements="1" id="0" columnname="NoQtyDec"/>
+        <schemafield fieldname="extern_sin" fullfieldname="extern_sin" typename="bool1" size="1" elements="1" id="0" columnname="ExternSIN"/>
+        <schemafield fieldname="prev_pr_off" fullfieldname="prev_pr_off" typename="bool1" size="1" elements="1" id="0" columnname="PrevPrOff"/>
+        <schemafield fieldname="def_pc_disc" fullfieldname="def_pc_disc" typename="bool1" size="1" elements="1" id="0" columnname="DefPcDisc"/>
+        <schemafield fieldname="trad_code_num" fullfieldname="trad_code_num" typename="bool1" size="1" elements="1" id="0" columnname="TradCodeNum"/>
+        <schemafield fieldname="up_bal_on_post" fullfieldname="up_bal_on_post" typename="bool1" size="1" elements="1" id="0" columnname="UpBalOnPost"/>
+        <schemafield fieldname="show_inv_disc" fullfieldname="show_inv_disc" typename="bool1" size="1" elements="1" id="0" columnname="ShowInvDisc"/>
+        <schemafield fieldname="sep_discounts" fullfieldname="sep_discounts" typename="bool1" size="1" elements="1" id="0" columnname="SepDiscounts"/>
+        <schemafield fieldname="use_credit_chk" fullfieldname="use_credit_chk" typename="bool1" size="1" elements="1" id="0" columnname="UseCreditChk"/>
+        <schemafield fieldname="use_cr_limit_chk" fullfieldname="use_cr_limit_chk" typename="bool1" size="1" elements="1" id="0" columnname="UseCRLimitChk"/>
+        <schemafield fieldname="auto_clear_pay" fullfieldname="auto_clear_pay" typename="bool1" size="1" elements="1" id="0" columnname="AutoClearPay"/>
+        <schemafield fieldname="total_conv" fullfieldname="total_conv" typename="char" size="1" elements="1" id="0" columnname="TotalConv"  />
+        <schemafield fieldname="disp_pr_as_months" fullfieldname="disp_pr_as_months" typename="bool1" size="1" elements="1" id="0" columnname="DispPrAsMonths"/>
+        <schemafield fieldname="nom_ctrl_in_vat" fullfieldname="nom_ctrl_invat" typename="long" size="4" elements="1" id="0" columnname="NomCtrlInVAT" />
+        <schemafield fieldname="nom_ctrl_out_vat" fullfieldname="nom_ctrl_outvat" typename="long" size="4" elements="1" id="0" columnname="NomCtrlOutVAT" />
+        <schemafield fieldname="nom_ctrl_debtors" fullfieldname="nom_ctrl_debtors" typename="long" size="4" elements="1" id="0" columnname="NomCtrlDebtors" />
+        <schemafield fieldname="nom_ctrl_creditors" fullfieldname="nom_ctrl_creditors" typename="long" size="4" elements="1" id="0" columnname="NomCtrlCreditors" />
+        <schemafield fieldname="nom_ctrl_discount_given" fullfieldname="nom_ctrl_discountgiven" typename="long" size="4" elements="1" id="0" columnname="NomCtrlDiscountGiven" />
+        <schemafield fieldname="nom_ctrl_discount_taken" fullfieldname="nom_ctrl_discounttaken" typename="long" size="4" elements="1" id="0" columnname="NomCtrlDiscountTaken" />
+        <schemafield fieldname="nom_ctrl_ldisc_given" fullfieldname="nom_ctrl_ldiscgiven" typename="long" size="4" elements="1" id="0" columnname="NomCtrlLDiscGiven" />
+        <schemafield fieldname="nom_ctrl_ldisc_taken" fullfieldname="nom_ctrl_ldisctaken" typename="long" size="4" elements="1" id="0" columnname="NomCtrlLDiscTaken" />
+        <schemafield fieldname="nom_ctrl_profit_bf" fullfieldname="nom_ctrl_profitbf" typename="long" size="4" elements="1" id="0" columnname="NomCtrlProfitBF" />
+        <schemafield fieldname="nom_ctrl_curr_var" fullfieldname="nom_ctrl_currvar" typename="long" size="4" elements="1" id="0" columnname="NomCtrlCurrVar" />
+        <schemafield fieldname="nom_ctrl_unrcurr_var" fullfieldname="nom_ctrl_unrcurrvar" typename="long" size="4" elements="1" id="0" columnname="NomCtrlUnRCurrVar" />
+        <schemafield fieldname="nom_ctrl_pl_start" fullfieldname="nom_ctrl_plstart" typename="long" size="4" elements="1" id="0" columnname="NomCtrlPLStart" />
+        <schemafield fieldname="nom_ctrl_pl_end" fullfieldname="nom_ctrl_plend" typename="long" size="4" elements="1" id="0" columnname="NomCtrlPLEnd" />
+        <schemafield fieldname="nom_ctrl_freight_nc" fullfieldname="nom_ctrl_freightnc" typename="long" size="4" elements="1" id="0" columnname="NomCtrlFreightNC" />
+        <schemafield fieldname="nom_ctrl_sales_comm" fullfieldname="nom_ctrl_salescomm" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSalesComm" />
+        <schemafield fieldname="nom_ctrl_purch_comm" fullfieldname="nom_ctrl_purchcomm" typename="long" size="4" elements="1" id="0" columnname="NomCtrlPurchComm" />
+        <schemafield fieldname="nom_ctrl_ret_surcharge" fullfieldname="nom_ctrl_retsurcharge" typename="long" size="4" elements="1" id="0" columnname="NomCtrlRetSurcharge" />
+        <schemafield fieldname="nom_ctrl_spare8" fullfieldname="nom_ctrl_spare8" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare8" />
+        <schemafield fieldname="nom_ctrl_spare9" fullfieldname="nom_ctrl_spare9" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare9" />
+        <schemafield fieldname="nom_ctrl_spare10" fullfieldname="nom_ctrl_spare10" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare10" />
+        <schemafield fieldname="nom_ctrl_spare11" fullfieldname="nom_ctrl_spare11" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare11" />
+        <schemafield fieldname="nom_ctrl_spare12" fullfieldname="nom_ctrl_spare12" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare12" />
+        <schemafield fieldname="nom_ctrl_spare13" fullfieldname="nom_ctrl_spare13" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare13" />
+        <schemafield fieldname="nom_ctrl_spare14" fullfieldname="nom_ctrl_spare14" typename="long" size="4" elements="1" id="0" columnname="NomCtrlSpare14" />
+        <schemafield fieldname="detail_addr1" fullfieldname="detail_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="DetailAddr1"  />
+        <schemafield fieldname="detail_addr2" fullfieldname="detail_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="DetailAddr2"  />
+        <schemafield fieldname="detail_addr3" fullfieldname="detail_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="DetailAddr3"  />
+        <schemafield fieldname="detail_addr4" fullfieldname="detail_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="DetailAddr4"  />
+        <schemafield fieldname="detail_addr5" fullfieldname="detail_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="DetailAddr5"  />
+        <schemafield fieldname="direct_cust" fullfieldname="direct_cust" typename="DelphiString" size="11" elements="1" id="0" columnname="DirectCust"  />
+        <schemafield fieldname="direct_supp" fullfieldname="direct_supp" typename="DelphiString" size="11" elements="1" id="0" columnname="DirectSupp"  />
+        <schemafield fieldname="termsof_trade1" fullfieldname="termsof_trade1" typename="DelphiString" size="81" elements="1" id="0" columnname="TermsofTrade1"  />
+        <schemafield fieldname="termsof_trade2" fullfieldname="termsof_trade2" typename="DelphiString" size="81" elements="1" id="0" columnname="TermsofTrade2"  />
+        <schemafield fieldname="nom_pay_from" fullfieldname="nom_pay_from" typename="long" size="4" elements="1" id="0" columnname="NomPayFrom"/>
+        <schemafield fieldname="nom_pay_too" fullfieldname="nom_pay_too" typename="long" size="4" elements="1" id="0" columnname="NomPayToo"/>
+        <schemafield fieldname="settle_disc" fullfieldname="settle_disc" typename="DelphiReal" size="6" elements="1" id="0" columnname="SettleDisc"/>
+        <schemafield fieldname="settle_days" fullfieldname="settle_days" typename="int16" size="2" elements="1" id="0" columnname="SettleDays"/>
+        <schemafield fieldname="need_bm_up" fullfieldname="need_bm_up" typename="bool1" size="1" elements="1" id="0" columnname="NeedBMUp"/>
+        <schemafield fieldname="ignore_bdpw" fullfieldname="ignore_bdpw" typename="bool1" size="1" elements="1" id="0" columnname="IgnoreBDPW"/>
+        <schemafield fieldname="inp_pack" fullfieldname="inp_pack" typename="bool1" size="1" elements="1" id="0" columnname="InpPack"/>
+        <schemafield fieldname="spare32" fullfieldname="spare32" typename="bool1" size="1" elements="1" id="0" columnname="Spare32"/>
+        <schemafield fieldname="vat_code" fullfieldname="vat_code" typename="char" size="1" elements="1" id="0" columnname="VATCode"  />
+        <schemafield fieldname="pay_terms" fullfieldname="pay_terms" typename="int16" size="2" elements="1" id="0" columnname="PayTerms"/>
+        <schemafield fieldname="o_trig_date" fullfieldname="o_trig_date" typename="DelphiString" size="7" elements="1" id="0" columnname="OTrigDate"/>
+        <schemafield fieldname="sta_age_int" fullfieldname="sta_age_int" typename="int16" size="2" elements="1" id="0" columnname="StaAgeInt"/>
+        <schemafield fieldname="quo_own_date" fullfieldname="quo_own_date" typename="bool1" size="1" elements="1" id="0" columnname="QuoOwnDate"/>
+        <schemafield fieldname="free_ex_all" fullfieldname="free_ex_all" typename="bool1" size="1" elements="1" id="0" columnname="FreeExAll"/>
+        <schemafield fieldname="dir_own_count" fullfieldname="dir_own_count" typename="bool1" size="1" elements="1" id="0" columnname="DirOwnCount"/>
+        <schemafield fieldname="sta_show_os" fullfieldname="sta_show_os" typename="bool1" size="1" elements="1" id="0" columnname="StaShowOS"/>
+        <schemafield fieldname="live_cred_s" fullfieldname="live_cred_s" typename="bool1" size="1" elements="1" id="0" columnname="LiveCredS"/>
+        <schemafield fieldname="batch_ppy" fullfieldname="batch_ppy" typename="bool1" size="1" elements="1" id="0" columnname="BatchPPY"/>
+        <schemafield fieldname="warn_jc" fullfieldname="warn_jc" typename="bool1" size="1" elements="1" id="0" columnname="WarnJC"/>
+        <schemafield fieldname="tx_late_cr" fullfieldname="tx_late_cr" typename="bool1" size="1" elements="1" id="0" columnname="TxLateCR"/>
+        <schemafield fieldname="consv_mem" fullfieldname="consv_mem" typename="bool1" size="1" elements="1" id="0" columnname="ConsvMem"/>
+        <schemafield fieldname="def_bank_nom" fullfieldname="def_bank_nom" typename="long" size="4" elements="1" id="0" columnname="DefBankNom"/>
+        <schemafield fieldname="use_def_bank" fullfieldname="use_def_bank" typename="bool1" size="1" elements="1" id="0" columnname="UseDefBank"/>
+        <schemafield fieldname="hide_ex_logo" fullfieldname="hide_ex_logo" typename="bool1" size="1" elements="1" id="0" columnname="HideExLogo"/>
+        <schemafield fieldname="amm_thread" fullfieldname="amm_thread" typename="bool1" size="1" elements="1" id="0" columnname="AMMThread"/>
+        <schemafield fieldname="amm_preview1" fullfieldname="amm_preview1" typename="bool1" size="1" elements="1" id="0" columnname="AMMPreview1"/>
+        <schemafield fieldname="amm_preview2" fullfieldname="amm_preview2" typename="bool1" size="1" elements="1" id="0" columnname="AMMPreview2"/>
+        <schemafield fieldname="ent_u_log_count" fullfieldname="ent_u_log_count" typename="long" size="4" elements="1" id="0" columnname="EntULogCount"/>
+        <schemafield fieldname="def_src_bank_nom" fullfieldname="def_src_bank_nom" typename="long" size="4" elements="1" id="0" columnname="DefSRCBankNom"/>
+        <schemafield fieldname="sdn_own_date" fullfieldname="sdn_own_date" typename="bool1" size="1" elements="1" id="0" columnname="SDNOwnDate"/>
+        <schemafield fieldname="exisn" fullfieldname="exisn" typename="binary" size="8" elements="1" id="0" columnname="EXISN"  />
+        <schemafield fieldname="ex_demo_ver" fullfieldname="ex_demo_ver" typename="bool1" size="1" elements="1" id="0" columnname="ExDemoVer"/>
+        <schemafield fieldname="dupli_v_sec" fullfieldname="dupli_v_sec" typename="bool1" size="1" elements="1" id="0" columnname="DupliVSec"/>
+        <schemafield fieldname="last_daily" fullfieldname="last_daily" typename="long" size="4" elements="1" id="0" columnname="LastDaily"/>
+        <schemafield fieldname="old_user_sort" fullfieldname="old_user_sort" typename="DelphiString" size="16" elements="1" id="0" columnname="OldUserSort"  />
+        <schemafield fieldname="old_user_acc" fullfieldname="old_user_acc" typename="DelphiString" size="21" elements="1" id="0" columnname="OldUserAcc"  />
+        <schemafield fieldname="user_ref" fullfieldname="user_ref" typename="DelphiString" size="29" elements="1" id="0" columnname="UserRef"  />
+        <schemafield fieldname="spare_bits" fullfieldname="spare_bits" typename="binary" size="31" elements="1" id="0" columnname="SpareBits"  />
+        <schemafield fieldname="grace_period" fullfieldname="grace_period" typename="BYTe" size="1" elements="1" id="0" columnname="GracePeriod"  />
+        <schemafield fieldname="mon_wk1" fullfieldname="mon_wk1" typename="DelphiString" size="9" elements="1" id="0" columnname="MonWk1"  />
+        <schemafield fieldname="audit_date" fullfieldname="audit_date" typename="DelphiString" size="9" elements="1" id="0" columnname="AuditDate"  />
+        <schemafield fieldname="trig_date" fullfieldname="trig_date" typename="DelphiString" size="9" elements="1" id="0" columnname="TrigDate"  />
+        <schemafield fieldname="ex_usr_sec" fullfieldname="ex_usr_sec" typename="binary" size="28" elements="1" id="0" columnname="ExUsrSec"  />
+        <schemafield fieldname="usr_log_count" fullfieldname="usr_log_count" typename="long" size="4" elements="1" id="0" columnname="UsrLogCount"/>
+        <schemafield fieldname="bin_mask" fullfieldname="bin_mask" typename="DelphiString" size="11" elements="1" id="0" columnname="BinMask"  />
+        <schemafield fieldname="spare5a" fullfieldname="spare5a" typename="DelphiString" size="5" elements="1" id="0" columnname="Spare5a"  />
+        <schemafield fieldname="spare6a" fullfieldname="spare6a" typename="DelphiString" size="19" elements="1" id="0" columnname="Spare6a"  />
+        <schemafield fieldname="user_bank" fullfieldname="user_bank" typename="DelphiString" size="26" elements="1" id="0" columnname="UserBank"  />
+        <schemafield fieldname="ex_sec" fullfieldname="ex_sec" typename="binary" size="28" elements="1" id="0" columnname="ExSec"  />
+        <schemafield fieldname="last_exp_folio" fullfieldname="last_exp_folio" typename="long" size="4" elements="1" id="0" columnname="LastExpFolio"/>
+        <schemafield fieldname="detail_tel" fullfieldname="detail_tel" typename="DelphiString" size="16" elements="1" id="0" columnname="DetailTel"  />
+        <schemafield fieldname="detail_fax" fullfieldname="detail_fax" typename="DelphiString" size="16" elements="1" id="0" columnname="DetailFax"  />
+        <schemafield fieldname="user_vat_reg" fullfieldname="user_vat_reg" typename="DelphiString" size="31" elements="1" id="0" columnname="UserVATReg"  />
+        <schemafield fieldname="enable_ttd_discounts" fullfieldname="enable_ttd_discounts" typename="bool1" size="1" elements="1" id="0" columnname="EnableTTDDiscounts"/>
+        <schemafield fieldname="enable_vbd_discounts" fullfieldname="enable_vbd_discounts" typename="bool1" size="1" elements="1" id="0" columnname="EnableVBDDiscounts"/>
+        <schemafield fieldname="enable_override_locations" fullfieldname="enable_override_locations" typename="bool1" size="1" elements="1" id="0" columnname="EnableOverrideLocations"/>
+        <schemafield fieldname="include_vat_in_committed_balance" fullfieldname="include_vat_in_committed_balance" typename="bool1" size="1" elements="1" id="0" columnname="IncludeVATInCommittedBalance"/>
+        <schemafield fieldname="bank_sort_code" fullfieldname="bank_sort_code" typename="DelphiEmbeddedCaseSensitiveString" size="23" elements="1" id="0" columnname="ssBankSortCode" />
+        <schemafield fieldname="bank_account_code" fullfieldname="bank_account_code" typename="DelphiEmbeddedCaseSensitiveString" size="55" elements="1" id="0" columnname="ssBankAccountCode" />
+        <schemafield fieldname="consumers_enabled" fullfieldname="consumers_enabled" typename="bool1" size="1" elements="1" id="0" columnname="ssConsumersEnabled"/>
+        <schemafield fieldname="enable_order_payments" fullfieldname="edit_sin_ser" typename="bool1" size="1" elements="1" id="0" columnname="ssEnableOrderPayments"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="VATRec" id="1" stringid="VAT" >
+      <schemafields>
+        <schemafield fieldname="VATStandardCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATStandardCode" />
+        <schemafield fieldname="VATStandardDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATStandardDesc" />
+        <schemafield fieldname="VATStandardRate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATStandardRate" />
+        <schemafield fieldname="VATStandardSpare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATStandardSpare" />
+        <schemafield fieldname="VATStandardInclude" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATStandardInclude" />
+        <schemafield fieldname="VATStandardSpare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATStandardSpare2" />
+        <schemafield fieldname="VATExemptCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATExemptCode" />
+        <schemafield fieldname="VATExemptDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATExemptDesc" />
+        <schemafield fieldname="VATExemptRate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATExemptRate" />
+        <schemafield fieldname="VATExemptSpare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATExemptSpare" />
+        <schemafield fieldname="VATExemptInclude" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATExemptInclude" />
+        <schemafield fieldname="VATExemptSpare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATExemptSpare2" />
+        <schemafield fieldname="VATZeroCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATZeroCode" />
+        <schemafield fieldname="VATZeroDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATZeroDesc" />
+        <schemafield fieldname="VATZeroRate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATZeroRate" />
+        <schemafield fieldname="VATZeroSpare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATZeroSpare" />
+        <schemafield fieldname="VATZeroInclude" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATZeroInclude" />
+        <schemafield fieldname="VATZeroSpare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATZeroSpare2" />
+        <schemafield fieldname="VATRate1Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate1Code" />
+        <schemafield fieldname="VATRate1Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate1Desc" />
+        <schemafield fieldname="VATRate1Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate1Rate" />
+        <schemafield fieldname="VATRate1Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate1Spare" />
+        <schemafield fieldname="VATRate1Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate1Include" />
+        <schemafield fieldname="VATRate1Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate1Spare2" />
+        <schemafield fieldname="VATRate2Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate2Code" />
+        <schemafield fieldname="VATRate2Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate2Desc" />
+        <schemafield fieldname="VATRate2Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate2Rate" />
+        <schemafield fieldname="VATRate2Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate2Spare" />
+        <schemafield fieldname="VATRate2Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate2Include" />
+        <schemafield fieldname="VATRate2Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate2Spare2" />
+        <schemafield fieldname="VATRate3Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate3Code" />
+        <schemafield fieldname="VATRate3Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate3Desc" />
+        <schemafield fieldname="VATRate3Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate3Rate" />
+        <schemafield fieldname="VATRate3Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate3Spare" />
+        <schemafield fieldname="VATRate3Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate3Include" />
+        <schemafield fieldname="VATRate3Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate3Spare2" />
+        <schemafield fieldname="VATRate4Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate4Code" />
+        <schemafield fieldname="VATRate4Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate4Desc" />
+        <schemafield fieldname="VATRate4Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate4Rate" />
+        <schemafield fieldname="VATRate4Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate4Spare" />
+        <schemafield fieldname="VATRate4Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate4Include" />
+        <schemafield fieldname="VATRate4Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate4Spare2" />
+        <schemafield fieldname="VATRate5Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate5Code" />
+        <schemafield fieldname="VATRate5Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate5Desc" />
+        <schemafield fieldname="VATRate5Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate5Rate" />
+        <schemafield fieldname="VATRate5Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate5Spare" />
+        <schemafield fieldname="VATRate5Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate5Include" />
+        <schemafield fieldname="VATRate5Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate5Spare2" />
+        <schemafield fieldname="VATRate6Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate6Code" />
+        <schemafield fieldname="VATRate6Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate6Desc" />
+        <schemafield fieldname="VATRate6Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate6Rate" />
+        <schemafield fieldname="VATRate6Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate6Spare" />
+        <schemafield fieldname="VATRate6Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate6Include" />
+        <schemafield fieldname="VATRate6Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate6Spare2" />
+        <schemafield fieldname="VATRate7Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate7Code" />
+        <schemafield fieldname="VATRate7Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate7Desc" />
+        <schemafield fieldname="VATRate7Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate7Rate" />
+        <schemafield fieldname="VATRate7Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate7Spare" />
+        <schemafield fieldname="VATRate7Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate7Include" />
+        <schemafield fieldname="VATRate7Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate7Spare2" />
+        <schemafield fieldname="VATRate8Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate8Code" />
+        <schemafield fieldname="VATRate8Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate8Desc" />
+        <schemafield fieldname="VATRate8Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate8Rate" />
+        <schemafield fieldname="VATRate8Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate8Spare" />
+        <schemafield fieldname="VATRate8Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate8Include" />
+        <schemafield fieldname="VATRate8Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate8Spare2" />
+        <schemafield fieldname="VATRate9Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate9Code" />
+        <schemafield fieldname="VATRate9Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate9Desc" />
+        <schemafield fieldname="VATRate9Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate9Rate" />
+        <schemafield fieldname="VATRate9Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate9Spare" />
+        <schemafield fieldname="VATRate9Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate9Include" />
+        <schemafield fieldname="VATRate9Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate9Spare2" />
+        <schemafield fieldname="VATRate10Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate10Code" />
+        <schemafield fieldname="VATRate10Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate10Desc" />
+        <schemafield fieldname="VATRate10Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate10Rate" />
+        <schemafield fieldname="VATRate10Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate10Spare" />
+        <schemafield fieldname="VATRate10Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate10Include" />
+        <schemafield fieldname="VATRate10Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate10Spare2" />
+        <schemafield fieldname="VATRate11Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate11Code" />
+        <schemafield fieldname="VATRate11Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate11Desc" />
+        <schemafield fieldname="VATRate11Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate11Rate" />
+        <schemafield fieldname="VATRate11Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate11Spare" />
+        <schemafield fieldname="VATRate11Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate11Include" />
+        <schemafield fieldname="VATRate11Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate11Spare2" />
+        <schemafield fieldname="VATRate12Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate12Code" />
+        <schemafield fieldname="VATRate12Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate12Desc" />
+        <schemafield fieldname="VATRate12Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate12Rate" />
+        <schemafield fieldname="VATRate12Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate12Spare" />
+        <schemafield fieldname="VATRate12Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate12Include" />
+        <schemafield fieldname="VATRate12Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate12Spare2" />
+        <schemafield fieldname="VATRate13Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate13Code" />
+        <schemafield fieldname="VATRate13Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate13Desc" />
+        <schemafield fieldname="VATRate13Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate13Rate" />
+        <schemafield fieldname="VATRate13Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate13Spare" />
+        <schemafield fieldname="VATRate13Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate13Include" />
+        <schemafield fieldname="VATRate13Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate13Spare2" />
+        <schemafield fieldname="VATRate14Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate14Code" />
+        <schemafield fieldname="VATRate14Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate14Desc" />
+        <schemafield fieldname="VATRate14Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate14Rate" />
+        <schemafield fieldname="VATRate14Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate14Spare" />
+        <schemafield fieldname="VATRate14Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate14Include" />
+        <schemafield fieldname="VATRate14Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate14Spare2" />
+        <schemafield fieldname="VATRate15Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate15Code" />
+        <schemafield fieldname="VATRate15Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate15Desc" />
+        <schemafield fieldname="VATRate15Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate15Rate" />
+        <schemafield fieldname="VATRate15Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate15Spare" />
+        <schemafield fieldname="VATRate15Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate15Include" />
+        <schemafield fieldname="VATRate15Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate15Spare2" />
+        <schemafield fieldname="VATRate16Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate16Code" />
+        <schemafield fieldname="VATRate16Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate16Desc" />
+        <schemafield fieldname="VATRate16Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate16Rate" />
+        <schemafield fieldname="VATRate16Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate16Spare" />
+        <schemafield fieldname="VATRate16Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate16Include" />
+        <schemafield fieldname="VATRate16Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate16Spare2" />
+        <schemafield fieldname="VATRate17Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate17Code" />
+        <schemafield fieldname="VATRate17Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate17Desc" />
+        <schemafield fieldname="VATRate17Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate17Rate" />
+        <schemafield fieldname="VATRate17Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate17Spare" />
+        <schemafield fieldname="VATRate17Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate17Include" />
+        <schemafield fieldname="VATRate17Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate17Spare2" />
+        <schemafield fieldname="VATRate18Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATRate18Code" />
+        <schemafield fieldname="VATRate18Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATRate18Desc" />
+        <schemafield fieldname="VATRate18Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATRate18Rate" />
+        <schemafield fieldname="VATRate18Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATRate18Spare" />
+        <schemafield fieldname="VATRate18Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATRate18Include" />
+        <schemafield fieldname="VATRate18Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATRate18Spare2" />
+        <schemafield fieldname="VATIAdjCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATIAdjCode" />
+        <schemafield fieldname="VATIAdjDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATIAdjDesc" />
+        <schemafield fieldname="VATIAdjRate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATIAdjRate" />
+        <schemafield fieldname="VATIAdjSpare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATIAdjSpare" />
+        <schemafield fieldname="VATIAdjInclude" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATIAdjInclude" />
+        <schemafield fieldname="VATIAdjSpare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATIAdjSpare2" />
+        <schemafield fieldname="VATOAdjCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATOAdjCode" />
+        <schemafield fieldname="VATOAdjDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATOAdjDesc" />
+        <schemafield fieldname="VATOAdjRate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATOAdjRate" />
+        <schemafield fieldname="VATOAdjSpare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATOAdjSpare" />
+        <schemafield fieldname="VATOAdjInclude" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATOAdjInclude" />
+        <schemafield fieldname="VATOAdjSpare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATOAdjSpare2" />
+        <schemafield fieldname="VATSpare8Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="VATSpare8Code" />
+        <schemafield fieldname="VATSpare8Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="VATSpare8Desc" />
+        <schemafield fieldname="VATSpare8Rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="VATSpare8Rate" />
+        <schemafield fieldname="VATSpare8Spare" fullfieldname="" typename="binary" size="1" elements="1" id="0" columnname="VATSpare8Spare" />
+        <schemafield fieldname="VATSpare8Include" fullfieldname="" typename="bool1" size="1" elements="1" id="0" columnname="VATSpare8Include" />
+        <schemafield fieldname="VATSpare8Spare2" fullfieldname="" typename="binary" size="2" elements="1" id="0" columnname="VATSpare8Spare2" />
+        <schemafield fieldname="hide_ud_f7" fullfieldname="hide_ud_f7" typename="bool1" size="1" elements="1" id="0" columnname="HideUDF7"/>
+        <schemafield fieldname="hide_ud_f8" fullfieldname="hide_ud_f8" typename="bool1" size="1" elements="1" id="0" columnname="HideUDF8"/>
+        <schemafield fieldname="hide_ud_f9" fullfieldname="hide_ud_f9" typename="bool1" size="1" elements="1" id="0" columnname="HideUDF9"/>
+        <schemafield fieldname="hide_ud_f10" fullfieldname="hide_ud_f10" typename="bool1" size="1" elements="1" id="0" columnname="HideUDF10"/>
+        <schemafield fieldname="hide_ud_f11" fullfieldname="hide_ud_f11" typename="bool1" size="1" elements="1" id="0" columnname="HideUDF11"/>
+        <schemafield fieldname="spare2" fullfieldname="spare2" typename="binary" size="2" elements="1" id="0" columnname="Spare2"  />
+        <schemafield fieldname="vat_interval" fullfieldname="vat_interval" typename="BYTE" size="1" elements="1" id="0" columnname="VATInterval"/>
+        <schemafield fieldname="spare3" fullfieldname="spare3" typename="binary" size="7" elements="1" id="0" columnname="Spare3"  />
+        <schemafield fieldname="vat_scheme" fullfieldname="vat_scheme" typename="char" size="1" elements="1" id="0" columnname="VATScheme"  />
+        <schemafield fieldname="olast_ec_sales_date" fullfieldname="olast_ec_sales_date" typename="DelphiString" size="7" elements="1" id="0" columnname="OLastECSalesDate"/>
+        <schemafield fieldname="vat_return_date" fullfieldname="vat_return_date" typename="DelphiString" size="9" elements="1" id="0" columnname="VATReturnDate"  />
+        <schemafield fieldname="last_ec_sales_date" fullfieldname="last_ec_sales_date" typename="DelphiString" size="9" elements="1" id="0" columnname="LastECSalesDate"  />
+        <schemafield fieldname="curr_period" fullfieldname="curr_period" typename="DelphiString" size="9" elements="1" id="0" columnname="CurrPeriod"  />
+        <schemafield fieldname="udf_caption1" fullfieldname="udf_caption1" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption1"  />
+        <schemafield fieldname="udf_caption2" fullfieldname="udf_caption2" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption2"  />
+        <schemafield fieldname="udf_caption3" fullfieldname="udf_caption3" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption3"  />
+        <schemafield fieldname="udf_caption4" fullfieldname="udf_caption4" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption4"  />
+        <schemafield fieldname="udf_caption5" fullfieldname="udf_caption5" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption5"  />
+        <schemafield fieldname="udf_caption6" fullfieldname="udf_caption6" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption6"  />
+        <schemafield fieldname="udf_caption7" fullfieldname="udf_caption7" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption7"  />
+        <schemafield fieldname="udf_caption8" fullfieldname="udf_caption8" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption8"  />
+        <schemafield fieldname="udf_caption9" fullfieldname="udf_caption9" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption9"  />
+        <schemafield fieldname="udf_caption10" fullfieldname="udf_caption10" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption10"  />
+        <schemafield fieldname="udf_caption11" fullfieldname="udf_caption11" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption11"  />
+        <schemafield fieldname="udf_caption12" fullfieldname="udf_caption12" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption12"  />
+        <schemafield fieldname="udf_caption13" fullfieldname="udf_caption13" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption13"  />
+        <schemafield fieldname="udf_caption14" fullfieldname="udf_caption14" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption14"  />
+        <schemafield fieldname="udf_caption15" fullfieldname="udf_caption15" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption15"  />
+        <schemafield fieldname="udf_caption16" fullfieldname="udf_caption16" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption16"  />
+        <schemafield fieldname="udf_caption17" fullfieldname="udf_caption17" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption17"  />
+        <schemafield fieldname="udf_caption18" fullfieldname="udf_caption18" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption18"  />
+        <schemafield fieldname="udf_caption19" fullfieldname="udf_caption19" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption19"  />
+        <schemafield fieldname="udf_caption20" fullfieldname="udf_caption20" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption20"  />
+        <schemafield fieldname="udf_caption21" fullfieldname="udf_caption21" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption21"  />
+        <schemafield fieldname="udf_caption22" fullfieldname="udf_caption22" typename="DelphiString" size="16" elements="1" id="0" columnname="UDFCaption22"  />
+        <schemafield fieldname="hide_l_type0" fullfieldname="hide_l_type0" typename="bool1" size="1" elements="1" id="0" columnname="HideLType0"/>
+        <schemafield fieldname="hide_l_type1" fullfieldname="hide_l_type1" typename="bool1" size="1" elements="1" id="0" columnname="HideLType1"/>
+        <schemafield fieldname="hide_l_type2" fullfieldname="hide_l_type2" typename="bool1" size="1" elements="1" id="0" columnname="HideLType2"/>
+        <schemafield fieldname="hide_l_type3" fullfieldname="hide_l_type3" typename="bool1" size="1" elements="1" id="0" columnname="HideLType3"/>
+        <schemafield fieldname="hide_l_type4" fullfieldname="hide_l_type4" typename="bool1" size="1" elements="1" id="0" columnname="HideLType4"/>
+        <schemafield fieldname="hide_l_type5" fullfieldname="hide_l_type5" typename="bool1" size="1" elements="1" id="0" columnname="HideLType5"/>
+        <schemafield fieldname="hide_l_type6" fullfieldname="hide_l_type6" typename="bool1" size="1" elements="1" id="0" columnname="HideLType6"/>
+        <schemafield fieldname="report_prnn" fullfieldname="report_prnn" typename="DelphiString" size="51" elements="1" id="0" columnname="ReportPrnN"  />
+        <schemafield fieldname="forms_prnn" fullfieldname="forms_prnn" typename="DelphiString" size="51" elements="1" id="0" columnname="FormsPrnN"  />
+        <schemafield fieldname="enable_ecservices" fullfieldname="enable_ecservices" typename="bool1" size="1" elements="1" id="0" columnname="EnableECServices"/>
+        <schemafield fieldname="ecsales_threshold" fullfieldname="ecsales_threshold" typename="double" size="8" elements="1" id="0" columnname="ECSalesThreshold"></schemafield>
+        <schemafield fieldname="vat100_user_id" fullfieldname="vat100_user_id" typename="DelphiEmbeddedCaseSensitiveString" size="33" elements="1" id="0" columnname="VAT100UserID" />
+        <schemafield fieldname="vat100_user_password" fullfieldname="vat100_user_password" typename="DelphiEmbeddedCaseSensitiveString" size="55" elements="1" id="0" columnname="VAT100UserPassword" />
+        <schemafield fieldname="vat100_sender_type" fullfieldname="vat100_sender_type" typename="DelphiString" size="31" elements="1" id="0" columnname="VAT100SenderType" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="Curr1PType" id="2" stringid="Cur" >
+      <schemafields>
+        <schemafield fieldname="MainCurrency00ScreenSymbol" fullfieldname="MainCurrency00ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency00ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency00Desc" fullfieldname="MainCurrency00Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency00Desc" />
+        <schemafield fieldname="MainCurrency00CompanyRate" fullfieldname="MainCurrency00CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency00CompanyRate" />
+        <schemafield fieldname="MainCurrency00DailyRate" fullfieldname="MainCurrency00DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency00DailyRate" />
+        <schemafield fieldname="MainCurrency00PrintSymbol" fullfieldname="MainCurrency00PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency00PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency01ScreenSymbol" fullfieldname="MainCurrency01ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency01ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency01Desc" fullfieldname="MainCurrency01Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency01Desc" />
+        <schemafield fieldname="MainCurrency01CompanyRate" fullfieldname="MainCurrency01CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency01CompanyRate" />
+        <schemafield fieldname="MainCurrency01DailyRate" fullfieldname="MainCurrency01DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency01DailyRate" />
+        <schemafield fieldname="MainCurrency01PrintSymbol" fullfieldname="MainCurrency01PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency01PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency02ScreenSymbol" fullfieldname="MainCurrency02ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency02ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency02Desc" fullfieldname="MainCurrency02Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency02Desc" />
+        <schemafield fieldname="MainCurrency02CompanyRate" fullfieldname="MainCurrency02CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency02CompanyRate" />
+        <schemafield fieldname="MainCurrency02DailyRate" fullfieldname="MainCurrency02DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency02DailyRate" />
+        <schemafield fieldname="MainCurrency02PrintSymbol" fullfieldname="MainCurrency02PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency02PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency03ScreenSymbol" fullfieldname="MainCurrency03ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency03ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency03Desc" fullfieldname="MainCurrency03Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency03Desc" />
+        <schemafield fieldname="MainCurrency03CompanyRate" fullfieldname="MainCurrency03CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency03CompanyRate" />
+        <schemafield fieldname="MainCurrency03DailyRate" fullfieldname="MainCurrency03DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency03DailyRate" />
+        <schemafield fieldname="MainCurrency03PrintSymbol" fullfieldname="MainCurrency03PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency03PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency04ScreenSymbol" fullfieldname="MainCurrency04ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency04ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency04Desc" fullfieldname="MainCurrency04Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency04Desc" />
+        <schemafield fieldname="MainCurrency04CompanyRate" fullfieldname="MainCurrency04CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency04CompanyRate" />
+        <schemafield fieldname="MainCurrency04DailyRate" fullfieldname="MainCurrency04DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency04DailyRate" />
+        <schemafield fieldname="MainCurrency04PrintSymbol" fullfieldname="MainCurrency04PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency04PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency05ScreenSymbol" fullfieldname="MainCurrency05ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency05ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency05Desc" fullfieldname="MainCurrency05Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency05Desc" />
+        <schemafield fieldname="MainCurrency05CompanyRate" fullfieldname="MainCurrency05CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency05CompanyRate" />
+        <schemafield fieldname="MainCurrency05DailyRate" fullfieldname="MainCurrency05DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency05DailyRate" />
+        <schemafield fieldname="MainCurrency05PrintSymbol" fullfieldname="MainCurrency05PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency05PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency06ScreenSymbol" fullfieldname="MainCurrency06ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency06ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency06Desc" fullfieldname="MainCurrency06Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency06Desc" />
+        <schemafield fieldname="MainCurrency06CompanyRate" fullfieldname="MainCurrency06CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency06CompanyRate" />
+        <schemafield fieldname="MainCurrency06DailyRate" fullfieldname="MainCurrency06DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency06DailyRate" />
+        <schemafield fieldname="MainCurrency06PrintSymbol" fullfieldname="MainCurrency06PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency06PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency07ScreenSymbol" fullfieldname="MainCurrency07ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency07ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency07Desc" fullfieldname="MainCurrency07Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency07Desc" />
+        <schemafield fieldname="MainCurrency07CompanyRate" fullfieldname="MainCurrency07CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency07CompanyRate" />
+        <schemafield fieldname="MainCurrency07DailyRate" fullfieldname="MainCurrency07DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency07DailyRate" />
+        <schemafield fieldname="MainCurrency07PrintSymbol" fullfieldname="MainCurrency07PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency07PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency08ScreenSymbol" fullfieldname="MainCurrency08ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency08ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency08Desc" fullfieldname="MainCurrency08Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency08Desc" />
+        <schemafield fieldname="MainCurrency08CompanyRate" fullfieldname="MainCurrency08CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency08CompanyRate" />
+        <schemafield fieldname="MainCurrency08DailyRate" fullfieldname="MainCurrency08DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency08DailyRate" />
+        <schemafield fieldname="MainCurrency08PrintSymbol" fullfieldname="MainCurrency08PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency08PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency09ScreenSymbol" fullfieldname="MainCurrency09ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency09ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency09Desc" fullfieldname="MainCurrency09Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency09Desc" />
+        <schemafield fieldname="MainCurrency09CompanyRate" fullfieldname="MainCurrency09CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency09CompanyRate" />
+        <schemafield fieldname="MainCurrency09DailyRate" fullfieldname="MainCurrency09DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency09DailyRate" />
+        <schemafield fieldname="MainCurrency09PrintSymbol" fullfieldname="MainCurrency09PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency09PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency10ScreenSymbol" fullfieldname="MainCurrency10ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency10ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency10Desc" fullfieldname="MainCurrency10Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency10Desc" />
+        <schemafield fieldname="MainCurrency10CompanyRate" fullfieldname="MainCurrency10CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency10CompanyRate" />
+        <schemafield fieldname="MainCurrency10DailyRate" fullfieldname="MainCurrency10DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency10DailyRate" />
+        <schemafield fieldname="MainCurrency10PrintSymbol" fullfieldname="MainCurrency10PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency10PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency11ScreenSymbol" fullfieldname="MainCurrency11ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency11ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency11Desc" fullfieldname="MainCurrency11Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency11Desc" />
+        <schemafield fieldname="MainCurrency11CompanyRate" fullfieldname="MainCurrency11CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency11CompanyRate" />
+        <schemafield fieldname="MainCurrency11DailyRate" fullfieldname="MainCurrency11DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency11DailyRate" />
+        <schemafield fieldname="MainCurrency11PrintSymbol" fullfieldname="MainCurrency11PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency11PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency12ScreenSymbol" fullfieldname="MainCurrency12ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency12ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency12Desc" fullfieldname="MainCurrency12Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency12Desc" />
+        <schemafield fieldname="MainCurrency12CompanyRate" fullfieldname="MainCurrency12CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency12CompanyRate" />
+        <schemafield fieldname="MainCurrency12DailyRate" fullfieldname="MainCurrency12DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency12DailyRate" />
+        <schemafield fieldname="MainCurrency12PrintSymbol" fullfieldname="MainCurrency12PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency12PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency13ScreenSymbol" fullfieldname="MainCurrency13ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency13ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency13Desc" fullfieldname="MainCurrency13Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency13Desc" />
+        <schemafield fieldname="MainCurrency13CompanyRate" fullfieldname="MainCurrency13CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency13CompanyRate" />
+        <schemafield fieldname="MainCurrency13DailyRate" fullfieldname="MainCurrency13DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency13DailyRate" />
+        <schemafield fieldname="MainCurrency13PrintSymbol" fullfieldname="MainCurrency13PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency13PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency14ScreenSymbol" fullfieldname="MainCurrency14ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency14ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency14Desc" fullfieldname="MainCurrency14Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency14Desc" />
+        <schemafield fieldname="MainCurrency14CompanyRate" fullfieldname="MainCurrency14CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency14CompanyRate" />
+        <schemafield fieldname="MainCurrency14DailyRate" fullfieldname="MainCurrency14DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency14DailyRate" />
+        <schemafield fieldname="MainCurrency14PrintSymbol" fullfieldname="MainCurrency14PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency14PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency15ScreenSymbol" fullfieldname="MainCurrency15ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency15ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency15Desc" fullfieldname="MainCurrency15Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency15Desc" />
+        <schemafield fieldname="MainCurrency15CompanyRate" fullfieldname="MainCurrency15CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency15CompanyRate" />
+        <schemafield fieldname="MainCurrency15DailyRate" fullfieldname="MainCurrency15DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency15DailyRate" />
+        <schemafield fieldname="MainCurrency15PrintSymbol" fullfieldname="MainCurrency15PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency15PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency16ScreenSymbol" fullfieldname="MainCurrency16ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency16ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency16Desc" fullfieldname="MainCurrency16Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency16Desc" />
+        <schemafield fieldname="MainCurrency16CompanyRate" fullfieldname="MainCurrency16CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency16CompanyRate" />
+        <schemafield fieldname="MainCurrency16DailyRate" fullfieldname="MainCurrency16DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency16DailyRate" />
+        <schemafield fieldname="MainCurrency16PrintSymbol" fullfieldname="MainCurrency16PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency16PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency17ScreenSymbol" fullfieldname="MainCurrency17ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency17ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency17Desc" fullfieldname="MainCurrency17Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency17Desc" />
+        <schemafield fieldname="MainCurrency17CompanyRate" fullfieldname="MainCurrency17CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency17CompanyRate" />
+        <schemafield fieldname="MainCurrency17DailyRate" fullfieldname="MainCurrency17DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency17DailyRate" />
+        <schemafield fieldname="MainCurrency17PrintSymbol" fullfieldname="MainCurrency17PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency17PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency18ScreenSymbol" fullfieldname="MainCurrency18ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency18ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency18Desc" fullfieldname="MainCurrency18Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency18Desc" />
+        <schemafield fieldname="MainCurrency18CompanyRate" fullfieldname="MainCurrency18CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency18CompanyRate" />
+        <schemafield fieldname="MainCurrency18DailyRate" fullfieldname="MainCurrency18DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency18DailyRate" />
+        <schemafield fieldname="MainCurrency18PrintSymbol" fullfieldname="MainCurrency18PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency18PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency19ScreenSymbol" fullfieldname="MainCurrency19ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency19ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency19Desc" fullfieldname="MainCurrency19Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency19Desc" />
+        <schemafield fieldname="MainCurrency19CompanyRate" fullfieldname="MainCurrency19CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency19CompanyRate" />
+        <schemafield fieldname="MainCurrency19DailyRate" fullfieldname="MainCurrency19DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency19DailyRate" />
+        <schemafield fieldname="MainCurrency19PrintSymbol" fullfieldname="MainCurrency19PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency19PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency20ScreenSymbol" fullfieldname="MainCurrency20ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency20ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency20Desc" fullfieldname="MainCurrency20Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency20Desc" />
+        <schemafield fieldname="MainCurrency20CompanyRate" fullfieldname="MainCurrency20CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency20CompanyRate" />
+        <schemafield fieldname="MainCurrency20DailyRate" fullfieldname="MainCurrency20DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency20DailyRate" />
+        <schemafield fieldname="MainCurrency20PrintSymbol" fullfieldname="MainCurrency20PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency20PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency21ScreenSymbol" fullfieldname="MainCurrency21ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency21ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency21Desc" fullfieldname="MainCurrency21Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency21Desc" />
+        <schemafield fieldname="MainCurrency21CompanyRate" fullfieldname="MainCurrency21CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency21CompanyRate" />
+        <schemafield fieldname="MainCurrency21DailyRate" fullfieldname="MainCurrency21DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency21DailyRate" />
+        <schemafield fieldname="MainCurrency21PrintSymbol" fullfieldname="MainCurrency21PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency21PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency22ScreenSymbol" fullfieldname="MainCurrency22ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency22ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency22Desc" fullfieldname="MainCurrency22Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency22Desc" />
+        <schemafield fieldname="MainCurrency22CompanyRate" fullfieldname="MainCurrency22CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency22CompanyRate" />
+        <schemafield fieldname="MainCurrency22DailyRate" fullfieldname="MainCurrency22DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency22DailyRate" />
+        <schemafield fieldname="MainCurrency22PrintSymbol" fullfieldname="MainCurrency22PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency22PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency23ScreenSymbol" fullfieldname="MainCurrency23ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency23ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency23Desc" fullfieldname="MainCurrency23Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency23Desc" />
+        <schemafield fieldname="MainCurrency23CompanyRate" fullfieldname="MainCurrency23CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency23CompanyRate" />
+        <schemafield fieldname="MainCurrency23DailyRate" fullfieldname="MainCurrency23DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency23DailyRate" />
+        <schemafield fieldname="MainCurrency23PrintSymbol" fullfieldname="MainCurrency23PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency23PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency24ScreenSymbol" fullfieldname="MainCurrency24ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency24ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency24Desc" fullfieldname="MainCurrency24Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency24Desc" />
+        <schemafield fieldname="MainCurrency24CompanyRate" fullfieldname="MainCurrency24CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency24CompanyRate" />
+        <schemafield fieldname="MainCurrency24DailyRate" fullfieldname="MainCurrency24DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency24DailyRate" />
+        <schemafield fieldname="MainCurrency24PrintSymbol" fullfieldname="MainCurrency24PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency24PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency25ScreenSymbol" fullfieldname="MainCurrency25ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency25ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency25Desc" fullfieldname="MainCurrency25Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency25Desc" />
+        <schemafield fieldname="MainCurrency25CompanyRate" fullfieldname="MainCurrency25CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency25CompanyRate" />
+        <schemafield fieldname="MainCurrency25DailyRate" fullfieldname="MainCurrency25DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency25DailyRate" />
+        <schemafield fieldname="MainCurrency25PrintSymbol" fullfieldname="MainCurrency25PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency25PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency26ScreenSymbol" fullfieldname="MainCurrency26ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency26ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency26Desc" fullfieldname="MainCurrency26Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency26Desc" />
+        <schemafield fieldname="MainCurrency26CompanyRate" fullfieldname="MainCurrency26CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency26CompanyRate" />
+        <schemafield fieldname="MainCurrency26DailyRate" fullfieldname="MainCurrency26DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency26DailyRate" />
+        <schemafield fieldname="MainCurrency26PrintSymbol" fullfieldname="MainCurrency26PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency26PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency27ScreenSymbol" fullfieldname="MainCurrency27ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency27ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency27Desc" fullfieldname="MainCurrency27Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency27Desc" />
+        <schemafield fieldname="MainCurrency27CompanyRate" fullfieldname="MainCurrency27CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency27CompanyRate" />
+        <schemafield fieldname="MainCurrency27DailyRate" fullfieldname="MainCurrency27DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency27DailyRate" />
+        <schemafield fieldname="MainCurrency27PrintSymbol" fullfieldname="MainCurrency27PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency27PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency28ScreenSymbol" fullfieldname="MainCurrency28ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency28ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency28Desc" fullfieldname="MainCurrency28Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency28Desc" />
+        <schemafield fieldname="MainCurrency28CompanyRate" fullfieldname="MainCurrency28CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency28CompanyRate" />
+        <schemafield fieldname="MainCurrency28DailyRate" fullfieldname="MainCurrency28DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency28DailyRate" />
+        <schemafield fieldname="MainCurrency28PrintSymbol" fullfieldname="MainCurrency28PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency28PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency29ScreenSymbol" fullfieldname="MainCurrency29ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency29ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency29Desc" fullfieldname="MainCurrency29Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency29Desc" />
+        <schemafield fieldname="MainCurrency29CompanyRate" fullfieldname="MainCurrency29CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency29CompanyRate" />
+        <schemafield fieldname="MainCurrency29DailyRate" fullfieldname="MainCurrency29DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency29DailyRate" />
+        <schemafield fieldname="MainCurrency29PrintSymbol" fullfieldname="MainCurrency29PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency29PrintSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency30ScreenSymbol" fullfieldname="MainCurrency30ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency30ScreenSymbol" collation = "1" />
+        <schemafield fieldname="MainCurrency30Desc" fullfieldname="MainCurrency30Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="MainCurrency30Desc" />
+        <schemafield fieldname="MainCurrency30CompanyRate" fullfieldname="MainCurrency30CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency30CompanyRate" />
+        <schemafield fieldname="MainCurrency30DailyRate" fullfieldname="MainCurrency30DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="MainCurrency30DailyRate" />
+        <schemafield fieldname="MainCurrency30PrintSymbol" fullfieldname="MainCurrency30PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="MainCurrency30PrintSymbol" collation = "1" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="Curr1PType" id="3" stringid="CU*" >
+      <schemafields>
+        <schemafield fieldname="ExtCurrency00ScreenSymbol" fullfieldname="ExtCurrency00ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency00ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency00Desc" fullfieldname="ExtCurrency00Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency00Desc" />
+        <schemafield fieldname="ExtCurrency00CompanyRate" fullfieldname="ExtCurrency00CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency00CompanyRate" />
+        <schemafield fieldname="ExtCurrency00DailyRate" fullfieldname="ExtCurrency00DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency00DailyRate" />
+        <schemafield fieldname="ExtCurrency00PrintSymbol" fullfieldname="ExtCurrency00PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency00PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency01ScreenSymbol" fullfieldname="ExtCurrency01ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency01ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency01Desc" fullfieldname="ExtCurrency01Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency01Desc" />
+        <schemafield fieldname="ExtCurrency01CompanyRate" fullfieldname="ExtCurrency01CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency01CompanyRate" />
+        <schemafield fieldname="ExtCurrency01DailyRate" fullfieldname="ExtCurrency01DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency01DailyRate" />
+        <schemafield fieldname="ExtCurrency01PrintSymbol" fullfieldname="ExtCurrency01PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency01PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency02ScreenSymbol" fullfieldname="ExtCurrency02ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency02ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency02Desc" fullfieldname="ExtCurrency02Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency02Desc" />
+        <schemafield fieldname="ExtCurrency02CompanyRate" fullfieldname="ExtCurrency02CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency02CompanyRate" />
+        <schemafield fieldname="ExtCurrency02DailyRate" fullfieldname="ExtCurrency02DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency02DailyRate" />
+        <schemafield fieldname="ExtCurrency02PrintSymbol" fullfieldname="ExtCurrency02PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency02PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency03ScreenSymbol" fullfieldname="ExtCurrency03ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency03ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency03Desc" fullfieldname="ExtCurrency03Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency03Desc" />
+        <schemafield fieldname="ExtCurrency03CompanyRate" fullfieldname="ExtCurrency03CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency03CompanyRate" />
+        <schemafield fieldname="ExtCurrency03DailyRate" fullfieldname="ExtCurrency03DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency03DailyRate" />
+        <schemafield fieldname="ExtCurrency03PrintSymbol" fullfieldname="ExtCurrency03PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency03PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency04ScreenSymbol" fullfieldname="ExtCurrency04ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency04ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency04Desc" fullfieldname="ExtCurrency04Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency04Desc" />
+        <schemafield fieldname="ExtCurrency04CompanyRate" fullfieldname="ExtCurrency04CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency04CompanyRate" />
+        <schemafield fieldname="ExtCurrency04DailyRate" fullfieldname="ExtCurrency04DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency04DailyRate" />
+        <schemafield fieldname="ExtCurrency04PrintSymbol" fullfieldname="ExtCurrency04PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency04PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency05ScreenSymbol" fullfieldname="ExtCurrency05ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency05ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency05Desc" fullfieldname="ExtCurrency05Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency05Desc" />
+        <schemafield fieldname="ExtCurrency05CompanyRate" fullfieldname="ExtCurrency05CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency05CompanyRate" />
+        <schemafield fieldname="ExtCurrency05DailyRate" fullfieldname="ExtCurrency05DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency05DailyRate" />
+        <schemafield fieldname="ExtCurrency05PrintSymbol" fullfieldname="ExtCurrency05PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency05PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency06ScreenSymbol" fullfieldname="ExtCurrency06ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency06ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency06Desc" fullfieldname="ExtCurrency06Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency06Desc" />
+        <schemafield fieldname="ExtCurrency06CompanyRate" fullfieldname="ExtCurrency06CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency06CompanyRate" />
+        <schemafield fieldname="ExtCurrency06DailyRate" fullfieldname="ExtCurrency06DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency06DailyRate" />
+        <schemafield fieldname="ExtCurrency06PrintSymbol" fullfieldname="ExtCurrency06PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency06PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency07ScreenSymbol" fullfieldname="ExtCurrency07ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency07ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency07Desc" fullfieldname="ExtCurrency07Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency07Desc" />
+        <schemafield fieldname="ExtCurrency07CompanyRate" fullfieldname="ExtCurrency07CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency07CompanyRate" />
+        <schemafield fieldname="ExtCurrency07DailyRate" fullfieldname="ExtCurrency07DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency07DailyRate" />
+        <schemafield fieldname="ExtCurrency07PrintSymbol" fullfieldname="ExtCurrency07PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency07PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency08ScreenSymbol" fullfieldname="ExtCurrency08ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency08ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency08Desc" fullfieldname="ExtCurrency08Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency08Desc" />
+        <schemafield fieldname="ExtCurrency08CompanyRate" fullfieldname="ExtCurrency08CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency08CompanyRate" />
+        <schemafield fieldname="ExtCurrency08DailyRate" fullfieldname="ExtCurrency08DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency08DailyRate" />
+        <schemafield fieldname="ExtCurrency08PrintSymbol" fullfieldname="ExtCurrency08PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency08PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency09ScreenSymbol" fullfieldname="ExtCurrency09ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency09ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency09Desc" fullfieldname="ExtCurrency09Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency09Desc" />
+        <schemafield fieldname="ExtCurrency09CompanyRate" fullfieldname="ExtCurrency09CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency09CompanyRate" />
+        <schemafield fieldname="ExtCurrency09DailyRate" fullfieldname="ExtCurrency09DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency09DailyRate" />
+        <schemafield fieldname="ExtCurrency09PrintSymbol" fullfieldname="ExtCurrency09PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency09PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency10ScreenSymbol" fullfieldname="ExtCurrency10ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency10ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency10Desc" fullfieldname="ExtCurrency10Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency10Desc" />
+        <schemafield fieldname="ExtCurrency10CompanyRate" fullfieldname="ExtCurrency10CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency10CompanyRate" />
+        <schemafield fieldname="ExtCurrency10DailyRate" fullfieldname="ExtCurrency10DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency10DailyRate" />
+        <schemafield fieldname="ExtCurrency10PrintSymbol" fullfieldname="ExtCurrency10PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency10PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency11ScreenSymbol" fullfieldname="ExtCurrency11ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency11ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency11Desc" fullfieldname="ExtCurrency11Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency11Desc" />
+        <schemafield fieldname="ExtCurrency11CompanyRate" fullfieldname="ExtCurrency11CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency11CompanyRate" />
+        <schemafield fieldname="ExtCurrency11DailyRate" fullfieldname="ExtCurrency11DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency11DailyRate" />
+        <schemafield fieldname="ExtCurrency11PrintSymbol" fullfieldname="ExtCurrency11PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency11PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency12ScreenSymbol" fullfieldname="ExtCurrency12ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency12ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency12Desc" fullfieldname="ExtCurrency12Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency12Desc" />
+        <schemafield fieldname="ExtCurrency12CompanyRate" fullfieldname="ExtCurrency12CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency12CompanyRate" />
+        <schemafield fieldname="ExtCurrency12DailyRate" fullfieldname="ExtCurrency12DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency12DailyRate" />
+        <schemafield fieldname="ExtCurrency12PrintSymbol" fullfieldname="ExtCurrency12PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency12PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency13ScreenSymbol" fullfieldname="ExtCurrency13ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency13ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency13Desc" fullfieldname="ExtCurrency13Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency13Desc" />
+        <schemafield fieldname="ExtCurrency13CompanyRate" fullfieldname="ExtCurrency13CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency13CompanyRate" />
+        <schemafield fieldname="ExtCurrency13DailyRate" fullfieldname="ExtCurrency13DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency13DailyRate" />
+        <schemafield fieldname="ExtCurrency13PrintSymbol" fullfieldname="ExtCurrency13PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency13PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency14ScreenSymbol" fullfieldname="ExtCurrency14ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency14ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency14Desc" fullfieldname="ExtCurrency14Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency14Desc" />
+        <schemafield fieldname="ExtCurrency14CompanyRate" fullfieldname="ExtCurrency14CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency14CompanyRate" />
+        <schemafield fieldname="ExtCurrency14DailyRate" fullfieldname="ExtCurrency14DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency14DailyRate" />
+        <schemafield fieldname="ExtCurrency14PrintSymbol" fullfieldname="ExtCurrency14PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency14PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency15ScreenSymbol" fullfieldname="ExtCurrency15ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency15ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency15Desc" fullfieldname="ExtCurrency15Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency15Desc" />
+        <schemafield fieldname="ExtCurrency15CompanyRate" fullfieldname="ExtCurrency15CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency15CompanyRate" />
+        <schemafield fieldname="ExtCurrency15DailyRate" fullfieldname="ExtCurrency15DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency15DailyRate" />
+        <schemafield fieldname="ExtCurrency15PrintSymbol" fullfieldname="ExtCurrency15PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency15PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency16ScreenSymbol" fullfieldname="ExtCurrency16ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency16ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency16Desc" fullfieldname="ExtCurrency16Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency16Desc" />
+        <schemafield fieldname="ExtCurrency16CompanyRate" fullfieldname="ExtCurrency16CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency16CompanyRate" />
+        <schemafield fieldname="ExtCurrency16DailyRate" fullfieldname="ExtCurrency16DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency16DailyRate" />
+        <schemafield fieldname="ExtCurrency16PrintSymbol" fullfieldname="ExtCurrency16PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency16PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency17ScreenSymbol" fullfieldname="ExtCurrency17ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency17ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency17Desc" fullfieldname="ExtCurrency17Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency17Desc" />
+        <schemafield fieldname="ExtCurrency17CompanyRate" fullfieldname="ExtCurrency17CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency17CompanyRate" />
+        <schemafield fieldname="ExtCurrency17DailyRate" fullfieldname="ExtCurrency17DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency17DailyRate" />
+        <schemafield fieldname="ExtCurrency17PrintSymbol" fullfieldname="ExtCurrency17PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency17PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency18ScreenSymbol" fullfieldname="ExtCurrency18ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency18ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency18Desc" fullfieldname="ExtCurrency18Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency18Desc" />
+        <schemafield fieldname="ExtCurrency18CompanyRate" fullfieldname="ExtCurrency18CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency18CompanyRate" />
+        <schemafield fieldname="ExtCurrency18DailyRate" fullfieldname="ExtCurrency18DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency18DailyRate" />
+        <schemafield fieldname="ExtCurrency18PrintSymbol" fullfieldname="ExtCurrency18PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency18PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency19ScreenSymbol" fullfieldname="ExtCurrency19ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency19ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency19Desc" fullfieldname="ExtCurrency19Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency19Desc" />
+        <schemafield fieldname="ExtCurrency19CompanyRate" fullfieldname="ExtCurrency19CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency19CompanyRate" />
+        <schemafield fieldname="ExtCurrency19DailyRate" fullfieldname="ExtCurrency19DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency19DailyRate" />
+        <schemafield fieldname="ExtCurrency19PrintSymbol" fullfieldname="ExtCurrency19PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency19PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency20ScreenSymbol" fullfieldname="ExtCurrency20ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency20ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency20Desc" fullfieldname="ExtCurrency20Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency20Desc" />
+        <schemafield fieldname="ExtCurrency20CompanyRate" fullfieldname="ExtCurrency20CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency20CompanyRate" />
+        <schemafield fieldname="ExtCurrency20DailyRate" fullfieldname="ExtCurrency20DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency20DailyRate" />
+        <schemafield fieldname="ExtCurrency20PrintSymbol" fullfieldname="ExtCurrency20PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency20PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency21ScreenSymbol" fullfieldname="ExtCurrency21ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency21ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency21Desc" fullfieldname="ExtCurrency21Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency21Desc" />
+        <schemafield fieldname="ExtCurrency21CompanyRate" fullfieldname="ExtCurrency21CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency21CompanyRate" />
+        <schemafield fieldname="ExtCurrency21DailyRate" fullfieldname="ExtCurrency21DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency21DailyRate" />
+        <schemafield fieldname="ExtCurrency21PrintSymbol" fullfieldname="ExtCurrency21PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency21PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency22ScreenSymbol" fullfieldname="ExtCurrency22ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency22ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency22Desc" fullfieldname="ExtCurrency22Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency22Desc" />
+        <schemafield fieldname="ExtCurrency22CompanyRate" fullfieldname="ExtCurrency22CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency22CompanyRate" />
+        <schemafield fieldname="ExtCurrency22DailyRate" fullfieldname="ExtCurrency22DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency22DailyRate" />
+        <schemafield fieldname="ExtCurrency22PrintSymbol" fullfieldname="ExtCurrency22PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency22PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency23ScreenSymbol" fullfieldname="ExtCurrency23ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency23ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency23Desc" fullfieldname="ExtCurrency23Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency23Desc" />
+        <schemafield fieldname="ExtCurrency23CompanyRate" fullfieldname="ExtCurrency23CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency23CompanyRate" />
+        <schemafield fieldname="ExtCurrency23DailyRate" fullfieldname="ExtCurrency23DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency23DailyRate" />
+        <schemafield fieldname="ExtCurrency23PrintSymbol" fullfieldname="ExtCurrency23PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency23PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency24ScreenSymbol" fullfieldname="ExtCurrency24ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency24ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency24Desc" fullfieldname="ExtCurrency24Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency24Desc" />
+        <schemafield fieldname="ExtCurrency24CompanyRate" fullfieldname="ExtCurrency24CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency24CompanyRate" />
+        <schemafield fieldname="ExtCurrency24DailyRate" fullfieldname="ExtCurrency24DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency24DailyRate" />
+        <schemafield fieldname="ExtCurrency24PrintSymbol" fullfieldname="ExtCurrency24PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency24PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency25ScreenSymbol" fullfieldname="ExtCurrency25ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency25ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency25Desc" fullfieldname="ExtCurrency25Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency25Desc" />
+        <schemafield fieldname="ExtCurrency25CompanyRate" fullfieldname="ExtCurrency25CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency25CompanyRate" />
+        <schemafield fieldname="ExtCurrency25DailyRate" fullfieldname="ExtCurrency25DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency25DailyRate" />
+        <schemafield fieldname="ExtCurrency25PrintSymbol" fullfieldname="ExtCurrency25PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency25PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency26ScreenSymbol" fullfieldname="ExtCurrency26ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency26ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency26Desc" fullfieldname="ExtCurrency26Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency26Desc" />
+        <schemafield fieldname="ExtCurrency26CompanyRate" fullfieldname="ExtCurrency26CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency26CompanyRate" />
+        <schemafield fieldname="ExtCurrency26DailyRate" fullfieldname="ExtCurrency26DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency26DailyRate" />
+        <schemafield fieldname="ExtCurrency26PrintSymbol" fullfieldname="ExtCurrency26PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency26PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency27ScreenSymbol" fullfieldname="ExtCurrency27ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency27ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency27Desc" fullfieldname="ExtCurrency27Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency27Desc" />
+        <schemafield fieldname="ExtCurrency27CompanyRate" fullfieldname="ExtCurrency27CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency27CompanyRate" />
+        <schemafield fieldname="ExtCurrency27DailyRate" fullfieldname="ExtCurrency27DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency27DailyRate" />
+        <schemafield fieldname="ExtCurrency27PrintSymbol" fullfieldname="ExtCurrency27PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency27PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency28ScreenSymbol" fullfieldname="ExtCurrency28ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency28ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency28Desc" fullfieldname="ExtCurrency28Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency28Desc" />
+        <schemafield fieldname="ExtCurrency28CompanyRate" fullfieldname="ExtCurrency28CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency28CompanyRate" />
+        <schemafield fieldname="ExtCurrency28DailyRate" fullfieldname="ExtCurrency28DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency28DailyRate" />
+        <schemafield fieldname="ExtCurrency28PrintSymbol" fullfieldname="ExtCurrency28PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency28PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency29ScreenSymbol" fullfieldname="ExtCurrency29ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency29ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency29Desc" fullfieldname="ExtCurrency29Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency29Desc" />
+        <schemafield fieldname="ExtCurrency29CompanyRate" fullfieldname="ExtCurrency29CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency29CompanyRate" />
+        <schemafield fieldname="ExtCurrency29DailyRate" fullfieldname="ExtCurrency29DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency29DailyRate" />
+        <schemafield fieldname="ExtCurrency29PrintSymbol" fullfieldname="ExtCurrency29PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency29PrintSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency30ScreenSymbol" fullfieldname="ExtCurrency30ScreenSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency30ScreenSymbol" collation = "1" />
+        <schemafield fieldname="ExtCurrency30Desc" fullfieldname="ExtCurrency30Desc" typename="DelphiString" size="12" elements="1" id="0" columnname="ExtCurrency30Desc" />
+        <schemafield fieldname="ExtCurrency30CompanyRate" fullfieldname="ExtCurrency30CompanyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency30CompanyRate" />
+        <schemafield fieldname="ExtCurrency30DailyRate" fullfieldname="ExtCurrency30DailyRate" typename="DelphiReal" size="6" elements="1" id="0" columnname="ExtCurrency30DailyRate" />
+        <schemafield fieldname="ExtCurrency30PrintSymbol" fullfieldname="ExtCurrency30PrintSymbol" typename="DelphiString" size="4" elements="1" id="0" columnname="ExtCurrency30PrintSymbol" collation = "1" />
+      </schemafields>
+    </recordtype>
+    <recordtype name="DEFRec" id="5" stringid="DEF" >
+      <schemafields>
+        <schemafield fieldname="names" fullfieldname="names" typename="binary" size="900" elements="1" id="0" columnname="Names"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="JobSRec" id="6" stringid="JOB" >
+      <schemafields>
+        <schemafield fieldname="OverheadGL" fullfieldname="OverheadGL" typename="int32" size="4" elements="1" id="0" columnname="OverheadGL" />
+        <schemafield fieldname="OverheadSpare" fullfieldname="OverheadSpare" typename="int32" size="4" elements="1" id="0" columnname="OverheadSpare" />
+        <schemafield fieldname="ProductionGL" fullfieldname="ProductionGL" typename="int32" size="4" elements="1" id="0" columnname="ProductionGL" />
+        <schemafield fieldname="ProductionSpare" fullfieldname="ProductionSpare" typename="int32" size="4" elements="1" id="0" columnname="ProductionSpare" />
+        <schemafield fieldname="SubContractGL" fullfieldname="SubContractGL" typename="int32" size="4" elements="1" id="0" columnname="SubContractGL" />
+        <schemafield fieldname="SubContractSpare" fullfieldname="SubContractSpare" typename="int32" size="4" elements="1" id="0" columnname="SubContractSpare" />
+        <schemafield fieldname="SpareGL1a" fullfieldname="SpareGL1a" typename="int32" size="4" elements="1" id="0" columnname="SpareGL1a" />
+        <schemafield fieldname="SpareGL1b" fullfieldname="SpareGL1b" typename="int32" size="4" elements="1" id="0" columnname="SpareGL1b" />
+        <schemafield fieldname="SpareGL2a" fullfieldname="SpareGL2a" typename="int32" size="4" elements="1" id="0" columnname="SpareGL2a" />
+        <schemafield fieldname="SpareGL2b" fullfieldname="SpareGL2b" typename="int32" size="4" elements="1" id="0" columnname="SpareGL2b" />
+        <schemafield fieldname="SpareGL3a" fullfieldname="SpareGL3a" typename="int32" size="4" elements="1" id="0" columnname="SpareGL3a" />
+        <schemafield fieldname="SpareGL3b" fullfieldname="SpareGL3b" typename="int32" size="4" elements="1" id="0" columnname="SpareGL3b" />
+        <schemafield fieldname="gen_ppi" fullfieldname="gen_ppi" typename="bool1" size="1" elements="1" id="0" columnname="GenPPI"/>
+        <schemafield fieldname="ppi_ac_code" fullfieldname="ppi_ac_code" typename="DelphiString" size="11" elements="1" id="0" columnname="PPIAcCode"  />
+        <schemafield fieldname="SummDesc00" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc00" />
+        <schemafield fieldname="SummDesc01" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc01" />
+        <schemafield fieldname="SummDesc02" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc02" />
+        <schemafield fieldname="SummDesc03" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc03" />
+        <schemafield fieldname="SummDesc04" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc04" />
+        <schemafield fieldname="SummDesc05" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc05" />
+        <schemafield fieldname="SummDesc06" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc06" />
+        <schemafield fieldname="SummDesc07" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc07" />
+        <schemafield fieldname="SummDesc08" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc08" />
+        <schemafield fieldname="SummDesc09" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc09" />
+        <schemafield fieldname="SummDesc10" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc10" />
+        <schemafield fieldname="SummDesc11" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc11" />
+        <schemafield fieldname="SummDesc12" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc12" />
+        <schemafield fieldname="SummDesc13" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc13" />
+        <schemafield fieldname="SummDesc14" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc14" />
+        <schemafield fieldname="SummDesc15" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc15" />
+        <schemafield fieldname="SummDesc16" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc16" />
+        <schemafield fieldname="SummDesc17" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc17" />
+        <schemafield fieldname="SummDesc18" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc18" />
+        <schemafield fieldname="SummDesc19" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc19" />
+        <schemafield fieldname="SummDesc20" fullfieldname="" typename="DelphiString" size="21" elements="1" id="0" columnname="SummDesc20" />
+        <schemafield fieldname="period_bud" fullfieldname="period_bud" typename="bool1" size="1" elements="1" id="0" columnname="PeriodBud"/>
+        <schemafield fieldname="jc_chk_acode1" fullfieldname="jc_chk_acode1" typename="DelphiString" size="11" elements="1" id="0" columnname="JCChkACode1"  />
+        <schemafield fieldname="jc_chk_acode2" fullfieldname="jc_chk_acode2" typename="DelphiString" size="11" elements="1" id="0" columnname="JCChkACode2"  />
+        <schemafield fieldname="jc_chk_acode3" fullfieldname="jc_chk_acode3" typename="DelphiString" size="11" elements="1" id="0" columnname="JCChkACode3"  />
+        <schemafield fieldname="jc_chk_acode4" fullfieldname="jc_chk_acode4" typename="DelphiString" size="11" elements="1" id="0" columnname="JCChkACode4"  />
+        <schemafield fieldname="jc_chk_acode5" fullfieldname="jc_chk_acode5" typename="DelphiString" size="11" elements="1" id="0" columnname="JCChkACode5"  />
+        <schemafield fieldname="jwk_mth_no" fullfieldname="jwk_mth_no" typename="int16" size="2" elements="1" id="0" columnname="JWKMthNo"/>
+        <schemafield fieldname="jtsh_nof" fullfieldname="jtsh_nof" typename="DelphiString" size="10" elements="1" id="0" columnname="JTSHNoF"  />
+        <schemafield fieldname="jtsh_not" fullfieldname="jtsh_not" typename="DelphiString" size="10" elements="1" id="0" columnname="JTSHNoT"  />
+        <schemafield fieldname="jf_name" fullfieldname="jf_name" typename="DelphiString" size="31" elements="1" id="0" columnname="JFName"  />
+        <schemafield fieldname="jc_commit_pin" fullfieldname="jc_commit_pin" typename="bool1" size="1" elements="1" id="0" columnname="JCCommitPin"/>
+        <schemafield fieldname="ja_inv_date" fullfieldname="ja_inv_date" typename="bool1" size="1" elements="1" id="0" columnname="JAInvDate"/>
+        <schemafield fieldname="ja_delay_cert" fullfieldname="ja_delay_cert" typename="bool1" size="1" elements="1" id="0" columnname="JADelayCert"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="FormDefsType" id="7" stringid="FR*" >
+      <schemafields>
+        <schemafield fieldname="PrimaryForm001" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm001" />
+        <schemafield fieldname="PrimaryForm002" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm002" />
+        <schemafield fieldname="PrimaryForm003" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm003" />
+        <schemafield fieldname="PrimaryForm004" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm004" />
+        <schemafield fieldname="PrimaryForm005" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm005" />
+        <schemafield fieldname="PrimaryForm006" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm006" />
+        <schemafield fieldname="PrimaryForm007" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm007" />
+        <schemafield fieldname="PrimaryForm008" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm008" />
+        <schemafield fieldname="PrimaryForm009" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm009" />
+        <schemafield fieldname="PrimaryForm010" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm010" />
+        <schemafield fieldname="PrimaryForm011" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm011" />
+        <schemafield fieldname="PrimaryForm012" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm012" />
+        <schemafield fieldname="PrimaryForm013" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm013" />
+        <schemafield fieldname="PrimaryForm014" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm014" />
+        <schemafield fieldname="PrimaryForm015" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm015" />
+        <schemafield fieldname="PrimaryForm016" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm016" />
+        <schemafield fieldname="PrimaryForm017" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm017" />
+        <schemafield fieldname="PrimaryForm018" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm018" />
+        <schemafield fieldname="PrimaryForm019" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm019" />
+        <schemafield fieldname="PrimaryForm020" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm020" />
+        <schemafield fieldname="PrimaryForm021" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm021" />
+        <schemafield fieldname="PrimaryForm022" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm022" />
+        <schemafield fieldname="PrimaryForm023" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm023" />
+        <schemafield fieldname="PrimaryForm024" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm024" />
+        <schemafield fieldname="PrimaryForm025" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm025" />
+        <schemafield fieldname="PrimaryForm026" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm026" />
+        <schemafield fieldname="PrimaryForm027" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm027" />
+        <schemafield fieldname="PrimaryForm028" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm028" />
+        <schemafield fieldname="PrimaryForm029" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm029" />
+        <schemafield fieldname="PrimaryForm030" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm030" />
+        <schemafield fieldname="PrimaryForm031" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm031" />
+        <schemafield fieldname="PrimaryForm032" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm032" />
+        <schemafield fieldname="PrimaryForm033" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm033" />
+        <schemafield fieldname="PrimaryForm034" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm034" />
+        <schemafield fieldname="PrimaryForm035" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm035" />
+        <schemafield fieldname="PrimaryForm036" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm036" />
+        <schemafield fieldname="PrimaryForm037" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm037" />
+        <schemafield fieldname="PrimaryForm038" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm038" />
+        <schemafield fieldname="PrimaryForm039" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm039" />
+        <schemafield fieldname="PrimaryForm040" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm040" />
+        <schemafield fieldname="PrimaryForm041" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm041" />
+        <schemafield fieldname="PrimaryForm042" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm042" />
+        <schemafield fieldname="PrimaryForm043" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm043" />
+        <schemafield fieldname="PrimaryForm044" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm044" />
+        <schemafield fieldname="PrimaryForm045" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm045" />
+        <schemafield fieldname="PrimaryForm046" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm046" />
+        <schemafield fieldname="PrimaryForm047" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm047" />
+        <schemafield fieldname="PrimaryForm048" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm048" />
+        <schemafield fieldname="PrimaryForm049" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm049" />
+        <schemafield fieldname="PrimaryForm050" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm050" />
+        <schemafield fieldname="PrimaryForm051" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm051" />
+        <schemafield fieldname="PrimaryForm052" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm052" />
+        <schemafield fieldname="PrimaryForm053" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm053" />
+        <schemafield fieldname="PrimaryForm054" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm054" />
+        <schemafield fieldname="PrimaryForm055" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm055" />
+        <schemafield fieldname="PrimaryForm056" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm056" />
+        <schemafield fieldname="PrimaryForm057" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm057" />
+        <schemafield fieldname="PrimaryForm058" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm058" />
+        <schemafield fieldname="PrimaryForm059" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm059" />
+        <schemafield fieldname="PrimaryForm060" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm060" />
+        <schemafield fieldname="PrimaryForm061" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm061" />
+        <schemafield fieldname="PrimaryForm062" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm062" />
+        <schemafield fieldname="PrimaryForm063" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm063" />
+        <schemafield fieldname="PrimaryForm064" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm064" />
+        <schemafield fieldname="PrimaryForm065" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm065" />
+        <schemafield fieldname="PrimaryForm066" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm066" />
+        <schemafield fieldname="PrimaryForm067" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm067" />
+        <schemafield fieldname="PrimaryForm068" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm068" />
+        <schemafield fieldname="PrimaryForm069" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm069" />
+        <schemafield fieldname="PrimaryForm070" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm070" />
+        <schemafield fieldname="PrimaryForm071" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm071" />
+        <schemafield fieldname="PrimaryForm072" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm072" />
+        <schemafield fieldname="PrimaryForm073" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm073" />
+        <schemafield fieldname="PrimaryForm074" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm074" />
+        <schemafield fieldname="PrimaryForm075" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm075" />
+        <schemafield fieldname="PrimaryForm076" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm076" />
+        <schemafield fieldname="PrimaryForm077" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm077" />
+        <schemafield fieldname="PrimaryForm078" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm078" />
+        <schemafield fieldname="PrimaryForm079" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm079" />
+        <schemafield fieldname="PrimaryForm080" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm080" />
+        <schemafield fieldname="PrimaryForm081" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm081" />
+        <schemafield fieldname="PrimaryForm082" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm082" />
+        <schemafield fieldname="PrimaryForm083" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm083" />
+        <schemafield fieldname="PrimaryForm084" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm084" />
+        <schemafield fieldname="PrimaryForm085" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm085" />
+        <schemafield fieldname="PrimaryForm086" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm086" />
+        <schemafield fieldname="PrimaryForm087" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm087" />
+        <schemafield fieldname="PrimaryForm088" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm088" />
+        <schemafield fieldname="PrimaryForm089" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm089" />
+        <schemafield fieldname="PrimaryForm090" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm090" />
+        <schemafield fieldname="PrimaryForm091" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm091" />
+        <schemafield fieldname="PrimaryForm092" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm092" />
+        <schemafield fieldname="PrimaryForm093" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm093" />
+        <schemafield fieldname="PrimaryForm094" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm094" />
+        <schemafield fieldname="PrimaryForm095" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm095" />
+        <schemafield fieldname="PrimaryForm096" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm096" />
+        <schemafield fieldname="PrimaryForm097" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm097" />
+        <schemafield fieldname="PrimaryForm098" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm098" />
+        <schemafield fieldname="PrimaryForm099" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm099" />
+        <schemafield fieldname="PrimaryForm100" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm100" />
+        <schemafield fieldname="PrimaryForm101" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm101" />
+        <schemafield fieldname="PrimaryForm102" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm102" />
+        <schemafield fieldname="PrimaryForm103" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm103" />
+        <schemafield fieldname="PrimaryForm104" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm104" />
+        <schemafield fieldname="PrimaryForm105" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm105" />
+        <schemafield fieldname="PrimaryForm106" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm106" />
+        <schemafield fieldname="PrimaryForm107" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm107" />
+        <schemafield fieldname="PrimaryForm108" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm108" />
+        <schemafield fieldname="PrimaryForm109" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm109" />
+        <schemafield fieldname="PrimaryForm110" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm110" />
+        <schemafield fieldname="PrimaryForm111" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm111" />
+        <schemafield fieldname="PrimaryForm112" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm112" />
+        <schemafield fieldname="PrimaryForm113" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm113" />
+        <schemafield fieldname="PrimaryForm114" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm114" />
+        <schemafield fieldname="PrimaryForm115" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm115" />
+        <schemafield fieldname="PrimaryForm116" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm116" />
+        <schemafield fieldname="PrimaryForm117" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm117" />
+        <schemafield fieldname="PrimaryForm118" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm118" />
+        <schemafield fieldname="PrimaryForm119" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm119" />
+        <schemafield fieldname="PrimaryForm120" fullfieldname="" typename="DelphiString" size="9" elements="1" id="0" columnname="PrimaryForm120" />
+        <schemafield fieldname="descr" fullfieldname="descr" typename="DelphiString" size="31" elements="1" id="0" columnname="Descr"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="ModuleRelType" id="11" stringid="MOD" >
+      <schemafields>
+        <schemafield fieldname="module_sec" fullfieldname="module_sec" typename="binary" size="1410" elements="1" id="0" columnname="ModuleSec"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="GCur1PType" id="12" stringid="GC*" >
+      <schemafields>
+        <schemafield fieldname="GCR_tri_rates" fullfieldname="GCR_tri_rates" typename="binary" size="248" elements="1" id="0" columnname="GCR_triRates"  />
+        <schemafield fieldname="GCR_tri_euro" fullfieldname="GCR_tri_euro" typename="binary" size="31" elements="1" id="0" columnname="GCR_triEuro"  />
+        <schemafield fieldname="GCR_tri_invert" fullfieldname="GCR_tri_invert" typename="binary" size="31" elements="1" id="0" columnname="GCR_triInvert"  />
+        <schemafield fieldname="GCR_tri_float" fullfieldname="GCR_tri_float" typename="binary" size="31" elements="1" id="0" columnname="GCR_triFloat"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="EDI1Type" id="15" stringid="ED1" >
+      <schemafields>
+        <schemafield fieldname="vedi_method" fullfieldname="vedi_method" typename="BYTE" size="1" elements="1" id="0" columnname="VEDIMethod"/>
+        <schemafield fieldname="v_van_mode" fullfieldname="v_van_mode" typename="BYTE" size="1" elements="1" id="0" columnname="VVanMode"/>
+        <schemafield fieldname="vedifact" fullfieldname="vedifact" typename="BYTE" size="1" elements="1" id="0" columnname="VEDIFACT"/>
+        <schemafield fieldname="vvance_id" fullfieldname="vvance_id" typename="DelphiString" size="51" elements="1" id="0" columnname="VVANCEId" />
+        <schemafield fieldname="vvanu_id" fullfieldname="vvanu_id" typename="DelphiString" size="51" elements="1" id="0" columnname="VVANUId"  />
+        <schemafield fieldname="v_use_crlf" fullfieldname="v_use_crlf" typename="bool1" size="1" elements="1" id="0" columnname="VUseCRLF"/>
+        <schemafield fieldname="v_test_mode" fullfieldname="v_test_mode" typename="bool1" size="1" elements="1" id="0" columnname="VTestMode"/>
+        <schemafield fieldname="v_dir_path" fullfieldname="v_dir_path" typename="DelphiString" size="151" elements="1" id="0" columnname="VDirPAth"  />
+        <schemafield fieldname="v_compress" fullfieldname="v_compress" typename="bool1" size="1" elements="1" id="0" columnname="VCompress"/>
+        <schemafield fieldname="vce_email" fullfieldname="vce_email" typename="DelphiString" size="256" elements="1" id="0" columnname="VCEEmail"  />
+        <schemafield fieldname="vu_email" fullfieldname="vu_email" typename="DelphiString" size="256" elements="1" id="0" columnname="VUEmail"  />
+        <schemafield fieldname="ve_priority" fullfieldname="ve_priority" typename="BYTE" size="1" elements="1" id="0" columnname="VEPriority"/>
+        <schemafield fieldname="ve_subject" fullfieldname="ve_subject" typename="DelphiString" size="101" elements="1" id="0" columnname="VESubject"  />
+        <schemafield fieldname="v_send_email" fullfieldname="v_send_email" typename="bool1" size="1" elements="1" id="0" columnname="VSendEmail"/>
+        <schemafield fieldname="vieecslp" fullfieldname="vieecslp" typename="DelphiString" size="3" elements="1" id="0" columnname="VIEECSLP"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="EDI2Type" id="16" stringid="ED2" >
+      <schemafields>
+        <schemafield fieldname="em_name" fullfieldname="em_name" typename="DelphiString" size="256" elements="1" id="0" columnname="EmName"  />
+        <schemafield fieldname="em_address" fullfieldname="em_address" typename="DelphiString" size="256" elements="1" id="0" columnname="EmAddress"  />
+        <schemafield fieldname="em_smtp" fullfieldname="em_smtp" typename="DelphiString" size="256" elements="1" id="0" columnname="EmSMTP"  />
+        <schemafield fieldname="em_priority" fullfieldname="em_priority" typename="BYTE" size="1" elements="1" id="0" columnname="EmPriority"/>
+        <schemafield fieldname="em_use_mapi" fullfieldname="em_use_mapi" typename="bool1" size="1" elements="1" id="0" columnname="EmUseMAPI"/>
+        <schemafield fieldname="fx_use_mapi" fullfieldname="fx_use_mapi" typename="BYTE" size="1" elements="1" id="0" columnname="FxUseMAPI"/>
+        <schemafield fieldname="fax_prnn" fullfieldname="fax_prnn" typename="DelphiString" size="51" elements="1" id="0" columnname="FaxPrnN"  />
+        <schemafield fieldname="email_prnn" fullfieldname="email_prnn" typename="DelphiString" size="51" elements="1" id="0" columnname="EmailPrnN"  />
+        <schemafield fieldname="fx_name" fullfieldname="fx_name" typename="DelphiString" size="41" elements="1" id="0" columnname="FxName"  />
+        <schemafield fieldname="fx_phone" fullfieldname="fx_phone" typename="DelphiString" size="26" elements="1" id="0" columnname="FxPhone"  />
+        <schemafield fieldname="em_attch_mode" fullfieldname="em_attch_mode" typename="BYTE" size="1" elements="1" id="0" columnname="EmAttchMode"/>
+        <schemafield fieldname="fax_dll_path" fullfieldname="fax_dll_path" typename="DelphiString" size="61" elements="1" id="0" columnname="FaxDLLPath"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="EDI3Type" id="17" stringid="ED3" >
+      <schemafields>
+        <schemafield fieldname="spare" fullfieldname="spare" typename="binary" size="992" elements="1" id="0" columnname="Spare"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="CustomFType" id="18" stringid="CT*" >
+      <schemafields>
+        <schemafield fieldname="f_captions" fullfieldname="f_captions" typename="binary" size="1600" elements="1" id="0" columnname="FCaptions"  />
+        <schemafield fieldname="f_hide" fullfieldname="f_hide" typename="binary" size="100" elements="1" id="0" columnname="FHide"  />
+      </schemafields>
+    </recordtype>
+    <recordtype name="CISCRec" id="20" stringid="CIS" >
+      <schemafields>
+        <schemafield fieldname="CISConstructCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISConstructCode" />
+        <schemafield fieldname="CISConstructDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISConstructDesc" />
+        <schemafield fieldname="CISConstructRate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISConstructRate" />
+        <schemafield fieldname="CISConstructGLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISConstructGLCode" />
+        <schemafield fieldname="CISConstructDepartment" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISConstructDepartment" />
+        <schemafield fieldname="CISConstructCostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISConstructCostCentre" />
+        <schemafield fieldname="CISConstructSpare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISConstructSpare" />
+        <schemafield fieldname="CISTechnicalCode" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISTechnicalCode" />
+        <schemafield fieldname="CISTechnicalDesc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISTechnicalDesc" />
+        <schemafield fieldname="CISTechnicalRate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISTechnicalRate" />
+        <schemafield fieldname="CISTechnicalGLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISTechnicalGLCode" />
+        <schemafield fieldname="CISTechnicalDepartment" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISTechnicalDepartment" />
+        <schemafield fieldname="CISTechnicalCostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISTechnicalCostCentre" />
+        <schemafield fieldname="CISTechnicalSpare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISTechnicalSpare" />
+        <schemafield fieldname="CISRate1Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate1Code" />
+        <schemafield fieldname="CISRate1Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate1Desc" />
+        <schemafield fieldname="CISRate1Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate1Rate" />
+        <schemafield fieldname="CISRate1GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate1GLCode" />
+        <schemafield fieldname="CISRate1Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate1Department" />
+        <schemafield fieldname="CISRate1CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate1CostCentre" />
+        <schemafield fieldname="CISRate1Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate1Spare" />
+        <schemafield fieldname="CISRate2Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate2Code" />
+        <schemafield fieldname="CISRate2Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate2Desc" />
+        <schemafield fieldname="CISRate2Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate2Rate" />
+        <schemafield fieldname="CISRate2GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate2GLCode" />
+        <schemafield fieldname="CISRate2Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate2Department" />
+        <schemafield fieldname="CISRate2CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate2CostCentre" />
+        <schemafield fieldname="CISRate2Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate2Spare" />
+        <schemafield fieldname="CISRate3Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate3Code" />
+        <schemafield fieldname="CISRate3Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate3Desc" />
+        <schemafield fieldname="CISRate3Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate3Rate" />
+        <schemafield fieldname="CISRate3GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate3GLCode" />
+        <schemafield fieldname="CISRate3Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate3Department" />
+        <schemafield fieldname="CISRate3CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate3CostCentre" />
+        <schemafield fieldname="CISRate3Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate3Spare" />
+        <schemafield fieldname="CISRate4Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate4Code" />
+        <schemafield fieldname="CISRate4Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate4Desc" />
+        <schemafield fieldname="CISRate4Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate4Rate" />
+        <schemafield fieldname="CISRate4GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate4GLCode" />
+        <schemafield fieldname="CISRate4Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate4Department" />
+        <schemafield fieldname="CISRate4CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate4CostCentre" />
+        <schemafield fieldname="CISRate4Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate4Spare" />
+        <schemafield fieldname="CISRate5Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate5Code" />
+        <schemafield fieldname="CISRate5Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate5Desc" />
+        <schemafield fieldname="CISRate5Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate5Rate" />
+        <schemafield fieldname="CISRate5GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate5GLCode" />
+        <schemafield fieldname="CISRate5Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate5Department" />
+        <schemafield fieldname="CISRate5CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate5CostCentre" />
+        <schemafield fieldname="CISRate5Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate5Spare" />
+        <schemafield fieldname="CISRate6Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate6Code" />
+        <schemafield fieldname="CISRate6Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate6Desc" />
+        <schemafield fieldname="CISRate6Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate6Rate" />
+        <schemafield fieldname="CISRate6GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate6GLCode" />
+        <schemafield fieldname="CISRate6Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate6Department" />
+        <schemafield fieldname="CISRate6CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate6CostCentre" />
+        <schemafield fieldname="CISRate6Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate6Spare" />
+        <schemafield fieldname="CISRate7Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate7Code" />
+        <schemafield fieldname="CISRate7Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate7Desc" />
+        <schemafield fieldname="CISRate7Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate7Rate" />
+        <schemafield fieldname="CISRate7GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate7GLCode" />
+        <schemafield fieldname="CISRate7Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate7Department" />
+        <schemafield fieldname="CISRate7CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate7CostCentre" />
+        <schemafield fieldname="CISRate7Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate7Spare" />
+        <schemafield fieldname="CISRate8Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate8Code" />
+        <schemafield fieldname="CISRate8Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate8Desc" />
+        <schemafield fieldname="CISRate8Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate8Rate" />
+        <schemafield fieldname="CISRate8GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate8GLCode" />
+        <schemafield fieldname="CISRate8Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate8Department" />
+        <schemafield fieldname="CISRate8CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate8CostCentre" />
+        <schemafield fieldname="CISRate8Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate8Spare" />
+        <schemafield fieldname="CISRate9Code" fullfieldname="" typename="Char" size="1" elements="1" id="0" columnname="CISRate9Code" />
+        <schemafield fieldname="CISRate9Desc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="0" columnname="CISRate9Desc" />
+        <schemafield fieldname="CISRate9Rate" fullfieldname="" typename="double" size="8" elements="1" id="0" columnname="CISRate9Rate" />
+        <schemafield fieldname="CISRate9GLCode" fullfieldname="" typename="int32" size="4" elements="1" id="0" columnname="CISRate9GLCode" />
+        <schemafield fieldname="CISRate9Department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate9Department" />
+        <schemafield fieldname="CISRate9CostCentre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="0" columnname="CISRate9CostCentre" />
+        <schemafield fieldname="CISRate9Spare" fullfieldname="" typename="binary" size="10" elements="1" id="0" columnname="CISRate9Spare" />
+        <schemafield fieldname="cis_interval" fullfieldname="cis_interval" typename="BYTE" size="1" elements="1" id="0" columnname="CISInterval"/>
+        <schemafield fieldname="cis_auto_set_pr" fullfieldname="cis_auto_set_pr" typename="bool1" size="1" elements="1" id="0" columnname="CISAutoSetPr"/>
+        <schemafield fieldname="cisvat_code" fullfieldname="cisvat_code" typename="char" size="1" elements="1" id="0" columnname="CISVATCode"  />
+        <schemafield fieldname="calc_cis_on_gross" fullfieldname="calc_cis_on_gross" typename="bool1" size="1" elements="1" id="0" columnname="CalcCISOnGross"/>
+        <schemafield fieldname="cis_spare3" fullfieldname="cis_spare3" typename="binary" size="4" elements="1" id="0" columnname="CISSpare3"  />
+        <schemafield fieldname="cis_scheme" fullfieldname="cis_scheme" typename="char" size="1" elements="1" id="0" columnname="CISScheme"  />
+        <schemafield fieldname="cis_return_date" fullfieldname="cis_return_date" typename="DelphiString" size="9" elements="1" id="0" columnname="CISReturnDate"  />
+        <schemafield fieldname="cis_curr_period" fullfieldname="cis_curr_period" typename="DelphiString" size="9" elements="1" id="0" columnname="CISCurrPeriod"  />
+        <schemafield fieldname="cis_loaded" fullfieldname="cis_loaded" typename="bool1" size="1" elements="1" id="0" columnname="CISLoaded"/>
+        <schemafield fieldname="cis_tax_ref" fullfieldname="cis_tax_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="CISTaxRef"  />
+        <schemafield fieldname="cis_agg_mode" fullfieldname="cis_agg_mode" typename="BYTE" size="1" elements="1" id="0" columnname="CISAggMode"/>
+        <schemafield fieldname="cis_sort_mode" fullfieldname="cis_sort_mode" typename="BYTE" size="1" elements="1" id="0" columnname="CISSortMode"/>
+        <schemafield fieldname="cisv_folio" fullfieldname="cisv_folio" typename="long" size="4" elements="1" id="0" columnname="CISVFolio"/>
+        <schemafield fieldname="cis_vouchers" fullfieldname="cis_vouchers" typename="binary" size="72" elements="1" id="0" columnname="CISVouchers"  />
+        <schemafield fieldname="ivan_mode" fullfieldname="ivan_mode" typename="BYTE" size="1" elements="1" id="0" columnname="IVANMode"/>
+        <schemafield fieldname="ivanir_id" fullfieldname="ivanir_id" typename="DelphiString" size="51" elements="1" id="0" columnname="IVANIRId"  />
+        <schemafield fieldname="ivanu_id" fullfieldname="ivanu_id" typename="DelphiString" size="51" elements="1" id="0" columnname="IVANUId"  />
+        <schemafield fieldname="ivan_pw" fullfieldname="ivan_pw" typename="DelphiString" size="16" elements="1" id="0" columnname="IVANPw"  />
+        <schemafield fieldname="iiredi_ref" fullfieldname="iiredi_ref" typename="DelphiString" size="36" elements="1" id="0" columnname="IIREDIRef"  />
+        <schemafield fieldname="i_use_crlf" fullfieldname="i_use_crlf" typename="bool1" size="1" elements="1" id="0" columnname="IUseCRLF"/>
+        <schemafield fieldname="i_test_mode" fullfieldname="i_test_mode" typename="bool1" size="1" elements="1" id="0" columnname="ITestMode"/>
+        <schemafield fieldname="i_dir_path" fullfieldname="i_dir_path" typename="DelphiString" size="151" elements="1" id="0" columnname="IDirPath"  />
+        <schemafield fieldname="iedi_method" fullfieldname="iedi_method" typename="BYTE" size="1" elements="1" id="0" columnname="IEDIMethod"/>
+        <schemafield fieldname="i_send_email" fullfieldname="i_send_email" typename="bool1" size="1" elements="1" id="0" columnname="ISendEmail"/>
+        <schemafield fieldname="ie_priority" fullfieldname="ie_priority" typename="BYTE" size="1" elements="1" id="0" columnname="IEPriority"/>
+        <schemafield fieldname="j_cert_no" fullfieldname="j_cert_no" typename="DelphiString" size="21" elements="1" id="0" columnname="JCertNo"  />
+        <schemafield fieldname="j_cert_expiry" fullfieldname="j_cert_expiry" typename="DelphiString" size="9" elements="1" id="0" columnname="JCertExpiry"  />
+        <schemafield fieldname="jcis_type" fullfieldname="jcis_type" typename="BYTE" size="1" elements="1" id="0" columnname="JCISType"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="CIS340Rec" id="21" stringid="CI2" >
+      <schemafields>
+        <schemafield fieldname="CISCNINO" fullfieldname="CISCNINO" typename="DelphiString" size="21" elements="21" id="0" columnname="CISCNINO"  />
+        <schemafield fieldname="CISCUTR" fullfieldname="CISCUTR" typename="DelphiString" size="21" elements="21" id="0" columnname="CISCUTR"  />
+        <schemafield fieldname="CISACCONo" fullfieldname="CISACCONo" typename="DelphiString" size="21" elements="21" id="0" columnname="CISACCONo"  />
+        <schemafield fieldname="IGWIRId" fullfieldname="IGWIRId" typename="DelphiString" size="51" elements="51" id="0" columnname="IGWIRId"/>
+        <schemafield fieldname="IGWUId" fullfieldname="IGWUId" typename="DelphiString" size="51" elements="51" id="0" columnname="IGWUId"/>
+        <schemafield fieldname="IGWTO" fullfieldname="IGWTO" typename="DelphiString" size="16" elements="16" id="0" columnname="IGWTO"/>
+
+        <schemafield fieldname="IGWIRef" fullfieldname="IGWIRef" typename="DelphiString" size="36" elements="36" id="0" columnname="IGWIRef"  />
+        <schemafield fieldname="IXMLDirPath" fullfieldname="IXMLDirPath" typename="DelphiString" size="151" elements="151" id="0" columnname="IXMLDirPath"  />
+
+        <schemafield fieldname="IXTestMode" fullfieldname="IXTestMode" typename="bool1" size="1" elements="1" id="0" columnname="IXTestMode"  />
+        <schemafield fieldname="IXConfEmp" fullfieldname="IXConfEmp" typename="bool1" size="1" elements="1" id="0" columnname="IXConfEmp"  />
+        <schemafield fieldname="IXVerSub" fullfieldname="IXVerSub" typename="bool1" size="1" elements="1" id="0" columnname="IXVerSub"  />
+        <schemafield fieldname="IXNoPay" fullfieldname="IXNoPay" typename="bool1" size="1" elements="1" id="0" columnname="IXNoPay"  />
+        <schemafield fieldname="IGWTR" fullfieldname="IGWTR" typename="DelphiString" size="11" elements="11" id="0" columnname="IGWTR"  />
+        <schemafield fieldname="IGSubType" fullfieldname="IGSubType" typename="uint8" size="1" elements="1" id="0" columnname="IGSubType"  />
+      </schemafields>
+    </recordtype>
+  </recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="1">
+      <indexfields>
+		    <item computedcolumnname="IDCodeComputed">id_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

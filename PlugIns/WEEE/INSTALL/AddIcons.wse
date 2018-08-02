@@ -1,0 +1,118 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+  Text=....csIcons.wse - Creates Icons and Program Groups
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=ICONSTOOLS
+  Value=A
+  Flags=00000010
+end
+item: Check Configuration
+  Flags=10111011
+end
+item: Remark
+end
+item: Remark
+  Text=....Windows 95 style Interface
+end
+item: Remark
+end
+item: Remark
+  Text=....Identify root of Programs directory
+end
+item: Get Registry Key Value
+  Variable=V_PROGROOT
+  Key=Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+  Default=%WIN%\Start Menu\Programs
+  Value Name=Programs
+  Flags=00000010
+end
+item: Set Variable
+  Variable=V_PROGROOT
+  Value=\
+  Flags=00000001
+end
+item: Remark
+end
+item: Remark
+  Text=....Create WinCard Folder in Start Menu-Programs
+end
+item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%V_PROGROOT%
+end
+item: Set Variable
+  Variable=V_ENTGROUP
+  Value=%PROGGROUP%
+  Flags=00000001
+end
+item: Check if File/Dir Exists
+  Pathname=%V_ENTGROUP%
+  Flags=00000101
+end
+item: Create Directory
+  Pathname=%V_ENTGROUP%
+end
+item: End Block
+end
+item: Remark
+end
+item: Remark
+  Text=....Create normal shortcuts
+end
+item: Create Shortcut
+  Source=%ENTDIR%\WEEEAdmn.exe
+  Destination=%V_ENTGROUP%\Configure WEEE Plug-In.lnk
+  Working Directory=%ENTDIR%
+  Description=Configure WEEE Plug-In
+  Key Type=1536
+  Flags=00000001
+end
+item: Else Statement
+end
+item: Remark
+end
+item: Remark
+  Text=....Windows 3/NT 3.51 Style Interface
+end
+item: Remark
+end
+item: Remark
+  Text=....Add Icons
+end
+item: Add ProgMan Icon
+  Group=%PROGGROUP%
+  Icon Name=Configure WEEE Plug-In
+  Command Line=%ENTDIR%\WEEEAdmn.exe
+  Default Directory=%ENTDIR%
+end
+item: End Block
+end
+item: End Block
+end

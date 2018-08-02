@@ -1,0 +1,120 @@
+<schemarecord version="4" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="902" >
+  <recordfields>
+    <schemafield fieldname="fixed" fullfieldname="fixed" typename="JOBMISC_FIXED" size="0" elements="1" id="-1" columnname="" />
+    <schemafield fieldname="var" fullfieldname="var" typename="JOBMISC_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+    <schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix" />
+    <schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+    <schemafield fieldname="var_code1" fullfieldname="var_code1" typename="DelphiEmbeddedCaseSensitiveString" size="11" elements="1" id="-1" columnname="var_code1"/>
+    <schemafield fieldname="var_code2" fullfieldname="var_code2" typename="binary" size="4" elements="1" id="-1" columnname="var_code2"/>
+    <schemafield fieldname="var_code3" fullfieldname="var_code3" typename="DelphiString" size="21" elements="1" id="-1" columnname="var_code3"/>
+    <schemafield fieldname="var_code4" fullfieldname="var_code4" typename="DelphiString" size="11" elements="1" id="-1" columnname="var_code4"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="EmplRec" id="0" stringid="JE">
+      <schemafields>
+        <schemafield fieldname="emp_name" fullfieldname="emp_name" typename="DelphiString" size="31" elements="1" id="0" columnname="EmpName"/>
+        <schemafield fieldname="addr1" fullfieldname="addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="Addr1"/>
+        <schemafield fieldname="addr2" fullfieldname="addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="Addr2"/>
+        <schemafield fieldname="addr3" fullfieldname="addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="Addr3"/>
+        <schemafield fieldname="addr4" fullfieldname="addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="Addr4"/>
+        <schemafield fieldname="addr5" fullfieldname="addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="Addr5"/>
+        <schemafield fieldname="phone" fullfieldname="phone" typename="DelphiString" size="21" elements="1" id="0" columnname="Phone"/>
+        <schemafield fieldname="fax" fullfieldname="fax" typename="DelphiString" size="21" elements="1" id="0" columnname="Fax"/>
+        <schemafield fieldname="phone2" fullfieldname="phone2" typename="DelphiString" size="21" elements="1" id="0" columnname="Phone2"/>
+        <schemafield fieldname="e_type" fullfieldname="e_type" typename="BYTE" size="1" elements="1" id="0" columnname="EType"/>
+        <schemafield fieldname="time_dr1" fullfieldname="time_dr1" typename="long" size="4" elements="1" id="0" columnname="TimeDR1"/>
+        <schemafield fieldname="time_dr2" fullfieldname="time_dr2" typename="long" size="4" elements="1" id="0" columnname="TimeDR2"/>
+        <schemafield fieldname="cc_dep1" fullfieldname="cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="Department" collation="1"/>
+        <schemafield fieldname="cc_dep2" fullfieldname="cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="CostCentre" collation="1"/>
+        <schemafield fieldname="pay_no" fullfieldname="pay_no" typename="DelphiString" size="11" elements="1" id="0" columnname="PayNo"/>
+        <schemafield fieldname="cert_no" fullfieldname="cert_no" typename="DelphiString" size="31" elements="1" id="0" columnname="CertNo"/>
+        <schemafield fieldname="cert_expiry" fullfieldname="cert_expiry" typename="DelphiString" size="9" elements="1" id="0" columnname="CertExpiry"/>
+        <schemafield fieldname="je_tag" fullfieldname="je_tag" typename="bool1" size="1" elements="1" id="0" columnname="JETag"/>
+        <schemafield fieldname="use_o_rate" fullfieldname="use_o_rate" typename="BYTE" size="1" elements="1" id="0" columnname="UseORate"/>
+        <schemafield fieldname="user_def1" fullfieldname="user_def1" typename="DelphiString" size="21" elements="1" id="0" columnname="UserDef1"/>
+        <schemafield fieldname="user_def2" fullfieldname="user_def2" typename="DelphiString" size="21" elements="1" id="0" columnname="UserDef2"/>
+        <schemafield fieldname="n_line_count" fullfieldname="n_line_count" typename="long" size="4" elements="1" id="0" columnname="NLineCount"/>
+        <schemafield fieldname="g_self_bill" fullfieldname="g_self_bill" typename="bool1" size="1" elements="1" id="0" columnname="GSelfBill"/>
+        <schemafield fieldname="group_cert" fullfieldname="group_cert" typename="bool1" size="1" elements="1" id="0" columnname="GroupCert"/>
+        <schemafield fieldname="cis_type" fullfieldname="cis_type" typename="BYTE" size="1" elements="1" id="0" columnname="CISType"/>
+        <schemafield fieldname="user_def3" fullfieldname="user_def3" typename="DelphiString" size="21" elements="1" id="0" columnname="UserDef3"/>
+        <schemafield fieldname="user_def4" fullfieldname="user_def4" typename="DelphiString" size="21" elements="1" id="0" columnname="UserDef4"/>
+        <schemafield fieldname="eni_no" fullfieldname="eni_no" typename="DelphiString" size="11" elements="1" id="0" columnname="ENINo"/>
+        <schemafield fieldname="lab_pl_only" fullfieldname="lab_pl_only" typename="bool1" size="1" elements="1" id="0" columnname="LabPLOnly"/>
+        <schemafield fieldname="utr_code" fullfieldname="utr_code" typename="DelphiString" size="11" elements="1" id="0" columnname="UTRCode"/>
+        <schemafield fieldname="verify_no" fullfieldname="verify_no" typename="DelphiString" size="14" elements="1" id="0" columnname="HMRCVerifyNo"/>
+        <schemafield fieldname="tagged" fullfieldname="tagged" typename="BYTE" size="1" elements="1" id="0" columnname="Tagged"/>
+        <schemafield fieldname="cis_subtype" fullfieldname="cis_subtype" typename="BYTE" size="1" elements="1" id="0" columnname="CISSubType"/>
+        <schemafield fieldname="email_addr" fullfieldname="email_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailAddr"/>
+        <schemafield fieldname="emp_status" fullfieldname="emp_status" typename="uint8" size="1" elements="1" id="0" columnname="emStatus"/>
+        <schemafield fieldname="anonymisation_status" fullfieldname="anonymisation_status" typename="uint8" size="1" elements="1" id="0" columnname="emAnonymisationStatus"/>
+        <schemafield fieldname="anonymised_date" fullfieldname="anonymised_date" typename="DelphiString" size="9" elements="1" id="0" columnname="emAnonymisedDate"/>
+        <schemafield fieldname="anonymised_time" fullfieldname="anonymised_time" typename="DelphiString" size="7" elements="1" id="0" columnname="emAnonymisedTime"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="JobTypeRec" id="1" stringid="JT">
+      <schemafields>
+        <schemafield fieldname="jt_name" fullfieldname="jt_name" typename="DelphiString" size="31" elements="1" id="0" columnname="JTypeName"/>
+        <schemafield fieldname="jt_tag" fullfieldname="jt_tag" typename="bool1" size="1" elements="1" id="0" columnname="JTTag"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="JobTypeRec" id="1" stringid="LK">
+      <schemafields>
+        <schemafield fieldname="jt_name" fullfieldname="jt_name" typename="DelphiString" size="31" elements="1" id="0" columnname="JTypeName"/>
+        <schemafield fieldname="jt_tag" fullfieldname="jt_tag" typename="bool1" size="1" elements="1" id="0" columnname="JTTag"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="JobAnalRec" id="2" stringid="JA">
+      <schemafields>
+        <schemafield fieldname="ja_name" fullfieldname="ja_name" typename="DelphiString" size="31" elements="1" id="0" columnname="JAName"/>
+        <schemafield fieldname="ja_type" fullfieldname="ja_type" typename="int16" size="2" elements="1" id="0" columnname="JAType"/>
+        <schemafield fieldname="wip_nom1" fullfieldname="wip_nom1" typename="long" size="4" elements="1" id="0" columnname="WIPNom1"/>
+        <schemafield fieldname="wip_nom2" fullfieldname="wip_nom2" typename="long" size="4" elements="1" id="0" columnname="WIPNom2"/>
+        <schemafield fieldname="anal_hed" fullfieldname="anal_hed" typename="int16" size="2" elements="1" id="0" columnname="AnalHed"/>
+        <schemafield fieldname="ja_tag" fullfieldname="ja_tag" typename="bool1" size="1" elements="1" id="0" columnname="JATag"/>
+        <schemafield fieldname="j_link_lt" fullfieldname="j_link_lt" typename="BYTE" size="1" elements="1" id="0" columnname="JLinkLT"/>
+        <schemafield fieldname="cis_tax_rate" fullfieldname="cis_tax_rate" typename="char" size="1" elements="1" id="0" columnname="CISTaxRate"/>
+        <schemafield fieldname="uplift_p" fullfieldname="uplift_p" typename="double" size="8" elements="1" id="0" columnname="UpliftP"/>
+        <schemafield fieldname="uplift_gl" fullfieldname="uplift_gl" typename="long" size="4" elements="1" id="0" columnname="UpliftGL"/>
+        <schemafield fieldname="revenue_type" fullfieldname="revenue_type" typename="BYTE" size="1" elements="1" id="0" columnname="RevenueType"/>
+        <schemafield fieldname="ja_det_type" fullfieldname="ja_det_type" typename="BYTE" size="1" elements="1" id="0" columnname="JADetType"/>
+        <schemafield fieldname="ja_calc_b4_ret" fullfieldname="ja_calc_b4_ret" typename="bool1" size="1" elements="1" id="0" columnname="JACalcB4Ret"/>
+        <schemafield fieldname="ja_deduct" fullfieldname="ja_deduct" typename="double" size="8" elements="1" id="0" columnname="JADeduct"/>
+        <schemafield fieldname="ja_ded_apply" fullfieldname="ja_ded_apply" typename="BYTE" size="1" elements="1" id="0" columnname="JADedApply"/>
+        <schemafield fieldname="ja_ret_type" fullfieldname="ja_ret_type" typename="BYTE" size="1" elements="1" id="0" columnname="JARetType"/>
+        <schemafield fieldname="ja_ret_value" fullfieldname="ja_ret_value" typename="double" size="8" elements="1" id="0" columnname="JARetValue"/>
+        <schemafield fieldname="ja_ret_exp" fullfieldname="ja_ret_exp" typename="BYTE" size="1" elements="1" id="0" columnname="JARetExp"/>
+        <schemafield fieldname="ja_ret_exp_int" fullfieldname="ja_ret_exp_int" typename="BYTE" size="1" elements="1" id="0" columnname="JARetExpInt"/>
+        <schemafield fieldname="ja_ret_pres" fullfieldname="ja_ret_pres" typename="bool1" size="1" elements="1" id="0" columnname="JARetPres"/>
+        <schemafield fieldname="ja_ded_comp" fullfieldname="ja_ded_comp" typename="BYTE" size="1" elements="1" id="0" columnname="JADedComp"/>
+        <schemafield fieldname="ja_pay_code" fullfieldname="ja_pay_code" typename="DelphiString" size="6" elements="1" id="0" columnname="JAPayCode"/>
+      </schemafields>
+    </recordtype>
+  </recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="0">
+      <indexfields>
+        <item>rec_pfix</item>
+        <item>sub_type</item>
+        <item computedcolumnname="var_code1Computed">var_code1</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isclustered="0" isunique="0" nullablecharacter="00">
+      <indexfields>
+        <item>rec_pfix</item>
+        <item>sub_type</item>
+        <item>var_code3</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isclustered="0" isunique="0" nullablecharacter="00">
+      <indexfields>
+        <item>rec_pfix</item>
+        <item>sub_type</item>
+        <item>var_code4</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

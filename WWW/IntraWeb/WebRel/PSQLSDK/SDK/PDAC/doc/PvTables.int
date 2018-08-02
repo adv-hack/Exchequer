@@ -1,0 +1,913 @@
+unit pvtables;
+
+
+interface
+
+uses
+  windows, messages, sysutils, classes, graphics, controls, forms, dialogs,
+  Db, DbConsts, pvconst, stdvcl, pvparser, dti, ExtCtrls
+{$Ifdef PvDelphi6Up}
+  , variants;
+{$Else}
+{$Ifdef PvDelphi5Up}
+  ;
+{$Else}
+  , bdeconst;
+{$EndIf}
+{$EndIf}
+
+type
+  TPvAbsSession = class;
+  TPvAbsDatabase = class;
+  TPvDataSet = class;
+
+{ Exception classes }
+
+  EPvDatabaseError = class(EDatabaseError)
+  protected
+    FOwner: TPersistent;
+  public
+    constructor Create(Owner: TPersistent; const Msg: string);
+    property Owner: TPersistent read FOwner;
+  end;
+
+  ENoResultSet = class(EDatabaseError);
+  EPvDBEngineError = class;
+
+{ Pv* error information type }
+
+  TPvDBError = class
+  protected
+    FNativeError: Longint;
+    FMessage: string;
+  public
+    constructor Create(Owner: EPvDBEngineError; NativeError: Longint; Message: PChar);
+    property Message: string read FMessage;
+    property NativeError: Longint read FNativeError;
+  end;
+
+  EPvDBEngineError = class(EPvDatabaseError)
+  protected
+    FErrors: TList;
+    function GetError(Index: Integer): TPvDBError;
+    function GetErrorCount: Integer;
+  public
+    constructor Create(Owner: TComponent);
+    destructor Destroy; override;
+    property ErrorCount: Integer read GetErrorCount;
+    property Errors[Index: Integer]: TPvDBError read GetError; Default;
+  end;
+
+{ DBNames/DSNs management's error information type }
+
+  TPvDbAdminEngineErrorTypes = (dbmeLocal, dbmeDTI, dbmeLocalSql);
+
+  EPvDbAdminEngineError = class(EPvDBEngineError)
+  protected
+    FErrorType: TPvDbAdminEngineErrorTypes;
+    constructor CreateEmpty(Owner: TComponent);
+  public
+    constructor Create(Owner: TComponent; ErrorType: TPvDbAdminEngineErrorTypes; ErrorCode: PDAC_DTI_ULONG;
+      const AMessage: string);
+    property ErrorType: TPvDbAdminEngineErrorTypes read FErrorType;
+  end;
+
+{ TAliasItem }
+
+  TAliasItem = class(TObject)
+  public
+    Name: AnsiString;
+    Params: TStringList;
+    IsAdd: boolean;
+
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+{ TAliasList }
+
+{$WARNINGS OFF}
+  TAliasList = class(TStringList)
+  private
+    function GetParams(AliasName: string): TStrings;
+    procedure SetParams(AliasName: string; AliasParams: TStrings);
+  protected
+    function GetObject(Index: Integer): TAliasItem;
+    procedure PutObject(Index: Integer; AObject: TAliasItem);
+  public
+    destructor Destroy; override;
+    function AddObject(const S: string; AObject: TAliasItem): Integer;
+    procedure Delete(Index: Integer); override;
+    function IndexOfObject(AObject: TAliasItem): Integer;
+    procedure InsertObject(Index: Integer; const S: string; AObject: TAliasItem);
+    function IndexOfAlias(AliasName: string): Integer;
+    property Objects[Index: Integer]: TAliasItem read GetObject write PutObject; default;
+    property Params[AliasName: string]: TStrings read GetParams write SetParams;
+  end;
+{$WARNINGS ON}
+
+{ TDtiConnectionHolder }
+
+  TDtiConnectionHolderMode = (dchmNormalMode, dchmDesignMode);
+
+  TDtiConnectionHolder = class
+  private
+    FOwner: TPvAbsSession;
+    FConnection: PDAC_DTI_LONG;
+    FTimer: TTimer;
+    FTimeout: Cardinal;
+    FLockCount: integer;
+    FDtiConnectionHolderMode: TDtiConnectionHolderMode;
+    procedure OnTimer(Sender: TObject);
+    function GetConnected: Boolean;
+    function GetConnection: PDAC_DTI_LONG;
+    procedure SetTimeout(ATimeout: Cardinal);
+  public
+    constructor Create(AOwner: TPvAbsSession);
+    destructor Destroy; override;
+    procedure LockHandle;
+    procedure UnlockHandle;
+    procedure Disconnect;
+    property Connected: Boolean read GetConnected;
+    property Handle: PDAC_DTI_LONG read GetConnection;
+    property Timeout: Cardinal read FTimeout write SetTimeout;
+    property DtiConnectionHolderMode: TDtiConnectionHolderMode read FDtiConnectionHolderMode
+      write FDtiConnectionHolderMode;
+  end;
+
+{ TPvAbsSessionList }
+
+  TPvAbsSessionList = class(TObject)
+  private
+    FSessions: TList;
+    FSessionNumbers: TBits;
+    FCurrentSession: TPvAbsSession;
+    procedure AddSession(ASession: TPvAbsSession);
+    procedure CloseAll;
+    function GetCount: Integer;
+    function GetSession(Index: Integer): TPvAbsSession;
+    function GetCurrentSession: TPvAbsSession;
+    function GetSessionByName(const SessionName: string): TPvAbsSession;
+    procedure SetCurrentSession(Value: TPvAbsSession);
+  protected
+    procedure InitCriticalSection; virtual; abstract;
+    procedure DestroyCriticalSection; virtual; abstract;
+    function GetDefaultSession: TPvAbsSession; virtual; abstract;
+    function CreateSession: TPvAbsSession; virtual; abstract;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property CurrentSession: TPvAbsSession read GetCurrentSession write SetCurrentSession;
+    function FindSession(const SessionName: string): TPvAbsSession;
+    procedure GetSessionNames(List: TStrings);
+    function OpenSession(const SessionName: string): TPvAbsSession;
+    property Count: Integer read GetCount;
+    property Sessions[Index: Integer]: TPvAbsSession read GetSession; default;
+    property List[const SessionName: string]: TPvAbsSession read GetSessionByName;
+  end;
+
+{ TPvAbsSession }
+
+  TConfigModes = (cfmVirtual, cfmPersistent, cfmSession);
+  TConfigMode = set of TConfigModes;
+
+  TPasswordEvent = procedure(Sender: TObject; var Continue: Boolean) of object;
+
+  TDatabaseEvent = (dbOpen, dbClose, dbAdd, dbRemove, dbAddAlias, dbDeleteAlias,
+    dbDeleteDriver);
+
+  TDatabaseNotifyEvent = procedure(DBEvent: TDatabaseEvent; const Param) of object;
+
+  TPvAbsSession = class(TComponent)
+  private
+    FPasswords: TStringList;
+    FStreamedActive: Boolean;
+    FKeepConnections: Boolean;
+    FSQLHourGlass: Boolean;
+    FAutoSessionName: Boolean;
+    FUpdatingAutoSessionName: Boolean;
+    FSessionNumber: Integer;
+    FNetFileDir: string;
+    FPrivateDir: string;
+    FOnPassword: TPasswordEvent;
+    FOnDBNotify: TDatabaseNotifyEvent;
+    FConfigMode: TConfigMode;
+    FServerName: string;
+    FDtiUserName, FDtiPassword: string;
+    FDtiUserNameDesign, FDtiPasswordDesign: string;
+    FDtiLoginPrompt: Boolean;
+    FGotLoginData: Boolean;
+    procedure AddDatabase(Value: TPvAbsDatabase);
+    procedure CheckInactive;
+    procedure CheckConfigMode(CfgMode: TConfigMode);
+    function DoFindDatabase(const DatabaseName: string; AOwner: TComponent): TPvAbsDatabase;
+    function DoOpenDatabase(const DatabaseName: string; AOwner: TComponent): TPvAbsDatabase;
+    function GetActive: Boolean;
+    function GetConfigMode: TConfigMode;
+    function GetDatabase(Index: Integer): TPvAbsDatabase;
+    function GetDatabaseCount: Integer;
+    function GetDtiConnection: PDAC_DTI_LONG;
+    function GetLocalSystem: Boolean;
+    function GetNetFileDir: string;
+    function GetPrivateDir: string;
+    function SessionNameStored: Boolean;
+    procedure RemoveDatabase(Value: TPvAbsDatabase);
+    procedure SetActive(Value: Boolean);
+    procedure SetAutoSessionName(Value: Boolean);
+    procedure SetConfigMode(Value: TConfigMode);
+//    procedure SetConfigParams(const Path, Node: string; List: TStrings);
+    procedure SetNetFileDir(const Value: string);
+    procedure SetPrivateDir(const Value: string);
+    procedure SetSessionName(const Value: string);
+    procedure SetSessionNames;
+    procedure SetServerName(const NewName: string);
+    procedure SetDtiUserName(Value: string);
+    procedure SetDtiPassword(Value: string);
+    procedure SetDtiLoginPrompt(Value: boolean);
+    procedure UpdateAutoSessionName;
+    procedure ValidateAutoSession(AOwner: TComponent; AllSessions: Boolean);
+  protected
+    FDatabases: TList;
+    FDtiConnectionHolder: TDtiConnectionHolder;
+    FUserName: string;
+    FSessionAliases: TAliasList;
+    FModifiedAliases: TAliasList;
+    FOnStartup: TNotifyEvent;
+    FSessionName: string;
+    procedure CheckDTI(AliasName: string; Stat: integer);
+    procedure CloseDatabaseHandle(Database: TPvAbsDatabase); virtual; abstract;
+    procedure GetSessionParams(List: TStrings); virtual; abstract;
+    function IsHandleNull: boolean; virtual; abstract;
+    procedure LockSession; virtual; abstract;
+    procedure UnlockSession; virtual; abstract;
+    procedure Loaded; override;
+    function IsValidDataSet(AComponent: TComponent): boolean; virtual; abstract;
+    function IsValidDatabase(AComponent: TComponent): boolean; virtual; abstract;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    procedure ModifyConfigParams(const Path, Node: string; List: TStrings);
+    function CreateDatabase(Owner: TPvAbsSession): TPvAbsDatabase; virtual; abstract;
+    function GetSessions: TPvAbsSessionList; virtual; abstract;
+    function GetDefaultSession: TPvAbsSession; virtual; abstract;
+
+    procedure InternalAddAlias(const Name: string; List: TStrings;
+      CfgMode: TConfigMode; RestoreMode: Boolean);
+    procedure InternalDeleteAlias(const Name: string; CfgMode: TConfigMode;
+      RestoreMode: Boolean);
+    procedure InternalModifyAlias(Name: string; List: TStrings; IsAddAlias: boolean);
+    procedure RealDropAlias(Name: string); virtual; abstract;
+    function DecodeAliasParams(Name: string; List: TStrings;
+      IsAddAlias: boolean; AliasParams: TStringList): boolean; virtual; abstract;
+    procedure SaveAlias(Name: string; List: TStrings; IsAdded: boolean); virtual; abstract;
+    procedure StartSession(Value: Boolean); virtual;
+    procedure SetName(const NewName: TComponentName); override;
+    procedure DtiLogin;
+    procedure InvalidateLoginData;
+
+    property OnDBNotify: TDatabaseNotifyEvent read FOnDBNotify write FOnDBNotify;
+    property Passwords: TStringList read FPasswords write FPasswords;
+    property UserName: string read FUserName write FUserName;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure AddAlias(const Name: string; List: TStrings);
+    procedure AddStandardAlias(const Name, Path: string); virtual; abstract;
+    property ConfigMode: TConfigMode read GetConfigMode write SetConfigMode;
+    procedure AddPassword(const Password: string);
+    procedure Close;
+    procedure CloseDatabase(Database: TPvAbsDatabase);
+    procedure DeleteAlias(const Name: string);
+    procedure DropConnections;
+    function FindDatabase(const DatabaseName: string): TPvAbsDatabase;
+    procedure GetAliasNames(List: TStrings); virtual; abstract;
+    procedure GetAliasParams(const AliasName: string; List: TStrings); virtual; abstract;
+    procedure GetConfigParams(const Path, Section: string; List: TStrings);
+    procedure GetDatabaseNames(List: TStrings);
+    function GetPassword: Boolean;
+    procedure GetTableNames(const DatabaseName, Pattern: string;
+      Extensions, SystemTables: Boolean; List: TStrings); virtual; abstract;
+    procedure GetStoredProcNames(const DatabaseName: string; List: TStrings); virtual; abstract;
+    function IsAlias(const Name: string): Boolean;
+    procedure ModifyAlias(Name: string; List: TStrings);
+    procedure Open;
+    function OpenDatabase(const DatabaseName: string): TPvAbsDatabase;
+    procedure RemoveAllPasswords;
+    procedure RemovePassword(const Password: string);
+    procedure SaveConfigFile;
+    procedure DBNotification(DBEvent: TDatabaseEvent; const Param);
+
+    function SetSQLHourGlassOnScreen: TCursor;
+    procedure RestoreFromSQLHourGlassOnScreen;
+
+    property DatabaseCount: Integer read GetDatabaseCount;
+    property Databases[Index: Integer]: TPvAbsDatabase read GetDatabase;
+    property DtiHandle: PDAC_DTI_LONG read GetDtiConnection;
+    property DtiConnectionHolder: TDtiConnectionHolder read FDtiConnectionHolder;
+    property LocalSystem: Boolean read GetLocalSystem;
+    property NetFileDir: string read GetNetFileDir write SetNetFileDir;
+    property PrivateDir: string read GetPrivateDir write SetPrivateDir;
+  published
+    property Active: Boolean read GetActive write SetActive default False;
+    property AutoSessionName: Boolean read FAutoSessionName write SetAutoSessionName default False;
+    property KeepConnections: Boolean read FKeepConnections write FKeepConnections default True;
+    property SessionName: string read FSessionName write SetSessionName stored SessionNameStored;
+    property ServerName: string read FServerName write SetServerName;
+    property ServerAdminUser: string read FDtiUserName write SetDtiUserName;
+    property ServerAdminPassword: string read FDtiPassword write SetDtiPassword;
+    property ServerAdminLoginPrompt: boolean read FDtiLoginPrompt write SetDtiLoginPrompt default False;
+    property SQLHourGlass: Boolean read FSQLHourGlass write FSQLHourGlass default True;
+    property OnPassword: TPasswordEvent read FOnPassword write FOnPassword;
+    property OnStartup: TNotifyEvent read FOnStartup write FOnStartup;
+  end;
+
+{ TPvAbsDatabase }
+
+  TTransIsolation = ({tiDirtyRead, }tiReadCommitted);//, tiRepeatableRead);
+
+  TTransEnd = (teCommit, teRollback);
+
+{$Ifdef PvDelphi5Up}
+  TDatabaseLoginEvent = procedure(Database: TPvAbsDatabase; LoginParams: TStrings) of object;
+{$Else}
+  TLoginEvent = procedure(Database: TPvAbsDatabase; LoginParams: TStrings) of object;
+{$Endif}
+
+{$Ifdef PvDelphi5Up}
+  TPvAbsDatabase = class(TCustomConnection)
+{$Else}
+  TPvAbsDatabase = class(TComponent)
+{$Endif}
+  private
+{$Ifndef PvDelphi5Up}
+    FDataSets: TList;
+    FLoginPrompt: Boolean;
+{$Endif}
+    FLoginPromptOnlyIfNecessary: boolean;
+    FKeepConnection: Boolean;
+    FTemporary: Boolean;
+{$Ifndef PvDelphi5Up}
+    FStreamedConnected: Boolean;
+{$Endif}
+    FHandleShared: Boolean;
+    FReadOnly: Boolean;
+    FRefCount: Integer;
+    FSessionName: string;
+    function GetAliasName: string;
+{$Ifndef PvDelphi5Up}
+    function GetConnected: Boolean;
+    function GetDataSet(Index: Integer): TPvDataSet;
+    function GetDataSetCount: Integer;
+{$Endif}
+    procedure ParamsChanging(Sender: TObject);
+    procedure SetAliasName(const Value: string);
+{$Ifndef PvDelphi5Up}
+    procedure SetConnected(Value: Boolean);
+{$Endif}
+    procedure SetDatabaseName(const Value: string);
+    procedure SetExclusive(Value: Boolean);
+    procedure SetKeepConnection(Value: Boolean);
+    procedure SetReadOnly(Value: Boolean);
+    procedure SetParams(Value: TStrings);
+    procedure SetSessionName(const Value: string);
+{$Ifdef PvDelphi5Up}
+  protected
+    procedure DoDisconnect; override;
+    function GetConnected: Boolean; override;
+    function GetDataSet(Index: Integer): TPvDataSet; reintroduce;
+{$Endif}
+  protected
+    FAliasName: string;
+    FAcquiredHandle: boolean;
+    FDatabaseName: string;
+{$Ifdef PvDelphi5Up}
+    FOnLogin: TDatabaseLoginEvent;
+{$Else}
+    FOnLogin: TLoginEvent;
+{$EndIf}
+    FExclusive: boolean;
+    FParams: TStrings;
+    FSession: TPvAbsSession;
+    FSessionAlias: boolean;
+    FSQLBased: boolean;
+    FIsInTransaction: boolean;
+    FTransIsolation: TTransIsolation;
+    procedure CheckActive;
+    procedure CheckInactive;
+    procedure CheckDatabaseAlias(var Password: string; GetParamsFromAlias: boolean; DoLogin: boolean);
+    procedure CheckDatabaseName;
+    procedure CheckSessionName(Required: Boolean);
+    procedure EndTransaction(TransEnd: TTransEnd); virtual; abstract;
+    function IsHandleNull: boolean; virtual; abstract;
+    procedure Loaded; override;
+    procedure Login(LoginParams: TStrings); virtual;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
+    function GetOwnerSession(AOwner: TComponent): TPvAbsSession; virtual; abstract;
+    function GetSessions: TPvAbsSessionList; virtual; abstract;
+    function GetDefaultSession: TPvAbsSession; virtual; abstract;
+    procedure SetDatabaseFlags; virtual;
+    function GetDirectory: string; virtual;
+    procedure SetDirectory(Value: string); virtual;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure ApplyUpdates(const PvDataSets: array of TPvDataSet);
+{$Ifndef PvDelphi5Up}
+    procedure Close; virtual;
+{$Endif}
+    procedure CloseDataSets;
+    procedure Commit;
+    procedure FlushSchemaCache(const TableName: string); virtual;
+{$Ifndef PvDelphi5Up}
+    procedure Open; virtual; abstract;
+{$Endif}
+    procedure Rollback;
+    procedure StartTransaction; virtual; abstract;
+    procedure ValidateName(const Name: string);
+{$Ifndef PvDelphi5Up}
+    property DataSetCount: Integer read GetDataSetCount;
+{$Endif}
+    property DataSets[Index: Integer]: TPvDataSet read GetDataSet;
+    property Directory: string read GetDirectory write SetDirectory;
+    property IsSQLBased: Boolean read FSQLBased;
+    property InTransaction: Boolean read FIsInTransaction;
+    property Session: TPvAbsSession read FSession;
+    property Temporary: Boolean read FTemporary write FTemporary;
+    property SessionAlias: Boolean read FSessionAlias;
+  published
+    property AliasName: string read GetAliasName write SetAliasName;
+{$Ifdef PvDelphi5Up}
+    property Connected;
+{$Else}
+    property Connected: Boolean read GetConnected write SetConnected default False;
+{$Endif}
+    property DatabaseName: string read FDatabaseName write SetDatabaseName;
+    property Exclusive: Boolean read FExclusive write SetExclusive default False;
+    property HandleShared: Boolean read FHandleShared write FHandleShared default False;
+    property KeepConnection: Boolean read FKeepConnection write SetKeepConnection default True;
+{$Ifdef PvDelphi5Up}
+    property LoginPrompt default True;
+{$Else}
+    property LoginPrompt: Boolean read FLoginPrompt write FLoginPrompt Default True;
+{$Endif}
+    property LoginPromptOnlyIfNecessary: Boolean read FLoginPromptOnlyIfNecessary
+      write FLoginPromptOnlyIfNecessary Default true;
+    property Params: TStrings read FParams write SetParams;
+    property ReadOnly: Boolean read FReadOnly write SetReadOnly default False;
+    property SessionName: string read FSessionName write SetSessionName;
+    property TransIsolation: TTransIsolation read FTransIsolation write FTransIsolation default tiReadCommitted;
+{$Ifdef PvDelphi5Up}
+    property AfterConnect;
+    property AfterDisconnect;
+    property BeforeConnect;
+    property BeforeDisconnect;
+    property OnLogin: TDatabaseLoginEvent read FOnLogin write FOnLogin;
+{$Else}
+    property OnLogin: TLoginEvent read FOnLogin write FOnLogin;
+{$Endif}
+  end;
+
+{ TPvDataSet }
+
+{$Ifndef PvDelphi5Up}
+  TUpdateAction = (uaFail, uaAbort, uaSkip, uaRetry, uaApplied);
+  TUpdateRecordType = (rtModified, rtInserted, rtDeleted, rtUnmodified);
+  TUpdateRecordTypes = set of TUpdateRecordType;
+  TUpdateErrorEvent = procedure(DataSet: TDataSet; E: EDatabaseError;
+    UpdateKind: TUpdateKind; var UpdateAction: TUpdateAction) of object;
+  TUpdateRecordEvent = procedure(DataSet: TDataSet; UpdateKind: TUpdateKind;
+    var UpdateAction: TUpdateAction) of object;
+{$Endif}
+
+  PRecInfo = ^TRecInfo;
+  TRecInfo = record
+    RecordNumber: Longint;
+    BookmarkFlag: TBookmarkFlag;
+  end;
+
+{$Ifndef PvDelphi4Up}
+  TBlobData = string;
+{$Endif}
+
+  TBlobDataArray = array[0..0] of TBlobData;
+  PBlobDataArray = ^TBlobDataArray;
+
+{$Ifndef PvDelphi4Up}
+  TUpdateMode = (upWhereAll, upWhereChanged, upWhereKeyOnly);
+{$Endif}
+
+  TDBFlags = set of 0..15;
+
+  TIndexName = type string;
+
+  TRecCacheUpdateInfoList = class;
+
+  PRecCacheUpdateInfo = ^TRecCacheUpdateInfo;
+  TRecCacheUpdateInfo = class
+  public
+    CacheUpdOpType, SavedCacheUpdOpType: TUpdateRecordTypes;
+    pNewRecBuf, pSavedNewRecBuf: Pointer;
+    pOldRecBuf: Pointer;
+    pNewBlobBuf, pSavedNewBlobBuf: TList;
+    pOldBlobBuf: TList;
+    pNewBlobSize, pSavedNewBlobSize: TList;
+    pOldBlobSize: TList;
+    LastRecBookmark: TBookmark;
+    IsCurrentRow: boolean;
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+  TRecCacheUpdateInfoList = class
+  protected
+    FList: TList;
+    FOwner: TPvDataSet;
+    function Get(Index: Integer): TRecCacheUpdateInfo;
+    procedure Put(Index: Integer; Item: TRecCacheUpdateInfo);
+    function GetCount: integer;
+  public
+    CurItem: integer;
+    constructor Create(Owner: TPvDataSet);
+    destructor Destroy; override;
+    function Add(Item: TRecCacheUpdateInfo): Integer;
+    procedure Delete(Index: Integer);
+    function GetItemNo(Bookmark: TBookmark): integer;
+    property Count: integer read GetCount;
+    property Items[Index: Integer]: TRecCacheUpdateInfo read Get write Put; default;
+  end;
+
+  TPvDataSet = class(TDataSet)
+  private
+{$Ifdef PvDelphi5Up}
+    FAutoRefresh: Boolean;
+{$Else}
+    FProvIntf: IProvider;
+{$EndIf}
+    FOnUpdateError: TUpdateErrorEvent;
+    FOnUpdateRecord: TUpdateRecordEvent;
+    FDBFlags: TDBFlags;
+    FDatabaseName: string;
+    FSessionName: string;
+    function GetOldRecord: PChar;
+    function HasConstraints: Boolean;
+    procedure CheckDBSessionName;
+    function GetDatabase: TPvAbsDatabase;
+    function GetDBSession: TPvAbsSession;
+    procedure SetDatabaseName(const Value: string);
+    procedure SetSessionName(const Value: string);
+    function GetCachedUpdItemNo(Buffer: pointer): integer;
+    procedure MoveBlobBuffer(Source, Dest, SourceSize, DestSize: TList);
+    procedure ClearBlobBuffer(Source, SourceSize: TList);
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+    procedure PSEndTransaction(Commit: Boolean); override;
+    function PSGetQuoteChar: string; override;
+    function PSGetUpdateException(E: Exception; Prev: EUpdateError): EUpdateError; override;
+    function PSInTransaction: Boolean; override;
+    function PSIsSQLBased: Boolean; override;
+    procedure PSReset; override;
+    procedure PSStartTransaction; override;
+    function PSUpdateRecord(UpdateKind: TUpdateKind; Delta: TDataSet): Boolean; override;
+{$Endif}
+
+  protected
+{$ifdef PDAC_NEWCU}
+    // 28531 - moved these here from descendant classes so I can use them for cached updates
+    FFirstRecord, FLastRecord: boolean;
+    FIsDatasetEmpty: boolean;
+{$endif}
+    FFilterBuffer: PChar;
+
+    FFilterParser: TExprParser;
+    FFilterParseVerifier: TParseVerifier;
+
+    FExpIndex: Boolean;
+    FCanModify: Boolean;
+    FCacheBlobs: Boolean;
+    FConstrDisableCount: Integer;
+    FRecordSize: Word;
+    FBookmarkOfs: Word;
+    FRecInfoOfs: Word;
+    FBlobCacheOfs: Word;
+    FRecBufSize: Word;
+    FConstraintLayer: Boolean;
+    FDatabase: TPvAbsDatabase;
+    FParseConstrains: TConstraintCollection;
+    FDefaultConstrains: TConstraintCollection;
+    FIsFieldConstrainVerifyState: boolean;
+
+    FCachedUpdates: boolean;
+    FCacheUpdateList: TRecCacheUpdateInfoList;
+    FUpdateMode: TUpdateMode;
+    FUpdateRecordTypes: TUpdateRecordTypes;
+    procedure ActivateFilters; virtual;
+    procedure AllocCachedUpdateBuffers(Allocate: Boolean);
+    function AllocRecordBuffer: PChar; override;
+    procedure BeginConstrains;
+    procedure EndConstrains;
+    procedure VerifyConstrains;
+    procedure CheckFieldConstrains(FieldNo: integer; Buffer: pointer);
+    procedure SetDefaultConsrains(Buffer: pointer);
+    procedure CheckCachedUpdateMode;
+    procedure ClearBlobCache(Buffer: PChar);
+    procedure ClearCalcFields(Buffer: PChar); override;
+    procedure CloseBlob(Field: TField); override;
+    procedure DeactivateFilters; virtual;
+    function RecordFilter(RecBuf: Pointer): boolean;
+    function CheckFilter(RecBuf: Pointer; ParseVerifier: TParseVerifier): boolean;
+    function DoFiltering(RecBuf: Pointer): boolean; virtual;
+    function FindRecord(Restart, GoForward: Boolean): Boolean; override;
+    procedure FreeRecordBuffer(var Buffer: PChar); override;
+    function GetActiveRecBuf(var RecBuf: PChar): boolean; virtual;
+    function GetBlobData(Field: TField; Buffer: PChar): TBlobData; virtual;
+    procedure SetBlobData(Field: TField; Buffer: PChar; const Value: TBlobData); virtual;
+    procedure GetBookmarkData(Buffer: PChar; Data: Pointer); override;
+    function GetBookmarkFlag(Buffer: PChar): TBookmarkFlag; override;
+    function GetCanModify: Boolean; override;
+    function GetDefaultSession: TPvAbsSession; virtual; abstract;
+    function GetSessions: TPvAbsSessionList; virtual; abstract;
+
+    procedure PvGetBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); virtual; abstract;
+    procedure PvPutBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); virtual; abstract;
+
+    procedure PvInternalRevertRecord(RecNo: integer);
+    procedure CachedUpdatesInsert(Buffer: PChar; DoInitRecord: boolean);
+
+    procedure InternalPost; override;
+    procedure InternalCancel; override;
+    procedure InternalAddRecord(Buffer: Pointer; Append: Boolean); override;
+{$Ifdef PvDelphi4Up}
+    procedure InternalInsert; override;
+{$Else}
+    procedure InternalInsert;
+    procedure DoOnNewRecord; override;
+{$EndIf}
+    procedure InternalEdit; override;
+    procedure InternalDelete; override;
+    function InternalMoveFirst(DoCheck: boolean): TGetResult;
+    function InternalMoveLast(DoCheck: boolean): TGetResult;
+    function InternalMoveNext(DoCheck: boolean): TGetResult;
+    function InternalMovePrev(DoCheck: boolean): TGetResult;
+    function GetRecord(Buffer: PChar; GetMode: TGetMode; DoCheck: Boolean): TGetResult; override;
+    procedure InternalRefresh; override;
+    procedure InternalGotoBookmark(Bookmark: TBookmark); override;
+
+    function GetRecordInTempBuf(GetMode: TGetMode; DoCheck: Boolean): TGetResult;
+    function GetRecNo: Integer; override;
+    function GetRecordSize: Word; override;
+    function GetStateFieldValue(State: TDataSetState; Field: TField): Variant; override;
+    function GetUpdatesPending: Boolean;
+    function GetUpdateRecordSet: TUpdateRecordTypes;
+
+    function IsMayBeSlow: boolean; virtual;
+    function IsHandleNull: boolean; virtual; abstract;
+
+    procedure InitRecord(Buffer: PChar); override;
+    procedure InitBufferPointers(GetProps: Boolean); virtual;
+    procedure InternalClose; override;
+    procedure InternalFirst; override;
+    procedure InternalHandleException; override;
+    procedure InternalInitRecord(Buffer: PChar); override;
+    procedure InternalLast; override;
+
+    procedure CacheUpdatesApplyModified(RecCacheUpdateInfo: TRecCacheUpdateInfo); virtual; abstract;
+    procedure CacheUpdatesApplyInserted(RecCacheUpdateInfo: TRecCacheUpdateInfo); virtual; abstract;
+    procedure CacheUpdatesApplyDeleted(RecCacheUpdateInfo: TRecCacheUpdateInfo); virtual; abstract;
+
+    function PvInternalMoveFirst(DoCheck: boolean): TGetResult; virtual; abstract;
+    function PvInternalMoveLast(DoCheck: boolean): TGetResult; virtual; abstract;
+    function PvInternalMoveNext(DoCheck: boolean): TGetResult; virtual; abstract;
+    function PvInternalMovePrev(DoCheck: boolean): TGetResult; virtual; abstract;
+    function PvGetRecord(Buffer: PChar; GetMode: TGetMode; DoCheck: Boolean): TGetResult;
+      virtual; abstract;
+    procedure PvInternalPost; virtual; abstract;
+    procedure PvInternalCancel; virtual; abstract;
+    procedure PvInternalAddRecord(Buffer: Pointer; Append: Boolean); virtual; abstract;
+    procedure PvInternalInsert; virtual; abstract;
+    procedure PvInternalEdit; virtual; abstract;
+    procedure PvInternalDelete; virtual; abstract;
+    procedure PvInternalRefresh; virtual;
+    procedure PvInternalGotoBookmark(Bookmark: TBookmark); virtual; abstract;
+    function PvInternalBookmarkValid(Bookmark: TBookmark): Boolean; virtual; abstract;
+
+    procedure InternalOpen; override;
+    procedure InternalSetToRecord(Buffer: PChar); override;
+
+    //26948 - shenders: new function
+    function IsMatchCurrentRecord(const KeyFields: string; const AKeyValues: Variant;
+              Options: TLocateOptions): Boolean;
+
+    function LocateRecord(const KeyFields: string; const AKeyValues: Variant;
+      Options: TLocateOptions; SyncCursor: Boolean): Boolean; virtual;
+    procedure PrepareCursor; virtual;
+{$Ifdef PvDelphi4Up}
+{$Ifndef PvDelphi5Up}
+    procedure SetBlockReadSize(Value: Integer); override;
+{$Endif}
+{$Endif}
+    procedure SetBookmarkData(Buffer: PChar; Data: Pointer); override;
+    procedure SetBookmarkFlag(Buffer: PChar; Value: TBookmarkFlag); override;
+    procedure SetCachedUpdates(Value: Boolean);
+    procedure SetFilterData(const Text: string; Options: TFilterOptions);
+    procedure SetFiltered(Value: Boolean); override;
+    procedure SetFilterOptions(Value: TFilterOptions); override;
+    procedure SetFilterText(const Value: string); override;
+{$Ifdef PvDelphi4Up}
+    procedure SetStateFieldValue(State: TDataSetState; Field: TField;
+      const Value: Variant); override;
+{$Else}
+    procedure SetStateFieldValue(State: TDataSetState; Field: TField;
+      Value: Variant); override;
+{$Endif}
+    procedure SetOnUpdateError(UpdateEvent: TUpdateErrorEvent);
+    procedure SetUpdateRecordSet(RecordTypes: TUpdateRecordTypes);
+    procedure SetUpdateMode(const Value: TUpdateMode);
+
+    function ConstraintsStored: Boolean;
+    procedure Disconnect; virtual;
+{$Ifndef PvDelphi5Up}
+    function GetProvider: IProvider; virtual;
+{$EndIf}
+    function SetDBFlag(Flag: Integer; Value: Boolean): Boolean; virtual;
+
+    property DBFlags: TDBFlags read FDBFlags;
+    property UpdateMode: TUpdateMode read FUpdateMode write SetUpdateMode default upWhereAll;
+    property IsFieldConstrainVerifyState: boolean read FIsFieldConstrainVerifyState
+      write FIsFieldConstrainVerifyState;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    function BookmarkValid(Bookmark: TBookmark): Boolean; override;
+{$Ifndef PvDelphi4Up}
+    procedure DoBeforeCancel; override;
+{$Endif}
+    procedure ApplyUpdates;
+    procedure CancelUpdates;
+    procedure CommitUpdates;
+    function ConstraintsDisabled: Boolean;
+    procedure DisableConstraints;
+    procedure EnableConstraints;
+    procedure FetchAll;
+    procedure FlushBuffers;
+    function GetCurrentRecord(Buffer: PChar): Boolean; override;
+    function Locate(const KeyFields: string; const KeyValues: Variant;
+      Options: TLocateOptions): Boolean; override;
+    function Lookup(const KeyFields: string; const KeyValues: Variant;
+      const ResultFields: string): Variant; override;
+    procedure RevertRecord;
+{$Ifdef PvDelphi4Up}
+    function UpdateStatus: TUpdateStatus; override;
+{$Else}
+    function UpdateStatus: TUpdateStatus;
+{$Endif}
+
+    procedure CloseDatabase(Database: TPvAbsDatabase);
+    function OpenDatabase: TPvAbsDatabase;
+
+    // 32936 -
+{$Ifdef PvDelphi6Up}
+    function OpenDatabaseEx(SetDatabase: boolean): TPvAbsDatabase;
+{$Endif}
+    property CacheBlobs: Boolean read FCacheBlobs write FCacheBlobs default true;
+    property ExpIndex: Boolean read FExpIndex;
+    property UpdatesPending: Boolean read GetUpdatesPending;
+    property UpdateRecordTypes: TUpdateRecordTypes read GetUpdateRecordSet write SetUpdateRecordSet;
+
+    property Database: TPvAbsDatabase read GetDatabase;
+    property DBSession: TPvAbsSession read GetDBSession;
+{$Ifndef PvDelphi5Up}
+    property Provider: IProvider read GetProvider;
+{$EndIf}
+  published
+    property Active;
+    property AutoCalcFields;
+{$Ifdef PvDelphi5Up}
+    property AutoRefresh: Boolean read FAutoRefresh write FAutoRefresh default False;
+{$EndIf}
+    property CachedUpdates: Boolean read FCachedUpdates write SetCachedUpdates default False;
+    property DatabaseName: string read FDatabaseName write SetDatabaseName;
+    property SessionName: string read FSessionName write SetSessionName;
+    property Filter;
+    property Filtered;
+    property FilterOptions;
+    property BeforeOpen;
+    property AfterOpen;
+    property BeforeClose;
+    property AfterClose;
+    property BeforeInsert;
+    property AfterInsert;
+    property BeforeEdit;
+    property AfterEdit;
+    property BeforePost;
+    property AfterPost;
+    property BeforeCancel;
+    property AfterCancel;
+    property BeforeDelete;
+    property AfterDelete;
+    property BeforeScroll;
+    property AfterScroll;
+{$Ifdef PvDelphi5Up}
+    property BeforeRefresh;
+    property AfterRefresh;
+{$Endif}
+    property OnCalcFields;
+    property OnDeleteError;
+    property OnEditError;
+    property OnFilterRecord;
+    property OnNewRecord;
+    property OnPostError;
+    property OnUpdateError: TUpdateErrorEvent read FOnUpdateError write SetOnUpdateError;
+    property OnUpdateRecord: TUpdateRecordEvent read FOnUpdateRecord write FOnUpdateRecord;
+  end;
+
+{ TPvBlobStream }
+
+  TPvBlobStream = class(TStream)
+  protected
+    FField: TBlobField;
+    FDataSet: TPvDataSet;
+    FBuffer: PChar;
+    FMode: TBlobStreamMode;
+    FFieldNo: Integer;
+    FOpened: Boolean;
+    FModified: Boolean;
+    FPosition: Longint;
+    FBlobData: TBlobData;
+    FCached: Boolean;
+    FCacheSize: Longint;
+    FBlobSize: longint;
+    FIsBlobSizeFilled: boolean;
+    function GetBlobSize: Longint; virtual; abstract;
+  public
+    constructor Create(Field: TBlobField; Mode: TBlobStreamMode);
+    destructor Destroy; override;
+    function Seek(Offset: Longint; Origin: Word): Longint; override;
+    procedure Truncate; virtual; abstract;
+  end;
+
+{$Ifndef PvDelphi5Up}
+  PBcd = ^TBcd;
+  TBcd  = packed record
+    Precision: Byte;                           { 1..64 considered valid }
+    SignSpecialPlaces: Byte;                   { sign:1, special:1, places:6 }
+    Fraction: packed array [0..31] of Byte;    { bcd nibbles, 00..99 per byte, high nibble 1st }
+  end;
+{$Endif}
+
+const
+  prmUSER_NAME   = 'USER NAME';
+  prmPASSWORD    = 'PASSWORD';
+
+  cmVirtual = [cfmVirtual];
+  cmPersistent = [cfmPersistent];
+  cmSession = [cfmSession];
+  cmAll = [cfmVirtual, cfmPersistent, cfmSession];
+
+{ TPvDataSet flags }
+
+  dbfOpened     = 0;
+  dbfPrepared   = 1;
+  dbfExecSQL    = 2;
+  dbfTable      = 3;
+  dbfFieldList  = 4;
+  dbfIndexList  = 5;
+  dbfStoredProc = 6;
+  dbfExecProc   = 7;
+  dbfProcDesc   = 8;
+  dbfDatabase   = 9;
+{$Ifdef PvDelphi5Up}
+  dbfProvider   = 10;
+{$Endif}
+
+  DTI_DEFAULT_CONNECTION_HOLD_TIME = 5000;
+
+var CreateProviderProc: function(DataSet: TPvDataSet): IProvider = nil;
+
+{$Ifdef PvDelphi4Up}
+procedure PvDatabaseError(Owner: TComponent; const Message: string;
+  Component: TComponent = nil);
+procedure PvDatabaseErrorFmt(Owner: TComponent; const Message: string;
+  const Args: array of const; Component: TComponent = nil);
+{$Else}
+procedure PvDatabaseError(Owner: TComponent; const Message: string);
+procedure PvDatabaseErrorFmt(Owner: TComponent; const Message: string;
+  const Args: array of const);
+{$EndIf}
+
+{$Ifndef PvDelphi5Up}
+function BCDToCurr(const BCD: TBcd; var Curr: Currency): Boolean;
+
+//26522 - shenders: Added default parameters for D4 call
+{$ifdef PvDelphi4Up}
+function CurrToBCD(Curr: Currency; var BCD: TBcd; Precision: Integer = 32; Decimals: Integer = 4): Boolean;
+{$Else}
+function CurrToBCD(Curr: Currency; var BCD: TBcd; Precision: Integer; Decimals: Integer): Boolean;
+{$Endif}
+{$Endif}
+
+{$Ifndef PvDelphi6Up}
+{$Ifdef WITH_DESIGN_SUPPORT}
+procedure Register;
+{$Endif}
+{$Endif}
+
+implementation

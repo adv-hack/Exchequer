@@ -1,0 +1,122 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:tlines"
+            targetNamespace="urn:www-iris-co-uk:tlines" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="custrec">
+    <xsd:sequence>
+      <xsd:element name='transrefno' type='xsd:string'/>
+      <xsd:element name='lineno' type='xsd:integer'/>
+      <xsd:element name='nomcode' type='xsd:integer'/>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='corate' type='xsd:double'/>
+      <xsd:element name='vatrate' type='xsd:double'/>
+      <xsd:element name='cc' type='xsd:string'/>
+      <xsd:element name='dep' type='xsd:string'/>
+      <xsd:element name='stockcode' type='xsd:string'/>
+      <xsd:element name='qty' type='xsd:double'/>
+      <xsd:element name='qtymul' type='xsd:double'/>
+      <xsd:element name='netvalue' type='xsd:double'/>
+      <xsd:element name='discount' type='xsd:double'/>
+      <xsd:element name='vatcode' type='xsd:string'/>
+      <xsd:element name='vat' type='xsd:double'/>
+      <xsd:element name='payment' type='tns:boolean2'/>
+      <xsd:element name='discountchr' type='xsd:string'/>
+      <xsd:element name='qtywoff' type='xsd:double'/>
+      <xsd:element name='qtydel' type='xsd:double'/>
+      <xsd:element name='costprice' type='xsd:double'/>
+      <xsd:element name='custcode' type='xsd:string'/>
+      <xsd:element name='linedate' type='xsd:string'/>
+      <xsd:element name='item' type='xsd:string'/>
+      <xsd:element name='desc' type='xsd:string'/>
+      <xsd:element name='lweight' type='xsd:double'/>
+      <xsd:element name='mlocstk' type='xsd:string'/>
+
+      <xsd:element name='jobcode' type='xsd:string'/>
+      <xsd:element name='analcode' type='xsd:string'/>
+      <xsd:element name='tshccurr' type='xsd:integer'/>
+
+      <xsd:element name='docltlink' type='xsd:integer'/>
+      <xsd:element name='kitlink' type='xsd:integer'/>
+      <xsd:element name='folionum' type='xsd:integer'/>
+
+      <xsd:element name='linetype' type='xsd:string'/>
+
+      <xsd:element name='reconcile' type='xsd:byte'/>
+
+      <xsd:element name='soplink' type='xsd:integer'/>
+      <xsd:element name='soplineno' type='xsd:integer'/>
+
+      <xsd:element name='abslineno' type='xsd:integer'/>
+
+      <xsd:element name='lineuser1' type='xsd:string'/>
+      <xsd:element name='lineuser2' type='xsd:string'/>
+      <xsd:element name='lineuser3' type='xsd:string'/>
+      <xsd:element name='lineuser4' type='xsd:string'/>
+      <xsd:element name='ssduplift' type='xsd:double'/>
+      <xsd:element name='ssdcommod' type='xsd:string'/>
+      <xsd:element name='ssdspunit' type='xsd:double'/>
+      <xsd:element name='ssduseline' type='tns:boolean2'/>
+      <xsd:element name='pricemulx' type='xsd:double'/>
+
+      <xsd:element name='qtypick' type='xsd:double'/>
+      <xsd:element name='vatincflg' type='xsd:string'/>
+
+      <xsd:element name='qtypwoff' type='xsd:double'/>
+
+      <xsd:element name='rtnerrcode' type='xsd:integer'/>
+      <xsd:element name='ssdcountry' type='xsd:string'/>
+
+      <xsd:element name='incnetvalue' type='xsd:double'/>
+
+      <xsd:element name='autoLinetype' type='xsd:byte'/>
+      <xsd:element name='cisratecode' type='xsd:string'/>
+      <xsd:element name='sisrate' type='xsd:double'/>
+      <xsd:element name='costapport' type='xsd:double'/>
+      <xsd:element name='nomvattype' type='xsd:byte'/>
+
+      <xsd:element name='binqty' type='xsd:double'/>
+
+      <xsd:element name='tlaltstockfolio' type='xsd:integer'/>
+      <xsd:element name='tlrunno' type='xsd:integer'/>
+      <xsd:element name='tlstockdeductqty' type='xsd:double'/>
+      <xsd:element name='tluseqtymul' type='tns:boolean2'/>
+      <xsd:element name='tlserialqty' type='xsd:double'/>
+      <xsd:element name='tlpricebypack' type='tns:boolean2'/>
+      <xsd:element name='tlreconciliationdate' type='xsd:string'/>
+      <xsd:element name='tlb2blinkfolio' type='xsd:integer'/>
+      <xsd:element name='tlb2blineno' type='xsd:integer'/>
+      <xsd:element name='tlcosdailyrate' type='xsd:double'/>
+      <xsd:element name='tlqtypack' type='xsd:double'/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='tlinerec' type='tns:tlinerec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='tlines'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='tlines' type='tns:tlines'/>
+
+</xsd:schema>

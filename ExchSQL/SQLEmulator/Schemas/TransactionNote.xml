@@ -1,0 +1,28 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="170"  >
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="note_folio" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="NoteFolio"  />
+    <schemafield fieldname="note_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="NoteType"  />
+    <schemafield fieldname="note_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="NoteDate" ></schemafield>
+    <schemafield fieldname="note_alarm" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="NoteAlarm" ></schemafield>
+    <schemafield fieldname="line_no" fullfieldname="" typename="long" size="4" elements="1" id="-1" columnname="LineNumber"/>
+    <schemafield fieldname="note_line" fullfieldname="" typename="DelphiString" size="101" elements="1" id="-1" columnname="NoteLine"  />
+    <schemafield fieldname="note_user" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="NoteUser"  />
+    <schemafield fieldname="tmp_imp_code" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" columnname="TmpImpCode"  />
+    <schemafield fieldname="show_date" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="ShowDate"/>
+    <schemafield fieldname="repeat_no" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="RepeatNo"/>
+    <schemafield fieldname="note_for" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="NoteFor"  />
+  </fixedfields>
+  <defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="0">
+      <indexfields>
+        <item>note_folio</item>
+ 		    <item>note_type</item>
+        <item>line_no</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>
+

@@ -1,0 +1,249 @@
+:Base prog_ocx
+:Title prog_ocx
+
+
+1 Pervasive.SQL Visual Programmer's Reference
+
+2 About This Manual
+3 Summary - About This Manual=01pref_rtf_4349
+4 Who Should Read This Manual=01pref_rtf_8442
+4 Manual Organization=01pref_rtf_668
+4 Conventions=01pref_rtf_3813
+2 ADO/OLE DB Reference
+3  1 ADO/OLE DB Programming Reference
+4 Summary -  1 ADO/OLE DB Programming Reference=adointro_rtf_18159
+4 Programming with the OLE DB Provider Using Visual Controls=adointro_rtf_12677
+4 Programming with the OLE DB Provider Without Using Visual Controls=adointro_rtf_14948
+4 Reference of Support=adointro_rtf_16340
+4 Where to Get More Information on ADO and OLE DB=adointro_rtf_15577
+2 Pervasive Direct Access Components
+3  2 Using Direct Access Components
+4 Summary -  2 Using Direct Access Components=pdac_rtf_28395
+4 Overview of Pervasive Direct Access Components for Delphi and C++ Builder=pdac_rtf_12677
+4 Using the Pervasive Direct Access Components=pdac_rtf_14948
+4 Differences Between Pervasive and Borland Implementation=pdac_rtf_17094
+4 Deploying an Application Based on PDAC=pdac_rtf_30296
+4 PDAC Security=pdac_rtf_17086
+4 PDAC Classes, Properties, Events, and Methods=pdac_rtf_26684
+4 Pervasive.SQL and Borland Data Types=pdac_rtf_19305
+4 Adding IDEs after Installing the SDK=pdac_rtf_21144
+4 Where to Get More Information=pdac_rtf_21146
+2 ActiveX Reference
+3  3 ActiveX Control Reference
+4 Summary -  3 ActiveX Control Reference=05cntrol_rtf_26119
+4 VAccess Data Source=05cntrol_rtf_26364
+4 VACheck=05cntrol_rtf_19985
+4 VACombo=05cntrol_rtf_17184
+4 VACommand=05cntrol_rtf_8304
+4 VAHScroll and VAVScroll=05cntrol_rtf_24502
+4 VAList=05cntrol_rtf_8371
+4 VAOption=05cntrol_rtf_17246
+4 VAText=05cntrol_rtf_17263
+3  4 Properties, Methods, and Events By Category
+4 Summary -  4 Properties, Methods, and Events By Category=03pme_rtf_28577
+4 Introduction=03pme_rtf_20342
+4 Retrieving Sets of Records (Extended Operations)=03pme_rtf_19884
+4 File Handling=03pme_rtf_24702
+4 Data Dictionary Methods=03pme_rtf_25148
+4 Accessing Fields in a Record=03pme_rtf_25703
+4 Inserting, Updating, and Deleting Records=03pme_rtf_26988
+4 Retrieving Individual Records=03pme_rtf_23159
+4 Optimization and Debugging=03pme_rtf_20033
+4 I*net Data Server Access=03pme_rtf_20042
+3  5 ActiveX Property Reference
+4 Summary -  5 ActiveX Property Reference=06prop_rtf_44012
+4 AutoDialog=06prop_rtf_39803
+4 AutoLogon=06prop_rtf_41826
+4 AutoMode=06prop_rtf_36800
+4 AutoOpen=06prop_rtf_21692
+4 Buffer=06prop_rtf_39829
+4 CacheRejectMax=06prop_rtf_20335
+4 CacheRows=06prop_rtf_47379
+4 CancelDialog=06prop_rtf_8577
+4 Column=06prop_rtf_8609
+4 ColumnName=06prop_rtf_8659
+4 Columns=06prop_rtf_8675
+4 ColumnWidth=06prop_rtf_38290
+4 CompressData=06prop_rtf_20187
+4 DatabaseName=06prop_rtf_21643
+4 DataLength=06prop_rtf_51658
+4 DdfKeyUseIndexDDFOnly=06prop_rtf_22659
+4 DdfPath=06prop_rtf_23043
+4 DdfTransactionMode=06prop_rtf_37731
+4 ExtendedOps=06prop_rtf_31504
+4 FieldList=06prop_rtf_21798
+4 Fields=06prop_rtf_23615
+4 FieldValue=06prop_rtf_22697
+4 FileVersion=06prop_rtf_24152
+4 FireEvents=06prop_rtf_9037
+4 FocusSelText=06prop_rtf_9051
+4 HostAddress=06prop_rtf_22273
+4 HostConnect=06prop_rtf_23341
+4 IncludeCurrent=06prop_rtf_22263
+4 IndexList=06prop_rtf_22333
+4 IndexNumber=06prop_rtf_51765
+4 IntegralHeight=06prop_rtf_9103
+4 Join=06prop_rtf_9117
+4 List=06prop_rtf_60757
+4 Location=06prop_rtf_9299
+4 Locked=06prop_rtf_9327
+4 MaxBufferSize=06prop_rtf_9360
+4 MaxLength=06prop_rtf_9376
+4 OemString=06prop_rtf_9402
+4 OpenMode=06prop_rtf_9418
+4 OwnerName=06prop_rtf_9436
+4 PageSize=06prop_rtf_9460
+4 Percentage=06prop_rtf_9476
+4 Port=06prop_rtf_22757
+4 Position=06prop_rtf_9528
+4 RefreshLocations=06prop_rtf_23943
+4 Row=06prop_rtf_9616
+4 RowPosition=06prop_rtf_9646
+4 Rows=06prop_rtf_30774
+4 SelectedFields=06prop_rtf_9720
+4 SelectedRecords=06prop_rtf_9752
+4 SessionID=06prop_rtf_22825
+4 Status=06prop_rtf_9787
+4 TableName=06prop_rtf_24172
+4 TimeOutVal=06prop_rtf_22859
+4 TotalRecords=06prop_rtf_30991
+4 Uppercase=06prop_rtf_9835
+4 VAccessName=06prop_rtf_31259
+4 VAAutoScroll=06prop_rtf_9851
+4 VADataType=06prop_rtf_9881
+4 VADebugMode=06prop_rtf_9895
+4 VADecimal=06prop_rtf_9909
+4 VAErrorDialog=06prop_rtf_9923
+4 VAFieldName=06prop_rtf_9937
+4 VAFormat=06prop_rtf_9957
+4 VALockBias=06prop_rtf_9973
+4 VAOffset=06prop_rtf_10043
+4 VAOperation=06prop_rtf_10057
+4 VARecordList=06prop_rtf_38148
+4 VASearch=06prop_rtf_10088
+4 VASize=06prop_rtf_10102
+4 VAValueFalse=06prop_rtf_11500
+4 VAValueTrue=06prop_rtf_39206
+3  6 ActiveX Method Reference
+4 Summary -  6 ActiveX Method Reference=07method_rtf_30989
+4 AboutBox=07method_rtf_27940
+4 AddItem=07method_rtf_23710
+4 Btrv=07method_rtf_10218
+4 Clear=07method_rtf_10249
+4 Close=07method_rtf_24989
+4 DdfAddIndex=07method_rtf_20713
+4 DdfAddTable=07method_rtf_21710
+4 DdfAddTableName=07method_rtf_20766
+4 DdfClearFields=07method_rtf_20803
+4 DdfClearIndexes=07method_rtf_20830
+4 DdfCreateDictionary=07method_rtf_20858
+4 DdfCreateTable=07method_rtf_21282
+4 DdfDropIndex=07method_rtf_20862
+4 DdfDropIndexMaintain=07method_rtf_20901
+4 DdfDropTable=07method_rtf_20940
+4 DdfGetFieldComments=07method_rtf_26835
+4 DdfModifyLocation=07method_rtf_26893
+4 DdfModifyTableName=07method_rtf_21109
+4 DdfSetOwner=07method_rtf_29782
+4 DdfTestOwnerName=07method_rtf_21175
+4 Delete=07method_rtf_21205
+4 FormatFieldValue=07method_rtf_10386
+4 GetDirect=07method_rtf_17768
+4 GetEqual=07method_rtf_10428
+4 GetFirst=07method_rtf_10480
+4 GetGreater=07method_rtf_10505
+4 GetGreaterOrEqual=07method_rtf_10538
+4 GetLast=07method_rtf_10590
+4 GetLess=07method_rtf_10615
+4 GetLessOrEqual=07method_rtf_10638
+4 GetNext=07method_rtf_10661
+4 GetNextExtended=07method_rtf_10690
+4 GetPrevious=07method_rtf_10752
+4 GetPreviousExtended=07method_rtf_10775
+4 GetTableList=07method_rtf_20039
+4 GetTotalSegments=07method_rtf_10802
+4 Init=07method_rtf_21319
+4 Insert=07method_rtf_10850
+4 Open=07method_rtf_10879
+4 Refresh=07method_rtf_10904
+4 RemoveItem=07method_rtf_10920
+4 RowColumnValue=07method_rtf_10941
+4 SetFileFlag=07method_rtf_39076
+4 SetOwner=07method_rtf_11020
+4 ShowSelectedFieldsDlg=07method_rtf_11044
+4 ShowSelectedRecordsDlg=07method_rtf_11075
+4 Stat=07method_rtf_20114
+4 StatusDialog=07method_rtf_20108
+4 StepFirst=07method_rtf_11125
+4 StepLast=07method_rtf_11144
+4 StepNext=07method_rtf_11163
+4 StepNextExtended=07method_rtf_11182
+4 StepPrevious=07method_rtf_11209
+4 StepPreviousExtended=07method_rtf_11228
+4 Transaction=07method_rtf_11255
+4 Unlock=07method_rtf_11295
+4 Update=07method_rtf_11321
+3  7 ActiveX Event Reference
+4 Summary -  7 ActiveX Event Reference=09event_rtf_19024
+4 CommError=09event_rtf_16961
+4 GotData=09event_rtf_17030
+4 Logon=09event_rtf_17124
+4 OnRemote=09event_rtf_17243
+4 Reposition=09event_rtf_17419
+4 Validate=09event_rtf_11492
+2 Distributed Tuning Objects Reference
+3  8 Distributed Tuning Objects Introduction
+4 Summary -  8 Distributed Tuning Objects Introduction=dtointro_rtf_288992
+4 What is DTO?=dtointro_rtf_107797
+4 Objects Model and Objects Relationship=dtointro_rtf_295446
+4 Getting Started with DTO=dtointro_rtf_296954
+4 Object Summary=dtointro_rtf_302764
+4 Working with Collections=dtointro_rtf_296565
+4 Where to Find DTO Samples=dtointro_rtf_304116
+3  9 Establishing a DTO Session
+4 Summary -  9 Establishing a DTO Session=dto_sess_rtf_288992
+4 DtoSession Object=dto_sess_rtf_293083
+3  10 Configuring Pervasive Servers with DTO
+4 Summary -  10 Configuring Pervasive Servers with DTO=dto_conf_rtf_288992
+4 DtoCategories Collection=dto_conf_rtf_293088
+4 DtoCategory Object=dto_conf_rtf_293099
+4 DtoSettings Collection=dto_conf_rtf_298396
+4 DtoSetting Object=dto_conf_rtf_298407
+4 DtoSelectionItems Collection=dto_conf_rtf_293114
+4 DtoSelectionItem Object=dto_conf_rtf_299748
+4 DtoServices Object=dto_conf_rtf_293116
+3  11 Monitoring Pervasive Servers with DTO
+4 Summary -  11 Monitoring Pervasive Servers with DTO=dto_mntr_rtf_288992
+4 DtoMonitor Object=dto_mntr_rtf_293302
+4 DtoOpenFiles Collection=dto_mntr_rtf_293319
+4 DtoOpenFile Object=dto_mntr_rtf_293330
+4 DtoFileHandles Collection=dto_mntr_rtf_293385
+4 DtoFileHandle Object=dto_mntr_rtf_293396
+4 DtoMkdeClients Collection=dto_mntr_rtf_293419
+4 DtoMkdeClient Object=dto_mntr_rtf_293429
+4 DtoMkdeClientHandles Collection=dto_mntr_rtf_293528
+4 DtoMkdeClientHandle Object=dto_mntr_rtf_293539
+4 DtoCommStat Object=dto_mntr_rtf_293624
+4 DtoProtocolStats Collection=dto_mntr_rtf_308328
+4 DtoProtocolStat Object=dto_mntr_rtf_314825
+4 DtoSqlClients Collection=dto_mntr_rtf_308377
+4 DtoSqlClient Object=dto_mntr_rtf_308392
+3  12 Creating and Maintaining Catalogs and Dictionaries with DTO
+4 Summary -  12 Creating and Maintaining Catalogs and Dictionaries with DTO=dto_data_rtf_288992
+4 DtoDatabases Collection=dto_data_rtf_293693
+4 DtoDatabase Object=dto_data_rtf_293704
+4 DtoDSNs Collection=dto_data_rtf_299814
+4 DtoDSN Object=dto_data_rtf_299847
+4 DtoDictionary Object=dto_data_rtf_293705
+4 DtoTables Collection=dto_data_rtf_293771
+4 DtoTable Object=dto_data_rtf_294106
+4 DtoColumns Collection=dto_data_rtf_294108
+4 DtoColumn Object=dto_data_rtf_294183
+4 DtoIndexes Collection=dto_data_rtf_311120
+4 DtoIndex Object=dto_data_rtf_297408
+4 DtoSegments Collection=dto_data_rtf_343542
+4 DtoSegment Object=dto_data_rtf_343678
+3  13 Distributed Tuning Objects Enumerations
+4 Summary -  13 Distributed Tuning Objects Enumerations=dto_enum_rtf_288992
+4 Enumerated Types in DTO=dto_enum_rtf_296851
+

@@ -1,0 +1,1108 @@
+unit SetCISU;
+
+{$I DEFOVR.INC}
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Mask, TEditVal, BorBtns, ExtCtrls,
+  GlobVar,VarConst,BTSupU1,ExWrap1U, ExBtTh1U, bkgroup, MiscU, BTSupU3,
+  AuditIntf,  // CA 11/02/2013 v7.0.2 : ABSEXCH-14003 : New Audit for this screen has been done
+  SBSPanel;
+
+type
+
+  TSetCISRate = class(TForm)
+    OkCP1Btn: TButton;
+    CanCP1Btn: TButton;
+    CPBtn: TButton;
+    SBSBackGroup1: TSBSBackGroup;
+    ScrollBox1: TScrollBox;
+    Label85: Label8;
+    Label86: Label8;
+    DR0: TCurrencyEdit;
+    CDesc0: Text8Pt;
+    CDesc1: Text8Pt;
+    DR1: TCurrencyEdit;
+    Label813: Label8;
+    Label812: Label8;
+    Label814: Label8;
+    Label815: Label8;
+    EqF: Text8Pt;
+    TRE: TCurrencyEdit;
+    LTR: TEditDate;
+    SBSBackGroup2: TSBSBackGroup;
+    Label82: Label8;
+    Label83: Label8;
+    Label81: Label8;
+    Label816: Label8;
+    GLBank0: Text8Pt;
+    CC0: Text8Pt;
+    Dep0: Text8Pt;
+    Label87: Label8;
+    Label88: Label8;
+    GLBank1: Text8Pt;
+    CC1: Text8Pt;
+    Dep1: Text8Pt;
+    Label84: Label8;
+    GLDesc0: Text8Pt;
+    GLDesc1: Text8Pt;
+    CSRF: Text8Pt;
+    Label89: Label8;
+    cbSetPrF: TBorCheck;
+    VATLab: Label8;
+    SRVCF: TSBSComboBox;
+    SBSBackGroup3: TSBSBackGroup;
+    CBCertType: TSBSComboBox;
+    Label865: Label8;
+    Label867: Label8;
+    ECertF: Text8Pt;
+    EExpF: TEditDate;
+    Label868: Label8;
+    Label810: Label8;
+    ENINOF: Text8Pt;
+    EUTRF: Text8Pt;
+    Label811: Label8;
+    EACREFF: Text8Pt;
+    Label817: Label8;
+    CBSubType: TSBSComboBox;
+    Label818: Label8;
+    cbRCTRV: TBorCheck;
+    lblRCTRVC: Label8;
+    RCTRVCF1: TSBSComboBox;
+    RCTRVCF2: TSBSComboBox;
+    cbCISOnGross: TBorCheck;
+    procedure FormCreate(Sender: TObject);
+    procedure OkCP1BtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure LTRChange(Sender: TObject);
+    procedure CPBtnClick(Sender: TObject);
+    procedure CDesc0Enter(Sender: TObject);
+    procedure GLBank0Exit(Sender: TObject);
+    procedure CC0Exit(Sender: TObject);
+    procedure cbRCTRVClick(Sender: TObject);
+    procedure TREKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+
+    BeenStored
+             :  Boolean;
+    DescAry  :  Array[CISTaxType] of Text8Pt;
+    DRateAry :  Array[CISTaxType] of TCurrencyEdit;
+    GLAry    :  Array[CISTaxType] of Text8Pt;
+    GLDescAry:  Array[CISTaxType] of Text8Pt;
+    CCAry    :  Array[CISTaxType] of Text8Pt;
+    DepAry   :  Array[CISTaxType] of Text8Pt;
+
+    LastComponent
+             :  TComponent;
+
+    // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Added the two CIS Setup Audit Trail files
+    CISSetupAudit    : IBaseAudit;
+    CIS340SetupAudit : IBaseAudit;
+
+    Procedure WMFormCloseMsg(Var Message  :  TMessage); Message WM_FormCloseMsg;
+
+    procedure FormDesign;
+
+    procedure OutRates;
+
+    procedure OutEq;
+
+    Procedure OutCIS;
+
+    Procedure Send_UpdateList(Mode   :  Integer);
+
+    procedure SetSyssStore(EnabFlag,
+                           VOMode  :  Boolean);
+
+    procedure Form2Rates;
+
+    procedure StoreSyss;
+
+    Function GetActiveRate  :  CISTaxType;
+
+  public
+    { Public declarations }
+    procedure ProcessSyss;
+
+    Procedure Close_CISPr(ShowVPr  :  Boolean);
+
+
+  end;
+
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+
+Uses
+  ETDateU,
+  EtStrU,
+  ETMiscU,
+  BtrvU2,
+  ComnUnit,
+  ComnU2,
+  SysU1,
+
+  CurrncyU,
+  InvListU,
+  BTSupU2,
+  BTKeys1U,
+  JChkUseU,
+  JobSup1U,
+
+  {$IFDEF POST}
+    CISSup2U,
+  {$ENDIF}
+
+  ExThrd2U;
+
+
+{$R *.DFM}
+
+
+
+
+Procedure TSetCISRate.WMFormCloseMsg(Var Message  :  TMessage);
+
+
+Begin
+
+  With Message do
+  Begin
+
+    Case WParam of
+
+      41 :  {HistFormPtr:=nil};
+
+    end; {Case..}
+
+  end; {With..}
+
+end;
+
+
+procedure TSetCISRate.FormDesign;
+
+Var
+  n       :  CISTaxType;
+  HideCC  :  Boolean;
+begin
+
+  FillChar(DescAry,Sizeof(DescAry),0);
+  FillChar(DRateAry,Sizeof(DRateAry),0);
+  FillChar(GLAry,Sizeof(GLAry),0);
+  FillChar(GLDescAry,Sizeof(GLAry),0);
+  FillChar(CCAry,Sizeof(CCAry),0);
+  FillChar(DepAry,Sizeof(DepAry),0);
+
+  DescAry[Construct]:=CDesc0; DRateAry[Construct]:=DR0; GLAry[Construct]:=GLBank0; GLDescAry[Construct]:=GLDesc0; CCAry[Construct]:=CC0; DepAry[Construct]:=Dep0;
+  DescAry[Technical]:=CDesc1; DRateAry[Technical]:=DR1; GLAry[Technical]:=GLBank1; GLDescAry[Technical]:=GLDesc1; CCAry[Technical]:=CC1; DepAry[Technical]:=Dep1;
+
+  HideCC:=BOff;
+
+
+  {$IFNDEF PF_On}
+
+    HideCC:=BOn;
+
+  {$ELSE}
+
+    HideCC:=Not Syss.UseCCDep;
+  {$ENDIF}
+
+
+  For n:=CISStart to CISEnd do
+  Begin
+    CCAry[n].Visible:=Not HideCC;
+    DepAry[n].Visible:=Not HideCC;
+  end;
+
+  Label87.Visible:=Not HideCC;
+  Label88.Visible:=Not HideCC;
+
+  Label82.Caption:='Last '+CCCISName^+' Return';
+  Label83.Caption:=CCCISName^+' '+Label83.Caption;
+
+  Label81.Caption:='Current '+CCCISName^+' Period';
+
+  VATLab.Caption:=CCCISName^+' '+CCVATname^+VATLab.Caption;
+
+  Set_DefaultVAT(SRVCF.Items,BOn,BOff);
+  Set_DefaultVAT(SRVCF.ItemsL,BOn,BOn);
+
+
+  SBSBackGroup3.Caption:='Contractor '+CCCISName^+' Details';
+
+
+  Label810.Visible:=BOff;
+  Label811.Visible:=BOff;
+  Label817.Visible:=BOff;
+  ENINOF.Visible:=BOff;
+  EUTRF.Visible:=BOff;
+  EACRefF.Visible:=BOff;
+
+  {* v6.03 - Reverse VAT fields *}
+
+  lblRCTRVC.Visible:=BOff;
+  RCTRVCF1.Visible:=BOff;
+  RCTRVCF2.Visible:=BOff;
+  cbRCTRV.Visible:=BOff;
+
+
+
+    {$IFDEF JAP}
+
+    {$ELSE}
+
+    {$ENDIF}
+
+      If (CurrentCountry=DefaultCountry) then
+      Begin
+
+        CBCertType.Visible:=BOn;
+        Label865.Visible:=BOn;
+
+        Label867.Caption:='CTR.';
+        Label865.Caption:='CIS Tax Rate';
+
+        With CBCertType do
+        Begin
+          With Items do
+          Begin
+            Strings[1]:=TxLate_CISTypeStr(1);
+            Strings[2]:=TxLate_CISTypeStr(4);
+            Strings[3]:='Zero Rate';
+
+          end; {With..}
+        end; {With..}
+
+        Label868.Visible:=Not CIS340;
+        EExpF.Visible:=Label868.Visible;
+        Label89.Visible:=Label868.Visible;
+        CSRF.Visible:=Label868.Visible;
+
+        Label810.Visible:=BOn;
+        Label811.Visible:=BOn;
+        Label817.Visible:=BOn;
+        ENINOF.Visible:=BOn;
+        EUTRF.Visible:=BOn;
+        EACRefF.Visible:=BOn;
+
+        Label818.Visible:=CIS340;
+
+      end
+      else
+        If (CurrentCountry=IECCode) then
+        Begin
+          Label865.Caption:='C2 Cert Ref.';
+          CBCertType.Visible:=BOn;
+          Label867.Visible:=BOn;
+          Label867.Caption:='Serial No. ';
+
+          With CBCertType do
+          Begin
+            With Items do
+            Begin
+              Clear;
+
+              Add('N/A');
+              Add(TxLate_CISTypeStr(1));
+              Add(TxLate_CISTypeStr(2));
+            end;
+
+            ExtendedList:=BOn; MaxListWidth:=150;
+
+            With ItemsL do
+            Begin
+              Clear;
+
+              Add('N/A');
+              Add('No C2 or No RCT47. (Taxed)');
+              Add('C2 & RCT47. (Gross)');
+            end;
+
+          end;
+
+          Label818.Visible:=BOff;;
+
+          {$IFDEF EX603}
+            lblRCTRVC.Visible:=BOn;
+            RCTRVCF1.Visible:=BOn;
+            RCTRVCF2.Visible:=BOff; {* EL Spare, not required *}
+            cbRCTRV.Visible:=BOn;
+
+            Set_DefaultVAT(RCTRVCF1.Items,BOn,BOff);
+            Set_DefaultVAT(RCTRVCF1.ItemsL,BOn,BOn);
+
+            Set_DefaultVAT(RCTRVCF2.Items,BOn,BOff);
+            Set_DefaultVAT(RCTRVCF2.ItemsL,BOn,BOn);
+
+          {$ENDIF}
+
+
+        end
+        else
+        Begin
+          Label865.Visible:=BOff;
+          Label867.Visible:=BOff;
+          Label868.Visible:=BOff;
+          CBCertType.Visible:=BOff;
+          ECertF.Visible:=BOff;
+          EEXpF.Visible:=BOff;
+
+          SBSBackGroup3.Caption:='';
+
+        end;
+
+  CBSubType.Visible:=Label818.Visible;
+
+end;
+
+
+procedure TSetCISRate.OutEq;
+
+Var
+  EqDate  :  LongDate;
+  EqPr    :  ShortInt;
+
+begin
+
+
+  EqDate:=Calc_NewCISPeriod(LTR.DateValue,Trunc(TRE.Value));
+
+
+  EqF.Text:=SetN(Part_Date('M',EqDate))+DateSeparator+Form_Int(Part_Date('Y',EqDate),0);
+
+end;
+
+
+procedure TSetCISRate.OutRates;
+
+Var
+  n  :  CISTaxType;
+  FoundCode
+     :  Str20;
+  FoundLong
+     :  LongInt;
+
+
+Begin
+  For n:=CISStart to CISEnd do
+    With SyssCIS.CISRates.CISRate[n] do
+    Begin
+      DescAry[n].Text:=Desc;
+      DRateAry[n].Value:=Pcnt2Full(Rate);
+      GLAry[n].Text:=Form_Int(GLCode,0);
+
+      Foundcode:=Form_Int(GLCode,0);
+
+      If (GetNom(Self.Owner,FoundCode,FoundLong,-1)) then
+        GLDescAry[n].Text:=Nom.Desc;
+
+      CCAry[n].Text:=RCCDep[BOn];
+      DepAry[n].Text:=RCCDep[BOff];
+    end;
+
+end;
+
+
+Procedure TSetCISRate.OutCIS;
+
+Begin
+  With SyssCIS.CISRates,SyssCIS340.CIS340 do
+  Begin
+    LTR.DateValue:=CISReturnDate;
+    TRE.Value:=CISInterval;
+
+    CSRF.Text:=CISTaxRef;
+
+    cbSetPrF.Checked:=CISAutoSetPr;
+
+    // CJS 2014-03-05 - ABSEXCH-15114 - system switch for CIS calculation
+    cbCISOnGross.Checked := CalcCISOnGross;
+
+    If (CISVATCode In VATSet) then
+      SRVCF.ItemIndex:=GetVATIndex(CISVATCode)
+    else
+      SRVCF.ItemIndex:=GetVATIndex(VATZCode);
+
+    {$IFDEF EX603}
+
+      If (RCTRCV1 In VATSet) then
+        RCTRVCF1.ItemIndex:=GetVATIndex(RCTRCV1)
+      else
+        RCTRVCF1.ItemIndex:=GetVATIndex(VATWCode);
+
+      If (RCTRCV2 In VATSet) then
+        RCTRVCF2.ItemIndex:=GetVATIndex(RCTRCV2)
+      else
+        RCTRVCF2.ItemIndex:=GetVATIndex(VATWCode);
+
+      cbRCTRV.Checked:=RCTUseRCV;
+
+      cbRCTRVClick(Nil);
+
+    {$ENDIF}
+
+    OutEq;
+
+    OutRates;
+
+    ECertF.Text:=JCertNo;
+
+    EExpF.DateValue:=JCertExpiry;
+
+    If (JCISType>=0) then
+      CBCertType.ItemIndex:=TxLate_CISType(JCISType,BOn);
+
+    ENINOF.Text:=CISCNINO;
+    EUTRF.Text:=CISCUTR;
+    EACRefF.Text:=CISACCONo;
+
+    If (IGSubType>=0) then
+      CBSubType.ItemIndex:=IGSubType;
+
+
+  end; {With..}
+end;
+
+
+procedure TSetCISRate.FormCreate(Sender: TObject);
+
+Begin
+  InCISP:=BOn;
+
+  ClientHeight:=329;
+  ClientWidth:=502;
+
+  BeenStored:=BOff;
+
+  MDI_SetFormCoord(TForm(Self));
+
+  GlobLocked:=BOff;
+
+  // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Initialising CISSetupAudit and CIS340SetupAudit
+  CISSetupAudit    := NIL;
+  CIS340SetupAudit := NIL;
+
+  FormDesign;
+
+  If GetMultiSys(BOff,GlobLocked,CISR) then
+  With SyssCIS.CISRates do
+  Begin
+    If (CISReturnDate='') then {It has never been set so initialise it}
+    Begin
+      GlobLocked:=BOn;
+
+      If GetMultiSys(BOff,GlobLocked,CISR) then {Store as these iniital values}
+      Begin
+
+        CISReturnDate:=Today;
+
+        CurrPeriod:=Today;
+
+
+        If (CurrentCountry=IECCode) then
+        Begin
+          CISRate[Construct].Rate:=0.35;
+          CISRate[Technical].Rate:=0.35;
+
+        end;
+
+         PutMultiSys(CISR,BOn);
+      end; {Locked..}
+
+    end;
+
+  end;
+
+
+  LastComponent:=nil;
+
+  OutCIS;
+
+  Caption:=CCCISName^+' '+Caption;
+
+  If (CurrentCountry = UKCCode) Then
+    EACREFF.Hint := 'The Contractors ''Accounts Office Reference Number'':-'#13#13 +
+                    '  1-3 must be numeric'#13 +
+                    '  4 must be ''P'''#13 +
+                    '  5 must be alpha'#13 +
+                    '  6-13 must be alphanumeric'#13#13 +
+                    'Note: Leading zeros should be used to pad out characters 1-3 and 6-13 if necessary';
+end;
+
+
+{ == Procedure to Send Message to Get Record == }
+
+Procedure TSetCISRate.Send_UpdateList(Mode   :  Integer);
+
+Var
+  Message1 :  TMessage;
+  MessResult
+           :  LongInt;
+
+Begin
+  FillChar(Message1,Sizeof(Message1),0);
+
+  With Message1 do
+  Begin
+    MSg:=WM_FormCloseMsg;
+    WParam:=Mode;
+    LParam:=0;
+  end;
+
+  With Message1 do
+    MessResult:=SendMessage((Owner as TForm).Handle,Msg,WParam,LParam);
+
+end; {Proc..}
+
+
+procedure TSetCISRate.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  Send_UpdateList(65);
+end;
+
+procedure TSetCISRate.FormClose(Sender: TObject; var Action: TCloseAction);
+
+Var
+  LStatus  :  Integer;
+begin
+  Action:=caFree;
+  InCISP:=BOff;
+
+  // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Initialising CISSetupAudit
+  CISSetupAudit    := NIL;
+  CIS340SetupAudit := NIL;
+
+  If (Not BeenStored) then
+  Begin
+    LStatus:=UnlockMultiSing(F[SysF],SysF,SysAddr[CISR]);
+  end;
+end;
+
+procedure TSetCISRate.SetSyssStore(EnabFlag,
+                                  VOMode  :  Boolean);
+
+Var
+  Loop  :  Integer;
+
+Begin
+
+  OkCP1Btn.Enabled:=Not VOMode;
+
+  CPBtn.Enabled:=OKCP1Btn.Enabled;
+
+
+  For Loop:=0 to ComponentCount-1 do
+  Begin
+    If (Components[Loop] is Text8Pt) then
+    Begin
+      If (Text8Pt(Components[Loop]).Tag=1) then
+        Text8Pt(Components[Loop]).ReadOnly:= VOMode;
+    end
+      else
+        If (Components[Loop] is TEditDate) then
+        Begin
+          If (TEditDate(Components[Loop]).Tag=1) then
+            TEditDate(Components[Loop]).ReadOnly:= VOMode;
+        end
+        else
+          If (Components[Loop] is TEditPeriod) then
+          Begin
+            If (TEditPeriod(Components[Loop]).Tag=1) then
+              TEditPeriod(Components[Loop]).ReadOnly:= VOMode;
+          end
+          else
+            If (Components[Loop] is TCurrencyEdit) then
+            Begin
+              If (TCurrencyEdit(Components[Loop]).Tag=1) then
+                TCurrencyEdit(Components[Loop]).ReadOnly:= VOMode;
+            end
+            else
+              If (Components[Loop] is TBorCheck) then
+              Begin
+                If (TBorCheck(Components[Loop]).Tag=1) then
+                  TBorCheck(Components[Loop]).Enabled:= Not VOMode;
+              end
+              else
+                If (Components[Loop] is TSBSComboBox) then
+                Begin
+                  If (TSBSComboBox(Components[Loop]).Tag=1) then
+                    TSBSComboBox(Components[Loop]).ReadOnly:= VOMode;
+              end;
+  end; {Loop..}
+
+end;
+
+
+
+procedure TSetCISRate.ProcessSyss;
+
+
+Begin
+  GlobLocked:=BOn;
+
+  {$B-}
+  If GetMultiSys(BOff,GlobLocked,CISR) and GetMultiSys(BOff,GlobLocked,CIS340R) and (GlobLocked) then
+  {$B+}
+  Begin
+    // MH 13/02/2013 v7.0.2: Moved here AFTER the records have been read from the DB - the previous
+    // location of the code in FormDesign meant it was logging whatever was already in memory as the
+    // starting values - which meant that changes by other users wouldn't be known about
+
+    // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Setting up the before CISSetupAudit to see if fields have changed
+    CISSetupAudit := NewAuditInterface(atCISSetup);
+    CISSetupAudit.BeforeData := SyssCIS;
+
+    // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Setting up the before CIS340SetupAudit to see if fields have changed
+    CIS340SetupAudit := NewAuditInterface(atCIS340Setup);
+    CIS340SetupAudit.BeforeData := SyssCIS340;
+
+    OutCIS;
+    SetSyssStore(BOn,BOff);
+  end;
+end;
+
+
+procedure TSetCISRate.Form2Rates;
+
+Var
+  n  :  CISTaxType;
+
+
+Begin
+  For n:=CISStart to CISEnd do
+  With SyssCIS.CISRates.CISRate[n] do
+    Begin
+      Desc:=DescAry[n].Text;
+      Rate:=Pcnt(DRateAry[n].Value);
+      GLCode:=IntStr(GLAry[n].Text);
+      RCCDep[BOn]:=CCAry[n].Text;
+      RCCDep[BOff]:=DepAry[n].Text;
+    end;
+
+end;
+
+
+
+
+procedure TSetCISRate.StoreSyss;
+
+Var
+  EqPr  :  ShortInt;
+
+Begin
+  With SyssCIS.CISRates ,SyssCIS340.CIS340 do
+  Begin
+    If (CIS340) then
+      CISReturnDate:=Copy(LTR.DateValue,1,6)+'05'
+    else
+      CISReturnDate:=LTR.DateValue;
+
+    CISInterval:=Trunc(TRE.Value);
+    CISTaxRef:=CSRF.Text;
+
+    CISAutoSetPr:=cbSetPrF.Checked;
+
+    // CJS 2014-03-05 - ABSEXCH-15114 - system switch for CIS calculation
+    CalcCISOnGross := cbCISOnGross.Checked;
+
+    With SRVCF do
+      If (ItemIndex>-1) then
+        CISVATCode:=Items[ItemIndex][1]
+      else
+        CISVATCode:=VATZCode;
+
+
+    {$IFDEF EX603}
+      RCTUseRCV:=cbRCTRV.Checked;
+
+      With RCTRVCF1 do
+        If (ItemIndex>-1) then
+          RCTRCV1:=Items[ItemIndex][1]
+        else
+          RCTRCV1:=VATWCode;
+
+
+      With RCTRVCF2 do
+        If (ItemIndex>-1) then
+          RCTRCV2:=Items[ItemIndex][1]
+        else
+          RCTRCV2:=VATWCode;
+
+
+
+    {$ENDIF}
+
+    CurrPeriod:=Calc_NewCISPeriod(CISReturnDate,CISInterval);
+
+    Form2Rates;
+
+    JCertNo:=ECertF.Text;
+
+    If (ValidDate(EExpF.DateValue)) then
+      JCertExpiry:=EExpF.DateValue
+    else
+      Blank(JCertExpiry,Sizeof(JCertExpiry));
+
+    If (CBCertType.ItemIndex>=0) then
+      JCISType:=TxLate_CISType(CBCertType.ItemIndex,BOff)
+    else
+      JCISType:=0;
+
+
+    If (CBSubType.ItemIndex>=0) then
+      IGSubType:=CBSubType.ItemIndex
+    else
+      IGSubType:=0;
+
+    CISCNINO:=ENINOF.Text;
+    CISCUTR:=EUTRF.Text;
+    CISACCONo:=EACRefF.Text;
+  end;
+end;
+
+
+procedure TSetCISRate.OkCP1BtnClick(Sender: TObject);
+
+Var
+  CanStore  :  Boolean;
+
+begin
+  CanStore:=BOn;
+
+  If (Sender is TButton) then
+  With (Sender as TButton) do
+  Begin
+    If (ModalResult=mrOk) then
+    Begin
+      // MH 04/01/2011 v6.6 ABSEXCH-10548: Set focus to OK button to trigger OnExit event on date and Period/Year
+      //                                   fields which processes the text and updates the value
+      If (ActiveControl <> OkCP1Btn) Then
+        // Move focus to OK button to force any OnExit validation to occur
+        OkCP1Btn.SetFocus;
+
+      // If focus isn't on the OK button then that implies a validation error so the store should be abandoned
+      If (ActiveControl = OkCP1Btn) Then
+      Begin
+        StoreSyss;
+
+        CanStore:=CheckCISGLCodes(0);
+
+        If (CanStore) and (CIS340) then
+        Begin
+          CanStore:=CISValid_AccOff(Trim(EACRefF.Text));
+
+          If (Not CanStore) then
+            //ShowMessage(Trim(EACRefF.Text)+' is not a valid Accounts Office Reference.');
+            MessageDlg (Trim(EACRefF.Text)+' is not a valid Accounts Office Reference.', mtWarning, [mbOK, mbHelp], 2103);
+
+           // CA 11/02/2013 v7.0.2 ABSEXCH-14003: New if statement added to ensure only if all
+           //                                   should we check if data has changed
+          if (CanStore) Then
+          Begin
+             // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Setting up the After CISSetupAudit
+            if Assigned(CISSetupAudit) Then
+            Begin
+              CISSetupAudit.AfterData := SyssCIS;
+              CISSetupAudit.WriteAuditEntry;
+              CISSetupAudit := NIL;
+            End;
+
+            // CA 11/02/2013 v7.0.2 ABSEXCH-14003: Setting up the After CIS340SetupAudit
+            if Assigned(CIS340SetupAudit) Then
+            Begin
+              CIS340SetupAudit.AfterData := SyssCIS340;
+              CIS340SetupAudit.WriteAuditEntry;
+              CIS340SetupAudit := NIL;
+            End;
+          End;
+
+        end;
+
+        {$IFDEF EX603}
+        With SyssCIS.CISRates do
+          If (CanStore) and (CurrentCountry=IECCode) and (RCTRCV1<>C0) then
+          Begin
+            CanStore:=(RCTRCV1<>CISVATCode);
+
+            If (Not CanStore) then
+              ShowMessage('The Reverse VAT code cannot be the same as the RCT VAT Code.');
+          end;
+        {$ENDIF}
+      End // If (ActiveControl = OkCP1Btn)
+      Else
+        CanStore := False;
+    end
+    else
+      If (OKCp1Btn.Enabled) then
+      Begin
+        GlobLocked:=BOn;
+
+        GetMultiSys(BOff,GlobLocked,CISR); {* Restore values *}
+
+        GetMultiSys(BOff,GlobLocked,CIS340R); {* Restore values *}
+      end;
+
+    If (CanStore) then
+    Begin
+      If (OKCp1Btn.Enabled) then
+      Begin
+        SyssCIS.CISRates.CISLoaded:=BOn;
+        PutMultiSys(CISR,BOn);
+
+        PutMultiSys(CIS340R,BOn);
+
+        BeenStored:=BOn;
+
+        Init_STDCISList;
+      end;
+
+      Close;
+    end;
+  end; {With..}
+end;
+
+
+procedure TSetCISRate.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  GlobFormKeyDown(Sender,Key,Shift,ActiveControl,Handle);
+end;
+
+procedure TSetCISRate.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  GlobFormKeyPress(Sender,Key,ActiveControl,Handle);
+end;
+
+
+procedure TSetCISRate.LTRChange(Sender: TObject);
+begin
+  If (CIS340) and (Not LTR.ReadOnly) then
+  With LTR do
+  Begin
+    DateValue:=Copy(DateValue,1,6)+'05';
+  end;
+
+  OutEq;
+end;
+
+
+procedure TSetCISRate.CDesc0Enter(Sender: TObject);
+begin
+  LastComponent:=TComponent(Sender);
+end;
+
+
+Function TSetCISRate.GetActiveRate  :  CISTaxType;
+
+Var
+  FoundOk  :  Boolean;
+
+Begin
+  FoundOk:=BOff;
+
+  For Result:=CISStart to CISEnd do
+  Begin
+    FoundOk:=((LastComponent=DescAry[Result]) or (LastComponent=DRateAry[Result])
+              or (LastComponent=GLAry[Result]) or (LastComponent=CCAry[Result]) or (LastComponent=DepAry[Result])
+              or (LastComponent=GLDescAry[Result]));
+
+    If (FoundOk) then
+      Break;
+
+  end;
+
+
+  If (Not FoundOk) then
+    Result:=Construct;
+
+end;
+
+
+procedure TSetCISRate.GLBank0Exit(Sender: TObject);
+Var
+  FoundCode  :  Str20;
+
+  FoundOk,
+  AltMod     :  Boolean;
+
+  SMode,
+  FoundLong  :  LongInt;
+
+  n          :  NomCtrlType;
+  m          :  Byte;
+
+
+begin
+
+  If (Sender is Text8pt) then
+  With (Sender as Text8pt) do
+  Begin
+    AltMod:=(Modified);
+
+    FoundCode:=Strip('B',[#32],Text);
+
+    If ((AltMod) or (FoundCode='')) and (ActiveControl<>CanCP1Btn) then
+    Begin
+
+      StillEdit:=BOn;
+
+      FoundOk:=(GetNom(Self ,FoundCode,FoundLong,2));
+
+
+      If (FoundOk) then
+      Begin
+
+        StillEdit:=BOff;
+
+        Text:=Form_Int(FoundLong,0);
+
+        GLDescAry[GetActiveRate].Text:=Nom.Desc;
+
+
+      end
+      else
+      Begin
+
+        SetFocus;
+      end; {If not found..}
+    end;
+
+
+  end; {with..}
+end;
+
+procedure TSetCISRate.CC0Exit(Sender: TObject);
+Var
+  FoundCode  :  Str20;
+
+  FoundOk,
+  AltMod     :  Boolean;
+
+  IsCC       :  Boolean;
+
+
+begin
+
+  If (Sender is Text8pt) then
+  With (Sender as Text8pt) do
+  Begin
+    FoundCode:=Name;
+
+    IsCC:=Match_Glob(Sizeof(FoundCode),'CC',FoundCode,FoundOk);
+
+    AltMod:=Modified;
+
+    FoundCode:=Strip('B',[#32],Text);
+
+    If ((AltMod) or (FoundCode='')) and (ActiveControl<>CanCP1Btn) and (Syss.UseCCDep)  then
+    Begin
+
+      StillEdit:=BOn;
+
+      FoundOk:=(GetCCDep(Self,FoundCode,FoundCode,IsCC,0));
+
+
+      If (FoundOk) then
+      Begin
+
+        StillEdit:=BOff;
+
+        Text:=FoundCode;
+
+
+      end
+      else
+      Begin
+
+        SetFocus;
+      end; {If not found..}
+    end
+    else
+      If (AltMod) and (FoundCode='') then
+        Text:='';
+
+  end; {with..}
+end;
+
+
+
+
+{ ================= Routine to Close Current Period ============== }
+
+Procedure TSetCISRate.Close_CISPr(ShowVPr  :  Boolean);
+
+Var
+  VYr,VPr  :  Integer;
+
+  CFinish  :  Boolean;
+
+  mbRet    :  Word;
+
+  OldDate  :  LongDate;
+
+
+
+Begin
+
+  CFinish:=BOff;
+
+  With SyssCIS.CISRates do
+  Begin
+    VYr:=Part_Date('Y',CurrPeriod);
+    VPr:=Part_Date('M',CurrPeriod);
+
+    OldDate:=CurrPeriod;
+  end;
+
+  mbRet:=MessageDlg('Close Current '+CCCISName^+' Period ('+Form_Int(VPr,0)+'/'+Form_Int(VYr,0)+')?',mtConfirmation,[mbYes,mbNo],0);
+
+  If (mbRet=mrYes) then
+  Begin
+    Close_CurrCISPeriod;
+
+    OutCIS;
+
+    {$IFDEF POST}
+      AddCIS6Update(Application.MainForm,OldDate,2);
+    {$ENDIF}
+  end; {If..}
+
+  OKCP1BtnClick(OKCP1Btn);
+
+end; {Proc..}
+
+
+procedure TSetCISRate.CPBtnClick(Sender: TObject);
+begin
+  Close_CISPr(BOn);
+end;
+
+
+
+procedure TSetCISRate.cbRCTRVClick(Sender: TObject);
+begin
+  RCTRVCF1.Enabled:=cbRCTRV.Checked;
+end;
+
+procedure TSetCISRate.TREKeyPress(Sender: TObject; var Key: Char);
+begin
+  If (Key = '-') Then
+    Key := #0;
+end;
+
+end.

@@ -1,0 +1,41 @@
+This file summarizes changes made between Async Professional 4.01
+and 4.02
+
+APRO 4.02 was removed shortly after release due to several problems 
+that were seen.  APRO 4.03 includes fixes to those problems, and has 
+duplicate entries for the bug fixes and enhancements.
+
+APRO 4.02 is released primarily to add support for C++Builder 6. There
+are several known bugs that have not been fixed in this version, see
+the readme.hlp file for a list of the known bugs and limitations.
+
+Bugs Fixed
+---------------------------------------------------------------------
+Port and low-level components
+  - AV when closing 
+
+Fax components
+  - Multiple recipients were not being sent from the APJ.
+  - 216 error when unregistering graphic 
+  - idShell and Shell Execute don't work with PDF 
+  - TAPI Status display doesn't 
+  - ConcatFaxes and "Index out of bounds" 
+  - ElapsedTime isn't reset 
+  - ElapsedTime property not available  (TApdFaxServer)
+
+RAS components
+  -  RAS in unstable state when closing app right after hanging up 
+
+TAPI components
+  - TranslateAddress returned terminating null 
+
+FTP components
+  - Errors on successful replies
+  - Exception raised if ServerAddress is invalid  
+
+Enhancements Made
+---------------------------------------------------------------------
+General
+  - AproStrRes method not available 
+  - Incomplete SetModem method to control RTS
+  

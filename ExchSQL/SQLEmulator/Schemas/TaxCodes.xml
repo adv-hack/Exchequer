@@ -1,0 +1,19 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="1R1wJegDo4GuMDB6L+CyFQ" identitycol="PositionId" recordfieldname="" reclen="400">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tcID" ></schemafield>
+    <schemafield fieldname="f_code" fullfieldname="" typename="char" size="1" elements="1" id="-1"  columnname="tcCode" collation="1"></schemafield>
+    <schemafield fieldname="f_description" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1"  columnname="tcDescription" collation="1"></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_id</item>
+        <item>f_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>  
+

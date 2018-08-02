@@ -1,0 +1,25 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="WZ6alE07kKsqPsQZqbOuiw==" identitycol="PositionId" reclen="600" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_EntityType" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="adEntityType" collation="0"/>
+        <schemafield fieldname="f_EntityCode" fullfieldname="" typename="DelphiString" size="201" elements="1" id="-1" columnname="adEntityCode" collation="1"/>
+        <schemafield fieldname="f_AnonymisationDate" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="adAnonymisationDate" collation="1"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_EntityType</item>
+                <item size="-1" computedcolumnname="">f_EntityCode</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_AnonymisationDate</item>
+                <item size="-1" computedcolumnname="">f_EntityCode</item>
+                <item size="-1" computedcolumnname="">f_EntityType</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

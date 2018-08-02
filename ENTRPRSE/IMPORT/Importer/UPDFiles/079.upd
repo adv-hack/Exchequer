@@ -1,0 +1,7 @@
+[Version]
+Version=6.00.092.079
+
+[Trans Header]
+F020=TH.DiscSetl                  0293    D 0008 O   Settlement Discount Percentage                     default=0                                                                                                    comment=
+F022=TH.DiscAmount                0309    D 0008 O   Total Line Discount                                default=0                                                                                                    comment=
+

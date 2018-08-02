@@ -1,0 +1,58 @@
+package Ims2d4;
+
+{$R *.RES}
+{$R 'msreg.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'Internet Mail Suite 2'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl40;
+
+contains
+  Mswsock in 'msWsock.pas',
+  msaddrpe in 'Msaddrpe.pas' {AddrEditDlg},
+  msattadd in 'Msattadd.pas' {AttEditDlg},
+  msattpe in 'Msattpe.pas' {AttListEditDlg},
+  msCls in 'msCls.pas',
+  msconst in 'msConst.pas',
+  Msdef in 'msDef.pas',
+  msFTP in 'msFTP.pas',
+  msFtpCls in 'msFTPCls.pas',
+  msftput in 'msFTPUt.pas',
+  mshttp in 'mshttp.pas',
+  msmime in 'msMIME.pas',
+  msmsg in 'msMsg.pas',
+  msmsgcls in 'MSMsgCls.pas',
+  msNNTP in 'msNNTP.pas',
+  mspars in 'mspars.pas',
+  Mspop in 'Mspop.pas',
+  msreg in 'msreg.pas',
+  msSmtp in 'Mssmtp.pas',
+  Mssocket in 'Mssocket.pas',
+  msutils in 'msUtils.pas',
+  msuucode in 'msUUCode.pas',
+  msaddred in 'Msaddred.pas' {MailAddressDlg},
+  msVersPe in 'msVersPe.pas' {msVersionDlg};
+
+end.

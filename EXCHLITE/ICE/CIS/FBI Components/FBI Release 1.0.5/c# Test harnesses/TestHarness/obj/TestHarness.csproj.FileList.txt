@@ -1,0 +1,15 @@
+bin\Debug\TestHarness.exe
+bin\Debug\TestHarness.pdb
+bin\Debug\InternetFiling.dll
+bin\Debug\InternetFilingServer.dll
+bin\Debug\InternetFilingServer.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TestHarness.frmTestHarness.resources
+obj\Debug\TestHarness.Properties.Resources.resources
+obj\Debug\TestHarness.csproj.GenerateResource.Cache
+obj\Debug\TestHarness.exe
+obj\Debug\TestHarness.pdb
+bin\Debug\xmlFormer.dll
+bin\Debug\xmlTransform.dll
+bin\Debug\xmlFormer.pdb
+bin\Debug\InternetFiling.pdb

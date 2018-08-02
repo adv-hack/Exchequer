@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<val:vats xmlns:val="urn:www-iris-co-uk:vats">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <vatrec>
+           <idcode/>
+           <vat>
+              <vatcode/>    <!--:  Char;                 { VAT Code } -->
+              <vatrate/>    <!--:  Double;               { VAT Rate } -->
+              <vatdesc/>    <!--:  string[10];           { Description of VAT rate } -->
+            </vat>
+            <vatinterval/> <!--:  byte     {No. mmonths between returns} -->
+            <vatscheme/> <!--:  char {vat scheme type} -->
+            <olastecsalesdate/> <!--:   {record date of last EC sales report}-->
+            <vatreturndate/> <!--:    {date last return }-->
+            <lastecsalesdate/> <!--:    {record date of last EC sales report }-->
+            <currperiod/> <!--:    {last return + interval }-->
+        </vatrec>
+    </message>
+</val:vats>

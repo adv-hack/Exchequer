@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:version xmlns:val="urn:www-iris-co-uk:version">
+<message guid="" number="0" count="0" source="" destination="" flag="0" plugin="" datatype="16" desc="" xsl="" xsd="" startperiod="0" startyear="0" endperiod="0" endyear="0">
+  <vrdetails>
+    <vrmodule/>
+    <vrcurrency/>
+    <vrproduct/>
+  </vrdetails>    
+  <vrmodules>
+    <vrinstalled/>
+  </vrmodules>
+</message>
+</val:version>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:multibin xmlns:val="urn:www-iris-co-uk:multibin">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <binrec>
+      <brbincode/>              <!--: string[10]; -->
+      <brindocref/>             <!--: string[10]; -->
+      <broutdocref/>            <!--: string[10]; -->
+      <brsold/>                 <!--: wordbool;   -->
+      <brindate/>               <!--: string[8];     //date bought yyyymmdd  -->
+      <brcostprice/>            <!--: double;        //original cost        -->
+      <brcapacity/>             <!--: double;        //capacity of bin       -->
+      <brstockfolio/>           <!--: longint;       //folio number of stock  -->
+      <broutdate/>              <!--: string[8];                            -->
+      <broutdocline/>           <!--: longint;                      -->
+      <brindocline/>            <!--: longint;                      -->
+      <brqty/>                  <!--: double;                       -->
+      <brqtyused/>              <!--: double;                       -->
+      <brusedrec/>              <!--: wordbool;                     -->
+      <brinlocation/>           <!--: string[10];                   -->
+      <broutlocation/>          <!--: string[10];                   -->
+      <broutorderref/>          <!--: string[10];                   -->
+      <brinorderref/>           <!--: string[10];                   -->
+      <brinorderline/>          <!--: longint;                      -->
+      <broutorderline/>         <!--: longint;                      -->
+      <brcostpricecurrency/>    <!--: smallint;                     -->
+      <brpickingpriority/>      <!--: string[10];                   -->
+      <brsalesprice/>           <!--: double;                       -->
+      <brcompanyrate/>          <!--: double;                       -->
+      <brdailyrate/>            <!--: double;                       -->
+      <bruseorate/>             <!--: wordbool;                     -->
+      <brtrirates/>             <!--: double;                       -->
+      <brtrieuro/>              <!--: smallint;                     -->
+      <brtriinvert/>            <!--: wordbool;                     -->
+      <brtrifloat/>             <!--: wordbool;                     -->
+      <brusebydate/>            <!--: string[10];                   -->
+      <brsalespricecurrency/>   <!--: smallint;                     -->
+      <brunitofmeasurement/>    <!--: string[10];                   -->
+      <brautopickmode/>         <!--: smallint;  //auto pick settings - 0 normal, 1 lock bin, 2 match bin by tagno -->
+      <brtagno/>                <!--: smallint;                     -->
+      <brrecpos/>               <!--: longint;                      -->
+    </binrec>
+</message>
+</val:multibin>

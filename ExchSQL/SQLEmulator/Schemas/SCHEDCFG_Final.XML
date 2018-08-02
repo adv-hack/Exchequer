@@ -1,0 +1,20 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="640" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+		<schemafield fieldname="scid" fullfieldname="scid" typename="DelphiString" size="11" elements="1" id="-1" columnname="scid" />
+		<schemafield fieldname="scofflinestart" fullfieldname="scofflinestart" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="scofflinestart" />
+		<schemafield fieldname="scofflineend" fullfieldname="scofflineend" typename="DelphiDateTime" size="8" elements="1" id="-1" columnname="scofflineend" />
+		<schemafield fieldname="scdefaultemail" fullfieldname="scdefaultemail" typename="DelphiString" size="101" elements="1" id="-1" columnname="scdefaultemail" />
+		<schemafield fieldname="sctimestamp" fullfieldname="sctimestamp" typename="DelphiDatetime" size="8" elements="1" id="-1" columnname="sctimestamp" />
+	</fixedfields>
+	<defaultrecordtype>
+	</defaultrecordtype>
+	<recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>scid</item>
+            </indexfields>
+        </schemaindexes>		
+    </indexes>
+</schemarecord>

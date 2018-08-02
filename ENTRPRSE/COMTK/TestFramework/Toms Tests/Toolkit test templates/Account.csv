@@ -1,0 +1,15 @@
+"Blank Acc Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30003,N,30003
+"Invalid Payment Type",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30004,N,30004
+"Invalid Vat Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30005,N,30005
+"Invalid Nom Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30006,N,30006
+"Invalid Cost of Sales Nom Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30008,N,30008
+"Invalid Sales Nominal Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30009,N,30009
+"Invalid Location Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30010,N,30010
+"Invalid Invoice To Account Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30011,N,30011
+"Invalid Statement To Account Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30012,N,30012
+"Invalid SSD Delivery Terms",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30013,N,30013
+"Invalid Default VAT Code",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30014,N,30014
+"Invalid invoice delivery mode",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30015,N,30015
+"Invalid Default Settlement Discount Days",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30017,N,30017
+"Invalid Cost Centre or Department",C:\ComTKExes\CTKAccountTests.exe,Y,Y,30018,N,30018
+Duplicate,C:\ComTKExes\CTKAccountTests.exe,Y,Y,5,N,5

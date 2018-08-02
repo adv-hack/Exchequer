@@ -1,0 +1,29 @@
+unit pvip;
+
+
+interface
+
+uses Classes, btvtables;
+
+type
+
+{ TwwPvTable }
+
+  TwwPvTable = class(TPvTable)
+  private
+    FControlType: TStrings;
+    procedure SetControlType(Value: TStrings);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+  published
+    property ControlType: TStrings read FControlType write SetControlType stored true;
+  end;
+
+{$IfnDef PvDelphi6Up}
+{$Ifdef WITH_DESIGN_SUPPORT}
+procedure Register;
+{$Endif}
+{$Endif}
+
+implementation

@@ -1,0 +1,164 @@
+<html>
+
+  <head>
+    <title>mad* Help...</title>
+    <meta name="description" content="mad* Help...">
+    <meta name="keywords" content="madshi, components, delphi">
+    <meta http-equiv="expires" content="900">
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body background="bcklight.gif" bgcolor=#F8F8F8>
+    <table border=0 cellpadding=0 callspacing=0><tr>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=3 border=0>
+            <tr><td bgcolor=#FFFFF0>
+              <div id="verySmall"><br></div>
+              <div id="bigTitle">&nbsp;Injection Driver&nbsp;</div>
+              <div id="verySmall"><br></div>
+              <div id="small">
+                <a class="small" href="Content.htm">Content</a> /
+                <a class="small" href="madCodeHook.htm">madCodeHook</a> /...
+              </div>
+            </td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=7 border=0>
+            <tr><td bgcolor=#F4F4F8><a href="http://www.madshi.net">www.madshi.net</a></td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+    </tr></table>
+    <h3>Introduction</h3>
+    <p>System wide DLL injection in madCodeHook has always been split into two
+       separate parts:</p>
+    <p>(1) Injection into already running processes.<br>
+       (2) Automatic injection into newly created processes.</p>
+    <p>Part (1) was always done with user land code, while (2) was done by a little
+       kernel mode driver (except in win9x). Part (2) was totally rewritten for
+       madCodeHook 3.0, compared to madCodeHook 2.x.</p>
+    
+    <h3>madCodeHook 2.x</h3>
+    <p>With madCodeHook 2.x, the kernel mode driver is embedded in the madCodeHook
+       code. When the driver is needed, it's automatically extracted to a temp file
+       (named "mchInjDrv.sys") on harddisk. Then it's loaded, and afterwards the
+       temp file is deleted again. The driver stays loaded until the next reboot.
+       The driver is also shared between all applications using madCodeHook.</p>
+    <p>This approach is comfortable for you as a madCodeHook user, because you
+       don't need to worry about anything. Everything works automatically.
+       Unfortunately there are some disadvantages, too. Since every software which
+       uses madCodeHook uses exactly the same driver file, Anti-Virus software
+       can't properly differ between "good" software and "bad" software. Yes, to my
+       biggest frustration, there has been malware misusing madCodeHook 2.x.</p>
+    
+    <h3>madCodeHook 3.0</h3>
+    <p>With madCodeHook 3.0, there's no embedded driver, anymore. Instead
+       madCodeHook 3.0 ships with external 32bit and 64bit driver files. These
+       drivers are already compiled, but they will not work, until they are
+       properly <a href="mchDrvCfg.htm">configured</a> and afterwards 
+       <a href="mchDrvSign.htm">signed</a> with a code signing certificate
+       (e.g. Verisign).</p>
+    <p>By <a href="mchDrvCfg.htm">configuring</a> the driver file, it is bonded to
+       the known "good" hook dlls. The <a href="mchDrvSign.htm">signing process</a>
+       makes sure that the bond can not be destroyed, anymore. A
+       <a href="mchDrvCfg.htm">configured</a> & <a href="mchDrvSign.htm">signed</a>
+       driver is only willing to inject those hook dlls which are known to it.
+       Injection of any unknown hook dlls is always refused.</p>
+    <p>The injection driver must be manually activated by using the new
+       <a href="DllInjecting.htm#LoadInjectionDriver">driver control API</a>.</p>
+    
+    <h3>Why were these changes made?</h3>
+    <p>There are two reasons:</p>
+    <p>(1) Security companies generally don't like it so much if a driver file is
+       extracted dynmically, then loaded and then deleted again. It looks
+       suspicious to anti virus software. So I wanted to stop doing this. If you
+       like the "embedded driver file" solution used by madCodeHook 2.x, you can
+       realize such a solution yourself even when using madCodeHook 3.0. You just
+       need to handle the embedding and temporare extraction to harddisk
+       yourself.</p>
+    <p>(2) Vista64 refuses to load any drivers which are not properly signed. Now I
+       could, of course, compile the drivers and sign them with my personal
+       certificate. However, if you used such a driver signed by me, and if then at
+       one time a malware programmer got access to madCodeHook somehow, and used
+       the very same driver for creating a new malware, you'd be in danger of
+       getting your software classified as malware, too.</p>
+    <p>To protect you (and me) from malware misuse I've furthermore implemented
+       quite a number of security checks and tricks to make life as hard as
+       possible for malware programmers. But more about that later.</p>
+    <p>This new approach is less comfortable for you, because you have to 
+       <a href="mchDrvCfg.htm">reconfigure</a> and <a href="mchDrvSign.htm">sign</a>
+       the driver, everytime you touch the hook dll. But on the positive side,
+       there should be next to zero danger of your customized driver being misused
+       by malware. And since your driver is safe and different from any other
+       driver, there's also a much lower danger of running into Anti-Virus false
+       alarms.</p>
+    
+    <h3>How does the new driver API work?</h3>
+    <p>First of all your custom driver needs to be loaded/activated. There are two
+       different options on how to do that:</p>
+    <p>(1) The normal way to load/activate a driver is to install it permanently,
+       just like a service. If you do that, the driver will be visible to the end
+       user (it's listed in the device manager, if you activate certain options).
+       Furthermore the driver survives reboots. The advantage of this solution is
+       that the driver doesn't play "hide and seek", so it should look less
+       dangerous to security applications. The disadvantage is that your software
+       needs both an installation and deinstallation logic.</p>
+    <p>(2) Instead of permanently installing the driver, you can also simply load
+       it dynamically. If you do that, the driver will stay loaded until you either
+       stop it, or until the end user reboots the OS. The advantage of this
+       solution is that you don't need to provide an installation/deinstallation
+       logic. The disadvantage is that dynamically loading a driver might look
+       slightly more suspicious to security applications, because a dynamically
+       loaded driver is mostly invisible to the end user.</p>
+    <p>madCodeHook 3.0 contains
+       <a href="DllInjecting.htm#LoadInjectionDriver">APIs</a> for both approaches
+       described above. There are also
+       <a href="DllInjecting.htm#StopInjectionDriver">APIs</a> available for
+       stopping and restarting the driver. See <a href="DllInjecting.htm">here</a>
+       for a detailed description of all available injection APIs.</p>
+    
+    <h3>Anti malware misuse tricks</h3>
+    <p>In order to stop malware programmers from misusing madCodeHook, I've added a
+       number of security tricks to madCodeHook 3.0:</p>
+    <p>(1) You need to <a href="mchDrvSign.htm">sign</a> the kernel mode drivers
+       yourself. Most malware programmers will probably lack a valid Verisign
+       certificate. And even if they have such a certificate, it can be revoked if
+       it's used to create malware. And it can also be easily used as a search
+       criterion for security applications.</p>
+    <p>(2) The driver strictly refuses to inject any dlls which were not made known
+       to the driver at build/<a href="mchDrvCfg.htm">configuration</a> time. This
+       makes sure that a malware programmer can not misuse your driver to inject
+       his own dlls.</p>
+    <p>(3) When your application tells the driver to inject a specific dll, the
+       driver calculates a hash of your exe file and stores that together with the
+       injection request information. The driver later only accepts a "stop
+       injection" request from a process if the exe file has the same hash as the
+       one which started the injection. This makes sure that a malware process can
+       not simply hack into the application/driver communication to stop your dll
+       from being injected.</p>
+    <p>(4) Even if you configure your driver to support being stopped (safely), a
+       stopping request is only accepted by the driver if it was issued by the
+       driver injection API. Stopping the driver through the normal service/driver
+       OS APIs is blocked. Furthermore the driver accepts a stop request only if no
+       dll injection requests are active. This should make sure that a malware
+       process can not simply stop your driver behind your back.</p>
+    
+    <table border=0 cellpadding=0 callspacing=0>
+      <tr><td bgcolor=#D8D8D8>
+        <table border=0 cellpadding=7>
+          <tr>
+            <td bgcolor=#6060B0><div id="smallTitle">Related Topics</div></td>
+            <td bgcolor=#F8F0F0><a href="mchDrvCfg.htm">Driver Configuration</a></td>
+            <td bgcolor=#F4F4F8><a href="mchDrvSign.htm">Driver Signing</a></td>
+            <td bgcolor=#F8F0F0><a href="DllInjecting.htm#LoadInjectionDriver">Driver Injection APIs</a></td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+
+</html>

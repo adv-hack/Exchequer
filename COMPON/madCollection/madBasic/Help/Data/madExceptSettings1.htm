@@ -1,0 +1,86 @@
+<html>
+
+  <head>
+    <title>mad* Help...</title>
+    <meta name="description" content="mad* Help...">
+    <meta name="keywords" content="madshi, components, delphi">
+    <meta http-equiv="expires" content="900">
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body background="bcklight.gif" bgcolor=#F8F8F8>
+    <table border=0 cellpadding=0 callspacing=0><tr>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=3 border=0>
+            <tr><td bgcolor=#FFFFF0>
+              <div id="verySmall"><br></div>
+              <div id="bigTitle">&nbsp;madExcept Settings (Tab 1)&nbsp;</div>
+              <div id="verySmall"><br></div>
+              <div id="small">
+                <a class="small" href="Content.htm">Content</a> /
+                <a class="small" href="madExcept.htm">madExcept</a> /
+                <a class="small" href="madExceptSettings.htm">madExcept Settings</a> /...
+              </div>
+            </td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+      <td valign=bottom>
+        <table border=0 cellpadding=0 cellspacing=0><tr><td bgcolor=#D8D8D8>
+          <table cellpadding=7 border=0>
+            <tr><td bgcolor=#F4F4F8><a href="http://www.madshi.net">www.madshi.net</a></td></tr>
+          </table>
+        </td></tr></table>
+      </td>
+    </tr></table>
+    <map name="SettingsMap">
+    <area shape="rect" coords="14,114,135,155" href="madExceptSettings2.htm" onMouseover="document.images[0].src='mes-ss31.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,156,135,197" href="madExceptSettings3.htm" onMouseover="document.images[0].src='mes-ss32.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,198,135,239" href="madExceptSettings4.htm" onMouseover="document.images[0].src='mes-ss33.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,240,135,281" href="madExceptSettings5.htm" onMouseover="document.images[0].src='mes-ss34.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,282,135,323" href="madExceptSettings6.htm" onMouseover="document.images[0].src='mes-ss35.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,324,135,365" href="madExceptSettings7.htm" onMouseover="document.images[0].src='mes-ss36.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,366,135,407" href="madExceptSettings8.htm" onMouseover="document.images[0].src='mes-ss37.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,408,135,449" href="madExceptSettings9.htm" onMouseover="document.images[0].src='mes-ss38.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    <area shape="rect" coords="14,450,135,489" href="madExceptSettings10.htm" onMouseover="document.images[0].src='mes-ss39.gif'" onMouseout="document.images[0].src='mes-ss30.gif'">
+    </map>
+    <p>You can click on the tabs in the left side of the image:</p>
+    <p><img src='mes-ss30.gif' border=0 usemap="#SettingsMap" align=left style="margin-right:10pt;margin-bottom:10pt"></p>
+    <h3>general options...</h3>
+    <p>The first option <b>include minimal debug info only</b> gives you the
+       option to tell <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> to not include function names and line
+       numbers into your binary (exe/dll/bpl) file. The one and only motivation for
+       activating this option should be protection from reverse engineering.
+       Without function names and line numbers reverse engineers have no advantage
+       from the fact that you're using <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a>. However, *you* have a
+       disadvantage: The bug reports you'll get from your customers will miss
+       function names and line numbers. You can compile such "bad" bug reports to
+       full bug reports by using the tool "madCompileBugReport". This tool needs
+       access to the "mad" file which <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> created when your binary
+       file got compiled & linked.</p>
+    <p>The option <b>this module gets no own madExcept settings</b> should be used
+       when your application consists of a whole bunch of modules (dlls/bpls) and
+       when you want all those modules to share the same madExcept settings. In
+       this case store the settings into the main module (probably the exe) and
+       activate this option for all the other modules. The other modules will then
+       automatically find & use the settings stored in your main module.</p>
+    <h3>runtime checks...</h3>
+    <p>By default <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> checks whether your binary file seems to have bit
+       faults or not. This is done by calculating a checksum and comparing it to
+       the checksum stored in your binary file's PE header. If the checksum is
+       found to be incorrect, <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> will complain. If your binary file
+       is the executable, <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> will show a warning box and then close
+       your application. If your binary file is a dll or package, <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a>
+       will raise an exception.</p>
+    <p>If you turn the <b>check for frozen main thread</b> option on,
+       <a href="madExcept.htm" href="madExceptUnit.htm">madExcept</a> periodically checks at runtime whether your main thread
+       still reacts on messages. If it does not react for the specified time
+       (default 60 seconds), an exception is raised. This functionality should
+       help you finding and locating infinite loops and dead locks. Since each bug
+       report contains the callstack of all threads of the current process, you can
+       often quite easily see, what each thread was doing and who possibly waited
+       on whom and why.</p>
+  </body>
+
+</html>

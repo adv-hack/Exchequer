@@ -1,0 +1,64 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Demo.exe Config.exe LogMonitor.exe DSRUtility.dll DemoUtility.exe \
+  DSR.dll EExport.dll DSRExport.dll EImport.dll DSRImport.dll DSRComDemo.exe \
+  DemoExport.dll DemoImport.dll Dashboard.exe CISExSubcontractor.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Demo.exe: Source\DemoXml\Demo.dpr
+  $(DCC)
+
+Config.exe: Source\Config\Config.dpr
+  $(DCC)
+
+LogMonitor.exe: Source\LogMonitor\LogMonitor.dpr
+  $(DCC)
+
+DSRUtility.dll: Source\DSRUtility\DSRUtility.dpr
+  $(DCC)
+
+DemoUtility.exe: IceDocumentation\Demos\Utility\Delphi\DemoUtility.dpr
+  $(DCC)
+
+DSR.dll: Source\DSR\DSR.dpr
+  $(DCC)
+
+EExport.dll: Source\Export\EExport.dpr
+  $(DCC)
+
+DSRExport.dll: Source\ExportBox\DSRExport.dpr
+  $(DCC)
+
+EImport.dll: Source\Import\EImport.dpr
+  $(DCC)
+
+DSRImport.dll: Source\ImportBox\DSRImport.dpr
+  $(DCC)
+
+DSRComDemo.exe: IceDocumentation\Demos\DSR Com\Delphi\DSRComDemo.dpr
+  $(DCC)
+
+DemoExport.dll: IceDocumentation\Demos\Import and Export\Delphi\Export\DemoExport.dpr
+  $(DCC)
+
+DemoImport.dll: IceDocumentation\Demos\Import and Export\Delphi\Import\DemoImport.dpr
+  $(DCC)
+
+Dashboard.exe: Source\Dashboard\Dashboard.dpr
+  $(DCC)
+
+CISExSubcontractor.dll: Source\Export\CIS\Subcontractors\CISExSubcontractor.dpr
+  $(DCC)
+
+

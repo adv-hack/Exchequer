@@ -1,0 +1,7 @@
+[Version]
+Version=6.00.083.075
+
+[Trans Line]
+F100=TL.SerialNo                  0871    S 0020 O   Serial No                                          default=                                                                                                     comment=
+F101=TL.Spare2                    0892    C 0003 N   Padding                                            default=                                                                                                     comment=
+F102=TL.LastChar                  0895    C 0001 N   Padding                                            default=                                                                                                     comment=

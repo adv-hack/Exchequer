@@ -1,0 +1,45 @@
+package A400_D60;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TurboPower Async Professional 4.00 Designtime Package - VCL60'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  designide,
+  rtl,
+  vclx,
+  A400_R60;
+
+contains
+  APROReg in 'APROREG.PAS',
+  AdAbout in 'adabout.pas' {ApdAboutForm},
+  AdPackEd in 'adpacked.pas' {PacketEditor},
+  AdPEdit0 in 'Adpedit0.pas' {AdPEdit},
+  AdPEditT in 'Adpeditt.pas',
+  Adproped in 'AdPropEd.pas',
+  AdStatEd in 'AdStatEd.pas' {frmStateEdit},
+  AdStatE0 in 'AdStatE0.pas' {frmConditionEdit};
+
+end.

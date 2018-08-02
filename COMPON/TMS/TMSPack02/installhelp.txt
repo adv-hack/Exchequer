@@ -1,0 +1,34 @@
+******************************************************************
+* Installing the TMS Component pack help in Delphi or C++Builder *
+******************************************************************
+
+Installing online help
+----------------------
+
+-----------------------------
+Delphi 5,6,7 & C++Builder 5,6
+-----------------------------
+
+For Delphi 6 & 7, first add the file TMSGridPackDx.als to the {$DELPHI}\Help dir.
+
+In the Delphi or C++Buider Help menu, choose Customize
+and add TMSPackXX.hlp to the Index tab.
+
+-----------
+Delphi 2005
+-----------
+
+Execute : RegHelp2 /i TMSPackdBDS3W.hxx
+
+-----------------------------
+Delphi 2006 & C++Builder 2006
+-----------------------------
+
+Execute : RegHelp2 /i TMSPackdBDS4W.hxx
+
+
+-----------
+Delphi 2007
+-----------
+
+Execute : RegHelp2 /i TMSPackdBDS5W.hxx

@@ -1,0 +1,7 @@
+Possible additional features :
+
+1. Option to delete archived faxes after a period of time ?
+
+2. Periodical update of the list in Fax Admin ?
+
+3. Mail Merge (from Word) ???

@@ -1,0 +1,106 @@
+package A403_R60;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TurboPower Async Professional 4.03 Runtime Package - VCL60'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl;
+
+contains
+  ADEXCEPT in 'ADEXCEPT.pas',
+  AdFax in 'AdFax.pas',
+  ADFAXCTL in 'ADFAXCTL.pas',
+  AdFaxCvt in 'AdFaxCvt.pas',
+  AdFaxPrn in 'AdFaxPrn.pas',
+  AdFaxSrv in 'AdFaxSrv.pas',
+  AdFIDlg in 'AdFIDlg.pas',
+  Adfpstat in 'Adfpstat.pas',
+  Adfstat in 'Adfstat.pas',
+  AdFtp in 'AdFtp.pas',
+  Adfview in 'Adfview.pas',
+  AdGSM in 'AdGSM.pas',
+  AdLibMdm in 'AdLibMdm.pas',
+  AdMdm in 'AdMdm.pas',
+  AdMdmCfg in 'AdMdmCfg.pas',
+  AdMdmDlg in 'AdMdmDlg.pas',
+  AdMeter in 'AdMeter.pas',
+  AdPacket in 'AdPacket.pas',
+  AdPager in 'AdPager.pas',
+  AdPort in 'AdPort.pas',
+  AdProtcl in 'AdProtcl.pas',
+  ADPSTAT in 'ADPSTAT.pas',
+  AdRas in 'AdRas.pas',
+  AdRasUtl in 'AdRasUtl.pas',
+  AdRStat in 'AdRStat.pas',
+  AdScript in 'AdScript.pas',
+  AdSelCom in 'AdSelCom.pas',
+  AdSocket in 'AdSocket.pas',
+  AdSrmgr in 'AdSrmgr.pas',
+  AdStatLt in 'AdStatLt.pas',
+  AdStMach in 'AdStMach.pas',
+  AdTapi in 'AdTapi.pas',
+  ADTrmBuf in 'ADTrmBuf.pas',
+  ADTrmEmu in 'ADTrmEmu.pas',
+  ADTrmMap in 'ADTrmMap.pas',
+  ADTrmPsr in 'ADTrmPsr.pas',
+  adtsel in 'adtsel.pas',
+  AdTStat in 'AdTStat.pas',
+  AdTUtil in 'AdTUtil.pas',
+  AdWnPort in 'AdWnPort.pas',
+  Adwutil in 'Adwutil.pas',
+  AdXBase in 'AdXBase.pas',
+  AdXChrFlt in 'AdXChrFlt.pas',
+  Adxdial in 'Adxdial.pas',
+  Adxdown in 'Adxdown.pas',
+  AdXLbMdm in 'AdXLbMdm.pas',
+  AdXParsr in 'AdXParsr.pas',
+  Adxport in 'Adxport.pas',
+  Adxprot in 'Adxprot.pas',
+  Adxup in 'Adxup.pas',
+  OoMisc in 'OoMisc.pas',
+  AWABSPCL in 'AWABSPCL.pas',
+  AwAscii in 'AwAscii.pas',
+  awfax in 'awfax.pas',
+  Awfaxcvt in 'Awfaxcvt.pas',
+  AwFView in 'AwFView.pas',
+  AwKermit in 'AwKermit.pas',
+  AwTPcl in 'AwTPcl.pas',
+  AwUser in 'AwUser.pas',
+  AwWin32 in 'AwWin32.pas',
+  AwWnSock in 'AwWnSock.pas',
+  AwXmodem in 'AwXmodem.pas',
+  AwYmodem in 'AwYmodem.pas',
+  awzmodem in 'awzmodem.pas',
+  Awabsfax in 'Awabsfax.pas',
+  AdSapiEn in 'AdSapiEn.pas',
+  AdISapi in 'AdISapi.pas',
+  AdSapiGr in 'AdSapiGr.pas',
+  AdVoIP in 'AdVoIP.PAS',
+  AdITapi3 in 'AdITapi3.pas',
+  AdSapiPh in 'AdSapiPh.pas';
+
+end.

@@ -1,0 +1,3 @@
+Comparing files AutoImp.txt and e:\ent431\autoimp.txt
+FC: AutoImp.txt longer than e:\ent431\autoimp.txt
+

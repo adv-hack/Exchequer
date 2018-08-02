@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:sys xmlns:val="urn:www-iris-co-uk:sys">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <sysrec>
+              <username><![CDATA[]]></username>   <!--: String[45];     { Registered Users Name }  -->
+              <useraddr> <!-- : Array[1..5] of  {      "       "   Address }   String[30];  -->
+                <useraddr1><![CDATA[]]></useraddr1>
+                <useraddr2><![CDATA[]]></useraddr2>
+                <useraddr3><![CDATA[]]></useraddr3>
+                <useraddr4><![CDATA[]]></useraddr4>
+                <useraddr5><![CDATA[]]></useraddr5>
+              </useraddr>
+              <usersort/>   <!--: String[6];      {      "       "   Bank Sort Code }  -->
+              <useracc/>    <!--: String[8];      {      "       "   Bank Account No. } -->
+              <userref><![CDATA[]]></userref>    <!--: String[18];     {      "       "   Bank Reference }  -->
+              <userbank><![CDATA[]]></userbank>   <!--: String[25];     {      "       "   Bank Name }    -->
+
+              <expr/>
+              <exyr/>       <!--: SmallInt;       { Exch. Current Periods }  -->
+              <directcust/> <!--: String[10];     { Direct SRI } -->
+              <directsupp/> <!--: String[10];     { Direct PPI } -->
+              <pricedp/>    <!--: SmallInt;       { Sales Price Decimal Places } -->
+              <costdp/>     <!--: SmallInt;       { Cost Price Decimal Places } -->
+              <quantitydp/> <!--: SmallInt;       { Quantity Decimal Places }  -->
+              <multilocn/>  <!--: SmallInt;       { Multi-Location Status, 0=Disabled,1=Del.Address only, 2=Enabled} -->
+              <uservatreg/> <!--: string[30];     { User's VAT registration number }  -->
+              <periodsperyr/> <!--: smallint;       { Number of periods in a year } -->
+              <ccdepts/>      <!--: WordBool;       { Cost centres and departments in use ? } -->
+              <intrastat/>    <!--: WordBool;       { Use Intrastat fields ? } -->
+              <exchangerate/> <!--: Char;           { Company or daily rate ??? } -->
+              <finyearstart/> <!--: String[8];      { Start of financial year yyyymmdd } -->
+
+              <traderudflabel>     <!--: Array[1..4] of  string[15];   {Trader User Defined Labels } -->
+                 <traderudflabel1><![CDATA[]]></traderudflabel1>
+                 <traderudflabel2><![CDATA[]]></traderudflabel2>
+                 <traderudflabel3><![CDATA[]]></traderudflabel3>
+                 <traderudflabel4><![CDATA[]]></traderudflabel4>
+              </traderudflabel>
+              <stockudflabel>      <!--: Array[1..4] of  String[15];   {Stock User Defined Labels } -->
+                 <stockudflabel1><![CDATA[]]></stockudflabel1>
+                 <stockudflabel2><![CDATA[]]></stockudflabel2>
+                 <stockudflabel3><![CDATA[]]></stockudflabel3>
+                 <stockudflabel4><![CDATA[]]></stockudflabel4>
+              </stockudflabel>
+              <transheadudflabel>  <!--: Array[1..4] of String[15];   {Trans. Header User Defined Labels } -->
+                  <transheadudflabel1><![CDATA[]]></transheadudflabel1>
+                  <transheadudflabel2><![CDATA[]]></transheadudflabel2>
+                  <transheadudflabel3><![CDATA[]]></transheadudflabel3>
+                  <transheadudflabel4><![CDATA[]]></transheadudflabel4>
+              </transheadudflabel>
+              <transheadudfhide>   <!--: Array[1..4] of WordBool;     {Hide status of Trans.Header User Defined Labels} -->
+                  <transheadudfhide1/>
+                  <transheadudfhide2/>
+                  <transheadudfhide3/>
+                  <transheadudfhide4/>
+              </transheadudfhide>
+              <translineudflabel>  <!--: Array[1..4] of String[15];   {Trans. Line User Defined Labels } -->
+                  <translineudflabel1><![CDATA[]]></translineudflabel1>
+                  <translineudflabel2><![CDATA[]]></translineudflabel2>
+                  <translineudflabel3><![CDATA[]]></translineudflabel3>
+                  <translineudflabel4><![CDATA[]]></translineudflabel4>
+              </translineudflabel>
+              <translineudfhide>   <!--: Array[1..4] of WordBool;     {Hide status of Trans. Line User Defined Labels } -->
+                  <translineudfhide1/>
+                  <translineudfhide2/>
+                  <translineudfhide3/>
+                  <translineudfhide4/>
+              </translineudfhide>
+              <translinetypelabel> <!--: Array[1..4] of String[15];   {Trans. Line Type User Defined Labels } -->
+                 <translinetypelabel1><![CDATA[]]></translinetypelabel1>
+                 <translinetypelabel2><![CDATA[]]></translinetypelabel2>
+                 <translinetypelabel3><![CDATA[]]></translinetypelabel3>
+                 <translinetypelabel4><![CDATA[]]></translinetypelabel4>
+              </translinetypelabel>
+              <translinetypehide>  <!--: Array[1..4] of WordBool;     {Hide status of Trans. Line Type User Defined Labels } -->
+                  <translinetypehide1/>
+                  <translinetypehide2/>
+                  <translinetypehide3/>
+                  <translinetypehide4/>
+              </translinetypehide>
+              <jobcostudflabel>    <!--: Array[1..2] of String[15];   {Job costing User Defined Labels } -->
+                  <jobcostudflabel1><![CDATA[]]></jobcostudflabel1>
+                  <jobcostudflabel2><![CDATA[]]></jobcostudflabel2>
+              </jobcostudflabel>
+
+              <currentcountry/>     <!--: String[3];      {Country code for install } -->
+              <orderallocstock/>    <!--: Wordbool;       {Orders to allocate stock when picked } -->
+
+              <calprfromdate/>      <!--: WordBool;       {Calculate Period from Date } -->
+
+              <usecrlimitchk/>      <!--: WordBool;       { Warn if Over Credit } -->
+              <usecreditchk/>       <!--: WordBool;       { Warn if Wks odue } -->
+              <stopbaddr/>          <!--: WordBool;       { Stop Invoice Entry of Bad Debtor } -->
+              <usepick4all/>        <!--: WordBool; -->
+              <freeexall/>          <!--: WordBool;       { Free Stock to exclude allocated figure } -->
+              <wksodue/>            <!--: smallint;       { No Wks before considered odue } -->
+              <deductbomcomponents/> <!--: WordBool; -->
+
+              <filtersnobybinloc/>  <!--: WordBool;       {Auto filter serial and bin lists when picking by location} -->
+              <keepbinhistory/>     <!--: WordBool;       {Retain multi bin history} -->
+              <binmask/>            <!--: String[10];     {Input mask for bin codes} -->
+              <inputpackqtyonline/> <!--: WordBool;       {Use 'Pack Qty' multiplier on transactions} -->
+              <percentagediscounts/> <!--: WordBool; -->
+        </sysrec>
+    </message>
+</val:sys>

@@ -1,0 +1,177 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="838" >
+	<recordfields>
+		<schemafield fieldname="fixed" fullfieldname="fixed" typename="JOBDET_FIXED" size="0" elements="1" id="-1" columnname="" />
+		<schemafield fieldname="var" fullfieldname="var" typename="JOBDET_VAR" size="0" elements="1" id="-1" columnname="" />
+	</recordfields>
+
+	<fixedfields>
+		<schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix"/>
+		<schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType"/>
+		<schemafield fieldname="var_code1" fullfieldname="var_code1" typename="DelphiEmbeddedCaseSensitiveString" size="22" elements="1" id="-1" columnname="var_code1"/>
+		<schemafield fieldname="var_code2" fullfieldname="var_code2" typename="binary" size="3" elements="1" id="-1" columnname="var_code2"/>
+		<schemafield fieldname="var_code3" fullfieldname="var_code3" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="var_code3"/>
+		<schemafield fieldname="var_code4" fullfieldname="var_code4" typename="DelphiString" size="27" elements="1" id="-1" columnname="var_code4"/>
+		<schemafield fieldname="var_code5" fullfieldname="var_code5" typename="DelphiString" size="11" elements="1" id="-1" columnname="var_code5"/>
+		<schemafield fieldname="var_code6" fullfieldname="var_code6" typename="DelphiEmbeddedCaseSensitiveString" size="22" elements="1" id="-1" columnname="var_code6"/>
+		<schemafield fieldname="var_code7" fullfieldname="var_code7" typename="DelphiEmbeddedCaseSensitiveString" size="23" elements="1" id="-1" columnname="var_code7"/>
+		<schemafield fieldname="var_code8" fullfieldname="var_code8" typename="DelphiEmbeddedCaseSensitiveString" size="20" elements="1" id="-1" columnname="var_code8"/>
+		<schemafield fieldname="var_code9" fullfieldname="var_code9" typename="DelphiEmbeddedCaseSensitiveString" size="15" elements="1" id="-1" columnname="var_code9"/>
+		<schemafield fieldname="var_code10" fullfieldname="var_code10" typename="binary" size="3" elements="1" id="-1" columnname="var_code10"/>
+		
+	</fixedfields>
+
+	<defaultrecordtype/>
+
+	<recordtypes>
+		<recordtype name="JobActual" id="0" stringid="JE">
+			<schemafields>
+				<schemafield fieldname="posted" fullfieldname="posted" typename="bool1" size="1" elements="1" id="0" columnname="Posted"/>
+				<schemafield fieldname="line_folio" fullfieldname="line_folio" typename="long" size="4" elements="1" id="0" columnname="LineFolio"/>
+				<schemafield fieldname="line_no" fullfieldname="line_no" typename="long" size="4" elements="1" id="0" columnname="LineNUmber"/>
+				<schemafield fieldname="line_o_ref" fullfieldname="line_o_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="LineORef" collation="1"/>
+				<schemafield fieldname="job_code" fullfieldname="job_code" typename="DelphiString" size="11" elements="1" id="0" columnname="JobCode" collation="1"/>
+				<schemafield fieldname="stock_code" fullfieldname="stock_code" typename="DelphiString" size="21" elements="1" id="0" columnname="StockCode" collation="1"/>
+				<schemafield fieldname="j_date" fullfieldname="j_date" typename="DelphiString" size="9" elements="1" id="0" columnname="JDate"/>
+				<schemafield fieldname="qty" fullfieldname="qty" typename="double" size="8" elements="1" id="0" columnname="Qty"/>
+				<schemafield fieldname="cost" fullfieldname="cost" typename="double" size="8" elements="1" id="0" columnname="Cost"/>
+				<schemafield fieldname="charge" fullfieldname="charge" typename="double" size="8" elements="1" id="0" columnname="Charge"/>
+				<schemafield fieldname="invoiced" fullfieldname="invoiced" typename="bool1" size="1" elements="1" id="0" columnname="Invoiced"/>
+				<schemafield fieldname="inv_ref" fullfieldname="inv_ref" typename="DelphiString" size="11" elements="1" id="0" columnname="InvRef" collation="1"/>
+				<schemafield fieldname="empl_code" fullfieldname="empl_code" typename="DelphiString" size="11" elements="1" id="0" columnname="EmplCode" collation="1"/>
+				<schemafield fieldname="ja_type" fullfieldname="ja_type" typename="BYTE" size="1" elements="1" id="0" columnname="JAType"/>
+				<schemafield fieldname="posted_run" fullfieldname="posted_run" typename="long" size="4" elements="1" id="0" columnname="PostedRun"/>
+				<schemafield fieldname="reverse" fullfieldname="reverse" typename="bool1" size="1" elements="1" id="0" columnname="Reverse"/>
+				<schemafield fieldname="recon_ts" fullfieldname="recon_ts" typename="bool1" size="1" elements="1" id="0" columnname="ReconTS"/>
+				<schemafield fieldname="reversed" fullfieldname="reversed" typename="bool1" size="1" elements="1" id="0" columnname="Reversed"/>
+				<schemafield fieldname="jddt" fullfieldname="jddt" typename="byte" size="1" elements="1" id="0" columnname="JDDT"/>
+				<schemafield fieldname="curr_charge" fullfieldname="curr_charge" typename="BYTE" size="1" elements="1" id="0" columnname="CurrCharge"/>
+				<schemafield fieldname="act_c_code" fullfieldname="act_c_code" typename="DelphiString" size="11" elements="1" id="0" columnname="ActCCode" collation="1"/>
+				<schemafield fieldname="hold_flg" fullfieldname="hold_flg" typename="BYTE" size="1" elements="1" id="0" columnname="HoldFlg"/>
+				<schemafield fieldname="post2_stk" fullfieldname="post2_stk" typename="bool1" size="1" elements="1" id="0" columnname="Post2Stk"/>
+				<schemafield fieldname="pc_rates1" fullfieldname="pc_rates1" typename="DelphiReal" size="6" elements="1" id="0" columnname="PCRates1"/>
+				<schemafield fieldname="pc_rates2" fullfieldname="pc_rates2" typename="DelphiReal" size="6" elements="1" id="0" columnname="PCRates2"/>
+				<schemafield fieldname="tagged" fullfieldname="tagged" typename="bool1" size="1" elements="1" id="0" columnname="Tagged"/>
+				<schemafield fieldname="orig_n_code" fullfieldname="orig_n_code" typename="long" size="4" elements="1" id="0" columnname="OrigNCode"/>
+				<schemafield fieldname="j_use_o_rate" fullfieldname="j_use_o_rate" typename="BYTE" size="1" elements="1" id="0" columnname="JUseORate"/>
+				<schemafield fieldname="PC_tri_rates" fullfieldname="PC_tri_rates" typename="double" size="8" elements="1" id="0" columnname="PCTriRates"/>
+				<schemafield fieldname="PC_tri_euro" fullfieldname="PC_tri_euro" typename="BYTE" size="1" elements="1" id="0" columnname="PCTriEuro"/>
+				<schemafield fieldname="PC_tri_invert" fullfieldname="PC_tri_invert" typename="bool1" size="1" elements="1" id="0" columnname="PCTriInvert"/>
+				<schemafield fieldname="PC_tri_float" fullfieldname="PC_tri_float" typename="bool1" size="1" elements="1" id="0" columnname="PCTriFloat"/>
+				<schemafield fieldname="PC_tri_spare" fullfieldname="PC_tri_spare" typename="binary" size="10" elements="1" id="0" columnname="PC_tri_Spare"/>
+				<schemafield fieldname="j_price_mulx" fullfieldname="j_price_mulx" typename="double" size="8" elements="1" id="0" columnname="JPriceMulX"/>
+				<schemafield fieldname="uplift_total" fullfieldname="uplift_total" typename="double" size="8" elements="1" id="0" columnname="UpliftTotal"/>
+				<schemafield fieldname="uplift_gl" fullfieldname="uplift_gl" typename="long" size="4" elements="1" id="0" columnname="UpliftGL"/>
+			</schemafields>
+		</recordtype>
+
+		<recordtype name="JobReten" id="1" stringid="JR">
+			<schemafields>
+				<schemafield fieldname="posted" fullfieldname="posted" typename="bool1" size="1" elements="1" id="0" columnname="Posted"/>
+				<schemafield fieldname="ret_disc" fullfieldname="ret_disc" typename="double" size="8" elements="1" id="0" columnname="RetDisc"/>
+				<schemafield fieldname="ret_curr" fullfieldname="ret_curr" typename="BYTE" size="1" elements="1" id="0" columnname="RetCurr"/>
+				<schemafield fieldname="ret_value" fullfieldname="ret_value" typename="double" size="8" elements="1" id="0" columnname="RetValue"/>
+				<schemafield fieldname="job_code" fullfieldname="job_code" typename="DelphiString" size="11" elements="1" id="0" columnname="JobCode"/>
+				<schemafield fieldname="ret_cr_doc" fullfieldname="ret_cr_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="RetCrDoc" collation="1"/>
+				<schemafield fieldname="ret_date" fullfieldname="ret_date" typename="DelphiString" size="9" elements="1" id="0" columnname="RetDate"/>
+				<schemafield fieldname="ret_doc" fullfieldname="ret_doc" typename="DelphiString" size="11" elements="1" id="0" columnname="RetDoc" collation="1"/>
+				<schemafield fieldname="invoiced" fullfieldname="invoiced" typename="bool1" size="1" elements="1" id="0" columnname="Invoiced"/>
+				<schemafield fieldname="ret_cust_code" fullfieldname="ret_cust_code" typename="DelphiString" size="11" elements="1" id="0" columnname="RetCustCode" collation="1"/>
+				<schemafield fieldname="orig_date" fullfieldname="orig_date" typename="DelphiString" size="9" elements="1" id="0" columnname="OrigDate"/>
+				<schemafield fieldname="ret_cc_dep1" fullfieldname="ret_cc_dep1" typename="DelphiString" size="4" elements="1" id="0" columnname="RetDepartment" collation="1"/>
+				<schemafield fieldname="ret_cc_dep2" fullfieldname="ret_cc_dep2" typename="DelphiString" size="4" elements="1" id="0" columnname="RetCostCentre" collation="1"/>
+				<schemafield fieldname="acc_type" fullfieldname="acc_type" typename="char" size="1" elements="1" id="0" columnname="AccType"/>
+				<schemafield fieldname="def_vat_code" fullfieldname="def_vat_code" typename="char" size="1" elements="1" id="0" columnname="DefVATCode"/>
+
+				<schemafield fieldname="ret_cis_tax" fullfieldname="ret_cis_tax" typename="double" size="8" elements="1" id="0" columnname="RetCISTax"/>
+				<schemafield fieldname="ret_cis_gross" fullfieldname="ret_cis_gross" typename="double" size="8" elements="1" id="0" columnname="RetCISGross"/>
+				<schemafield fieldname="ret_cis_empl" fullfieldname="ret_cis_empl" typename="DelphiString" size="11" elements="1" id="0" columnname="RetCISEmpl"/>
+				<schemafield fieldname="ret_app_mode" fullfieldname="ret_app_mode" typename="BYTE" size="1" elements="1" id="0" columnname="RetAppMode"/>
+
+			</schemafields>
+
+		</recordtype>
+
+		<recordtype name="JobCISV" id="2" stringid="TS">
+			<schemafields>
+				<schemafield fieldname="spare3" fullfieldname="spare3" typename="binary" size="5" elements="1" id="0" columnname="Spare3"/>
+				<schemafield fieldname="cisv_gross_total" fullfieldname="cisv_gross_total" typename="double" size="8" elements="1" id="0" columnname="CISvGrossTotal"/>
+				<schemafield fieldname="cisv_manual_tax" fullfieldname="cisv_manual_tax" typename="bool1" size="1" elements="1" id="0" columnname="CISvManualTax"/>
+				<schemafield fieldname="cisv_auto_total_tax" fullfieldname="cisv_auto_total_tax" typename="double" size="8" elements="1" id="0" columnname="CISvAutoTotalTax"/>
+				<schemafield fieldname="cis_taxable_total" fullfieldname="cis_taxable_total" typename="double" size="8" elements="1" id="0" columnname="CISTaxableTotal"/>
+				<schemafield fieldname="cisc_type" fullfieldname="cisc_type" typename="BYTE" size="1" elements="1" id="0" columnname="CISCType"/>
+				<schemafield fieldname="cis_curr" fullfieldname="cis_curr" typename="BYTE" size="1" elements="1" id="0" columnname="CISCurr"/>
+				<schemafield fieldname="spare1" fullfieldname="spare1" typename="binary" size="2" elements="1" id="0" columnname="Spare1"/>
+				<schemafield fieldname="cisv_nline_count" fullfieldname="cisv_nline_count" typename="long" size="4" elements="1" id="0" columnname="CISvNlineCount"/>
+				<schemafield fieldname="cis_addr1" fullfieldname="cis_addr1" typename="DelphiString" size="31" elements="1" id="0" columnname="CISAddr1"/>
+				<schemafield fieldname="cis_addr2" fullfieldname="cis_addr2" typename="DelphiString" size="31" elements="1" id="0" columnname="CISAddr2"/>
+				<schemafield fieldname="cis_addr3" fullfieldname="cis_addr3" typename="DelphiString" size="31" elements="1" id="0" columnname="CISAddr3"/>
+				<schemafield fieldname="cis_addr4" fullfieldname="cis_addr4" typename="DelphiString" size="31" elements="1" id="0" columnname="CISAddr4"/>
+				<schemafield fieldname="cis_addr5" fullfieldname="cis_addr5" typename="DelphiString" size="31" elements="1" id="0" columnname="CISAddr5"/>
+				<schemafield fieldname="cis_behalf" fullfieldname="cis_behalf" typename="DelphiString" size="81" elements="1" id="0" columnname="CISBehalf"/>
+				<schemafield fieldname="cis_correct" fullfieldname="cis_correct" typename="bool1" size="1" elements="1" id="0" columnname="CISCorrect"/>
+				<schemafield fieldname="cisv_tax_due" fullfieldname="cisv_tax_due" typename="double" size="8" elements="1" id="0" columnname="CISvTaxDue"/>
+				<schemafield fieldname="cis_verno" fullfieldname="cis_verno" typename="DelphiString" size="14" elements="1" id="0" columnname="CISVerNo"/>
+				<schemafield fieldname="cis_htax" fullfieldname="cis_htax" typename="BYTE" size="1" elements="1" id="0" columnname="CISHTax"/>
+			</schemafields>
+		</recordtype>
+	</recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0" >
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode1Computed">var_code1</item>
+			</indexfields>
+		</schemaindexes>
+		
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode3Computed">var_code3</item>
+				<item computedcolumnname="VarCode10Computed">var_code10</item>
+			</indexfields>
+		</schemaindexes>
+
+		<schemaindexes indexnumber="2" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item>var_code4</item>
+				<item computedcolumnname="VarCode10Computed">var_code10</item>
+			</indexfields>
+		</schemaindexes>
+
+
+		<schemaindexes indexnumber="3" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode6Computed">var_code6</item>
+			</indexfields>
+		</schemaindexes>
+
+		<schemaindexes indexnumber="4" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode7Computed">var_code7</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="5" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode8Computed">var_code8</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="6" isclustered="0" isunique="0" nullablecharacter="00">
+			<indexfields>
+				<item>rec_pfix</item>
+				<item>sub_type</item>
+				<item computedcolumnname="VarCode9Computed">var_code9</item>
+				<item>var_code10</item>
+			</indexfields>
+		</schemaindexes>		
+	</indexes>
+</schemarecord>

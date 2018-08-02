@@ -1,0 +1,143 @@
+object frmList: TfrmList
+  Left = 192
+  Top = 133
+  HorzScrollBar.Visible = False
+  BorderStyle = bsNone
+  Caption = 'frmList'
+  ClientHeight = 142
+  ClientWidth = 169
+  Color = clWindow
+  Ctl3D = False
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnDeactivate = FormDeactivate
+  OnResize = FormResize
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 149
+    Height = 142
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 1
+    Caption = 'Panel1'
+    TabOrder = 0
+    object Grid: TStringGrid
+      Left = 1
+      Top = 1
+      Width = 147
+      Height = 140
+      Align = alClient
+      ColCount = 1
+      DefaultColWidth = 100
+      DefaultRowHeight = 18
+      FixedCols = 0
+      RowCount = 8
+      FixedRows = 0
+      Options = [goRowSelect]
+      ScrollBars = ssNone
+      TabOrder = 0
+      OnClick = GridClick
+      OnKeyDown = GridKeyDown
+      OnKeyUp = GridKeyUp
+      OnMouseDown = GridMouseDown
+    end
+  end
+  object pnlScroll: TPanel
+    Left = 149
+    Top = 0
+    Width = 20
+    Height = 142
+    Align = alRight
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    TabOrder = 1
+    OnMouseDown = pnlScrollMouseDown
+    OnMouseUp = pnlScrollMouseUp
+    DesignSize = (
+      18
+      140)
+    object btnFirst: TSpeedButton
+      Left = 0
+      Top = 0
+      Width = 18
+      Height = 19
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        04000000000078000000C40E0000C40E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FF000000000FFFF0FFF0000000FFFFF0FFFF00000FFF
+        FFF0FFFFF000FFFFFFF0FFFFFF0FFFFFFFF0FF000000000FFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0}
+      OnClick = btnFirstClick
+    end
+    object btnPrev: TSpeedButton
+      Left = 0
+      Top = 19
+      Width = 18
+      Height = 19
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        04000000000078000000C40E0000C40E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FF000000000FFFF0FFF0000000FFFFF0FFFF00000FFF
+        FFF0FFFFF000FFFFFFF0FFFFFF0FFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0}
+      OnClick = btnPrevClick
+    end
+    object btnLast: TSpeedButton
+      Left = 0
+      Top = 121
+      Width = 18
+      Height = 19
+      Anchors = [akLeft, akBottom]
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        0400000000007800000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FF000000000FFFF0FFFFFF0FFFFF
+        FFF0FFFFF000FFFFFFF0FFFF00000FFFFFF0FFF0000000FFFFF0FF000000000F
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0}
+      OnClick = btnLastClick
+    end
+    object btnNext: TSpeedButton
+      Left = 0
+      Top = 103
+      Width = 18
+      Height = 19
+      Anchors = [akLeft, akBottom]
+      Glyph.Data = {
+        EE000000424DEE0000000000000076000000280000000F0000000F0000000100
+        0400000000007800000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFF0FFFFF
+        FFF0FFFFF000FFFFFFF0FFFF00000FFFFFF0FFF0000000FFFFF0FF000000000F
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFF
+        FFF0FFFFFFFFFFFFFFF0FFFFFFFFFFFFFFF0}
+      OnClick = btnNextClick
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 250
+    OnTimer = Timer1Timer
+    Left = 112
+    Top = 8
+  end
+end

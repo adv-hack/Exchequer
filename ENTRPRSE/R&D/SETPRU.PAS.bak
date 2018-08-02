@@ -1,0 +1,480 @@
+unit SetPru;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Mask, TEditVal, BorBtns, ExtCtrls,
+  GlobVar,VarConst, bkgroup;
+
+type
+  TSetPerRec = class(TForm)
+    EqF: Text8Pt;
+    OkCP1Btn: TButton;
+    CanCP1Btn: TButton;
+    SPrmF: TBorCheck;
+    CPrF: TSBSComboBox;
+    CYrF: TSBSComboBox;
+    Panel1: TSBSBackGroup;
+    Label82: Label8;
+    Label83: Label8;
+    Label81: Label8;
+    Label84: Label8;
+    BRGlobal: TBorRadio;
+    BRLocal: TBorRadio;
+    procedure FormCreate(Sender: TObject);
+    procedure OkCP1BtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CPrFExit(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure BRGlobalClick(Sender: TObject);
+    procedure CanCP1BtnClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+    InCreate  :  Boolean;
+    SysLocked : Boolean;
+
+    FOldSysPeriod : Integer;
+    FLastFiscalStartDate : LongDate;    // SSK 15/03/2017 2017-R1 ABSEXCH-15290: FLastFiscalStartDate variable added
+
+    procedure InitPrYr(FYr,FPr  :  Byte;
+                       DaM      :  Boolean);
+
+    procedure OutEq;
+
+    Procedure Send_UpdateList(Mode   :  Integer);
+
+    procedure SetSyssStore(EnabFlag,
+                           VOMode  :  Boolean);
+
+    
+    procedure StoreSyss;
+
+  public
+    { Public declarations }
+    procedure ProcessSyss;
+
+  end;
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+{$I DEFOVR.Inc}
+
+Uses
+  ETDateU,
+  EtStrU,
+  ETMiscU,
+  ComnUnit,
+  ComnU2,
+  BtrvU2,
+  BTSupU1,
+  BTSupU2,
+  SysU1,
+  PWarnU,
+
+  {$IFDEF PERIODDEBUG}
+    EParentU,
+  {$ENDIF}
+
+  Event1U;
+
+
+{$R *.DFM}
+
+
+const
+  cDefaultHeight = 233;
+
+procedure TSetPerRec.OutEq;
+
+Var
+  EqDate  :  LongDate;
+  EqPr    :  ShortInt;
+begin
+
+  EqDate:=Pr2Date(Succ(CPrF.ItemIndex),TxLateYrVal(IntStr(CYrF.Items[CYrF.ItemIndex]),BOn),nil);
+
+  EqPr := Part_Date('M',EqDate);
+  EqF.Text := '';               // SSK 16/03/2017 2017-R1 ABSEXCH-15290: this will remove the confused date like '01/2017/2018'
+
+  If (EQPr In [1..12]) then     // SSK 16/03/2017 2017-R1 ABSEXCH-15290: this is appended to make equivalent date blank, if the last saved month is not available in the list
+  begin
+    EqF.Text := Copy(MonthAry[EqPr],1,3);
+    EqF.Text := EqF.Text + '/' + Form_Int(Part_Date('Y',EqDate),4);
+  end;
+
+end;
+
+
+procedure TSetPerRec.InitPrYr(FYr,FPr  :  Byte;
+                              DaM      :  Boolean);
+
+Begin
+  Begin
+    CPrF.Items.Clear;
+
+    Set_DefaultPr(CPrF.Items);
+
+    CPrF.ItemIndex:=Pred(FPr);
+
+    CYrF.Items.Clear;
+
+    Set_DefaultYr(CYrF.Items,FYr);
+
+    CYrF.ItemIndex:=10;
+
+    OutEq;
+
+    SPrMF.Checked:=DaM;
+
+    Caption:='Set Current Financial Period ('+PPr_OutPr(FPr,FYr)+').';
+  end; {With..}
+
+
+end;
+
+procedure TSetPerRec.FormCreate(Sender: TObject);
+
+Var
+  Locked  : Boolean;
+
+Begin
+  InChangePr:=BOn;
+  InCreate:=BOn;
+  SysLocked := False;
+
+  Height:=cDefaultHeight;
+  Width:=284;
+
+  MDI_SetFormCoord(TForm(Self));
+
+  Locked:=BOff;
+
+  GetMultiSys(BOff,Locked,SysR);
+
+  If (Not ChkAllowed_In(352)) then
+  Begin
+    BRLocal.Checked:=BOn;
+    BRGlobal.Visible:=BOff;
+    BRLocal.Visible:=BOff;
+  end;
+
+  {$IFDEF LTE}
+    BRLocal.Visible:=BOff;
+    BRGlobal.Visible:=BOff;
+    BRLocal.Checked:=BOff;
+    BRGlobal.Checked:=BOn;
+  {$ENDIF}
+
+  InitPrYr(GetLocalPr(0).CYr,GetLocalPr(0).CPr,GetLocalPr(0).DispPrAsMonths);
+
+  InCreate:=BOff;
+end;
+
+
+{ == Procedure to Send Message to Get Record == }
+
+Procedure TSetPerRec.Send_UpdateList(Mode   :  Integer);
+
+Var
+  Message1 :  TMessage;
+  MessResult
+           :  LongInt;
+
+Begin
+  FillChar(Message1,Sizeof(Message1),0);
+
+  With Message1 do
+  Begin
+    MSg:=WM_FormCloseMsg;
+    WParam:=Mode;
+    LParam:=0;
+  end;
+
+  With Message1 do
+    MessResult:=SendMessage((Owner as TForm).Handle,Msg,WParam,LParam);
+
+end; {Proc..}
+
+
+procedure TSetPerRec.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  Send_UpdateList(50);
+end;
+
+procedure TSetPerRec.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  // MH 05/04/2011 v6.7 ABSEXCH-10678: Rewrote locking control as lock wasn't freed if window closed using X in caption bar
+  If SysLocked Then
+  Begin
+    // Unlock System Setup record
+    UnlockMultiSing(F[SysF], SysF, SysAddr[SysR]);
+  End; // If SysLocked
+
+  Action:=caFree;
+  InChangePr:=BOff;
+end;
+
+procedure TSetPerRec.SetSyssStore(EnabFlag,
+                                  VOMode  :  Boolean);
+
+Var
+  Loop  :  Integer;
+
+Begin
+
+  OkCP1Btn.Enabled:=Not VOMode;
+
+  For Loop:=0 to ComponentCount-1 do
+  Begin
+    If (Components[Loop] is Text8Pt) then
+    Begin
+      If (Text8Pt(Components[Loop]).Tag=1) then
+        Text8Pt(Components[Loop]).ReadOnly:= VOMode;
+    end
+      else
+        If (Components[Loop] is TEditDate) then
+        Begin
+          If (TEditDate(Components[Loop]).Tag=1) then
+            TEditDate(Components[Loop]).ReadOnly:= VOMode;
+        end
+        else
+          If (Components[Loop] is TEditPeriod) then
+          Begin
+            If (TEditPeriod(Components[Loop]).Tag=1) then
+              TEditPeriod(Components[Loop]).ReadOnly:= VOMode;
+          end
+          else
+            If (Components[Loop] is TCurrencyEdit) then
+            Begin
+              If (TCurrencyEdit(Components[Loop]).Tag=1) then
+                TCurrencyEdit(Components[Loop]).ReadOnly:= VOMode;
+            end
+            else
+              If (Components[Loop] is TBorCheck) then
+              Begin
+                If (TBorCheck(Components[Loop]).Tag=1) then
+                  TBorCheck(Components[Loop]).Enabled:= Not VOMode;
+              end
+              else
+                If (Components[Loop] is TSBSComboBox) then
+                Begin
+                  If (TSBSComboBox(Components[Loop]).Tag=1) then
+                    TSBSComboBox(Components[Loop]).ReadOnly:= VOMode;
+              end;
+  end; {Loop..}
+
+end;
+
+
+
+procedure TSetPerRec.ProcessSyss;
+
+
+Var
+  Locked  :  Boolean;
+Begin
+  Locked:=BOn;
+
+  // MH 05/04/2011 v6.7 ABSEXCH-10678: Rewrote locking control as lock wasn't freed if window closed using X in caption bar
+  If (GetMultiSys(BOff,Locked,SysR)) and (Locked) Then
+  Begin
+    SetSyssStore(BOn,BOff);
+    SysLocked := True;
+  End; // If (GetMultiSys(BOff,Locked,SysR)) and (Locked)
+end;
+
+procedure TSetPerRec.StoreSyss;
+
+Var
+  EqPr  :  LongInt;
+
+Begin
+  If (BRGlobal.Checked) then
+  With Syss do
+  Begin
+    EqPr:=Succ(CPrF.ItemIndex);
+
+    If (EqPr>0) then
+      CPr:=EqPr;
+
+    EQpr:=TxlatePYr(IntStr(Copy(CYrF.Items[CYrF.ItemIndex],3,2)),BOff);
+
+    If (EqPr>0) then
+      CYr:=EqPr;
+
+    DispPrAsMonths := (SPrMF.Visible and SPrMF.Checked);                   // SSK 17/03/2017 2017-R1 ABSEXCH-15290: this is needed to fulfil the condition mentioned in line no. 434
+
+    GetLocalPr(1); {Synchronise local with global}
+
+
+  end
+  else
+  With UserProfile^ do
+  Begin
+    EqPr:=Succ(CPrF.ItemIndex);
+
+    If (EqPr>0) then
+      {$IFDEF PERIODFIX}
+        oUserPeriod.Period:=EqPr;
+      {$ELSE}
+        UCPr:=EqPr;
+      {$ENDIF}
+
+    EQpr:=TxlatePYr(IntStr(Copy(CYrF.Items[CYrF.ItemIndex],3,2)),BOff);
+
+    If (EqPr>0) then
+      {$IFDEF PERIODFIX}
+        oUserPeriod.Year:=EqPr;
+      {$ELSE}
+        UCYr:=EqPr;
+      {$ENDIF}
+
+    {$IFDEF PERIODFIX}
+      oUserPeriod.DisplayAsMonths := (SPrMF.Visible and SPrMF.Checked);     // SSK 17/03/2017 2017-R1 ABSEXCH-15290: this is needed to fulfil the condition mentioned in line no. 434
+    {$ELSE}
+      UDispPrMnth := (SPrMF.Visible and SPrMF.Checked);
+    {$ENDIF}
+
+
+  end;
+end;
+
+//-------------------------------------------------------------------------
+
+procedure TSetPerRec.OkCP1BtnClick(Sender: TObject);
+begin
+  // MH 05/04/2011 v6.7 ABSEXCH-10678: Rewrote locking control as lock wasn't freed if window closed using X in caption bar
+  StoreSyss;
+  PutMultiSys(SysR,BOn);
+  SysLocked := False;
+  Close;
+end;
+
+//------------------------------
+
+procedure TSetPerRec.CanCP1BtnClick(Sender: TObject);
+begin
+  // MH 05/04/2011 v6.7 ABSEXCH-10678: Rewrote locking control as lock wasn't freed if window closed using X in caption bar
+  Close;
+end;
+
+//-------------------------------------------------------------------------
+
+procedure TSetPerRec.CPrFExit(Sender: TObject);
+
+Var
+  WasBlank  :  Boolean;
+
+begin
+  If (Sender is TSBSComboBox) then
+    With TSBSComboBox(Sender) do
+    Begin
+      WasBlank:=(Text='');
+
+      If (Sender=CPrF) then
+        Text:=SetPadNo(Text,2);
+
+      ItemIndex:=Set_TSIndex(Items,ItemIndex,Text);
+
+      OutEq;
+    end;
+end;
+
+procedure TSetPerRec.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  GlobFormKeyDown(Sender,Key,Shift,ActiveControl,Handle);
+end;
+
+procedure TSetPerRec.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  GlobFormKeyPress(Sender,Key,ActiveControl,Handle);
+end;
+
+
+procedure TSetPerRec.BRGlobalClick(Sender: TObject);
+begin
+
+  With Syss do
+    If (Not InCreate) then
+      InitPrYr(CYr,CPr,DispPrAsMonths);
+
+end;
+
+{SSK 15/03/2017 2017-R1 ABSEXCH-15290:
+   ABSEXCH-15290:F6 Equivalent Date appears confused when number of financial periods are greater than 12.
+   - Hide/Show Controls and reset its position based on the system period in FormActivate event.}
+
+procedure TSetPerRec.FormActivate(Sender: TObject);
+var
+  lVisible : Boolean;
+  lDay    :  ShortInt;
+begin
+  if (FOldSysPeriod = Syss.PrInYr) and (FLastFiscalStartDate = Syss.MonWk1) then Exit;    // SSK 15/03/2017 2017-R1 ABSEXCH-15290: checked both Period and startdate
+
+  // SSK 15/03/2017 2017-R1 ABSEXCH-15290: assign the changed value to unit level variables
+  FOldSysPeriod := Syss.PrInYr;
+  FLastFiscalStartDate := Syss.MonWk1;
+  lVisible := true;
+
+  lDay := Part_Date('D',Syss.MonWk1);
+
+  {next section of code is added to take care of following conditions:
+    1) Period = 12, startdate <>1st of Month (example : 04/04/2016 - 4th Arpil 2016)
+    2) Period < 12
+    3) Period > 12}
+
+  if (Syss.PrInYr=12) then
+  begin
+    if (lDay > 1) then
+      lVisible := false;
+  end
+  else
+    lVisible := false;
+
+
+  Label81.Visible := lVisible;
+  EqF.Visible     := lVisible;
+  SPrmF.Visible   := lVisible;
+  Label84.Visible := lVisible;
+
+
+  if lVisible then
+  begin
+    Self.Height   := cDefaultHeight;
+    OkCP1Btn.Top  := Self.ClientHeight - OkCP1Btn.Height - 5;
+    CanCP1Btn.Top := OkCP1Btn.Top;
+    Panel1.Height := OkCP1Btn.Top - 10;
+  end
+  else
+  begin
+    Panel1.Height := EqF.Top;
+    OkCP1Btn.Top  := Panel1.Height + 10;
+    CanCP1Btn.Top := OkCP1Btn.Top;
+    Self.ClientHeight :=  OkCP1Btn.Top + OkCP1Btn.Height + 5;
+    SPrmF.Checked := false;
+    Syss.DispPrAsMonths := SPrmF.Checked;
+    // SSK 17/03/2017 2017-R1 ABSEXCH-15290: both global and local setting the period should be shown in numbers in this case
+    {$IFDEF PERIODFIX}
+      oUserPeriod.DisplayAsMonths := SPrMF.Checked;
+    {$ELSE}
+      UserProfile^.UDispPrMnth := SPrMF.Checked;
+    {$ENDIF}
+  end ;
+
+  InitPrYr(GetLocalPr(0).CYr,GetLocalPr(0).CPr,GetLocalPr(0).DispPrAsMonths);
+end;
+
+
+end.

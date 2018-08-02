@@ -1,0 +1,41 @@
+License Agreement and Disclaimer
+
+Users of the Internet Mail Suite must accept this disclaimer of
+warranty: the Internet Mail Suite is supplied as is.  The author
+disclaims all warranties, expressed or implied, including, without
+limitation, the warranties of merchantability and of fitness for
+any purpose. The author assumes no liability for damages, direct
+or consequential, which may result from the use of the Internet
+Mail Suite.
+
+The Internet Mail Suite is a "shareware program" and is provided at
+no charge to the user for evaluation.  Feel free to share it with
+your collegues, but please do not give it away altered or as part of
+another system.  The essence of "user-supported" software is to
+provide personal computer users with quality software without
+high prices, and yet to provide incentive for programmers to
+continue to develop new products.  If you find this program
+useful and find that you are using the Intenret Mail Suite, and
+continue to use it after a reasonable trial period, you must make
+a registration payment of $129.00 to ArGo Software Design.
+The $129.00 registration fee will license one copy for use on any one
+computer at any one time.  You can create any number of applications,
+using the Internet Mail Suite, and redistribute them at your
+discretion, provided that you will not include the source code from
+the Internet Mail Suite.
+
+Commercial users of the Internet Mail Suite must register and pay
+for their copies of the Internet Mail Suite within 30 days of first
+use or their license is withdrawn.  Site-License arrangements may be
+made by contacting ArGo Software Design.
+
+Anyone distributing the Internet Mail Suite for any kind of
+remuneration must first contact ArGo Software Design at
+via Internet mail, at support@argosoft.com, or by the address below
+for authorization.
+
+ArGo Software Design
+211-4325 Steeles Ave West
+North York, Ontario M3N 1V7
+Canada
+

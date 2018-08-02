@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <MainUnit Value="0"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="2">
+      <Item1>
+        <PackageName Value="zexmlsslib"/>
+        <MinVersion Release="2" Valid="True"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+    </RequiredPackages>
+    <Units Count="6">
+      <Unit0>
+        <Filename Value="createexml.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="21" Y="15"/>
+        <UsageCount Value="22"/>
+        <LoadedDesigner Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unit_main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unit_main"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="77"/>
+        <CursorPos X="53" Y="96"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\..\..\..\..\lazarus\tst1\unit1.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <UnitName Value="zeodfs"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2717"/>
+        <CursorPos X="39" Y="2732"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\..\..\src\zexmlss.pas"/>
+        <UnitName Value="zexmlss"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2612"/>
+        <CursorPos X="1" Y="2629"/>
+        <UsageCount Value="11"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\..\..\src\zsspxml.pas"/>
+        <UnitName Value="zsspxml"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="496"/>
+        <CursorPos X="14" Y="512"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2409" Column="1" TopLine="2399"/>
+      </Position1>
+      <Position2>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2410" Column="1" TopLine="2399"/>
+      </Position2>
+      <Position3>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2411" Column="1" TopLine="2399"/>
+      </Position3>
+      <Position4>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2412" Column="1" TopLine="2399"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2413" Column="1" TopLine="2399"/>
+      </Position5>
+      <Position6>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2414" Column="1" TopLine="2399"/>
+      </Position6>
+      <Position7>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2415" Column="1" TopLine="2399"/>
+      </Position7>
+      <Position8>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2416" Column="1" TopLine="2399"/>
+      </Position8>
+      <Position9>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2418" Column="1" TopLine="2399"/>
+      </Position9>
+      <Position10>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2420" Column="1" TopLine="2399"/>
+      </Position10>
+      <Position11>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2421" Column="1" TopLine="2399"/>
+      </Position11>
+      <Position12>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2430" Column="1" TopLine="2415"/>
+      </Position12>
+      <Position13>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2497" Column="1" TopLine="2463"/>
+      </Position13>
+      <Position14>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2498" Column="1" TopLine="2482"/>
+      </Position14>
+      <Position15>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2445" Column="1" TopLine="2429"/>
+      </Position15>
+      <Position16>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2466" Column="1" TopLine="2451"/>
+      </Position16>
+      <Position17>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2445" Column="1" TopLine="2435"/>
+      </Position17>
+      <Position18>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2466" Column="1" TopLine="2441"/>
+      </Position18>
+      <Position19>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2498" Column="22" TopLine="2477"/>
+      </Position19>
+      <Position20>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2501" Column="35" TopLine="2482"/>
+      </Position20>
+      <Position21>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2505" Column="26" TopLine="2482"/>
+      </Position21>
+      <Position22>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2521" Column="32" TopLine="2494"/>
+      </Position22>
+      <Position23>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2728" Column="49" TopLine="2704"/>
+      </Position23>
+      <Position24>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2479" Column="1" TopLine="2463"/>
+      </Position24>
+      <Position25>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2402" Column="1" TopLine="2386"/>
+      </Position25>
+      <Position26>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2445" Column="1" TopLine="2429"/>
+      </Position26>
+      <Position27>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2466" Column="1" TopLine="2451"/>
+      </Position27>
+      <Position28>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2445" Column="1" TopLine="2429"/>
+      </Position28>
+      <Position29>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2466" Column="1" TopLine="2451"/>
+      </Position29>
+      <Position30>
+        <Filename Value="..\..\..\src\zeodfs.pas"/>
+        <Caret Line="2733" Column="21" TopLine="2712"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <UseAnsiStrings Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <StripSymbols Value="True"/>
+        <UseExternalDbgSyms Value="True"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <BreakPoints Count="5">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\src\zeodfs.pas"/>
+        <Line Value="2728"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\src\zeodfs.pas"/>
+        <Line Value="2466"/>
+      </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\src\zeodfs.pas"/>
+        <Line Value="2479"/>
+      </Item3>
+      <Item4>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\src\zeodfs.pas"/>
+        <Line Value="2402"/>
+      </Item4>
+      <Item5>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="..\..\..\src\zeodfs.pas"/>
+        <Line Value="2445"/>
+      </Item5>
+    </BreakPoints>
+    <Watches Count="7">
+      <Item1>
+        <Expression Value="FMasterPagesCount"/>
+      </Item1>
+      <Item2>
+        <Expression Value="FMasterPages"/>
+      </Item2>
+      <Item3>
+        <Expression Value="_a"/>
+      </Item3>
+      <Item4>
+        <Expression Value="FMasterPagesIndexes"/>
+      </Item4>
+      <Item5>
+        <Expression Value="FUniquePageLayouts"/>
+      </Item5>
+      <Item6>
+        <Expression Value="FPageLayoutsIndexes"/>
+      </Item6>
+      <Item7>
+        <Expression Value="FUniquePageLayoutsCount"/>
+      </Item7>
+    </Watches>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+  <EditorMacros Count="0"/>
+</CONFIG>

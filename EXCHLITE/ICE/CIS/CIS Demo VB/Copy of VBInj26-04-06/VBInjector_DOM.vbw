@@ -1,0 +1,11 @@
+CRequest = 28, 132, 738, 529, 
+CBreakpoint = 0, 2, 848, 399, 
+frmInstructions = 68, 100, 652, 541, , 52, 52, 667, 493, C
+frmReceived = 26, 26, 618, 475, , 78, 78, 693, 519, C
+Constants = 28, 28, 643, 469, C
+CGateway = -22, 60, 826, 457, 
+CResponse = -24, 180, 824, 577, 
+Encoder = 52, 52, 644, 501, C
+frmAbout = 78, 78, 670, 527, , 104, 104, 719, 545, C
+CMessage = -20, 106, 828, 503, 
+CSubmissionProcessor = -52, 96, 796, 493, 

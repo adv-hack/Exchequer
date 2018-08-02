@@ -1,0 +1,6 @@
+[Version]
+Version=6.01.000.080
+
+[Trans Line]
+F021=TL.DiscountChr               0115    C 0001 O   Discount Flag                                      default=                                                                                                     comment=Set to % for percentage discount otherwise leave blank
+

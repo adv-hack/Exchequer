@@ -1,0 +1,5 @@
+"Invalid Note line number",C:\ComTKExes\NoteTest.exe,Y,Y,30004,N,"10,30004,0"
+"Invalid Note Date",C:\ComTKExes\NoteTest.exe,Y,Y,30005,N,"9,30005,0"
+"Invalid Alarm Date",C:\ComTKExes\NoteTest.exe,Y,Y,30006,N,"10,30006,0"
+"Invalid user name in ""NoteFor"" field",C:\ComTKExes\NoteTest.exe,Y,Y,30007,N,"9,30007,0"
+"Successful Add",C:\ComTKExes\NoteTest.exe,Y,Y,0,N,"0,0,0"

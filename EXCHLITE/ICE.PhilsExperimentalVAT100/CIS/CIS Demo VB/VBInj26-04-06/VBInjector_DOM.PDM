@@ -1,0 +1,251 @@
+[Root]
+Most Recent Package=VB Injector Sample Client
+
+
+[Package|WP247 Sample Client|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Setup
+
+[Package|WP247 Sample Client|Configure DAO ISAMs]
+Applicable=No
+
+[Package|WP247 Sample Client|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|WP247 Sample Client|Files Found]
+
+[Package|WP247 Sample Client|Files Released]
+
+[Package|WP247 Sample Client|Missing Dependency Information]
+C:\WINNT\system32\msxml3.dll=
+
+[Package|WP247 Sample Client|Out-of-Date Dependency Information]
+C:\WINNT\system32\MSCOMCTL.OCX=
+C:\WINNT\system32\msflxgrd.ocx=
+C:\WINNT\system32\TABCTL32.OCX=
+C:\WINNT\system32\comdlg32.ocx=
+
+[Package|WP247 Sample Client|Files Added]
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=
+
+[Package|WP247 Sample Client|Files Removed]
+
+[Package|WP247 Sample Client|Files In Project]
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\VBInjector_DOM.exe=Yes
+C:\WINNT\system32\msvbvm60.dll=Yes
+C:\WINNT\system32\OLEAUT32.DLL=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\ASYCFILT.DLL=Yes
+C:\WINNT\system32\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\msxml3.dll=Yes
+C:\WINNT\system32\comdlg32.ocx=Yes
+C:\WINNT\system32\TABCTL32.OCX=Yes
+C:\WINNT\system32\msflxgrd.ocx=Yes
+C:\WINNT\system32\MSCOMCTL.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=Yes
+
+[Package|WP247 Sample Client|Configure Registry Files]
+Applicable=No
+
+[Package|WP247 Sample Client|Configure Remote Servers]
+Applicable=No
+
+[Package|WP247 Sample Client|Install Locations]
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\VBInjector_DOM.exe=$(AppPath)
+C:\WINNT\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\msxml3.dll=$(WinSysPath)
+C:\WINNT\system32\comdlg32.ocx=$(WinSysPath)
+C:\WINNT\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\msflxgrd.ocx=$(WinSysPath)
+C:\WINNT\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=$(AppPath)
+
+[Package|WP247 Sample Client|Configure Shared Files]
+Applicable=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\VBInjector_DOM.exe=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=No
+
+[Package|WP247 Sample Client|Distribution]
+Type=single
+Size=
+Title=Government Gateway Sample Client
+
+[Package|WP247 Sample Client|IconGroups]
+Group0=Government Gateway Sample Client
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|WP247 Sample Client|Government Gateway Sample Client]
+Icon1=VBInjector_DOM.exe
+Title1=Government Gateway Sample Client
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|WP247 Sample Client|Package]
+PackageFolder=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Setup
+ProjectFolder=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools
+ServerSideCab=
+File1=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Setup\setup.exe
+File2=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Setup\Setup.Lst
+File3=D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Setup\VBInjector_DOM.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|VB Injector Sample Client|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\brad\vbapp
+
+[Package|VB Injector Sample Client|Configure DAO ISAMs]
+Applicable=No
+
+[Package|VB Injector Sample Client|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|VB Injector Sample Client|Files Found]
+ReadMe.txt=D:\Brad\vbclientgatewaysource\ReadMe.txt
+
+[Package|VB Injector Sample Client|Files Released]
+
+[Package|VB Injector Sample Client|Missing Dependency Information]
+C:\WINNT\system32\msxml3.dll=
+
+[Package|VB Injector Sample Client|Out-of-Date Dependency Information]
+C:\WINNT\system32\MSCOMCTL.OCX=
+C:\WINNT\system32\msflxgrd.ocx=
+C:\WINNT\system32\TABCTL32.OCX=
+C:\WINNT\system32\comdlg32.ocx=
+
+[Package|VB Injector Sample Client|Files Added]
+submission.xml=
+workingdeleterequest.xml=
+workingsubmissionpoll.xml=
+readme.txt=
+
+[Package|VB Injector Sample Client|Files Removed]
+
+[Package|VB Injector Sample Client|Files In Project]
+C:\WINNT\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\msxml3.dll=Yes
+C:\WINNT\system32\comdlg32.ocx=Yes
+C:\WINNT\system32\TABCTL32.OCX=Yes
+C:\WINNT\system32\msflxgrd.ocx=Yes
+C:\WINNT\system32\MSCOMCTL.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\Brad\vbclientgatewaysource\VBInjector_DOM.exe=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+D:\Brad\vbclientgatewaysource\Submission.xml=Yes
+D:\Brad\vbclientgatewaysource\WorkingDeleteRequest.xml=Yes
+D:\Brad\vbclientgatewaysource\WorkingSubmissionPoll.xml=Yes
+D:\Brad\vbclientgatewaysource\ReadMe.txt=Yes
+
+[Package|VB Injector Sample Client|Configure Registry Files]
+Applicable=No
+
+[Package|VB Injector Sample Client|Configure Remote Servers]
+Applicable=No
+
+[Package|VB Injector Sample Client|Install Locations]
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\VBInjector_DOM.exe=$(AppPath)
+C:\WINNT\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\msxml3.dll=$(WinSysPath)
+C:\WINNT\system32\comdlg32.ocx=$(WinSysPath)
+C:\WINNT\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\msflxgrd.ocx=$(WinSysPath)
+C:\WINNT\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=$(AppPath)
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=$(AppPath)
+D:\Brad\vbclientgatewaysource\VBInjector_DOM.exe=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Brad\vbclientgatewaysource\Submission.xml=$(AppPath)
+D:\Brad\vbclientgatewaysource\WorkingDeleteRequest.xml=$(AppPath)
+D:\Brad\vbclientgatewaysource\WorkingSubmissionPoll.xml=$(AppPath)
+D:\Brad\vbclientgatewaysource\ReadMe.txt=$(AppPath)
+
+[Package|VB Injector Sample Client|Configure Shared Files]
+Applicable=Yes
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\VBInjector_DOM.exe=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\Submission.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingDeleteRequest.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\WorkingSubmissionPoll.xml=No
+D:\Government Gateway Project\Phase 2\Work Packages\WP247\Source Code\Tools\ReadMe.txt=No
+D:\Brad\vbclientgatewaysource\VBInjector_DOM.exe=No
+D:\Brad\vbclientgatewaysource\Submission.xml=No
+D:\Brad\vbclientgatewaysource\WorkingDeleteRequest.xml=No
+D:\Brad\vbclientgatewaysource\WorkingSubmissionPoll.xml=No
+D:\Brad\vbclientgatewaysource\ReadMe.txt=No
+
+[Package|VB Injector Sample Client|Distribution]
+Type=single
+Size=
+Title=Government Gateway Sample Client
+
+[Package|VB Injector Sample Client|IconGroups]
+Group0=Government Gateway Sample Client
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|VB Injector Sample Client|Government Gateway Sample Client]
+Icon1=VBInjector_DOM.exe
+Title1=Government Gateway Sample Client
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|VB Injector Sample Client|Package]
+PackageFolder=D:\brad\vbapp
+ProjectFolder=D:\Brad\vbclientgatewaysource
+ServerSideCab=
+File1=D:\brad\vbapp\setup.exe
+File2=D:\brad\vbapp\Setup.Lst
+File3=D:\brad\vbapp\VBInjector_DOM.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

@@ -1,0 +1,4068 @@
+
+unit UnPostU;
+
+{$I DEFOVR.Inc}
+
+interface
+
+uses
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Graphics, Controls,
+  StdCtrls,ExtCtrls,Forms,Grids,GlobVar,VarConst,VarRec2U,BtrvU2,
+  PostingU,BTSupU3;
+
+
+type
+  Purge_OrdType  = Record
+                     PurgePR,
+                     PurgeYr  :  Byte;
+
+                     IncCust,
+                     ExcCust,
+                     IncType,
+                     ExcType   :  Str10;
+
+                     PurgeHFName
+                               :  Str80;
+
+                     RunRBuild,
+                     DelCust,
+                     DelSupp,
+                     DelStk,
+                     DelML,
+                     DelSN,
+                     OrderMode  :  Boolean;
+
+                     PuSw,
+                     PrSw,
+                     AISw,
+                     AESw,
+                     TISw,
+                     TESw,
+                     RBSw,
+                     POSw,
+                     DCSw,
+                     DSSw,
+                     DKSw,
+                     DMSw,
+                     DNSw     :  Str5;
+
+                   end;
+
+
+
+  PALBType  =  Record
+
+                 PALPurch,
+                 PALSales,
+                 PALBudget,
+                 PALCleared  :  Real;
+
+              end;
+
+  PALBFType =  Array[0..CurrencyType] of PALBType;
+
+
+
+  TTotalUnpost  =  Object(TEntPost)
+
+                     private
+                       ResetVAT   :  Boolean;
+                       ItemTotal,
+                       ItemCount  :  LongInt;
+
+
+                       Procedure UnPost_PayInDetails;
+
+                       Procedure UnPost_Details;
+
+                       Procedure  Un_PostItBatch(DayBkRunNo  :  Longint);
+
+                       Procedure LChangeLinks(OCode,NCode  :  AnyStr;
+                                                     Fnum  :  Integer;
+                                                     KLen  :  Integer;
+                                                     KeyPth:  Integer);
+
+                       Procedure  Un_PostIt;
+
+                       Function All_Threads_Idle  :  Boolean;
+
+                       Function Replace_Hist  :  Boolean;
+
+                       { CJS - 2012-07-16: ABSEXCH-12955 - 84.03 }
+                       function SQL_Replace_Hist: Boolean;
+
+                     public
+                       MyOHandle  :  THandle;
+                       fWhoAmI    :  Byte;
+                       JobTitle   :  Str50;
+                       Purge_OrdRec
+                                  :  ^Purge_OrdType;
+
+                       //PR: 24/05/2017 Added indicator for cancelled unpost
+                       // as check for ThreadRec^.Abort in Destroy caused an A/V
+                       IsCancelled : Boolean;
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       Function Start  :  Boolean;
+
+                   end; {Class..}
+
+
+
+TPartialUnpost  =  Object(TTotalUnPost)
+
+                     private
+                       { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+                       fOptimise: Boolean;
+                       CCDeptCache: array[False..True] of TStringList;
+
+                       CRepParam  :    PUnPostPtr;
+
+                       { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+                       procedure BuildCCDeptCache;
+
+                       Function Get_NomHedType(KeyNom  :  Str255;
+                                           Var YTDRes  :  Byte)  :  Boolean;
+
+                       Function Calc_PropYTD(UpNomKey  :  Str255;
+                                             UpNomCat  :  Char;
+                                             CCode     :  Byte)  :  Byte;
+
+                       Procedure Unpost_Heading(BackPr,
+                                                BackYr      :  Byte;
+                                                Fnum,
+                                                Keypath     :  Integer;
+                                                FolioK      :  LongInt;
+                                                RestVAT,
+                                                RestVPr     :  Boolean);
+
+                       Function PartIDPostKey(Cno          :  Longint;
+                                              PNm,PCr,
+                                              PYr,PPr      :  Byte)  :  Str20;
+
+                       Procedure UnPost_Details(BackPr,BackYr  :  Byte;
+                                                Fnum,Keypath   :  Integer;
+                                                NomKey         :  LongInt;
+                                                RestVAT,
+                                                RestVPr        :  Boolean);
+
+                       Procedure Part_UPHist(BackPr,BackYr  :  Byte;
+                                             Fnum,Keypath   :  Integer;
+                                             UPNomKey,
+                                             BaseNomKey     :  Str255;
+                                             UPNomT         :  Char;
+                                         Var PALBFRec       :  PALBFType);
+
+                       Procedure Update_ProfitBF(BackPr,BackYr  :  Byte;
+                                                 PALBFRec       :  PALBFType);
+
+
+                       {$IFDEF PF_On}  {* For each CC/Dep restore history *}
+
+
+                          Procedure Part_UPCCDpHist(BackPr,BackYr  :  Byte;
+                                                    NomFolio       :  LongInt;
+                                                    NType          :  Char;
+                                                    CCode          :  Str10;
+                                                    PALBFRec       :  PALBFType;
+                                                    StartLoop      :  Boolean;
+                                                    Fnum,Keypath   :  Integer);
+
+
+                         Procedure Part_UPCCHist(BackPr,BackYr  :  Byte;
+                                                 NomFolio       :  LongInt;
+                                                 NType          :  Char);
+
+                         Procedure Purge_PayIn;
+                       {$ENDIF}
+
+                       Procedure Part_UPTree(BackPr,BackYr  :  Byte;
+                                             Fnum,Keypath   :  Integer;
+                                             KeyChk         :  Str255;
+                                             RestVAT,
+                                             RestVPr        :  Boolean;
+                                         Var PALBFRec       :  PALBFType);
+
+                       {$IFDEF STK}
+
+                         {$IFDEF SOP}  {* For each location restore history *}
+                           Procedure Part_UPLocHist(BackPr,BackYr  :  Byte;
+                                                    StkFolio       :  LongInt;
+                                                    SType          :  Char);
+                         {$ENDIF}
+
+                         Procedure Part_UPStkTree(BackPr,BackYr  :  Byte;
+                                                  Fnum,Keypath   :  Integer;
+                                                  KeyChk         :  Str255);
+
+                       {$ENDIF}
+
+                       Procedure Part_UPAccBal(BackPr,BackYr  :  Byte;
+                                               Fnum,Keypath   :  Integer);
+
+                       Procedure  Part_UnPostItBatch(BackPr,BackYr :  Byte;
+                                                     DayBkRunNo    :  Longint;
+                                                     RestVAT       :  Boolean);
+
+                       Procedure Part_UPDocs(BackPr,BackYr  :  Byte;
+                                             Fnum,Keypath   :  Integer;
+                                             RestVAT,
+                                             RestVPr        :  Boolean;
+                                         Var PostSummary    :  PostingSummaryArray);
+
+                       Procedure Control_PartUnpost;
+
+                     public
+
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       Function Start  :  Boolean;
+
+                   end; {Class..}
+
+
+  TRunUnpost  =  Object(TPartialUnPost)
+
+                     private
+                       UPCtrlSet       :  ControlAry;
+
+                       Procedure UnProcess_Payin(CurrKeyPath  :  Integer);
+
+                       Procedure UnPost_DetailsxRun(RunNo  :  LongInt);
+
+                       {$IFDEF STK}
+                         Procedure UnPost_StkLinesxRun(FolioN  :  LongInt);
+                       {$ENDIF}
+
+                       Procedure UPRunDocs(Fnum,Keypath   :  Integer;
+                                           RestVAT,
+                                           RestVPr        :  Boolean;
+                                       Var PostSummary    :  PostingSummaryArray;
+                                           URunNo         :  LongInt);
+
+                       Procedure Control_RunUnpost;
+
+
+                     public
+
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       Function Start  :  Boolean;
+
+                   end; {Class..}
+
+
+
+  Procedure AddRunUnpost2Thread(AOwner   :  TObject;
+                                Options  :  PUnPostParam);
+
+
+
+Procedure AddTUnpost2Thread(AOwner   :  TObject);
+
+Procedure AddPUnpost2Thread(AOwner   :  TObject;
+                            Options  :  PUnPostParam);
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Uses
+  Dialogs,
+  ETDateU,
+  ETStrU,
+  ETMiscU,
+  BTKeys1U,
+  ComnUnit,
+  VarFPosU,
+  ComnU2,
+  SysU1,
+  SysU2,
+  CurrncyU,
+  BTSupU1,
+  ExWrap1U,
+  MiscU,
+  GenWarnU,
+  Excep2U,
+  ExThrd2U,
+  CuStkA4U,
+  {$IFDEF FRM}
+    GlobType,
+    DLLInt,
+  {$ENDIF}
+
+  {$IFDEF EXSQL}
+    SQLUtils,
+    SQLCallerU,
+  {$ENDIF}
+  RevChrgU,
+
+  ExBtTh1U,
+
+  { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+  SQLRep_Config,
+
+  // CJS 2012-03-31 - ABSEXCH-12203 - Check All Accounts, SQL improvements
+  SQL_CheckAllAccounts,
+
+  oProcessLock
+  ;
+
+{ ========== TTotalUnpost methods =========== }
+
+Constructor TTotalUnpost.Create(AOwner  :  TObject);
+
+Begin
+  Inherited Create(AOwner);
+
+  fTQNo:=1;
+  fCanAbort:=BOn;
+
+  fPriority:=tpHigher;
+
+  MTExLocal:=nil;
+
+  fWhoAmI:=0;
+
+  IsParentTo:=BOn;
+
+  ItemCount:=0; ItemTotal:=0;
+
+  JobTitle:='Total Unpost';
+
+  MyOHandle:=0;
+
+  New(Purge_OrdRec);
+
+  FillChar(Purge_OrdRec^,Sizeof(Purge_OrdRec^),0);
+
+  With Purge_OrdRec^ do
+  Begin
+    PUSw:='/PU:';
+    PRSw:='/PPR:';
+    AISw:='/AI:';
+    AESw:='/AE:';
+    TISw:='/TI:';
+    TESw:='/TE:';
+    RBSw:='/RB:';
+    DCSw:='/DC:';
+    DSSw:='/DS:';
+    DKSw:='/DK:';
+    DMSw:='/DM:';
+    DNSw:='/DN:';
+    POSw:='/PO:';
+    PurgeHFName:=Path2+'HISTPRGE.DAT';
+  end;
+
+  IsCancelled := False;
+end;
+
+Destructor TTotalUnpost.Destroy;
+var
+  NeedToPost : Boolean;
+Begin
+  // CJS 2016-05-23 - ABSEXCH-17491 - Check All Accounts fails at end of Total Unpost
+  // Send a message to the main form (EParentU) to run the Check All Accounts
+  // routine.
+
+  //PR: 24/05/2017 Changed to avoid an A/V from referencing ThreadRec^.THAbort as
+  //ThreadRec is sometimes nil.
+
+  NeedToPost := False;
+  if Assigned(ThreadRec) then
+    NeedToPost := not ThreadRec^.THAbort
+  else
+    NeedToPost := not IsCancelled;
+
+
+  If (Not Syss.UpBalOnPost) then
+  begin
+    if NeedToPost then
+      PostMessage(Application.MainForm.Handle, WM_THREADFINISHED, PID_TOTAL_UNPOST_FINISHED, 0);
+  end;
+
+
+  If Assigned(Purge_OrdRec) then
+    Dispose(Purge_OrdRec);
+
+  Inherited Destroy;
+end;
+
+
+Procedure TTotalUnpost.UnPost_PayInDetails;
+
+
+Const
+  Fnum     =  IDetailF;
+  KeyPath  =  IDRunK;
+
+
+
+Var
+  ScanKey,
+  ChkKey  :  Str255;
+
+  B_Func  :  Integer;
+
+
+  UOk,Locked
+          :  Boolean;
+
+Begin
+  ScanKey:=FullRunNoKey(PayInRunNo,0);
+
+  ChkKey:=FullNomKey(PayInRunNo);
+
+  UOk:=BOn; Locked:=BOn;
+
+  ShowStatus(2,'Unpost Bank Pay-In Details');
+
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=LFind_Rec(B_GetLessEq,Fnum,KeyPath,ScanKey);
+
+    While (LStatusOk) and (UOk) and (Locked) and (CheckKey(ChkKey,ScanKey,Length(ChkKey),BOn)) and (Not ThreadRec^.THAbort) do
+    With LId do
+    Begin
+      B_Func:=B_GetPrev;
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      If (AfterPurge(PYr,0)) then
+      Begin
+        UOk:=LGetMultiRec(B_GetDirect,B_MultLock,ScanKey,KeyPAth,Fnum,BOn,Locked);
+
+        If (UOK) and (Locked) then
+        Begin
+
+          LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+
+          B_Func:=B_GetLessEq;
+        end;
+      end;
+
+      If (LStatusOk) then
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,ScanKey);
+    end; {While..}
+  end; {With..}
+end; {Proc..}
+
+
+
+
+{ ============= Procedure to UnPost All Doc Detail Lines ============= }
+
+Procedure TTotalUnpost.UnPost_Details;
+
+
+Const
+  Fnum     =  IDetailF;
+  KeyPath  =  IDRunK;
+
+
+
+Var
+  ScanKey :  Str255;
+
+  UStatus,
+  B_Func  :  Integer;
+
+  UOk,Locked
+          :  Boolean;
+
+Begin
+  ScanKey:=FullRunNoKey(1,StkLineNo);
+
+  UOk:=BOn; Locked:=BOn;
+
+  ShowStatus(2,'Unpost Transaction Lines');
+
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,ScanKey);
+
+    While (LStatusOk) and (UOk) and (Locked) and (Not ThreadRec^.THAbort) do
+    With LId do
+    Begin
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      B_Func:=B_GetNext;
+
+      If (AfterPurge(PYr,0)) then
+      Begin
+        UOk:=LGetMultiRec(B_GetDirect,B_MultLock,ScanKey,KeyPAth,Fnum,BOn,Locked);
+
+        If (UOK) and (Locked) then
+        Begin
+          LGetRecAddr(Fnum);
+
+          If (IdDocHed<>RUN) then
+          Begin
+            PostedRun:=0;
+
+            {If (Currency>1) and (IdDocHed<>NMT) then
+              CXRate[Off]:=0; * Removed because header now not coverted at a strainght rate on revaluation *}
+
+
+            {$IFDEF PF_On}
+
+              If (IS_PayInLine(StockCode)) then  {* Re-set the paying in reference so
+                                                   reposting with reestablish it *}
+
+                StockCode:=Pre_PostPayInKey(PayInCode,Extract_PayRef2(StockCode));
+
+            {$ENDIF}
+
+            If (IdDocHed=ADJ) then
+              B2BLink:=FolioRef  {* This field used to recover from PMP. set it to own ref, so it does not generate a new NOM,
+                                     but still updates posted levels *}
+            else                 {* If sales and set to itself reset a sales hidden line so it will get reposted}
+              If (B2BLink=FolioRef) and (IdDocHed In SalesSplit) and (LineNo=StkLineNo) then
+                B2BLink:=0;
+
+            LStatus:=LPut_Rec(Fnum,Keypath);
+
+
+            UStatus:=LUnLockMLock(Fnum);
+          end
+          else
+            LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+
+          B_Func:=B_GetGEq;
+        end;
+      end;
+
+      If (LStatusOk) then
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,ScanKey);
+    end; {While..}
+  end; {With..}
+end; {Proc..}
+
+
+
+{ =============== Unpost all Posted Batch Header Documents ============== }
+
+Procedure  TTotalUnpost.Un_PostItBatch(DayBkRunNo  :  Longint);
+
+Const
+  Fnum     =  InvF;
+  KeyPath  =  InvRNoK;
+
+Var
+  KeyS      :  Str255;
+
+  B_Func    :  Integer;
+
+  Locked,UOk
+            :  Boolean;
+
+Begin
+  Locked:=BOn;  UOk:=BOn;
+
+  KeyS:=FullDayBkKey(DayBkRunNo,FirstAddrD,'');
+
+  Case DayBkRunNo of
+    StkAdjRunNo     :  ShowStatus(2,'Unpost Stock Adjustment Transactions');
+    TSTPostRunNo    :  ShowStatus(2,'Unpost Timesheet Transactions');
+    else               ShowStatus(2,'Unpost Batch Transactions');
+  end; {Case..}
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (UOk) and (Locked) and (LInv.RunNo=DayBkRunNo) and (Not ThreadRec^.THAbort) do
+    Begin
+     B_Func:=B_GetNext;
+
+     Inc(ItemCount);
+
+     UpdateProgress(ItemCount);
+
+     If (AfterPurge(LInv.ACYr,0)) then
+     Begin
+
+       UOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOn,Locked);
+
+       If (UOk) and (Locked) then
+       With LInv do
+       Begin
+         LGetRecAddr(Fnum);
+
+         RunNo:=0;
+
+         LStatus:=LPut_Rec(Fnum,Keypath);
+
+         LReport_BError(Fnum,LStatus);
+
+         LStatus:=LUnLockMLock(Fnum);
+         B_Func:=B_GetGEq;
+
+       end; {If Locked Ok..}
+
+     end;
+
+     If (LStatusOk) then
+       LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+    end; {While..}
+  end; {With..}
+end; {Proc..}
+
+{ ================== Procedure to Change All Codes Associated with One Link ============= }
+
+Procedure TTotalUnpost.LChangeLinks(OCode,NCode  :  AnyStr;
+                                    Fnum  :  Integer;
+                                    KLen  :  Integer;
+                                    KeyPth:  Integer);
+
+Var
+  KeyS  :  AnyStr;
+  LOK,
+  Locked:  Boolean;
+
+  B_Func,
+  QDC,
+  NDC,
+  VDC   :  Integer;
+
+  LAddr :  LongInt;
+
+
+Begin
+  KeyS:=OCode;
+
+  QDC:=1; NDC:=1; VDC:=1;
+
+  B_Func:=B_GetNext;
+
+  With MTExLocal^ do
+  Begin
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,Keypth,KeyS);
+
+
+
+    While (CheckKey(OCode,KeyS,KLen,BOn)) and (LStatus=0) and (Not ThreadRec^.THAbort) do
+    Begin
+
+      LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPth,Fnum,BOn,Locked);
+
+      Case Fnum of
+
+         IncF    :   Case KeyPth of
+                        IncK:   With LCount do
+                                  LastValue:=0;
+                     end; {Case..}
+      end;
+
+
+      If (LOk) and (Locked) then
+      Begin
+        LGetRecAddr(Fnum);
+
+        LStatus:=LPut_Rec(Fnum,KeyPth);
+        LStatus:=LUnLockMLock(Fnum);
+      end
+      else
+        B_Func:=B_GetNext;
+
+
+      LStatus:=LFind_Rec(B_Func,Fnum,Keypth,KeyS);
+
+
+
+    end;
+  end; {With..}
+end;
+
+
+{ =============== Unpost all Posted Documents ============== }
+
+Procedure  TTotalUnpost.Un_PostIt;
+
+Const
+  Fnum     =  InvF;
+  KeyPath  =  InvRNoK;
+
+Var
+  KeyS      :  Str255;
+
+  B_Func    :  Integer;
+
+  Locked,UOk
+           :  Boolean;
+
+Begin
+  Locked:=BOn;  UOk:=BOn;
+
+  With MTExLocal^ do
+  Begin
+   Begin
+
+     ShowStatus(2,'Remove all previous balance History.');
+
+
+     {ChangeLinks('','',NHistF,0,NHK);  {** Zero History Files **}
+
+     LDeleteAuditHist('',0,Not BeenPurge(0)); {V5, must remove future history on a purged system, or ytd's do not get carried forward}
+
+     {LResetAuditHist ('',0); }
+
+     LChangeLinks('','',IncF,0,IncK);   {** Zero B/F Values    **}
+
+     ShowStatus(2,'Unpost Transaction Headers');
+
+     KeyS:=FullDayBkKey(1,0,'');
+
+     LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+     While (LStatusOk) and (UOk) and (Locked) and (Not ThreadRec^.THAbort) do
+     Begin
+       B_Func:=B_GetNext;
+       Inc(ItemCount);
+
+       UpdateProgress(ItemCount);
+
+       If (AfterPurge(LInv.ACYr,0)) then
+       Begin
+         UOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPAth,Fnum,BOn,Locked);
+
+
+         If (UOk) and (Locked) then
+         With LInv do
+         Begin
+           LGetRecAddr(Fnum);
+
+
+           RunNo:=0;
+
+           If (ResetVAT) then
+           Begin
+             FillChar(VATPostDate,Sizeof(VATPostDate),0);
+             FillChar(PostDate,Sizeof(PostDate),0);
+             FillChar(OldORates,Sizeof(OldORates),0);
+           end;
+
+
+           LStatus:=LPut_Rec(Fnum,Keypath);
+
+           LReport_BError(Fnum,LStatus);
+
+           LStatus:=LUnLockMLock(Fnum);
+
+           B_Func:=B_GetGEq;
+
+         end; {If Locked Ok..}
+       end;
+
+       If (LStatusOk) then
+         LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+     end; {While..}
+
+     If (UOk) and (Locked) and (Not ThreadRec^.THAbort)  then
+     Begin
+
+       Un_PostItBatch(BatchPostRunNo);  {* Unpost all batch headers *}
+
+       If (Not ThreadRec^.THAbort) then
+         Un_PostItBatch(StkAdjRunNo);    {* Unpost all Stk Adjust headers *}
+
+       If (Not ThreadRec^.THAbort) then
+         Un_PostItBatch(TSTPostRunNo);    {* Unpost all Time Sheet headers *}
+
+       If (Not ThreadRec^.THAbort) then
+         UnPost_Details;
+
+       If (Not ThreadRec^.THAbort) then
+         UnPost_PayInDetails;
+
+     end;
+
+     // CJS 2016-05-23 - ABSEXCH-17491 - Check All Accounts fails at end of Total Unpost
+     // Removed existing call to CheckAllAccounts -- see Destroy()
+
+   end; {If hist not replaced..}
+
+  end; {If Unpost..}
+end; {Proc..}
+
+
+
+
+
+Procedure TTotalUnpost.Process;
+
+
+Begin
+  InMainThread:=BOn;
+
+  Inherited Process;
+
+  If (fWhoamI=0) then
+  With MTExLocal^ do
+  Begin
+    ItemTotal:=Used_RecsCId(LocalF^[IdetailF],IdetailF,ExCLientId)+Used_RecsCId(LocalF^[InvF],InvF,ExCLientId);
+
+    InitProgress(ItemTotal);
+
+    ShowStatus(0,'Total Unpost');
+
+    {* Perform unpost *}
+
+    Un_PostIt;
+
+    UpdateProgress(ItemTotal);
+  end;
+
+
+end;
+
+
+Procedure TTotalUnpost.Finish;
+Var
+  SMsg  :  String;
+
+Begin
+  Inherited Finish;
+
+  {Overridable method}
+
+  {$IFNDEF RW}
+    {$IFNDEF XO}
+      {$IFNDEF OLE}
+        {$IFNDEF EDLL}
+          {$IFNDEF ENDV}
+          {$IFNDEF EXDLL}
+           {$IFNDEF COMP}
+           {$IFNDEF EBAD}
+             If (ThreadRec^.THAbort) then
+             Begin
+               AddErrorLog(JobTitle+' aborted by user before it completed. You must restore your last back up, or run this process again.','',2);
+
+               SMsg:='You must restore your last back up, or run this process again.';
+
+               If (Assigned(MTExLocal^.LThShowMsg)) then
+                 MTExLocal^.LThShowMsg(nil,0,SMsg)
+               else
+                 ShowMessage(SMsg);
+
+             end;
+           {$ENDIF}
+           {$ENDIF}
+          {$ENDIF}
+          {$ENDIF}
+        {$ENDIF}
+      {$ENDIF}
+    {$ENDIF}
+  {$ENDIF}
+
+  InMainThread:=BOff;
+
+  PostUnLock(0);
+
+end;
+
+Function TTotalUnpost.All_Threads_Idle  :  Boolean;
+
+Var
+  NoThreadsR
+           :  Boolean;
+
+
+Begin
+  {$B-}
+    NoThreadsR:=(Not Assigned(BackThread)) or ((Not Assigned(BackThread.MainThreads[1]))
+                                            and (Not Assigned(BackThread.MainThreads[2]))
+                                            and (Not Assigned(BackThread.MainThreads[3])));
+  {$B+}
+
+  Result:=NoThreadsR;
+
+  If (Not Result) then
+    CustomDlg(Application.MainForm,'Error','Other threads running',
+                               'It is not possible to unpost whilst other threads are running,'+
+                               ' or other users are still logged into the system.'+#13+#13+
+                               'Please ensure the thread controller has finished and all other users'+
+                               ' are logged out.',
+                               mtError,
+                               [mbOK]);
+
+end;
+
+
+  { ==== Procedure to replace existing history with last purge history ==== }
+
+Function TTotalUnpost.Replace_Hist  :  Boolean;
+
+Const
+  Fnum     =  NHistF;
+
+
+Var
+  Ok2Cont,
+  NoThreadsR,
+  HFClosed
+           :  Boolean;
+  Tc       :  Char;
+  NewName  :  String;
+  PFSpec   :  FileSpec;
+  mbRet    :  Word;
+
+
+Begin
+  Ok2Cont:=BOn;
+
+  FillChar(PFSpec,Sizeof(PFSpec),#0);  HFClosed:=BOff;
+
+  NewName:=SetDrive+Path2+'HistUP.DAT';
+
+  With Purge_OrdRec^ do
+  Begin
+    If FileExists(SetDrive+PurgeHFname) then {* Only swap over if present *}
+    Begin
+      Destroy_ThreadFiles;
+
+      Status:=Close_File(F[Fnum]);
+
+      {$IFDEF Frm}
+            { Shut down forms dll }
+          sbsForm_DeInitialise;
+      {$ENDIF}
+
+
+      If (StatusOk) then
+      Begin
+        HFClosed:=BOn;
+
+        Ok2Cont:=BOn;
+
+        If FileExists(NewName) then
+          Ok2Cont:=SysUtils.DeleteFile(NewName);
+
+        If (Ok2Cont) then
+        Begin       {* Rename current file *}
+          Ok2Cont:=BOff;
+
+          If (RenameFile(SetDrive+FileNames[Fnum],NewName)) then
+          Begin {* Rename purge master to main history file *}
+            If (RenameFile(SetDrive+PurgeHFname,SetDrive+FileNames[Fnum])) then
+            Begin {* Open new hist file *}
+              Status:=Open_File(F[Fnum],SetDrive+FileNames[Fnum],0);
+
+              If (StatusOk) then {Check record length compatible with current version}
+              Begin
+                Status:=GetFileSpec(F[Fnum],Fnum,PFSpec);
+                HFClosed:=BOff;
+              end;
+
+              If (Not StatusOk) or (PFSPec.RecLen<>FileRecLen[Fnum]) then {* Revert original file back *}
+              Begin
+                Status:=Close_File(F[Fnum]);
+
+                HFClosed:=BOn;
+
+                If (RenameFile(SetDrive+FileNames[Fnum],SetDrive+PurgeHFname)) then
+                Begin
+                  If (RenameFile(NewName,SetDrive+FileNames[Fnum])) then
+                  Begin
+                    Status:=Open_File(F[Fnum],SetDrive+FileNames[Fnum],0);
+
+                    HFClosed:=Not StatusOk;
+
+                  end;
+
+                end;
+              end
+              else
+                Ok2Cont:=BOn;
+            end;
+          end;
+        end;
+
+        If (Not Ok2Cont) then
+        Begin
+          mbRet:=CustomDlg(Application.MainForm,'Warning','Access pre-purge History file',
+                             'It was not possible to revert back to the original copy of '+Filenames[Fnum]+#13+
+                             'This may be due to other users still being in the system.'+#13+#13+
+                             'Do you wish to continue the unpost using the current version?',
+                             mtWarning,
+                             [mbYes,mbNo]);
+
+          Ok2Cont:=(mbRet=mrOK);
+
+        end;
+      end;
+
+      If (HFClosed) then {Attempt to re-open the history file}
+        Status:=Open_File(F[Fnum],SetDrive+FileNames[Fnum],0);
+
+      {$IFDEF Frm}
+        { Reload Forms DLL }
+        sbsForm_Initialise(SystemInfo, Syss.TxLateCR);
+      {$ENDIF}
+
+    end;
+  end; {With..}
+
+  Replace_Hist:=Ok2Cont;
+end;
+
+{ CJS 2012-07-16: ABSEXCH-12955 - 84.03 }
+function TTotalUnpost.SQL_Replace_Hist: Boolean;
+var
+  SQLCaller: TSQLCaller;
+  SQLQuery: AnsiString;
+  ConnectionString, lPassword: WideString;
+  CompanyCode: string;
+  mbRet: Word;
+
+  function HISTPRGEExists: Boolean;
+  var
+     Qry: AnsiString;
+     QryResult: Variant;
+  begin
+    Result := False;
+    try
+      Qry := 'IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N''[COMPANY].[HISTPRGE]'') AND type in (N''U''))' +
+             '    SELECT 1 AS Result ' +
+             'ELSE ' +
+             '    SELECT 0 AS Result';
+      SQLUtils.SQLFetch(Qry, 'Result', SetDrive, QryResult);
+      Result := QryResult;
+    except
+      on E:Exception do
+      begin
+        CustomDlg(Application.MainForm,
+                  'Warning',
+                  'Access pre-purge History file',
+                  E.message,
+                  mtError,
+                  [mbOk]);
+      end;
+    end;
+  end;
+
+begin
+  Result := True;
+  CompanyCode := SQLUtils.GetCompanyCode(SetDrive);
+  if HISTPRGEExists then
+  begin
+    // EnableConstraints(False);
+    SQLCaller := TSQLCaller.Create;
+    try
+      //SQLUtils.GetConnectionString(CompanyCode, False, ConnectionString);
+      
+      //SS:28/01/2018:2018-R1:ABSEXCH-19243:Enhancement to remove the ability to extract SQL admin passwords
+      SQLUtils.GetConnectionStringWOPass(CompanyCode, False, ConnectionString, lPassword);
+      SQLCaller.ConnectionString := ConnectionString;
+      SQLCaller.Connection.Password := lPassword;
+      // Build the SQL Query for calling the stored procedure
+      SQLQuery := '[COMPANY].isp_HistoryRestore';
+      SQLCaller.ExecSQL(SQLQuery, CompanyCode);
+      if SQLCaller.ErrorMsg <> '' then
+      begin
+        Result := False;
+        mbRet  := CustomDlg(Application.MainForm,
+                            'Warning',
+                            'Access pre-purge History file',
+                            'It was not possible to revert back to the original copy of HISTORY'+#13#13+
+                            SQLCaller.ErrorMsg+#13#13+
+                            'Do you wish to continue the unpost using the current version?',
+                            mtWarning,
+                            [mbYes,mbNo]);
+        // Note: CustomDlg will return mrOK or mrCancel, even though the buttons
+        //       are set as mbYes and mbNo -- see TGenWarnFrm.DisplayWarning()
+        //       in GenWarnU.pas
+        Result := (mbRet = mrOk);
+      end;
+    finally
+      SQLCaller.Free;
+      // EnableConstraints(True);
+    end; // Try..Finally
+  end;
+end;
+
+Function TTotalUnpost.Start  :  Boolean;
+
+Var
+  mbRet  :  Word;
+
+Begin
+  ProcessLockType := plUnpost;
+  mbRet:=CustomDlg(Application.MainForm,'Total Unpost','Unpost all Transactions.',
+                             'Please confirm you wish to unpost all Transactions back to their respective Daybooks.'+#13+
+                             ' This will allow any unallocated Transactions to be edited once more, and completely zero '+
+                             ' down the G/L.'+#13+
+                             'You will need to repost all Daybooks in order to re-establish the G/L balances.',
+                             mtWarning,
+                             [mbYes,mbNo]);
+
+
+  Result:=(mbRet=mrOK);
+
+  If (Result) then
+    Result:=All_Threads_Idle;
+
+  { CJS - 2012-07-16: ABSEXCH-12955 - 84.03 }
+  If (Result) then
+  begin
+    if SQLUtils.UsingSQLAlternateFuncs then
+      Result := SQL_Replace_Hist
+    else
+      Result := Replace_Hist;
+  end;
+
+  If (Result) then
+  Begin
+    {$IFDEF EXSQL}
+    if SQLUtils.UsingSQL then
+    begin
+      // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+      if (not Assigned(LPostLocal)) then
+        Result := Create_LocalThreadFiles;
+
+      If (Result) then
+        MTExLocal := LPostLocal;
+
+    end
+    else
+    {$ENDIF}
+    begin
+      If (Not Assigned(PostExLocal)) then { Open up files here }
+        Result:=Create_ThreadFiles;
+
+      If (Result) then
+        MTExLocal:=PostExLocal;
+    end;
+
+    If (Result) then {* Check if we can lock it *}
+    With MTExLocal^ do
+    Begin
+
+      Result:=PostLockCtrl(0);
+
+
+
+      If (Not Result) then {* Remove lock... *}
+      Begin
+        PostUnLock(0);
+
+      end
+      else
+      Begin
+        mbRet:=CustomDlg(Application.MainForm,'Total Unpost','Recalculate the '+CCVATName^+' periods.',
+                             'Do you wish to reset the '+CCVATName^+' posting dates on the transactions?'+#13+
+                             'This will place any out of period transactions into their correct return, '+
+                             'providing you set the current '+CCVATName^+' period back to the date of the earliest return'+#13+#13+
+                             'This is ONLY necessary if there is a problem with your return.',
+                             mtConfirmation,
+                             [mbYes,mbNo],BOn);
+
+
+        ResetVAT:=(mbRet=mrOK);
+
+      end;
+
+    end;
+  end;
+  {$IFDEF EXSQL}
+  if Result and SQLUtils.UsingSQL then
+  begin
+    MTExLocal^.Close_Files;
+    CloseClientIdSession(MTExLocal^.ExClientID, False);
+  end;
+  {$ENDIF}
+
+end;
+
+
+Procedure AddTUnpost2Thread(AOwner   :  TObject);
+
+
+
+
+Var
+  LCheck_Nom :  ^TTotalUnpost;
+  sCompCode : ShortString;
+Begin
+
+  If (Create_BackThread) then
+  Begin
+    New(LCheck_Nom,Create(AOwner));
+
+    try
+      With LCheck_Nom^ do
+      Begin
+        If (Start) and (Create_BackThread) then
+        Begin
+          If (AOwner is TForm) then
+            MyOHandle:=TForm(AOwner).Handle;
+
+          // MH 05/01/2018 2017-R1 ABSEXCH-19316: Disable new SQL Posting due to the Unpost potentially
+          // unposting dodgy transactions
+          If SQLUtils.UsingSQL Then
+          Begin
+            sCompCode := SQLUtils.GetCompanyCode(SetDrive);
+            If (SQLReportsConfiguration.SQLPostingStatus [sCompCode] = psPassed) Then
+              SQLReportsConfiguration.SetSQLPostingStatus(sCompCode, psPending);
+          End; // If SQLUtils.UsingSQL
+
+          With BackThread do
+            AddTask(LCheck_Nom,'Total Unpost');
+
+        end
+        else
+        Begin
+          IsCancelled := True;
+          Set_BackThreadFlip(BOff);
+          Dispose(LCheck_Nom,Destroy);
+
+        end;
+      end; {with..}
+
+    except
+      LCheck_Nom.IsCancelled := True;
+      Dispose(LCheck_Nom,Destroy);
+
+    end; {try..}
+  end; {If process got ok..}
+
+end;
+
+{ ========== TPartialUnpost methods =========== }
+
+Constructor TPartialUnpost.Create(AOwner  :  TObject);
+
+Begin
+  Inherited Create(AOwner);
+
+  { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+  fOptimise := SQLReportsConfiguration.UsePartialUnpostOptimisations;
+
+  CCDeptCache[False] := TStringList.Create; // List of Departments
+  CCDeptCache[True]  := TStringList.Create; // List of Cost Centres
+
+  fWhoAmI:=1;
+
+  JobTitle:='Partial Unpost';
+
+  New(CRepParam);
+
+  FillChar(CRepParam^,Sizeof(CRepParam^),#0);
+
+end;
+
+Destructor TPartialUnpost.Destroy;
+
+Begin
+
+  { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation
+    Release the Cost Centre/Department string-lists. }
+  FreeAndNil(CCDeptCache[False]);
+  FreeAndNil(CCDeptCache[True]);
+
+  Dispose(CRepParam);
+
+  Inherited Destroy;
+
+end;
+
+{ ====== Procedure to Follow tree, and gradualy unpost thru tree ==== }
+
+{ CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+procedure TPartialUnpost.BuildCCDeptCache;
+var
+  KeyChk: Str255;
+  KeyS: Str255;
+  KeyPath: Integer;
+begin
+  with MTExLocal^ do
+  begin
+    KeyPath := PWK;
+    KeyChk  := CostCCode;
+    KeyS    := KeyChk;
+
+    // Find all the Cost Centre & Department records
+    LStatus := LFind_Rec(B_GetGEq, PWrdF, Keypath, KeyS);
+    while (LStatusOk) and (CheckKey(KeyChk, KeyS, Length(KeyChk), BOff))  and (not ThreadRec^.THAbort) do
+    with LPassWord do
+    begin
+      // Add the codes to the relevant string-list
+      if SubType = CostCCode then
+        // Cost Centre
+        CCDeptCache[True].Add(CostCtrRec.PCostC)
+      else
+        // Department
+        CCDeptCache[False].Add(CostCtrRec.PCostC);
+      LStatus := LFind_Rec(B_GetNext, PwrdF, Keypath, KeyS);
+    end;
+  end;
+end;
+
+Function TPartialUnpost.Get_NomHedType(KeyNom  :  Str255;
+                                   Var YTDRes  :  Byte)  :  Boolean;
+
+Const
+  Fnum     =  NomF;
+  Keypath  =  NomCatK;
+
+Var
+  FoundOk  :  Boolean;
+  GResult  :  Byte;
+  RecAddr,
+  RecAddr2 :  LongInt;
+
+  KeyChk,
+  KeyS     :  Str255;
+  TmpKPath,
+  TmpKPath2,
+  TmpStat  :  Integer;
+
+  LocalNom :  NominalRec;
+
+
+Begin
+  GResult:=0;
+  KeyChk:=KeyNom;
+
+  TmpKPath:=GetPosKey;
+
+  FoundOk:=BOff;
+
+  With MTExLocal^ do
+  Begin
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],RecAddr,BOff,BOff);
+
+    LocalNom:=LNom;
+
+    KeyS:=KeyChk;
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn)) and (Not FoundOk)  and (Not ThreadRec^.THAbort) do
+    With LNom do
+    Begin
+      FoundOk:=(NomType In YTDSet+ProfitBFSet);
+
+      If (FoundOk) then
+      Begin
+        If (NomType In YTDSet) then
+          GResult:=YTD
+        else
+          GResult:=YTDNCF;
+      end
+      else
+        If (NomType=NomHedCode) then
+        Begin
+          TmpKPath2:=Keypath;
+
+          TmpStat:=LPresrv_BTPos(Fnum,TmpKPath2,LocalF^[Fnum],RecAddr2,BOff,BOff);
+
+          FoundOk:=Get_NomHedType(FullNomKey(NomCode),GResult);
+
+          TmpStat:=LPresrv_BTPos(Fnum,TmpKPath2,LocalF^[Fnum],RecAddr2,BOn,BOff);
+        end;
+
+      If (Not FoundOk) then
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+    end;
+
+    TmpStat:=LPresrv_BTPos(Fnum,TmpKPath,LocalF^[Fnum],RecAddr,BOn,BOff);
+
+    LNom:=LocalNom;
+  end; {With..}
+
+  If (FoundOk) then
+    YTDRes:=GResult;
+
+  Get_NomHedType:=FoundOk;
+
+end;
+
+
+Function TPartialUnpost.Calc_PropYTD(UpNomKey  :  Str255;
+                                     UpNomCat  :  Char;
+                                     CCode     :  Byte)  :  Byte;
+
+
+Var
+  TmpRes  :  Byte;
+
+Begin
+  TmpRes:=CCode;
+  Result:=CCode;
+
+  If (UPNomCat In ProfitBFSet) then
+    Result:=YTDNCF
+  else
+    If (UPNomCat In YTDSet) then
+      Result:=YTD
+    else
+      If (UpNomCat=NomHedCode) then
+      Begin
+        If (Get_NomHedType(UpNomKey,TmpRes)) and (TmpRes In [YTD,YTDNCF]) then
+          Result:=TmpRes;
+
+      end;
+
+end;
+
+{ ==== Procedure to Unpost a document heading ==== }
+
+
+Procedure TPartialUnpost.Unpost_Heading(BackPr,
+                                        BackYr      :  Byte;
+                                        Fnum,
+                                        Keypath     :  Integer;
+                                        FolioK      :  LongInt;
+                                        RestVAT,
+                                        RestVPr     :  Boolean);
+
+
+Var
+  KeyS  :  Str255;
+
+
+  VPr,
+  VYr   :  Byte;
+
+  INum  :  Integer;
+
+  TCh   :  Char;
+
+  LineVATRate,
+  Cleared
+        :  Double;
+
+
+  SMsg  :  Str255;
+
+Begin
+  SMsg:=''; LineVATRate:=0.0;
+
+  With MTExLocal^ do
+  Begin
+
+    KeyS:=FullNomKey(FolioK);
+
+    LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyS);
+
+    Cleared:=0;
+
+    VYr:=0; VPr:=0;
+
+    If (LStatusOk) then
+    With LInv do
+    Begin
+
+      Inum:=Part_Date('Y',VATPostDate)-1900;
+
+      If (Inum>=0) then
+        VYr:=Inum;
+
+      VPr:=Part_Date('M',VATPostDate);
+
+      {* Adjust Goods amount from VAT control totals for each single line *}
+
+      If (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) and (Not RestVPr)
+         and
+         (
+           (InvDocHed In SalesSplit+PurchSplit-NomSplit-PSopSet-[SBT,PBT]) or
+           ((InvDocHed In NOMSplit) and (NOMVATIO<>C0))
+         )
+         and (LId.FolioRef=FolioNum) and (VPr<>0) and (VYr<>0) then {* Only Post to individual VAT for Line *}
+      Begin
+
+        If (Not (LInv.InvDocHed In NOMSplit)) then
+          LineVATRate:=Calc_BConvCXRate(LInv,LId.CXRate[UseCoDayRate],BOn)
+        else
+          LineVATRate:=LId.CXrate[UseCoDayRate];
+
+
+        Cleared:=Conv_VATCurr(DetLTotal(LId,BOn,LInv.DiscTaken,LInv.DiscSetl),LInv.VATCRate[UseCoDayRate],
+                              LineVATRate,
+                                 LInv.Currency,LInv.UseORate);
+
+        If (Cleared<>0) then
+          LPost_To_Hist(IOVATCode(LId.IdDocHed,NOMVATIO),
+                       FullCustCode(SyssVAT^.VATRates.VAT[GetVATNo(LId.VATCode,LId.VATIncFlg)].Code),
+                       0,Cleared,0,0,VYr,VPr,
+                       Cleared);
+      end;
+
+
+
+      If (RunNo>0) and (InvDocHed In SalesSplit+PurchSplit+NomSplit-PSopSet-[SBT,PBT]) and (fWhoAmI=1) then
+      Begin
+
+        If (Pr2Fig(AcYr,AcPr)>Pr2Fig(BackYr,BackPr)) then
+        Begin
+
+          RunNo:=0;
+
+          If (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) and (Not RestVPr)
+            and (InvDocHed In SalesSplit+PurchSplit+NOMSplit) and (VATPostDate<>'')
+            and (VPr<>0) and (VYr<>0) then                                       {* Only Post to individual VAT
+                                                                                     History if not }
+          Begin                                                                  {Cash Accounting *}
+
+
+            Post_VAT(VYr,VPr,BOn);  {* Post Total Header VAT History *}
+            if DoReverseCharge(LInv, LId) then
+              Post_ECVAT(VYr, VPr, BOn);
+
+
+
+          end;
+
+          {* Blank VAT date if total vat being re calculated *}
+          If (RestVAT) and (RestVPr) and (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) then
+            Blank(VATPostDate,Sizeof(VATPostDate));
+
+          If (RestVPr) then
+          Begin
+            FillChar(PostDate,Sizeof(PostDate),0);
+            FillChar(OldORates,Sizeof(OldORates),0);
+          end;
+
+
+          LStatus:=LPut_Rec(Fnum,Keypath);
+
+          LReport_BError(Fnum,LStatus);
+        end
+        else
+        Begin
+          SMsg:=OurRef+' period differs from lines, not unposted.';
+
+          If (Assigned(MTExLocal^.LThShowMsg)) then
+            MTExLocal^.LThShowMsg(nil,0,SMsg)
+          else
+            ShowMessage(SMsg);
+
+        end;
+
+      end; {If Already done..}
+
+    end; {If Header not found..}
+  end; {With..}
+end; {Proc..}
+
+
+
+Function TPartialUnpost.PartIDPostKey(Cno          :  Longint;
+                                      PNm,PCr,
+                                      PYr,PPr      :  Byte)  :  Str20;
+
+
+
+
+Begin
+  PartIdPostKey:=FullNomKey(Cno)+Chr(PNm)+Chr(PCr)+Chr(PYr)+Chr(PPr);
+end;
+
+
+
+{ ========= Procedure to Part unpost all nominal connected detail lines ======== }
+
+
+Procedure TPartialUnpost.UnPost_Details(BackPr,BackYr  :  Byte;
+                                        Fnum,Keypath   :  Integer; // IdetailF, IdNomK
+                                        NomKey         :  LongInt;
+                                        RestVAT,
+                                        RestVPr        :  Boolean);
+
+
+Var
+  KeyChk,
+  KeyS      :    Str255;
+
+
+  CurrLoop  :    Byte;
+
+  PILoop    :    Boolean;
+
+  B_Func    :    Integer;
+
+
+Begin
+
+
+  PILoop:=BOff;
+
+  With MTExLocal^ do
+  Repeat
+
+    CurrLoop:=0;
+
+    Repeat
+
+      { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+      if IsCurrencyUsed(CurrLoop) or not fOptimise then
+      begin
+        KeyS:=PartIdPostKey(NomKey,Ord(PILoop),CurrLoop,BackYr,Succ(BackPr));
+
+        KeyChk:=Copy(KeyS,1,Length(KeyS)-2);
+
+        If (PILoop) then
+          KeyS:=KeyS+FullNomKey(FirstAddrD);
+
+        LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+        With LId do
+        Begin
+          If (Pr2Fig(PYr,PPr)>Pr2Fig(BackYr,BackPr)) then
+          Begin
+            B_Func:=B_GetGEq;
+
+            If (IdDocHed<>Run) then
+            Begin
+
+              PostedRun:=0;
+
+              {$IFDEF PF_On}
+
+                If (IS_PayInLine(StockCode)) then  {* Re-set the paying in reference so
+                                                      reposting with reestablish it *}
+
+                   StockCode:=Pre_PostPayInKey(PayInCode,Extract_PayRef2(StockCode));
+
+              {$ENDIF}
+
+              If (IdDocHed=ADJ) then
+                B2BLink:=FolioRef  {* This field used to recover from PMP. set it to own ref, so it does not generate a new NOM,
+                                       but still updates posted levels *}
+              else                 {* If sales and set to itself reset a sales hidden line so it will get reposted}
+                If (B2BLink=FolioRef) and (IdDocHed In SalesSplit) and (LineNo=StkLineNo) then
+                  B2BLink:=0;
+
+              LStatus:=LPut_Rec(Fnum,Keypath);
+
+              LReport_BError(Fnum,LStatus);
+
+              If (LStatusOk) then
+                Unpost_Heading(BackPr,BackYr,InvF,InvFolioK,FolioRef,RestVAT,RestVPr);
+
+            end
+            else
+            Begin
+              LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+              LReport_BError(Fnum,LStatus);
+            end;
+
+          end
+          else
+            B_Func:=B_GetNext;
+
+          LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+        end;
+      end; // IsCurrencyUsed... { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+
+      Inc(CurrLoop);
+
+    Until (CurrLoop>CurrencyType);
+
+    PILoop:=Not PILoop;
+
+  Until (Not PILoop);
+
+end; {Proc..}
+
+
+
+
+{ ==== Procedure to Partly unpost a history, upto a given period ===== }
+{ ==== EL v6.003. Addin seperate BaseNomKey parameter in order to satisfy
+       Calc_PropYTD which needs a pure FullNomKey parameter == }
+
+Procedure TPartialUnpost.Part_UPHist(BackPr,BackYr  :  Byte;
+                                     Fnum,Keypath   :  Integer;
+                                     UPNomKey,
+                                     BaseNomKey     :  Str255;
+                                     UPNomT         :  Char;
+                                 Var PALBFRec       :  PALBFType);
+
+
+
+Var
+  CurrLoop  :  Byte;
+  KeyChk,
+  KeyS      :  Str255;
+
+  UStatus,
+  B_Func    :  Integer;
+
+  HighYear,
+  HYrLoop   :  LongInt;
+
+  LOk,
+  Locked,
+  HadYTD    :  Boolean;
+
+  PSales,
+  PPurch,
+  PCleared,
+  PBudget,
+  PBudget2,
+  BVal1,
+  BVal2,
+  PBalance  :  Double;
+
+  CorrYTD   :  Byte;
+
+  KeepYTD   :  HistoryRec;
+
+
+Begin
+
+  CurrLoop:=0;
+
+  CorrYTD:=YTD;
+
+  HighYear:=BackYr;
+
+  HYrLoop:=0;
+
+  With MTExLocal^ do
+  Repeat
+
+    { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+    if IsCurrencyUsed(CurrLoop) or not fOptimise then
+    begin
+      B_Func:=0;
+
+      Blank(KeepYTD,Sizeof(KeepYTD));
+
+      HadYTD:=BOff;
+
+      KeyChk:=PartNHistKey(UpNomT,UpNomKey,CurrLoop);
+
+      KeyS:=FullNHistKey(UpNomT,UpNomKey,CurrLoop,BackYr,Succ(BackPr));
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+      With LNHist do
+      Begin
+        If (Pr2Fig(Yr,Pr)>Pr2Fig(BackYr,BackPr)) then
+        Begin
+          LOk:=BOff; Locked:=BOff;
+
+          LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOff,Locked);
+
+          LGetRecAddr(Fnum);
+
+          If (Pr In [YTD,YTDNCF]) then
+          Begin
+
+            KeepYTD:=LNHist;
+
+
+            LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+            B_Func:=B_GetGEq;
+
+            HadYTD:=BOn;
+
+            If (Yr>HighYear) and (Pr=YTD) then {* Keep track of the highest YTD to be restored *}
+              HighYear:=Yr;
+
+          end
+          else
+          Begin
+
+            Sales:=0; Purchases:=0; Cleared:=0;
+
+            LStatus:=LPut_Rec(Fnum,Keypath);
+
+            UStatus:=LUnLockMLock(Fnum);
+
+            B_Func:=B_GetNext;
+          end;
+
+          LReport_BError(Fnum,LStatus);
+        end
+        else
+          B_Func:=B_GetNext;
+
+        LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+      end;
+
+
+      If (HadYTD) then {* Create New YTD *}
+      Begin
+
+        PBalance:=LTotal_Profit_To_Date(UpNomT,UpNomKey,CurrLoop,BackYr,BackPr,PPurch,PSales,PCleared,PBudget,PBudget2,BVal1,BVal2,BOn);
+
+        LNHist:=KeepYTD;
+
+        With LNHist do
+        Begin
+
+          Yr:=BackYr;
+
+          Purchases:=PPurch;
+          Sales:=PSales;
+          Cleared:=PCleared;
+          Budget:=PBudget;
+          RevisedBudget1:=PBudget2;
+
+          If (ExClass In ProfitBFSet+[CtrlNHCode,BankNHCode,NomHedCode]) then {* Check YTD Type is correct *}
+          Begin
+            CorrYTD:=Calc_PropYTD(BaseNomKey,UpNomT,Pr);
+
+            If (Pr<>CorrYTD) then
+              Pr:=CorrYTD;
+          end;
+
+          LStatus:=LAdd_Rec(Fnum,Keypath);
+
+          LReport_BError(Fnum,LStatus);
+
+          If (HighYear>BackYr) then {* Fill in intervening years for carry forwards *}
+            For HYrLoop:=Succ(BackYr) to HighYear do
+            Begin
+              Yr:=HYrLoop;
+
+              LStatus:=LAdd_Rec(Fnum,Keypath);
+
+              LReport_BError(Fnum,LStatus);
+
+            end;
+
+          If (ExClass=PLNHCode) then
+            With PALBFRec[CurrLoop] do
+            Begin
+              PALPurch:=PALPurch+PPurch;
+              PALSales:=PALSales+PSales;
+              PALBudget:=PALBudget+PBudget;
+              PALCleared:=PALCleared+PCLeared;
+            end; {With..}
+        end;
+      end;
+
+    end; // IsCurrencyUsed... { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+
+    Inc(CurrLoop);
+
+  Until (CurrLoop>CurrencyType);
+
+end; {Proc..}
+
+
+
+{ ==== Procedure to Re Calculate the Profit B/F ===== }
+
+Procedure TPartialUnpost.Update_ProfitBF(BackPr,BackYr  :  Byte;
+                                         PALBFRec       :  PALBFType);
+
+
+Var
+  CurrLoop  :  Byte;
+  KeyS      :  Str255;
+
+  PSales,
+  PPurch,
+  PCleared,
+
+  PBalance  :  Real;
+
+  PBudget   :  Double;
+
+  PLNom,
+  ActNom    :  LongInt;
+
+  MRates    :  CurrTypes;
+
+
+Begin
+
+  CurrLoop:=0;
+  ActNom:=0;
+  PLNom:=0;
+
+  MRates[BOff]:=1; MRates[BOn]:=1;
+
+
+
+  Repeat
+
+    { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+    if IsCurrencyUsed(CurrLoop) or not fOptimise then
+    begin
+
+      With PALBFRec[CurrLoop] do
+      Begin
+
+        PPurch:=PALPurch;
+        PSales:=PALSales;
+        PCleared:=PALCleared;
+        PBudget:=PALBudget;
+
+      end;
+
+
+      LPost_To_Nominal(FullNomKey(Syss.NomCtrlCodes[ProfitBF]),
+                                 PPurch,
+                                 PSales,
+                                 PCleared,
+                                 CurrLoop,BackYr,YTD,
+                                 1,BOn,BOff,BOff,MRates,
+                                 PBudget,
+                                 ActNom,
+                                 0);
+
+
+    end; // IsCurrencyUsed... { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+
+    Inc(CurrLoop);
+
+  Until (CurrLoop>CurrencyType);
+
+
+
+end; {Proc..}
+
+
+{$IFDEF PF_On}  {* For each CC/Dep restore history *}
+
+
+    Procedure TPartialUnpost.Part_UPCCDpHist(BackPr,BackYr  :  Byte;
+                                             NomFolio       :  LongInt;
+                                             NType          :  Char;
+                                             CCode          :  Str10;
+                                             PALBFRec       :  PALBFType;
+                                             StartLoop      :  Boolean;
+                                             Fnum,Keypath   :  Integer);
+
+    Var
+      KeyS,KeyChk  :  Str255;
+
+      Loop         :  Boolean;
+
+      TmpStat      :  Integer;
+      RecAddr      :  LongInt;
+
+      BCCDep       :  CCDepType;
+
+
+      i : Integer;
+    Begin
+
+      Loop:=Not StartLoop;
+
+      Blank(BCCDep,Sizeof(BCCDep));
+
+      With MTExLocal^ do
+      Begin
+        { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+        if fOptimise then
+        begin
+          BCCDep[StartLoop]:=CCode;
+  
+          for i := 0 to CCDeptCache[Loop].Count - 1 do
+          Begin
+            Inc(ItemCount);
+  
+            UpdateProgress(ItemCount);
+  
+            BCCDep[Loop] := CCDeptCache[Loop][i];
+  
+            Part_UPHist(BackPr,BackYr,NHistF,NHK,CalcCCKeyHistP(NomFolio,StartLoop,
+                        CalcCCDepKey(StartLoop,BCCDep)),FullNomKey(NomFolio),NType,PALBFRec);
+  
+          end;
+        end
+        else
+        begin
+          TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOff,BOff);
+  
+          KeyChk:=PartCCKey(CostCCode,CSubCode[Loop]);
+  
+          KeyS:=KeyChk;
+  
+          BCCDep[StartLoop]:=CCode;
+  
+          LStatus:=LFind_Rec(B_GetGEq,Fnum,Keypath,KeyS);
+  
+          While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOff))  and (Not ThreadRec^.THAbort) do
+          With LPassWord,CostCtrRec do
+          Begin
+            Inc(ItemCount);
+  
+            UpdateProgress(ItemCount);
+  
+            BCCDep[Loop]:=PCostC;
+  
+            Part_UPHist(BackPr,BackYr,NHistF,NHK,CalcCCKeyHistP(NomFolio,StartLoop,
+                        CalcCCDepKey(StartLoop,BCCDep)),FullNomKey(NomFolio),NType,PALBFRec);
+  
+            LStatus:=LFind_Rec(B_GetNext,Fnum,Keypath,KeyS);
+          end;
+  
+          TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOn,BOff);
+        end;
+
+      end; {With..}
+    end;
+
+
+    Procedure TPartialUnpost.Part_UPCCHist(BackPr,BackYr  :  Byte;
+                                           NomFolio       :  LongInt;
+                                           NType          :  Char);
+
+    Const
+      Fnum     =  PWrdF;
+      Keypath  =  PWK;
+
+    Var
+      KeyS,KeyChk  :  Str255;
+      PALBFRec     :  PALBFType;
+      Loop         :  Boolean;
+
+      i: Integer;
+      CCode: Str5;
+
+    Begin
+
+      FillChar(PALBFRec,Sizeof(PALBFRec),0);
+
+      Loop:=BOff;
+
+      With MTExLocal^ do
+      Repeat
+
+        { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+        if fOptimise then
+        begin
+          for i := 0 to CCDeptCache[Loop].Count - 1 do
+          Begin
+            CCode := CCDeptCache[Loop][i];
+            If (Syss.PostCCDCombo) then {* Find all combinations of cc/dep*}
+            Begin
+              Inc(ItemCount);
+              UpdateProgress(ItemCount);
+            end;
+  
+            Part_UPHist(BackPr,BackYr,NHistF,NHK,CalcCCKeyHistP(NomFolio,Loop,CCode),FullNomKey(NomFolio),NType,PALBFRec);
+  
+            If (Syss.PostCCDCombo) then {* Find all combinations *}
+              Part_UPCCDpHist(BackPr,BackYr,NomFolio,NType,CCode,PALBFRec,Loop,Fnum,Keypath);
+  
+          end;
+        end
+        else
+        begin
+          KeyChk:=PartCCKey(CostCCode,CSubCode[Loop]);
+  
+          KeyS:=KeyChk;
+  
+          LStatus:=LFind_Rec(B_GetGEq,Fnum,Keypath,KeyS);
+  
+          While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOff))  and (Not ThreadRec^.THAbort) do
+          With LPassWord,CostCtrRec do
+          Begin
+  
+            If (Syss.PostCCDCombo) then {* Find all combinations of cc/dep*}
+            Begin
+              Inc(ItemCount);
+  
+              UpdateProgress(ItemCount);
+            end;
+  
+            Part_UPHist(BackPr,BackYr,NHistF,NHK,CalcCCKeyHistP(NomFolio,Loop,PCostC),FullNomKey(NomFolio),NType,PALBFRec);
+  
+            If (Syss.PostCCDCombo) then {* Find all combinations *}
+              Part_UPCCDpHist(BackPr,BackYr,NomFolio,NType,PCostC,PALBFRec,Loop,Fnum,Keypath);
+  
+            LStatus:=LFind_Rec(B_GetNext,Fnum,Keypath,KeyS);
+          end;
+        end;
+
+        Loop:=Not Loop;
+
+      Until (Not Loop);
+    end;
+
+
+  { ========= Proc to remove Paying In information ========== }
+
+  Procedure TPartialUnpost.Purge_PayIn;
+
+  Const
+    Fnum      =  NomF;
+    Fnum2     =  IdetailF;
+    Keypath2  =  IdNomK;
+    Keypath3  =  IdStkK;
+
+  Var
+    FoundOk   :  Boolean;
+
+    KeyChk,KeyS,
+    KeyChk2,KeyS2,
+    KeyN      :  Str255;
+
+    N,
+    TmpKPath,
+    TmpStat,
+    B_Func    :  Integer;
+
+    RecAddr2  :  LongInt;
+
+    PayId,
+    LocalId   :  IDetail;
+
+    TimeR     :  TimeTyp;
+
+
+  Begin
+    KeyN:='';
+
+    With MTExLocal^ do
+    Begin
+
+      LStatus:=LFind_Rec(B_StepFirst,Fnum,0,KeyN);
+
+      While (LStatusOk)  and (Not ThreadRec^.THAbort) do
+      With LNom do
+      Begin
+
+        If (Not (NomType In [NomHedCode,CarryFlg])) then
+        Begin
+          KeyChk:=FullNomKey(NomCode*DocNotCnst)+Chr(PayInNomMode);
+
+          KeyS:=KeyChk;
+
+          LStatus:=LFind_Rec(B_GetGEq,Fnum2,KeyPath2,KeyS);
+
+          While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+          With LId do
+          Begin
+
+            TmpKPath:=Keypath2;
+
+            TmpStat:=LPresrv_BTPos(Fnum2,TmpKPath,LocalF^[Fnum2],RecAddr2,BOff,BOff);
+
+            LocalId:=LId;
+
+            FoundOk:=BOff;
+
+            PayId:=LId;
+
+            With PayId do
+              KeyChk2:=Full_PostPayInKey(PayInCode,NomCode,Currency,Extract_PayRef2(StockCode));
+
+            KeyS2:=KeyChk2;
+
+            LStatus:=LFind_Rec(B_GetGEq,Fnum2,KeyPath3,KeyS2);
+
+            FoundOk:=((LStatusOk) and CheckKey(KeyChk2,KeyS2,Length(KeyChk2),BOn));
+
+
+            TmpStat:=LPresrv_BTPos(Fnum2,TmpKPath,LocalF^[Fnum2],RecAddr2,BOn,BOff);
+
+            LId:=LocalId;
+
+            B_Func:=B_GetNext;
+
+            If (Not FoundOk) then
+            Begin
+              LStatus:=LDelete_Rec(Fnum2,Keypath2);
+
+
+              If (Not LStatusOk) then
+              Begin
+                LReport_BError(Fnum2,LStatus);
+
+              end
+              else
+                B_Func:=B_GetGEq;
+
+            end;
+
+            LStatus:=LFind_Rec(B_Func,Fnum2,KeyPath2,KeyS);
+
+          end; {While..}
+
+
+        end; {If wrong nom type }
+
+        LStatus:=LFind_Rec(B_StepNext,Fnum,0,KeyN);
+      end; {While..}
+    end; {With..}
+
+  end; {Proc..}
+
+
+
+{$ENDIF}
+
+
+
+{ ====== Procedure to Follow tree, and gradualy unpost thru tree ==== }
+
+
+Procedure TPartialUnpost.Part_UPTree(BackPr,BackYr  :  Byte;
+                                     Fnum,Keypath   :  Integer; // NomF, NomCatK
+                                     KeyChk         :  Str255;
+                                     RestVAT,
+                                     RestVPr        :  Boolean;
+                                 Var PALBFRec       :  PALBFType);
+
+
+Var
+  RecAddr  :  LongInt;
+  KeyS     :  Str255;
+  TmpStat  :  Integer;
+  LocalNom :  NominalRec;
+
+
+Begin
+
+
+  With MTExLocal^ do
+  Begin
+
+    KeyS:=KeyChk;
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+    With LNom do
+    Begin
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      ShowStatus(2,dbFormatName(Form_Int(NomCode,0),Desc));
+
+      TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOff,BOff);
+
+      LocalNom:=LNom;
+
+      If (NomType=NomHedCode) then
+        Part_UpTree(BackPr,BackYr,Fnum,Keypath,FullNomKey(NomCode),RestVAT,RestVPr,PALBFRec)
+      else
+        If (NomType<>CarryFlg) then
+        Begin
+          Unpost_Details(BackPr,BackYr,IdetailF,IdNomK,NomCode,RestVAT,RestVPr);
+
+          {$IFDEF PF_On}  {* For each location restore history *}
+            Part_UPCCHist(BackPr,BackYr,NomCode,NomType);
+          {$ENDIF}
+        end;
+
+
+      TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOn,BOff);
+
+      LNom:=LocalNom;
+
+      Part_UPHist(BackPr,BackYr,NHistF,NHK,FullNomKey(NomCode),FullNomKey(NomCode),NomType,PALBFRec);
+
+      {$IFDEF PF_On}  {* For each location restore history *}
+        Part_UPCCHist(BackPr,BackYr,NomCode,NomType);
+      {$ENDIF}
+
+      LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+    end;
+    
+    { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+    {$IFDEF PF_On}
+    if not fOptimise then
+      Purge_PayIn;
+    {$ENDIF}
+
+    Inc(ItemCount);
+  end; {With..}
+end;
+
+
+
+{$IFDEF STK}
+
+  {$IFDEF SOP}  {* For each location restore history *}
+    Procedure TPartialUnpost.Part_UPLocHist(BackPr,BackYr  :  Byte;
+                                            StkFolio       :  LongInt;
+                                            SType          :  Char);
+
+    Const
+      Fnum     =  MLocF;
+      Keypath  =  MLK;
+
+    Var
+      KeyS,KeyChk  :  Str255;
+      PALBFRec     :  PALBFType;
+
+
+    Begin
+
+      FillChar(PALBFRec,Sizeof(PALBFRec),0);
+
+
+      KeyChk:=PartCCKey(CostCCode,CSubCode[BOn]);
+
+      KeyS:=KeyChk;
+
+      With MtExLocal^ do
+      Begin
+        LStatus:=LFind_Rec(B_GetGEq,Fnum,Keypath,KeyS);
+
+        While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOff))  and (Not ThreadRec^.THAbort) do
+        With LMLocCtrl^,MLocLoc do
+        Begin
+          Part_UPHist(BackPr,BackYr,NHistF,NHK,CalcKeyHist(StkFolio,loCode),FullNomKey(StkFolio),SType,PALBFRec);
+
+          LStatus:=LFind_Rec(B_GetNext,Fnum,Keypath,KeyS);
+        end;
+      end; {With..}
+    end;
+
+
+  {$ENDIF}
+
+  { ====== Procedure to Follow tree, and gradualy unpost thru tree ==== }
+
+
+  Procedure TPartialUnpost.Part_UPStkTree(BackPr,BackYr  :  Byte;
+                                          Fnum,Keypath   :  Integer;
+                                          KeyChk         :  Str255);
+
+
+  Var
+    RecAddr  :  LongInt;
+    KeyS     :  Str255;
+    TmpStat  :  Integer;
+
+    PALBFRec :  PALBFType;
+
+    LocalStk :  StockRec;
+
+
+  Begin
+
+    With MtExLocal^ do
+    Begin
+      FillChar(PALBFRec,Sizeof(PALBFRec),0);
+
+      KeyS:=KeyChk;
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (CheckKey(KeyChk,KeyS,Length(KeyChk),BOn))  and (Not ThreadRec^.THAbort) do
+      With LStock do
+      Begin
+        Inc(ItemCount);
+
+        UpdateProgress(ItemCount);
+
+        ShowStatus(2,dbFormatName(StockCode,Desc[1]));
+
+        TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOff,BOff);
+
+        LocalStk:=LStock;
+
+        If (StockType=StkGrpCode) then
+          Part_UpStkTree(BackPr,BackYr,Fnum,Keypath,FullStockCode(StockCode))
+        else
+        Begin
+          Part_UPHist(BackPr,BackYr,NHistF,NHK,FullNomKey(StockFolio),FullNomKey(StockFolio),Calc_AltStkHCode(StockType),PALBFRec);
+
+          {$IFDEF SOP}  {* For each location restore history *}
+            Part_UPLocHist(BackPr,BackYr,StockFolio,Calc_AltStkHCode(StockType));
+          {$ENDIF}
+        end;
+
+
+        TmpStat:=LPresrv_BTPos(Fnum,KeyPath,LocalF^[Fnum],RecAddr,BOn,BOff);
+
+        LStock:=LocalStk;
+
+        Part_UPHist(BackPr,BackYr,NHistF,NHK,FullNomKey(StockFolio),FullNomKey(StockFolio),StockType,PALBFRec);
+
+        {$IFDEF SOP}  {* For each location restore history *}
+          Part_UPLocHist(BackPr,BackYr,StockFolio,StockType);
+        {$ENDIF}
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+      end;
+    end; {With..}
+  end;
+
+{$ENDIF}
+
+
+{ ====== Procedure to Follow tree, and gradualy unpost thru tree ==== }
+
+
+Procedure TPartialUnpost.Part_UPAccBal(BackPr,BackYr  :  Byte;
+                                       Fnum,Keypath   :  Integer);
+
+Const
+  Fnum2       =   NomF;
+  Keypath2    =   NomCodeK;
+
+
+Var
+  KeyS,KeyS2,
+  KeyChk2,
+  KeyChk   :  Str255;
+
+  PALBFRec :  PALBFType;
+
+
+Begin
+
+  ShowStatus(1,'Processing Account Balances');
+
+
+  FillChar(PALBFRec,Sizeof(PALBFRec),0);
+
+  KeyChk:='';   KeyChk2:='';
+
+  KeyS:=KeyChk;
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=LFind_Rec(B_StepFirst,Fnum,KeyPath,KeyS);
+
+    While (LStatusOk)  and (Not ThreadRec^.THAbort) do
+    With LCust do
+    Begin
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      ShowStatus(2,dbFormatName(CustCode,Company));
+
+      Part_UPHist(BackPr,BackYr,NHistF,NHK,FullCustCode(CustCode),FullCustCode(CustCode),CustHistPCde,PALBFRec);
+
+      KeyS2:=FullNomKey(0);
+
+      LStatus:=LFind_Rec(B_StepFirst,Fnum2,KeyPath2,KeyS2);
+
+      {* Unpost main control code, which is stored as nom 0 *}
+
+      Part_UPHist(BackPr,BackYr,NHistF,NHK,FullCustCode(CustCode)+FullNomKey(0),FullCustCode(CustCode),CustHistPCde,PALBFRec);
+
+
+      {* For each Nom Ctrl Code, unpost history *}
+
+      While (LStatusOk)  and (Not ThreadRec^.THAbort) do
+      With LNom do
+      Begin
+
+        If (NomType=CtrlNHCode) then
+          Part_UPHist(BackPr,BackYr,NHistF,NHK,FullCustCode(CustCode)+FullNomKey(NomCode),FullCustCode(CustCode),CustHistPCde,PALBFRec);
+
+        LStatus:=LFind_Rec(B_StepNext,Fnum2,KeyPath2,KeyS2);
+
+      end;
+
+      {$IFDEF EX601}
+
+        {* For each Stk Sales Db, reset the sales history *}
+        {* EL: Feb 2008:
+                     Note. This only deals with staright stk sales analysis, not CC/Dep or Location sub filtered variants,
+                     Which needs more work, and I decided was not worth the processing overhead in trying to find
+                     the records as there is no quick way to get to the history key other than to apply all
+                     CC/Dep variants and locations to each stk sales record... *}
+
+        KeyS2:=PartCCKey(MatchTCode,MatchSCode)+FullCustCode(CustCode);
+
+        KeyChk2:=KeyS2;
+
+        LStatus:=LFind_Rec(B_GetGEq,MLocF,MLSecK,KeyS2);
+
+        While (LStatusOk) and (CheckKey(KeyChk2,KeyS2,Length(KeyChk2),BOn)) and (Not ThreadRec^.THAbort) do
+        With LMLocCtrl^, CuStkRec do
+        Begin
+          Part_UPHist(BackPr,BackYr,NHistF,NHK,Full_CuStkHKey1(CsCustCode,csStkFolio),FullCustCode(CsCustCode),CuStkHistCode,PALBFRec);
+
+          LStatus:=LFind_Rec(B_GetNext,MLocF,MLSecK,KeyS2);
+
+        end; {With/While..}
+        
+      {$ENDIF}
+
+      LStatus:=LFind_Rec(B_StepNext,Fnum,KeyPath,KeyS);
+
+    end;
+
+
+  end; {With..}
+end;
+
+
+{ =============== Unpost all Posted Batch Header Documents ============== }
+
+Procedure  TPartialUnpost.Part_UnPostItBatch(BackPr,BackYr :  Byte;
+                                             DayBkRunNo    :  Longint;
+                                             RestVAT       :  Boolean);
+
+
+Const
+  Fnum     =  InvF;
+  KeyPath  =  InvRNoK;
+
+Var
+  KeyS      :  Str255;
+
+  UpResetVAT,
+  Locked,UOk
+            :  Boolean;
+
+  B_Func    :  Integer;
+
+
+Begin
+
+  ShowStatus(1,'Processing Batch Transactions');
+
+  Locked:=BOn;  UOk:=BOn;
+
+  If (DayBkRunNo<>0) then
+    KeyS:=FullDayBkKey(DayBkRunNo,FirstAddrD,'')
+  else
+    KeyS:=FullDayBkKey(DayBkRunNo,1,'');
+
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+    While (LStatusOk) and (UOk) and (Locked) and (LInv.RunNo=DayBkRunNo)  and (Not ThreadRec^.THAbort) do
+    With LInv do
+    Begin
+
+      B_Func:=B_GetNext;
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+
+      If (Pr2Fig(AcYr,AcPr)>Pr2Fig(BackYr,BackPr)) then
+      Begin
+
+        If (RestVAT) and (RunNo=0) and (InvDocHed In SalesSplit+PurchSplit+NomSplit) then
+        Begin
+          Blank(VATPostDate,Sizeof(VATPostDate));
+          FillChar(PostDate,Sizeof(PostDate),0);
+          FillChar(OldORates,Sizeof(OldORates),0);
+        end;
+
+
+
+        RunNo:=0;
+
+        LStatus:=LPut_Rec(Fnum,Keypath);
+
+        LReport_BError(Fnum,LStatus);
+
+        If (DayBkRunNo<>0) then
+          B_Func:=B_GetGEq;
+
+      end; {If Locked Ok..}
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+    end; {While..}
+  end; {With..}
+
+end; {Proc..}
+
+
+
+{ === Proc to Unpost any remaining Docs, and recalculate all control totals === }
+
+Procedure TPartialUnpost.Part_UPDocs(BackPr,BackYr  :  Byte;
+                                     Fnum,Keypath   :  Integer;
+                                     RestVAT,
+                                     RestVPr        :  Boolean;
+                                 Var PostSummary    :  PostingSummaryArray);
+
+
+Var
+  KeyS     :  Str255;
+
+  B_Func   :  LongInt;
+
+  UOR,
+  VPr,
+  VYr      :  Byte;
+
+  Inum     :  Integer;
+
+  VATTot,
+  InvGTot,
+  InvDisc,
+  InvLDisc,
+  Rnum
+           :  Real;
+
+  Dnum     :  Double;
+
+  SalesOn
+           :  Boolean;
+
+  VATGType :  VATType;
+
+  GoodsRate:  CurrTypes;
+
+
+
+Begin
+  UOR := 0;
+  Rnum:=0; Dnum:=0.0;
+
+  ShowStatus(1,'Processing Transactions');
+
+  With MTExLocal^ do
+  Begin
+    LResetRec(IdetailF);
+
+    If (RestVPr) then
+      For SalesOn:=BOff to BOn do
+        LDeleteLinks(IOVATCh[SalesOn],NHistF,1,NHK,BOff);
+
+
+    KeyS:=FullNomKey(1);
+
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+    While (LStatusOk)  and (Not ThreadRec^.THAbort) do
+    With LInv do
+    Begin
+
+      B_Func:=B_GetNext;
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      ShowStatus(2,OurRef);
+
+      If (RunNo>0) then
+      Begin
+        If (Pr2Fig(AcYr,AcPr)>Pr2Fig(BackYr,BackPr)) then
+        Begin
+
+          B_Func:=B_GetGEq;
+
+          Unpost_Heading(BackPr,BackYr,InvF,InvFolioK,FolioNum,RestVAT,RestVpr);
+
+        end
+        else
+        Begin
+          SalesOn:=(InvDocHed In SalesSplit);
+
+          If (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) and (RestVPr) then {* Only Post to individual VAT
+                                                                                     History if not }
+          Begin                                                                   {Cash Accounting *}
+
+            If (VATPostDate='') then
+              VATPostDate:=LSetVATPostDate(MTExLocal^,2,''); {v5.51. Allows override of VAT post date by hook}
+              
+            Inum:=Part_Date('Y',VATPostDate)-1900;
+
+            If (Inum>=0) then
+              VYr:=Inum
+            else
+              VYr:=0;
+
+            VPr:=Part_Date('M',VATPostDate);
+
+            LDef_InvCalc(MTExLocal);
+
+
+            UOR:=fxUseORate(BOff,BOn,CXRate,UseORate,Currency,0);
+
+            GoodsRate:=OrigRates;
+
+            If (OldORates[BOff]<>0.0) then {* We have been through a conversion, and this needs to be stated
+                                             in original currency*}
+              GoodsRate:=OldORates;
+
+            { ========= Post to VAT History for Line ========== }
+
+            For VATGType:=VStart to VEnd do
+            Begin
+              InvGTot:=Conv_VATCurr(LInvNetAnal[VATGType],VATCRate[UseCoDayRate],
+                                 XRate(GoodsRate,BOff,Currency),Currency,UseORate)*DocCnst[InvDocHed]*DocNotCnst;
+
+              VatTot:=(Conv_VATCurr(InvVATAnal[VATGType],VATCRate[BOn],Calc_BConvCXRate(LInv,CXRate[BOn],BOn),Currency,UseORate)*
+                                    DocCnst[InvDocHed]*DocNotCnst);
+
+
+              If (VATTot<>0) or (InvGTot<>0) then
+              Begin
+                 {$IFDEF DBD}
+                   If (Debug) and (InvDocHed=NMT) then
+                     MessageBeep(0);
+
+                 {$ENDIF}
+
+                Post_To_Hist(IOVATCode(InvDocHed,NOMVATIO),
+                             FullCustCode(SyssVAT^.VATRates.VAT[VATGtype].Code),
+                             VATTot,InvGTot,0,0,VYr,VPr,
+                             Dnum);
+
+              end;
+            end;
+
+
+          end;
+
+
+          {** ReCalc control totals **}
+
+          VATTot:=Conv_TCurr(InvVAT,CXRate[BOn],Currency,UseORate,BOff);
+
+          CalcSum(PostingAnalysisDocTypes[VATSalesMode(SalesOn,Spare8),8],VATSalesMode(SalesOn,Spare8),BOff,PostSummary,(VATTot*DocCnst[InvDocHed]));  {* Post to Summary Array *}
+
+          InvDisc:=0;  InvLDisc:=0;
+
+
+          InvLDisc:=DiscAmount;
+
+          If (DiscTaken) then
+            InvDisc:=InvDisc+DiscSetAm;
+
+
+          {$IFDEF MC_On}
+
+            InvGTot:=ConvCurrITotal(LInv,BOff,BOn,BOn);
+
+            InvDisc:=Conv_TCurr(InvDisc,XRate(CXRate,BOff,Currency),Currency,UOR,BOff);
+
+            InvLDisc:=Conv_TCurr(InvLDisc,XRate(CXRate,BOff,Currency),Currency,UOR,BOff);
+
+          {$ELSE}
+
+            InvGTot:=ITotal(LInv){-Inv.InvVAT}; {  Deduct VAT so that currency version of debtors does not include vat
+                                                this is so that a revaluation will only affect the net part of the
+                                                nominal, as VAT is already converted @ the Day rate }
+
+          {$ENDIF}
+
+          {* Post to Sales *}
+          CalcSum(InvDocHed,SalesOn,BOff,PostSummary,
+                        ((InvGTot-Round_Up(VATTot,2)+Round_Up(InvDisc,2)+Round_Up(InvLDisc,2))*DocCnst[InvDocHed]));
+
+          If (Not (InvDocHed In DirectSet)) then {* Post to Debtors *}
+            CalcSum(PostingAnalysisDocTypes[SalesOn,9],SalesOn,BOn,PostSummary,(InvGTot*DocCnst[InvDocHed]*DocNotCnst))
+          else
+            CalcSum(InvDocHed,SalesOn,BOn,PostSummary,(InvGTot*DocCnst[InvDocHed]*DocNotCnst));{* Post to Summary Array *}
+
+
+          {* Post to discounts *}
+          CalcSum(PostingAnalysisDocTypes[SalesOn,6],SalesOn,BOff,PostSummary,(InvDisc*DocCnst[InvDocHed]*DocNotCnst));
+
+          {* Post to Line Discounts *}
+
+          CalcSum(PostingAnalysisDocTypes[SalesOn,7],SalesOn,BOff,PostSummary,(InvLDisc*DocCnst[InvDocHed]*DocNotCnst));
+
+        end;
+      end;
+
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+    If (RestVAT) and (Not RestVPr) and (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme))  and (Not ThreadRec^.THAbort) then {* Clear all unposted docs VAT date *}
+      Part_UnPostItBatch(BackPr,BackYr,0,RestVAT);  {* Reset all unposted VAT Headers *}
+
+
+    {* Unpost any ADJ+?BTS *}
+
+    Part_UnPostItBatch(BackPr,BackYr,BatchPostRunNo,BOff);  {* Unpost all batch headers *}
+
+    Part_UnPostItBatch(BackPr,BackYr,StkAdjRunNo,BOff);    {* Unpost all Stk Adjust headers *}
+  end;{With..}
+
+end; {Proc..}
+
+
+
+
+
+{ ======== Procedure to Control Partial unpost ====== }
+
+
+Procedure TPartialUnpost.Control_PartUnpost;
+
+
+Var
+  BackPr,
+  BackYr   :  Byte;
+
+  PostSumm :  PostingSummaryArray;
+
+  RestVAT,
+  RestVPr,
+  AbortPUP :  Boolean;
+  PALBFRec :  PALBFType;
+
+
+Begin
+  Blank(PALBFRec,Sizeof(PALBFRec));
+
+  With CRepParam^ do
+  Begin
+    RestVAT:=UnResetVAT; RestVPr:=ReCalcVATPr;
+
+    BackPr:=UnPostPr; BackYr:=UnPostYr;
+  end;
+
+  With MTExLocal^ do
+  Begin
+
+
+    ItemCount:=0;
+
+    ItemTotal:=Used_RecsCId(LocalF^[CustF],CustF,ExCLientId)+Used_RecsCId(LocalF^[InvF],InvF,ExCLientId)+
+               Used_RecsCId(LocalF^[NomF],NomF,ExCLientId);
+
+    If (Syss.PostCCDCombo) then {* Find all combinations of cc/dep*}
+      ItemTotal:=ItemTotal+Used_RecsCId(LocalF^[PWrdF],PWrdF,ExCLientId);
+
+    {$IFDEF STK}
+
+      ItemTotal:=ItemTotal++Used_RecsCId(LocalF^[StockF],StockF,ExCLientId);
+
+    {$ENDIF}
+
+
+    ShowStatus(0,' - Partial Unpost back to '+PPR_OutPr(BackPr,BackYr));
+
+    { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation:
+      Prepare the cache of Cost Centres/Departments }
+    if fOptimise then
+      BuildCCDeptCache;
+
+    {* Unpost nominal *}
+
+
+    ShowStatus(1,'Processing Nominal Ledger');
+
+    Part_UPTree(BackPr,BackYr,NomF,NomCatK,FullNomKey(0),RestVAT,RestVPr,PALBFRec);
+
+    { CJS 2013-03-26 - ABSEXCH-14174 - Partial Unpost Optimisation }
+    {$IFDEF PF_On}
+    if fOptimise then
+      Purge_PayIn;
+    {$ENDIF}
+    
+    Update_ProfitBF(BackPr,BackYr,PALBFRec);
+
+    {$IFDEF STK}
+
+      {* Unpost Stock Tree & Posted Stock *}
+
+      ShowStatus(1,'Processing Stock Ledger');
+
+
+      Part_UPStkTree(BackPr,BackYr,StockF,StkCatK,FullStockCode(''));
+
+    {$ENDIF}
+
+
+    {* Unpost Account posted balance *}
+
+    Part_UPAccBal(BackPr,BackYr,CustF,CustCodeK);
+
+    {* Reset Control Totals *}
+
+    Blank(PostSumm,Sizeof(PostSumm));
+
+    LChangeLinks('','',IncF,0,IncK);   {** Zero B/F Values    **}
+
+
+    InitPostingSumm(PostSumm,BOff);
+    {* Check for any stray docs, and recalc Ctrl Totals *}
+
+    Part_UPDocs(BackPr,BackYr,InvF,InvRNoK,RestVAT,RestVPr,PostSumm);
+
+    InitPostingSumm(PostSumm,BOn);
+
+  end; {With..}
+
+end;
+
+
+
+Procedure TPartialUnpost.Process;
+
+
+Begin
+
+  Inherited Process;
+
+  If (fWhoamI=1) then
+  With MTExLocal^ do
+  Begin
+    ItemTotal:=Used_RecsCId(LocalF^[IdetailF],IdetailF,ExCLientId)+Used_RecsCId(LocalF^[InvF],InvF,ExCLientId);
+
+    InitProgress(ItemTotal);
+
+    ShowStatus(0,'Partial Unpost');
+
+    {* Perform unpost *}
+
+    Control_PartUnpost;
+
+    UpdateProgress(ItemTotal);
+  end;
+
+
+end;
+
+
+Procedure TPartialUnpost.Finish;
+Begin
+  Inherited Finish;
+
+
+end;
+
+
+Function TPartialUnpost.Start  :  Boolean;
+
+Var
+  mbRet  :  Word;
+
+Begin
+  ProcessLockType := plUnpost;
+  With CRepParam^ do
+    mbRet:=CustomDlg(Application.MainForm,'Partial Unpost','Unpost Transactions after '+PPR_OutPr(UnPostPr,UnPostYr),
+                               'Please confirm you wish to unpost Transactions with a period after '+PPR_OutPr(UnPostPr,UnPostYr)+'.'+#13+
+                               'This will allow any unallocated Transactions to be edited once more, and remove'+
+                               ' the G/L balances after '+PPR_OutPr(UnPostPr,UnPostYr)+'.'+#13+
+                               'You will need to repost all Daybooks in order to re-establish the G/L balances.',
+                               mtWarning,
+                               [mbYes,mbNo]);
+
+
+  Result:=(mbRet=mrOK);
+
+
+  If (Result) then
+  Begin
+    {$IFDEF EXSQL}
+    if SQLUtils.UsingSQL then
+    begin
+      // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+      if (not Assigned(LPostLocal)) then
+        Result := Create_LocalThreadFiles;
+
+      If (Result) then
+        MTExLocal := LPostLocal;
+
+    end
+    else
+    {$ENDIF}
+    begin
+      If (Not Assigned(PostExLocal)) then { Open up files here }
+        Result:=Create_ThreadFiles;
+
+      If (Result) then
+        MTExLocal:=PostExLocal;
+    end;
+
+
+    If (Result) then {* Check if we can lock it *}
+    With MTExLocal^ do
+    Begin
+
+      Result:=PostLockCtrl(0);
+
+
+
+      If (Not Result) then {* Remove lock... *}
+      Begin
+        PostUnLock(0);
+
+      end;
+
+    end;
+  end;
+  {$IFDEF EXSQL}
+  if Result and SQLUtils.UsingSQL then
+  begin
+    MTExLocal^.Close_Files;
+    CloseClientIdSession(MTExLocal^.ExClientID, False);
+  end;
+  {$ENDIF}
+
+end;
+
+
+
+
+Procedure AddPUnpost2Thread(AOwner   :  TObject;
+                            Options  :  PUnPostParam);
+
+
+
+
+Var
+  LCheck_Nom :  ^TPartialUnpost;
+  sCompCode : ShortString; 
+Begin
+
+  If (Create_BackThread) then
+  Begin
+    New(LCheck_Nom,Create(AOwner));
+
+    try
+      With LCheck_Nom^ do
+      Begin
+        CRepParam^:=Options;
+
+        If (Start) and (Create_BackThread) then
+        Begin
+          If (AOwner is TForm) then
+            MyOHandle:=TForm(AOwner).Handle;
+
+          // MH 05/01/2018 2017-R1 ABSEXCH-19316: Disable new SQL Posting due to the Unpost potentially
+          // unposting dodgy transactions
+          If SQLUtils.UsingSQL Then
+          Begin
+            sCompCode := SQLUtils.GetCompanyCode(SetDrive);
+            If (SQLReportsConfiguration.SQLPostingStatus [sCompCode] = psPassed) Then
+              SQLReportsConfiguration.SetSQLPostingStatus(sCompCode, psPending);
+          End; // If SQLUtils.UsingSQL
+
+          With BackThread do
+            AddTask(LCheck_Nom,'Partial Unpost');
+
+        end
+        else
+        Begin
+          IsCancelled := True;
+          Set_BackThreadFlip(BOff);
+          Dispose(LCheck_Nom,Destroy);
+        end;
+      end; {with..}
+
+    except
+      LCheck_Nom.IsCancelled := True;
+      Dispose(LCheck_Nom,Destroy);
+
+    end; {try..}
+  end; {If process got ok..}
+
+end;
+
+
+
+
+  { ========== TRunUnpost methods =========== }
+
+Constructor TRunUnpost.Create(AOwner  :  TObject);
+
+Begin
+  Inherited Create(AOwner);
+
+
+  fWhoAmI:=2;
+
+  JobTitle:='Unpost by Run Number';
+
+  New(CRepParam);
+
+  FillChar(CRepParam^,Sizeof(CRepParam^),#0);
+
+end;
+
+Destructor TRunUnpost.Destroy;
+
+Begin
+
+  Inherited Destroy;
+
+  {Dispose(CRepParam); Already destroyed by ancestor class}
+end;
+
+ { ============ Process Pay_In Lines ============= }
+
+
+Procedure TRunUnpost.UnProcess_Payin(CurrKeyPath  :  Integer);
+
+
+
+Const
+
+ Fnum     =  IDetailF;
+
+ Keypath  =  IdStkK;
+
+ ItemStr  :  Array[BOff..BOn] of Str10 =(' Item ',' Items ');
+
+
+
+Var
+ Idr      :  IDetail;
+
+ KeyChk,
+ KeyS     :  Str255;
+
+ NextRef  :  Str10;
+
+ LOk,
+ Locked
+          :  Boolean;
+
+ RecAddr  :  LongInt;
+
+
+
+
+Begin
+
+ With MTExLocal^ do
+ Begin
+
+   Idr:=LId;
+
+   RecAddr:=0;
+
+   With LId do
+   Begin
+
+
+     NextRef:=Extract_PayRef2(StockCode);
+
+
+     {$B-}
+
+     If ((IS_PayInLine(StockCode)) and (Has_PayInMode(NomCode))) then
+
+     {$B+}
+
+     Begin
+
+       LStatus:=LGetPos(Fnum,RecAddr);  {* Preserve Posn of Invoice Line *}
+
+       If (LStatusOk) then
+       Begin
+
+         KeyChk:=Full_PostPayInKey(PayOutCode,NomCode,Currency,NextRef);
+
+         KeyS:=KeyChk;
+
+         LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyS);
+
+         If (LStatusOk) then
+         Begin
+
+           KeyS:=KeyChk;
+
+           LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOn,Locked);
+
+           If (LOk) and (Locked) then
+           Begin
+             LGetRecAddr(Fnum);
+
+             NetValue:=NetValue+(DetLTotal(Idr,Not Syss.SepDiscounts,BOff,0.0)*DocNotCnst);
+
+             QtyWOFF:=QtyWOFF-1;
+
+             If (QtyWOff<1) or (Round_Up(NetValue,2)=0.0) then
+               LStatus:=LDelete_Rec(Fnum,Keypath)
+             else
+             Begin
+
+               Desc:=NextRef+' '+Form_Real(QtyWOFF,1,0)+ItemStr[(QtyWOFF>1)];
+
+               LStatus:=LPut_Rec(Fnum,KeyPath);
+
+               LStatus:=LUnLockMLock(Fnum);
+
+             end;
+
+             LReport_BError(Fnum,LStatus);
+
+             LSetDataRecOfs(Fnum,RecAddr);
+
+             LStatus:=LGetDirect(Fnum,CurrKeyPath,0);
+
+             LId:=IdR;
+           end; {If Parent not found..}
+         end {If Payin Line Locked Ok..}
+         else
+           LId:=Idr;  {* attempt to restore record.. *}
+
+       end; {If Actual detail line pos recorded ok..}
+     end; {If Line is possible to process..}
+   end; {With..}
+ end; {With..}
+end; {Proc..}
+
+
+
+
+Procedure TRunUnpost.UnPost_DetailsxRun(RunNo  :  LongInt);
+
+
+Const
+  Fnum     =  IDetailF;
+  KeyPath  =  IDRunK;
+
+
+
+Var
+  UOR         :  Byte;
+
+  Key,ScanKey :  Str255;
+
+
+  Cleared     :  Double;
+
+  CrDr,
+  DiscCrDr    :  DrCrDType;
+
+
+  CTot,
+  LineVATRate :  Double;
+
+  B_Func      :  Integer;
+
+  TTEnabled,
+  WarnAbort,
+  Loop        :  Boolean;
+
+
+Begin
+  WarnAbort:=BOff;
+  Cleared := 0;
+  Loop:=BOff;  TTEnabled:=BOff;  UOR:=0;
+
+  LineVATRate:=0.0;
+
+  Key:=FullNomKey(RunNo);
+
+  ScanKey:=Key;
+
+
+  With MTExLocal^ do
+  Begin
+
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,ScanKey);
+
+    While (LStatusOk) and (CheckKey(Key,ScanKey,Length(Key),BOn)) and (Not Has_Aborted) do
+    With LId do
+    Begin
+      SetControlCodes(IdDocHed,UPCtrlSet);
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      B_Func:=B_GetNext;
+
+      TTEnabled:=BOff;
+
+       If (TranOk2Run) then
+       Begin
+         LStatus:=LCtrl_BTrans(1);
+
+         TTEnabled:=LStatusOk;
+
+         {* Wait until All clear b4 continuing *}
+         If (TTEnabled) then
+           WaitForHistLock;
+
+       end
+       else
+         TTEnabled:=BOff;
+
+
+      If (Not WarnAbort) and (Has_Aborted) then
+      Begin
+        ShowStatus(3,'Please wait, finishing current transaction.');
+        WarnAbort:=BOn;
+      end;
+
+
+      CTot:=DetLTotal(LId,(Not Syss.SepDiscounts) or (IdDocHed=Run),BOff,0.0)*DocNotCnst;
+
+      If (NetValue<>0) or (CTot<>0) or (LineNo=StkLineNo) then
+      Begin
+
+
+        ShowDrCrD(CTot,CrDr);
+
+
+        {$IFDEF DBD}
+
+        {$ENDIF}
+
+        If (LineNo<>StkLineNo) and ((PPr<>0) and (PYr<>0)) then  {* Ignore Stock deduct lines or cost only lines *}
+        Begin
+          UOR:=fxUseORate(BOff,BOn,CXRate,UseORate,Currency,0);
+
+          LPost_To_Nominal(FullNomKey(NomCode),CrDr[BOff],CrDr[BOn],Cleared,Currency,PYr,PPr,1,BOff,(IdDocHed<>Run),BOff,
+                           CXRate,PreviousBal,NomCode,UOR);
+
+
+          Begin
+            PostedRun:=0;
+
+            {$IFDEF PF_On}
+              If (Syss.PostCCNom) and (Syss.UseCCDep) then
+              Begin
+                Repeat
+                  If (Not EmptyKeyS(CCDep[Loop],ccKeyLen,BOff)) then
+                  Begin
+                    LPost_To_CCNominal(FullNomKey(NomCode),CrDr[BOff],CrDr[BOn],Cleared,Currency,PYr,PPr,1,BOff,(IdDocHed<>Run),BOff,
+                                      CXRate,PostCCKey(Loop,CCDep[Loop]),UOR);
+
+                    {* Post to combination *}
+                    If (Syss.PostCCDCombo) then
+                      LPost_To_CCNominal(FullNomKey(NomCode),CrDr[BOff],CrDr[BOn],Cleared,Currency,PYr,PPr,1,BOff,(IdDocHed<>Run),BOff,
+                                      CXRate,PostCCKey(Loop,CalcCCDepKey(Loop,CCDep)),UOR);
+
+                  end;
+
+                  Loop:=Not Loop;
+
+                Until (Not Loop);
+              end;
+
+          {$ENDIF}
+          end;
+        end;
+
+        If (IdDocHed<>Run) then
+        Begin
+          {$IFDEF PF_On}
+
+            If (IS_PayInLine(StockCode)) then  {* Re-set the paying in reference so
+                                                  reposting with reestablish it *}
+            Begin
+              UnProcess_Payin(Keypath);
+
+              StockCode:=Pre_PostPayInKey(PayInCode,Extract_PayRef2(StockCode));
+
+            end;
+
+          {$ENDIF}
+
+          If (IdDocHed=ADJ) then
+            B2BLink:=FolioRef  {* This field used to recover from PMP. set it to own ref, so it does not generate a new NOM,
+                                   but still updates posted levels *}
+          else                 {* If sales and set to itself reset a sales hidden line so it will get reposted}
+            If (B2BLink=FolioRef) and (IdDocHed In SalesSplit) and (LineNo=StkLineNo) then
+              B2BLink:=0;
+
+
+          PreviousBal:=0.0;
+
+          LStatus:=LPut_Rec(Fnum,Keypath);
+
+
+          If (LStatusOk) then
+            B_Func:=B_GetGEq;
+
+          LReport_BError(Fnum,LStatus);
+
+          If (Not AbortTran) then
+            AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+
+
+          {* Post to VAT History do NOT post to :-
+             Directs - payment part lines,
+             Reciepts,
+             Nom Txfrs.
+             Do not post either if a triangulation or process invoice (v4.31)
+             DO Not Post here if Cash Accounting Mode,
+             or Auto Deduct Line.
+
+          *}
+
+          If (LStatusOk) and
+          ((Not (LInv.InvDocHed In RecieptSet+NomSplit))
+          or   ((LInv.InvDocHed In NOMSplit) and (LInv.NOMVATIO<>C0)))
+          and (VATCode<>C0)
+             and (LineNo<>StkLineNo)
+             and (Not (LInv.SSDProcess In ['P','T']))
+             and (Not VAT_CashAcc(SyssVAT.VATRates.VATScheme)) then
+          Begin
+            { ========= Post to VAT History for Line ========== }
+
+            With CRepParam^ do
+              Unpost_Heading(0,0,InvF,InvFolioK,FolioRef,UnResetVAT,ReCalcVATPr);
+
+
+            LStatus:=0;
+          end;
+
+            
+          If (LStatusOk) then
+          Begin
+          {$IFDEF STK}
+
+            Stock_PostCtrl(LId,Ctot,BOff);
+
+
+          {$ENDIF}
+
+
+
+          {If (Syss.UsePayIn) then
+            Process_PayIn(Keypath); Need to sort}
+
+         end;
+
+        end {If Already posted... }
+        else
+        Begin
+          LStatus:=LDelete_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+
+          If (LStatusOk) then
+            B_Func:=B_GetGEq;
+        end;
+      end;
+
+
+      If (TTEnabled) and (Syss.ProtectPost) then
+      With MTExLocal^ do
+      Begin
+        UnLockHistLock;
+
+        LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+        LReport_BError(IdetailF,LStatus);
+
+        ThreadDelay(600,BOff); {* This delay seemed necessary in order to give other ws a chance to issue system transactions *}
+
+        AbortTran:=BOff;
+
+      end;
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,ScanKey);
+    end; {While..}
+
+
+  end; {With..}
+end; {Proc..}
+
+
+{$IFDEF STK}
+  {Hidden Stock lines and zero value lines will not be stamped with a posting run, so we need to track them via the document to update
+  the posted stock levels correctly}
+
+  Procedure TRunUnpost.UnPost_StkLinesxRun(FolioN  :  LongInt);
+
+
+  Const
+    Fnum     =  IDetailF;
+    KeyPath  =  IDFolioK;
+
+
+
+  Var
+    Key,ScanKey :  Str255;
+
+    CTot        :  Double;
+
+
+  Begin
+
+    Key:=FullNomKey(FolioN);
+
+    ScanKey:=FullIdKey(FolioN,StkLineNo);
+
+
+    With MTExLocal^ do
+    Begin
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,ScanKey);
+
+      While (LStatusOk) and (CheckKey(Key,ScanKey,Length(Key),BOn)) and (Not Has_Aborted) do
+      With LId do
+      Begin
+        Inc(ItemCount);
+
+        UpdateProgress(ItemCount);
+
+        CTot:=DetLTotal(LId,(Not Syss.SepDiscounts) or (IdDocHed=Run),BOff,0.0)*DocNotCnst;
+
+        If ((NetValue=0) or (CTot=0) or (LineNo=StkLineNo)) and (IdDocHed<>Run) then {Attempt to reverse out stock effect}
+          Stock_PostCtrl(LId,0.0,BOff);
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,ScanKey);
+      end; {While..}
+
+
+    end; {With..}
+  end; {Proc..}
+{$ENDIF}
+
+  { === Proc to Unpost any remaining Docs, and recalculate all control totals === }
+
+Procedure TRunUnpost.UPRunDocs(Fnum,Keypath   :  Integer;
+                               RestVAT,
+                               RestVPr        :  Boolean;
+                           Var PostSummary    :  PostingSummaryArray;
+                               URunNo         :  LongInt);
+
+
+
+Var
+  KeyChk,
+  KeyS     :  Str255;
+
+  B_Func   :  LongInt;
+
+  UOR,
+  VPr,
+  VYr      :  Byte;
+
+  Inum     :  Integer;
+
+  VATTot,
+  InvGTot,
+  InvDisc,
+  InvLDisc,
+  Rnum
+           :  Real;
+
+  Dnum     :  Double;
+
+  SalesOn,
+  TTEnabled
+           :  Boolean;
+
+  VATGType :  VATType;
+
+  GoodsRate:  CurrTypes;
+
+  TTMsg    :  Str50;
+
+
+
+Begin
+  UOR := 0;
+  Rnum:=0; Dnum:=0.0;  TTEnabled:=BOff;
+
+  With MTExLocal^ do
+  Begin
+
+    KeyS:=FullNomKey(URunNo);
+    KeyChk:=KeyS;
+
+
+    LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+
+    While (LStatusOk) and (CheckKey(KeyS,KeyChk,Length(KeyChk),BOff)) and (Not Has_Aborted) do
+    With LInv do
+    Begin
+
+      B_Func:=B_GetNext;
+
+      Inc(ItemCount);
+
+      UpdateProgress(ItemCount);
+
+      If (RunNo=URunNo) then
+      Begin
+        If (TranOk2Run) then
+        Begin
+          LStatus:=LCtrl_BTrans(1);
+
+          TTEnabled:=LStatusOk;
+
+          TRanOk2Run:=TTEnabled;
+
+          If (TTEnabled) then
+            TTMsg:='. Protected Mode.';
+
+          ShowStatus(1,'Run No.: '+Form_Int(URunNo,0)+TTMsg);
+
+          {* Wait until All clear b4 continuing *}
+          If (TTEnabled) then
+            WaitForHistLock;
+
+        end
+        else
+          TTEnabled:=BOff;
+
+
+        SalesOn:=(InvDocHed In SalesSplit);
+
+        If (Not VAT_CashAcc(SyssVAT^.VATRates.VATScheme)) then {* Only Post to individual VAT
+                                                                                   History if not }
+        Begin                                                                   {Cash Accounting *}
+          If (VATPostDate='') then
+            VATPostDate:=LSetVATPostDate(MTExLocal^,2,''); {v5.51. Allows override of VAT post date by hook}
+              
+          Inum:=Part_Date('Y',VATPostDate)-1900;
+
+          If (Inum>=0) then
+            VYr:=Inum
+          else
+            VYr:=0;
+
+          VPr:=Part_Date('M',VATPostDate);
+
+          Post_VAT(VYr,VPr,BOn);
+          if DoReverseCharge(LInv) then
+          begin
+            Post_ECVAT(VYr, VPr, BOn);
+//            VATTot := Conv_TCurr(LId.PurchaseServiceTax, CXRate[BOn], Currency, UseORate, BOff);
+            VATTot := CalcPurchaseServiceVATTotal;
+            VATTot := Conv_VATCurr(
+                                    VATTot,
+                                    LInv.VATCRate[BOn],
+                                    Calc_BConvCXRate(LInv, LInv.CXRate[BOn], BOn),
+                                    LInv.Currency,
+                                    LInv.UseORate
+                                  );
+            CalcSum(PostingAnalysisDocTypes[SalesOn, 8], SalesOn, BOff, PostSummary, (VATTot * DocCnst[InvDocHed] * DocNotCnst));
+            CalcSum(PostingAnalysisDocTypes[not SalesOn, 8], not SalesOn, BOff, PostSummary, (VATTot * DocCnst[InvDocHed]));
+          end;
+
+        end;
+
+
+        {** ReCalc control totals **}
+
+        VATTot:=Conv_TCurr(InvVAT,CXRate[BOn],Currency,UseORate,BOff);
+
+
+        CalcSum(PostingAnalysisDocTypes[SalesOn,8],SalesOn,BOff,PostSummary,(VATTot*DocCnst[InvDocHed]*DocNotCnst));  {* Post to Summary Array *}
+
+
+        InvDisc:=0;  InvLDisc:=0;
+
+
+        InvLDisc:=DiscAmount;
+
+        If (DiscTaken) then
+          InvDisc:=InvDisc+DiscSetAm;
+
+
+        {$IFDEF MC_On}
+
+          InvGTot:=ConvCurrITotal(LInv,BOff,BOn,BOn);
+
+          InvDisc:=Conv_TCurr(InvDisc,XRate(CXRate,BOff,Currency),Currency,UOR,BOff);
+
+          InvLDisc:=Conv_TCurr(InvLDisc,XRate(CXRate,BOff,Currency),Currency,UOR,BOff);
+
+        {$ELSE}
+
+          InvGTot:=ITotal(LInv){-Inv.InvVAT}; {  Deduct VAT so that currency version of debtors does not include vat
+                                              this is so that a revaluation will only affect the net part of the
+                                              nominal, as VAT is already converted @ the Day rate }
+
+        {$ENDIF}
+
+        {* Post to Sales *}
+        CalcSum(InvDocHed,SalesOn,BOff,PostSummary,
+                      ((InvGTot-Round_Up(VATTot,2)+Round_Up(InvDisc,2)+Round_Up(InvLDisc,2))*DocCnst[InvDocHed]*DocNotCnst));
+
+        If (Not (InvDocHed In DirectSet)) then {* Post to Debtors *}
+          CalcSum(PostingAnalysisDocTypes[SalesOn,9],SalesOn,BOn,PostSummary,(InvGTot*DocCnst[InvDocHed]))
+        else
+          CalcSum(InvDocHed,SalesOn,BOn,PostSummary,(InvGTot*DocCnst[InvDocHed]));{* Post to Summary Array *}
+
+
+        {* Post to discounts *}
+        CalcSum(PostingAnalysisDocTypes[SalesOn,6],SalesOn,BOff,PostSummary,(InvDisc*DocCnst[InvDocHed]));
+
+        {* Post to Line Discounts *}
+
+        CalcSum(PostingAnalysisDocTypes[SalesOn,7],SalesOn,BOff,PostSummary,(InvLDisc*DocCnst[InvDocHed]));
+
+        If (ResetVAT) then
+          Blank(VATPostDate,Sizeof(VATPostDate));
+
+        RunNo:=0;
+
+        {$IFDEF MC_On} {* Reverse out customer balance *}
+
+
+            LUpdateBal(LInv,(InvGTot*DocCnst[InvDocHed]),
+                           (ConvCurrICost(LInv,BOff,BOn)*DocCnst[InvDocHed]),
+                           (ConvCurrINet(LInv,BOff,BOn)*DocCnst[InvDocHed]),
+                           BOff,(0+Ord(Not Syss.UpBalOnPost)));
+
+
+        {$ELSE}   {* On Single Currency Post Cust Bal here, as loop only runs once with AutoLZ True *}
+
+          LUpdateBal(LInv,(InvGTot*DocCnst[InvDocHed]),
+                         (ConvCurrICost(LInv,BOff,BOn)*DocCnst[InvDocHed]),
+                         (ConvCurrINet(LInv,BOff,BOn)*DocCnst[InvDocHed]),
+                         BOff,(0+Ord(Not Syss.UpBalOnPost)));
+
+        {$ENDIF}
+
+
+        LStatus:=LPut_Rec(Fnum,Keypath);
+
+        LReport_BError(Fnum,LStatus);
+
+        If (TTEnabled) then {* Update it for each post under protected mode*}
+          // InitPostingSumm(PostSummary,BOn);
+          // CJS - 18/04/2011: ABSEXCH-11252 - Posting Run performance enhancements
+          UpdatePostingSummary(PostSummary, LInv.InvDocHed);
+
+
+        If (Not AbortTran) then
+          AbortTran:=(Not LStatusOk) and (TTEnabled);
+
+        {$IFDEF STK}
+          UnPost_StkLinesxRun(FolioNum);
+        {$ENDIF}
+
+        B_Func:=B_GetGEq;
+
+        If (TTEnabled) and (Syss.ProtectPost) then
+        With MTExLocal^ do
+        Begin
+          UnLockHistLock;
+
+          LStatus:=LCtrl_BTrans(0+(2*Ord(AbortTran)));
+
+          LReport_BError(InvF,LStatus);
+
+          If (AbortTran) then
+            B_Func:=B_GetNext;
+
+          If (Not HaveAborted) then
+            HaveAborted:=AbortTran;
+
+          AbortTran:=BOff;
+        end;
+
+
+      end;
+
+      LStatus:=LFind_Rec(B_Func,Fnum,KeyPath,KeyS);
+
+    end; {While..}
+
+  end;{With..}
+
+end; {Proc..}
+
+
+
+{ ======== Procedure to Control Partial unpost ====== }
+
+
+Procedure TRunUnpost.Control_RunUnpost;
+
+
+Var
+  RunLoop,
+  RunCount :  LongInt;
+
+  PostSumm :  PostingSummaryArray;
+
+  RestVAT,
+  RestVPr,
+  AbortPUP :  Boolean;
+  PALBFRec :  PALBFType;
+
+
+Begin
+
+  Blank(PALBFRec,Sizeof(PALBFRec));
+
+
+  With MTExLocal^, CRepParam^ do
+  Begin
+
+    RestVAT:=UnResetVAT; RestVPr:=ReCalcVATPr;
+
+    ItemCount:=0;
+
+    ShowStatus(0,'Unpost Runs '+Form_Int(FromRunUP,0)+' to '+Form_Int(ToRunUP,0));
+
+    RunLoop:=FromRunUP;
+
+    Blank(PostSumm,Sizeof(PostSumm));
+
+
+    InitPostingSumm(PostSumm,BOff);
+
+    Repeat
+      ShowStatus(1,'Processing Run '+Form_Int(RunLoop,0));
+
+      UnPost_DetailsxRun(RunLoop);
+
+      If (Not Has_Aborted) then
+        UPRunDocs(InvF,InvRNoK,RestVAT,RestVPr,PostSumm,RunLoop);
+
+      Inc(RunLoop);
+
+    Until (RunLoop>ToRunUP) or (Has_Aborted);
+
+
+    InitPostingSumm(PostSumm,BOn);
+
+    {Purge_PayIn; This should be done on an individual basis}
+
+
+  end; {With..}
+
+end;
+
+
+Procedure TRunUnpost.Process;
+
+
+Begin
+
+  Inherited Process;
+
+  If (fWhoamI=2) then
+  With MTExLocal^ do
+  Begin
+    UnpostRunNo:=CRepParam^.FromRunUP;
+
+    ItemTotal:=Used_RecsCId(LocalF^[IdetailF],IdetailF,ExCLientId)+Used_RecsCId(LocalF^[InvF],InvF,ExCLientId);
+
+    InitProgress(ItemTotal);
+
+    ShowStatus(0,'Partial Unpost');
+
+    {* Perform unpost *}
+
+    Control_RunUnpost;
+
+    UpdateProgress(ItemTotal);
+  end;
+
+
+end;
+
+
+Procedure TRunUnpost.Finish;
+Begin
+  Inherited Finish;
+
+
+end;
+
+
+Function TRunUnpost.Start  :  Boolean;
+
+Var
+  mbRet  :  Word;
+
+Begin
+  With CRepParam^ do
+    mbRet:=CustomDlg(Application.MainForm,'Unpost Run','Unpost Posting Run '+Form_Int(FromRunUP,0)+' to '+Form_Int(ToRunUP,0),
+                               'Please confirm you wish to unpost Transactions back to and including Posting Run '+Form_Int(FromRunUP,0)+'.'+#13+
+                               'This will allow any unallocated Transactions to be edited once more, and attempt to reverse the effect the postings had'+
+                               ' on the G/L, but may not correct an unbalanced G/L. '+#13+
+                               'You will need to repost all Daybooks in order to re-establish the G/L balances.',
+                               mtWarning,
+                               [mbYes,mbNo]);
+
+
+  Result:=(mbRet=mrOK);
+
+
+  If (Result) then
+  Begin
+    {$IFDEF EXSQL}
+    if SQLUtils.UsingSQL then
+    begin
+      // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+      if (not Assigned(LPostLocal)) then
+        Result := Create_LocalThreadFiles;
+
+      If (Result) then
+        MTExLocal := LPostLocal;
+
+    end
+    else
+    {$ENDIF}
+    begin
+      If (Not Assigned(PostExLocal)) then { Open up files here }
+        Result:=Create_ThreadFiles;
+
+      If (Result) then
+        MTExLocal:=PostExLocal;
+    end;
+
+    If (Result) then {* Check if we can lock it *}
+    With MTExLocal^ do
+    Begin
+
+      Result:=PostLockCtrl(0);
+
+
+
+      If (Not Result) then {* Remove lock... *}
+      Begin
+        PostUnLock(0);
+
+      end
+      else
+      If (Syss.ProtectPost) and (BTFileVer>=6) then
+      Begin
+        If (Not AlreadyInPost) then
+          LStatus:=LCtrl_BTrans(1)
+        else
+          LStatus:=0;
+
+        TranOk2Run:=LStatusOk or (LStatus=37) {* Is already running *};
+
+        If (Not TranOk2Run) then
+        Begin
+           AddErrorLog('Posting Run. Protected Mode could not be started. (Error '+Form_Int(LStatus,0)+')','',4);
+
+           LReport_BError(InvF,LStatus);
+
+           Result:=(CustomDlg(Application.MainForm,'WARNING!','UnPost By Run No',
+                           'It was not possible to start Protected Mode UnPosting due to an error. '+
+                           Form_Int(LStatus,0)+'.'#13+
+                           'Do you wish to continue posting without Protected Mode?',
+                           mtWarning,
+                           [mbYes,mbNo]
+                           )=mrOk);
+
+
+        end;
+
+        If (LStatusOk) and (Not AlreadyInPost) then
+          LStatus:=LCtrl_BTrans(0);
+
+      end;
+
+
+    end;
+  end;
+  {$IFDEF EXSQL}
+  if Result and SQLUtils.UsingSQL then
+  begin
+    MTExLocal^.Close_Files;
+    CloseClientIdSession(MTExLocal^.ExClientID, False);
+  end;
+  {$ENDIF}
+
+end;
+
+
+Procedure AddRunUnpost2Thread(AOwner   :  TObject;
+                              Options  :  PUnPostParam);
+
+
+
+
+Var
+  LCheck_Nom :  ^TRunUnpost;
+  sCompCode : ShortString;
+Begin
+
+  If (Create_BackThread) then
+  Begin
+    New(LCheck_Nom,Create(AOwner));
+
+    try
+      With LCheck_Nom^ do
+      Begin
+        CRepParam^:=Options;
+
+        If (Start) and (Create_BackThread) then
+        Begin
+          If (AOwner is TForm) then
+            MyOHandle:=TForm(AOwner).Handle;
+
+          // MH 05/01/2018 2017-R1 ABSEXCH-19316: Disable new SQL Posting due to the Unpost potentially
+          // unposting dodgy transactions
+          If SQLUtils.UsingSQL Then
+          Begin
+            sCompCode := SQLUtils.GetCompanyCode(SetDrive);
+            If (SQLReportsConfiguration.SQLPostingStatus [sCompCode] = psPassed) Then
+              SQLReportsConfiguration.SetSQLPostingStatus(sCompCode, psPending);
+          End; // If SQLUtils.UsingSQL
+
+          With BackThread do
+            AddTask(LCheck_Nom,'Unpost by Run');
+
+        end
+        else
+        Begin
+          IsCancelled := True;
+          Set_BackThreadFlip(BOff);
+          Dispose(LCheck_Nom,Destroy);
+        end;
+      end; {with..}
+
+    except
+      LCheck_Nom.IsCancelled := True;
+      Dispose(LCheck_Nom,Destroy);
+
+    end; {try..}
+  end; {If process got ok..}
+
+end;
+
+
+
+Initialization
+
+
+Finalization
+
+
+end.
+
+
+

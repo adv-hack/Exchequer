@@ -1,0 +1,36 @@
+[Version]
+Version=7.0.6.092
+
+[Customer]
+F035=CU.BankSort                  0692    S 0015 N   Bank Sort Code                                     default=                                                                                                     comment=
+F036=CU.BankAcc                   0708    S 0020 N   Bank Account No.                                   default=                                                                                                     comment=
+F093=CU.acBankSortCode            1520    S 0015 O   Bank Sort Code / BIC                               default=                                                        comment=
+F094=CU.acBankAccountCode         1536    S 0035 O   Bank Account Code / IBAN                           default=                                                        comment=
+F095=CU.acMandateI                1572    S 0035 O   Direct Debit Mandate ID                            default=                                                        comment=
+F096=CU.acMandateDate             1608    S 0008 O   Direct Debit Mandate Date                          default=                                                        comment=
+F097=CU.Spare                     1520    C 0257 N   Spare                                              default=                                                                                                     comment=
+F098=CU.LastChar                  1777    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+
+[Supplier]
+F035=SU.BankSort                  0692    S 0015 N   Bank Sort Code                                     default=                                                                                                     comment=
+F036=SU.BankAcc                   0708    S 0020 N   Bank Account No.                                   default=                                                                                                     comment=
+F093=SU.acBankSortCode            1520    S 0015 O   Bank Sort Code / BIC                               default=                                                        comment=
+F094=SU.acBankAccountCode         1532    S 0035 O   Bank Account Code / IBAN                           default=                                                        comment=
+F095=SU.acMandateI                1572    S 0035 N   Direct Debit Mandate ID                            default=                                                        comment=Not Used on Suppliers
+F096=SU.acMandateDate             1608    S 0008 N   Direct Debit Mandate Date                          default=                                                        comment=Not Used on Suppliers
+F097=SU.Spare                     1520    C 0257 N   Spare                                              default=                                                                                                     comment=
+F098=SU.LastChar                  1777    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Direct Debit Mandate Date]
+Type=FreeText
+VRule=isDateFormat
+
+[SwapCU]
+035=093
+036=094
+
+[SwapSU]
+035=093
+036=094
+

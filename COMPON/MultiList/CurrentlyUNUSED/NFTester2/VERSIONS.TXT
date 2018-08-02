@@ -1,0 +1,511 @@
+b000.841
+--------
+Function Booking delete button now works.
+You can now change passwords by using --SBS-- as the current password.
+Bug (hopefully) fixed where balances are zeroed when I get something like this back from
+the till :
+
+Command Sent : [STX]D001042?[CR][LF]
+Packet Received : 0100000000
+Packet Received : 0100000000
+Packet Received : 02000000000000000000000000000000000000000000000000000000000000000000000000000050000000085241
+Packet Received : D
+* EOT
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D00104202000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000[CR][LF]
+* EOT
+
+
+b000.842
+--------
+The fix for zeroing balances (see above) screwed up something else. This version hopefully fixes this !
+
+
+b000.843
+--------
+Tryed to fix group 0 problem - when it trys to get group 0 from the till.
+
+
+b000.844
+--------
+Put 10 millisec wait after MUX change to fix timeout problems
+
+
+b000.845
+--------
+You can now pick which till you can do the "Utilities" on.
+Utilities screen re-arranged.
+Fixed button positioning on download PLU and dept range.
+Fixed Clashing text (Total Nett Spend) on Hourly sales report.
+
+
+b000.846
+--------
+New Compilation after compiler directives for Card Toolkit
+New error checking added for incorrect info coming back from the till :
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D000796?[CR][LF]
+Packet Received : 0100000000
+Packet Received : 02000000000000000000000000000000000000000000000000000000000000000000000000000050000000097341
+Packet Received : D
+* EOT
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D000796?[CR][LF]
+Packet Received : 0100000000
+Packet Received : 0200000000000000000000000000000000000000000000000000000000000000000000000000050000000097341
+Packet Received : D
+* EOT
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D00079602000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000[CR][LF]
+* EOT
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D0007960100000000[CR][LF]
+* EOT
+
+-+*> NEW COMMAND <*+-
+Command Sent : [STX]D00079653000000[CR][LF]
+* EOT
+
+
+b000.847
+--------
+Does not lock the system record on startup unless necessary.
+"Manual Disc." (18) and "Void-V" (96) added to the TX totalisers report.
+Bug Fixed : Function booking crashing when processing to the printer.
+Memory billing is now always set to on in the system setup.
+Record Locking Fixed.
+
+
+b000.848
+--------
+New Syss Flag added for card toolkit - does not do file export (tilltran.dat) when exiting.
+Fixed TX Totalisers report for 0 Qty Totals.
+
+
+b000.849
+--------
+Finished New Syss Flag "Using card toolkit". Put option into system setup.
+
+
+b000.850
+--------
+Fixed TX Totalisers duplicating across multiple tills
+
+
+b000.851/b000.852
+--------
+Put in possible fix for other things doing the same as above.
+Put TX Totalisers report in a set order.
+
+
+b000.853
+--------
+Have put new sort order in card list report.
+
+
+b000.854
+--------
+Totaliser 22 was not being reset on dot-matrix tills - now fixed.
+
+
+b000.855
+--------
+Bill Split to Printer access violation fixed.
+
+
+b000.856
+--------
+Bill Split to Screen access violation fixed !
+
+
+b000.857
+--------
+Bill Split negative incentive on EOD report problem fixed.
+
+
+v5.00.001
+---------
+New version number !
+Main Caption changed to include version number and club name.
+Added quick help text to the menu options.
+changed form font of FrmPrintCardList to arial.
+Changed stuff to say loyalty.
+Changed look of login dialog.
+added hint to the status bar.
+On TXDetail it now doesn't ask you to confirm the discount, when you are in view mode.
+Delete button in bill splitting does now not allow you to delete a blank line.
+
+
+v5.00.002
+---------
+Now uses v4.31 toolkit
+EOD Error log now not printed on reprint (due to the fact it ALWAYS prints the last EOD's one)
+Now you can Add cards (add card button fixed) !
+Fixed Reprogram "range check error" problem on Dot-Matrix tills.
+Fixed bug in ledger - only one item in the list, double click on it. You used to get blank details.
+CommsLog directory now set as path of EXE.
+
+v5.00.003
+---------
+Fixes Pathing problem in commslog (which I tryed to fix above !).
+Added 5 new Totalisers into the ordered list of the TX Totalisers report.
+
+
+v5.00.004
+---------
+Allows a discount of 0 on Group discounts.
+Bug on entering a negative group discount fixed (enable / disable problem).
+
+
+v5.00.005
+---------
+Fixed commslog zipping problem (creating empty zip files)
+Fixed wincard blank system problems.
+Fixed Problem with commslog viewer on the first run (nothing in the zip file).
+
+
+v5.00.006
+---------
+Status <> Normal = Bright Red Text.
+"RichText1" removed from the memo in the commslog viewer.
+
+
+v5.00.007
+---------
+No of comms logs kept increased to 100.
+Extra retry loop around get till totals added - for flakey comms.
+Changed Club Import option to 1 option only
+Question asked on startup when import is > 3 records in size.
+
+
+v5.00.008
+---------
+Recompile after changing CardLstP.
+Added "Retry" option, for when balances do not reach the till.
+
+
+v5.00.009/010
+-------------
+Lost Version history due to HD Crash !
+Add receipt now should never add a receipt to the ledger, if the till comms fail.
+
+
+v5.00.011
+---------
+You can now only edit receipts that have not been EODed.
+
+
+v5.00.012
+---------
+Fixed bug in EOD where Point of sale discount for rate 3 was not being stored correctly.
+
+
+v5.00.013
+---------
+/DETAILEDLOGGING command line parameter added for detailed comms logging.
+/MUXPAUSE=X command line parameter added for setting the delay added between mux switching
+
+
+v5.00.014
+---------
+Default Mux pause set to 20
+Copyright changed to 2001
+
+
+v5.00.015
+---------
+Check All Account Balances Function Added.
+Changed a few enabled / visibles in the main menu.
+Added Light for comms in status bar (had to change from TStatusBar to TPanel).
+New command line parameter /ENTDIR=C:\SBSCARD\EXCH\ added so that you can go in and change the enterprise directory. Might even work for Peer2Peer networked versions ?
+
+
+v5.00.016
+---------
+New command line parameter /COMMSTIMEOUT=10000 added so that you can adjust the comms timeout (in millisecs)
+
+
+v5.00.017
+---------
+Recredit overnight negative type problem fixed - we hope.
+
+
+v5.00.018
+---------
+Fixed nasty bug in edit card / unlock record function, which buggered up card records.
+
+
+v5.00.019
+---------
+The "Copies" field in the printing dialog now works.
+
+
+v5.00.020
+---------
+Recompiled after centralising printing functions.
+Removed the stripping of Character #28 from the comms routines. This is to fix the pound sign problem.
+
+
+v5.00.021
+---------
+New feature : It now logs all stripped characters (except #3) in the commslog file.
+Added extra security on card details comms - now checks that all Guest records come back with a "D" on the end.
+
+
+v5.00.022
+---------
+Now checks for all tills at the beginning of EOD - if not all found, it will not continue any further.
+New options added to the Cards on hold report, to show cards that are on hold, and cards that are overdrawn, but are allowed credit.
+Fixed totals on Cards on hold report.
+
+
+v5.00.023
+---------
+Fixed I/O error 32 when trying to do an end of day with 1 of your tills switched off.
+Cards on hold report was not being printed at the end of the End Of Day - Fixed.
+Added Bad Till / Card List functionality in.
+
+
+v5.00.024
+---------
+Fixed Bad Till / Card List functionality.
+
+
+v5.00.025
+---------
+Recompiled with new version of Async Pro (v3.05).
+Fixed Margin problem in landscape reports.
+
+
+v5.00.026
+---------
+New functions added to set / reset the Unlimited Credit flag on all cards.
+
+
+v5.00.027
+---------
+Fixed Reports for ranges of run numbers over 255.
+
+
+v5.00.028
+---------
+Added toolkit version in about box
+Added Open Tables Report.
+
+
+v5.00.029
+---------
+Fixed Tab Orders.
+New Icons for zoom in & zoom out
+Fixed Bill Splitting rounding problem.
+
+
+v5.00.030
+---------
+Fixed Total Discount field in TX Details window.
+
+
+v5.00.031 (06/04/2001)
+----------------------
+Moved start and end of duff till monitoring in EOD.
+
+
+v5.00.032 (09/04/2001)
+----------------------
+Fixed "Open Tables" report for multiple tills.
+
+
+v5.00.033 (09/04/2001)
+----------------------
+Fixed Access Violation Problem created by changes made in .031
+
+
+v5.00.034 (25/04/2001)
+----------------------
+Recompile after EL's centralised code changes, and centralising code for the Rebuild Module.
+Added error message when Track No > Max Track No in Reprogram - May irradicate some Range Check errors.
+Added functionality to delete cards under SBS, without till comms.
+Changed CalcCustBals to use TheInv instead of Inv - Oops.
+
+
+v5.00.035 (03/05/2001)
+----------------------
+Added Horrid label for 19200 baud rate.
+Fixed Report margins in Card Statement.
+
+
+v5.00.036 (09/05/2001)
+----------------------
+Fixed Negative Top-ups Problem in EOD.
+
+
+v5.00.037 (09/05/2001)
+----------------------
+Extra Fix for Negative Top-ups Problem in EOD.
+
+
+v5.00.038 (15/05/2001)
+----------------------
+Recompile after 1st wave of compiler directives for the new vectron DLL.
+
+
+v5.00.039 (22/05/2001)
+----------------------
+Recompile after 2nd wave of compiler directives for the new vectron DLL.
+New Till Group Sales report - now includes card and non-card sales.
+
+
+v5.00.040 (22/05/2001)
+----------------------
+Added in warning if you switch on 4mb discounts and discounts by item on at the same time.
+Added in a check so that the Next available track no. is set to the first available track no. when you switch on 4MB Eproms, if it is lower that the first available.
+
+
+v5.00.041-043 (25/05/2001)
+----------------------
+Fixed Top-up Incentive Bug introduced in .037
+
+
+v5.00.044 (25/05/2001)
+----------------------
+Fixed Range Check error when faced with corrupt clerk data from the till.
+
+
+v5.00.045-048 (20/07/2001)
+--------------------------
+Enterprise linked version
+
+
+v5.00.049 (20/07/2001)
+----------------------
+Fixed Track no = zero Bugs.
+Nasty crashes, and re-use of numbers fixed.
+
+
+v5.00.050 (01/08/2001)
+----------------------
+Added 7 Day release code for Upgrades.
+
+
+v5.00.052 (23/08/2001)
+----------------------
+Fixed Memory Leak.
+
+
+v5.00.053 (03/09/2001)
+----------------------
+Fixed Access Violation on GetBestBalance
+
+
+v5.00.054 (06/09/2001)
+----------------------
+Fixed Access Violation bug on multiple tills, introduced in .052
+
+
+v5.00.055 (06/09/2001)
+----------------------
+Fixed Card Skipping on EOD with Enterprise Link turned on.
+
+
+v5.00.056 (18/09/2001)
+----------------------
+Added new command line parameter /LOGERRORS to log errors in the tech support log instead of stopping.
+Fixes Range Check error on up/down arrows introduced in .055
+
+
+v5.00.057 (25/09/2001)
+----------------------
+Added Comms Version into about box.
+
+
+v5.00.058 (06/11/2001)
+----------------------
+Fixed bug where card 0014 gets saved as card 14 when it is edited.
+
+
+v5.00.059 (03/01/2002)
+----------------------
+Added new error message when an invalid default printer is detected.
+
+
+v5.00.060 (07/01/2002)
+----------------------
+When changing unlimited credit flag, it now checks the balance, and sets / resets the hold status as applicable.
+When a card in renumbered and it has functions booked, it will now cause errors, rather than applying the Function to another card.
+
+
+v5.00.061 (29/01/2002)
+----------------------
+Enterprise Links Fixed ?
+
+
+v5.00.062 (29/01/2002)
+----------------------
+
+
+v5.00.063 (08/02/2002)
+----------------------
+Support for "Tips" added to clerk sales report.
+
+
+v5.00.064 (05/03/2002)
+----------------------
+Recompiled with Rave 4.08
+New command line Parameter added for Liphook printing problem /REPORTFIX
+
+
+v5.00.065 (03/05/2002)
+----------------------
+Added in extra checks for Clearing Transaction Totalisers
+
+
+v5.00.066 (14/05/2002)
+----------------------
+Added in code to allow EOD error log to be switched on when using POS discounts.
+Added in extra checks for Clearing Members Sales Details.
+Added in Option for Extra MUX Switching checking (defaults to on).
+
+
+v5.00.067-070 (24/05/2002)
+--------------------------
+Fixes for Point of sale discount Problems
+
+
+v5.00.071 (19/06/2002)
+----------------------
+Added in extra checking when changing card numbers.
+
+
+v5.00.072 (10/12/2002)
+----------------------
+Added in GUI Support for Issue Numbers
+
+
+v5.00.073 (15/01/2002)
+----------------------
+Fix for Voids in the EOD Posting report.
+
+
+v5.00.074-078 (27/02/2002)
+--------------------------
+Fixed Card Number change problems in Function Booking.
+
+
+v5.50.079-082
+-------------
+New Version to run with Version 5.50 Enterprise.
+All needed DOS functionality ported to Windows.
+
+
+v5.50.083-087
+-------------
+Fixes to the new functionality
+
+v5.50.090
+-------------
+Fix to GetCardBalancesTotal for a range (always getting first run number)

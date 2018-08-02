@@ -1,0 +1,192 @@
+unit drmmisc;
+
+
+interface
+
+uses Classes, drm, pvtables, pvparser
+{$Ifdef PvDelphi6Up}
+  , FmtBCD;
+{$Else}
+  ;
+{$EndIf}
+
+type
+
+{ TDrmAbstractCollection }
+
+  TDrmAbstractCollection = class(TCollection)
+  private
+    FFilled: boolean;
+{$IfnDef PvDelphi6Up}
+    FOwner: TComponent;
+{$EndIf}
+  protected
+    procedure Check(SesID: DRM_SESID; Status: DRM_ERR);
+{$IfnDef PvDelphi6Up}
+    property Owner: TComponent read FOwner;
+{$EndIf}
+  public
+    constructor Create(Owner: TComponent; ItemClass: TCollectionItemClass);
+    procedure Clear;
+    property Filled: boolean read FFilled write FFilled;
+  end;
+
+{ TDRMTableItem }
+
+  TDRMTableItem = class(TCollectionItem)
+  public
+    TableName: AnsiString;
+    TableType: DRM_UINT32;
+    Flags: DRM_UINT32;
+  end;
+
+{ TDRMTableCollection }
+
+  TDRMTableCollection = class(TDrmAbstractCollection)
+  protected
+    function GetItem(Index: Integer): TDRMTableItem;
+    procedure SetItem(Index: Integer; Value: TDRMTableItem);
+  public
+    function Add: TDRMTableItem;
+    function FindItemID(ID: Integer): TDRMTableItem;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TDRMTableItem;
+{$EndIf}
+    procedure SetTableNames(SesID: DRM_SESID; DbsId: DRM_DBID);
+    procedure SetStoredProcs(SesID: DRM_SESID; DbsId: DRM_DBID);
+    property Items[Index: Integer]: TDRMTableItem read GetItem write SetItem; default;
+  end;
+
+{ TDRMColumnInfo }
+
+  TDRMColumnInfo = class(TCollectionItem)
+  public
+    ColumnName: AnsiString;
+    ColumnId: DRM_COLUMNID;
+    ColTyp: DRM_UINT32;
+    cbMax: DRM_UINT32;
+    grBit: DRM_UINT32;
+    Scale: DRM_UINT16;
+    Precision: DRM_UINT16;
+    BaseTableId: DRM_TABLEID;
+    ProcColType: DRM_TABLEID;
+    ColSequenceID: DRM_UINT32;
+    BufferMax: DRM_UINT32;
+    RealDataSize: DRM_UINT32;
+    Offset: DRM_UINT32;
+  end;
+
+{ TDRMColumnInfoCollection }
+
+  TDRMColumnInfoCollection = class(TDrmAbstractCollection)
+  private
+    FMaxColumnSize: DRM_UINT32;
+  protected
+    function GetItem(Index: Integer): TDRMColumnInfo;
+    procedure SetItem(Index: Integer; Value: TDRMColumnInfo);
+    function GetCanModify: boolean;
+    function GetRecordSize: DRM_UINT32;
+  public
+    function Add: TDRMColumnInfo;
+    function FindItemID(ID: Integer): TDRMColumnInfo;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TDRMColumnInfo;
+{$EndIf}
+    property Items[Index: Integer]: TDRMColumnInfo read GetItem write SetItem; default;
+    procedure SetColumnInfo(SesID: DRM_SESID; TableId: DRM_TABLEID);
+    property MaxColumnSize: DRM_UINT32 read FMaxColumnSize;
+    property CanModify: boolean read GetCanModify;
+    property RecordSize: DRM_UINT32 read GetRecordSize;
+  end;
+
+{ TDRMIndexInfo }
+
+  TDRMIndexInfo = class(TCollectionItem)
+  public
+    IndexName: AnsiString;
+    grBitIndex: DRM_UINT32;
+    IndexedColumnNo: DRM_INT32;
+    IndexedColumnId: DRM_COLUMNID;
+    grBitColumn: DRM_UINT32;
+    IndexedColumnName: AnsiString;
+  end;
+
+{ TDRMIndexInfoCollection }
+
+  TDRMIndexInfoCollection = class(TDrmAbstractCollection)
+  private
+    function GetIndexCount: integer;
+    function GetIndexName(Num: integer): string;
+  protected
+    function GetItem(Index: Integer): TDRMIndexInfo;
+    procedure SetItem(Index: Integer; Value: TDRMIndexInfo);
+  public
+    function Add: TDRMIndexInfo;
+    function FindItemID(ID: Integer): TDRMIndexInfo;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TDRMIndexInfo;
+{$EndIf}
+    property Items[Index: Integer]: TDRMIndexInfo read GetItem write SetItem; default;
+    procedure SetIndexInfo(SesID: DRM_SESID; TableId: DRM_TABLEID);
+    property IndexCount: integer read GetIndexCount;
+    property IndexNames[i: integer]: string read GetIndexName;
+  end;
+
+  PDouble = ^Double;
+
+const
+  DRM_BOOKMARK_SIZE: DRM_UINT32 = 4;
+
+function DrmMiscGetRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Columns: TDRMColumnInfoCollection;
+    pData: PChar): DRM_ERR;
+
+function DrmMiscPutRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Columns: TDRMColumnInfoCollection;
+    pData: PChar): DRM_ERR;
+
+function DrmMiscGetPriorRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Columns: TDRMColumnInfoCollection;
+    pData: PChar): DRM_ERR;
+
+function DrmMiscGetNextRecord(
+    SesId: DRM_SESID;
+    TableId: DRM_TABLEID;
+    Columns: TDRMColumnInfoCollection;
+    pData: PChar): DRM_ERR;
+
+const
+  dmgfRecordBuffer = false;
+  dmgfFieldBuffer = true;
+
+procedure DrmMiscGetField(Owner: TComponent; Columns: TDRMColumnInfoCollection;
+  iField: Word; pRecBuff: PChar; pDest: PChar; var bBlank: LongBool; DirectBuffer: boolean);
+
+procedure DrmMiscPutField(Owner: TComponent; Columns: TDRMColumnInfoCollection;
+  iField: Word; pRecBuff: PChar; pSrc: PChar);
+
+//26522 - shenders: Uncommented for D5
+{//$Ifndef PvDelphi5Up}
+function DrmMiscBCDToCurr(BCD: Pointer; var Curr: Currency): boolean;
+function DrmMiscCurrToBCD(const Curr: Currency; BCD: Pointer): boolean;
+{//$Endif}
+
+// 32954 - shenders:  Added IsRangeEqual parameter
+function DrmMiscSetRange(TableId: DRM_TABLEID;
+  Columns: TDRMColumnInfoCollection; Indexes: TDRMIndexInfoCollection; CurIndexName: string;
+  pLowRangeRowBuf: PChar; LowRangeColumnsCount: DRM_UINT16; LowKeyIncl: WordBool;
+  pHighRangeRowBuf: PChar; HighRangeColumnsCount: DRM_UINT16; HighKeyIncl: WordBool;
+  var IsRangeEmpty: boolean; IsRangeEqual: boolean): DRM_ERR;
+
+procedure ConvertToDrm(pSrcData, pDstData: PChar; ColumnInfo: TDRMColumnInfo;
+  var IsNull: boolean);
+
+function IsBlobColumn(Column: TDRMColumnInfo): boolean;
+
+implementation

@@ -1,0 +1,231 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Ready.wse - Ready to install dialog
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=DIALOG
+  Value=100
+end
+item: Remark
+end
+item: Set Variable
+  Variable=DLG_BACK
+  Value=020
+end
+item: Set Variable
+  Variable=DLG_FWD
+  Value=000
+end
+item: Remark
+end
+item: Remark
+  Text=....Display Ready to Install Dialog
+end
+item: Check if File/Dir Exists
+  Pathname=%ENTDIR%\ENVATWIN.DLL
+  Flags=01000100
+end
+item: Custom Dialog Set
+  Name=Ready
+  item: Dialog
+    Title=Exchequer Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=Update
+    end
+    item: Push Button
+      Rectangle=163 156 208 171
+      Variable=DIALOG
+      Value=%DLG_BACK%
+      Create Flags=01010000000000010000000000000000
+      Text=<<  &Previous
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=x:\PlugIns\Graphics\\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 203 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Ready to Update
+    end
+    item: Static
+      Rectangle=95 59 251 87
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=The Exchequer VAT Inclusive Window Plug-In, in your copy of Exchequer in %ENTDIR%, will now be updated.
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=8 1 78 9
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=%D_ENTVER%
+    end
+    item: Static
+      Rectangle=95 92 251 115
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Press the "Update" button to start copying the files to your hard disk.
+    end
+    item: Static
+      Rectangle=95 28 251 54
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=This installation wizard has detected that you already have the Exchequer VAT Inclusive Window Plug-In installed.
+    end
+  end
+end
+item: Else Statement
+end
+item: Custom Dialog Set
+  Name=Ready
+  item: Dialog
+    Title=Exchequer Plug-In Installation
+    Width=270
+    Height=192
+    Font Name=Helv
+    Font Size=8
+    item: Push Button
+      Rectangle=212 156 257 171
+      Variable=DIALOG
+      Value=%DLG_FWD%
+      Create Flags=01010000000000010000000000000001
+      Text=Install
+    end
+    item: Push Button
+      Rectangle=163 156 208 171
+      Variable=DIALOG
+      Value=%DLG_BACK%
+      Create Flags=01010000000000010000000000000000
+      Text=<<  &Previous
+    end
+    item: Push Button
+      Rectangle=7 156 52 171
+      Action=3
+      Create Flags=01010000000000010000000000000000
+      Text=E&xit Installation
+    end
+    item: Static
+      Control Name=Ab256
+      Rectangle=8 10 90 146
+      Action=2
+      Create Flags=01010000000000000000000000001011
+      Pathname=x:\PlugIns\Graphics\\SIDELOGO.bmp
+    end
+    item: Static
+      Control Name=BmpInd
+      Rectangle=7 9 89 146
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=95 6 203 26
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-21 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Ready to Install
+    end
+    item: Static
+      Rectangle=95 30 251 57
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=This installation wizard is now ready to Install the Exchequer VAT Inclusive Window Plug-In, into your copy of Exchequer in %ENTDIR%
+    end
+    item: Static
+      Rectangle=7 152 258 153
+      Action=3
+      Create Flags=01010000000000000000000000000111
+    end
+    item: Static
+      Rectangle=8 1 78 9
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=%D_ENTVER%
+    end
+    item: Static
+      Rectangle=95 64 251 87
+      Create Flags=01010000000000000000000000000000
+      Flags=0000000000000001
+      Name=Arial
+      Font Style=-11 0 0 0 400 0 0 0 0 3 2 1 34
+      Text=Press the "Install" button to start copying the files to your hard disk.
+    end
+  end
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end

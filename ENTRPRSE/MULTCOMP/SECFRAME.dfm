@@ -1,0 +1,277 @@
+object PlugInSecFrame: TPlugInSecFrame
+  Left = 0
+  Top = 0
+  Width = 434
+  Height = 104
+  TabOrder = 0
+  DesignSize = (
+    434
+    104)
+  object lblId: TLabel
+    Left = 296
+    Top = 2
+    Width = 136
+    Height = 14
+    Alignment = taRightJustify
+    Anchors = [akTop]
+    AutoSize = False
+    Caption = 'EXCHBACSNW003045'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+  end
+  object lblDesc: TLabel
+    Left = 2
+    Top = 2
+    Width = 306
+    Height = 14
+    Anchors = [akLeft, akTop, akRight]
+    AutoSize = False
+    Caption = 'Exchequer NatWest BACS Plug-In v1.01'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label831: Label8
+    Left = 86
+    Top = 18
+    Width = 84
+    Height = 14
+    AutoSize = False
+    Caption = 'Security'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object lblSystem: Label8
+    Left = 9
+    Top = 37
+    Width = 72
+    Height = 14
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = 'System'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object lblUserCount: Label8
+    Left = 9
+    Top = 61
+    Width = 72
+    Height = 14
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = 'User Count'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label830: Label8
+    Left = 184
+    Top = 18
+    Width = 80
+    Height = 14
+    AutoSize = False
+    Caption = 'Release'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Label832: Label8
+    Left = 278
+    Top = 18
+    Width = 78
+    Height = 14
+    AutoSize = False
+    Caption = 'Status'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object Bevel1: TBevel
+    Left = 0
+    Top = 102
+    Width = 434
+    Height = 2
+    Align = alBottom
+    Shape = bsBottomLine
+  end
+  object lblMessage: Label8
+    Left = 11
+    Top = 84
+    Width = 412
+    Height = 17
+    AutoSize = False
+    Caption = 
+      'Contact your Exchequer Reseller for Sales and Technical Support ' +
+      'information'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TextId = 0
+  end
+  object txtSystemSec: Text8Pt
+    Tag = 1
+    Left = 84
+    Top = 33
+    Width = 96
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    MaxLength = 11
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 0
+    OnDblClick = DispPhoneticCode
+    TextId = 0
+    ViaSBtn = False
+  end
+  object txtUserSec: Text8Pt
+    Tag = 1
+    Left = 84
+    Top = 57
+    Width = 96
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    MaxLength = 11
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 3
+    OnDblClick = DispPhoneticCode
+    TextId = 0
+    ViaSBtn = False
+  end
+  object txtUserRel: Text8Pt
+    Tag = 1001
+    Left = 182
+    Top = 57
+    Width = 92
+    Height = 22
+    Color = clTeal
+    EditMask = '>cccccccccc;0; '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    MaxLength = 10
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    OnDblClick = DispPhoneticCode
+    OnExit = txtUserRelExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object txtSystemRel: Text8Pt
+    Tag = 1001
+    Left = 182
+    Top = 33
+    Width = 92
+    Height = 22
+    Color = clTeal
+    EditMask = '>cccccccccc;0; '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    MaxLength = 10
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    OnDblClick = DispPhoneticCode
+    OnExit = txtSystemRelExit
+    TextId = 0
+    ViaSBtn = False
+  end
+  object txtSystemStatus: Text8Pt
+    Left = 276
+    Top = 33
+    Width = 106
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 11
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 2
+    TextId = 0
+    ViaSBtn = False
+  end
+  object txtUserStatus: Text8Pt
+    Left = 276
+    Top = 57
+    Width = 106
+    Height = 22
+    TabStop = False
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    MaxLength = 11
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 5
+    TextId = 0
+    ViaSBtn = False
+  end
+end

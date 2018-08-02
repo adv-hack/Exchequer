@@ -1,0 +1,1021 @@
+unit DOCNumLU;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, ExtCtrls, SBSPanel, ComCtrls, BTSupU1,GlobVar, VarConst,SBSComp,SBSComp2,
+  ExWrap1U, Menus, SupListU, DocNumRU, Animate;
+
+type
+
+  TDNMList  =  Class(TGenList)
+
+    Function SetCheckKey  :  Str255; Override;
+
+    Function SetFilter  :  Str255; Override;
+
+    Function Ok2Del :  Boolean; Override;
+
+    Function OutLine(Col  :  Byte)  :  Str255; Override;
+
+  end;
+
+
+type
+  TDocNoList = class(TForm)
+    PageControl1: TPageControl;
+    ItemPage: TTabSheet;
+    PListBtnPanel: TSBSPanel;
+    PBtnPanel: TSBSPanel;
+    P1BSBox: TScrollBox;
+    AddBtn: TButton;
+    Clsd1Btn: TButton;
+    D1SBox: TScrollBox;
+    PHedPanel: TSBSPanel;
+    PDescLab: TSBSPanel;
+    PYNPanel: TSBSPanel;
+    PDescPanel: TSBSPanel;
+    PYNLab: TSBSPanel;
+    PopupMenu1: TPopupMenu;
+    N2: TMenuItem;
+    PropFlg: TMenuItem;
+    N1: TMenuItem;
+    StoreCoordFlg: TMenuItem;
+    Edit1: TMenuItem;
+    PNNPanel: TSBSPanel;
+    PNNLab: TSBSPanel;
+    Animated1: TAnimated;
+    procedure FormCreate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure PropFlgClick(Sender: TObject);
+    procedure StoreCoordFlgClick(Sender: TObject);
+    procedure PopupMenu1Popup(Sender: TObject);
+    procedure Clsd1BtnClick(Sender: TObject);
+    procedure PYNLabMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure PYNLabMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PYNLabMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+
+    procedure AddBtnClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+    BeenIn,
+    JustCreated,
+    StoreCoord,
+    LastCoord,
+    SetDefault,
+    GotCoord,
+    fNeedCUpdate,
+    fDoingClose,
+    CanDelete    :  Boolean;
+
+    PagePoint    :  Array[0..4] of TPoint;
+
+    StartSize,
+    InitSize     :  TPoint;
+
+    DNDepRec     :  TDocNumRec;
+
+
+    procedure Find_FormCoord;
+
+    procedure Store_FormCoord(UpMode  :  Boolean);
+
+    procedure FormSetOfSet;
+
+    Procedure WMCustGetRec(Var Message  :  TMessage); Message WM_CustGetRec;
+
+    Procedure WMGetMinMaxInfo(Var Message  :  TWMGetMinMaxInfo); Message WM_GetMinMaxInfo;
+
+    
+
+    procedure Display_Rec(Mode  :  Byte);
+
+    Procedure Send_UpdateList(Mode   :  Integer);
+
+    procedure ShowRightMeny(X,Y,Mode  :  Integer);
+
+    Procedure  SetNeedCUpdate(B  :  Boolean);
+
+    Property NeedCUpDate :  Boolean Read fNeedCUpDate Write SetNeedCUpdate;
+
+  public
+    { Public declarations }
+
+    ExLocal      :  TdExLocal;
+
+    ListOfSet    :  Integer;
+
+    MULCtrlO     :  TDNMList;
+
+
+    procedure FormDesign;
+
+    procedure RefreshList(ShowLines,
+                          IgMsg      :  Boolean);
+
+    procedure FormBuildList(ShowLines  :  Boolean);
+
+
+    procedure SetFormProperties;
+
+  end;
+
+
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Uses
+  ETStrU,
+  ETMiscU,
+  ETDateU,
+  BtrvU2,
+  BTSupU2,
+  BTSupU3,
+  BTKeys1U,
+  CmpCtrlU,
+  ColCtrlU,
+
+  TEditVal,
+  ComnUnit,
+  ComnU2,
+  CurrncyU,
+
+  {$IFDEF DBD}
+    DebugU,
+  {$ENDIF}
+
+  SysU1,
+  SysU2;
+  {IntMU,
+  MiscU,
+  PayF2U,
+  Warn1U,}
+
+{$R *.DFM}
+
+
+
+{$I DNTIU.PAS}
+
+
+Procedure  TDocNoList.SetNeedCUpdate(B  :  Boolean);
+
+Begin
+  If (Not fNeedCUpdate) then
+    fNeedCUpdate:=B;
+end;
+
+procedure TDocNoList.Find_FormCoord;
+
+
+Var
+  ThisForm:  TForm;
+
+  VisibleRect
+          :  TRect;
+
+  GlobComp:  TGlobCompRec;
+
+
+Begin
+
+  New(GlobComp,Create(BOn));
+
+  ThisForm:=Self;
+
+  With GlobComp^ do
+  Begin
+
+    GetValues:=BOn;
+
+    PrimeKey:='D';
+
+    If (GetbtControlCsm(ThisForm)) then
+    Begin
+      {StoreCoord:=(ColOrd=1); v4.40. To avoid on going corruption, this is reset each time its loaded}
+      StoreCoord:=BOff;
+      HasCoord:=(HLite=1);
+      LastCoord:=HasCoord;
+
+      If (HasCoord) then {* Go get postion, as would not have been set initianly *}
+        SetPosition(ThisForm);
+
+    end;
+
+    GetbtControlCsm(PageControl1);
+
+    GetbtControlCsm(D1SBox);
+
+    GetbtControlCsm(PListBtnPanel);
+
+    GetbtControlCsm(PBtnPanel);
+
+    MULCtrlO.Find_ListCoord(GlobComp);
+
+  end; {With GlobComp..}
+
+
+  Dispose(GlobComp,Destroy);
+
+  {NeedCUpdate}
+  StartSize.X:=Width; StartSize.Y:=Height;
+
+end;
+
+
+procedure TDocNoList.Store_FormCoord(UpMode  :  Boolean);
+
+
+Var
+  GlobComp:  TGlobCompRec;
+
+
+Begin
+
+
+  New(GlobComp,Create(BOff));
+
+  With GlobComp^ do
+  Begin
+    GetValues:=UpMode;
+
+    PrimeKey:='D';
+
+    ColOrd:=Ord(StoreCoord);
+
+    HLite:=Ord(LastCoord);
+
+    SaveCoord:=StoreCoord;
+
+    If (Not LastCoord) then {* Attempt to store last coord *}
+      HLite:=ColOrd;
+
+    StorebtControlCsm(Self);
+
+    StorebtControlCsm(PageControl1);
+
+    StorebtControlCsm(PBtnPanel);
+
+    StorebtControlCsm(D1SBox);
+
+    StorebtControlCsm(PListBtnPanel);
+
+    MULCtrlO.Store_ListCoord(GlobComp);
+
+  end; {With GlobComp..}
+
+  Dispose(GlobComp,Destroy);
+end;
+
+
+
+procedure TDocNoList.FormSetOfSet;
+
+Begin
+  PagePoint[0].X:=ClientWidth-(PageControl1.Width);
+  PagePoint[0].Y:=ClientHeight-(PageControl1.Height);
+
+  PagePoint[2].X:=PageControl1.Width-(PBtnPanel.Left);
+  PagePoint[2].Y:=PageControl1.Height-(PBtnPanel.Height);
+
+  PagePoint[1].X:=PageControl1.Width-(D1SBox.Width);
+  PagePoint[1].Y:=PageControl1.Height-(D1SBox.Height);
+
+  PagePoint[3].X:=PBtnPanel.Height-(P1BSBox.Height);
+  PagePoint[3].Y:=D1SBox.ClientHeight-(PYNPanel.Height);
+
+  PagePoint[4].Y:=PBtnPanel.Height-(PListBtnPanel.Height);
+
+  GotCoord:=BOn;
+
+end;
+
+
+
+Procedure TDocNoList.WMCustGetRec(Var Message  :  TMessage);
+
+Var
+  TmpStat      :  Integer;
+  TmpRecAddr   :  LongInt;
+
+Begin
+
+
+  With Message do
+  Begin
+
+    {If (Debug) then
+      DebugForm.Add('Mesage Flg'+IntToStr(WParam));}
+
+    Case WParam of
+      0,169
+         :  Begin
+              MULCtrlO.GetSelRec(BOff);
+
+              AddBtnClick(Edit1);
+
+            end;
+
+
+
+      2  :  ShowRightMeny(LParamLo,LParamHi,1);
+
+      25 :  NeedCUpdate:=BOn;
+
+      116
+          :  Begin
+               With MULCtrlO do
+               Begin
+                 AddNewRow(MUListBoxes[0].Row,(LParam=1));
+               end;
+            end;
+
+      117 :  With MULCtrlO do
+             Begin
+               If (MUListBox1.Row<>0) then
+                 PageUpDn(0,BOn)
+                else
+                  InitPage;
+             end;
+
+
+      202:  DNDepRec:=nil;
+
+
+    end; {Case..}
+
+  end;
+  Inherited;
+end;
+
+
+
+Procedure TDocNoList.WMGetMinMaxInfo(Var Message  :  TWMGetMinMaxInfo);
+
+Begin
+
+  With Message.MinMaxInfo^ do
+  Begin
+
+    ptMinTrackSize.X:=200;
+    ptMinTrackSize.Y:=210;
+
+    {ptMaxSize.X:=530;
+    ptMaxSize.Y:=368;
+    ptMaxPosition.X:=1;
+    ptMaxPosition.Y:=1;}
+
+  end;
+
+  Message.Result:=0;
+
+  Inherited;
+
+end;
+
+{ == Procedure to Send Message to Get Record == }
+
+Procedure TDocNoList.Send_UpdateList(Mode   :  Integer);
+
+Var
+  Message1 :  TMessage;
+  MessResult
+           :  LongInt;
+
+Begin
+  FillChar(Message1,Sizeof(Message1),0);
+
+  With Message1 do
+  Begin
+    MSg:=WM_FormCloseMsg;
+    WParam:=Mode;
+    LParam:=0;
+  end;
+
+  With Message1 do
+    MessResult:=SendMessage((Owner as TForm).Handle,Msg,WParam,LParam);
+
+end; {Proc..}
+
+
+
+
+
+
+procedure TDocNoList.FormDesign;
+
+
+begin
+
+
+end;
+
+
+procedure TDocNoList.RefreshList(ShowLines,
+                               IgMsg      :  Boolean);
+
+Var
+  KeyStart    :  Str255;
+  LKeypath,
+  LKeyLen     :  Integer;
+
+Begin
+
+  KeyStart:='';
+  LKeyLen:=Length(KeyStart);
+
+  With MULCtrlO do
+  Begin
+    IgnoreMsg:=IgMsg;
+
+    StartList(IncF,IncK,KeyStart,'','',LKeyLen,(Not ShowLines));
+
+    IgnoreMsg:=BOff;
+  end;
+
+end;
+
+
+procedure TDocNoList.FormBuildList(ShowLines  :  Boolean);
+
+Var
+  StartPanel  :  TSBSPanel;
+  n           :  Byte;
+
+
+
+Begin
+
+  MULCtrlO:=TDNMList.Create(Self);
+  StartPanel := nil;
+
+  Try
+
+    With MULCtrlO do
+    Begin
+
+
+      Try
+
+        With VisiList do
+        Begin
+          AddVisiRec(PYNPanel,PYNLab);
+          AddVisiRec(PDescPanel,PDescLab);
+          AddVisiRec(PNNPanel,PNNLab);
+
+          VisiRec:=List[0];
+
+          StartPanel:=(VisiRec^.PanelObj as TSBSPanel);
+
+          {HidePanels(0);}
+
+          LabHedPanel:=PHedPanel;
+
+          ListOfSet:=10;
+
+          SetHedPanel(ListOfSet);
+
+        end;
+      except
+        VisiList.Free;
+
+      end;
+
+
+      Find_FormCoord;
+
+      TabOrder := -1;
+      TabStop:=BOff;
+      Visible:=BOff;
+      BevelOuter := bvNone;
+      ParentColor := False;
+      Color:=StartPanel.Color;
+      MUTotCols:=2;
+      Font:=StartPanel.Font;
+
+      LinkOtherDisp:=BOn;
+
+      WM_ListGetRec:=WM_CustGetRec;
+
+
+      Parent:=StartPanel.Parent;
+
+      MessHandle:=Self.Handle;
+
+      For n:=0 to MUTotCols do
+      With ColAppear^[n] do
+      Begin
+        AltDefault:=BOn;
+
+        If (n=2) then
+        Begin
+          DispFormat:=SGFloat;
+          NoDecPlaces:=0;
+        end;
+      end;
+
+
+      ListLocal:=@ExLocal;
+
+      Filter[1,1]:=FullNomKey(-1);
+
+      ListCreate;
+
+      UseSet4End:=BOff;
+
+      NoUpCaseCheck:=BOn;
+
+      Set_Buttons(PListBtnPanel);
+
+      ReFreshList(ShowLines,BOff);
+
+    end {With}
+
+
+  Except
+
+    MULCtrlO.Free;
+    MULCtrlO:=Nil;
+  end;
+
+
+
+  FormSetOfSet;
+
+  FormReSize(Self);
+
+
+  RefreshList(BOn,BOn);
+
+
+end;
+
+
+
+
+
+procedure TDocNoList.FormCreate(Sender: TObject);
+Var
+  RectD       :  TRect;
+
+  n           :  Integer;
+
+
+begin
+  InDocNum:=BOn;
+
+  fDoingClose:=BOff;
+  With Animated1 do
+  Begin
+    SetBounds(Left,Top,64,47);
+
+    Loop:=True;
+    Play:=False;
+
+    Visible:=BOff;
+  end;
+
+  ExLocal.Create;
+
+  LastCoord:=BOff;
+
+  JustCreated:=BOn;
+  NeedCUpdate:=BOff;
+
+  InitSize.Y:=338;
+  InitSize.X:=463;
+
+  Self.ClientHeight:=InitSize.Y;
+  Self.ClientWidth:=InitSize.X;
+
+  {Height:=360;
+  Width:=530;}
+
+  DNDepRec:=nil;
+
+
+
+  For n:=0 to Pred(ComponentCount) do
+    If (Components[n] is TScrollBox) then
+    With TScrollBox(Components[n]) do
+    Begin
+      VertScrollBar.Position:=0;
+      HorzScrollBar.Position:=0;
+    end;
+
+  VertScrollBar.Position:=0;
+  HorzScrollBar.Position:=0;
+
+
+  FormDesign;
+
+  FormBuildList(BOff);
+
+  MDI_SetFormCoord(TForm(Self));
+
+end;
+
+
+
+
+procedure TDocNoList.FormDestroy(Sender: TObject);
+
+Var
+  n  :  Byte;
+begin
+  ExLocal.Destroy;
+
+
+end;
+
+procedure TDocNoList.FormCloseQuery(Sender: TObject;
+                             var CanClose: Boolean);
+Var
+  n  : Integer;
+
+begin
+  For n:=0 to Pred(ComponentCount) do
+  If (Components[n] is TScrollBox) then
+  With TScrollBox(Components[n]) do
+  Begin
+    VertScrollBar.Position:=0;
+    HorzScrollBar.Position:=0;
+  end;
+
+  VertScrollBar.Position:=0;
+  HorzScrollBar.Position:=0;
+
+  If (NeedCUpdate) then
+    Store_FormCoord(Not SetDefault);
+
+
+  Send_UpdateList(62);
+end;
+
+procedure TDocNoList.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  If (Not fDoingClose) then
+  Begin
+    fDoingClose:=BOn;
+
+    Action:=caFree;
+    InDocNum:=BOff;
+
+    If (MULCtrlO<>nil) then
+    Begin
+      try
+        MULCtrlO.Destroy;
+      finally
+        MULCtrlO:=nil;
+      end;
+    end;
+  end;
+end;
+
+
+procedure TDocNoList.FormResize(Sender: TObject);
+Var
+  n           :  Byte;
+  NewVal      :  Integer;
+
+
+begin
+
+  If (GotCoord) then
+  Begin
+
+
+    PageControl1.Width:=ClientWidth-PagePoint[0].X;
+    PageControl1.Height:=ClientHeight-PagePoint[0].Y;
+
+
+    PBtnPanel.Left:=PageControl1.Width-PagePoint[2].X;
+
+    PBtnPanel.Height:=PageControl1.Height-PagePoint[2].Y;
+
+    D1SBox.Width:=PageControl1.Width-PagePoint[1].X;
+    D1SBox.Height:=PageControl1.Height-PagePoint[1].Y;
+
+    P1BSBox.Height:=PBtnPanel.Height-PagePoint[3].X;
+
+
+    PListBtnPanel.Height:=PBtnPanel.Height-PagePoint[4].Y;
+    PListBtnPanel.Left:=D1SBox.Left+D1SBox.Width+2;
+
+    If (MULCtrlO<>nil) then
+    Begin
+      LockWindowUpDate(Handle);
+
+      With MULCtrlO,VisiList do
+      Begin
+        VisiRec:=List[0];
+
+        With (VisiRec^.PanelObj as TSBSPanel) do
+        Begin
+          Height:=D1SBox.ClientHeight-PagePoint[3].Y;
+        end;
+
+        RefreshAllCols;
+      end;
+
+      MULCtrlO.ReFresh_Buttons;
+      LockWindowUpDate(0);
+
+    end;{Loop..}
+
+    NeedCUpdate:=((StartSize.X<>Width) or (StartSize.Y<>Height));
+  end; {If time to update}
+end;
+
+
+
+
+
+procedure TDocNoList.SetFormProperties;
+
+
+Var
+  TmpPanel    :  Array[1..3] of TPanel;
+
+  n           :  Byte;
+
+  ResetDefaults,
+  BeenChange  :  Boolean;
+  ColourCtrl  :  TCtrlColor;
+
+Begin
+  ResetDefaults:=BOff;
+
+  For n:=1 to 3 do
+  Begin
+    TmpPanel[n]:=TPanel.Create(Self);
+  end;
+
+
+  try
+
+    With MULCtrlO.VisiList do
+    Begin
+      VisiRec:=List[0];
+
+      TmpPanel[1].Font:=(VisiRec^.PanelObj as TSBSPanel).Font;
+      TmpPanel[1].Color:=(VisiRec^.PanelObj as TSBSPanel).Color;
+
+      TmpPanel[2].Font:=(VisiRec^.LabelObj as TSBSPanel).Font;
+      TmpPanel[2].Color:=(VisiRec^.LabelObj as TSBSPanel).Color;
+
+
+      TmpPanel[3].Color:=MULCtrlO.ColAppear^[0].HBKColor;
+    end;
+
+    TmpPanel[3].Font.Assign(TmpPanel[1].Font);
+
+    TmpPanel[3].Font.Color:=MULCtrlO.ColAppear^[0].HTextColor;
+
+
+    ColourCtrl:=TCtrlColor.Create(Self);
+
+    try
+      With ColourCtrl do
+      Begin
+        SetProperties(TmpPanel[1],TmpPanel[2],TmpPanel[3],1,Caption+' Properties',BeenChange,ResetDefaults);
+
+        NeedCUpdate:=(BeenChange or ResetDefaults);
+
+        If (BeenChange) and (not ResetDefaults) then
+        Begin
+
+          For n:=1 to 3 do
+            With TmpPanel[n] do
+              Case n of
+                1,2  :  Begin
+                          MULCtrlO.ReColorCol(Font,Color,(n=2));
+                        end;
+
+                3    :  Begin
+                          MULCtrlO.ReColorBar(Font,Color);
+                        end;
+
+              end; {Case..}
+
+          MULCtrlO.VisiList.LabHedPanel.Color:=TmpPanel[2].Color;
+        end;
+
+      end;
+
+    finally
+
+      ColourCtrl.Free;
+
+    end;
+
+  Finally
+
+    For n:=1 to 3 do
+      TmpPanel[n].Free;
+
+  end;
+
+  If (ResetDefaults) then
+  Begin
+    SetDefault:=BOn;
+    Close;
+  end;
+
+end;
+
+
+procedure TDocNoList.Display_Rec(Mode  :  Byte);
+
+Var
+  WasNew  :  Boolean;
+
+  Begin
+    WasNew:=BOff;
+
+    If (DNDepRec=nil) then
+    Begin
+      DNDepRec:=TDocNumRec.Create(Self);
+
+      WasNew:=BOn;
+
+    end;
+
+    Try
+
+
+     With DNDepRec do
+     Begin
+       ExLocal.AssignFromGlobal(IncF);
+
+       WindowState:=wsNormal;
+
+       If (Mode In [1..5]) then
+       Begin
+
+         Case Mode of
+
+           2
+                 :   If (Not ExLocal.InAddEdit) then
+                       EditLine((Mode=2),Mode)
+                     else
+                       Show;
+
+         end; {Case..}
+
+       end;
+
+
+
+     end; {With..}
+
+
+    except
+
+     DNDepRec.Free;
+
+    end;
+
+  end;
+
+
+procedure TDocNoList.ShowRightMeny(X,Y,Mode  :  Integer);
+
+Begin
+  With PopUpMenu1 do
+  Begin
+
+    PopUp(X,Y);
+  end;
+
+
+end;
+
+
+
+procedure TDocNoList.PropFlgClick(Sender: TObject);
+begin
+  SetFormProperties;
+end;
+
+procedure TDocNoList.StoreCoordFlgClick(Sender: TObject);
+begin
+  StoreCoord:=Not StoreCoord;
+  NeedCUpdate:=BOn;
+end;
+
+procedure TDocNoList.PopupMenu1Popup(Sender: TObject);
+begin
+  StoreCoordFlg.Checked:=StoreCoord;
+
+end;
+
+procedure TDocNoList.Clsd1BtnClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TDocNoList.PYNLabMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+Var
+  ListPoint  :  TPoint;
+
+
+begin
+  If (Sender is TSBSPanel) then
+  With (Sender as TSBSPanel) do
+  Begin
+
+    If (Not ReadytoDrag) and (Button=MBLeft) then
+    Begin
+      If (MULCtrlO<>nil) then
+        MULCtrlO.VisiList.PrimeMove(Sender);
+      NeedCUpdate:=BOn;
+    end
+    else
+      If (Button=mbRight) then
+      Begin
+        ListPoint:=ClientToScreen(Point(X,Y));
+
+        ShowRightMeny(ListPoint.X,ListPoint.Y,0);
+      end;
+
+  end;
+end;
+
+
+procedure TDocNoList.PYNLabMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  If (Sender is TSBSPanel) then
+  With (Sender as TSBSPanel) do
+  Begin
+
+    If (MULCtrlO<>nil) then
+    Begin
+      MULCtrlO.VisiList.MoveLabel(X,Y);
+      NeedCUpdate:=MULCtrlO.VisiList.MovingLab;
+    end;
+  end;
+
+end;
+
+procedure TDocNoList.PYNLabMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  Var
+  BarPos :  Integer;
+  PanRSized
+         :  Boolean;
+
+begin
+
+  If (Sender is TSBSPanel) then
+  With (Sender as TSBSPanel) do
+  Begin
+
+    PanRSized:=ReSized;
+
+    BarPos:=D1SBox.HorzScrollBar.Position;
+
+    If (PanRsized) then
+      MULCtrlO.ResizeAllCols(MULCtrlO.VisiList.FindxHandle(Sender),BarPos);
+
+    MULCtrlO.FinishColMove(BarPos+(ListOfset*Ord(PanRSized)),PanRsized);
+    NeedCUpdate:=(MULCtrlO.VisiList.MovingLab or PanRSized);
+  end;
+
+end;
+
+
+
+procedure TDocNoList.AddBtnClick(Sender: TObject);
+begin
+  If (Assigned(MULCtrlO)) then
+  With MULCtrlO do
+  Begin
+    GetSelRec(BOff);
+    Display_Rec(TComponent(Sender).Tag);
+  end;
+end;
+
+procedure TDocNoList.FormActivate(Sender: TObject);
+begin
+  If (Assigned(MULCtrlO))   then
+    MULCtrlO.SetListFocus;
+end;
+
+
+
+end.

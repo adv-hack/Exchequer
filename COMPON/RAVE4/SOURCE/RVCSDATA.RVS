@@ -1,0 +1,369 @@
+module RVCsData;
+
+definition
+
+import
+  SysFunc,
+  RVClass,
+  RVData,
+  RVCsStd;
+
+type
+  TRaveDataText = class(TRaveText)
+  protected
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetLookupDataView: TRaveBaseDataView;
+    function SetLookupDataView(Value: TRaveBaseDataView);
+    function GetLookupField: TRaveFieldName;
+    function SetLookupField(Value: TRaveFieldName);
+    function GetLookupDisplay: TRaveFieldName;
+    function SetLookupDisplay(Value: TRaveFieldName);
+    function GetLookupInvalid: string;
+    function SetLookupInvalid(Value: string);
+  public
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property LookupDataView: TRaveBaseDataView read GetLookupDataView write SetLookupDataView;
+    property LookupField: TRaveFieldName read GetLookupField write SetLookupField;
+    property LookupDisplay: TRaveFieldName read GetLookupDisplay write SetLookupDisplay;
+    property LookupInvalid: string read GetLookupInvalid write SetLookupInvalid;
+  end TRaveDataText;
+
+  TRaveDataMemo = class(TRaveMemo)
+  protected
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+  public
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+  end TRaveDataMemo;
+
+  TRaveCalcType = (ctCount,ctSum,ctMin,ctMax,ctAverage);
+  TRaveDisplayType = (dtNumericFormat,dtDateTimeFormat);
+
+  TRaveCalcFunction = (cfNone,cfTrunc,cfFrac,cfRound,cfNeg,cfAbs,cfSin,cfCos,cfArcTan,
+   cfSqr,cfSqrt,cfInc,cfDec,cfRandom,cfRound1,cfRound2,cfRound3,cfRound4,cfRound5,
+   cfSecsToTime,cfMinsToTime,cfHoursToTime,cfTimeToSecs,cfTimeToMins,cfTimeToHours,cfPercent);
+
+  TRaveCalcOperator = (coAdd,coSub,coMul,coDiv,coMod,coExp,coGreater,coLesser,coAverage);
+
+  TRaveCalcText = class(TRaveText)
+  protected
+    function GetCalcType: TRaveCalcType;
+    function SetCalcType(Value: TRaveCalcType);
+    function GetController: TRaveComponent;
+    function SetController(Value: TRaveComponent);
+    function GetCountBlanks: boolean;
+    function SetCountBlanks(Value: boolean);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDisplayFormat: string;
+    function SetDisplayFormat(Value: string);
+    function GetDisplayType: TRaveDisplayType;
+    function SetDisplayType(Value: TRaveDisplayType);
+    function GetInitializer: TRaveComponent;
+    function SetInitializer(Value: TRaveComponent);
+    function GetRunningTotal: boolean;
+    function SetRunningTotal(Value: boolean);
+    function GetValue: extended;
+  public
+    property Value: extended read GetValue;
+    property CalcType: TRaveCalcType read GetCalcType write SetCalcType;
+    property Controller: TRaveComponent read GetController write SetController;
+    property CountBlanks: boolean read GetCountBlanks write SetCountBlanks;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DisplayFormat: string read GetDisplayFormat write SetDisplayFormat;
+    property DisplayType: TRaveDisplayType read GetDisplayType write SetDisplayType;
+    property Initializer: TRaveComponent read GetInitializer write SetInitializer;
+    property RunningTotal: boolean read GetRunningTotal write SetRunningTotal;
+  end TRaveCalcText;
+
+  TRaveCalcVariable = class(TRaveComponent)
+  protected
+    function GetValue: extended;
+    function GetIsNull: boolean;
+    function GetDestParam: string;
+    function SetDestParam(Value: string);
+    function GetDestPIVar: string;
+    function SetDestPIVar(Value: string);
+    function GetDisplayFormat: string;
+    function SetDisplayFormat(Value: string);
+    function GetDisplayType: TRaveDisplayType;
+    function SetDisplayType(Value: TRaveDisplayType);
+  public
+    property Value: extended read GetValue;
+    property IsNull: boolean read GetIsNull;
+    property DestParam: string read GetDestParam write SetDestParam;
+    property DestPIVar: string read GetDestPIVar write SetDestPIVar;
+    property DisplayFormat: string read GetDisplayFormat write SetDisplayFormat;
+    property DisplayType: TRaveDisplayType read GetDisplayType write SetDisplayType;
+  end TRaveCalcVariable;
+
+  TRaveCalcOp = class(TRaveCalcVariable)
+  protected
+    function GetSrc1CalcVar: TRaveCalcVariable;
+    function SetSrc1CalcVar(Value: TRaveCalcVariable);
+    function GetSrc1DataField: TRaveFieldName;
+    function SetSrc1DataField(Value: TRaveFieldName);
+    function GetSrc1DataView: TRaveBaseDataView;
+    function SetSrc1DataView(Value: TRaveBaseDataView);
+    function GetSrc1Value: extended;
+    function SetSrc1Value(Value: extended);
+    function GetSrc1Function: TRaveCalcFunction;
+    function SetSrc1Function(Value: TRaveCalcFunction);
+    function GetSrc2CalcVar: TRaveCalcVariable;
+    function SetSrc2CalcVar(Value: TRaveCalcVariable);
+    function GetSrc2DataField: TRaveFieldName;
+    function SetSrc2DataField(Value: TRaveFieldName);
+    function GetSrc2DataView: TRaveBaseDataView;
+    function SetSrc2DataView(Value: TRaveBaseDataView);
+    function GetSrc2Value: extended;
+    function SetSrc2Value(Value: extended);
+    function GetSrc2Function: TRaveCalcFunction;
+    function SetSrc2Function(Value: TRaveCalcFunction);
+    function GetOperator: TRaveCalcOperator;
+    function SetOperator(Value: TRaveCalcOperator);
+    function GetResultFunction: TRaveCalcFunction;
+    function SetResultFunction(Value: TRaveCalcFunction);
+  public
+    property Operator: TRaveCalcOperator read GetOperator write SetOperator;
+    property ResultFunction: TRaveCalcFunction read GetResultFunction write SetResultFunction;
+    property Src1CalcVar: TRaveCalcVariable read GetSrc1CalcVar write SetSrc1CalcVar;
+    property Src1DataField: TRaveFieldName read GetSrc1DataField write SetSrc1DataField;
+    property Src1DataView: TRaveBaseDataView read GetSrc1DataView write SetSrc1DataView;
+    property Src1Value: extended read GetSrc1Value write SetSrc1Value;
+    property Src1Function: TRaveCalcFunction read GetSrc1Function write SetSrc1Function;
+    property Src2CalcVar: TRaveCalcVariable read GetSrc2CalcVar write SetSrc2CalcVar;
+    property Src2DataField: TRaveFieldName read GetSrc2DataField write SetSrc2DataField;
+    property Src2DataView: TRaveBaseDataView read GetSrc2DataView write SetSrc2DataView;
+    property Src2Value: extended read GetSrc2Value write SetSrc2Value;
+    property Src2Function: TRaveCalcFunction read GetSrc2Function write SetSrc2Function;
+  end TRaveCalcOp;
+
+  TRaveCalcTotal = class(TRaveCalcVariable)
+  protected
+    function GetCalcType: TRaveCalcType;
+    function SetCalcType(Value: TRaveCalcType);
+    function GetCalcVar: TRaveCalcVariable;
+    function SetCalcVar(Value: TRaveCalcVariable);
+    function GetController: TRaveComponent;
+    function SetController(Value: TRaveComponent);
+    function GetCountBlanks: boolean;
+    function SetCountBlanks(Value: boolean);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetInitializer: TRaveComponent;
+    function SetInitializer(Value: TRaveComponent);
+    function GetRunningTotal: boolean;
+    function SetRunningTotal(Value: boolean);
+  public
+    property CalcType: TRaveCalcType read GetCalcType write SetCalcType;
+    property CalcVar: TRaveCalcVariable read GetCalcVar write SetCalcVar;
+    property Controller: TRaveComponent read GetController write SetController;
+    property CountBlanks: boolean read GetCountBlanks write SetCountBlanks;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property Initializer: TRaveComponent read GetInitializer write SetInitializer;
+    property RunningTotal: boolean read GetRunningTotal write SetRunningTotal;
+  end TRaveCalcTotal;
+
+  TRaveCalcController = class(TRaveComponent)
+  protected
+    function GetInitCalcVar: TRaveCalcVariable;
+    function SetInitCalcVar(Value: TRaveCalcVariable);
+    function GetInitDataField: TRaveFieldName;
+    function SetInitDataField(Value: TRaveFieldName);
+    function GetInitValue: extended;
+    function SetInitValue(Value: extended);
+  public
+    property InitCalcVar: TRaveCalcVariable read GetInitCalcVar write SetInitCalcVar;
+    property InitDataField: TRaveFieldName read GetInitDataField write SetInitDataField;
+    property InitValue: extended read GetInitValue write SetInitValue;
+  end TRaveCalcController;
+
+//  TRaveDataMirror = class
+//  protected
+//    function GetDataValue: string;
+//    function SetDataValue(Value: string);
+//    function GetIsDefault: boolean;
+//    function SetIsDefault(Value: boolean);
+//    function GetSectionMirror: TRaveSection;
+//    function SetSectionMirror(Value: TRaveSection);
+//  public
+//    property DataValue: string read GetDataValue write SetDataValue;
+//    property IsDefault: boolean read GetIsDefault write SetIsDefault;
+//    property SectionMirror: TRaveSection read GetSectionMirror write SetSectionMirror;
+//  end TRaveDataMirror;
+
+  TRaveDataMirrorSection = class(TRaveSection)
+  protected
+    function GetCompareCase: boolean;
+    function SetCompareCase(Value: boolean);
+    function GetDataField: TRaveFieldName;
+    function SetDataField(Value: TRaveFieldName);
+    function GetDataView: TRaveBaseDataView;
+    function SetDataView(Value: TRaveBaseDataView);
+  //function GetDataMirrors: TRavePersistentList;
+  //function SetDataMirrors(Value: TRavePersistentList);
+  public
+    property CompareCase: boolean read GetCompareCase write SetCompareCase;
+    property DataField: TRaveFieldName read GetDataField write SetDataField;
+    property DataView: TRaveBaseDataView read GetDataView write SetDataView;
+  //property DataMirrors: TRavePersistentList read GetDataMirrors write SetDataMirrors;
+  end TRaveDataMirrorSection;
+
+{
+  function CalcFunction(Value: extended;
+                        Func: TRaveCalcFunction): extended;
+  function CalcVariable(CalcVar: TRaveCalcVariable;
+                        DataView: TRaveBaseDataView;
+                        DataField: TRaveFieldName;
+                        Value: extended;
+                        Func: TRaveCalcFunction): extended;
+}
+
+implementation
+
+// TRaveDataText
+
+  function TRaveDataText.GetDataField: TRaveFieldName; external;
+  function TRaveDataText.SetDataField(Value: TRaveFieldName); external;
+  function TRaveDataText.GetDataView: TRaveBaseDataView; external;
+  function TRaveDataText.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataText.GetLookupDataView: TRaveBaseDataView; external;
+  function TRaveDataText.SetLookupDataView(Value: TRaveBaseDataView); external;
+  function TRaveDataText.GetLookupField: TRaveFieldName; external;
+  function TRaveDataText.SetLookupField(Value: TRaveFieldName); external;
+  function TRaveDataText.GetLookupDisplay: TRaveFieldName; external;
+  function TRaveDataText.SetLookupDisplay(Value: TRaveFieldName); external;
+  function TRaveDataText.GetLookupInvalid: string; external;
+  function TRaveDataText.SetLookupInvalid(Value: string); external;
+
+// TRaveDataMemo
+
+  function TRaveDataMemo.GetDataField: TRaveFieldName; external;
+  function TRaveDataMemo.SetDataField(Value: TRaveFieldName); external;
+  function TRaveDataMemo.GetDataView: TRaveBaseDataView; external;
+  function TRaveDataMemo.SetDataView(Value: TRaveBaseDataView); external;
+
+// TRaveCalcText
+
+  function TRaveCalcText.GetCalcType: TRaveCalcType; external;
+  function TRaveCalcText.SetCalcType(Value: TRaveCalcType); external;
+  function TRaveCalcText.GetController: TRaveComponent; external;
+  function TRaveCalcText.SetController(Value: TRaveComponent); external;
+  function TRaveCalcText.GetCountBlanks: boolean; external;
+  function TRaveCalcText.SetCountBlanks(Value: boolean); external;
+  function TRaveCalcText.GetDataView: TRaveBaseDataView; external;
+  function TRaveCalcText.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveCalcText.GetDataField: TRaveFieldName; external;
+  function TRaveCalcText.SetDataField(Value: TRaveFieldName); external;
+  function TRaveCalcText.GetDisplayFormat: string; external;
+  function TRaveCalcText.SetDisplayFormat(Value: string); external;
+  function TRaveCalcText.GetDisplayType: TRaveDisplayType; external;
+  function TRaveCalcText.SetDisplayType(Value: TRaveDisplayType); external;
+  function TRaveCalcText.GetInitializer: TRaveComponent; external;
+  function TRaveCalcText.SetInitializer(Value: TRaveComponent); external;
+  function TRaveCalcText.GetRunningTotal: boolean; external;
+  function TRaveCalcText.SetRunningTotal(Value: boolean); external;
+  function TRaveCalcText.GetValue: extended; external;
+
+// TRaveCalcVariable
+
+  function TRaveCalcVariable.GetValue: extended; external;
+  function TRaveCalcVariable.GetIsNull: boolean; external;
+  function TRaveCalcVariable.GetDestParam: string; external;
+  function TRaveCalcVariable.SetDestParam(Value: string); external;
+  function TRaveCalcVariable.GetDestPIVar: string; external;
+  function TRaveCalcVariable.SetDestPIVar(Value: string); external;
+  function TRaveCalcVariable.GetDisplayFormat: string; external;
+  function TRaveCalcVariable.SetDisplayFormat(Value: string); external;
+  function TRaveCalcVariable.GetDisplayType: TRaveDisplayType; external;
+  function TRaveCalcVariable.SetDisplayType(Value: TRaveDisplayType); external;
+
+// TRaveCalcOp
+
+  function TRaveCalcOp.GetSrc1CalcVar: TRaveCalcVariable; external;
+  function TRaveCalcOp.SetSrc1CalcVar(Value: TRaveCalcVariable); external;
+  function TRaveCalcOp.GetSrc1DataField: TRaveFieldName; external;
+  function TRaveCalcOp.SetSrc1DataField(Value: TRaveFieldName); external;
+  function TRaveCalcOp.GetSrc1DataView: TRaveBaseDataView; external;
+  function TRaveCalcOp.SetSrc1DataView(Value: TRaveBaseDataView); external;
+  function TRaveCalcOp.GetSrc1Value: extended; external;
+  function TRaveCalcOp.SetSrc1Value(Value: extended); external;
+  function TRaveCalcOp.GetSrc1Function: TRaveCalcFunction; external;
+  function TRaveCalcOp.SetSrc1Function(Value: TRaveCalcFunction); external;
+  function TRaveCalcOp.GetSrc2CalcVar: TRaveCalcVariable; external;
+  function TRaveCalcOp.SetSrc2CalcVar(Value: TRaveCalcVariable); external;
+  function TRaveCalcOp.GetSrc2DataField: TRaveFieldName; external;
+  function TRaveCalcOp.SetSrc2DataField(Value: TRaveFieldName); external;
+  function TRaveCalcOp.GetSrc2DataView: TRaveBaseDataView; external;
+  function TRaveCalcOp.SetSrc2DataView(Value: TRaveBaseDataView); external;
+  function TRaveCalcOp.GetSrc2Value: extended; external;
+  function TRaveCalcOp.SetSrc2Value(Value: extended); external;
+  function TRaveCalcOp.GetSrc2Function: TRaveCalcFunction; external;
+  function TRaveCalcOp.SetSrc2Function(Value: TRaveCalcFunction); external;
+  function TRaveCalcOp.GetOperator: TRaveCalcOperator; external;
+  function TRaveCalcOp.SetOperator(Value: TRaveCalcOperator); external;
+  function TRaveCalcOp.GetResultFunction: TRaveCalcFunction; external;
+  function TRaveCalcOp.SetResultFunction(Value: TRaveCalcFunction); external;
+
+// TRaveCalcTotal
+
+  function TRaveCalcTotal.GetCalcType: TRaveCalcType; external;
+  function TRaveCalcTotal.SetCalcType(Value: TRaveCalcType); external;
+  function TRaveCalcTotal.GetCalcVar: TRaveCalcVariable; external;
+  function TRaveCalcTotal.SetCalcVar(Value: TRaveCalcVariable); external;
+  function TRaveCalcTotal.GetController: TRaveComponent; external;
+  function TRaveCalcTotal.SetController(Value: TRaveComponent); external;
+  function TRaveCalcTotal.GetCountBlanks: boolean; external;
+  function TRaveCalcTotal.SetCountBlanks(Value: boolean); external;
+  function TRaveCalcTotal.GetDataView: TRaveBaseDataView; external;
+  function TRaveCalcTotal.SetDataView(Value: TRaveBaseDataView); external;
+  function TRaveCalcTotal.GetDataField: TRaveFieldName; external;
+  function TRaveCalcTotal.SetDataField(Value: TRaveFieldName); external;
+  function TRaveCalcTotal.GetInitializer: TRaveComponent; external;
+  function TRaveCalcTotal.SetInitializer(Value: TRaveComponent); external;
+  function TRaveCalcTotal.GetRunningTotal: boolean; external;
+  function TRaveCalcTotal.SetRunningTotal(Value: boolean); external;
+
+// TRaveCalcController
+
+  function TRaveCalcController.GetInitCalcVar: TRaveCalcVariable; external;
+  function TRaveCalcController.SetInitCalcVar(Value: TRaveCalcVariable); external;
+  function TRaveCalcController.GetInitDataField: TRaveFieldName; external;
+  function TRaveCalcController.SetInitDataField(Value: TRaveFieldName); external;
+  function TRaveCalcController.GetInitValue: extended; external;
+  function TRaveCalcController.SetInitValue(Value: extended); external;
+
+// TRaveDataMirror
+
+//function TRaveDataMirror.GetDataValue: string; external;
+//function TRaveDataMirror.SetDataValue(Value: string); external;
+//function TRaveDataMirror.GetIsDefault: boolean; external;
+//function TRaveDataMirror.SetIsDefault(Value: boolean); external;
+//function TRaveDataMirror.GetSectionMirror: TRaveSection; external;
+//function TRaveDataMirror.SetSectionMirror(Value: TRaveSection); external;
+
+// TRaveDataMirrorSection
+
+  function TRaveDataMirrorSection.GetCompareCase: boolean; external;
+  function TRaveDataMirrorSection.SetCompareCase(Value: boolean); external;
+  function TRaveDataMirrorSection.GetDataField: TRaveFieldName; external;
+  function TRaveDataMirrorSection.SetDataField(Value: TRaveFieldName); external;
+  function TRaveDataMirrorSection.GetDataView: TRaveBaseDataView; external;
+  function TRaveDataMirrorSection.SetDataView(Value: TRaveBaseDataView); external;
+//function TRaveDataMirrorSection.GetDataMirrors: TRavePersistentList; external;
+//function TRaveDataMirrorSection.SetDataMirrors(Value: TRavePersistentList); external;
+
+end RVCsData;

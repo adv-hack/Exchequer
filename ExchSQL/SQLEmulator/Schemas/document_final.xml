@@ -1,0 +1,302 @@
+<schemarecord tldformat="4" version="12" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="Pe9/Va6MUHwMKvl9lHjuVA==" identitycol="PositionId" reclen="1964" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_run_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thRunNo" collation="0"/>
+        <schemafield fieldname="f_cust_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thAcCode" collation="1"/>
+        <schemafield fieldname="f_nom_auto" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thNomAuto" collation="0"/>
+        <schemafield fieldname="f_our_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thOurRef" collation="1"/>
+        <schemafield fieldname="f_folio_num" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thFolioNum" collation="0"/>
+        <schemafield fieldname="f_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thCurrency" collation="0"/>
+        <schemafield fieldname="f_ac_yr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thYear" collation="0"/>
+        <schemafield fieldname="f_ac_pr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thPeriod" collation="0"/>
+        <schemafield fieldname="f_due_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thDueDate" collation="1"/>
+        <schemafield fieldname="f_vat_post_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thVATPostDate" collation="0"/>
+        <schemafield fieldname="f_trans_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thTransDate" collation="1"/>
+        <schemafield fieldname="f_cust_supp" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="thCustSupp" collation="1"/>
+        <schemafield fieldname="f_cx_rate_co" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thCompanyRate" collation="0"/>
+        <schemafield fieldname="f_cx_rate_vat" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thDailyRate" collation="0"/>
+        <schemafield fieldname="f_old_your_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thOldYourRef" collation="1"/>
+        <schemafield fieldname="f_batch_link" fullfieldname="" typename="DelphiEmbeddedCaseSensitiveString" size="13" elements="1" id="-1" columnname="thBatchLink" collation="0"/>
+        <schemafield fieldname="f_alloc_stat" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="thOutstanding" collation="1"/>
+        <schemafield fieldname="f_i_line_count" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thNextLineNumber" collation="0"/>
+        <schemafield fieldname="f_n_line_count" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thNextNotesLineNumber" collation="0"/>
+        <schemafield fieldname="f_inv_doc_hed" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thDocType" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal1" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisStandard" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal2" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisExempt" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal3" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisZero" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal4" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate1" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal5" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate2" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal6" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate3" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal7" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate4" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal8" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate5" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal9" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate6" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal10" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate7" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal11" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate8" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal12" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRate9" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal13" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateT" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal14" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateX" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal15" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateB" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal16" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateC" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal17" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateF" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal18" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateG" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal19" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateR" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal20" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateW" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal21" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateY" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal22" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateIAdj" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal23" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateOAdj" collation="0"/>
+        <schemafield fieldname="f_inv_vat_anal24" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATAnalysisRateSpare" collation="0"/>
+        <schemafield fieldname="f_inv_net_val" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thNetValue" collation="0"/>
+        <schemafield fieldname="f_inv_vat" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalVAT" collation="0"/>
+        <schemafield fieldname="f_disc_setl" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thSettleDiscPerc" collation="0"/>
+        <schemafield fieldname="f_disc_set_am" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thSettleDiscAmount" collation="0"/>
+        <schemafield fieldname="f_disc_amount" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalLineDiscount" collation="0"/>
+        <schemafield fieldname="f_disc_days" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thSettleDiscDays" collation="0"/>
+        <schemafield fieldname="f_disc_taken" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thSettleDiscTaken" collation="0"/>
+        <schemafield fieldname="f_settled" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thAmountSettled" collation="0"/>
+        <schemafield fieldname="f_auto_inc" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thAutoIncrement" collation="0"/>
+        <schemafield fieldname="f_un_yr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thUntilYear" collation="0"/>
+        <schemafield fieldname="f_un_pr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thUntilPeriod" collation="0"/>
+        <schemafield fieldname="f_trans_nat" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thTransportNature" collation="0"/>
+        <schemafield fieldname="f_trans_mode" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thTransportMode" collation="0"/>
+        <schemafield fieldname="f_remit_no" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thRemitNo" collation="0"/>
+        <schemafield fieldname="f_auto_inc_by" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="thAutoIncrementType" collation="0"/>
+        <schemafield fieldname="f_hold_flg" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thHoldFlag" collation="0"/>
+        <schemafield fieldname="f_audit_flg" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thAuditFlag" collation="0"/>
+        <schemafield fieldname="f_total_weight" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalWeight" collation="0"/>
+        <schemafield fieldname="f_delivery_addr1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thDeliveryAddr1" collation="0"/>
+        <schemafield fieldname="f_delivery_addr2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thDeliveryAddr2" collation="0"/>
+        <schemafield fieldname="f_delivery_addr3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thDeliveryAddr3" collation="0"/>
+        <schemafield fieldname="f_delivery_addr4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thDeliveryAddr4" collation="0"/>
+        <schemafield fieldname="f_delivery_addr5" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thDeliveryAddr5" collation="0"/>
+        <schemafield fieldname="f_variance" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVariance" collation="0"/>
+        <schemafield fieldname="f_total_ordered" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalOrdered" collation="0"/>
+        <schemafield fieldname="f_total_reserved" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalReserved" collation="0"/>
+        <schemafield fieldname="f_total_cost" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalCost" collation="0"/>
+        <schemafield fieldname="f_total_invoiced" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalInvoiced" collation="0"/>
+        <schemafield fieldname="f_trans_desc" fullfieldname="" typename="DelphiEmbeddedCaseInsensitiveString" size="21" elements="1" id="-1" columnname="thLongYourRef" collation="0"/>
+        <schemafield fieldname="f_until_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thUntilDate" collation="0"/>
+        <schemafield fieldname="f_nomvatio" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="thNOMVATIO" collation="0"/>
+        <schemafield fieldname="f_external_doc" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thExternal" collation="0"/>
+        <schemafield fieldname="f_printed_doc" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thPrinted" collation="0"/>
+        <schemafield fieldname="f_re_value_adj" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thRevalueAdj" collation="0"/>
+        <schemafield fieldname="f_curr_settled" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thCurrSettled" collation="0"/>
+        <schemafield fieldname="f_settled_vat" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thSettledVAT" collation="0"/>
+        <schemafield fieldname="f_vat_claimed" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATClaimed" collation="0"/>
+        <schemafield fieldname="f_batch_nom" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thBatchGL" collation="0"/>
+        <schemafield fieldname="f_auto_post" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thAutoPost" collation="0"/>
+        <schemafield fieldname="f_man_vat" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thManualVAT" collation="0"/>
+        <schemafield fieldname="f_del_terms" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="thDeliveryTerms" collation="0"/>
+        <schemafield fieldname="f_on_pick_run" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thIncludeInPickingRun" collation="0"/>
+        <schemafield fieldname="f_op_name" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thOperator" collation="0"/>
+        <schemafield fieldname="f_no_labels" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thNoLabels" collation="0"/>
+        <schemafield fieldname="f_tagged" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thTagged" collation="0"/>
+        <schemafield fieldname="f_pick_run_no" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thPickingRunNo" collation="0"/>
+        <schemafield fieldname="f_ord_match" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thOrdMatch" collation="0"/>
+        <schemafield fieldname="f_deliver_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thDeliveryNoteRef" collation="1"/>
+        <schemafield fieldname="f_exch_cal_co_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATCompanyRate" collation="0"/>
+        <schemafield fieldname="f_exch_cal_vat_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thVATDailyRate" collation="0"/>
+        <schemafield fieldname="f_orig_co_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thOriginalCompanyRate" collation="0"/>
+        <schemafield fieldname="f_orig_vat_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thOriginalDailyRate" collation="0"/>
+        <schemafield fieldname="f_post_disc_am" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="PostDiscAm" collation="0"/>
+        <schemafield fieldname="f_fr_nom_code" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thSpareNomCode" collation="0"/>
+        <schemafield fieldname="f_p_disc_taken" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thPostDiscTaken" collation="0"/>
+        <schemafield fieldname="f_ctrl_nom" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thControlGL" collation="0"/>
+        <schemafield fieldname="f_d_job_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thJobCode" collation="1"/>
+        <schemafield fieldname="f_d_job_anal" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thAnalysisCode" collation="1"/>
+        <schemafield fieldname="f_tot_ord_os" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thTotalOrderOS" collation="0"/>
+        <schemafield fieldname="f_fr_department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="thAppDepartment" collation="1"/>
+        <schemafield fieldname="f_fr_cost_centre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="thAppCostCentre" collation="1"/>
+        <schemafield fieldname="f_doc_user1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField1" collation="0"/>
+        <schemafield fieldname="f_doc_user2" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField2" collation="0"/>
+        <schemafield fieldname="f_doc_l_split1" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis1" collation="0"/>
+        <schemafield fieldname="f_doc_l_split2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis2" collation="0"/>
+        <schemafield fieldname="f_doc_l_split3" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis3" collation="0"/>
+        <schemafield fieldname="f_doc_l_split4" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis4" collation="0"/>
+        <schemafield fieldname="f_doc_l_split5" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis5" collation="0"/>
+        <schemafield fieldname="f_doc_l_split6" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thLineTypeAnalysis6" collation="0"/>
+        <schemafield fieldname="f_last_letter" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thLastDebtChaseLetter" collation="0"/>
+        <schemafield fieldname="f_batch_now" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thBatchNow" collation="0"/>
+        <schemafield fieldname="f_batch_then" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thBatchThen" collation="0"/>
+        <schemafield fieldname="f_un_tagged" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thUnTagged" collation="0"/>
+        <schemafield fieldname="f_o_base_equiv" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thOriginalBaseValue" collation="0"/>
+        <schemafield fieldname="f_use_o_rate" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thUseOriginalRates" collation="0"/>
+        <schemafield fieldname="f_old_co_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thOldCompanyRate" collation="0"/>
+        <schemafield fieldname="f_old_vat_rate" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="thOldDailyRate" collation="0"/>
+        <schemafield fieldname="f_sop_keep_rate" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thFixedRate" collation="0"/>
+        <schemafield fieldname="f_doc_user3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField3" collation="0"/>
+        <schemafield fieldname="f_doc_user4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField4" collation="0"/>
+        <schemafield fieldname="f_ssd_process" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="thProcess" collation="0"/>
+        <schemafield fieldname="f_ext_source" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thSource" collation="0"/>
+        <schemafield fieldname="f_curr_tri_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thCurrencyTriRate" collation="0"/>
+        <schemafield fieldname="f_curr_tri_euro" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thCurrencyTriEuro" collation="0"/>
+        <schemafield fieldname="f_curr_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thCurrencyTriInvert" collation="0"/>
+        <schemafield fieldname="f_curr_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thCurrencyTriFloat" collation="0"/>
+        <schemafield fieldname="f_curr_tri_spare" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="thCurrencyTriSpare" collation="0"/>
+        <schemafield fieldname="f_vat_tri_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thVATTriRate" collation="0"/>
+        <schemafield fieldname="f_vat_tri_euro" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thVATTriEuro" collation="0"/>
+        <schemafield fieldname="f_vat_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thVATTriInvert" collation="0"/>
+        <schemafield fieldname="f_vat_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thVATTriFloat" collation="0"/>
+        <schemafield fieldname="f_vat_tri_spare" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="thVATTriSpare" collation="0"/>
+        <schemafield fieldname="f_orig_tri_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thOriginalTriRate" collation="0"/>
+        <schemafield fieldname="f_orig_tri_euro" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thOriginalTriEuro" collation="0"/>
+        <schemafield fieldname="f_orig_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thOriginalTriInvert" collation="0"/>
+        <schemafield fieldname="f_orig_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thOriginalTriFloat" collation="0"/>
+        <schemafield fieldname="f_orig_tri_spare" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="thOriginalTriSpare" collation="0"/>
+        <schemafield fieldname="f_old_or_tri_rate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thOldOriginalTriRate" collation="0"/>
+        <schemafield fieldname="f_old_or_tri_euro" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thOldOriginalTriEuro" collation="0"/>
+        <schemafield fieldname="f_old_or_tri_invert" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thOldOriginalTriInvert" collation="0"/>
+        <schemafield fieldname="f_old_or_tri_float" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thOldOriginalTriFloat" collation="0"/>
+        <schemafield fieldname="f_old_or_tri_spare" fullfieldname="" typename="binary" size="10" elements="1" id="-1" columnname="thOldOriginalTriSpare" collation="0"/>
+        <schemafield fieldname="f_post_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thPostedDate" collation="0"/>
+        <schemafield fieldname="f_por_pick_sor" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thPORPickSOR" collation="0"/>
+        <schemafield fieldname="f_b_discount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thBatchDiscAmount" collation="0"/>
+        <schemafield fieldname="f_pre_post_flg" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thPrePost" collation="0"/>
+        <schemafield fieldname="f_auth_amnt" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thAuthorisedAmnt" collation="0"/>
+        <schemafield fieldname="f_time_change" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="thTimeChanged" collation="0"/>
+        <schemafield fieldname="f_time_create" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="thTimeCreated" collation="0"/>
+        <schemafield fieldname="f_cis_tax" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thCISTaxDue" collation="0"/>
+        <schemafield fieldname="f_cis_declared" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thCISTaxDeclared" collation="0"/>
+        <schemafield fieldname="f_cis_manual_tax" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thCISManualTax" collation="0"/>
+        <schemafield fieldname="f_cis_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thCISDate" collation="0"/>
+        <schemafield fieldname="f_total_cost2" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thTotalCostApportioned" collation="0"/>
+        <schemafield fieldname="f_cis_empl" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thCISEmployee" collation="1"/>
+        <schemafield fieldname="f_cis_gross" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thCISTotalGross" collation="0"/>
+        <schemafield fieldname="f_cis_holder" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thCISSource" collation="0"/>
+        <schemafield fieldname="f_h_exported_flag" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thTimesheetExported" collation="0"/>
+        <schemafield fieldname="f_cisg_exclude" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thCISExcludedFromGross" collation="0"/>
+        <schemafield fieldname="f_week_month" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thWeekMonth" collation="0"/>
+        <schemafield fieldname="f_workflow_state" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thWorkflowState" collation="0"/>
+        <schemafield fieldname="f_override_location" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="thOverrideLocation" collation="1"/>
+        <schemafield fieldname="f_spare5" fullfieldname="" typename="binary" size="54" elements="1" id="-1" columnname="thSpare5" collation="0"/>
+        <schemafield fieldname="f_your_ref" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="thYourRef" collation="1"/>
+        <schemafield fieldname="f_doc_user5"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField5" collation="0"/>
+        <schemafield fieldname="f_doc_user6"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField6" collation="0"/>
+        <schemafield fieldname="f_doc_user7"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField7" collation="0"/>
+        <schemafield fieldname="f_doc_user8"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField8" collation="0"/>
+        <schemafield fieldname="f_doc_user9"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField9" collation="0"/>
+        <schemafield fieldname="f_doc_user10" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField10" collation="0"/>
+        <schemafield fieldname="f_delivery_postcode" fullfieldname="delivery_postcode" typename="DelphiString" size="21" elements="1" id="-1" columnname="thDeliveryPostCode" ></schemafield>
+        <schemafield fieldname="f_originator" fullfieldname="f_originator" typename="DelphiString" size="37" elements="1" id="-1" columnname="thOriginator" collation="1"/>
+        <schemafield fieldname="f_creation_time" fullfieldname="f_creation_time" typename="DelphiString" size="7" elements="1" id="-1" columnname="thCreationTime" collation="1"/>
+        <schemafield fieldname="f_creation_date" fullfieldname="f_creation_date" typename="DelphiString" size="9" elements="1" id="-1" columnname="thCreationDate" collation="1"/>
+        <schemafield fieldname="f_order_payment_order_ref" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="thOrderPaymentOrderRef" collation="1"/>
+        <schemafield fieldname="f_order_payment_element" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thOrderPaymentElement" collation="0"/>
+        <schemafield fieldname="f_order_payment_flags" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thOrderPaymentFlags" collation="0"/>
+        <schemafield fieldname="f_credit_card_type" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="thCreditCardType" collation="1"/>
+        <schemafield fieldname="f_credit_card_number" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="thCreditCardNumber" collation="1"/>
+        <schemafield fieldname="f_credit_card_expiry" fullfieldname="" typename="DelphiString" size="5" elements="1" id="-1" columnname="thCreditCardExpiry" collation="1"/>
+        <schemafield fieldname="f_credit_card_authorisation_no" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="thCreditCardAuthorisationNo" collation="1"/>
+        <schemafield fieldname="f_credit_card_reference_no" fullfieldname="" typename="DelphiString" size="71" elements="1" id="-1" columnname="thCreditCardReferenceNo" collation="1"/>
+        <schemafield fieldname="f_custom_data1" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thCustomData1" collation="1"/>
+        <schemafield fieldname="f_delivery_country" fullfieldname="" typename="DelphiString" size="3" elements="1" id="-1"  columnname="thDeliveryCountry" collation="1"></schemafield>
+        <schemafield fieldname="f_ppd_percentage" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPPDPercentage" collation="0"/>
+        <schemafield fieldname="f_ppd_days" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="thPPDDays" collation="0"/>
+        <schemafield fieldname="f_ppd_goods_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPPDGoodsValue" collation="0"/>
+        <schemafield fieldname="f_ppd_vat_value" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="thPPDVATValue" collation="0"/>
+        <schemafield fieldname="f_ppd_taken" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thPPDTaken" collation="0"/>
+        <schemafield fieldname="f_ppd_credit_note" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thPPDCreditNote" collation="0"/>
+        <schemafield fieldname="f_batch_pay_ppd_status" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="thBatchPayPPDStatus" collation="0"/>
+        <schemafield fieldname="f_intrastat_out_of_period" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thIntrastatOutOfPeriod" collation="0"/>
+        <schemafield fieldname="f_doc_user11" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField11" collation="0"/>
+        <schemafield fieldname="f_doc_user12" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="thUserField12" collation="0"/>
+        <schemafield fieldname="f_tax_region" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="thTaxRegion" collation="0"/>
+		<schemafield fieldname="f_anonymised" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="thAnonymised" collation="0"/>
+		<schemafield fieldname="f_anonymised_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="thAnonymisedDate" collation="0"/>
+		<schemafield fieldname="f_anonymised_time" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="thAnonymisedTime" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="1" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_run_no</item>
+                <item size="1" computedcolumnname="OurRefPrefix">f_our_ref</item>
+                <item size="-1" computedcolumnname="">f_folio_num</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="6" computedcolumnname="thAcCodeComputed">f_cust_code</item>
+                <item size="-1" computedcolumnname="">f_cust_supp</item>
+                <item size="-1" computedcolumnname="">f_nom_auto</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="2" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_our_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="3" isunique="1" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_folio_num</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="4" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_cust_supp</item>
+                <item size="6" computedcolumnname="thAcCodeComputed">f_cust_code</item>
+                <item size="-1" computedcolumnname="">f_due_date</item>
+                <item size="-1" computedcolumnname="">f_nom_auto</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="5" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_vat_post_date</item>
+                <item size="-1" computedcolumnname="">f_our_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="6" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_your_ref</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="7" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="thBatchLinkComputed">f_batch_link</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="8" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="thLongYourRefComputed">f_trans_desc</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="9" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_trans_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="10" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_ac_yr</item>
+                <item size="-1" computedcolumnname="">f_ac_pr</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="11" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_alloc_stat</item>
+                <item size="6" computedcolumnname="thAcCodeComputed">f_cust_code</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="12" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_cis_date</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="13" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="6" computedcolumnname="thAcCodeComputed">f_cust_code</item>
+                <item size="-1" computedcolumnname="">f_cust_supp</item>
+                <item size="-1" computedcolumnname="">f_nom_auto</item>
+                <item size="-1" computedcolumnname="">f_trans_date</item>
+                <item size="-1" computedcolumnname="">f_folio_num</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="14" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">f_tax_region</item>
+                <item size="-1" computedcolumnname="">f_vat_post_date</item>
+                <item size="-1" computedcolumnname="">f_our_ref</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

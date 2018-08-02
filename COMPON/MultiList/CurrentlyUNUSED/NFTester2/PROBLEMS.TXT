@@ -1,0 +1,4 @@
+Windows Card system - Possible problems
+---------------------------------------
+
+1. Apparently, when you pull back the details of a guest (comms 'D'), the transaction lines you get back can have gaps in. (e.g. you get lines 1-5 then 7-10)

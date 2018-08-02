@@ -1,0 +1,9 @@
+First Test DLL=1
+TEST SCRIPT ONE=2
+TEST SCRIPT THREE=3
+SELECT Customers=4
+DLL Plugin Template=5
+DLL Test Plugin=6
+Select Customers=7
+C:\ExchSQL\Plugins\DSRImport.dll=5
+C:\ExchSQL\Plugins\test.scr=6

@@ -1,0 +1,41 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="Sp0XqQApokhq1lRjsKCt4g==" identitycol="PositionId" reclen="358" disablega="0" commandtimeout="500" temporary="0" redundant="0" Post_Creation_StoredProcedure="" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="qbFolio" fullfieldname="qbFolio" typename="int32" size="4" elements="1" id="-1" columnname="qbFolio" collation="0"/>
+        <schemafield fieldname="qbAcCode" fullfieldname="qbAcCode" typename="DelphiString" size="7" elements="1" id="-1" columnname="qbAcCode" collation="1"/>
+        <schemafield fieldname="qbStockFolio" fullfieldname="qbStockFolio" typename="int32" size="4" elements="1" id="-1" columnname="qbStockFolio" collation="0"/>
+        <schemafield fieldname="qbCurrency" fullfieldname="qbCurrency" typename="uint8" size="1" elements="1" id="-1" columnname="qbCurrency" collation="0"/>
+        <schemafield fieldname="qbStartDate" fullfieldname="qbStartDate" typename="DelphiString" size="9" elements="1" id="-1" columnname="qbStartDate" collation="1"/>
+        <schemafield fieldname="qbEndDate" fullfieldname="qbEndDate" typename="DelphiString" size="9" elements="1" id="-1" columnname="qbEndDate" collation="1"/>
+        <schemafield fieldname="qbQtyToString" fullfieldname="qbQtyToString" typename="DelphiString" size="17" elements="1" id="-1" columnname="qbQtyToString" collation="1"/>
+        <schemafield fieldname="qbQtyTo" fullfieldname="qbQtyTo" typename="double" size="8" elements="1" id="-1" columnname="qbQtyTo" collation="0"/>
+        <schemafield fieldname="qbQtyFrom" fullfieldname="qbQtyFrom" typename="double" size="8" elements="1" id="-1" columnname="qbQtyFrom" collation="0"/>
+        <schemafield fieldname="qbBreakType" fullfieldname="qbBreakType" typename="uint8" size="1" elements="1" id="-1" columnname="qbBreakType" collation="0"/>
+        <schemafield fieldname="qbPriceBand" fullfieldname="qbPriceBand" typename="char" size="1" elements="1" id="-1" columnname="qbPriceBand" collation="0"/>
+        <schemafield fieldname="qbSpecialPrice" fullfieldname="qbSpecialPrice" typename="double" size="8" elements="1" id="-1" columnname="qbSpecialPrice" collation="0"/>
+        <schemafield fieldname="qbDiscountPercent" fullfieldname="qbDiscountPercent" typename="double" size="8" elements="1" id="-1" columnname="qbDiscountPercent" collation="0"/>
+        <schemafield fieldname="qbDiscountAmount" fullfieldname="qbDiscountAmount" typename="double" size="8" elements="1" id="-1" columnname="qbDiscountAmount" collation="0"/>
+        <schemafield fieldname="qbMarginOrMarkup" fullfieldname="qbMarginOrMarkup" typename="double" size="8" elements="1" id="-1" columnname="qbMarginOrMarkup" collation="0"/>
+        <schemafield fieldname="qbUseDates" fullfieldname="qbUseDates" typename="bool1" size="1" elements="1" id="-1" columnname="qbUseDates" collation="0"/>
+    </fixedfields>
+    <defaultrecordtype/>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">qbAcCode</item>
+                <item size="-1" computedcolumnname="">qbStockFolio</item>
+                <item size="-1" computedcolumnname="">qbCurrency</item>
+                <item size="-1" computedcolumnname="">qbStartDate</item>
+                <item size="-1" computedcolumnname="">qbEndDate</item>
+                <item size="-1" computedcolumnname="">qbQtyToString</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="" nullablecharacter="" nullgroup="">
+            <indexfields>
+                <item size="-1" computedcolumnname="">qbFolio</item>
+                <item size="-1" computedcolumnname="">qbQtyToString</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

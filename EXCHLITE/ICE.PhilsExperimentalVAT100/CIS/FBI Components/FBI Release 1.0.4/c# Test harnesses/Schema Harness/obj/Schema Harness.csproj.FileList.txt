@@ -1,0 +1,4 @@
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\Schema_Harness.ct600Harness.resources
+obj\Release\Schema_Harness.Properties.Resources.resources
+obj\Release\Schema Harness.csproj.GenerateResource.Cache

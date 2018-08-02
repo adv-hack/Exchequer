@@ -1,0 +1,221 @@
+unit pvsqltables;
+
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  DB, DBConsts, pvconst, StdVCL, pvtables, pvodbc, sqlmisc
+{$Ifdef PvDelphi5Up}
+  ;
+{$Else}
+  , BDEConst;
+{$EndIf}
+
+type
+
+{ ODBC error information type }
+
+  TPvSqlError = class(TPvDBError)
+  protected
+    FSqlState: string;
+  public
+    constructor Create(Owner: EPvDBEngineError; SqlState: PSQLCHAR;
+      NativeError: Longint; Message: PChar);
+
+    property SqlState: string read FSqlState;
+  end;
+
+  EPvSqlEngineError = class(EPvDBEngineError)
+  protected
+    FErrorCode: SQLRETURN;
+  public
+    constructor Create(Owner: TComponent; Handle: SQLHANDLE;
+      HandleType: SQLSMALLINT; OdbsRetVal: SQLRETURN);
+    property ErrorCode: SQLRETURN read FErrorCode;
+  end;
+
+{ ODBC installer error information type }
+
+  EPvSqlInstallerEngineError = class(EPvDbAdminEngineError)
+  protected
+    constructor CreateEmpty(Owner: TComponent; Reserv: integer);
+  public
+    constructor Create(Owner: TComponent);
+  end;
+
+  EPvOwnSqlInstallerEngineError = class(EPvSqlInstallerEngineError)
+  public
+    constructor Create(Owner: TComponent; ErrorCode: SQLINTEGER; Mess: string);
+  end;
+
+const
+  cPvOwnSqlInstallerEngineErrorBase = -200;
+
+  cPvOwnSqlInstallerEngineErrorDsnAlreadyExist           = cPvOwnSqlInstallerEngineErrorBase;
+  cPvOwnSqlInstallerEngineErrorDsnNotFound               = cPvOwnSqlInstallerEngineErrorBase - 1;
+  cPvOwnSqlInstallerEngineErrorInvalidOpenMode           = cPvOwnSqlInstallerEngineErrorBase - 2;
+  cPvOwnSqlInstallerEngineErrorClientDSNsAreNotSupported = cPvOwnSqlInstallerEngineErrorBase - 3;
+
+type
+
+{ TPvSqlSessionList }
+
+  TPvSqlSessionList = class(TPvAbsSessionList)
+  protected
+    procedure InitCriticalSection; override;
+    procedure DestroyCriticalSection; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    function CreateSession: TPvAbsSession; override;
+  end;
+
+{ TPvSqlSession }
+
+  TDsnTypes = (dsnSystem, dsnUser);
+
+  TPvSqlSession = class(TPvAbsSession)
+  private
+    FHandle: SQLHENV;
+    FLockCount: Integer;
+    FUpdateDsnType: TDsnTypes;
+    function GetHandle: SQLHENV;
+    function FindDatabaseHandle(const DatabaseName: string): SQLHDBC;
+  protected
+    procedure Check(Status: SQLRETURN);
+    procedure CheckInstaller(Status: boolean);
+    procedure CloseDatabaseHandle(Database: TPvAbsDatabase); override;
+    procedure GetDsnParams(const AliasName: string; List: TStrings; RaiseExc: boolean);
+    procedure GetSessionParams(List: TStrings); override;
+    function IsHandleNull: boolean; override;
+    procedure LockSession; override;
+    procedure UnlockSession; override;
+    function IsValidDataSet(AComponent: TComponent): boolean; override;
+    function IsValidDatabase(AComponent: TComponent): boolean; override;
+    function CreateDatabase(Owner: TPvAbsSession): TPvAbsDatabase; override;
+    function GetSessions: TPvAbsSessionList; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    procedure RealDropAlias(Name: string); override;
+    function DecodeAliasParams(Name: string; List: TStrings;
+      IsAddAlias: boolean; AliasParams: TStringList): boolean; override;
+    procedure SaveAlias(Name: string; List: TStrings; IsAdded: boolean); override;
+    procedure StartSession(Value: Boolean); override;
+    property UserName;
+  public
+    constructor Create(AOwner: TComponent); override;
+    procedure AddStandardAlias(const Name, DbName: string); override;
+    procedure GetAliasNames(List: TStrings); override;
+    procedure GetAliasParams(const AliasName: string; List: TStrings); override;
+    procedure GetTableNames(const DatabaseName, Pattern: string;
+      Extensions, SystemTables: Boolean; List: TStrings); override;
+    procedure GetStoredProcNames(const DatabaseName: string; List: TStrings); override;
+    property Handle: SQLHENV read GetHandle;
+    property UpdateDsnType: TDsnTypes read FUpdateDsnType write FUpdateDsnType;
+  end;
+
+{ TPvSqlDatabase }
+
+{$Ifdef PvDelphi5Up}
+  PDataSet = ^TDataSet;
+{$Endif}
+
+  TPvSqlDatabase = class(TPvAbsDatabase)
+  private
+    FHandle: SQLHDBC;
+    FAliasNameIsConnectionString: boolean;
+    FTables: TSqlTablesInfoCollection;
+    FStoredProcs: TSqlStoredProcInfoCollection;
+    function GetTables: TSqlTablesInfoCollection;
+    function GetStoredProcs: TSqlStoredProcInfoCollection;
+    function OpenFromExistingDB: boolean;
+    procedure SetHandle(Value: SQLHDBC);
+    procedure SetAliasNameIsConnectionString(Value: boolean);
+  protected
+{$Ifdef PvDelphi5Up}
+    procedure DoConnect; override;
+    procedure DoDisconnect; override;
+{$Endif}
+    procedure Check(Status: SQLRETURN);
+    procedure EndTransaction(TransEnd: TTransEnd); override;
+    function IsHandleNull: boolean; override;
+    function GetOwnerSession(AOwner: TComponent): TPvAbsSession; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    function GetSessions: TPvAbsSessionList; override;
+    procedure SetDatabaseFlags; override;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+{$Ifdef PvDelphi5Up}
+    function Execute(const SQL: string; Params: TParams = nil;
+      Cache: Boolean = False; Cursor: PSQLHSTMT = nil; pDataSet: PDataSet = nil): Integer;
+{$Else}
+    procedure Close; override;
+{$Endif}
+    procedure FlushSchemaCache(const TableName: string); override;
+{$Ifndef PvDelphi5Up}
+    procedure Open; override;
+{$Endif}
+    procedure StartTransaction; override;
+    property Handle: SQLHDBC read FHandle write SetHandle;
+    property Tables: TSqlTablesInfoCollection read GetTables;
+    property StoredProcs: TSqlStoredProcInfoCollection read GetStoredProcs;
+  published
+    property AliasNameIsConnectionString: Boolean read FAliasNameIsConnectionString
+      write SetAliasNameIsConnectionString default false;
+  end;
+
+const
+  // P.SQL 7.0 alias parameters
+  prmDB_NAME           = 'DB'; // also for Lance engine DSN alias
+  prmDSN_DESCRIPTION   = 'DESCRIPTION';
+  prmDDF_PATH          = 'DDF_PATH';
+  prmDATA_PATH         = 'DATA_PATH';
+  prmLOGIN_SCRIPT      = 'LOGIN_SCRIPT';
+  prmNULL_ENABLED      = 'NULL_ENABLED';
+  prmACCESS_FRIENDLY   = 'ACCESS_FRIENDLY';
+  prmFEATURES_USED     = 'FEATURES_USED';
+  prmDATE_FORMAT       = 'DATE_FORMAT';
+  prmCREATE_DDF        = 'CREATE_DDF';
+
+  // Lance client DSN alias parameters
+  prmIS_ENGINE_DSN     = 'IS_ENGINE_DSN';
+  prmIS_SYSTEM_DSN     = 'IS_SYSTEM_DSN';
+  prmSERVER_NAME       = 'SERVER_NAME';
+  prmTCP_PORT          = 'TCP_PORT';
+  prmSERVER_DSN        = 'SERVER_DSN';
+  prmTRANSPORT_HINT    = 'TRANSPORT_HINT';
+  prmARRAY_FETCH_ON    = 'ARRAY_FETCH_ON';
+  prmARRAY_BUFFER_SIZE = 'ARRAY_BUFFER_SIZE';
+  prmOPEN_MODE         = 'OPEN_MODE';
+  // 32376 - shenders: Add OEMToANSI support
+  prmTRANSLATION_DLL   = 'TRANSLATION_DLL';
+  prmTRANSLATION_OPTION= 'TRANSLATION_OPTION';
+  prmOPEN_MODE_normal       = 'Normal';
+  // 32377 - shenders: correct 'Accelarated' spelling
+  prmOPEN_MODE_accelerated  = 'Accelerated';
+  prmOPEN_MODE_readonly     = 'ReadOnly';
+  prmOPEN_MODE_exclusive    = 'Exclusive';
+
+  // Lance connection Strings
+  cstSERVER_NAME       = 'ServerName';
+  cstTCP_PORT          = 'TCPPort';
+  cstSERVER_DSN        = 'ServerDSN';
+  cstTRANSPORT_HINT    = 'TransportHint';
+  cstARRAY_FETCH_ON    = 'ArrayFetchOn';
+  cstARRAY_BUFFER_SIZE = 'ArrayBufferSize';
+  cstDB_NAME           = 'DBQ';
+  cstDESCRIPTION       = 'Description';
+  cstOPEN_MODE         = 'OpenMode';
+  // 32376 - shenders: Add OEMToANSI support
+  cstTRANSLATION_DLL   = 'TranslationDLL';
+  cstTRANSLATION_OPTION= 'TranslationOption';
+
+var PvSqlSession: TPvSqlSession;
+    PvSqlSessions: TPvSqlSessionList;
+
+{$Ifndef PvDelphi6Up}
+{$Ifdef WITH_DESIGN_SUPPORT}
+procedure Register;
+{$Endif}
+{$Endif}
+
+implementation

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:vatcode xmlns:val="urn:www-iris-co-uk:vatcode">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <vatcodedefault>
+           <stockvatcode/>   <!--: Char;    { The default VAT code from stock record } -->
+           <accountvatcode/> <!--: Char;    { The default VAT code from customer record }-->
+           <defaultvatcode/> <!--: Char;    { The returned VAT code }-->
+        </vatcodedefault>
+    </message>
+</val:vatcode>

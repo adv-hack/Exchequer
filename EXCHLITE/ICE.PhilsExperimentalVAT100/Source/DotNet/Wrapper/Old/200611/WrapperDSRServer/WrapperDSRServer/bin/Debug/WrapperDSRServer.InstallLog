@@ -1,0 +1,168 @@
+﻿Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = lem83sip
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = lem83sip
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Installing service DSRWrapperServer...
+Creating EventLog source DSRWrapperServer in log Application...
+Rolling back assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Restoring event log to previous state for source DSRWrapperServer.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = 
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = 
+Installing service DSRWrapperServer...
+Creating EventLog source DSRWrapperServer in log Application...
+Rolling back assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = 
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = 
+Restoring event log to previous state for source DSRWrapperServer.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = lem83sip
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = lem83sip
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = 
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   password = 
+   logtoconsole = 
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   user = TTLIVE\awoodhams
+Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Uninstalling assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Removing EventLog source DSRWrapperServer.
+Service DSRWrapperServer is being removed from the system...
+Service DSRWrapperServer was successfully removed from the system.
+Installing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog
+Installing service DSRWrapperServer...
+Service DSRWrapperServer has been successfully installed.
+Creating EventLog source DSRWrapperServer in log Application...
+Committing assembly 'C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.exe
+   logfile = C:\Development\IRIS Communications Engine (ICE)\WrapperDSRServer\WrapperDSRServer\bin\Debug\WrapperDSRServer.InstallLog

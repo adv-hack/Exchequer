@@ -1,0 +1,132 @@
+<schemarecord tldformat="4" version="1" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="1584" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="llheaderno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="llheaderno" />
+        <schemafield fieldname="lllineno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lllineno" />
+        <schemafield fieldname="llstockcode" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" columnname="llstockcode" />
+        <schemafield fieldname="lldescription1" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription1" />
+        <schemafield fieldname="lldescription2" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription2" />
+        <schemafield fieldname="lldescription3" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription3" />
+        <schemafield fieldname="lldescription4" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription4" />
+        <schemafield fieldname="lldescription5" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription5" />
+        <schemafield fieldname="lldescription6" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="lldescription6" />
+        <schemafield fieldname="llprice" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="llprice" />
+        <schemafield fieldname="llvatinclusive" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="llvatinclusive" />        
+        <schemafield fieldname="llvatrate" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="llvatrate" />
+        <schemafield fieldname="lldisctype" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lldisctype" />
+        <schemafield fieldname="lldiscount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lldiscount" />
+        <schemafield fieldname="lldiscamount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="lldiscamount" />
+        <schemafield fieldname="lldiscdesc" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="lldiscdesc" />        
+        <schemafield fieldname="llquantity" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="llquantity" />
+        <schemafield fieldname="llserialitem" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="llserialitem" />        
+        <schemafield fieldname="lldummychar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lldummychar" collation="1"/>
+        <schemafield fieldname="lllistfoliono" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="lllistfoliono" />
+        <schemafield fieldname="llbomparentfoliono" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="llbomparentfoliono" />        
+        <schemafield fieldname="llbomqtyused" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="llbomqtyused" />            
+        <schemafield fieldname="llbom" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="llbom" />
+        <schemafield fieldname="llkitlink" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="llkitlink" />
+
+        <schemafield fieldname="transrefno" fullfieldname="" typename="DelphiString" size="10" elements="1" id="-1" columnname="transrefno" />
+        <schemafield fieldname="padchar1" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar1" />
+        <schemafield fieldname="lineno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="linenumber" />
+        <schemafield fieldname="nomcode" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="nomcode" />
+        <schemafield fieldname="currency" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="currency" />
+        <schemafield fieldname="padchar2" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar2" />
+        <schemafield fieldname="corate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="corate" />
+        <schemafield fieldname="vatrate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="vatrate" />
+        <schemafield fieldname="cc" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="cc" />
+        <schemafield fieldname="dep" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="dep" />
+        <schemafield fieldname="stockcode" fullfieldname="" typename="DelphiString" size="17" elements="1" id="-1" columnname="stockcode" />
+        <schemafield fieldname="padchar3" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar3" />
+        <schemafield fieldname="qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="Qty" />
+        <schemafield fieldname="qtymul" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="qtymul" />
+        <schemafield fieldname="netvalue" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="netvalue" />
+        <schemafield fieldname="discount" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="discount" />
+        <schemafield fieldname="vatcode" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="vatcode" />
+        <schemafield fieldname="padchar4" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar4" />
+        <schemafield fieldname="vat" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="Vat" />
+        <schemafield fieldname="payment" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="payment" />
+        <schemafield fieldname="discountchr" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="discountchr" />
+        <schemafield fieldname="padchar5" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="padchar5" />
+        <schemafield fieldname="qtywoff" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="qtywoff" />
+        <schemafield fieldname="qtydel" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="qtydel" />
+        <schemafield fieldname="costprice" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="costprice" />
+        <schemafield fieldname="custcode" fullfieldname="" typename="delphistring" size="7" elements="1" id="-1" columnname="custcode" />
+        <schemafield fieldname="linedate" fullfieldname="" typename="delphistring" size="9" elements="1" id="-1" columnname="linedate" />
+        <schemafield fieldname="item" fullfieldname="" typename="delphistring" size="4" elements="1" id="-1" columnname="item" />
+        <schemafield fieldname="desc" fullfieldname="" typename="delphistring" size="56" elements="1" id="-1" columnname="description" />
+        <schemafield fieldname="weight" fullfieldname="" typename="Double" size="8" elements="1" id="-1" columnname="weight" />
+        <schemafield fieldname="mlocstk" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="mlocstk" />
+        <schemafield fieldname="jobcode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="jobcode" />
+        <schemafield fieldname="analcode" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="analcode" />
+        <schemafield fieldname="tshccurr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="tshccurr" />
+        <schemafield fieldname="docltlink" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="docltlink" />
+        <schemafield fieldname="spare3" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="spare3" />
+        <schemafield fieldname="kitlink" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="kitlink" />
+        <schemafield fieldname="folionum" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="folionum" />
+        <schemafield fieldname="linetype" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="linetype" />
+        <schemafield fieldname="reconcile" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="reconcile" />
+        <schemafield fieldname="padchar6" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar6" />
+        <schemafield fieldname="soplink" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="soplink" />
+        <schemafield fieldname="soplineno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="soplineno" />
+        <schemafield fieldname="abslineno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="abslineno" />
+        <schemafield fieldname="lineuser1" fullfieldname="" typename="delphistring" size="31" elements="1" id="-1" columnname="lineuser1" />
+        <schemafield fieldname="lineuser2" fullfieldname="" typename="delphistring" size="31" elements="1" id="-1" columnname="lineuser2" />
+        <schemafield fieldname="lineuser3" fullfieldname="" typename="delphistring" size="31" elements="1" id="-1" columnname="lineuser3" />
+        <schemafield fieldname="lineuser4" fullfieldname="" typename="delphistring" size="31" elements="1" id="-1" columnname="lineuser4" />
+        <schemafield fieldname="ssduplift" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ssduplift" />
+        <schemafield fieldname="ssdcommod" fullfieldname="" typename="delphistring" size="9" elements="1" id="-1" columnname="ssdcommod" />
+        <schemafield fieldname="padchar7" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar7" />
+        <schemafield fieldname="ssdspunit" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="ssdspunit" />
+        <schemafield fieldname="ssduseline" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="ssduseline" />
+        <schemafield fieldname="padchar8" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar8" />
+        <schemafield fieldname="pricemulx" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="pricemulx" />
+        <schemafield fieldname="qtypick" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="qtypick" />
+        <schemafield fieldname="vatincflg" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="vatincflg" />
+        <schemafield fieldname="padchar9" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar9" />
+        <schemafield fieldname="qtypwoff" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="qtypwoff" />
+        <schemafield fieldname="padchar10" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar10" />
+        <schemafield fieldname="rtnerrcode" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="rtnerrcode" />
+        <schemafield fieldname="ssdcountry" fullfieldname="" typename="delphistring" size="6" elements="1" id="-1" columnname="ssdcountry" />
+        <schemafield fieldname="padchar11" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar11" />
+        <schemafield fieldname="incnetvalue" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="incnetvalue" />
+        <schemafield fieldname="autolinetype" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="autolinetype" />
+        <schemafield fieldname="cisratecode" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="cisratecode" />
+        <schemafield fieldname="padchar12" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar12" />
+        <schemafield fieldname="cisrate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="cisrate" />
+        <schemafield fieldname="costapport" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="costapport" />
+        <schemafield fieldname="nomvattype" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="nomvattype" />
+        <schemafield fieldname="padchar13" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar13" />
+        <schemafield fieldname="binqty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="binqty" />
+        <schemafield fieldname="tlaltstockfolio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlaltstockfolio" />
+        <schemafield fieldname="tlrunno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlrunno" />
+        <schemafield fieldname="tlstockdeductqty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlstockdeductqty" />
+        <schemafield fieldname="padchar16" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar16" />
+        <schemafield fieldname="tluseqtymul" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="tluseqtymul" />
+        <schemafield fieldname="tlserialqty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlserialqty" />
+        <schemafield fieldname="padchar17" fullfieldname="" typename="binary" size="2" elements="1" id="-1" columnname="padchar17" />
+        <schemafield fieldname="tlpricebypack" fullfieldname="" typename="uint16" size="2" elements="1" id="-1" columnname="tlpricebypack" />
+        <schemafield fieldname="padchar18" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="padchar18" />
+        <schemafield fieldname="tlreconciliationdate" fullfieldname="" typename="delphistring" size="9" elements="1" id="-1" columnname="tlreconciliationdate" />
+        <schemafield fieldname="tlb2blinkfolio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlb2blinkfolio" />
+        <schemafield fieldname="tlb2blineno" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="tlb2blineno" />
+        <schemafield fieldname="tlcosdailyrate" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlcosdailyrate" />
+        <schemafield fieldname="tlqtypack" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="tlqtypack" />
+        <schemafield fieldname="spare" fullfieldname="" typename="binary" size="176" elements="1" id="-1" columnname="spare" />
+        <schemafield fieldname="spare2" fullfieldname="" typename="binary" size="3" elements="1" id="-1" columnname="spare2" />
+        <schemafield fieldname="lastchar" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="lastchar" />
+        <schemafield fieldname="llbomcomponent" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="llbomcomponent" />        
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>llheaderno</item>
+                <item>lllineno</item>                
+				<item>lldummychar</item>                
+            </indexfields>
+        </schemaindexes>        
+    </indexes>
+</schemarecord>

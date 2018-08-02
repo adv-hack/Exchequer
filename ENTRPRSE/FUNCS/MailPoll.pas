@@ -1,0 +1,529 @@
+unit MAILPOLL;
+
+{ prutherford440 09:37 30/10/2001: Disabled Byte Alignment in Delphi 6.0 }
+{$ALIGN 1}  { Variable Alignment Disabled }
+
+//Class to poll email at intervals & download all waiting messages.
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Mssocket, Mspop, msmsg, Email, ExtCtrls, MapiEx;
+
+const
+  WantToClose = False;
+
+type
+
+  TEmailType = (emlMAPI, emlSMTP);
+  TGetMessageProc = procedure(const Sender, Subject : ShortString;
+                              Text : PChar) of object;
+  TCheckTimerProc = procedure(Secs : longint) of object;
+  TShowStatusProc = procedure(const Msg : ShortString) of object;
+
+  TEmailPoller = class
+  private
+  //PR 07/06/06 - moved to protected to allow use by descendent
+{    EmailS: TEmail;
+    Email1: TMapiExEmail;
+    msMessage1: TmsMessage;
+    msPOP1: TmsPOPClient;}
+    Timer1: TTimer;
+    FPollFrequency : longint; //seconds
+    FSecsElapsed   : longint;
+    FEmailType     : TEmailType;
+    FOnGetMessage  : TGetMessageProc;
+    FPop3Server,
+    FPop3UserName,
+    FPop3Password,
+    FPop3Address  : string;
+    FOnCheckTimer : TCheckTimerProc;
+    FOnStatus, FOnErrorMessage     : TShowStatusProc;
+    FOnLogOff  : TNotifyEvent;
+    FTimerEnabled : Boolean;
+    FUseExtended : Boolean;
+    FUseSimple : Boolean;
+    FActive : Boolean;
+    FCheckEvent : TNotifyEvent;
+    FPollCount : SmallInt;
+    procedure DoTimer(Sender: TObject);
+    procedure SaveOriginator(Const Originator,OrigAddr,Subject,FileName  :  String);
+  protected
+    EmailS: TEmail;
+    Email1: TMapiExEmail;
+    msMessage1: TmsMessage;
+    msPOP1: TmsPOPClient;
+    FSuppressErrorMessages : Boolean;
+    procedure SetPollFrequency(Value : longint);
+    procedure CheckForEmails; virtual;
+    procedure DownloadMAPIEmails; virtual;
+    procedure DownloadSimpleMAPIEmails; virtual;
+    procedure DownloadPOP3Emails; virtual;
+    procedure SetString(Index : integer; const Value : string);
+    procedure ShowStatus(const Msg : string); virtual;
+    procedure TimerStatus; virtual;
+    procedure GotMessage; virtual;
+    function GetTimerActive : Boolean;
+  public
+    { Public declarations }
+    constructor Create;
+    destructor Destroy; override;
+    procedure Start; virtual;
+    procedure Stop; virtual;
+    procedure CheckNow;
+    property PollFrequency : longint read FPollFrequency write SetPollFrequency;
+    property OnGetMessage : TGetMessageProc read FOnGetMessage write FOnGetMessage;
+    property OnCheckTimer : TCheckTimerProc read FOnCheckTimer write FOnCheckTimer;
+    property OnStatus : TShowStatusProc read FOnStatus write FOnStatus;
+    property OnLogoff : TNotifyEvent read FOnLogOff write FOnLogOff;
+    property OnErrorMessage : TShowStatusProc read FOnErrorMessage write FOnErrorMessage;
+    property Pop3Server : string Index 1 read FPop3Server write SetString;
+    property Pop3UserName : string Index 2 read FPop3UserName write SetString;
+    property Pop3Password : string Index 3 read FPop3Password write SetString;
+    property Pop3Address : string Index 4 read FPop3Address write SetString;
+    property EmailType : TEmailType read FEmailType write FEMailType;
+    property Active : Boolean read FActive write FActive;
+    property CheckEvent : TNotifyEvent read FCheckEvent write FCheckEvent;
+    property PollCount : SmallInt read FPollCount;
+    property SuppressErrorMessages : Boolean read FSuppressErrorMessages write FSuppressErrorMessages;
+  end;
+
+implementation
+
+constructor TEmailPoller.Create;
+begin
+  inherited Create;
+
+  FOnGetMessage := nil;
+  FOnCheckTimer := nil;
+  FOnStatus := nil;
+  FPollCount := 1;
+  FSuppressErrorMessages := False;
+
+  FTimerEnabled := False;
+
+  FUseExtended := ExtendedMapiAvailable;
+  FUseSimple := SimpleMapiAvailable;
+  if FUseExtended then
+    Email1 := TMapiExEmail.Create(nil)
+  else
+  if FUseSimple then
+    EmailS := TEmail.Create(nil);
+
+  if FUseExtended then
+  with Email1 do
+  begin
+{    DownLoadFirst := True;
+    NewSession := False;
+    TruncAttFN := False;
+    UnreadOnly := True;}
+    UseDefProfile := True;
+    LeaveUnread := False;
+  end
+  else
+  if FUseSimple then
+  with EmailS do
+  begin
+    DownLoadFirst := True;
+    NewSession := False;
+    TruncAttFN := False;
+    UnreadOnly := True;
+    UseDefProfile := True;
+    LeaveUnread := False;
+  end;
+
+  msMessage1 := TmsMessage.Create(nil);
+
+  msPOP1     := TmsPOPClient.Create(nil);
+  msPop1.MailMessage := msMessage1;
+
+  Timer1     := TTimer.Create(nil);
+  with Timer1 do
+  begin
+    Enabled := False;
+    Interval := 1000;
+    OnTimer := DoTimer;
+  end;
+
+  FPollFrequency := 60;
+end;
+
+
+destructor TEmailPoller.Destroy;
+begin
+  if Assigned(Email1) then
+    Email1.Free;
+  if Assigned(EmailS) then
+    EmailS.Free;
+  if Assigned(msMessage1) then
+    msMessage1.Free;
+  if Assigned(Timer1) then
+    Timer1.Free;
+  if Assigned(msPop1) then
+    msPop1.Free;
+  inherited Destroy;
+end;
+
+procedure TEmailPoller.CheckNow;
+begin
+  CheckForEmails;
+end;
+
+procedure TEmailPoller.DoTimer(Sender: TObject);
+begin
+{  if FTimerEnabled then
+  begin
+    FTimerEnabled := False;}
+    Timer1.Enabled := False;
+    inc(FSecsElapsed);
+    TimerStatus;
+    if FSecsElapsed >= FPollFrequency then
+    begin
+      Inc(FPollCount);
+      if FPollCount > 32000 then
+        FPollCount := 1;
+      FSecsElapsed := 0;
+      //Do something
+      if FActive then
+        CheckForEmails
+      else
+        if Assigned(FCheckEvent) then
+          FCheckEvent(nil);
+    end;
+    Timer1.Enabled := True;
+  {  FTimerEnabled := True;}
+ // end;
+end;
+
+procedure TEmailPoller.SetPollFrequency(Value : longint);
+begin
+  if Value = 0 then
+    Value := 60;
+
+  FPollFrequency := Value;
+end;
+
+procedure TEmailPoller.CheckForEmails;
+var
+  NumWaiting : longint;
+  OldText    : string;
+  WasMessages : Boolean;
+  Res : Integer;
+begin
+{$IFDEF Debug}
+//  ShowStatus('Checking emails');
+{$ENDIF}
+  WasMessages := False;
+
+  case FEmailType of
+    emlMAPI:
+    if FUseExtended or FUseSimple then
+    begin
+      try
+        { Logon to MAPI and download all emails to inbox }
+        if not FUseExtended then
+        begin
+          EmailS.UseDefProfile := True;
+          EmailS.Logon;
+          try
+            { Count unread emails }
+            NumWaiting := EmailS.CountUnread;
+            WasMessages := NumWaiting > 0;
+            if NumWaiting > 0 then // Process e-mails
+              DownloadSimpleMAPIEmails;
+          finally
+            { Logoff MAPI }
+            EmailS.LogOff;
+            if WasMessages and Assigned(FOnLogOff) then
+              FOnLogOff(Self);
+          end;
+        end
+        else
+        begin
+          Email1.UseDefProfile := True;
+          Res := Email1.Logon;
+          Try
+            if Res = 0 then
+              DownloadMAPIEmails;
+          Finally
+            Email1.Logoff;
+            if Assigned(FOnLogOff) then
+              FOnLogOff(Self);
+          end;
+        end;
+      except
+        On Ex:Exception Do
+          if Assigned(FOnErrorMessage) then
+          FOnErrorMessage ('Exception whilst checking for MAPI mail:'+
+                        Ex.Message);
+      end;
+    end;
+
+    emlSMTP:
+    begin
+      try
+        with MSPop1 do
+        begin
+          Host     := POP3Server;
+          UserName := POP3UserName;
+          Password := POP3PassWord;
+          { Connect to Server }
+          Login;
+
+          try
+            { Check for outstanding messages }
+            WasMessages := TotalMessages > 0;
+            if TotalMessages > 0 then
+              DownloadPOP3Emails;
+          finally
+            // Close connection
+            Try
+              Logout;
+              if {WasMessages and} Assigned(FOnLogOff) then
+                FOnLogOff(Self);
+            Except
+            End;
+          end;
+        end; // with
+      except
+        on Ex:Exception Do
+          if Assigned(FOnErrorMessage) then
+          FOnErrorMessage('Exception whilst checking for SMTP/POP3 mail:' +
+                      Ex.Message);
+      end;
+    end;
+  end; // case
+{$IFDEF Debug}
+  ShowStatus('Running');
+{$ENDIF}
+end; { CheckforEmails }
+
+//-----------------------------------------------------------------------------------
+     //SIMPLE MAPI
+procedure TEmailPoller.DownloadSimpleMAPIEmails;
+var
+  Messages       : TStringList;
+  MsgCnt, MsgPos : SmallInt;
+  I              : SmallInt;
+  ErrStr         : ShortString;
+Begin { DownLoadEmails }
+  { Create list to store Message ID's in }
+  Messages := TStringList.Create;
+
+  Try { Finally }
+    Try { Except }
+      { Download all Message ID's into local list }
+      ShowStatus('Downloading Email headers - MAPI');
+
+      EmailS.GetNextMessageId;
+
+      While (Length(EmailS.MessageId) <> 0)  and (Not WantToClose) Do
+      Begin
+        Messages.Add(EmailS.MessageId);
+
+        EmailS.GetNextMessageID;
+      End; { While (Length(EmailS.MessageId) <> 0) }
+
+      { Process downloaded messages -have to do this way otherwise positioning }
+      { is lost in message queue and it starts looping, etc...                 }
+      MsgPos := 1;
+      MsgCnt := Messages.Count;
+      While (Messages.Count > 0)  and (Not WantToClose) Do
+      Begin
+        Application.ProcessMessages;
+
+        ShowStatus('Processing ' + IntToStr(MsgPos) + ' of ' + IntToStr(MsgCnt));
+
+        With EmailS Do Begin
+          { Set Message ID from list }
+          MessageId := Messages[0];
+
+          { Mark messages as read }
+          LeaveUnRead := False;
+
+          { fetch the specified message }
+          ReadMail;
+
+          GotMessage;
+        End; { With Email1 }
+
+        { Increment progress counter }
+        Inc (MsgPos);
+
+        { Remove Message ID from list }
+        Messages.Delete(0);
+      End; { While (Messages.Count > 0) }
+    Except
+      On Ex:Exception Do
+        MessageDlg ('The following exception occurred whilst reading the messages:' + #13#13 +
+                    Ex.Message, mtError, [mbOk], 0);
+    End;
+  finally
+    Messages.Destroy;
+  end;
+End; { DownLoadEmails }
+
+//EXTENDED MAPI
+procedure TEmailPoller.DownloadMAPIEmails;
+var
+  Messages       : TStringList;
+  MsgCnt, MsgPos : SmallInt;
+  I              : SmallInt;
+  ErrStr         : ShortString;
+  Res            : Integer;
+Begin { DownLoadEmails }
+    Try { Except }
+      Res := Email1.GetFirstUnread;
+
+      if Res = 0 then
+        ShowStatus('Downloading Email headers - MAPI');
+
+      while (Res = 0) and not WantToClose do
+      begin
+        Application.ProcessMessages;
+        GotMessage;
+        Inc (MsgPos);
+
+        Res := Email1.GetNextUnread;
+      end;
+
+    Except
+      On Ex:Exception Do
+        if not FSuppressErrorMessages then
+          MessageDlg ('The following exception occurred whilst reading the messages:' + #13#13 +
+                      Ex.Message, mtError, [mbOk], 0)
+        else
+          raise;
+    End;
+End; { DownLoadEmails }
+
+procedure TEmailPoller.DownloadPOP3Emails;
+Var
+  I, J, FVar : LongInt;
+  RepFName   : ShortString;
+  EmlFileName: String;
+Begin { DownloadPOP3Emails }
+  EmlFileName:='';
+
+  Try { Except }
+    With msPOP1 Do
+    begin
+      { Download all messages }
+      for I := 0 To Pred(TotalMessages) do
+      begin
+        Application.ProcessMessages;
+
+        ShowStatus('Processing ' + IntToStr(I + 1) + ' of ' + IntToStr(TotalMessages));
+        { Download full message details }
+        CurrentMessage := i;
+        Retrieve;
+
+        With MailMessage Do
+        Begin
+          With MailMessage.Sender do  {* Save email details for auto response back *}
+          Begin
+                  {EL: 04/10/2000. For some reason, name & address are the wrong way around, so pass in wrong way around}
+            SaveOriginator(Address,Name,Subject,RepFName);
+//            ShowStatus('Message from: ' + Address + '. Subject: ' + Subject);
+            GotMessage;
+          end;
+        End; { With Msg }
+
+        { Delete message from server }
+        Delete;
+
+        If (WantToClose) then
+          Break;
+      End; { For }
+    End; { With msPOP1 }
+  Except
+    On Ex:Exception Do
+      if not FSuppressErrorMessages then
+        MessageDlg ('The following exception occurred whilst reading the messages:' + #13#13 +
+                    Ex.Message + ' @ ' + IntToHex(LongInt(ErrorAddr), 8), mtError, [mbOk], 0)
+      else
+        Raise;
+  End;
+End; { DownloadPOP3Emails }
+
+
+procedure TEmailPoller.SaveOriginator(Const Originator,OrigAddr,Subject,FileName  :  String);
+begin
+  //Do nothing yet - don't know if i need this
+end;
+
+procedure TEmailPoller.SetString(Index : integer; const Value : string);
+begin
+  Case Index of
+    1  : FPop3Server := Value;
+    2  : FPop3Username  := Value;
+    3  : FPop3Password  := Value;
+    4  : FPop3Address   := Value;
+  end;
+end;
+
+procedure TEmailPoller.Start;
+begin
+  ShowStatus('Mail poller started');
+  Timer1.Enabled := True;
+  FActive := True;
+  FPollCount := 1;
+//  FTimerEnabled := True;
+end;
+
+procedure TEmailPoller.Stop;
+begin
+  ShowStatus('Mail poller stopped');
+  Timer1.Enabled := False;
+  FActive := False;
+//  FTimerEnabled := False;
+end;
+
+procedure TEmailPoller.ShowStatus(const Msg : string);
+begin
+  if Assigned(FOnStatus) then
+    FOnStatus(Msg);
+end;
+
+procedure TEmailPoller.TimerStatus;
+begin
+  if Assigned(FOnCheckTimer) then
+    FOnCheckTimer(FSecsElapsed);
+end;
+
+procedure TEmailPoller.GotMessage;
+begin
+  Case FEmailType of
+    emlMAPI
+      :  if Assigned(FOnGetMessage) then
+         begin
+           if FUseExtended then
+             with Email1 do
+               //PR: 02/02/2017 ABSEXCH-17750 Changed GetLongText to return AnsiString
+               FOnGetMessage(OrigAddress, Subject, PChar(GetLongText))
+           else
+             with EmailS do
+               FOnGetMessage(OrigAddress, Subject, GetLongText);
+         end;
+
+    emlSMTP
+      : if Assigned(FOnGetMessage) then
+          with msPop1.MailMessage, Sender do
+            FOnGetMessage(Address, Subject, Body.GetText);
+
+  end;{case}
+end;
+
+function TEmailPoller.GetTimerActive : Boolean;
+begin
+  Result := Timer1.Enabled;
+//  Result := FTimerEnabled;
+end;
+
+
+
+
+
+
+
+end.

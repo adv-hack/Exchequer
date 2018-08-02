@@ -1,0 +1,10 @@
+Used for pasting text during com tk course
+
+Required files - Snoop.exe, Snoopdll.dll
+
+Keys:
+
+Ctrl + 1	Copy current textfile to clipboard and increment current position.
+Ctrl + 2	Show form
+Ctrl + 3	Hide form
+

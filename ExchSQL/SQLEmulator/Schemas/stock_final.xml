@@ -1,0 +1,203 @@
+<schemarecord tldformat="4" version="3" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="99Hm8JuDJTIPaX/Uv33ZXg" identitycol="PositionId" recordfieldname="" reclen="1841">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_stock_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stCode" collation="1"></schemafield>
+    <schemafield fieldname="f_desc_line1" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine1"  collation="1"></schemafield>
+    <schemafield fieldname="f_desc_line2" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine2"></schemafield>
+    <schemafield fieldname="f_desc_line3" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine3"></schemafield>
+    <schemafield fieldname="f_desc_line4" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine4"></schemafield>
+    <schemafield fieldname="f_desc_line5" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine5"></schemafield>
+    <schemafield fieldname="f_desc_line6" fullfieldname="" typename="DelphiString" size="36" elements="1" id="-1" columnname="stDescLine6"></schemafield>
+    <schemafield fieldname="f_alt_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stAltCode" collation="1"></schemafield>
+    <schemafield fieldname="f_supp_temp" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stSuppTemp"></schemafield>
+    <schemafield fieldname="f_nom_code1" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNomCode1"></schemafield>
+    <schemafield fieldname="f_nom_code2" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNomCode2"></schemafield>
+    <schemafield fieldname="f_nom_code3" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNomCode3"></schemafield>
+    <schemafield fieldname="f_nom_code4" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNomCode4"></schemafield>
+    <schemafield fieldname="f_nom_code5" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNomCode5"></schemafield>
+    <schemafield fieldname="f_ro_flg" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stReorderFlag"></schemafield>
+    <schemafield fieldname="f_min_flg" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stMinReorderFlag"></schemafield>
+    <schemafield fieldname="f_stock_folio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stFolioNum"></schemafield>
+    <schemafield fieldname="f_stock_cat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stParentCode"></schemafield>
+    <schemafield fieldname="f_stock_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="stType"></schemafield>
+    <schemafield fieldname="f_unit_k" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stUnitOfStock"></schemafield>
+    <schemafield fieldname="f_unit_s" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stUnitOfSale"></schemafield>
+    <schemafield fieldname="f_unit_p" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stUnitOfPurch"></schemafield>
+    <schemafield fieldname="f_p_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stCostPriceCurrency"></schemafield>
+    <schemafield fieldname="f_cost_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stCostPrice"></schemafield>
+    <schemafield fieldname="f_sale_band1_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand1Currency"></schemafield>
+    <schemafield fieldname="f_sale_band1_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand1Price"></schemafield>
+    <schemafield fieldname="f_sale_band2_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand2Currency"></schemafield>
+    <schemafield fieldname="f_sale_band2_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand2Price"></schemafield>
+    <schemafield fieldname="f_sale_band3_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand3Currency"></schemafield>
+    <schemafield fieldname="f_sale_band3_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand3Price"></schemafield>
+    <schemafield fieldname="f_sale_band4_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand4Currency"></schemafield>
+    <schemafield fieldname="f_sale_band4_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand4Price"></schemafield>
+    <schemafield fieldname="f_sale_band5_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand5Currency"></schemafield>
+    <schemafield fieldname="f_sale_band5_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand5Price"></schemafield>
+    <schemafield fieldname="f_sale_band6_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand6Currency"></schemafield>
+    <schemafield fieldname="f_sale_band6_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand6Price"></schemafield>
+    <schemafield fieldname="f_sale_band7_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand7Currency"></schemafield>
+    <schemafield fieldname="f_sale_band7_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand7Price"></schemafield>
+    <schemafield fieldname="f_sale_band8_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand8Currency"></schemafield>
+    <schemafield fieldname="f_sale_band8_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand8Price"></schemafield>
+    <schemafield fieldname="f_sale_band9_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand9Currency"></schemafield>
+    <schemafield fieldname="f_sale_band9_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand9Price"></schemafield>
+    <schemafield fieldname="f_sale_band10_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesBand10Currency"></schemafield>
+    <schemafield fieldname="f_sale_band10_price" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesBand10Price"></schemafield>
+    <schemafield fieldname="f_sell_unit" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSalesUnits"></schemafield>
+    <schemafield fieldname="f_buy_unit" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stPurchaseUnits"></schemafield>
+    <schemafield fieldname="f_spare1" fullfieldname="" typename="binary" size="11" elements="1" id="-1" columnname="stSpare1"></schemafield>
+    <schemafield fieldname="f_vat_code" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="stVATCode"></schemafield>
+    <schemafield fieldname="f_department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="stDepartment" collation="1"></schemafield>
+    <schemafield fieldname="f_cost_centre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="stCostCentre" collation="1"></schemafield>
+    <schemafield fieldname="f_qty_in_stock" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyInStock"></schemafield>
+    <schemafield fieldname="f_qty_posted" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyPosted"></schemafield>
+    <schemafield fieldname="f_qty_allocated" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyAllocated"></schemafield>
+    <schemafield fieldname="f_qty_on_order" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyOnOrder"></schemafield>
+    <schemafield fieldname="f_qty_min" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyMin"></schemafield>
+    <schemafield fieldname="f_qty_max" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stQtyMax"></schemafield>
+    <schemafield fieldname="f_ro_qty" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stReOrderQty"></schemafield>
+    <schemafield fieldname="f_n_line_count" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stNLineCount"></schemafield>
+    <schemafield fieldname="f_sub_assy_flg" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stSubAssemblyFlag"></schemafield>
+    <schemafield fieldname="f_showas_kit" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stShowKitOnSales"></schemafield>
+    <schemafield fieldname="f_b_line_count" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stBLineCount"></schemafield>
+    <schemafield fieldname="f_commod_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stSSDCommodityCode"></schemafield>
+    <schemafield fieldname="f_s_weight" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSSDSalesUnitWeight"></schemafield>
+    <schemafield fieldname="f_p_weight" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSSDPurchaseUnitWeight"></schemafield>
+    <schemafield fieldname="f_unit_supp" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stSSDUnitDesc"></schemafield>
+    <schemafield fieldname="f_supp_s_unit" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="-1" columnname="stSSDStockUnits"></schemafield>
+    <schemafield fieldname="f_bin_loc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stBinLocation"></schemafield>
+    <schemafield fieldname="f_stk_flg" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stStockTakeFlag"></schemafield>
+    <schemafield fieldname="f_cov_pr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="stCoverPeriods"></schemafield>
+    <schemafield fieldname="f_cov_pr_unit" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stCoverPeriodUnits"></schemafield>
+    <schemafield fieldname="f_cov_min_pr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="stCoverMinPeriods"></schemafield>
+    <schemafield fieldname="f_cov_min_unit" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stCoverMinPeriodUnits"></schemafield>
+    <schemafield fieldname="f_supplier" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stSupplier" collation="1"></schemafield>
+    <schemafield fieldname="f_qty_freeze" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyFreeze"></schemafield>
+    <schemafield fieldname="f_cov_sold" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stCoverQtySold"></schemafield>
+    <schemafield fieldname="f_use_cover" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stUseCover"></schemafield>
+    <schemafield fieldname="f_cov_max_pr" fullfieldname="" typename="int16" size="2" elements="1" id="-1" columnname="stCoverMaxPeriods"></schemafield>
+    <schemafield fieldname="f_cov_max_unit" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stCoverMaxPeriodUnits"></schemafield>
+    <schemafield fieldname="f_ro_currency" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stReorderCurrency"></schemafield>
+    <schemafield fieldname="f_roc_price" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stReorderPrice"></schemafield>
+    <schemafield fieldname="f_ro_date" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="stReorderDate"></schemafield>
+    <schemafield fieldname="f_qty_take" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyStockTake"></schemafield>
+    <schemafield fieldname="f_stk_val_type" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="stValuationMethod"></schemafield>
+    <schemafield fieldname="f_has_ser_no" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stHasSerialNo"></schemafield>
+    <schemafield fieldname="f_qty_picked" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyPicked"></schemafield>
+    <schemafield fieldname="f_last_used" fullfieldname="" typename="DelphiString" size="9" elements="1" id="-1" columnname="stLastUsed"></schemafield>
+    <schemafield fieldname="f_calc_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stCalcPack"></schemafield>
+    <schemafield fieldname="f_j_anal_code" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stAnalysisCode" collation="1"></schemafield>
+    <schemafield fieldname="f_stk_user1" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stUserField1"></schemafield>
+    <schemafield fieldname="f_stk_user2" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stUserField2"></schemafield>
+    <schemafield fieldname="f_bar_code" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stBarCode"></schemafield>
+    <schemafield fieldname="f_ro_department" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="stReorderDepartment" collation="1"></schemafield>
+    <schemafield fieldname="f_ro_cost_centre" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="stReorderCostCentre" collation="1"></schemafield>
+    <schemafield fieldname="f_def_m_loc" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="stLocation" collation="1"></schemafield>
+    <schemafield fieldname="f_price_pack" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stPriceByPack"></schemafield>
+    <schemafield fieldname="f_d_pack_qty" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stShowQtyAsPacks"></schemafield>
+    <schemafield fieldname="f_kit_price" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stUseKitPrice"></schemafield>
+    <schemafield fieldname="f_kit_on_purch" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stShowKitOnPurchase"></schemafield>
+    <schemafield fieldname="f_stk_link_lt" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stDefaultLineType"></schemafield>
+    <schemafield fieldname="f_qty_return" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stSalesReturnQty"></schemafield>
+    <schemafield fieldname="f_qty_alloc_wor" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyAllocWOR"></schemafield>
+    <schemafield fieldname="f_qty_issue_wor" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyIssuedWOR"></schemafield>
+    <schemafield fieldname="f_web_include" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stUseForEbus"></schemafield>
+    <schemafield fieldname="f_web_live_cat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stWebLiveCatalog"></schemafield>
+    <schemafield fieldname="f_web_prev_cat" fullfieldname="" typename="DelphiString" size="21" elements="1" id="-1" columnname="stWebPrevCatalog"></schemafield>
+    <schemafield fieldname="f_stk_user3" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField3"></schemafield>
+    <schemafield fieldname="f_stk_user4" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField4"></schemafield>
+    <schemafield fieldname="f_ser_no_wavg" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSerNoWAvg"></schemafield>
+    <schemafield fieldname="f_stk_size_col" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSizeCol"></schemafield>
+    <schemafield fieldname="f_ssdd_uplift" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stSSDDespatchUplift"></schemafield>
+    <schemafield fieldname="f_ssd_country" fullfieldname="" typename="DelphiString" size="6" elements="1" id="-1" columnname="stSSDCountry"></schemafield>
+    <schemafield fieldname="f_time_change" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="stTimeChange"></schemafield>
+    <schemafield fieldname="f_svat_inc_flg" fullfieldname="" typename="char" size="1" elements="1" id="-1" columnname="stInclusiveVATCode"></schemafield>
+    <schemafield fieldname="f_ssda_uplift" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stSSDArrivalUplift"></schemafield>
+    <schemafield fieldname="f_private_rec" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stPrivateRec"></schemafield>
+    <schemafield fieldname="f_last_opo" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stOperator"></schemafield>
+    <schemafield fieldname="f_image_file" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stImageFile"></schemafield>
+    <schemafield fieldname="f_temp_bloc" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" columnname="stTempBLoc"></schemafield>
+    <schemafield fieldname="f_qty_pick_wor" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stQtyPickedWOR"></schemafield>
+    <schemafield fieldname="f_wopwipgl" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stWIPGL"></schemafield>
+    <schemafield fieldname="f_prod_time" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stProductionTime"></schemafield>
+    <schemafield fieldname="f_leadtime" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stLeadTime"></schemafield>
+    <schemafield fieldname="f_calc_prod_time" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stCalcProductionTime"></schemafield>
+    <schemafield fieldname="f_bom_prod_time" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stBOMProductionTime"></schemafield>
+    <schemafield fieldname="f_min_ecc_qty" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stMinEccQty"></schemafield>
+    <schemafield fieldname="f_multi_bin_mode" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stMultiBinMode"></schemafield>
+    <schemafield fieldname="f_s_warranty" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesWarrantyLength"></schemafield>
+    <schemafield fieldname="f_s_warranty_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stSalesWarrantyType"></schemafield>
+    <schemafield fieldname="f_m_warranty" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stManufacturerWarrantyLength"></schemafield>
+    <schemafield fieldname="f_m_warranty_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stManufacturerWarrantyType"></schemafield>
+    <schemafield fieldname="f_qty_p_return" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stPurchaseReturnQty"></schemafield>
+    <schemafield fieldname="f_return_gl" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stSalesReturnGL"></schemafield>
+    <schemafield fieldname="f_re_stock_pcnt" fullfieldname="" typename="double" size="8" elements="1" id="-1" columnname="stRestockPercent"></schemafield>
+    <schemafield fieldname="f_re_stock_gl" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stRestockGL"></schemafield>
+    <schemafield fieldname="f_bom_ded_comp" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="BOMDedComp"></schemafield>
+    <schemafield fieldname="f_p_return_gl" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stPurchaseReturnGL"></schemafield>
+    <schemafield fieldname="f_re_stock_pchr" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stRestockPChr"></schemafield>
+    <schemafield fieldname="f_last_stock_type" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="stLastStockType"></schemafield>
+    <schemafield fieldname="f_stk_user5"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField5"></schemafield>
+    <schemafield fieldname="f_stk_user6"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField6"></schemafield>
+    <schemafield fieldname="f_stk_user7"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField7"></schemafield>
+    <schemafield fieldname="f_stk_user8"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField8"></schemafield>
+    <schemafield fieldname="f_stk_user9"  fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField9"></schemafield>
+    <schemafield fieldname="f_stk_user10" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="stUserField10"></schemafield>
+    <schemafield fieldname="f_is_service" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stIsService"></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_stock_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_stock_folio</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="2" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_stock_cat</item>
+        <item>f_stock_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="3" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_desc_line1</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="4" isunique="1" isclustered="0" partialkeys="" nullablecharacter="00">
+		<indexfields>
+			<item size="6">f_supp_temp</item>
+			<item>f_ro_currency</item>
+			<item>f_stock_code</item>
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="5" isunique="1" isclustered="0" partialkeys="">
+		<indexfields>
+			<item>f_nom_code4</item>
+			<item>f_stock_code</item>
+		</indexfields>
+	</schemaindexes>
+	<schemaindexes indexnumber="6" isunique="0" isclustered="0" partialkeys="" nullablecharacter="00">
+      <indexfields>
+        <item>f_alt_code</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="7" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_bin_loc</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="8" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_bar_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>

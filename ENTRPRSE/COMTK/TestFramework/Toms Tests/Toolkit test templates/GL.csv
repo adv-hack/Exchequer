@@ -1,0 +1,6 @@
+"Duplicate Nominal code exists",C:\ComTKExes\GLTest.exe,Y,Y,5,N,5
+"Parent Code changed whilst editing",C:\ComTKExes\GLTest.exe,Y,Y,30001,N,30001
+"Nominal Type changed whilst editing",C:\ComTKExes\GLTest.exe,Y,Y,30002,N,30002
+"Nominal Code must be greater than 0",C:\ComTKExes\GLTest.exe,Y,Y,30003,N,30003
+"Invalid Parent Code",C:\ComTKExes\GLTest.exe,Y,Y,30005,N,30005
+"Invalid Carry Forward Code",C:\ComTKExes\GLTest.exe,Y,Y,30006,N,30006

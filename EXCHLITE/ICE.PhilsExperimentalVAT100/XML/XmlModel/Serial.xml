@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:serial xmlns:val="urn:www-iris-co-uk:serial">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <serialrec>
+              <serialno/>  <!--:  String[20];   {  Actual Serial No. } -->
+              <batchno/>   <!--:  String[10];   {  Seperate Batch No.}-->
+              <stockcode/> <!--:  String[16];   {  Stock Code } -->
+
+              <indoc/>     <!--:  String[10];   {  Input Doc No. } -->
+              <datein/>    <!--:  String[8];    {  Date In }-->
+              <sercost/>   <!--:  Double;       {  CostPrice}-->
+              <curcost/>   <!--:  SmallInt;     {  Currency Cost Price }-->
+              <buyabsline/> <!--:  LongInt;      {  Purchase Line       }-->
+              <buyqty/>    <!--:  Double;       {  Original Batch Qty }-->
+              <inmloc/>    <!--:  String[3];    {  Location Filter }-->
+
+              <outdoc/>    <!--:  String[10];   {  Output Doc No.}-->
+              <dateout/>   <!--:  String[8];    {  Date Sold }-->
+              <sersell/>   <!--:  Double;       {  Selling Price }-->
+              <cursell/>   <!--:  SmallInt;     {  Selling Price Currency}-->
+              <soldabsline/> <!--:  LongInt;      {  ABS Line No of Doc Sold }-->
+              <qtyused/>   <!--:  Double;       {  Amount Used from  Batch }-->
+              <outmloc/>   <!--:  String[3];    {  Location Filter }-->
+
+              <sold/>      <!--:  WordBool;     {  Sold Status }-->
+
+              <batchrec/>  <!--:  WordBool;     {  Indicates this is soley a batch record }-->
+              <batchchild/> <!--:  WordBool;     {  Read Only - Auto generated item to record sale doc for batch }-->
+
+              <corate/>    <!--:  Double;       {  Company Rate }-->
+              <dailyrate/> <!--:  Double;       {  Daily Rate }-->
+
+              <inorddoc/>  <!--:  String[10];   {  Original In Order}-->
+              <inordline/> <!--:  LongInt;      {  Line Number of original order }-->
+
+              <outorddoc/> <!--:  String[10];   {  Original Out Order }-->
+              <outordline/> <!--:  LongInt;      {  Line Number of original order }-->
+
+              <dateusex/>  <!--:  String[8];    {  Use by Date }-->
+
+              <donotupdatetl/> <!--:  WordBool;     {  Do not update Serial Qty value in Trans. line. Default=False=update Ser.Qty in TL }-->
+
+              <recpos/>    <!--:  LongInt;-->
+              <inbincode/> <!--:  String[10];-->
+        </serialrec>
+    </message>
+</val:serial>

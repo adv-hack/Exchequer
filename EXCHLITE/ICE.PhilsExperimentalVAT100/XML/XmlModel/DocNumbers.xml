@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:docnumbers xmlns:val="urn:www-iris-co-uk:docnumbers">
+<message guid="" number="" count="" source="" destination="" flag="">
+  <docnumber>
+    <counttyp/>  <!--: String[4] -->
+    <nextcount/> <!--: Integer (stored in database as String[4]) -->
+    <lastvalue/> <!--: Double -->
+    <spare/>     <!--: String[10] -->
+  </docnumber>
+</message>
+</val:docnumbers>

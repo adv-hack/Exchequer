@@ -1,0 +1,12 @@
+package RVCLLD40;
+
+{$DESCRIPTION 'Rave 4.0 Delphi Syntax Compiler'}
+{$IMPLICITBUILD OFF}
+
+requires
+  VCL50, RVCL40, RVCLLE40;
+
+contains
+  RVLDComp;
+
+end.

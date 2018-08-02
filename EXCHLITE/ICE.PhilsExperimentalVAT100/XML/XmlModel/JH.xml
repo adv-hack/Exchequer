@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:jh xmlns:val="urn:www-iris-co-uk:jh">
+<message guid="" number="" count="" source="" destination="" flag="">
+     <jhrec>
+         <jobcode/>   <!--:  string[10];   { job code } -->
+         <jobdesc><![CDATA[]]></jobdesc>   <!--:  String[30];   { Job Description } -->
+         <jobfolio/>  <!--:  longint;      { job folio no } -->
+         <custcode/>  <!--:  string[6];    { customer code } -->
+         <jobcat/>    <!--:  string[10];   { job category } -->
+         <jobaltcode/> <!--:  string[10];   { job alternative code } -->
+         <completed/> <!--:  wordbool;     { completed status } -->
+         <contact><![CDATA[]]></contact>   <!--:  String[25];   { Contact Person }-->
+         <jobman><![CDATA[]]></jobman>    <!--:  String[25];   { Manager Name } -->
+         <chargetype/> <!--:  char;         { type of charge } -->
+         <quoteprice/> <!--:  double;       { quote price } -->
+         <currprice/> <!--:  smallint;     { currency of price } -->
+         <startdate/> <!--:  string[8];    { job start date } -->
+         <enddate/>   <!--:  string[8];    { job end date } -->
+         <revedate/>  <!--:  string[8];    { revised completion date } -->
+         <sorref/>    <!--:  string[10];   { sales order no. } -->
+         <vatcode/>   <!--:  char;         { vat code } -->
+         <jobanal/>   <!--:  string[3];    { job type code - job type on job record form main tab } -->
+         <jobtype/>   <!--:  char;         { job type } -->
+         <jobstat/>   <!--:  char;         { status of job } -->
+         <userdef1><![CDATA[]]></userdef1>  <!--:  String[20];   { User Defined Field 1 } -->
+         <userdef2><![CDATA[]]></userdef2>  <!--:  String[20];   { User Defined Field 2 } -->
+    </jhrec>
+</message>
+</val:jh>

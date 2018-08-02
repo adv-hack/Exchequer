@@ -1,0 +1,60 @@
+object Form1: TForm1
+  Left = 195
+  Top = 108
+  Width = 480
+  Height = 301
+  Caption = 'Compressed Note Pad'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Memo1: TMemo
+    Left = 0
+    Top = 57
+    Width = 470
+    Height = 218
+    Align = alClient
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 470
+    Height = 57
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 1
+    object Memo2: TMemo
+      Left = 8
+      Top = 4
+      Width = 457
+      Height = 45
+      BorderStyle = bsNone
+      Ctl3D = False
+      Lines.Strings = (
+        
+          'This example will compress the contents of the memo control to a' +
+          ' file and extract the file again '
+        
+          'when the application runs the next time. To test, enter text in ' +
+          'the memo control and then close'
+        
+          'the application. Next, restart the application to view the extra' +
+          'cted file.')
+      ParentColor = True
+      ParentCtl3D = False
+      TabOrder = 0
+    end
+  end
+  object AbZipKit1: TAbZipKit
+    AutoSave = False
+    ExtractOptions = []
+    StoreOptions = [soStripDrive, soStripPath, soRemoveDots]
+    Left = 8
+    Top = 72
+  end
+end

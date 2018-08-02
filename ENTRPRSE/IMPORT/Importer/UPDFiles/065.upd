@@ -1,0 +1,30 @@
+[Version]
+Version=5.71.067.065
+
+[Job Settings]
+Global Record Type=
+
+[Global Record Type]
+Type=FixedList
+CU=
+SU=
+GL=
+SK=
+BR=
+BM=
+NP=
+ML=
+MA=
+JR=
+EM=
+JA=
+JC=
+AS=
+MB=
+OL=
+RL=
+SL=
+DM=
+JB=
+<none>=
+

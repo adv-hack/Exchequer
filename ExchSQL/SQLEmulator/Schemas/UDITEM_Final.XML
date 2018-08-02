@@ -1,0 +1,21 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="370" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="liFieldFolio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="liFieldFolio" />
+        <schemafield fieldname="liLineNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="liLineNo" />
+        <schemafield fieldname="liDescription" fullfieldname="" typename="DelphiString" size="61" elements="1" id="-1" collation="1" columnname="liDescription" />
+        <schemafield fieldname="liDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="liDummyChar" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0" >
+            <indexfields>
+                <item>liFieldFolio</item>
+                <item>liLineNo</item>
+                <item>liDescription</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

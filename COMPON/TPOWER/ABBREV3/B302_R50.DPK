@@ -1,0 +1,83 @@
+package B302_r50;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TurboPower Abbrevia 3.02 Run-time package - VCL50'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  Vcl50,
+  Vclx50;
+
+contains
+  AbArcTyp in 'AbArcTyp.pas',
+  AbBitBkt in 'AbBitBkt.pas',
+  AbBase in 'AbBase.pas',
+  AbBrowse in 'AbBrowse.pas',
+  AbCabExt in 'AbCabExt.pas',
+  AbCabKit in 'AbCabKit.pas',
+  AbCabMak in 'AbCabMak.pas',
+  AbCabTyp in 'AbCabTyp.pas',
+  AbCBrows in 'AbCBrows.pas',
+  AbConst in 'AbConst.pas',
+  AbCView in 'AbCView.pas',
+  AbDlgDir in 'AbDlgDir.pas',
+  AbDlgPwd in 'AbDlgPwd.pas',
+  AbExcept in 'AbExcept.pas',
+  AbFciFdi in 'AbFciFdi.pas',
+  AbMeter in 'AbMeter.pas',
+  AbSelfEx in 'AbSelfEx.pas',
+  AbUnzper in 'AbUnzper.pas',
+  AbUnzPrc in 'AbUnzPrc.pas',
+  AbUtils in 'AbUtils.pas',
+  AbVMStrm in 'AbVMStrm.pas',
+  AbZBrows in 'AbZBrows.pas',
+  AbZipExt in 'AbZipExt.pas',
+  AbZipKit in 'AbZipKit.pas',
+  AbZipOut in 'AbZipOut.pas',
+  AbZipper in 'AbZipper.pas',
+  AbZipPrc in 'AbZipPrc.pas',
+  AbZipTyp in 'AbZipTyp.pas',
+  AbZView in 'AbZView.pas',
+  AbDfBase in 'AbDfBase.pas',
+  AbDfCryS in 'AbDfCryS.pas',
+  AbDfDec in 'AbDfDec.pas',
+  AbDfEnc in 'AbDfEnc.pas',
+  AbDfHufD in 'AbDfHufD.pas',
+  AbDfInW in 'AbDfInW.pas',
+  AbDfOutW in 'AbDfOutW.pas',
+  AbDfPkMg in 'AbDfPkMg.pas',
+  AbDfStrm in 'AbDfStrm.pas',
+  AbDfXlat in 'AbDfXlat.pas',
+  AbTarTyp in 'AbTarTyp.pas',
+  AbGzTyp in 'AbGzTyp.pas',
+  AbZLTyp in 'AbZLTyp.pas',
+  AbSpanSt in 'AbSpanSt.pas',
+  AbZipCry in 'AbZipCry.pas',
+  AbView in 'AbView.pas',
+  AbSWStm in 'AbSWStm.pas',
+  AbCompnd in 'AbCompnd.pas',
+  AbHexVw in 'AbHexVw.pas';
+
+end.

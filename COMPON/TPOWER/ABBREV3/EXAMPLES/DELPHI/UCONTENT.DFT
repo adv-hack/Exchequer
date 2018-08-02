@@ -1,0 +1,53 @@
+object Form1: TForm1
+  Left = 197
+  Top = 108
+  Width = 260
+  Height = 300
+  Caption = 'Zip Contents'
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 4
+    Width = 137
+    Height = 25
+    AutoSize = False
+    Caption = 'This example displays the contents of a ZIP archive.'
+    WordWrap = True
+  end
+  object ListBox1: TListBox
+    Left = 0
+    Top = 41
+    Width = 250
+    Height = 233
+    Align = alBottom
+    ItemHeight = 13
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 160
+    Top = 5
+    Width = 75
+    Height = 25
+    Caption = '&Open...'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'zip'
+    Filter = 
+      'PKZip Archives (*.zip)|*.ZIP|Self Extracting Archives (*.exe)|*.' +
+      'EXE'
+    Left = 56
+    Top = 48
+  end
+  object AbZipBrowser1: TAbZipBrowser
+    TarAutoHandle = False
+    Left = 16
+    Top = 48
+  end
+end

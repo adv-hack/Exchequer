@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="CodeBasedC5.exe"/>
+    <OBJFILES value="Main.obj Adhocprn.obj ChartTest.obj EMailData.obj MainDataMod.obj 
+      CodeBasedC5.obj"/>
+    <RESFILES value="CodeBasedC5.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) Main.dfm Adhocprn.dfm ChartTest.dfm EMailData.dfm 
+      MainDataMod.dfm"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="RPRT40D5.lib GTRPRC50.lib inet50.lib inetdb50.lib nmfast50.lib dss50.lib 
+      teedb50.lib teeui50.lib qrpt50.lib vcldbx50.lib ibsmp50.lib bcbsmp50.lib"/>
+    <SPARELIBS value="vcl50.lib vclx50.lib vcljpg50.lib vclmid50.lib vcldb50.lib vclbde50.lib 
+      bcbsmp50.lib ibsmp50.lib vcldbx50.lib qrpt50.lib teeui50.lib teedb50.lib 
+      tee50.lib dss50.lib nmfast50.lib inetdb50.lib inet50.lib dclocx50.lib 
+      GTRPRC50.lib RPRT40D5.lib"/>
+    <PACKAGES value="vcl50.bpi vclx50.bpi vcljpg50.bpi vclmid50.bpi vcldb50.bpi vclbde50.bpi 
+      dclocx50.bpi tee50.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;_VIS_NOLIB;USEPACKAGES"/>
+    <MAINSOURCE value="CodeBasedC5.cpp"/>
+    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="c:\components\rave4\c5\;$(BCB)\lib\debug;$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib;..\Lib\C5;..\..\Lib\C5"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-Od -H=c:\PROGRA~1\borland\CBUILD~2\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 
+      -b- -k -y -v -vi- -c -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+$(BCB)\Bin\dcldss50.bpl=Borland Decision Cube Components
+$(BCB)\BIN\DCLTEE50.BPL=TeeChart 5.0 Components
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=12
+Item0=c:\components\rave4\c5\;$(BCB)\lib\debug;$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib;..\Lib\C5;C:\My Documents\Sarath\gtRaveRenders\Lib\C5
+Item1=c:\components\rave4\c5\;$(BCB)\lib\debug;$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib;..\Lib\C5
+Item2=c:\components\rave4\c5;$(BCB)\lib\debug;$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib;..\Lib\C5
+Item3=c:\components\rave4\c5;$(BCB)\lib\debug;$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib
+Item4=$(BCB)\Projects\Lib;D:\Components\Rave4\C5\;$(BCB)\lib\obj;$(BCB)\lib
+Item5=$(BCB)\Projects\Lib;D:\Components\Rave4\C5;$(BCB)\lib\obj;$(BCB)\lib
+Item6=$(BCB)\Projects\Lib;D:\Components\Rave4\C5;C:\Program Files\Pragnaan\PsRaveRenders 1.12\Lib\C5;$(BCB)\lib\obj;$(BCB)\lib
+Item7=$(BCB)\lib\obj;$(BCB)\lib
+Item8=$(BCB)\lib\obj;$(BCB)\lib
+Item9=$(BCB)\lib\obj;$(BCB)\lib
+Item10=C:\Program Files\Pragnaan\PsRaveRenders 1.0\Lib\C5;D:\Components\Rave4\C5;$(BCB)\lib\obj;$(BCB)\lib
+Item11=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

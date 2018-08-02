@@ -1,0 +1,6 @@
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\bin\Release\TestHarness.exe.config
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\bin\Release\TestHarness.exe
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\bin\Release\IRIS.ExchequerSQL.ClrExtensions.dll
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\bin\Release\IRIS.ExchequerSQL.ClrExtensions.pdb
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\obj\Release\ResolveAssemblyReference.cache
+C:\Users\simon.molloy\Documents\Visual Studio 2010\Projects\IRIS.ExchequerSQL.ClrExtensions\TestHarness\obj\Release\TestHarness.exe

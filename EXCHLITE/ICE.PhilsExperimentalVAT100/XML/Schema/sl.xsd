@@ -1,0 +1,156 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:sl"
+            targetNamespace="urn:www-iris-co-uk:sl" >
+            
+  <xsd:complexType name="salebands1">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands2">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands3">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands4">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands5">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands6">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="salebands7">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="salebands8">
+    <xsd:sequence>
+      <xsd:element name='currency' type='xsd:integer'/>
+      <xsd:element name='salesprice' type='xsd:double'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="lssalebands">
+    <xsd:sequence>
+      <xsd:element name='salebands1' type='tns:salebands1' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands2' type='tns:salebands2' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands3' type='tns:salebands3' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands4' type='tns:salebands4' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands5' type='tns:salebands5' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands6' type='tns:salebands6' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands7' type='tns:salebands7' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='salebands8' type='tns:salebands8' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="lsdefnom">
+    <xsd:sequence>
+      <xsd:element name='lsdefnom1' type='xsd:integer'/>
+      <xsd:element name='lsdefnom2' type='xsd:integer'/>
+      <xsd:element name='lsdefnom3' type='xsd:integer'/>
+      <xsd:element name='lsdefnom4' type='xsd:integer'/>
+      <xsd:element name='lsdefnom5' type='xsd:integer'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="slrec">
+    <xsd:sequence>
+      <xsd:element name='lsstkcode' type='xsd:string'/>
+      <xsd:element name='lsloccode' type='xsd:string'/>
+      <xsd:element name='lsqtyinstock' type='xsd:double'/>
+      <xsd:element name='lsqtyonorder' type='xsd:double'/>
+      <xsd:element name='lsqtyalloc' type='xsd:double'/>
+      <xsd:element name='lsqtypicked' type='xsd:double'/>
+      <xsd:element name='lsqtymin' type='xsd:double'/>
+      <xsd:element name='lsqtymax' type='xsd:double' />
+      <xsd:element name='lsqtyfreeze' type='xsd:double'/>
+      <xsd:element name='lsroqty' type='xsd:double' />
+      
+      <xsd:element name='lsrodate' type='xsd:string'/>
+      <xsd:element name='lsrocc' type='xsd:string'/>
+      <xsd:element name='lsrodep' type='xsd:string'/>
+      <xsd:element name='lscc' type='xsd:string'/>
+      <xsd:element name='lsdep' type='xsd:string'/>
+      <xsd:element name='lsbinloc' type='xsd:string'/>
+
+      <xsd:element name='lssalebands' type='tns:lssalebands' minOccurs='1' maxOccurs='1' />
+      
+      <xsd:element name='lsroprice' type='xsd:double' />
+      <xsd:element name='lsrocurrency' type='xsd:integer' />
+      <xsd:element name='lscostprice' type='xsd:double' />
+      <xsd:element name='lspcurrency' type='xsd:integer' />
+      
+      <xsd:element name='lsdefnom' type='tns:lsdefnom' minOccurs='1' maxOccurs='1' />
+      
+      <xsd:element name='lsminflg' type='xsd:boolean2' />
+      <xsd:element name='lstempsupp' type='xsd:string' />
+      <xsd:element name='lssupplier' type='xsd:string' />
+      <xsd:element name='lslastused' type='xsd:string' />
+      <xsd:element name='lsqtyposted' type='xsd:double' />
+      <xsd:element name='lsqtytake' type='xsd:double' />
+      <xsd:element name='lslasttime' type='xsd:string' />
+      
+      <xsd:element name='lsqtyallocwor' type='xsd:double' />
+      <xsd:element name='lsqtyissuewor' type='xsd:double' />
+      <xsd:element name='lsqtypickwor' type='xsd:double' />
+      <xsd:element name='lswopwipgl' type='xsd:integer' />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='slrec' type='tns:slrec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='sl'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='sl' type='tns:sl'/>
+
+</xsd:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:jobanal xmlns:val="urn:www-iris-co-uk:jobanal">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <jobanalrec>
+           <janalcode/>  <!--:  string[10];  { job analysis code }   -->
+           <janaldesc><![CDATA[]]></janaldesc>  <!--:  String[30];  {  "     "     Description }  -->
+           <janaltype/>  <!--:  char;        {  "     "     type }  -->
+           <janalcatry/> <!--:  char;        {  "     "     category } -->
+           <wipnomcode/> <!--:  longint;     {  "     "     wip nominal code } -->
+           <plnomcode/>  <!--:  longint;     {  "     "     p&l nominal code } -->
+           <linetype/>   <!--:  char;        {  "     "     line type } -->
+           <cistaxrate/>  <!--:  char;     {taxable activity cis rate}-->
+           <upliftp/>     <!--:  double;   {uplift on cost %} -->
+           <upliftgl/>    <!--:  longint;  {uplift gl code + reversal} -->
+           <revenuetype/> <!--:  byte;     {link to revenue activity for valuation} -->
+           <japaycode/>   <!--: string[5]; -->
+        </jobanalrec>
+    </message>
+</val:jobanal>

@@ -1,0 +1,15 @@
+[Hint] EXPOBJ.PAS(460): Value assigned to 'DateInQuestion' never used
+[Hint] EXPOBJ.PAS(558): Value assigned to 'Target' never used
+[Warning] BACCONST.PAS(44): String constant truncated to fit STRING[8]
+[Warning] BACSTOBJ.PAS(95): Return value of function 'TBacstelExportObject.WriteRec' might be undefined
+[Hint] BACSTOBJ.PAS(101): Value assigned to 'TBacstelExportObject.ReadSterlingFromIniFile' never used
+[Warning] NATWOBJ.PAS(115): Return value of function 'TNatWestExportObject.WriteRec' might be undefined
+[Hint] NATWOBJ.PAS(50): Variable 'TempStr' is declared but never used in 'TNatWestExportObject.WriteRec'
+[Hint] NATWOBJ.PAS(51): Variable 'pence' is declared but never used in 'TNatWestExportObject.WriteRec'
+[Hint] IDEALOPT.PAS(79): Variable 'frmIdealOptions' is declared but never used in 'GetIdealOptions'
+[Warning] IDEALOBJ.PAS(384): Return value of function 'TIdealExportObject.ValidateSystem' might be undefined
+[Warning] COUTTOBJ.PAS(45): Symbol 'IncludeTrailingBackslash' is specific to a platform
+[Warning] COUTTOBJ.PAS(128): Return value of function 'TCouttsExportObject.WriteData' might be undefined
+[Hint] BMASTOBJ.PAS(92): Value assigned to 'TBusinessMasterExportObject.ReadSterlingFromIniFile' never used
+[Hint] EXWRAP.PAS(280): Variable 'i' is declared but never used in 'BacsSecCode'
+[Hint] HANDLERU.PAS(79): Variable 'DefaultOutFileName' is declared but never used in 'ExecCustomHandler'

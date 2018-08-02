@@ -1,0 +1,125 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Plug-In Files
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=INSTTYPE
+  Value=B
+  Flags=00000001
+end
+item: Install File
+  Source=FILES\WEEEAdmn.exe
+  Destination=%ENTDIR%\WEEEAdmn.exe
+  Description=Configuration Module
+  Flags=0000000010000010
+end
+item: Install File
+  Source=FILES\WEEEPI.dll
+  Destination=%ENTDIR%\WEEEPI.dll
+  Description=WEEE Plug-In
+  Flags=0000000010000010
+end
+item: Remark
+end
+item: Install File
+  Source=FILES\WEEEPI.LST
+  Destination=%ENTDIR%\WEEEPI.LST
+  Description=Replication File
+  Flags=0000000010000010
+end
+item: Remark
+end
+item: Install File
+  Source=FILES\WEEE.ini
+  Destination=%ENTDIR%\WEEE.ini
+  Description=Configuration File
+  Flags=0000000010001010
+end
+item: Remark
+end
+item: Install File
+  Source=FILES\WEPROD.DAT
+  Destination=%ENTDIR%\WEPROD.DAT
+  Description=Data File
+  Flags=0000000010001010
+end
+item: Install File
+  Source=FILES\WEREPCAT.DAT
+  Destination=%ENTDIR%\WEREPCAT.DAT
+  Description=Data File
+  Flags=0000000010001010
+end
+item: Install File
+  Source=FILES\WESUBCAT.DAT
+  Destination=%ENTDIR%\WESUBCAT.DAT
+  Description=Data File
+  Flags=0000000010001010
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=V_GOTTRADE
+  Value=Y
+  Flags=00000100
+end
+item: Install File
+  Source=FILES\TCMWEEEPI.EXE
+  Destination=%ENTDIR%\TRADE\TCMWEEEPI.EXE
+  Description=TCM WEEE Plug-In
+  Flags=0000000010000010
+end
+item: Install File
+  Source=FILES\TCMCUSTM.LST
+  Destination=%ENTDIR%\TRADE\TCMCUSTM.LST
+  Description=Replication File
+  Flags=0000000010000010
+end
+item: Install File
+  Source=FILES\TCMWEEEPI.LST
+  Destination=%ENTDIR%\TRADE\TCMWEEEPI.LST
+  Description=Replication File
+  Flags=0000000010000010
+end
+item: End Block
+end
+item: Remark
+end
+item: End Block
+end
+item: Remark
+end
+item: Copy Local File
+  Source=%INST%\ENTSETUP.DLL
+  Destination=%ENTDIR%\ENTSETUP.DLL
+  Description=Plug-In Setup Function Library
+  Local Path=ENTSETUP.DLL
+  Flags=0000010011010010
+end

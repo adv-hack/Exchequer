@@ -1,0 +1,11 @@
+HSBC MT103 Eurozone format
+
+As the eurozone format uses BIC and IBAN codes, supplier bank details should be set up as follows:
+
+The Sort Code field should contain the BIC (8 or 11 chars)
+
+The IBAN can be up to 34 characters in length, so the first 20 characters should be put in the Bank A/C field, with the remaining characters in the Bank Ref field. No other information should be put in either of these fields.
+
+The User Bank Details (in System Setup for a stand-alone plugin, or in Bank Account details for eBanking) should be the standard UK Sort Code and Account number.
+
+The HSBC MT103 Priority Payment format uses standard UK Sort Codes and Account numbers.

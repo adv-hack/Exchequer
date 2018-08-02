@@ -1,0 +1,27 @@
+[Version]
+Version=6.5.000.090
+
+[Trans Header]
+F113=TH.thTTDValue                1088    D 0008 O   Trans Total Discount                               default=                                                                                                     comment=
+F114=TH.thTTDFlag                 1096    C 0001 O   Trans Total Type                                   default=                                                                                                     comment= 
+F115=TH.thVBDValue                1097    D 0008 O   Trans Value Discount                               default=                                                                                                     comment=
+F116=TH.thVBDVAT                  1105    D 0008 O   Trans Value Tax                                    default=                                                                                                     comment=
+F117=TH.thWeekMonth               1113    I 0002 O   Week/Month                                         default=                                                                                                     comment=
+F118=TH.thWorkflowState           1115    L 0004 O   WorkFlow State                                     default=                                                                                                     comment=
+F119=TH.thOverrideLocation        1119    S 0004 O   Override Location                                  default=                                                                                                     comment=
+F120=TH.Spare                     1123    C 0284 N   Padding                                            default=                                                                                                     comment=
+F121=TH.PadChar13                 1407    C 0001 N   Padding                                            default=                                                                                                     comment=
+F122=TH.LastChar                  1408    C 0001 N   Padding                                            default=                                                                                                     comment=
+
+[Import Settings]
+Overwrite Discounts with Date Ranges=No
+
+[Overwrite Discounts with Date Ranges]
+Type=FixedList
+Yes=
+No=
+
+
+
+
+

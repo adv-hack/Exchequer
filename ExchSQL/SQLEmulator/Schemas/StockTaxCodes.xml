@@ -1,0 +1,26 @@
+<schemarecord tldformat="4" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="1R1wJegDo4GuMDB6L+CyFQ" identitycol="PositionId" recordfieldname="" reclen="300">
+  <recordfields></recordfields>
+  <fixedfields>
+    <schemafield fieldname="f_stock_folio" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stcStockFolio" ></schemafield>
+    <schemafield fieldname="f_region_id" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="stcRegionID" ></schemafield>
+    <schemafield fieldname="f_tax_code" fullfieldname="" typename="char" size="1" elements="1" id="-1"  columnname="stcTaxCode" collation="1"></schemafield>
+    <schemafield fieldname="f_inclusive" fullfieldname="" typename="bool1" size="1" elements="1" id="-1" columnname="stcInclusive" ></schemafield>
+  </fixedfields>
+  <defaultrecordtype></defaultrecordtype>
+  <recordtypes></recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isunique="1" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_stock_folio</item>
+        <item>f_region_id</item>
+      </indexfields>
+    </schemaindexes>
+    <schemaindexes indexnumber="1" isunique="0" isclustered="0" partialkeys="">
+      <indexfields>
+        <item>f_region_id</item>
+        <item>f_tax_code</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>  
+

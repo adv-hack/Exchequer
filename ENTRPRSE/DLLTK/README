@@ -1,0 +1,610 @@
+Exchequer DLL - Beta release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Introduction
+------------
+
+The Exchequer DLL has been developed as a means of allowing other Windows 
+applications live access to Exchequers account,transaction, & stock data.
+
+This release deals with access to the customer,supplier & stock databases,
+together with transaction adding/retrieval.
+
+All access to Exchequer is via function calls to the DLL.  The function will 
+return a value depending on the outcome of the operation. A 0 indicates
+success. Other potential error codes are listed below.
+
+Concepts.
+---------
+
+1. Error Codes:-
+  
+         The DLL gives indirect access to the Btrieve database engine, and
+         consequently most of the error codes below 255 will be direct 
+         Btrieve error code
+
+         Error codes from 30k onwards are SBS generated errors relating to
+         the validation of data.
+
+2. Files:-
+
+         Run time files.   EXCHDLL.DLL.    Main Exchequer DLL.
+                           WBTRCALL.DLL.   Btrieve database engine.
+                           
+                           EXCHDLL.INI.    ASCII parameter file containing
+                                           DOS path to Exchequer, and various
+                                           other switches.
+
+
+         Development Files. EXCHDLL.INC.   Include file for DLL record structure
+                            EXDLLBT.INC.   Include file containing Btrieve
+                                           command constants.                
+
+                            USEDLLU.PAS.   Header declaration for calls to DLL.
+
+                   
+         DLL front end test files.
+                            TestDLL*.*     Delphi rough and ready test project
+                                           demonstrating calls to the DLL.
+
+===============================================================================
+
+Operational Functions.
+----------------------
+
+Initialise DLL.
+
+Syntax:
+
+  Function EX_InitDLL  :  Integer;
+
+This function must be called once before any operations on the DLL are
+attempted.
+
+Possible return codes.
+
+    0  =  All files opened successfully.
+    20 =  Unable to located WBTRCALL.DLL
+    12 =  Unable to locate Exchequer paths.
+    14 =  Damaged pre image file, repair data.
+
+
+Close DLL.
+
+Syntax:
+
+  Function EX_CloseDLL  :  Integer;
+
+This function must be called before the application terminates.
+
+Possible return codes.
+
+  0  =  All files closed successfully.
+
+===============================================================================
+
+Account Functions
+-----------------
+
+The Account functions allow you to:-
+
+  *  Search for an Account by:-
+         Account Code,
+         Account Name,
+         VAT Registration No.
+         Get Next/Previous Account Records
+         Get First/Last Record.
+
+  *  Add/Edit an Account Record.
+
+  *  Lock an Account Record for multi user access.
+
+  *  Unlock an Account Record.
+  
+  *  Retrieve Account Balances.
+
+
+Searching for an Account.
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Syntax:
+
+       Function EX_GetAccount(Var P          :       Pointer;
+                                  PSize      :       LongInt;
+                              Var SearchKey  :       PChar;
+                                  SearchPath :       Integer;
+                                  SearchMode :       Integer;
+                                  AccType    :       Byte;
+                                  Lock       :       Boolean)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchCURec.
+                  See EXCHDLL.INC for declaration of TBatchCURec.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+SearchKey:        Pointer to a 255 byte buffer containing the account code/
+                  company name etc of the account to be found. Returns the
+                  exact key if the search is successful.
+
+SearchPath:       Index number of search path.
+                     0  =  Account Code.
+                     1  =  Account Name.
+                     2  =  VAT Reg Number.
+
+SearchMode:       Btrieve database search command . Possible values are:-
+                    B_GetEq   -  Find exact match.
+                    B_GetGEq  -  Find nearest match.
+                    B_GetNext
+                    B_GetPrev
+                    B_GetFirst
+                    B_GetLast.
+
+AccType   :       0 = Don't care
+                  1 = Customer
+                  2 = Supplier
+
+Lock      :       True = Attempt to lock matching record.
+                  False= Retrieve record without lock.
+
+Possible values returned by function.
+
+
+    0     =  Record found ok.
+    4     =  Key search not found.
+    9     =  End of file reached.
+    84,85 =  Record currently locked by another station.
+32766     =  Record size incorrect.
+32767     =  Record not initialised correctly.
+
+Storing an Account
+~~~~~~~~~~~~~~~~~~
+
+Syntax     
+
+       Function EX_StoreAccount(Var P          :       Pointer;
+                                    PSize      :       LongInt;
+                                    SearchPath :       Integer;
+                                    SearchMode :       Integer)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchCURec
+                  containing the completed Account Record.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+
+SearchPath:       Index number of to be updated when storing record.
+                     0  =  Account Code.
+                     1  =  Account Name.
+                     2  =  VAT Reg Number.
+
+SearchMode:       Btrieve database insertion command . Possible values are:-
+                    B_Insert   -  Add a new record.
+                    B_Update   -  Update an existing record.
+
+Possible values returned by function.
+
+
+    0   =  Record successfully stored.
+    2   =  Database corrupt, unable to store record.
+    4   =  Update not possible as original version of record not found.
+    5   =  Duplicate Account code exists, record not stored.
+    
+30000   =  Invalid storage code, ie must be B_Insert, or B_Update.
+30001   =  Invalid Account Type, must be C or S.
+30002   =  Account type changed during edit not allowed.
+30003   =  Attempting to store a blank Account Code.
+30004   =  Invalid payment type must be C or B.
+30005   =  VAT code not valid, must be S,Z,E,1,2,3,4,A,D
+30006   =  Invalid Default Nominal Code
+30007   =  Invalid default currency, must be 1 to 30.
+32766   =  Record size incorrect.
+32767   =  Record not initialised correctly.
+
+
+Retrieving Account Balances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Syntax:
+
+       Function EX_GetAccountBalance(P          :       Pointer;
+                                     PSize      :       LongInt;
+                                     AccCode    :       PChar;
+                                     SearchMode :       Integer)  :  Integer;
+
+P        :        Memory pointer to an initialised instance of THistoryBalRec
+                  containing the details of period/year/currency the balance
+		  is required for.
+                  See EXCHDLL.INC for declaration of THistoryBalRec.  
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+
+AccCode  :        Pointer to a PChar buffer containing the Account Code for
+		  which the balance is required.
+
+SearchMode:       Specifies which type of balance is required:-
+		      
+                      0  =  Current Account Balance.
+		      1  =  Net Sales
+		      2  =  Net Costs
+                      3  =  Margin
+                      4  =  Account Debit Value
+                      5  =  Account Credit Value
+                      6  =  Account Budget value 	
+
+
+Note:  The function takes a period,year and currency parameter to determine 
+       for which period the balance is required Possible values returned by 
+       function.
+
+Possible return values
+
+    0   =  Balance retrieved successfully.
+    4   =  Account not found.
+30008   =  Invalid search mode, must be 0-6.
+32766   =  Record size incorrect.
+32767   =  Record not initialised correctly.
+  
+===============================================================================
+
+Transaction function
+--------------------
+
+The transaction function allows you to:-
+
+*  Obtain the next transaction number.
+
+*  Retrieve any transaction from within Exchequer.
+   
+   (There is a 200 line limit on the number of transaction lines attached to
+   a single transaction.)
+
+   Transactions may be found by:-
+       Transaction Number
+       Transaction Folio Number
+       Account Code
+       Transaction Your Ref
+       Transaction Additional Your Ref.
+
+*  Add any new transaction into Exchequer. 
+   (The amending of existing transactions is not possible.)
+
+
+Obtaining the next transaction number.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Syntax:
+
+        Function Ex_GetNextTransNo(DocStr   :  PChar;
+                               Var NextNo   :  PChar;
+                                   Update   :  Boolean)  :  Integer; 
+
+
+
+DocStr    :     Pointer to a 3 character code representing the type of
+                transaction the next number is required. I.e SIN,SCR PIN etc.
+
+NextNo    :     Pointer to a 9 character buffer in which the formatted next
+                count value is returned is SIN000006.
+
+Update    :     True specifies the count should be incremented by one.
+
+
+Possible return values.
+
+     0        =       Next transaction number successfully returned.
+ 31000-31199  =       Equivalent Btrieve error + 31000 bias. ie 31004 
+                      Code not found.
+ 30201        =       DocStr   does not contain a valid transaction type code.
+
+
+Searching for a transaction.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Syntax:
+
+       Function EX_GetTrans(Var P,
+                                PL           :       Pointer;
+                                PSize        :       LongInt;
+                            Var SearchKey    :       PChar;
+                                SearchPath   :       Integer;
+                                SearchMode   :       Integer;
+                                Lock         :       Boolean)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchTHRec.
+                  See EXCHDLL.INC for declaration of TBatchTHRec.
+
+PL       :        Memory pointer to an initialised instance of TBatchLinesRec
+                  See EXCHDLL.INC for declaration of TBatchLinesRec.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+SearchKey:        Pointer to a 255 byte buffer containing the Transaction number
+                  /Account Code etc of the Transaction to be found. Returns the
+                  exact key if the search is successful.
+
+SearchPath:       Index number of search path.
+                     0  =  Transaction number.
+                     1  =  Transaction folio number.
+                     2  =  Account Code.
+                     3  =  Your Ref
+                     4  =  Additional Your Ref.
+
+SearchMode:       Btrieve database search command . Possible values are:-
+                    B_GetEq   -  Find exact match.
+                    B_GetGEq  -  Find nearest match.
+                    B_GetNext
+                    B_GetPrev
+                    B_GetFirst
+                    B_GetLast.
+
+
+Lock      :       True = Attempt to lock matching record.
+                  False= Retrieve record without lock.
+
+Possible values returned by function.
+
+
+    0     =  Record found ok.
+    4     =  Key search not found.
+    9     =  End of file reached.
+    84,85 =  Record currently locked by another station.
+32766     =  Record size incorrect.
+32767     =  Record not initialised correctly.
+
+Note:  Any transaction lines belonging to the transaction will be returned
+       within the structure pointed to by PL^.
+       The number of transaction lines will be returned within P^.LineCount.
+
+
+Storing a Transaction.
+~~~~~~~~~~~~~~~~~~~~~~
+
+Syntax     
+
+       Function EX_StoreTrans(Var P,
+                                  PL         :       Pointer;
+                                  PSize      :       LongInt;
+                                  SearchPath :       Integer;
+                                  SearchMode :       Integer)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchTHRec
+                  containing the completed Transaction Header Record.
+
+PL       :        Memory pointer to an initialised instance of TBatchLinesRec
+                  containing the completed Transaction Line Records.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+
+SearchPath:       Index number of to be updated when storing record.
+                     0  =  Transaction number.
+                     1  =  Transaction folio number.
+                     2  =  Account Code.
+                     3  =  Your Ref
+                     4  =  Additional Your Ref.
+
+SearchMode:       Btrieve database insertion command . Possible values are:-
+                    B_Insert   -  Add a new record.
+
+
+Possible values returned by function.
+
+
+    0   =  Record successfully stored.
+    2   =  Database corrupt, unable to store record.
+    4   =  Update not possible as original version of record not found.
+    5   =  Duplicate Transaction number/Folio number exists, record not stored.
+
+ Transaction Line Errors
+    
+30100   =  Invalid Line currency, must be 1-30 or 0 for single currency use.
+30101   =  Invalid Line Daily currency rate. Must be greater then 0.
+30102   =  Invalid Line Company rate. Must be greater then 0.
+30103   =  Invalid Line Number. Must be greater than 0.
+30104   =  Invalid Line Nominal Code.
+30105   =  Invalid Line Cost Center/Department Code
+30106   =  Invalid Line Stock Code
+30107   =  Invalid Line VAT Code. Must be A,D,S,E,Z,1,2,3,4.
+30108   =  Invalid Line discount character.  Must be %,A-H.
+30109   =  Line Totals do not balance with Transaction totals.
+30110   =  Line payment does not balance.
+
+Transaction Header Errors
+
+31000-31199 
+        =  Btrieve equivalent error + 31000 bias. Indicates error
+           obtaining next transaction number.
+31300-31399
+        =  Btrieve equivalent error + 31300 bias. Indicates error
+           updating account balance.
+
+30200   =  Duplicate Your Ref field. Only applicable if prevent duplicate
+           your ref set.
+30201   =  Invalid Transaction type. Must be SIN/SRC/SCR etc.
+30202   =  Invalid Account Code.
+30203   =  Invalid Transaction Date
+30204   =  Invalid Transaction Period.
+30205   =  Invalid Transaction Year.
+30206   =  VAT Split incorrectly. The individual VAT rates do not add up to the
+           Total VAT Amount.
+30207   =  Invalid currency. Must be 1-30, or 0 for single currency use.
+30208   =  Invalid Daily currency rate. Must be greater then 0.
+30209   =  Invalid Company rate. Must be greater then 0. 
+32766   =  Record size incorrect.
+32767   =  Record not initialised correctly.
+
+Additional Considerations
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Stock implications.
+
+As a transaction is stored, any lines with stock information will automatically 
+update stock levels. If the switch Auto_Set_Stock_Cost is set, then all stock
+valuation calculations such as FIFO will also take place.
+
+Account Balances.
+
+If the switch Update_Acc_Bal is set, then the Account balance of any given 
+transaction will be updated as the transaction is stored.
+
+Transaction numbering.
+
+If the switch Overwrite_Trans_No is set then the DLL will allocate its own 
+transaction number, otherwise it is the responsibility of the API to set 
+the correct unique transaction number.
+
+
+===============================================================================
+
+Stock function.
+---------------
+
+The Stock function allows you to:-
+
+*  Retrieve any Stock Record from within Exchequer.
+   
+   Stock may be found by:-
+       Stock Code
+       Stock Description
+       Stock Folio Number
+       Stock Group
+       Stock Below Min Stk Level
+       Stock Valuation Nominal
+       Stock Alternative Code
+       Stock Bin location
+
+*  Add/Edit any Stock Record into Exchequer. 
+
+
+Searching for a Stock Record.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Syntax:
+
+       Function EX_GetStock(Var P            :       Pointer;
+                                PSize        :       LongInt;
+                            Var SearchKey    :       PChar;
+                                SearchPath   :       Integer;
+                                SearchMode   :       Integer;
+                                Lock         :       Boolean)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchSKRec.
+                  See EXCHDLL.INC for declaration of TBatchSKRec.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+SearchKey:        Pointer to a 255 byte buffer containing the Stock Code/
+                  Stock Desc etc of the Stock item to be found. Returns the
+                  exact key if the search is successful.
+
+SearchPath:       Index number of search path.
+                     0  =  Stock Code
+                     1  =  Stock folio number.
+                     2  =  Stock Group.
+                     3  =  Stock Description.
+                     4  =  Stock below min level.
+                     5  =  Stock valuation Nominal
+                     6  =  Stock Alternative Code
+                     7  =  Stock Bin Loc
+
+SearchMode:       Btrieve database search command . Possible values are:-
+                    B_GetEq   -  Find exact match.
+                    B_GetGEq  -  Find nearest match.
+                    B_GetNext
+                    B_GetPrev
+                    B_GetFirst
+                    B_GetLast.
+
+
+Lock      :       True = Attempt to lock matching record.
+                  False= Retrieve record without lock.
+
+Possible values returned by function.
+
+
+    0     =  Record found ok.
+    4     =  Key search not found.
+    9     =  End of file reached.
+    84,85 =  Record currently locked by another station.
+32766     =  Record size incorrect.
+32767     =  Record not initialised correctly.
+
+Note:  Please check that the stock type is a valid posting type, and not
+       a heading for example.
+
+
+Storing a Stock Record.
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Syntax     
+
+       Function EX_StoreStock(Var P,
+                                  PSize      :       LongInt;
+                                  SearchPath :       Integer;
+                                  SearchMode :       Integer)  :  Integer;
+
+
+P        :        Memory pointer to an initialised instance of TBatchSKRec
+                  containing the completed Stock Record.
+
+PSize    :        LongInt value representing the size in bytes of P^.
+
+
+SearchPath:       Index number of to be updated when storing record.
+                     0  =  Stock Code
+                     1  =  Stock folio number.
+                     2  =  Stock Group.
+                     3  =  Stock Description.
+                     4  =  Stock below min level.
+                     5  =  Stock valuation Nominal
+                     6  =  Stock Alternative Code
+                     7  =  Stock Bin Loc
+
+SearchMode:       Btrieve database insertion command . Possible values are:-
+                    B_Insert   -  Add a new record.
+                    B_Update   -  Edit an existing record.
+
+
+Possible values returned by function.
+
+
+    0   =  Record successfully stored.
+    2   =  Database corrupt, unable to store record.
+    4   =  Update not possible as original version of record not found.
+    5   =  Duplicate Stock Code/folio number exists, record not stored.
+
+30270   =  Stock Group changed.
+30271   =  Stock type changed.
+30272   =  Blank Stock Code.
+30273   =  Stock Group not Valid.
+30274   =  Invalid VAT Code. Must be S,Z,E,1,2,3,4.
+30275   =  Invalid Preferred supplier.
+30276   =  Invalid Cost Price currency.
+30277   =  Invalid Reorder currency. Must be 1-30, or 0 for single currency use
+30278   =  Invalid Sales Price Currency.
+30279   =  Invalid Valuation Type. Must be F,L,S,A,R,C.
+30280   =  Invalid Stock Nominal Code.
+30281   =  Invalid Selling Unit, Must be greater then 0.
+30282   =  Invalid Buying Unit, Must be greater then 0.
+30283   =  Invalid SSD Unit. Must be greater then 0.
+30284   =  Invalid cover period, must be greater then 0.
+30285   =  Invalid cover min reorder level. Must be greater then 0.
+30286   =  Invalid cover max reorder level. Must be greater then 0.
+
+================================================================================
+Multi user considerations.
+-------------------------
+
+The DLL uses single record locking techniques, this means only one
+Account record may be locked at any one time.
+
+Once a record is successfully locked it will remain locked to any other users
+until:-
+
+  The record is stored.
+  Another record is locked.
+  A call to EX_UnlockAccount is made.
+  The application is terminated. 

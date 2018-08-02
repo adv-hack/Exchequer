@@ -1,0 +1,6 @@
+Form_Transaction = 44, 44, 627, 428, , 66, 66, 605, 513, 
+TRANSMOD = 110, 110, 613, 586, Z
+Form_TransAcc = 0, 0, 0, 0, C, 154, 154, 693, 601, C
+Form_Delivery = 0, 0, 0, 0, C, 132, 132, 671, 579, C
+Form_SerialNo = 0, 0, 0, 0, C, 110, 110, 649, 557, C
+MTOOLDLL = 66, 66, 395, 513, 

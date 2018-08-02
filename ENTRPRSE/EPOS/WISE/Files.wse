@@ -1,0 +1,108 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Files.wse - Installs all the files needed
+end
+item: Copy Local File
+  Source=%ENTERDIR%ENTWREPL.EXE
+  Destination=%INSTALLTO%ENTWREPL.EXE
+  Description=Enterprise Replication Engine
+  Flags=0000000011000010
+end
+item: Copy Local File
+  Source=%ENTERDIR%ENTWREPL.INI
+  Destination=%INSTALLTO%ENTWREPL.INI
+  Description=Enterprise Replication Engine Configuration
+  Flags=0000000011000010
+end
+remarked item: Copy Local File
+  Source=%ENTERDIR%TRADE\TRADE.DAT
+  Destination=%INSTALLTO%TRADEC%TILLNO%.DAT
+  Description=Workstation System Configuration
+  Flags=0000010011010010
+end
+item: Remark
+end
+item: Remark
+  Text=MH 21/03/2012 ABSEXCH-????? v6.10: Installation of Fonts removed as breaking Windows 7
+end
+item: Remark
+  Text=....Install Arial Narrow Font files
+end
+remarked item: Install File
+  Source=X:\ENTRPRSE\EPOS\Wise\Files\Arialn.ttf
+  Destination=%WIN%\fonts\Arialn.ttf
+  Description=Font Files
+  Flags=0000010010010010
+end
+remarked item: Install File
+  Source=X:\ENTRPRSE\EPOS\Wise\Files\Arialnb.ttf
+  Destination=%WIN%\fonts\Arialnb.ttf
+  Description=Font Files
+  Flags=0000010010010010
+end
+item: Remark
+end
+item: Remark
+  Text=....Sets correct path in Replication ini file
+end
+item: Edit INI File
+  Pathname=%INSTALLTO%ENTWREPL.INI
+  Settings=[UpdateEngine]
+  Settings=NetworkDir=%ENTERDIR%TRADE\
+  Settings=
+end
+item: Remark
+end
+item: Remark
+  Text=....Runs the Replication Engine
+end
+item: Execute Program
+  Pathname=%INSTALLTO%ENTWREPL.EXE
+  Command Line=/AUTO
+  Flags=00000010
+end
+item: Remark
+end
+item: Remark
+  Text=....Creates Trade.inis
+end
+item: Edit INI File
+  Pathname=%INSTALLTO%TRADE.INI
+  Settings=[Settings]
+  Settings=TillNo=%TILLNO%
+  Settings=CompanyPath=%ENTERDIR%
+  Settings=
+end
+item: Edit INI File
+  Pathname=%INST%\TRADE.INI
+  Settings=[Settings]
+  Settings=TillNo=00
+  Settings=CompanyPath=%ENTERDIR%
+  Settings=
+end

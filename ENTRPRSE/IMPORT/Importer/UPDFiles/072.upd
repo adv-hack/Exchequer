@@ -1,0 +1,10 @@
+[Version]
+Version=6.00.077.072
+
+[In Date]
+Type=FreeText
+VRule=isDateFormat
+
+[Out Date]
+Type=FreeText
+VRule=isDateFormat

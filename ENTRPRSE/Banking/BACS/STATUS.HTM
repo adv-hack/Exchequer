@@ -1,0 +1,676 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./STATUS_files/filelist.xml">
+<title>DLL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Exchequer Software Ltd</o:Author>
+  <o:LastAuthor>prutherford</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>160</o:TotalTime>
+  <o:Created>2001-01-30T11:53:00Z</o:Created>
+  <o:LastSaved>2001-01-30T11:53:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>674</o:Words>
+  <o:Characters>3842</o:Characters>
+  <o:Company>Exchequer Software Ltd</o:Company>
+  <o:Lines>32</o:Lines>
+  <o:Paragraphs>7</o:Paragraphs>
+  <o:CharactersWithSpaces>4718</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:WW6BorderRules/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-bidi-font-weight:normal;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 207.65pt right 415.3pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 207.65pt right 415.3pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:841.9pt 595.3pt;
+	mso-page-orientation:landscape;
+	margin:42.55pt 72.0pt 89.85pt 72.0pt;
+	mso-header-margin:36.0pt;
+	mso-footer-margin:36.0pt;
+	mso-footer:url("./STATUS_files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-GB link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<h2>Status of Bacs-type export dlls</h2>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<table border=1 cellspacing=0 cellpadding=0 width=971 style='width:728.35pt;
+ border-collapse:collapse;border:none;mso-border-alt:solid black .75pt;
+ mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>DLL(s)</h1>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Description</h1>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Status</h1>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Notes</h1>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Outcome</h1>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <h1>Documentation</h1>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>BACS1</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Standard Bacs format without date at the end of records</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written - </p>
+  <p class=MsoNormal>Tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Tested against standard Bacs file</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>No differences found (other than date)</p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>BANKIRE</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Bank of Ireland format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – </p>
+  <p class=MsoNormal>Tested internally – sent for external testing 30/11/2000</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Sent floppy disk to: Shane Stokes, Test Co-ordinator,
+  EBCS, Bank of Ireland Computer Centre, Cabinteely, Dublin 18</p>
+  <p class=MsoNormal>(Tel. 00 353 1 202 5959)</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>11/12/2000 Spoke to Shane Stokes.<span
+  style="mso-spacerun: yes">  </span>He's been on holiday but has definitely
+  received the files and will test them asap.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>12/12/00</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>Files tested ok except for julian date in file hdr –
+  should be yymmdd.<span style="mso-spacerun: yes">  </span>Amended and
+  compared with original.</p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Bank of Ireland EFT Format.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>AIBEFT</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Allied Irish Bank format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written –</p>
+  <p class=MsoNormal>Tested internally -Waiting for external testing.</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>AIB require a customer's acc &amp; sort before they'll
+  test a file.<span style="mso-spacerun: yes">  </span>Alan Connor is finding
+  one. (Our contact at AIB is Wendy 00 353 1 641 3106).</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>06/12/00 Emailed Alan again asking if he'd found a
+  suitable ac &amp; sort yet. – He's having a bit of difficulty due to
+  customers' reluctance but hopes to sort it by 8/12/00.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>11/12/2000<span style="mso-spacerun: yes">  </span>Alan
+  sent customer's name and contact but not a/c &amp; sort.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>This could go on forever so I've contacted AIB again from
+  scratch.<span style="mso-spacerun: yes">  </span>This time they didn't ask
+  for any details just told me to put a test file onto a floppy and send it to
+  them.</p>
+  <p class=MsoNormal>Emailed test file to Alan to be put on floppy disk and
+  sent to: AIB Electronic Banking, Lake Drive, 3090 National Digital Park, City
+  West, Dublin 24.</p>
+  <p class=MsoNormal>If they won't test it without a/c &amp; sort then what
+  we'll have to do is get the first customer who wants to use it to create a
+  test file for us.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>24/1/2001.<span style="mso-spacerun: yes">  </span>Alan
+  tells me that AIB have no record of receiving the disk.<span
+  style="mso-spacerun: yes">  </span>He’ll send it again.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>AIB EFT Format.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>IDEAL</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>IDEAL Interbank Giro format for Development Bank of
+  Singapore (DBS)</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written - Tested internally and sent to DBS for testing
+  5/12/2000</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Emailed files to William Wang Leong Chung &lt;<a
+  href="mailto:WangLeong@dbs.com">WangLeong@dbs.com</a>&gt;</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>Emailed amended file 05/12/2000 as he needs minimum of 12
+  transactions.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>Emailed amended file 06/12/2000 as he needs specific date
+  &amp; company a/c number.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>11/12/2000</p>
+  <p class=MsoNormal>File tested OK</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>DBS Ideal.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HEXAGON</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HSBC Format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Spoke to Hexagon helpdesk about testing.<span
+  style="mso-spacerun: yes">  </span>They don't have any test facilities:
+  essentially, you test by trying to import into Hexagon – if it lets you
+  import then the format is ok; if it doesn't then you did something wrong.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Hexagon.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>NATWEST</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Natwest Autopay format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>6/12/2000: Sent email to support via Natwest web site
+  asking if they have any test facilities.<span style="mso-spacerun: yes"> 
+  </span>They emailed back with a document detailing import/export facilities.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>11/12/2000: Emailed them a sample file and asked them to
+  test it.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Tested ok except that last record shouldn't have a
+  CR/LF.<span style="mso-spacerun: yes">  </span>That has now been amended and
+  file has been successfully compared with original.</p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Natwest Autopay.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>BACSTEL</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Barclays Bacstel format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Emailed Geoff Sharp to ask about test facilities.</p>
+  <p class=MsoNormal>11/12/2000 Emailed Geoff a sample file to see if his
+  customer (idesk) could get it tested.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Barclays Bacstel.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>BACSNC</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Same as BACS1 but without Contra records. Not a
+  specifically requested format but will probably come in handy. </p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>PCPAYCSV,</p>
+  <p class=MsoNormal>PCPAYASC</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>LloydsTSB PC Pay format</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>Csv &amp; ascii (fixed length format)</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally.<span style="mso-spacerun:
+  yes">  </span>Sent for external testing.</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Emailed <a href="mailto:IanHartleyB@Lloydstsb.co.uk">IanHartleyB@lloydstsb.co.uk</a>
+  for details 05/12/2000-12-05</p>
+  <p class=MsoNormal>Rec details of ascii &amp; csv formats 05/12/2000</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>A file in each format emailed to him for testing
+  06/12/2000</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Both files worked fine.</p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Lloyds TSB PcPay Csv.doc, Lloyds TSB PcPay Ascii.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>COUTTS</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Coutts format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Spec may not be complete.<span style="mso-spacerun: yes"> 
+  </span>Emailed Geoff Sharp for clarification and to ask about test
+  facilities.<span style="mso-spacerun: yes">  </span>Geoff has asked his
+  customer (Herald) to get fresh info from coutts and he will forward it when
+  he receives it.</p>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  <p class=MsoNormal>30/01/2001.<span style="mso-spacerun: yes">  </span>Have
+  heard nothing futher about Coutts so have emailed Geoff to see what’s
+  happening.</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>PAYAWAY</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>NatWest PayAway format</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – tested internally</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>24/1/2001: Sent for external testing to: PayAway Help Desk
+  (IS), 3<sup>rd</sup> Floor, Six Acre House,<span style="mso-spacerun: yes"> 
+  </span>Town Square, Sale, Manchester, M33 7WZ</p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>29/01/2001: File tested OK</p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>NatWest PayAway.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>MULTIBAC</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Multiple formats controlled by GL Codes related to bank
+  details in an ini file.</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Written – Tested ok.</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>MultiBacs.doc</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=92 valign=top style='width:69.2pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>ABNEPF</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>ABN-Amro format (written by EL)</p>
+  </td>
+  <td width=113 valign=top style='width:3.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Amended for security and to allow inclusion in Multibac</p>
+  </td>
+  <td width=397 valign=top style='width:297.7pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=151 valign=top style='width:4.0cm;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=104 valign=top style='width:77.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>AbnHook.doc</p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

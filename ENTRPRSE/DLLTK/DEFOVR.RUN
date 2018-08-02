@@ -1,0 +1,73 @@
+{$IFNDEF EXDLL}
+  {.$DEFINE SD}  {* Enable Shell to Dos Non IDE Only! *}
+
+  {$DEFINE  HU}   {* Switches Context Help On *}
+
+
+  {.$DEFINE PC}  {* Popup calculator *}
+
+  {$DEFINE FRM}   {* Link to Printing *}
+
+
+  {* Exchequer Specific Switches *}
+
+  {$DEFINE L_On}     {* Switches Cust/Daybook/Invoices.Receipts/Ledger *}
+
+    {$DEFINE DBk_On} {* Switches Daybook On within Ledgers *}
+
+    {$DEFINE C_On}   {* Swithes Cust On within Ledger *}
+
+    {$DEFINE NP}     {* Switches notes function    *}
+
+    {$DEFINE CL_On}  {* Switches Individual Ledger On *}
+
+    {$DEFINE  Ltr}       {* Switches OLE Link to Word*}
+
+  {Endif Ledgers On}
+
+  {$DEFINE Inv}      {* Switches Invoices/MiscU On *}
+
+  {$DEFINE Rt_On}    {* Switches Receipts/ SRI payment lines *}
+  {$DEFINE PNL_On}   {* Switches PayF2 *}
+
+  {$DEFINE Nom}       {* Switches Nominal Ledger  *}
+
+  {$DEFINE SKL}       {* Switches Additional Stock Units *}
+
+  {$DEFINE POST}      {* Switches Posting routines On *}
+
+  {$DEFINE  VAT}      {* Switches VAT Edit On & VAT Report *}
+
+  {.$DEFINE  UnP}     {*    "     Unpost /Cust Check routines *}
+                     {* Also controls Copy/Reverse Function  *}
+
+  {$DEFINE  DPr_On}  {* Switches Print Definition Routine On *}
+
+  {.$DEFINE  PQ_On}   {* Switches Print Q List On *}
+
+  {$DEFINE  CC}    {* Switches Cost Centre / Dep Unit & Report part *}
+
+  {$DEFINE GF}     {* Switches Global find routine On *}
+
+  {$DEFINE  Rp}       {* Switches Main Report Unit On *}
+
+  {.$DEFINE  R1}       {* Switches Report Unit 1 On *}
+
+  {.$DEFINE  R2}       {* Switches Report Unit 2 & VAT On *}
+
+  {.$DEFINE  R3}       {* Switches Report Unit 3 On *}
+
+  {.$DEFINE  R4}       {* Switches Nominal Trial Bal Cost Centres, Account based reports  etc On *}
+                       {* & Export on ExchRep *}
+
+  {.$DEFINE  R5}       {* Switches Stock Reports On Report7,8,9 U *}
+
+  {.$DEFINE  R6}       {* Switches Stock Reports On ReportAU, BU, CU, DU *}
+
+  {$DEFINE  Sy}       {* Switches System set-up On *}
+
+  {.$DEFINE  S1}       {* Switches NomCtrl Codes & Setup Printers On *}
+
+  {$DEFINE  S2}       {* Switches Num Count On & Password support *}
+{$ENDIF}
+

@@ -1,0 +1,9 @@
+:BASE email.hlp>main
+:TITLE TEmail component help
+:INCLUDE DELPHI3.CFG
+
+:INCLUDE delphi5.ohc
+:INCLUDE delphi5.ohi
+:INCLUDE delphi5.ohl
+;OH :INCLUDE email.toc
+;OH :INDEX TEmail component help=email.hlp

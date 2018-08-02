@@ -1,0 +1,51 @@
+This file summarizes changes made between Async Professional 4.02
+and 4.03
+
+APRO 4.03 contains fixes for the problems reported shortly after the
+APRO 4.02 release.  APRO 4.02 was removed from distribution due to 
+the severity of these problems. The changes listed below include the
+changes made for APRO 4.02 as well as those made for APRO 4.03.  Due
+to the extent of some of these changes, the change text below for
+4.03 will be somewhat more detailed than usual.
+
+Also, while addressing the general problems, we took this opportunity
+to concentrate on the TAdTerminal and fix the known bugs with that 
+component.  
+
+
+APRO 4.03:
+Bugs Fixed
+---------------------------------------------------------------------
+General
+  - Several areas where an AV could occur were fixed.  These were
+    primarily related to the 4.02 dispatcher changes that changed
+    the timing of the APW_PORTCLOSE messages. Several APRO components
+    used the APW_PORTCLOSE notification (which was being sent when
+    the port started to close) to begin their cleanup; the 4.02
+    change sent that notification once the port was actually closed.
+    Components that referenced the port's dispatcher directly caused
+    the AV because the dispatcher was already destroyed.  The fix
+    for this includes adding RegisterUserCallbackEx, RegisterUserEx
+    and DeregisterUserCallbackEx methods to the TApdCustomComPort,
+    and support for the new TPortCallbackEx method pointer.
+
+Terminal
+  - AV when terminal does not have 24 lines and adding an emulator 
+  - Terminal has scrollback/highlighting problems 
+
+Fax
+  - ResetAPJPartials doesn't reset Recipient's AttemptNum 
+
+SAPI
+  - Not able to use phone optimized engine in Windows 98 
+
+
+
+
+Enhancements Made
+---------------------------------------------------------------------  
+Terminal
+  - Added TAdTerminal.MouseSelect property, determines whether the 
+    mouse can be used to select text in the terminal window
+
+

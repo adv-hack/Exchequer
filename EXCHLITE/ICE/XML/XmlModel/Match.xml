@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:match xmlns:val="urn:www-iris-co-uk:match">
+    <message guid="" number="" count="" source="" destination="" flag="">
+        <matchrec>
+           <debitref/>  <!--:  String[9];   { Ex.OurRef (SIN/PIN)} -->
+           <creditref/> <!--:  String[9];   { Ex.OurRef (SRC/PPY)} -->
+           <debitcr/>   <!--:  SmallInt;    { Currency of Debit Amount } -->
+           <creditcr/>  <!--:  SmallInt;    { Currency of Credit Amount }-->
+           <debitval/>  <!--:  Double;      { Value of Debit Amount in Debit Currency } -->
+           <creditval/> <!--:  Double;      { Value of Credit Amount in Credit Currency } -->
+           <baseval/>   <!--:  Double;      { Value of Amount Settled in Base Currency } -->
+           <matchtype/> <!--:  Char; -->
+           <customref/> <!--:  String[10];-->
+        </matchrec>
+    </message>
+</val:match>

@@ -1,0 +1,39 @@
+Latest compile of the OpenSSL libraries with the Indy modifications built into.
+These files have been built from the OpenSSL version 0.9.6m source code from http://www.openssl.org
+
+If you want to build your own version, please take note of the following:
+
+Only MS Visual C++ can be used to make the dynamic libary version of OpenSSL so you WILL need this program.
+
+I was unable to get the build to use the assembler objects. These libraries are (as where the older versions, apparently) using compiler-generated code all the way and might be slightly slower than others.
+
+Since intellicom published their recommandation regarding how to compile OpenSSL with the Indy modification, a couple of functions have been added to the OpenSSL exports, requiring the Indy functions to be renumbered. You will therefore need to change the content of the ssleay_num_096.txt file to read this BEFORE applying the modifications:
+
+--- Start modified file ---
+SSL_set_app_data_indy                   248	EXIST::FUNCTION:
+SSL_get_app_data_indy                   249	EXIST::FUNCTION:
+SSL_CTX_set_info_callback_indy          250	EXIST::FUNCTION:
+X509_STORE_CTX_get_app_data_indy        251	EXIST::FUNCTION:
+X509_get_notBefore_indy                 252	EXIST::FUNCTION:
+X509_get_notAfter_indy                  253	EXIST::FUNCTION:
+UCTTimeDecode_indy                      254	EXIST::FUNCTION:
+SSL_SESSION_get_id_indy                 255	EXIST::FUNCTION:
+SSL_SESSION_get_id_ctx_indy             256	EXIST::FUNCTION:
+SSL_CTX_get_version_indy                257	EXIST::FUNCTION:
+SSL_CTX_set_options_indy                258	EXIST::FUNCTION:
+--- end modified file ---
+
+(the only thing that changed is the function number).
+
+Once you have applied the changes, you will need to run the following commands at a command line when located in the root of the OpenSSL source tree:
+
+perl Configure --openssldir=C:/src/openssl.src/openssl-0.9.6m VC-WIN32
+ms\do_ms
+nmake -f ms\ntdll.mak
+
+Change "C:/src/openssl.src/openssl-0.9.6m" to point to the place where you've saved the OpenSSL source. To verify that everything went allright, type the following:
+
+cd out32dll
+..\ms\test
+
+Finally, you can retreive the libeay32.dll and ssleay32.dll files from the out32dll folder and place them in your applucation's folder or system32 folder.

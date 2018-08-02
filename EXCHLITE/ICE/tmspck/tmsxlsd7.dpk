@@ -1,0 +1,86 @@
+package tmsxlsd7;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TMS TAdvStringGrid Excel support'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  vcljpg,
+  tmsd7,
+  rtl;
+
+contains
+  AdvGridExcel in 'XlsAdapter\AdvGridExcel.pas',
+  UXlsReferences in 'XlsAdapter\UXlsReferences.pas',
+  UEscherGraphToBSE in 'XlsAdapter\UEscherGraphToBSE.pas',
+  UEscherOtherRecords in 'XlsAdapter\UEscherOtherRecords.pas',
+  UEscherRecords in 'XlsAdapter\UEscherRecords.pas',
+  UExcelAdapter in 'XlsAdapter\UExcelAdapter.pas',
+  UExcelRecords in 'XlsAdapter\UExcelRecords.pas',
+  UFlxFormats in 'XlsAdapter\UFlxFormats.pas',
+  UFlxMessages in 'XlsAdapter\UFlxMessages.pas',
+  UFlxNumberFormat in 'XlsAdapter\UFlxNumberFormat.pas',
+  UFlxRowComments in 'XlsAdapter\UFlxRowComments.pas',
+  UFlxStack in 'XlsAdapter\UFlxStack.pas',
+  UFlxUtils in 'XlsAdapter\UFlxUtils.pas',
+  USheetNameList in 'XlsAdapter\USheetNameList.pas',
+  UXlsBaseClientData in 'XlsAdapter\UXlsBaseClientData.pas',
+  UXlsBaseList in 'XlsAdapter\UXlsBaseList.pas',
+  UXlsBaseRecordLists in 'XlsAdapter\UXlsBaseRecordLists.pas',
+  UXlsBaseRecords in 'XlsAdapter\UXlsBaseRecords.pas',
+  UXlsCellRecords in 'XlsAdapter\UXlsCellRecords.pas',
+  UXlsChart in 'XlsAdapter\UXlsChart.pas',
+  UXlsClientData in 'XlsAdapter\UXlsClientData.pas',
+  UXlsColInfo in 'XlsAdapter\UXlsColInfo.pas',
+  UXlsCondFmt in 'XlsAdapter\UXlsCondFmt.pas',
+  UXlsEscher in 'XlsAdapter\UXlsEscher.pas',
+  UXlsFormula in 'XlsAdapter\UXlsFormula.pas',
+  UXlsMD5 in 'XlsAdapter\UXlsMD5.pas',
+  UXlsNotes in 'XlsAdapter\UXlsNotes.pas',
+  UXlsOtherRecords in 'XlsAdapter\UXlsOtherRecords.pas',
+  UXlsPageBreaks in 'XlsAdapter\UXlsPageBreaks.pas',
+  UXlsPalette in 'XlsAdapter\UXlsPalette.pas',
+  UXlsPictures in 'XlsAdapter\UXlsPictures.pas',
+  UBreakList in 'XlsAdapter\UBreakList.pas',
+  UXlsSections in 'XlsAdapter\UXlsSections.pas',
+  UXlsSheet in 'XlsAdapter\UXlsSheet.pas',
+  UXlsSST in 'XlsAdapter\UXlsSST.pas',
+  UXlsStrings in 'XlsAdapter\UXlsStrings.pas',
+  UXlsTokenArray in 'XlsAdapter\UXlsTokenArray.pas',
+  UXlsWorkbookGlobals in 'XlsAdapter\UXlsWorkbookGlobals.pas',
+  UXlsXF in 'XlsAdapter\UXlsXF.pas',
+  WOLE2Stream in 'XlsAdapter\WOLE2Stream.pas',
+  XLSAdapter in 'XlsAdapter\XlsAdapter.pas',
+  XlsBaseTemplateStore in 'XlsAdapter\XlsBaseTemplateStore.pas',
+  XlsFormulaMessages in 'XlsAdapter\XlsFormulaMessages.pas',
+  XlsMessages in 'XlsAdapter\XlsMessages.pas',
+  UXlsRangeRecords in 'XlsAdapter\UXlsRangeRecords.pas',
+  UXlsRowColEntries in 'XlsAdapter\UXlsRowColEntries.pas',
+  UTextDelim in 'XLSAdapter\UTextDelim.pas',
+  UXlsHyperLink in 'XLSAdapter\UXlsHyperLink.pas',
+  UXlsEncodeFormula in 'XLSAdapter\UXlsEncodeFormula.pas',
+  UXlsFormulaParser in 'XLSAdapter\UXlsFormulaParser.pas';
+
+end.

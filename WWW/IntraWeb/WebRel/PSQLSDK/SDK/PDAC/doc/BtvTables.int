@@ -1,0 +1,621 @@
+unit btvtables;
+
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  drm, drmmisc, DB, DBConsts, pvconst, StdVCL, pvparser,
+  drmfiltertransform, pvtables
+{$Ifdef CodeSite}
+  , CSIntf
+{$EndIf}
+{$Ifdef PvDelphi6Up}
+  , Variants
+{$EndIf}
+{$Ifdef PvDelphi5Up}
+  ;
+{$Else}
+  , BDEConst;
+{$EndIf}
+
+type
+
+{ Exception classes for DRM }
+
+  EPvDrmEngineError = class;
+
+{ Drm error information type }
+
+  TPvDrmError = class(TPvDBError)
+  protected
+    FErrorCode: DRM_ERR;
+  public
+    constructor Create(Owner: EPvDBEngineError; ErrorCode: DRM_ERR;
+      NativeError: Longint; Message: PChar);
+    property ErrorCode: DRM_ERR read FErrorCode;
+  end;
+
+  EPvDrmEngineError = class(EPvDBEngineError)
+  protected
+    FErrorCode: DRM_ERR;
+    function ExtractBtreiveErrorCode(ErrorCode: DRM_ERR): longint;
+  public
+    constructor Create(Owner: TComponent; ErrorCode: DRM_ERR; SesID: DRM_SESID;
+      Reserv: integer);
+    property ErrorCode: DRM_ERR read FErrorCode;
+  end;
+
+{ TPvSessionList }
+
+  TPvSessionList = class(TPvAbsSessionList)
+  protected
+    procedure InitCriticalSection; override;
+    procedure DestroyCriticalSection; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    function CreateSession: TPvAbsSession; override;
+  end;
+
+{ TPvSession }
+
+  TPvSession = class(TPvAbsSession)
+  private
+    FHandle: DRM_SESID;
+    FLockCount: Integer;
+    FPassword: string;
+    function GetHandle: DRM_SESID;
+    function FindDatabaseHandle(const DatabaseName: string): DRM_DBID;
+  protected
+    procedure Check(Status: DRM_ERR);
+    procedure CheckWithOwner(Status: DRM_ERR; Owner: TComponent);
+    procedure CheckDbNamesStat(AliasName: string; Stat: integer; CheckDefault: boolean);
+    procedure CloseDatabaseHandle(Database: TPvAbsDatabase); override;
+    procedure GetSessionParams(List: TStrings); override;
+    function IsHandleNull: boolean; override;
+    procedure LockSession; override;
+    procedure UnlockSession; override;
+    function IsValidDataSet(AComponent: TComponent): boolean; override;
+    function IsValidDatabase(AComponent: TComponent): boolean; override;
+    function CreateDatabase(Owner: TPvAbsSession): TPvAbsDatabase; override;
+    function GetSessions: TPvAbsSessionList; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    procedure RealDropAlias(Name: string); override;
+    function DecodeAliasParams(Name: string; List: TStrings;
+      IsAddAlias: boolean; AliasParams: TStringList): boolean; override;
+    procedure SaveAlias(Name: string; List: TStrings; IsAdded: boolean); override;
+    procedure StartSession(Value: Boolean); override;
+  public
+    constructor Create(AOwner: TComponent); override;
+    procedure AddStandardAlias(const Name, Path: string); override;
+    procedure GetAliasNames(List: TStrings); override;
+    procedure GetAliasParams(const AliasName: string; List: TStrings); override;
+    procedure GetTableNames(const DatabaseName, Pattern: string;
+      Extensions, SystemTables: Boolean; List: TStrings); override;
+    procedure GetStoredProcNames(const DatabaseName: string; List: TStrings); override;
+    property Handle: DRM_SESID read GetHandle;
+  end;
+
+{ TPvDatabase }
+
+  TPvDatabase = class(TPvAbsDatabase)
+  private
+    FHandle: DRM_DBID;
+    FTables: TDRMTableCollection;
+    FStoredProcs: TDRMTableCollection;
+    FTransactSavepointName: string;
+    FOEMConversion: Boolean;
+    function GetIsSecured: boolean;
+    function GetTables: TDRMTableCollection;
+    function GetStoredProcs: TDRMTableCollection;
+    function OpenFromExistingDB: boolean;
+    procedure SetHandle(Value: DRM_DBID);
+    procedure SetOEMConversion(Value: Boolean);
+  protected
+{$Ifdef PvDelphi5Up}
+    procedure DoConnect; override;
+    procedure DoDisconnect; override;
+{$Endif}
+    procedure Check(Status: DRM_ERR);
+    procedure EndTransaction(TransEnd: TTransEnd); override;
+    function IsHandleNull: boolean; override;
+    function GetOwnerSession(AOwner: TComponent): TPvAbsSession; override;
+    function GetDefaultSession: TPvAbsSession; override;
+    function GetSessions: TPvAbsSessionList; override;
+    function GetDirectory: string; override;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+{$Ifndef PvDelphi5Up}
+    procedure Close; override;
+{$Endif}
+    procedure FlushSchemaCache(const TableName: string); override;
+{$Ifndef PvDelphi5Up}
+    procedure Open; override;
+{$Endif}
+    procedure StartTransaction; override;
+    property Handle: DRM_DBID read FHandle write SetHandle;
+    property IsSecured: boolean read GetIsSecured;
+    property Tables: TDRMTableCollection read GetTables;
+    property StoredProcs: TDRMTableCollection read GetStoredProcs;
+  published
+    property OEMConversion: Boolean read FOEMConversion write SetOEMConversion;
+  end;
+
+{ TPvDrmDataSet }
+
+  // 35059 - shenders: Added kiFilterStart, kiFilterEnd
+  TKeyIndex = (kiLookup, kiRangeStart, kiRangeEnd, kiCurRangeStart,
+    kiCurRangeEnd, kiSave, kiFilterStart, kiFilterEnd);
+
+  PKeyBuffer = ^TKeyBuffer;
+  TKeyBuffer = record
+    Modified: Boolean;
+    Exclusive: Boolean;
+    FieldCount: Integer;
+    Data: record end;
+  end;
+
+  TDrmDataSetOnSetFieldEvent = procedure(Field: TField; Buffer: Pointer; var Continue: boolean) of object;
+
+  TPvDrmDataSet = class(TPvDataSet)
+  private
+{$ifdef PDAC_NEWCU}
+    // 28531 - moved these to "protected" members of base class
+    //FFirstRecord, FLastRecord: boolean;
+    //FIsDatasetEmpty: boolean;
+{$else}
+    FFirstRecord, FLastRecord: boolean;
+    FIsDatasetEmpty: boolean;
+{$endif}
+    FFilterTag: integer;
+    FParseTransformer: TParseTransformer;
+    FLookupFilterParser: TExprParser;
+    FLookupFilterParseVerifier: TParseVerifier;
+
+    FHandle: DRM_TABLEID;
+    FCaseInsIndex: Boolean;
+    FKeySize: Word;
+    FKeyBuffers: array[TKeyIndex] of PKeyBuffer;
+    FKeyBuffer: PKeyBuffer;
+    FIndexFieldCount: Integer;
+    FColumns: TDRMColumnInfoCollection;
+    FIndexes: TDRMIndexInfoCollection;
+
+    FOnSetField: TDrmDataSetOnSetFieldEvent;
+
+    FPutFieldInBufferSrc: PChar;
+    procedure PutFieldInBuffer(Field: TField; Buffer: Pointer; var Continue: boolean);
+
+    function GetDBHandle: DRM_DBID;
+    function GetDatabase: TPvDatabase;
+    function GetDBSession: TPvSession;
+    function GetColumns: TDRMColumnInfoCollection;
+    function GetIndexes: TDRMIndexInfoCollection;
+    function GetBtrHandle: TBtrieveInfo;
+    function InternalGotoBookmarkPrivate(Bookmark: TBookmark; DoCheck, DoStrictCheck: boolean): DRM_ERR;
+
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+//    procedure PSGetAttributes(List: TList); override; // not need to impl now
+//    function PSGetKeyFields: string; override;        // impl in TDataSet
+    function PSIsSQLSupported: Boolean; override;
+{$Endif}
+  protected
+    FInRange: boolean;
+    procedure ActivateFilters; override;
+    procedure DeactivateFilters; override;
+    function DoFiltering(RecBuf: Pointer): boolean; override;
+    procedure AddFieldDesc(FieldDesc: TDRMColumnInfo; ARequired: Boolean
+{$Ifdef PvDelphi3}
+    ; FieldNo: Word
+{$EndIf}
+    );
+    procedure AllocKeyBuffers;
+// 26522 - shenders:  Added default params for D4
+{$Ifndef PvDelphi5Up}
+    function BCDToCurr(BCD: Pointer; var Curr: Currency): Boolean; override;
+{$Ifdef PvDelphi4Up}
+    function CurrToBCD(const Curr: Currency; BCD: Pointer; Precision: Integer = 32;
+      Decimals: Integer = 4): Boolean; override;
+{$Else}
+    function CurrToBCD(const Curr: Currency; BCD: Pointer; Precision,
+      Decimals: Integer): Boolean; override;
+{$EndIf}
+{$EndIf}
+    procedure Check(Status: DRM_ERR);
+    procedure CheckSetKeyMode;
+    procedure CheckHandle;
+    procedure CloseCursor; override;
+    function CreateHandle: DRM_TABLEID; virtual;
+    procedure DestroyHandle; virtual;
+    procedure FreeKeyBuffers;
+    function GetActiveRecBuf(var RecBuf: PChar): Boolean; override;
+    function GetCurrentIndex: string; virtual; abstract;
+    function GetIndexField(Index: Integer): TField;
+    function GetIndexFieldCount: Integer;
+    function GetIsIndexField(Field: TField): Boolean; override;
+    function GetKeyBuffer(KeyIndex: TKeyIndex): PKeyBuffer;
+    function GetKeyExclusive: Boolean;
+    function GetKeyFieldCount: Integer;
+    function GetDefaultSession: TPvAbsSession; override;
+    function GetRecordCount: Integer; override;
+    function GetSessions: TPvAbsSessionList; override;
+    procedure InitBufferPointers(GetProps: Boolean); override;
+    function InitKeyBuffer(Buffer: PKeyBuffer): PKeyBuffer;
+    procedure InternalClose; override;
+    procedure InternalInitFieldDefs; override;
+    function IsMayBeSlow: boolean; override;
+    function IsHandleNull: boolean; override;
+
+    procedure CacheUpdatesApplyModified(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure CacheUpdatesApplyInserted(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure CacheUpdatesApplyDeleted(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure PvGetBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+    procedure PvPutBlobColumns(RecCacheUpdateInfo: TRecCacheUpdateInfo); override;
+
+    function PvGetRecord(Buffer: PChar; GetMode: TGetMode; DoCheck: Boolean): TGetResult; override;
+    function PvInternalMoveFirst(DoCheck: boolean): TGetResult; override;
+    function PvInternalMoveLast(DoCheck: boolean): TGetResult; override;
+    function PvInternalMoveNext(DoCheck: boolean): TGetResult; override;
+    function PvInternalMovePrev(DoCheck: boolean): TGetResult; override;
+    procedure PvInternalPost; override;
+    procedure PvInternalCancel; override;
+    procedure PvInternalAddRecord(Buffer: Pointer; Append: Boolean); override;
+    procedure PvInternalInsert; override;
+    procedure PvInternalEdit; override;
+    procedure PvInternalDelete; override;
+    procedure PvInternalRefresh; override;
+    procedure PvInternalGotoBookmark(Bookmark: TBookmark); override;
+    function PvInternalBookmarkValid(Bookmark: TBookmark): Boolean; override;
+
+    procedure InternalOpen; override;
+    function IsCursorOpen: Boolean; override;
+    function LocateRecord(const KeyFields: string; const AKeyValues: Variant;
+      Options: TLocateOptions; SyncCursor: Boolean): Boolean; override;
+    function MapsToIndex(Fields: TList; CaseInsensitive: Boolean): Boolean;
+    procedure OpenCursor(InfoQuery: Boolean); override;
+    procedure PostKeyBuffer(Commit: Boolean);
+    function ResetCursorRange: Boolean;
+    function SetCursorRange: Boolean;
+    procedure SetFieldData(Field: TField; Buffer: Pointer); override;
+    procedure SetFieldConstrains;
+    procedure SetIndexField(Index: Integer; Value: TField);
+    procedure SetKeyBuffer(KeyIndex: TKeyIndex; Clear: Boolean);
+    procedure SetKeyExclusive(Value: Boolean);
+    procedure SetKeyFieldCount(Value: Integer);
+    procedure SetKeyFields(KeyIndex: TKeyIndex; const Values: array of const);
+    procedure SetLinkRanges(MasterFields: TList);
+    function GetRecNo: Integer; override;
+    procedure SetRecNo(Value: Integer); override;
+    procedure SwitchToIndex(const IndexName, TagName: string);
+
+    property Columns: TDRMColumnInfoCollection read GetColumns;
+    property Indexes: TDRMIndexInfoCollection read GetIndexes;
+  public
+    constructor Create(AOwner: TComponent); override;
+    function CheckOpen(Status: DRM_ERR): boolean;
+    destructor Destroy; override;
+    procedure Cancel; override;
+    function CompareBookmarks(Bookmark1, Bookmark2: TBookmark): Integer; override;
+    function CreateBlobStream(Field: TField; Mode: TBlobStreamMode): TStream; override;
+    function GetFieldData(Field: TField; Buffer: Pointer): Boolean; override;
+    procedure GetIndexInfo;
+    function IsSequenced: Boolean; override;
+    procedure Post; override;
+
+    procedure AppendRecord(const Values: array of const);
+    procedure InsertRecord(const Values: array of const);
+
+    property BtrHandle: TBtrieveInfo read GetBtrHandle;
+    function DirectBtrCall(Op: Smallint; pDataBuf: Pointer; var DataLen: Word;
+      pKeyBuf: Pointer; KeyLen: Byte; KeyNum: Shortint): integer;
+
+    property Handle: DRM_TABLEID read FHandle;
+    property DBHandle: DRM_DBID read GetDBHandle;
+    property Database: TPvDatabase read GetDatabase;
+    property DBSession: TPvSession read GetDBSession;
+    property KeySize: Word read FKeySize;
+
+    property OnSetField: TDrmDataSetOnSetFieldEvent read FOnSetField write FOnSetField;
+  end;
+
+{ TPvFieldDef }
+
+  // Required field only FieldNum. Set not need fields in 0, false or '' (BtrType set to -1).
+  TPvFieldDef = class(TCollectionItem)
+  public
+    FieldNum: integer; // Field number in FeildDefs
+    BtrType: integer;
+    DrmType: word;
+    ColumnSize: integer;
+    //28782 - shenders
+    ForceDefault: boolean;
+    DefaultValue: string;
+    // follow are alternative
+    IsColumnCaseInsensitive: boolean;
+    ACS_FileName: string;
+    ACS_Name: string;
+    ACS_ID: string;
+  end;
+
+{ TPvFieldDefs }
+
+  TPvFieldDefs = class(TCollection)
+  protected
+    function GetItem(Index: Integer): TPvFieldDef;
+    procedure SetItem(Index: Integer; Value: TPvFieldDef);
+    function GetItemByFieldNum(FieldNum: Integer): TPvFieldDef;
+  public
+    function Add: TPvFieldDef;
+    function FindItemID(ID: Integer): TPvFieldDef;
+{$Ifndef PvDelphi3}
+    function Insert(Index: Integer): TPvFieldDef;
+{$EndIf}
+    property Items[Index: Integer]: TPvFieldDef read GetItem write SetItem; default;
+    property ItemByFieldNum[Index: Integer] : TPvFieldDef read GetItemByFieldNum;
+  end;
+
+{ TPvTable }
+
+  TBatchMode = (batAppend, batUpdate, batAppendUpdate, batDelete, batCopy);
+  TLockType = (ltReadLock, ltWriteLock);
+
+  TPvTable = class(TPvDrmDataSet)
+  private
+{$Ifndef PvDelphi3}
+    FStoreDefs: Boolean;
+{$EndIf}
+    FIndexDefs: TIndexDefs;
+    FMasterLink: TMasterDataLink;
+    FDefaultIndex: Boolean;
+    FExclusive: Boolean;
+    FReadOnly: Boolean;
+    FFieldsIndex: Boolean;
+    FTableName: TFileName;
+    FIndexName: TIndexName;
+    FIndexFieldNames: string;
+    FTableLevel: Integer;
+    FOwner: string;
+
+    procedure CheckMasterRange;
+    procedure DecodeIndexNum(const Indexes: TDRMIndexInfoCollection;
+      const IndexNum: integer; var Name, Fields: string; var Options: TIndexOptions);
+{$Ifndef PvDelphi3}
+    function FieldDefsStored: Boolean;
+    function IndexDefsStored: boolean;
+    procedure SetIndexDefs(Value: TIndexDefs);
+{$EndIf}
+    function GetExists: Boolean;
+    function GetIndexFieldNames: string;
+    function GetIndexName: string;
+    procedure GetIndexParams(const IndexName, IndexFieldNames: string; FieldsIndex: Boolean;
+      var IndexedName: string);
+    function GetMasterFields: string;
+    function GetTableLevel: Integer;
+    function LocateKey(NearestCompare: boolean): TGetResult;
+    procedure MasterChanged(Sender: TObject);
+    procedure MasterDisabled(Sender: TObject);
+    procedure SetDataSource(Value: TDataSource);
+    procedure SetDefaultIndex(Value: boolean);
+    procedure SetExclusive(Value: Boolean);
+    procedure SetIndex(const Value: string; FieldsIndex: Boolean);
+    procedure SetIndexFieldNames(const Value: string);
+    procedure SetIndexName(const Value: string);
+    procedure SetMasterFields(const Value: string);
+    procedure SetOwner(AOwner: string);
+    procedure SetReadOnly(Value: Boolean);
+    procedure SetTableName(const Value: TFileName);
+
+    procedure UpdateRange;
+{$Ifdef PvDelphi5Up}
+  protected
+{ IProviderSupport }
+    function PSGetDefaultOrder: TIndexDef; override;
+    function PSGetTableName: string; override;
+    function PSGetIndexDefs(IndexTypes: TIndexOptions): TIndexDefs; override;
+    procedure PSSetCommandText(const CommandText: string); override;
+    procedure PSSetParams(AParams: TParams); override;
+{$Endif}
+  protected
+    function CreateHandle: DRM_TABLEID; override;
+    procedure DataEvent(Event: TDataEvent; Info: Longint); override;
+{$Ifndef PvDelphi3}
+    procedure DefChanged(Sender: TObject); override;
+{$Endif}
+    procedure DoOnNewRecord; override;
+    function GetCanModify: Boolean; override;
+    function GetCurrentIndex: string; override;
+    function GetDataSource: TDataSource; override;
+
+    // 32936 make public for D6
+{$Ifndef PvDelphi6Up}
+    function GetHandle(const IndexName: string): DRM_TABLEID;
+{$Endif}
+    procedure InternalAddIndex(const Name, FieldNames, DescFields: string;
+      Options: TIndexOptions; TableID: DRM_TABLEID);
+    function IsProductionIndex(const IndexName: string): Boolean;
+    procedure PrepareCursor; override;
+    procedure UpdateIndexDefs; override;
+    property MasterLink: TMasterDataLink read FMasterLink;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    // 32936 make public
+{$Ifdef PvDelphi6Up}
+    function GetHandle(const IndexName: string): DRM_TABLEID;
+{$Endif}
+    function BatchMove(ASource: TPvDrmDataSet; AMode: TBatchMode): Longint;
+    procedure AddIndex(const Name, Fields: string; Options: TIndexOptions);
+
+    procedure ApplyRange;
+    procedure CancelRange;
+    procedure CreateTable;
+    procedure PvCreateTable(PvFieldDefs: TPvFieldDefs);
+    procedure DeleteIndex(const Name: string);
+    procedure DeleteTable;
+    procedure EditKey;
+    procedure EditRangeEnd;
+    procedure EditRangeStart;
+    procedure EmptyTable;
+    function FindKey(const KeyValues: array of const): Boolean;
+    procedure FindNearest(const KeyValues: array of const);
+{$Ifdef PvDelphi4Up}
+    procedure GetDetailLinkFields(MasterFields, DetailFields: TList); override;
+{$Endif}
+    procedure GetIndexNames(List: TStrings);
+    procedure GotoCurrent(Table: TPvTable);
+    function GotoKey: Boolean;
+    procedure GotoNearest;
+    procedure RenameTable(const NewTableName: string);
+    procedure SetKey;
+    procedure SetOwnerOnTable(AOwner: string; AccessMode: integer);
+    procedure SetRange(const StartValues, EndValues: array of const);
+    procedure SetRangeEnd;
+    procedure SetRangeStart;
+    property Exists: Boolean read GetExists;
+{$ifdef PvDelphi3}
+    property IndexDefs: TIndexDefs read FIndexDefs;
+{$Endif}
+    property IndexFieldCount: Integer read GetIndexFieldCount;
+    property IndexFields[Index: Integer]: TField read GetIndexField write SetIndexField;
+    property KeyExclusive: Boolean read GetKeyExclusive write SetKeyExclusive;
+    property KeyFieldCount: Integer read GetKeyFieldCount write SetKeyFieldCount;
+    property TableLevel: Integer read GetTableLevel write FTableLevel;
+  published
+    property Constraints stored ConstraintsStored;
+    property DefaultIndex: Boolean read FDefaultIndex write SetDefaultIndex default True;
+    property Exclusive: Boolean read FExclusive write SetExclusive default False;
+{$ifndef PvDelphi3}
+    property FieldDefs stored FieldDefsStored;
+    property IndexDefs: TIndexDefs read FIndexDefs write SetIndexDefs stored IndexDefsStored;
+    property StoreDefs: Boolean read FStoreDefs write FStoreDefs default false;
+{$Endif}
+    property IndexFieldNames: string read GetIndexFieldNames write SetIndexFieldNames;
+    property IndexName: string read GetIndexName write SetIndexName;
+    property MasterFields: string read GetMasterFields write SetMasterFields;
+    property MasterSource: TDataSource read GetDataSource write SetDataSource;
+    property Owner: string read FOwner write SetOwner;
+    property ReadOnly: Boolean read FReadOnly write SetReadOnly default False;
+    property TableName: TFileName read FTableName write SetTableName;
+  end;
+
+  PFieldMap = ^TFieldMap;
+  TFieldMap = record
+    SrcNo, DstNo: integer;
+    DstDrmColumnNo: integer;
+  end;
+
+  TFieldMapList = class(TList)
+  protected
+    function Get(Index: Integer): PFieldMap;
+    procedure Put(Index: Integer; Item: PFieldMap);
+  public
+    property Items[Index: Integer]: PFieldMap read Get write Put; default;
+    destructor Destroy; override;
+  end;
+
+{ TPvBatchMove }
+
+  TPvBatchMove = class(TComponent)
+  private
+    FDestination: TPvTable;
+    FSource: TDataSet;
+    FMode: TBatchMode;
+    FAbortOnKeyViol: Boolean;
+    FAbortOnProblem: Boolean;
+    FRecordCount: Longint;
+    FMovedCount: Longint;
+    FKeyViolCount: Longint;
+    FProblemCount: Longint;
+    FChangedCount: Longint;
+    FMappings: TStrings;
+
+    FKeyViolTableName: TFileName;
+    FKeyViolTable: TPvTable;
+    FKeyViolFieldMapList: TFieldMapList;
+
+    FProblemTableName: TFileName;
+    FProblemTable: TPvTable;
+    FProblemFieldMapList: TFieldMapList;
+
+    FChangedTableName: TFileName;
+    FChangedTable: TPvTable;
+    FChangedFieldMapList: TFieldMapList;
+
+    FCommitCount: Integer;
+    FSrcDstFieldMapList, FKeyFieldMapList: TFieldMapList;
+    procedure AddRecord(DstDataSet: TPvTable; SrcDataSet: TDataSet; FieldMapList: TFieldMapList;
+      DoCheck: boolean);
+    function UpdateRecord(ADataSet: TPvTable): boolean;
+    procedure DeleteRecord(ADataSet: TPvTable);
+    procedure CheckOnProblem(SrcField, DstField: TField; FieldNo: integer);
+    function CreateTableWithSameStructure(TableName: string; DstTable: TPvTable; ModelDataSet: TDataSet;
+      DoCopyFieldDefs: boolean; var FieldMapList: TFieldMapList; DoCreateFieldMapList: boolean): TPvTable;
+    procedure DoBatch(BatchMode: TBatchMode);
+    procedure SaveRecord;
+    procedure SetMappings(Value: TStrings);
+    procedure SetSource(Value: TDataSet);
+  protected
+    procedure Notification(AComponent: TComponent;
+      Operation: TOperation); override;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure Execute;
+  public
+    property ChangedCount: Longint read FChangedCount;
+    property KeyViolCount: Longint read FKeyViolCount;
+    property MovedCount: Longint read FMovedCount;
+    property ProblemCount: Longint read FProblemCount;
+  published
+    property AbortOnKeyViol: Boolean read FAbortOnKeyViol write FAbortOnKeyViol default True;
+    property AbortOnProblem: Boolean read FAbortOnProblem write FAbortOnProblem default True;
+    property CommitCount: Integer read FCommitCount write FCommitCount default 0;
+    property ChangedTableName: TFileName read FChangedTableName write FChangedTableName;
+    property Destination: TPvTable read FDestination write FDestination;
+    property KeyViolTableName: TFileName read FKeyViolTableName write FKeyViolTableName;
+    property Mappings: TStrings read FMappings write SetMappings;
+    property Mode: TBatchMode read FMode write FMode default batAppend;
+    property ProblemTableName: TFileName read FProblemTableName write FProblemTableName;
+    property RecordCount: Longint read FRecordCount write FRecordCount default 0;
+    property Source: TDataSet read FSource write SetSource;
+  end;
+
+{ TPvDrmBlobStream }
+
+  TPvDrmBlobStream = class(TPvBlobStream)
+  protected
+    FDetermineSizeState: boolean;
+
+    function GetBlobSize: Longint; override;
+    function NeedSetToRecord(DataSet: TDataSet): boolean;
+  public
+    constructor Create(Field: TBlobField; Mode: TBlobStreamMode);
+    destructor Destroy; override;
+    function Read(var Buffer; Count: Longint): Longint; override;
+    function Write(const Buffer; Count: Longint): Longint; override;
+    procedure Truncate; override;
+  end;
+
+const
+  prmDDF_PATH    = 'DDF_PATH';
+  prmPATH        = 'PATH';
+  prmBOUND       = 'BOUND';
+  prmINTEGRITY   = 'INTEGRITY';
+  prmCREATE_DDF  = 'CREATE_DDF';
+
+  DEF_BOUND      = false;
+  DEF_INTEGRITY  = true;
+  DEF_CREATE_DDF = false;
+
+var BtvSession: TPvSession;
+    BtvSessions: TPvSessionList;
+
+{$IfnDef PvDelphi6Up}
+{$Ifdef WITH_DESIGN_SUPPORT}
+procedure Register;
+{$Endif}
+{$Endif}
+
+implementation

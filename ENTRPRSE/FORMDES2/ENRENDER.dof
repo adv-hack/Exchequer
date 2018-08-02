@@ -1,0 +1,117 @@
+[FileVersion]
+Version=6.0
+[Compiler]
+A=8
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=0
+K=0
+L=1
+M=0
+N=1
+O=1
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=
+[Directories]
+OutputDir=C:\Exchequer\Exch2016R1.SQL
+UnitOutputDir=c:\Develop\DCUs
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=W:\Compon\Gnostice\eDocEngine VCL\Source;W:\Compon\Gnostice\eDocEngine VCL\Source\Rave;W:\Compon\Gnostice\Shared3\Source\Rtl;W:\Compon\Gnostice\Shared3\Source\Filters;W:\Compon\Gnostice\Shared3\Source\Compression
+Packages=vcl;rtl;vclx;bdertl;VclSmp;vclshlctrls;vclie;dbrtl;HMESL1;RPRV40D6;RPRT40D6;COMPD6;TransBmp;FTKComps;Ims2d6;MAPIMail;B302vr60;indy;gtRPRD60
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=/DIR: c:\develop\Dev500\ /DEL48 /EXV:11
+HostApplication=c:\develop\Dev500\EnterMH.Exe
+Launcher=
+UseLauncher=0
+DebugCWD=
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=5
+MinorVer=70
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=1
+Locale=2057
+CodePage=1252
+[Version Info Keys]
+CompanyName=IRIS Enterprise Software
+FileDescription=ENRENDER.DLL
+FileVersion=5.70.0.0
+InternalName=ENRENDER.DLL
+LegalCopyright=Copyright IRIS Enterprise Software 2005
+LegalTrademarks=
+OriginalFilename=ENRENDER.DLL
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+[Excluded Packages]
+W:\ENTRPRSE\Packages\AntLabels.bpl=ANTLabels
+c:\develop\borland\delphi6\Projects\Bpl\Barry.bpl=Barry's Components
+W:\ENTRPRSE\Packages\FTKCOMPS.bpl=Form Toolkit Components (Internal)
+W:\COMPON\TPOWER\ABBREV3\B302VD60.BPL=TurboPower Abbrevia 3.02 Design-time package - VCL60
+[HistoryLists\hlConditionals]
+Count=3
+Item0=ENTER1;EXWin;MC_On;PF_On;STK;SOP;BCS;CU;JC;COMCU;LTE01;EBANK;EX600;LIC600;EXSQL;CC;REPPFC;HTMLHELP;REPPFC;EX601;EX603;EN601VXML
+Item1=ENTER1;EXWin;MC_On;PF_On;STK;SOP;BCS;CU;JC;COMCU;LTE01;EBANK;EX600;LIC600;EXSQL;CC;REPPFC;HTMLHELP;REPPFC;EX601;EX603;EN601VXML;madExcept
+Item2=ENTER1;EXWin;MC_On;PF_On;STK;S_OP;BCS;CU;JC;COMCU;LTE01;EBANK;EX600;LIC600;EXSQL;CC;REPPFC;HTMLHELP;REPPFC;EX601;EX603;EN601VXML;madExcept
+[HistoryLists\hlUnitAliases]
+Count=2
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+Item1=WinTypes=Windows;WinProcs=Windows
+[HistoryLists\hlSearchPath]
+Count=5
+Item0=C:\Develop\Borland\zexmlss\src;W:\COMPON\TPOWER\ABBREV3\;
+Item1=C:\Develop\Borland\zexmlss\src
+Item2=w:\sbslib\win\win32;w:\sbslib\win\excommon;w:\entrprse\formdes2;w:\sbslib\win\win32\rtli;w:\compon\rave4\Source;w:\entrprse\audit\;W:\COMPON\BlowFish\Delphi6\;W:\COMPON\indy10\Core;W:\COMPON\indy10\Protocols;W:\COMPON\indy10\System
+Item3=w:\sbslib\win\win32;w:\sbslib\win\excommon;w:\entrprse\formdes2;w:\sbslib\win\win32\rtli;w:\compon\rave4\Source;w:\entrprse\audit\;W:\COMPON\BlowFish\Delphi6\;w:\entrprse\r&d\
+Item4=w:\sbslib\win\win32;w:\sbslib\win\excommon;w:\entrprse\formdes2;w:\sbslib\win\win32\rtli;w:\compon\rave4\Source;w:\entrprse\audit\;W:\COMPON\BlowFish\Delphi6\
+[HistoryLists\hlUnitOutputDirectory]
+Count=1
+Item0=c:\develop\dcus\
+[HistoryLists\hlOutputDirectorry]
+Count=8
+Item0=C:\Exchequer\Exch2016R1.SQL
+Item1=C:\Exchequer\Exch2015R1.SQL
+Item2=C:\Exchequer\Exch71.SQL
+Item3=C:\Exchequer\Exch71.PSQL
+Item4=C:\Exchequer\Exch7XOrdPay.PSQL
+Item5=C:\Exchequer\Exch7XOrdPay.SQL
+Item6=C:\Exchequer\Exch7XOrdPay.Conv.SQL
+Item7=C:\Exchequer\Exch7XMRD.PSQL

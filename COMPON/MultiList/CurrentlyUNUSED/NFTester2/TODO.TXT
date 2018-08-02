@@ -1,0 +1,19 @@
+WINCARD TODO LIST
+-----------------
+
+- Look at Rebuild module, see why it STILL does not rebuild files in the correct version of btrieve v5 / v6.
+
+- Examine the EOY routine and provide Richard and Martin with a spec of how it
+works.
+
+- Design an appropriate solution to allow the system to be PK-ZIP’d to a
+specified path, or alternatively to allow a specified command line to be run. The PK-ZIP routines should support disk spanning for floppies, and the backup routine should optionally also allow only data to be backed up.
+
+- Modify WinCard to request a password when exiting Auto-EOD, this may be
+different to the original Login password so the security must be updated accordingly.
+
+- Ability to Edit Data :
+1. Edit PLU Sales - Enter a Run No and Plu Number, then click on "Find Data". The QTY and VALUE fields with then be displayed, so that you edit them. When you save your changes, a Flag will be set to say that you have changed this record.
+2. Edit TX Totals - Enter a Run No and Till No., then click on "Fill List". A list of TX Totalisers will then be listed. Select at item from the list then click on "Edit Data" The QTY and VALUE fields with then be displayed, so that you edit them. When you save your changes, a Flag will be set to say that you have changed this record.
+
+- Enterprise Link Bug - Thermal tills and PointOfSale Discounts.

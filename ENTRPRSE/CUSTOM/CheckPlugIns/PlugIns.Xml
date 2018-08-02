@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<SupportedPlugIns>
+  <ExchequerPlugIns>
+    <ExchequerPlugIn FileName="AFDPCODE.DLL" Name="AFD Postcode Plug-In" Description="The AFD Post Code Plug-In ..." Installer="AFD Postcode\AFDPOSTC.EXE" />
+    <ExchequerPlugIn FileName="ENTUSERF.DLL" Name="User Defined Fields Plug-In" Description="This plug-in does stuff" Installer="User Defined Fields\@USERDEF.EXE" />
+    <ExchequerPlugIn FileName="MULTIBAC.DLL" Ignore="Y" />
+    <ExchequerPlugIn FileName="SENTDLHK.DLL" Ignore="Y" />
+    <ExchequerPlugIn FileName="WEEEPI.DLL" Name="WEEE Plug-In" Description="This plug-in also does stuff" Installer="WEEE\WEEE.EXE" />
+  </ExchequerPlugIns>
+  <TradeCounterPlugIns>
+    <TradeCounterPlugIn COMName="EnterpriseTradePlugIn.UserDefinedField" Name="Trade Counter User Defined Fields Plug-In" Description="This plug-in does stuff with user-definable fields for the Trade Counter, you need to have the Exchequer User-Defined Fields Plug-In installed in order for this to work" Installer="TCM User Defined Fields\@UsrFld.EXE" />
+    <TradeCounterPlugIn COMName="EnterpriseTradePlugIn.WEEE" Name="WEEE Plug-In" Description="This plug-in also does stuff" Installer="WEEE\WEEE.EXE" />
+  </TradeCounterPlugIns>
+</SupportedPlugIns>

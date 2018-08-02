@@ -1,0 +1,63 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:www-iris-co-uk:glcode"
+            targetNamespace="urn:www-iris-co-uk:glcode" >
+            
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="glcoderec">
+    <xsd:sequence>
+      <xsd:element name='glcode' type='xsd:integer'/>
+      <xsd:element name='glname' type='xsd:string'/>
+      <xsd:element name='glparent' type='xsd:integer'/>
+      <xsd:element name='gltype' type='xsd:string'/>
+      <xsd:element name='glpage' type='tns:boolean2'/>
+      <xsd:element name='glsubtotal' type='tns:boolean2'/>
+      <xsd:element name='gltotal' type='tns:boolean2'/>
+      <xsd:element name='glcarryfwd' type='xsd:integer'/>
+      <xsd:element name='glrevalue' type='tns:boolean2'/>
+      <xsd:element name='glaltcode' type='xsd:string'/>
+      <xsd:element name='glprivaterec' type='xsd:integer'/>
+      <xsd:element name='glcurrency' type='xsd:integer'/>
+      <xsd:element name='glforcejc' type='tns:boolean2'/>
+      <xsd:element name='glhideac' type='xsd:integer'/>
+      <xsd:element name='glclass' type='xsd:integer'/>
+      <xsd:element name='glspare' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='glcoderec' type='tns:glcoderec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+    <xsd:attribute name='plugin' type='xsd:string'/>
+    <xsd:attribute name='datatype' type='xsd:integer'/>
+    <xsd:attribute name='desc' type='xsd:string'/>
+    <xsd:attribute name='xsl' type='xsd:string'/>
+    <xsd:attribute name='xsd' type='xsd:string'/>
+    <xsd:attribute name='startperiod' type='xsd:integer'/>
+    <xsd:attribute name='startyear' type='xsd:integer'/>
+    <xsd:attribute name='endperiod' type='xsd:integer'/>
+    <xsd:attribute name='endyear' type='xsd:integer'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='glcode'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='glcode' type='tns:glcode'/>
+
+</xsd:schema>

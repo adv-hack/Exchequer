@@ -1,0 +1,191 @@
+object frmReminder: TfrmReminder
+  Left = 271
+  Top = 246
+  HelpContext = 20
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Reminder'
+  ClientHeight = 464
+  ClientWidth = 730
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  HelpFile = 'ClientSync.hlp'
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object advPanel: TAdvPanel
+    Left = 0
+    Top = 0
+    Width = 730
+    Height = 464
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 16640730
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 7485192
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    UseDockManager = True
+    Version = '1.7.7.2'
+    AutoHideChildren = False
+    BorderColor = 16765615
+    Caption.Color = 16773091
+    Caption.ColorTo = 16765615
+    Caption.Font.Charset = DEFAULT_CHARSET
+    Caption.Font.Color = clBlack
+    Caption.Font.Height = -11
+    Caption.Font.Name = 'MS Sans Serif'
+    Caption.Font.Style = []
+    Caption.GradientDirection = gdVertical
+    Caption.Indent = 2
+    Caption.ShadeLight = 255
+    CollapsColor = clHighlight
+    CollapsDelay = 0
+    ColorTo = 14986888
+    ShadowColor = clBlack
+    ShadowOffset = 0
+    StatusBar.BorderColor = 16765615
+    StatusBar.BorderStyle = bsSingle
+    StatusBar.Font.Charset = DEFAULT_CHARSET
+    StatusBar.Font.Color = 7485192
+    StatusBar.Font.Height = -11
+    StatusBar.Font.Name = 'Tahoma'
+    StatusBar.Font.Style = []
+    StatusBar.Color = 16245715
+    StatusBar.ColorTo = 16109747
+    StatusBar.GradientDirection = gdVertical
+    FullHeight = 0
+    object lblCompany: TLabel
+      Left = 8
+      Top = 434
+      Width = 3
+      Height = 15
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+    end
+    object btnCancel: TAdvGlowButton
+      Left = 644
+      Top = 434
+      Width = 80
+      Height = 21
+      Caption = '&Close'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      FocusType = ftHot
+      ParentFont = False
+      TabOrder = 0
+      TabStop = True
+      OnClick = btnCancelClick
+      Appearance.BorderColor = clGray
+      Appearance.ColorChecked = 16111818
+      Appearance.ColorCheckedTo = 16367008
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 16111818
+      Appearance.ColorDownTo = 16367008
+      Appearance.ColorHot = 16117985
+      Appearance.ColorHotTo = 16372402
+      Appearance.ColorMirrorHot = 16107693
+      Appearance.ColorMirrorHotTo = 16775412
+      Appearance.ColorMirrorDown = 16102556
+      Appearance.ColorMirrorDownTo = 16768988
+      Appearance.ColorMirrorChecked = 16102556
+      Appearance.ColorMirrorCheckedTo = 16768988
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+    end
+    object Panel1: TPanel
+      Left = 0
+      Top = 0
+      Width = 730
+      Height = 41
+      Align = alTop
+      Color = clWhite
+      TabOrder = 1
+      object lblInfo: TLabel
+        Left = 8
+        Top = 12
+        Width = 120
+        Height = 15
+        Caption = 'Dashboard Reminder'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+    end
+    inline frmInboxFrame: TfrmInboxFrame
+      Left = 0
+      Top = 41
+      Width = 730
+      Height = 382
+      Align = alTop
+      Color = 16445929
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentColor = False
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 2
+      inherited advPanelMail: TAdvPanel
+        Width = 730
+        Height = 382
+        Font.Charset = DEFAULT_CHARSET
+        Font.Name = 'Tahoma'
+        ParentFont = False
+        FullHeight = 0
+        inherited AdvOutlook: TAdvOutlookList
+          Width = 726
+          Height = 206
+          HeaderHeight = 20
+          OnItemClick = frmInboxFrameAdvOutlookItemClick
+          OnSelectionChange = frmInboxFrameAdvOutlookSelectionChange
+        end
+        inherited advPanelCaption: TAdvPanel
+          Width = 726
+          FullHeight = 26
+        end
+        inherited advPanelDetails: TAdvPanel
+          Top = 234
+          Width = 726
+          FullHeight = 110
+          inherited lblFrom: TLabel
+            Width = 712
+          end
+          inherited mmSubject: TMemo
+            Width = 712
+          end
+        end
+      end
+      inherited tmBox: TTimer
+        OnTimer = frmInboxFrametmBoxTimer
+      end
+    end
+  end
+end

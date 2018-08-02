@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:link xmlns:val="urn:www-iris-co-uk:link">
+    <message guid="" number="" count="" source="" destination="" flag="">
+      <linkrec>
+          <lkcode/>               <!--:   String[6];   //Code of record which link is attached to if Cust, Supp or Emp -->
+          <lkfoliokey/>           <!--:   longint;     //folio number of record which link is attached to if Job, Stock or Transaction -->
+          <lkattachto/>           <!--:   Char;         //C - Customer, S - Supplier, E - employee, J - Job, S - Stock, T - Transaction -->
+          <lkletterlink/>         <!--:   Char;         //L - letter, K - link -->
+          <lklinktype/>           <!--:   Byte;         //0 - document to 9 - Internet file -->
+          <lkdate/>               <!--:   String[8];    //Date of entry YYYYMMDD -->
+          <lktime/>               <!--:   String[8];    //Time of entry hh:mm:ss -->
+          <lkusercode/>           <!--:   String[10];   //UserID -->
+
+          <lkletterdescription><![CDATA[]]></lkletterdescription>  <!--:   String[100];  //Description if letter -->
+          <lkletterfilename><![CDATA[]]></lkletterfilename>     <!--:   String[12];   //Filename if letter (excluding path) -->
+
+          <lklinkdescription><![CDATA[]]></lklinkdescription>    <!--:   String[60];   //Description if link -->
+          <lklinkfilename><![CDATA[]]></lklinkfilename>       <!--:   String[84];   //Filename if link - includes full path -->
+      </linkrec>
+    </message>
+</val:link>

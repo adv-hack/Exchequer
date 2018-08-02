@@ -1,0 +1,22 @@
+/*
+/* COPY (Files=xxx [, Ovr=xxx] [,SubD=xxx])
+/*
+/* Copies files from the Network Directory to the Local Direcortory.
+/*
+/*   Files   DOS File specification of files to copy
+/*   Ovr     Yes/No - Overwrite Existing Files, defaults to Yes
+/*   SubD    Copy Subdirectories, Defaults to No
+/*
+/*
+/* Run (Cmd=xxx))
+/*
+/* Uses WinExec to run the specified command.
+/*
+/*   Cmd     Command line to be executed
+/*
+
+
+/* Check and Copy Plug-In Files
+Copy (Files=ENANCADM.EXE)
+Copy (Files=ENANCEXP.DLL)
+

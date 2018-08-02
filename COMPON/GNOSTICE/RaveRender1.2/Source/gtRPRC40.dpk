@@ -1,0 +1,77 @@
+package gtRPRC40;
+
+{$I gtRPDefines.inc}
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'Gnostice RaveRender'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcljpg40,
+  VCL40,
+  VCLDB40,
+  VCLX40,
+  RPRT40D4,
+  RPRV40D4
+{$IFDEF EMailWithFastNet}
+  , NMFast40
+{$ELSE}
+  {$IFDEF EMailWithIndy}
+    , Indy40
+  {$ENDIF}
+{$ENDIF};
+
+contains
+  gtRPRRoutines in 'gtRPRRoutines.pas',
+  gtRPRender_Consts in 'gtRPRender_Consts.pas',
+  gtRPRender_DlgConsts in 'gtRPRender_DlgConsts.pas',
+  gtRPRender_Document in 'gtRPRender_Document.pas',
+  gtRPRender_EMF in 'gtRPRender_EMF.pas',
+  gtRPRender_Excel in 'gtRPRender_Excel.pas',
+  gtRPRender_GIF in 'gtRPRender_GIF.pas',
+  gtRPRender_Graphic in 'gtRPRender_Graphic.pas',
+  gtRPRender_HTML in 'gtRPRender_HTML.pas',
+  gtRPRender_JPEG in 'gtRPRender_JPEG.pas',
+  gtRPRender_Main in 'gtRPRender_Main.pas',
+  gtRPRender_PDF in 'gtRPRender_PDF.pas',
+  gtRPRender_ProgressDlg in 'gtRPRender_ProgressDlg.pas' {gtRPRenderProgressDlg},
+  gtRPRender_RTF in 'gtRPRender_RTF.pas',
+  gtRPRender_Text in 'gtRPRender_Text.pas',
+  gtRPRender_Utils in 'gtRPRender_Utils.pas',
+  gtRPRender_WMF in 'gtRPRender_WMF.pas',
+  gtRPRender_BMP in 'gtRPRender_BMP.pas',
+  gtRPRender_MainDlg in 'gtRPRender_MainDlg.pas' {gtRPRenderMainDlg},
+  gtRPRender_DocumentDlg in 'gtRPRender_DocumentDlg.pas' {gtRPRenderDocumentDlg},
+  gtRPRender_ExcelDlg in 'gtRPRender_ExcelDlg.pas' {gtRPRenderExcelDlg},
+  gtRPRender_GIFDlg in 'gtRPRender_GIFDlg.pas' {gtRPRenderGIFDlg},
+  gtRPRender_HTMLDlg in 'gtRPRender_HTMLDlg.pas' {gtRPRenderHTMLDlg},
+  gtRPRender_JPEGDlg in 'gtRPRender_JPEGDlg.pas' {gtRPRenderJPEGDlg},
+  gtRPRender_PDFDlg in 'gtRPRender_PDFDlg.pas' {gtRPRenderPDFDlg},
+  gtRPRender_BMPDlg in 'gtRPRender_BMPDlg.pas' {gtRPRenderBMPDlg},
+  gtRPRender_TextDlg in 'gtRPRender_TextDlg.pas' {gtRPRenderTextDlg},
+  gtRPRender_RTFDlg in 'gtRPRender_RTFDlg.pas' {gtRPRenderRTFDlg},
+  gtRPRender_MetafileDlg in 'gtRPRender_MetafileDlg.pas' {gtRPRenderMetafileDlg};
+
+end.

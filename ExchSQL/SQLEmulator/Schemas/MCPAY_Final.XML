@@ -1,0 +1,30 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="188" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="CoCode" fullfieldname="" typename="DelphiString" size="7" elements="1" id="-1" columnname="CoCode" collation="1"/>
+        <schemafield fieldname="PayID" fullfieldname="" typename="DelphiString" size="4" elements="1" id="-1" columnname="PayID" collation="1"/>
+        <schemafield fieldname="CoName" fullfieldname="" typename="DelphiString" size="46" elements="1" id="-1" columnname="CoName" />
+        <schemafield fieldname="FileName" fullfieldname="" typename="DelphiString" size="31" elements="1" id="-1" columnname="FileName" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0" >
+            <indexfields>
+                <item>CoCode</item>                
+            </indexfields>
+        </schemaindexes>
+		<schemaindexes indexnumber="1" isunique="0" isclustered="0" >
+			<indexfields>
+				<item>PayID</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="2" isunique="0" isclustered="0" >
+			<indexfields>
+				<item>CoCode</item>
+				<item>PayID</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>

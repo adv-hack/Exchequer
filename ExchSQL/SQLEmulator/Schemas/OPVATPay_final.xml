@@ -1,0 +1,42 @@
+<schemarecord version="0" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="400">
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="f_order_ref" fullfieldname="f_order_ref" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="vpOrderRef"/>
+    <schemafield fieldname="f_receipt_ref" fullfieldname="f_receipt_ref" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="vpReceiptRef"/>
+    <schemafield fieldname="f_trans_ref" fullfieldname="f_trans_ref" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="vpTransRef"/>
+    <schemafield fieldname="f_line_order_no" fullfieldname="f_line_order_no" typename="int32" size="4" elements="1" id="-1" collation="1" columnname="vpLineOrderNo"/>
+    <schemafield fieldname="f_sor_abs_line_no" fullfieldname="f_sor_abs_line_no" typename="int32" size="4" elements="1" id="-1" collation="1" columnname="vpSORABSLineNo"/>
+    <schemafield fieldname="f_type" fullfieldname="f_type" typename="uint8" size="1" elements="1" id="-1" collation="1" columnname="vpType"/>
+    <schemafield fieldname="f_currency" fullfieldname="f_currency" typename="uint8" size="1" elements="1" id="-1" collation="1" columnname="vpCurrency"/>
+    <schemafield fieldname="f_description" fullfieldname="f_description" typename="DelphiString" size="61" elements="1" id="-1" collation="1" columnname="vpDescription"/>
+    <schemafield fieldname="f_vat_code" fullfieldname="f_vat_code" typename="char" size="1" elements="1" id="-1" collation="1" columnname="vpVATCode"/>
+    <schemafield fieldname="f_goods_value" fullfieldname="f_goods_value" typename="double" size="8" elements="1" id="-1" columnname="vpGoodsValue"/>
+    <schemafield fieldname="f_vat_value" fullfieldname="f_vat_value" typename="double" size="8" elements="1" id="-1" columnname="vpVATValue"/>
+    <schemafield fieldname="f_user_name" fullfieldname="f_user_name" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="vpUserName"/>
+    <schemafield fieldname="f_date_created" fullfieldname="f_date_created" typename="DelphiString" size="9" elements="1" id="-1" collation="1" columnname="vpDateCreated"/>
+    <schemafield fieldname="f_time_created" fullfieldname="f_time_created" typename="DelphiString" size="9" elements="1" id="-1" collation="1" columnname="vpTimeCreated"/>
+	</fixedfields>
+	<defaultrecordtype/>
+	<recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>f_order_ref</item>
+				<item>f_receipt_ref</item>
+				<item>f_line_order_no</item>
+				<item>f_date_created</item>
+				<item>f_time_created</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>f_order_ref</item>
+				<item>f_trans_ref</item>
+				<item>f_line_order_no</item>
+				<item>f_date_created</item>
+				<item>f_time_created</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
+

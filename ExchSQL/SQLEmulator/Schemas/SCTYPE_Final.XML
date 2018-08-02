@@ -1,0 +1,24 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" checksumcol="" verifyvalue="" identitycol="PositionId" reclen="216" recordfieldname="">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="sctFolioNo" fullfieldname="" typename="int32" size="4" elements="1" id="-1" columnname="sctFolioNo" />
+        <schemafield fieldname="sctDescription" fullfieldname="" typename="DelphiString" size="11" elements="1" id="-1" collation="1" columnname="sctDescription" />
+        <schemafield fieldname="sctDummyChar" fullfieldname="" typename="uint8" size="1" elements="1" id="-1" columnname="sctDummyChar" />
+    </fixedfields>
+    <defaultrecordtype>        
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="1" isclustered="0">
+            <indexfields>
+                <item>sctFolioNo</item>
+                <item>sctDummyChar</item>
+            </indexfields>
+        </schemaindexes>
+        <schemaindexes indexnumber="1" isunique="1" isclustered="0">
+            <indexfields>
+                <item>sctDescription</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

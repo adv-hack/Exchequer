@@ -1,0 +1,92 @@
+:Base Apro.hlp
+1 Welcome to Async Professional 4
+2 Welcome to Async Professional 4=Welcome_to_Async_Professional_4>Main
+1 The Version Property
+2 The Version Property=The_Version_Property>Main
+1 Port Component
+2 TApdComPort Component=TApdComPort_Component>Main
+1 Winsock Components
+2 TApdSocksServerInfo Class=TApdSocksServerInfo_Class>Main
+2 TApdWinsockPort Component=TApdWinsockPort_Component>Main
+2 TApdSocket Component=TApdSocket_Component>Main
+1 Data Packet Component
+2 TApdDataPacket Component=TApdDataPacket_Component>Main
+1 Script Component
+2 TApdScript Component=TApdScript_Component>Main
+1 State Machine Components
+2 TApdStateMachine Component=TApdStateMachine_Component>Main
+2 TApdState Component=TApdState_Component>Main
+1 Status Light Components
+2 TApdStatusLight Component=TApdStatusLight_Component>Main
+2 TApdSLController Component=TApdSLController_Component>Main
+1 The Terminal Components
+2 TAdTerminalBuffer Component=TAdTerminalBuffer_Component>Main
+2 TAdTerminalParser Class=TAdTerminalParser_Class>Main
+2 TAdVT100Parser Class=TAdVT100Parser_Class>Main
+2 The TAdKeyboardMapping Class=The_TAdKeyboardMapping_Class>Main
+2 The TAdCharSetMapping Class=The_TAdCharSetMapping_Class>Main
+2 The TAdTerminalEmulator Class=The_TAdTerminalEmulator_Class>Main
+2 The TAdTTYEmulator Class=The_TAdTTYEmulator_Class>Main
+2 TAdVT100Emulator Class=TAdVT100Emulator_Class>Main
+2 The TAdTerminal Component=The_TAdTerminal_Component>Main
+1 IP Telephony
+2 TApdVoIPTerminal Class=TApdVoIPTerminal_Class>Main
+2 TApdVoIP Component=TApdVoIP_Component>Main
+1 SAPI Components
+2 TApdAudioOutDevice Class=TApdAudioOutDevice_Class>Main
+2 TApdAudioInDevice Class=TApdAudioInDevice_Class>Main
+2 TApdCustomSapiEngine Component=TApdCustomSapiEngine_Component>Main
+2 TApdSapiEngine Component=TApdSapiEngine_Component>Main
+2 TApdSapiPhonePrompts=TApdSapiPhonePrompts>Main
+2 TApdCustomSapiPhone Component=TApdCustomSapiPhone_Component>Main
+2 TApdSapiPhone Component=TApdSapiPhone_Component>Main
+1 Remote Access Service (RAS) Components
+2 TApdRasDialer Component=TApdRasDialer_Component>Main
+2 TApdRasStatus Component=TApdRasStatus_Component>Main
+1 TAPI Components
+2 TApdTapiDevice Component=TApdTapiDevice_Component>Main
+2 TApdAbstractTapiStatus Class=TApdAbstractTapiStatus_Class>Main
+2 TApdTapiStatus Component=TApdTapiStatus_Component>Main
+2 TApdTapiLog Class=TApdTapiLog_Class>Main
+1 Modem Components
+2 TApdLibModem Component=TApdLibModem_Component>Main
+2 TAdModem Component=TAdModem_Component>Main
+2 TAdModemStatus Component=TAdModemStatus_Component>Main
+1 File Transfer Protocols
+2 TApdProtocol Component=TApdProtocol_Component>Main
+2 TApdFtpClient Component=TApdFtpClient_Component>Main
+2 TApdAbstractStatus Class=TApdAbstractStatus_Class>Main
+2 TApdProtocolStatus Component=TApdProtocolStatus_Component>Main
+2 TApdProtocolLog Component=TApdProtocolLog_Component>Main
+1 Fax Components
+2 TApdFaxConverter Component=TApdFaxConverter_Component>Main
+2 TApdFaxUnpacker Component=TApdFaxUnpacker_Component>Main
+2 TApdFaxViewer Component=TApdFaxViewer_Component>Main
+2 TApdFaxPrinter Component=TApdFaxPrinter_Component>Main
+2 TApdAbstractFaxPrinterStatus Class=TApdAbstractFaxPrinterStatus_Class>Main
+2 TApdFaxPrinterStatus Component=TApdFaxPrinterStatus_Component>Main
+2 TApdFaxPrinterLog Component=TApdFaxPrinterLog_Component>Main
+2 TApdAbstractFax Component=TApdAbstractFax_Component>Main
+2 TApdSendFax Component=TApdSendFax_Component>Main
+2 TApdReceiveFax Component=TApdReceiveFax_Component>Main
+2 TApdFaxJobHandler Component=TApdFaxJobHandler_Component>Main
+2 TApdFaxServer Component=TApdFaxServer_Component>Main
+2 TApdFaxServerManager Component=TApdFaxServerManager_Component>Main
+2 TApdFaxClient Component=TApdFaxClient_Component>Main
+2 TApdAbstractFaxStatus Class=TApdAbstractFaxStatus_Class>Main
+2 TApdFaxStatus Component=TApdFaxStatus_Component>Main
+2 TApdFaxLog Class=TApdFaxLog_Class>Main
+2 TApdFaxDriverInterface Component=TApdFaxDriverInterface_Component>Main
+1 Paging Components
+2 TApdAbstractPager Component=TApdAbstractPager_Component>Main
+2 TApdTAPPager Component=TApdTAPPager_Component>Main
+2 TApdSNPPPager Component=TApdSNPPPager_Component>Main
+2 TApdPagerLog Component=TApdPagerLog_Component>Main
+2 TApdSMSMessage Class=TApdSMSMessage_Class>Main
+2 TApdMessageStore Class=TApdMessageStore_Class>Main
+2 TApdGSMPhone Component=TApdGSMPhone_Component>Main
+1 Low-level Facilities
+2 Timers=Timers>Main
+2 Name Routines=Name_Routines>Main
+1 Deprecated Components
+2 Deprecated Components=Deprecated_Components>Main

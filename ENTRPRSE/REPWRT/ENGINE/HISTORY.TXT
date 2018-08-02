@@ -1,0 +1,885 @@
+Report Writer Version History
+=============================
+
+Ver       Released  Prog  Change
+
+v5.00.039 09/08/02  PR    Added long string support for csv files.
+
+b5.00.037           PR    Added totals into csv output
+
+b5.00.036           PR    Added DBF output
+
+v5.00.035 02/04/02  HM    Released for Enterprise v5.00 
+
+b500.035  25/03/02  HM    Mods
+                          ~~~~
+                          Added support for following new fields:-
+
+                            ACTAGNO   1071  Default Tag Number             
+
+                            STWOPWIP  5160  WOP - WIP GL Code              
+                            STROLEAD  5161  WOP - Re-Order Lead Time       
+                            STECOQTY  5162  WOP - Min Economic Build Qty   
+                            STQWORPI  5163  Quantity Picked on WOR         
+
+b500.034            HM    Rebuilt to pickup new Abbrevia Components (3.02)
+
+b500.033  01/03/02  HM    Bug
+                          ~~~
+                          Changed SendEntFax in RWPrintR to set the Print Job Title as this was 
+                          preventing the Fax Client from correctly identifying the job, so it
+                          always asked for the Fax Details.
+
+b500.032  28/02/02  HM    Moda
+                          ~~~~
+                          Increased THUSER1/THUSER2 from 20 to 30 chars and added EMUSER3/EMUSER4 
+
+b500.027  30/01/02  HM    Mods
+                          ~~~~
+                          Updated background bitmap
+
+b500.026  22/01/02  NF    Mods
+                          Updated Bitmaps on menus
+
+b500.025  17/01/02  HM    Mods
+                          ~~~~
+                          Modified Text Printing to auto-shorten text to fit in columns and to
+                          provide support for RAVE PDF/HTML formats.
+
+b500 - Converted to Delphi 6.0 for Enterprise v5.00
+
+-------------------------------------------------
+
+b431.019  20/03/01  HM    Mod
+                          ~~~ 
+                          Modified to implement changes to internal DetLTotal function relating to
+                          Settlement Discount 
+
+v4.31.016 05/10/00  HM    Mods
+                          ~~~~
+                          Added JAREVERS and JAREVWIP for Cooper-Parry. 
+
+v4.31.015 30/08/00  HM    Released
+
+b431.014  11/08/00  HM    Mods
+                          ~~~~
+                          Extended Fax/Email to have the msg/subject default to the report description
+
+b431.013  09/08/00  HM    Bug
+                          ~~~
+                          Modified the Acrobat File export for emails as done for Form Designer. 
+
+b431.011  27/07/00  HM    Bugs
+                          ~~~~
+                          Modified RepLineRObj.FillObject in MCParser to take the PrintSelection
+                          criteria into account when performing the initial build stage.  Previously
+                          this could cause reports to act VERY weird as the data being printed wasn't
+                          necessarily the data being used in Record Selections.                          
+
+b431.010  19/07/00  HM    Mod
+                          ~~~
+                          Added THUNTIL - Auto Until / Settled Date for Bristan.  
+
+v4.31.009 17/07/00  HM    Bugs
+                          ~~~~
+                          Fixed STLOQPOS and SLQPOSTD to access stock history.
+
+b431.007  23/06/00  HM    Mod
+                          ~~~ 
+                          Added 3202 - TLCOSCNV - Cost Of Sales Conversion Rate
+
+b431.005  09/06/00  HM    Bug
+                          ~~~
+                          Changes the Stock/Location Quantity fields as they were being incorrectly 
+                          rounded to 2dp internally in DicLinkU.Pas.
+
+b431.004  08/06/00  HM    Bug
+                          ~~~
+                          Fixed bug in emailing where sender name and email address were around
+                          the wrong way. (Bug and Fix copied from Form Des)
+
+b431.003  12/05/00  HM    Mods
+                          ~~~~ 
+          		  Added Fax Cover sheet and implemented 8mm margin for fax drivers.
+
+                          Bug
+                          ~~~
+                          Fixed BOORDER which was incorrectly displayed as a string, whilst
+                          actually being an integer.
+ 
+                          Fixed DIDSCAMT which was display Perc% instead of amount.
+ 
+
+b431a.523 10/05/00  HM    Mods
+                          ~~~~ 
+          		  Built Fax and Email funcitonality into Windows Report Writer.
+
+                          Bug
+                          ~~~
+                          Fixed the dd field lookup on report lines so STCODE was validated
+                          correctly instead of displaying the popup list. 
+
+v4.31a    02/05/00  HM    Rebuilt under Delphi 5.01 
+
+v4.31     25/04/00  HM    Released
+
+          April 00  HM    Mods
+                          ~~~~
+                          Added new files:-
+
+                            10 Bill Of Materials
+                            14 Discount Matrix
+                            15 Job Notes
+                            20 FIFO
+                            29 Customer Notes
+                            30 Supplier Notes
+                            31 Stock Notes
+                            32 Transaction Notes
+
+                          And numerous new fields:-
+
+                            ACDISCAM 1068 Settlement Discount
+                            ACDISCDA 1069 Settlement Discount Days
+
+                            BOSTKFOL 19001 Stock Folio
+                            BOORDER  19002 Order
+                            BOPARENT 19003 Parent Stock Code
+                            BOPARDSC 19004 Parent Description Line 1
+                            BOQTY    19005 Quantity Used
+                            BOCURRSY 19006 Cost Currency (Symbol)
+                            BOCOST   19007 Cost in Currency
+                            BOCURRNO 19008 Cost Currency (Number)
+                            BOCOSTBA 19009 Cost in Base Currency
+                            BOPARCOS 19010 Parent Cost In Currency
+                            BOPCURRN 19011 Parent Cost Currency (Number)
+                            BOPCURRS 19012 Parent Cost Currency (Symbol)
+                            BOPARCOB 19013 Parent Cost In Base Currency
+
+                            DITYPE   20000 Discount Type
+                            DISTOCK  20001 Stock Code
+                            DIACC    20002 Account Code
+                            DIQTYFR  20003 Qty Break - From Quantity
+                            DIQTYTO  20004 Qty Break - To Quantity
+                            DIBRTYPE 20005 Break Type
+                            DICURR   20006 Currency (Number)
+                            DICURRSY 20007 Currency (Symbol)
+                            DISPECPR 20008 Special Price
+                            DIPRBAND 20009 Price Band
+                            DIPERC   20010 Discount Percentage
+                            DIDSCCAM 20011 Discount Amount Per Unit
+                            DIMARKUP 20012 Markup/Margin Percentage
+
+                            FIDOCREF 19500 Transaction OurRef
+                            FIDATE   19501 FIFO Date
+                            FIQTYLFT 19502 Quantity Left
+                            FIQTY    19503 Quantity
+                            FICOST   19504 Cost
+                            FICOSTCU 19505 Cost Currency (Number)
+                            FICOSTCS 19506 Cost Currency (Symbol)
+                            FILOC    19507 Location
+                            FICOMPRA 19508 Company Rate
+                            FIDAYRAT 19509 Daily Rate R
+
+                            JRFOLIO  12021 Job Folio Number
+
+                            NOLINE   8001 Note Line
+                            NOALARM  8002 Note Alarm Date
+                            NOUSER   8003 Note User
+                            NODATED  8004 Note has Date Y/N
+                            NOFOR    8005 Note For
+                            NOTYPE   8006 Note Type (D-Dated,G-General)
+
+                            STGROUP0 5092 Ultimate Stock Group
+                            STDESC0  5093 Ultimate Parent Desc line 1
+                            STGRPDES 5094 Stock Group Description
+
+                            THPRETRI 2098 Pre-Triangulation Rates
+                            THTAGGED 2097 Tagged Yes/No
+                            THSSDIND      SSD Indicator flag
+
+                            TLPAYREF 3099 Receipt Pay-In Reference
+                          
+				    SYSLUSER 90028 Logged in User Id
+                            NMREVALU 4052  Revalue Flag
+
+                          Added security password checking on groups                        
+
+430d.503  15/12/99  HM    Bugz
+                          ~~~~
+                          Added support for the % format character
+                         
+                          Modified the Line Format Field to be uppercase.
+
+430d.501  20/10/99  HM    Rebuilt to pickup new v4.31 DD Fields
+
+????????  ??/10/99  HM    Converted to Delphi 5
+
+430b.500  09/09/99  HM    Converted to Delphi 4
+
+-----------------------------------------------------------------------------------------
+
+v4.30e   16/12/99  HM    Released
+
+430d.190 29/11/99  HM    Bug
+                         ~~~
+                         Modified the RepCtrlObj.Process_File to reset FirstGo imediately
+                         after writing the first line, as totals weren't being displayed 
+                         for the first section in the Report. Couldn't repeat it on other
+                         reports.
+
+v4.30d   08/10/99  HM    Released 
+
+b430.188 25/08/99  HM    Mods
+                         ~~~~
+                         Modified for international number formats.
+
+b430.187 22/06/99  HM    Bug
+                         ~~~
+                         The number checking added in .186 wasn't allowing -ve numbers.
+
+v4.30c   26/05/99  MH    Released
+
+b430.186 20/05/99  HM    Bug
+                         ~~~
+                         Modified the formulae parser to suppress floating point errors
+                         if processing a string in the format 1234E123.
+
+b430.185 14/04/99  HM    Mods
+                         ~~~~
+                         Modified the auto string conversion in FormulaTxlate to treat
+                         a blank string as zero instead of generating an error message.
+
+v4.30b   26/02/99  MH    Released
+
+b430.184 25/02/99  HM    Mods
+                         ~~~~
+                         Added STDEFLOC Default Location Code for Geoff.
+
+b430.183 24/02/99  HM    Mods
+                         ~~~~
+                         Rebuilt to pick up Eduardos modified DetLTotal function.
+
+v4.30a   22/02/99  MH    Released after testing by DL/JW
+
+         04/02/99  MH    Bugz (Released to DL/Geoff Sharpe)
+                         ~~~~
+                         Modified Relational linking from Job Actuals to trans line as
+                         it was using the wrong index.
+
+b430.182 02/02/99  MH    Bugz
+                         ~~~~
+                         Applied currency conversion mods as advised by EAL.
+
+b430.181 25/01/99  MH    Modz
+                         ~~~~
+                         Added Matched Payments database and DD Fields.
+
+                         Bug
+                         ~~~
+                         Modified the Input Fields to return 3 digit years from Periods
+                         and the Indexing to use 3 digit years because it was previously
+                         assuming 2 digits which was OK until the year 2000! At this point
+                         the period indexes failed miserably reporting no records because 
+                         the year was taken as 10 not 100 and the period was picking up the 
+                         3rd digit of the year.  
+
+v4.30    04/01/99  MH    Release Version
+
+b430.180 24/12/98  MH    v4.30 Beta with RP3 engine
+
+v4.24    09/11/98  MH    Release Version
+                        
+423h.173 05/11/98  MH    Modz
+                         ~~~~
+                         Modified SNLDIN and SNLDOUT to load the line
+                         details as well as trans.
+
+                         Added new fields:
+
+                           SNCORATE  7022   Company Cost Rate
+                           SNDAYRAT  7023   Daily Cost Rate
+
+
+423h.172 22/10/98  MH    Modz
+                         ~~~~
+                         Added new fields to access various new fields:               
+            
+                           STLINTYP   5076  Default Line Type
+                           STLINTDE   5077  Default Line Type Description
+
+                           JRUSER1   12017  Job User Defined 1
+                           JRUSER2   12018  Job User Defined 2
+
+                           EMUSER1   11518  Employee - User Field 1
+                           EMUSER2   11519  Employee - User Field 2
+
+                           THLNTOT0   2092  Transaction Line Type 0 Total
+
+423h.171 08/10/98  MH    Modz (Palladium)
+                         ~~~~
+                         Added support for switching THxxx and ACxxx
+                         between the In and Out Documents on Serial
+                         Number reports.
+
+423h.170 02/09/98  MH    Modz
+                         ~~~~
+                         Added TLORDACC field to report the Account Code
+                         from the originating order.
+
+423h.169 18/08/98  MH    Bugz
+                         ~~~~
+                         Modified the Fast Indexing and Select_Records 
+                         routines to save/restore the record positions
+                         as Bentley's were having major problems with
+                         a simple list of transaction lines.
+
+                         Fixed a bug in the Find_FastNDX routine where
+                         CheckKey was converting the key to uppercase
+                         before checking it, this caused an invalid
+                         folio number to be considered valid - what
+                         were the odds on that???
+
+423h.168 23/07/98  MH    Mods
+                         ~~~~
+                         Added the RTCOMP, RTDAILY, RTFLOAT, CCYNAME and
+                         CCYSYMB functions into the Report Writer parser
+                         using same format and parameters as functions in
+                         Form Designer.
+
+         15/07/98  MH    Mods
+                         ~~~~
+                         Changed Conv_Curr calls to Conv_TCurr for Euro
+                         compatibility.
+
+v4.23h   02/07/98  MH    Bug
+                         ~~~
+                         Recompiled to pick up a fix to the international
+                         date format routine in ETDATEU, which hadn't worked
+                         under Windows NT.
+
+v4.23g   29/06/98  MH    Mods
+                         ~~~~
+                         Added SNDATEIN - Serial Number Date In field
+                         to Data Dictionary.
+
+                         Bug
+                         ~~~
+                         Recompiled to pick up a fix to DayOfWeek in
+                         ETDateU.
+
+v4.23f   23/06/98  MH    Mods
+                         ~~~~
+                         Added new fields for Credit Card info:
+
+                           ACCCSTRT  1054  Credit Card - Start Date
+                           ACCCEND   1055  Credit Card - End Date
+                           ACCCNAME  1056  Credit Card - Name
+                           ACCCNO    1057  Credit Card - Number
+                           ACCCSWTC  1058  Credit Card - Switch Ref. No
+
+v4.23e   22/06/98  MH    Mods
+                         ~~~~
+                         Added new fields for Bentley's:
+
+                           TLORYREF  3092  Order Your Ref (Short)
+                           TLORYRFL  3093  Order Your Ref (Long)
+
+v4.23d   17/06/98  MH    Bug
+                         ~~~
+                         Modified the Report Export function as it was
+                         corrupting the key of Nominal Lines by removing
+                         VarType from the ReportKey field. This caused
+                         lines to be moved to the end when edited as the
+                         key was being fixed.
+
+                         Also seemed to be causing problems with the 
+                         printing as formulae were being reported as incorrect.
+
+v4.23c   09/06/98  MH    Mods
+                         ~~~~
+                         Modified RPrinter to remove the Rendering 
+                         Subsystem on PUB: printer that Microsoft
+                         Fax installs.
+
+v4.23b   08/06/98  MH    Mods
+                         ~~~~
+                         Changed the ON break to not print a blank line,
+                         just to cause a break.
+
+                         Modified the summary breaking to keep track of 
+                         whether a line has been printed within a break,
+                         so it can intelligently print the break lines.
+                         This was previously causing large blank areas
+                         to be printed when using the select on summary
+                         feature.
+
+v4.23a   05/06/98  MH    b167.423 without Bentley Mod
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+b167.423 05/06/98  MH    Bugs
+                         ~~~~
+                         Changed LinkOtherDB to do ResetRec's if
+                         it fails to link to other records. This was
+                         causing problems on invoice description lines
+                         as it was remembering the previous stock items 
+                         details.
+
+                         Also modified Job Actuals to link to the invoices
+                         customer/supplier.
+
+                         Modified the line objects to automatically round
+                         the amounts to the correct decimals for the column.
+
+                         Special Bentley Mod - no breaks in summary mode
+
+
+b166.423 04/06/98  MH    Mod
+                         ~~~ 
+                         Did a one-off mod for Bentley's to fix a 
+                         problem with the summary breaks. Changed 
+                         back to normal afterwards.
+
+v4.23    30/03/98  MH    Bug 
+                         ~~~
+                         Recompiled to pickup change of CustRec from 940
+                         back to 939 bytes.   
+
+v4.21d   05/03/98  MH    Release Version of b165
+
+b165     02/03/98  MH    Bug
+                         ~~~
+                         Mods to THDATEP2 as it doesn't work correctly. 
+
+v4.21c   24/02/98  MH    Bug
+                         ~~~ 
+                         Modified LinkOtherDb in DicLink2U where it links
+                         from the ID to Job Actuals as it wasn't working
+                         for Nominal Transfers. The key was incorrectly
+                         using LineNo instead of AbsLineNo.
+
+                         Added new field THDATEP2 - Date Paid (Blank) as
+                         the existing THDATEPY field was setting it to
+                         the Transaction Date incorrectly.
+
+v4.21b 10/02/98  MH    Mod
+                       ~~~ 
+                       Modified the breaks for Summary Reports so they are
+                       processed.
+
+v4.21a 29/01/98  MH    Bug
+                       ~~~ 
+                       The main window was hard-coding the "Edit Reports"
+                       security to on. This meant that users could add/edit 
+                       reports even if the ability was turned off in the
+                       users security options.
+
+v4.21  27/01/98  MH    Released
+
+b163   07/01/98  MH    Bug
+                       ~~~
+                       Changed the 'Stk Sales (Inc SOR)' and 'Stk Purch (Inc POR)'
+                       to 'Exc' as the indicies used don't include orders.
+
+b162   02/01/98  MH    Bug
+                       ~~~
+                       Modified the validation and enable/disabling for
+                       the Input Link field on the report header to
+                       comply with the DOS version.
+
+b161   02/01/98  MH    Mod (for David Carter)
+                       ~~~
+                       Added new field to data dictionary for Order Details
+                       from the Invoice:
+
+                         CHORDACC 2372 Header - Order Account Code
+
+b160   16/12/97  MH    Mod
+                       ~~~
+                       Modified the parser to allow it to automatically
+                       convert strings to numbers. This allows numerical
+                       values to be placed in descriptions, user defined
+                       fields etc. and to be used in calculations.
+
+b159   25/11/97  MH    Bug
+                       ~~~
+                       If you changed the report code it wasn't updating
+                       the rep lines, nom lines, input lines, or notes with
+                       the new code.
+
+b158   21/11/97  MH    Bug
+                       ~~~
+                       Changed the LinkOtherdb function in DicLink2U to
+                       reset the relational records for detail lines
+                       without headers. These lines have a zero folio
+                       number and a mod was done for the Form Designer
+                       to not reset the records if the folio was zero,
+                       this was necessary for transactions with no lines.
+
+b156   03/11/97  MH    Changed to Report Printer 2.0n
+
+b154   28/10/97  MH    Bug
+                       ~~~
+                       Changed the Nominal Line entry to convert the
+                       formulae to uppercase. Bug reported by Geoff 
+                       Sharp which caused a GPF (not repeated). If 
+                       n1 + n2 left as lower case the formula doesn't
+                       work.
+
+b154   13/10/97  MH    Bugs
+          -            ~~~~
+       16/10/97        Modified Match_WildChar in RepObj2U to check all
+                       the characters in an R4 = "JUB" test. Previously
+                       it would only check the number of characters in
+                       R4, so if R4 = "J" or "JU" it would pass.
+                       
+                       Changed Format_Field in RepObj2U to support Blank
+                       If 0 columns.
+                       
+                       Changed RepSetTabs to Right justify blank columns
+                       unless 2nd character justification used, see below.
+
+                       Modified GetColWidths to support Blank Justification
+                       through the use of the 2nd character ie. BL, BC, BR.
+                       
+                       Modified the Report Tree to stop a GPF when editing
+                       a report. If you did something during the edit to 
+                       cause the report tree to reload and then editted again
+                       the report tree gpf'd because it was keeping a handle
+                       to the edit node which was destroyed by the reload.
+
+                       Modified the Nominal Field entry to allow blank formulae,
+                       this allows narrative lines tobe added like in Exch RW.
+                       
+                       Modified the Print Preview window for Auto-Maximise which
+                       was commented out.
+                       
+                       Modified Format_Field in RepObj2U to not trim the spaces 
+                       off of fields. This was causing problems with real numbers
+                       in right aligned columns where +ve numbers were having there
+                       padding space taken off.
+                       
+                       Modified JACOST (13009) to be signed.
+                       
+                       Added Line Type Total fields to invoice:
+
+                         THLNTOT1  2080  Transaction Line Type 1 Total
+                         THLNTOT2  2081  Transaction Line Type 2 Total
+                         THLNTOT3  2082  Transaction Line Type 3 Total
+                         THLNTOT4  2083  Transaction Line Type 4 Total
+
+                       DicLinkU changed because THGOODSZ and THGOODSE,
+                       and THVATZ and THVATE were added to the data
+                       dictionary the wrong way around. The meant that
+                       Z was reporting E values, and vicey versa.
+
+                       Added Layout Report for Technical Support.
+                       
+v4.20c 17/09/97  MH    Bug
+                       ===
+                       Changed the THVATBAS field to convert currencies
+                       using the transactions currency rates.
+
+v4.20b 08/09/97  MH    Mod
+                       ===
+                       Added SLQFREEZ - Stock Take Quantity field
+                       to Stock/Location file.
+
+v4.20a 27/08/97  MH    Bug
+                       ===
+                       CTD didn't work because of an error in the 
+                       Calc_PrYr function in RepObj2U.Pas.
+  
+v4.20  19/08/97  MH    Release & Bug
+                       =============
+                       SWP file wasn't being deleted when printing 
+                       directly to the printer.
+
+b153   12/08/97  MH    Bug
+                       ===
+                       Bug in Qty_Total_Profit_To_Date which meant that the
+                       quantity fields weren't being passed back (which was
+                       the entire poinbt of the function). Hadn't declared the
+                       qty parameters as VAR!
+
+b152   04/08/97  MH    Mod
+                       ===
+                       Added field:
+                         
+                         THORDOS - Total Order Oustanding
+
+b151   01/08/97  MH    Bugz
+                       ====
+                       Modified OK button on Input Fields dialog as if
+                       you changed a date, period or value field without
+                       tabbing off it didn't register the changes. OK 
+                       button now sets focus to itself for those fields
+                       and the change of focus fixes the problem.
+
+                       Currency fields cause a range check error if you 
+                       don't set the index.
+
+b150   30/07/97  MH    Mod
+                       ===
+                       Modified the Print Preview window so the print 
+                       button now allows you to specify a page range
+                       ala Form Designer.
+
+b149   22/07/97  MH    Mod
+                       ===
+                       Added Line Qty in cases fields to dictionary:
+
+                         TLCQTY    Qty (In Cases)
+                         TLCQPICK  Qty Picked (In Cases)
+                         TLCQWOFF  Qty Written Off (In Cases)
+                         TLCPWOFF  Qty W/Off This Time (In Cases)
+                         TLCQDEL   Qty Delivered (In Cases)
+
+b148   04/07/97  MH    Mod
+                       ===
+                       Upgraded to ReportPrinter Pro 2.0i
+
+b147   24/06/97  MH    Bug
+                       ===
+                       Modified GetInpField in RepObjIU to trim any spaces off the
+                       end of the input fields. This fixes a bug in record selection
+                       caused by R? fields being trimmed and I? fields not being
+                       trimmed when comparing codes (e.g. Stock Code, Job Code, CC
+                       Code, ...)
+
+b146   20/06/97  MH    Bug
+                       ===
+                       Modified DicLinkU for Heinz :- Def_InvCalc is changing the
+                       Discount totals on the invoice because of rounding errors.
+                       As the result of the function is put in global arrays we
+                       can save and restore the invoice record to get around the
+                       problem.
+
+
+b145   17/06/97  MH    Bug
+                       ===
+                       Bug in Report Lines - got exception display report
+                       field if you set the year to -1. Window displayed and
+                       disappeared immediately without any error message.
+
+                       Bug in the Year/Period calculation routine RepFieldRObj.
+                       Calc_PrYrcausing Range check errors when printing reports.
+                       Year not being set correctly.
+
+b144   13/06/97  MH    Mod
+                       ===
+                       Added new fields:- 
+
+                         Last Used Date: ACLASTUS, STLASTUS, SLLASTUS
+                         Control GL Codes: ACCTRLGL, THCTRLGL
+                         New VAT Rates for Rates 6-9 and T, X:
+                           THGOODS?,THVAT?,THVDESC?,THVVAL?,THVAMT?,THVAMTG?
+
+b143   28/05/97  MH    Mod
+                       ===
+                       Changed Input and Nominal Fields to accept 9 digit
+                       Nominal Codes.
+                       Modified Report Fields so that the period and year 
+                       default to blank. (RENDERTECH via PALLADIUM).
+
+b142   13/05/97  MH    Bug
+                       ===
+                       Added support for ACTEL2 and ACCOS which were missing
+                       from DICLINKU.PAS.
+
+b141   09/05/97  MH    Bug
+                       ===
+                       Bug in popup lists causes Access Violation when
+                       cursor left/right done. Fixed in list source by
+                       EL.
+
+b140   06/05/97  MH    Mods
+          -            ====
+       08/05/97        Ported Job Costing and Stock/Location fields across
+                       from the DOS Report Writer.
+
+                       Added Location and Job input fields.                       
+
+                       Modified VarConst to have a SyssJob record for the 
+                       Report Writer. Modified Get/PutMultiSys to load/save
+                       it.
+
+                       Changed the printing routines to reread all the 
+                       system setup records before adding a report into 
+                       the thread queue.
+
+v4.10  07/05/97  MH    Release Version
+
+b137   07/05/97  MH    Bug
+                       ===
+                       Connected the print and convert menu options on the
+                       popup menu on the report tree. Previously no code 
+                       was attached to them.
+
+b136   02/05/97  MH    Mods
+                       ====
+                       Added menu option to utilities menu to display the 
+                       popup report fields list whilst in the calculation
+                       and selection criterion fields of a report field.
+                       
+                       Bugs
+                       ====
+                       Changed the Currency Combo's on the Report Field and
+                       Input Field windows to include currency 0.
+                       
+                       Fixed the popup menu on the report details window cos
+                       it was totally knackered. Had wrong menu options on 
+                       it, they weren't being enabled/disabled as required,
+                       And they weren't connected to any code!!!
+                       
+                       Added record counts onto thread controller progress
+                       window.
+                       
+                       Fixed problem on rep, nom and input fields where 
+                       inserting a fields caused the next number to be lower
+                       than it should be.
+                       
+                       Possibly fixed a color sync problem with the description
+                       panel on the nominal fields list.
+                       
+b135   29/04/97  MH    Mods
+                       ====
+                       More Help Context Id's specified
+
+b134   25/04/97  MH    Mods
+                       ====
+                       Support added for THDEBTNO - last debt chase letter no.
+
+b133   18/04/97  MH    Mods
+                       ====
+                       Help Context Id's specified
+
+b132   15/04/97  MH    Bug
+                       ===
+                       Removed the File Dump menu option.
+b131   09/04/97  MH    Mod
+                       ===
+                       Modified THDISCTA field to handle the after posting flag.
+b130   08/04/97  MH    Mod
+                       ===
+                       Added THDISCTA "Discount Taken" field to INV to give access to
+                       the Discount Taken check box.
+
+b129   21/03/97  MH    Mod
+                       ===
+                       Recompiled to support System currency rates in data dictionary.
+
+b128   18/03/97  MH    Bug
+                       ===
+                       Added the Serial/Batch numbers file into the report file combo
+                       if its a SPOP version. No-one actually noticed this bug!
+
+Ver    Released  Prog  Change
+b127   17/03/97  MH    Bug
+                       ===
+                       If you printed a report top preview and then print another 
+                       report, but cancel at the print dialog, the thread controller 
+                       window didn't disappear until you printed another report.
+
+b126   12/03/97  MH    Bug
+                       ===
+                       Fixed bug found by RS. If you edit a report line and then on
+                       the report line list double-click a different line. When you
+                       save the original line in the edit dialog it overwrites the
+                       second line. Fixed in report, nominal, input lines.
+
+Ver    Released  Prog  Change
+b125   12/03/97  MH    Bug
+                       ===
+                       Modified DicLinkU so SysRepC was being returned correctly.
+
+b124   04/03/97  EL/MH Bug
+                       ===
+                       Modified thread behaviour and preview window to fix application 
+                       error with threads/preview window.
+ 
+b123   27/02/97  MH    Bug
+                       ===
+                       DL's TB - Trial Balance report crashes with a Range Check Error
+                       or and Application Error. Traced it to SendText in ReportO when
+                       it is printing blank columns. Only seems to happen for 5th column
+                       on one particular line, but fixed anyway by stopping it printing 
+                       blank columns. This possible fixes the visible problem and not
+                       the actual problem.
+
+b122   26/02/97  MH    Beta Release
+                       ============
+                       Modified the Input lines dialog so all stock items are show
+                       in the popup list. Reported by Palladium.
+
+b121   21/02/97  MH    Beta Release
+                       ============
+                       Modified Print button so cannot print an unconverted report.
+                       As it can cause run-time errors.
+
+b120   13/02/97  MH    Beta Release
+                       ============
+                       Reports now printed in a background thread.
+                       
+                       Security Parameter added of /3CMHSI which
+                       must be passed in.
+
+b116   31/01/97  MH    Beta Release
+                       ============
+                       Multi-Location stock fields now supported.
+
+b115   28/01/97  MH    Beta Release
+                       ============
+                       Fixed RS bugs.
+
+b114   19/12/96  MH    Beta Release
+                       ============
+                       Someone finally used it!!!
+
+                       Fixed bug with indexes on report header where it was
+                       storing the lookup value instead of the index value in the
+                       header record.
+
+                       Fixed bug where summary mode was printing blank lines instead
+                       of the details. Was caused by FillSummary not being converted
+                       to work with ReportPrinter.
+
+b113   18/12/96  MH    Beta Release
+                       ============
+                       Fixed bug in lists where end key didn't work, was caused
+                       by UseSet4End being on.
+
+b112   20/11/96  MH    Beta Release
+                       ============
+                       Fixed bug in nominal input lines where it was using the
+                       amount fields to input the nominal control code.
+                       Fixed bug on report lines - colour button had same hot key
+                       as the ok button.
+                       Rebuilt RWMain from a new form to get rid of bug where it
+                       positioned the windows underneath the toolbar.
+
+b111   14/11/96  MH    Beta Release
+                       ============
+                       All RW32 references checked and OK
+                       Auto Field Width changed to use 'W' if less than 4 chars.
+                       Security Implemented
+                       Input Fields fixed.
+                       Report Line - Search Path fixed.
+                       Enable/diasable of buttons and menu options fixed.
+
+b110   13/11/96  MH    Not Released for testing
+                       ========================
+                       Conversion function added for DOS reports.
+
+b109             MH    Beta Release
+                       ============
+                       Automatic Renumber of fields added
+
+b108             MH    Beta Release
+
+b107   ??/10/96  MH    Mod
+                       ===
+                       Modified RWMain so it does the SetWindowLong so
+                       Enterprise can uniquely Id the Report Writer window.
+
+b106   18/10/96  MH    Initial Beta Release for Testing
+

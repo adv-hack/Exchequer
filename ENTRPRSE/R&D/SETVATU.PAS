@@ -1,0 +1,1841 @@
+unit SetVATU;
+
+{$I DEFOVR.INC}
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Mask, TEditVal, BorBtns, ExtCtrls,
+  GlobVar,VarConst,BTSupU1,ExWrap1U, ExBtTh1U, bkgroup, MiscU, BTSupU3,
+  AuditIntf,  // CA 14/02/2013 v7.0.2 : ABSEXCH-14003 : New Audit for this screen has been done
+  SBSPanel;
+
+type
+
+  TCloseCVAT      =  Object(TThreadQueue)
+
+                     private
+                       CDate  :  LongDate;
+
+                     public
+                       Constructor Create(AOwner  :  TObject);
+
+                       Destructor  Destroy; Virtual;
+
+
+                       Procedure Close_DocVAT(VATDate  :  LongDate);
+
+                       Procedure Process; Virtual;
+                       Procedure Finish;  Virtual;
+
+                       Function Start(LD  :  LongDate)  :  Boolean;
+
+
+                   end; {Class..}
+
+
+
+  TSetVATRate = class(TForm)
+    OkCP1Btn: TButton;
+    CanCP1Btn: TButton;
+    OHBtn: TButton;
+    IHBtn: TButton;
+    CPBtn: TButton;
+    ScrollBox1: TScrollBox;
+    Label85: Label8;
+    Label86: Label8;
+    Label87: Label8;
+    Label88: Label8;
+    Label89: Label8;
+    Label810: Label8;
+    Label811: Label8;
+    DR0: TCurrencyEdit;
+    CDesc0: Text8Pt;
+    GC0: TBorCheck;
+    CDesc1: Text8Pt;
+    DR1: TCurrencyEdit;
+    GC1: TBorCheck;
+    CDesc2: Text8Pt;
+    DR2: TCurrencyEdit;
+    GC2: TBorCheck;
+    CDesc3: Text8Pt;
+    DR3: TCurrencyEdit;
+    GC3: TBorCheck;
+    CDesc4: Text8Pt;
+    DR4: TCurrencyEdit;
+    GC4: TBorCheck;
+    CDEsc5: Text8Pt;
+    DR5: TCurrencyEdit;
+    GC5: TBorCheck;
+    CDesc6: Text8Pt;
+    DR6: TCurrencyEdit;
+    GC6: TBorCheck;
+    Label813: Label8;
+    Label812: Label8;
+    Label814: Label8;
+    Label815: Label8;
+    EqF: Text8Pt;
+    TSF: TSBSComboBox;
+    TRE: TCurrencyEdit;
+    LTR: TEditDate;
+    SBSBackGroup2: TSBSBackGroup;
+    Label82: Label8;
+    Label83: Label8;
+    Label81: Label8;
+    Label84: Label8;
+    Label816: Label8;
+    Label817: Label8;
+    Cdesc7: Text8Pt;
+    DR7: TCurrencyEdit;
+    DR8: TCurrencyEdit;
+    CDesc8: Text8Pt;
+    Label818: Label8;
+    Label819: Label8;
+    Cdesc9: Text8Pt;
+    DR9: TCurrencyEdit;
+    Label820: Label8;
+    Cdesc10: Text8Pt;
+    DR10: TCurrencyEdit;
+    Label821: Label8;
+    Cdesc11: Text8Pt;
+    DR11: TCurrencyEdit;
+    Label822: Label8;
+    CDesc12: Text8Pt;
+    DR12: TCurrencyEdit;
+    Label823: Label8;
+    CDesc13: Text8Pt;
+    DR13: TCurrencyEdit;
+    GC11: TBorCheck;
+    GC12: TBorCheck;
+    GC13: TBorCheck;
+    GC10: TBorCheck;
+    GC9: TBorCheck;
+    GC8: TBorCheck;
+    GC7: TBorCheck;
+    Label824: Label8;
+    CDesc18: Text8Pt;
+    DR18: TCurrencyEdit;
+    GC18: TBorCheck;
+    Label826: Label8;
+    DR17: TCurrencyEdit;
+    CDesc17: Text8Pt;
+    Label828: Label8;
+    CDesc16: Text8Pt;
+    DR16: TCurrencyEdit;
+    DR15: TCurrencyEdit;
+    GC15: TBorCheck;
+    GC16: TBorCheck;
+    GC17: TBorCheck;
+    CDesc15: Text8Pt;
+    Label829: Label8;
+    Label830: Label8;
+    CDesc14: Text8Pt;
+    DR14: TCurrencyEdit;
+    GC14: TBorCheck;
+    Label825: Label8;
+    CDesc19: Text8Pt;
+    DR19: TCurrencyEdit;
+    GC19: TBorCheck;
+    Label827: Label8;
+    CDesc20: Text8Pt;
+    DR20: TCurrencyEdit;
+    GC20: TBorCheck;
+    sbgVAT100XML: TSBSBackGroup;
+    lblVAT100XMLUserId: Label8;
+    edtVAT100UserId: Text8Pt;
+    lblVAT100XMLPwd: Label8;
+    edtVAT100Password: Text8Pt;
+    lblVAT100XMLConfirm: Label8;
+    edtVAT100PasswordConfirmation: Text8Pt;
+    lblVAT100XMLPwd2: Label8;
+    cbVAT100SenderType: TComboBox;
+    lblSenderType: Label8;
+    SubmissionsBtn: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure OkCP1BtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure LTRChange(Sender: TObject);
+    procedure CPBtnClick(Sender: TObject);
+    procedure IHBtnClick(Sender: TObject);
+    procedure CDesc0Enter(Sender: TObject);
+    procedure TSFExit(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure SubmissionsBtnClick(Sender: TObject);
+  private
+    { Private declarations }
+
+    LastScheme
+             :  Integer;
+    BeenStored
+             :  Boolean;
+    HistFormPtr
+             :  Pointer;
+    DescAry  :  Array[VATType] of Text8Pt;
+    DRateAry :  Array[VATType] of TCurrencyEdit;
+    GoodsAry :  Array[VATType] of TBorCheck;
+
+    LastComponent
+             :  TComponent;
+
+    HookEngaged
+             :  Boolean;
+
+    ExLocal  :  TdExLocal;
+
+    // CA 14/02/2013 v7.0.2 ABSEXCH-14003: Added the VAT Setup Audit Trail file
+    SysVATAudit  : IBaseAudit;
+
+    Procedure WMFormCloseMsg(Var Message  :  TMessage); Message WM_FormCloseMsg;
+
+    procedure FormDesign;
+
+    procedure OutRates;
+
+    procedure OutEq;
+
+    Procedure OutVAT;
+
+    Function VScheme2Idx(C  :  Char)  :  Integer;
+
+    Function Idx2VScheme(C  :  Integer)  :  Char;
+
+    Procedure Send_UpdateList(Mode   :  Integer);
+
+    procedure SetSyssStore(EnabFlag,
+                           VOMode  :  Boolean);
+
+    procedure Form2Rates;
+
+    Function StoreSyss : Boolean;
+
+    Function GetActiveRate  :  VATType;
+
+    procedure Display_History(HistMode     :  Boolean;
+                              VCode        :  Char;
+                              ChangeFocus  :  Boolean);
+
+    procedure Warn_VATScheme;
+
+    procedure SetHelpContextIDs; // NF: 16/05/06
+
+    // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+    Function Validate : Boolean;
+  public
+    { Public declarations }
+    procedure ProcessSyss;
+
+    Procedure Close_VATPr(ShowVPr  :  Boolean);
+
+
+  end;
+
+
+Procedure Calc_ThisVATRet(InvR        :  InvRec;
+                        Var ThisSettle,
+                            ThisVAT     :  Real);
+
+Procedure Calc_ThisVATSplit(InvR       :  InvRec;
+                          Var ThisSettle,
+                              ThisVAT    :  Real;
+                          Var CashAcGoods,
+                              CashAcVAT  :  VATAry;
+                              RInvNetAnal:  INetAnalType);
+
+Procedure Get_EECAquiDetails(InvR  :  InvRec;
+                             IPrGoods,
+                             IPrVAT
+                                   :  VATAry;
+                         Var IGoods,
+                             EIVAT,
+                             EOVAT,
+                             NoClaimOVAT
+                                   :  Real;
+
+                         Var AquiChar
+                                   :  Char;
+                             MTExLocal
+                                   :  TdMTExLocalPtr);
+
+
+// CJS 2014-11: Order Payments - Phase 5 - VAT Return
+// Added Owner parameter
+Procedure Close_CurrPeriod(Owner: TObject = nil);
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+Implementation
+
+{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+
+
+Uses
+  ETDateU,
+  EtStrU,
+  ETMiscU,
+  BtrvU2,
+  ComnUnit,
+  ComnU2,
+  SysU1,
+  GenWarnU,
+  CurrncyU,
+
+  BTSupU2,
+  BTKeys1U,
+
+  {$IFDEF NOM}
+    HistWinU,
+  {$ENDIF}
+
+  {$IFDEF CU}
+    Event1U,
+    CustWinU,
+  {$ENDIF}
+
+  {$IFDEF EXSQL}
+    SQLUtils,
+  {$ENDIF}
+
+  VATWarnF,    // Daily Password dialog
+
+  // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+  EncryptionUtils,
+
+  // CJS 2014-12-02 - T020 - Redirect Close Period button to VAT Return (UK Only)
+  {$IFDEF SOP}
+  {$IFNDEF SCHEDULER}
+  VATReturnWizardU,
+  {$ENDIF}
+  {$ENDIF}
+
+  VATReturnHistory,
+  ExThrd2U,
+
+  oProcessLock;
+
+
+
+{$R *.DFM}
+
+
+  { =============== Cash Accounting Pro-rata Calculations ============== }
+
+
+
+  { ==== Procedure to calculate the Goods and VAT total for this return ===== }
+
+  Procedure Calc_ThisVATRet(InvR        :  InvRec;
+                        Var ThisSettle,
+                            ThisVAT     :  Real);
+
+
+
+  Var
+    VATRatio,
+    TotVATPaid   :  Real;
+
+
+
+
+  Begin
+
+    ThisSettle:=0;
+
+    ThisVAT:=0;
+
+    With InvR do
+    Begin
+      If (InvDocHed = NMT) then {* v5.71/ IAO b100.xxx This is auto allocating so always at 100% *}
+        VATRatio:=1
+      else
+        VATRatio:=DivWChk(Settled,(ConvCurrITotal(InvR,BOff,BOn,BOn)*DocCnst[InvDocHed]*DocNotCnst));
+
+      TotVATPaid:=Round_Up(VATRatio*Round_Up(Conv_TCurr(InvVAT,CXRate[BOn],Currency,UseORate,BOff)*DocCnst[InvDocHed]*DocNotCnst,2),2);
+
+      ThisVAT:=Round_Up(TotVATPaid-VATClaimed,2);
+
+      ThisSettle:=Round_Up(Settled-SettledVAT,2)-ThisVAT;
+
+
+    end; {With..}
+
+  end; {Proc..}
+
+
+
+
+{ ==== Procedure to Calculate VAT Split ==== }
+
+
+  Procedure Calc_ThisVATSplit(InvR       :  InvRec;
+                          Var ThisSettle,
+                              ThisVAT    :  Real;
+                          Var CashAcGoods,
+                              CashAcVAT  :  VATAry;
+                              RInvNetAnal:  INetAnalType);
+
+
+  Var
+    InvRatioAnal  :  Array[VATType,1..2] of Real;
+
+    InvRatioFlg   :  Array[VATType,1..2] of Boolean;
+
+    n             :  VATType;
+
+    VATRatio,
+    TotGoods,
+    TotVAT        :  Real;
+
+    FoundGOk,
+    FoundVOk,
+    Abort         :  Boolean;
+
+
+
+
+  Begin
+
+    Calc_ThisVATRet(InvR,ThisSettle,ThisVAT);
+
+    {* Convert from Base to System VAT Currency *}
+
+    ThisSettle:=Round_Up(Conv_VATCurr(ThisSettle,InvR.VATCRate[UseCoDayRate],1.0,0,InvR.UseORate),2);
+
+    ThisVAT:=Round_Up(Conv_VATCurr(ThisVAT,InvR.VATCRate[BOn],1.0,0,InvR.UseORate),2);
+
+
+    TotGoods:=0; TotVAT:=0;
+
+    Blank(InvRatioAnal,Sizeof(InvRatioAnal));
+    Blank(InvRatioFlg,Sizeof(InvRatioFlg));
+
+    Blank(CashAcGoods,Sizeof(CashAcGoods));
+    Blank(CashAcVAT,Sizeof(CashAcVAT));
+
+    With InvR do
+    Begin
+      For n:=VStart to VEnd do
+      Begin
+
+        InvRatioAnal[n,1]:=DivwChk(RInvNetAnal[n],InvNetVal);
+        InvRatioAnal[n,2]:=DivwChk(InvVATAnal[n],InvVAT);
+
+      end;
+
+      FoundGOk:=BOff;
+      FoundVOk:=BOff;
+      Abort:=BOff;
+
+      n:=Succ(VEnd);
+
+      While (n>=VStart) and (Not Abort) do
+      Begin
+        If (n>VStart) then
+          Dec(n);
+
+        If (Not FoundGOk) then
+        Begin
+          FoundGOk:=(InvRatioAnal[n,1]<>0);
+
+          InvRatioFlg[n,1]:=FoundGOk;
+        end;
+
+        If (Not FoundVOk) then
+        Begin
+          FoundVOk:=(InvRatioAnal[n,2]<>0);
+
+          InvRatioFlg[n,2]:=FoundVOk;
+        end;
+
+
+        Abort:=(((FoundGOk) and (FoundVOk)) or (n=VStart));
+
+      end; {While..}
+
+      For n:=VStart to VEnd do
+      Begin
+
+        If (Not InvRatioFlg[n,1]) then
+          CashAcGoods[n]:=Round_Up(InvRatioAnal[n,1]*ThisSettle,2)
+        else
+          CashAcGoods[n]:=Round_Up(ThisSettle-TotGoods,2);  {* Absorb any errors in last calc *}
+
+        TotGoods:=TotGoods+CashAcGoods[n];
+
+        If (Not InvRatioFlg[n,2]) then
+          CashAcVAT[n]:=Round_Up(InvRatioAnal[n,2]*ThisVAT,2)
+        else
+          CashAcVAT[n]:=Round_Up(ThisVAT-TotVAT,2);
+
+        TotVAT:=TotVAT+CashAcVAT[n];
+
+      end; {Loop..}
+
+    end; {With..}
+
+  end; {Proc..}
+
+
+  { ==== Procedure to Check if a customer is an EEC Member Country ===== }
+
+
+Function ISEEC_Member(CCode     :  Str10;
+                      MTExLocal :  TdMTExLocalPtr)  :  Boolean;
+
+Const
+  Fnum      =  CustF;
+  Keypath   =  CustCodeK;
+
+
+Var
+  KeyS  :  Str255;
+
+
+Begin
+
+  KeyS:=FullCustCode(CCode);
+
+  With MTExLocal^ do
+  Begin
+    LStatus:=LFind_Rec(B_GetEq,Fnum,KeyPath,KeyS);
+
+
+    ISEEC_Member:=((LStatusOk) and (LCust.EECMember));
+  end;
+
+
+end; {Func..}
+
+
+
+{ ==== Procedure to Scan Document and check if Aquisition rules apply ==== }
+
+{ CJS 2013-05-31 - v7.0.4 - ABSEXCH-14304 - VAT on EC Purchases }
+Procedure Get_EECAquiDetails(InvR  :  InvRec;
+                             IPrGoods,
+                             IPrVAT
+                                   :  VATAry;
+                         Var IGoods,
+                             EIVAT,
+                             EOVAT,
+                             NoClaimOVAT
+                                   :  Real;
+
+                         Var AquiChar
+                                   :  Char;
+                             MTExLocal
+                                   :  TdMTExLocalPtr);
+Const
+  Fnum      =  IDetailF;
+  Keypath   =  IdFolioK;
+Var
+  KeyS,
+  KeyChk    :  Str255;
+
+  FoundAcquisition: Boolean;
+  LineTotal: Double;
+  ActualVATCode: Char;
+
+  SingGoods :  Real;
+
+  ExcludedNoTC: Boolean;
+
+  function StockVATCode(StockCode: string): Char;
+  { Returns the VAT Code of the Stock item. }
+  var
+    Key: Str255;
+    KeyPath: Integer;
+    RecAddr: LongInt;
+    FuncRes: LongInt;
+  begin;
+    Result := #0;
+    if Trim(StockCode) <> '' then
+    begin
+      FuncRes := MTExLocal^.LPresrv_BTPos(StockF, KeyPath, MTExLocal^.LocalF[StockF], RecAddr, False, True);
+      // If the Stock table wasn't on a valid record...
+      if (FuncRes = 8) then
+      begin
+        // ...indicate that we don't need to restore the position, and set
+        // the response to success
+        RecAddr := 0;
+        FuncRes := 0;
+      end;
+      if FuncRes in [0, 8] then
+      try
+        Key := FullStockCode(StockCode);
+        FuncRes := MTExLocal^.LFind_Rec(B_GetEq, StockF, 0, Key);
+        if FuncRes = 0 then
+          Result := MTExLocal^.LStock.VATCode;
+      finally
+        if (RecAddr <> 0) then
+          MTExLocal^.LPresrv_BTPos(StockF, KeyPath, MTExLocal^.LocalF[StockF], RecAddr, True, True);
+      end;
+  end;
+  end;
+
+Begin
+  AquiChar := #32;
+  FoundAcquisition := False;
+  With MTExLocal^, InvR do
+  Begin
+    // If this transaction is for an EC Member, and there are Acquisition or
+    // Dispatch values, process the Transaction Lines to calculate the correct
+    // Input and Output VAT and Goods values.
+    If ( (ISEEC_Member(CustCode, MTExLocal)) and
+         (
+           (IPrGoods[GetVATNo(VATEECCode, #0)] <> 0) or
+           (IPrVAT[GetVATNo(VATEECCode, #0)] <> 0)
+         ) or
+         (IPrGoods[GetVATNo(VATECDCode, #0)] <> 0)
+       ) then
+    Begin
+      // Go through all the Transaction Lines for this Transaction
+      KeyChk := FullNomKey(FolioNum);
+      KeyS   := KeyChk;
+      LStatus := LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+      While (LStatusOk) and (Checkkey(KeyChk,KeyS,Length(KeyChk),BOn)) do
+      With LId do
+      Begin
+        // CJS 2016-02-18 - ABSEXCH-16569 - exclude NoTc from Box 8 and 9 on VAT return
+        {$IFNDEF SENT}
+          {$IFNDEF SCHEDULER}
+        ExcludedNoTC := (CurrentCountry = UKCCode) and
+                        Syss.Intrastat and
+                        MTExLocal.ForVATReturn and
+                        (LId.VATCode in [VATEECCode, VATECDCode]) and
+                        IsExcludedNoTC(InvR, LId);
+
+        if not ExcludedNoTC then
+          {$ENDIF}
+        {$ENDIF}
+        begin
+          If (VATCode = VATEECCode) then
+          Begin
+            // Handle Acquisitions
+            if (not FoundAcquisition) then
+            begin
+              FoundAcquisition := True;
+              // We have found at least one Acquisition line, so collect the
+              // overall totals
+              AquiChar := VATEECCode;
+              if (InvDocHed In PurchSplit) and (IPrGoods[GetVATNo(VATEECCode, #0)]<>0) then
+              begin
+                // Add the Goods total for this Transaction to the overall Goods
+                // total for the report.
+                IGoods := IGoods + IPrGoods[GetVATNo(VATEECCode, #0)];
+
+                // For Irish VAT, use the original calculation, and exit straight
+                // away (as we already have all the line totals).
+
+                //PR: 18/02/2014 ABSEXCH-15041 Removed special code for Ireland - now the same as UK. Also
+                //                             removed Done variable and all references, as it was only used for Ireland.
+              (*  If (CurrentCountry = IECCode) then
+                begin
+                  SingGoods := IPrGoods[GetVATNo(VATEECCode,#0)];
+                  EIVAT:=EIVAT + Round_Up(SingGoods*SyssVAT.VATRates.VAT[Standard].Rate, 2);
+                  EOVAT:=EOVAT + Round_Up((SingGoods*DocNotCnst)*SyssVAT.VATRates.VAT[Standard].Rate, 2);
+                  Done := True;
+                end; *)
+
+              end
+              else
+              begin
+                // Total any non-Goods VAT (???)
+                NoClaimOVAT := NoClaimOVAT + IPrVAT[GetVATNo(VATEECCode, #0)];
+              end;
+            end;
+
+            //PR: 18/02/2014 ABSEXCH-15041 Removed check for not Ireland - now Ireland is handled the the same as UK.
+            (* If (CurrentCountry <> IECCode) then *)
+            begin
+              // We need to calculate VAT separately for each line, in order to
+              // use the VAT Codes from the individual Stock items (rather than
+              // treating everything as Standard VAT, which was previously the
+              // case).
+              ActualVATCode := StockVATCode(LId.StockCode);
+              if not (ActualVATCode in [#0, 'Z', 'E']) then
+              begin
+                // Calculate the Transaction Line total...
+                LineTotal := Round_Up(InvLTotal(LId, BOn, (LInv.DiscSetl * Ord(LInv.DiscTaken))), 2);
+                // ...convert to base currency...
+                LineTotal := Round_Up(Conv_TCurr(LineTotal, CXRate[UseCoDayRate], Currency, UseORate, BOff), 2);
+                // ...and correct the sign, based on the document type
+                LineTotal := LineTotal * DocCnst[InvDocHed] * DocNotCnst;
+
+                // Accumulate the Input and Output VAT values
+                EIVAT := EIVAT + Round_Up(LineTotal * SyssVAT.VATRates.VAT[GetVATNo(ActualVATCode, #0)].Rate, 2);
+                EOVAT := EOVAT + Round_Up((LineTotal * DocNotCnst) * SyssVAT.VATRates.VAT[GetVATNo(ActualVATCode, #0)].Rate, 2);
+              end;
+            end;
+
+          end { if VATCode = VATEECCode... }
+          else if (VATCode = VATECDCode) then
+          Begin
+            // Handle Dispatches
+            AquiChar:=VATECDCode;
+          end;
+        end; // if not ExcludedNoTC...
+
+        // Next Transaction Line
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+      end; { While..}
+
+    end; { if ISEEC_Member... }
+
+  end; { with MTExLocal^... }
+
+end;
+
+// CJS 2014-11: Order Payments - Phase 5 - VAT Return
+// Added Owner parameter
+Procedure AddCloseVAT2Thread(LD: LongDate; Owner: TObject);
+
+
+  Var
+    LCheck_VAT :  ^TCloseCVAT;
+
+  Begin
+
+    If (Create_BackThread) then
+    Begin
+      // CJS 2014-11: Order Payments - Phase 5 - VAT Return
+      // Modified to allow an owner form to be specified instead of using the
+      // application's main form
+      if Assigned(Owner) then
+        New(LCheck_VAT,Create(Owner))
+      else
+        New(LCheck_VAT,Create(Application.MainForm));
+
+      try
+        With LCheck_VAT^ do
+        Begin
+          If (Start(LD)) and (Create_BackThread) then
+          Begin
+            With BackThread do
+              AddTask(LCheck_VAT,'Close '+CCVATName^+':'+Copy(POutDate(LD),4,7));
+          end
+          else
+          Begin
+            Set_BackThreadFlip(BOff);
+            Dispose(LCheck_VAT,Destroy);
+          end;
+        end; {with..}
+
+      except
+        Dispose(LCheck_VAT,Destroy);
+
+      end; {try..}
+    end; {If process got ok..}
+
+  end;
+
+
+{ ================= Routine to Close Current Period ============== }
+
+// CJS 2014-11: Order Payments - Phase 5 - VAT Return
+Procedure Close_CurrPeriod(Owner: TObject);
+
+Var
+  VYr,VPr  :  Integer;
+
+  Locked   :  Boolean;
+
+
+
+Begin
+
+  Locked:=BOn;
+
+  GetMultiSys(BOn,Locked,VATR);
+
+
+  With SyssVAT.VATRates do
+  Begin
+
+    VYr:=Part_Date('Y',CurrPeriod);
+    VPr:=Part_Date('M',CurrPeriod);
+
+    VATReturnDate:=CurrPeriod;
+
+    If (VAT_CashAcc(SyssVAT.VATRates.VATScheme)) then
+    Begin
+      // CJS 2014-11: Order Payments - Phase 5 - VAT Return
+      // Added Owner parameter
+      AddCloseVAT2Thread(VATReturnDate, Owner);
+    end;
+
+    CurrPeriod:=Calc_NewVATPeriod(VATReturnDate,VATInterval);
+
+    // CJS 2014-11: Order Payments - Phase 5 - VAT Return
+    // Send a message back to the owner form when the process is finished
+    if Assigned(Owner) and (Owner is TForm) then
+      PostMessage((Owner as TForm).Handle, WM_CONTINUEVATRETURN, 0, 0);
+
+  end; {With..}
+
+  PutMultiSys(VATR,BOn);
+
+end; {Proc..}
+
+
+
+
+  { ========== TCalcBOMCost methods =========== }
+
+  Constructor TCloseCVAT.Create(AOwner  :  TObject);
+
+  Begin
+    Inherited Create(AOwner);
+
+    fTQNo:=3;
+    fCanAbort:=BOff;
+
+    fOwnMT:=BOn; {* This must be set if MTExLocal is created/destroyed by thread *}
+
+    MTExLocal:=nil;
+
+  end;
+
+  Destructor TCloseCVAT.Destroy;
+
+  Begin
+
+    Inherited Destroy;
+
+
+  end;
+
+
+
+
+  
+
+
+
+  { ================= Routine to Close Docs after Cash Acc VAT Return =============== }
+
+  Procedure TCloseCVAT.Close_DocVAT(VATDate  :  LongDate);
+
+  Const
+    Fnum     =  InvF;
+    Keypath  =  InvVATK;
+
+
+  Var
+    LOk,
+    Locked  :  Boolean;
+
+    KeyS,
+    KeyChk  :  Str255;
+
+    ThisNet,
+    ThisVAT :  Real;
+
+    ItemCount,
+    ItemTotal
+            :  LongInt;
+
+
+
+  Begin
+
+    KeyChk:=VATDate;
+
+    KeyS:=KeyChk;
+
+    ThisVAT:=0;  ThisNet:=0; ItemCount:=0;
+
+    With MTExLocal^ do
+    Begin
+      ItemTotal:=Used_RecsCId(LocalF^[Fnum],Fnum,ExClientId);
+
+      InitProgress(ItemTotal);
+
+      ShowStatus(1,'Processing:-');
+
+
+      LStatus:=LFind_Rec(B_GetGEq,Fnum,KeyPath,KeyS);
+
+      While (LStatusOk) and (Checkkey(KeyChk,KeyS,Length(KeyChk),BOff)) do
+      With LInv do
+      Begin
+
+        LOk:=LGetMultiRec(B_GetDirect,B_MultLock,KeyS,KeyPath,Fnum,BOn,Locked);
+
+        If (LOk) and (Locked) then
+        Begin
+
+          ShowStatus(2,OurRef);
+
+          Inc(ItemCount);
+
+          UpdateProgress(ItemCount);
+
+          LGetRecAddr(Fnum);
+
+          Calc_ThisVATRet(LInv,ThisNet,ThisVAT);
+
+          SettledVAT:=SettledVAT+Round_Up(ThisNet+ThisVAT,2);
+
+          VATClaimed:=VATClaimed+Round_Up(ThisVAT,2);
+
+          LStatus:=LPut_Rec(Fnum,KeyPath);
+
+          LReport_BError(Fnum,LStatus);
+
+          LStatus:=LUnLockMLock(Fnum);
+
+        end;
+
+
+        LStatus:=LFind_Rec(B_GetNext,Fnum,KeyPath,KeyS);
+
+      end; {While..}
+
+      UpdateProgress(ItemTotal);
+
+    end; {With..}
+
+  end; {Proc..}
+
+
+
+
+  Procedure TCloseCVAT.Process;
+
+  Begin
+    InMainThread:=BOn;
+
+    Inherited Process;
+
+    ShowStatus(0,'Close '+CCVATName^+' period '+Copy(POutDate(CDate),4,7));
+
+    Close_DocVAT(CDate);
+  end;
+
+
+  Procedure TCloseCVAT.Finish;
+  Begin
+    Inherited Finish;
+
+    {Overridable method}
+
+    InMainThread:=BOff;
+
+    // CJS 2014-11: Order Payments - Phase 5 - VAT Return
+    // Send a message back to the owner form when the process is finished
+    if (fMyOwner is TForm) then
+      PostMessage((fMyOwner as TForm).Handle, WM_CONTINUEVATRETURN, 0, 0);
+
+  end;
+
+
+
+
+  Function TCloseCVAT.Start(LD  :  LongDate)  :  Boolean;
+
+  Var
+    KeyS   :  Str255;
+
+  Begin
+    Result:=BOn;
+
+    CDate:=LD;
+
+    Begin
+      If (Not Assigned(MTExLocal)) then { Open up files here }
+      Begin
+        {$IFDEF EXSQL}
+        if SQLUtils.UsingSQL then
+        begin
+          // CJS - 18/04/2008: Thread-safe SQL Version (using unique ClientIDs)
+          if (not Assigned(LPostLocal)) then
+            Result := Create_LocalThreadFiles;
+
+          If (Result) then
+            MTExLocal := LPostLocal;
+
+        end
+        else
+        {$ENDIF}
+        begin
+          New(MTExLocal,Create(12));
+
+          try
+            With MTExLocal^ do
+              Open_System(InvF,InvF);
+
+          except
+            Dispose(MTExLocal,Destroy);
+            MTExLocal:=nil;
+
+          end; {Except}
+
+          Result:=Assigned(MTExLocal);
+        end;
+      end;
+    end;
+    {$IFDEF EXSQL}
+    if Result and SQLUtils.UsingSQL then
+    begin
+      MTExLocal^.Close_Files;
+      CloseClientIdSession(MTExLocal^.ExClientID, False);
+    end;
+    {$ENDIF}
+  end;
+
+
+
+
+
+
+Procedure TSetVATRate.WMFormCloseMsg(Var Message  :  TMessage);
+
+
+Begin
+
+  With Message do
+  Begin
+
+    Case WParam of
+
+      41 :  HistFormPtr:=nil;
+
+    end; {Case..}
+
+  end; {With..}
+
+end;
+
+
+procedure TSetVATRate.FormDesign;
+
+Var
+  n  :  VATType;
+begin
+
+  FillChar(DescAry,Sizeof(DescAry),0);
+  FillChar(DRateAry,Sizeof(DRateAry),0);
+  FillChar(GoodsAry,Sizeof(GoodsAry),0);
+
+  DescAry[Standard]:=CDesc0; DRateAry[Standard]:=DR0; GoodsAry[Standard]:=GC0;
+  DescAry[Exempt]:=CDesc1; DRateAry[Exempt]:=DR1; GoodsAry[Exempt]:=GC1;
+  DescAry[Zero]:=CDesc2; DRateAry[Zero]:=DR2; GoodsAry[Zero]:=GC2;
+  DescAry[Rate1]:=CDesc3; DRateAry[Rate1]:=DR3; GoodsAry[Rate1]:=GC3;
+  DescAry[Rate2]:=CDesc4; DRateAry[Rate2]:=DR4; GoodsAry[Rate2]:=GC4;
+  DescAry[Rate3]:=CDesc5; DRateAry[Rate3]:=DR5; GoodsAry[Rate3]:=GC5;
+  DescAry[Rate4]:=CDesc6; DRateAry[Rate4]:=DR6; GoodsAry[Rate4]:=GC6;
+  DescAry[Rate5]:=CDesc7; DRateAry[Rate5]:=DR7; GoodsAry[Rate5]:=GC7;
+  DescAry[Rate6]:=CDesc8; DRateAry[Rate6]:=DR8; GoodsAry[Rate6]:=GC8;
+  DescAry[Rate7]:=CDesc9; DRateAry[Rate7]:=DR9; GoodsAry[Rate7]:=GC9;
+  DescAry[Rate8]:=CDesc10; DRateAry[Rate8]:=DR10; GoodsAry[Rate8]:=GC10;
+  DescAry[Rate9]:=CDesc11; DRateAry[Rate9]:=DR11; GoodsAry[Rate9]:=GC11;
+  DescAry[Rate10]:=CDesc12; DRateAry[Rate10]:=DR12; GoodsAry[Rate10]:=GC12;
+  DescAry[Rate11]:=CDesc13; DRateAry[Rate11]:=DR13; GoodsAry[Rate11]:=GC13;
+  DescAry[Rate12]:=CDesc14; DRateAry[Rate12]:=DR14; GoodsAry[Rate12]:=GC14;
+  DescAry[Rate13]:=CDesc15; DRateAry[Rate13]:=DR15; GoodsAry[Rate13]:=GC15;
+  DescAry[Rate14]:=CDesc16; DRateAry[Rate14]:=DR16; GoodsAry[Rate14]:=GC16;
+  DescAry[Rate15]:=CDesc17; DRateAry[Rate15]:=DR17; GoodsAry[Rate15]:=GC17;
+  DescAry[Rate16]:=CDesc18; DRateAry[Rate16]:=DR18; GoodsAry[Rate16]:=GC18;
+  DescAry[Rate17]:=CDesc19; DRateAry[Rate17]:=DR19; GoodsAry[Rate17]:=GC19;
+  DescAry[Rate18]:=CDesc20; DRateAry[Rate18]:=DR20; GoodsAry[Rate18]:=GC20;
+
+
+  TSF.Enabled:=SBSIn;
+
+  {* Fix for NT, whereby size of TCurrencyedit will not work by default
+     fixed at component level as part of loaded method *}
+  {TRE.WiggleHeight;
+
+  For n:=VStart to VEnd do
+    DRateAry[n].WiggleHeight;}
+
+  {$IFDEF CU}
+    HookEngaged:=EnableCustBtns(MiscBase+1,05);
+  {$ELSE}
+    HookEngaged:=BOff;
+  {$ENDIF}
+
+  If (HookEngaged) then
+  Begin
+    Label82.Visible:=BOff;
+    LTR.Visible:=BOff;
+    Label83.Visible:=BOff;
+    TRE.Visible:=BOff;
+    Label816.Visible:=BOff;
+    Label84.Visible:=BOff;
+    TSF.Visible:=BOff;
+    CPBtn.Caption:='&Period Admin';
+  end;
+
+  // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+  // Show for UK companies only
+  // MH 28/06/2013 v7.0.4 ABSEXCH-14410: Removed VAT 100 XML fields for v7.0.4 as export code not ready
+  // PKR 25/07/2013. ABSEXCH-14371.  VAT 100 XML submission now available, so
+  //  fields reinstated.
+
+  // PKR. 10/09/2015. ABSEXCH-16836. VAT 100 submission details should not be visible for Cash Accounting
+  sbgVAT100XML.Visible := (CurrentCountry = UKCCode) and not (VAT_CashAcc(SyssVat.VATRates.VATScheme));
+
+  SubmissionsBtn.Visible                := sbgVAT100XML.Visible;
+  lblVAT100XMLUserId.Visible            := sbgVAT100XML.Visible;
+  edtVAT100UserId.Visible               := sbgVAT100XML.Visible;
+  lblVAT100XMLPwd.Visible               := sbgVAT100XML.Visible;
+  edtVAT100Password.Visible             := sbgVAT100XML.Visible;
+  lblVAT100XMLConfirm.Visible           := sbgVAT100XML.Visible;
+  lblVAT100XMLPwd2.Visible              := sbgVAT100XML.Visible;
+  edtVAT100PasswordConfirmation.Visible := sbgVAT100XML.Visible;
+  lblSenderType.Visible                 := sbgVAT100XML.Visible;
+  cbVAT100SenderType.Visible            := sbgVAT100XML.Visible;
+end;
+
+
+procedure TSetVATRate.OutEq;
+
+Var
+  EqDate  :  LongDate;
+  EqPr    :  ShortInt;
+
+begin
+
+  If (HookEngaged) then
+  Begin
+    {$IFDEF CU}
+      EqF.Text:=TextExitHook(MiscBase+1,5,'',ExLocal);
+    {$ENDIF}
+  end
+  else
+  Begin
+    EqDate:=Calc_NewVATPeriod(LTR.DateValue,Trunc(TRE.Value));
+
+    EqF.Text:=SetN(Part_Date('M',EqDate))+DateSeparator+Form_Int(Part_Date('Y',EqDate),0);
+  end;
+
+end;
+
+
+Function TSetVATRate.VScheme2Idx(C  :  Char)  :  Integer;
+
+Begin
+  If (C=VATSchC) then
+    Result:=1
+  else
+    Result:=0;
+end;
+
+Function TSetVATRate.Idx2VScheme(C  :  Integer)  :  Char;
+
+Begin
+  If (C=0) then
+    Result:='N'
+  else
+    Result:=VATSchC;
+end;
+
+procedure TSetVATRate.OutRates;
+Var
+  n  :  VATType;
+Begin
+  For n:=VStart to VEnd do
+    With SyssVAT.VATRates.VAT[n] do
+    Begin
+      DescAry[n].Text:=Desc;
+      DRateAry[n].Value:=Pcnt2Full(Rate);
+      GoodsAry[n].Checked:=Include;
+    end;
+
+  // CA 14/02/2013 v7.0.2 ABSEXCH-14003: Setting up the before SysVATAudit to see if fields have changed
+  SysVATAudit := NewAuditInterface(atSysVAT);
+  SysVATAudit.BeforeData := SyssVAT;
+end;
+
+
+Procedure TSetVATRate.OutVAT;
+
+Begin
+  With SyssVAT.VATRates do
+  Begin
+    LTR.DateValue:=VATReturnDate;
+    TRE.Value:=VATInterval;
+    TSF.ItemIndex:=VScheme2Idx(VATScheme);
+    LastScheme:=TSF.ItemIndex;
+
+    OutEq;
+
+    OutRates;
+
+    // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+    If edtVAT100UserId.Visible Then
+    Begin
+      edtVAT100UserId.Text := DecryptVAT100UserId(VAT100UserID);
+      edtVAT100Password.Text := DecryptVAT100Password(VAT100Password);
+      edtVAT100PasswordConfirmation.Text := edtVAT100Password.Text;
+      cbVAT100SenderType.ItemIndex := cbVAT100SenderType.Items.IndexOf(VAT100SenderType);
+    End; // If edtVAT100UserId.Visible
+  end; {With..}
+end;
+
+
+procedure TSetVATRate.FormCreate(Sender: TObject);
+Begin
+  InVATP:=BOn;
+
+  // CA 14/02/2013 v7.0.2 ABSEXCH-14003: Initialising SysVATAudit
+  SysVATAudit := NIL;
+
+// MH 13/04/2010: Set client dimensions to avoid problems when MS change default border widths
+//  Height:=216;
+//  Width:=565;
+
+  // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+  ClientHeight := 274;//48;
+  ClientWidth := 543;
+
+  BeenStored:=BOff;
+
+  MDI_SetFormCoord(TForm(Self));
+
+  GlobLocked:=BOff;
+
+  FormDesign;
+
+  GetMultiSys(BOff,GlobLocked,VATR);
+
+  HistFormPtr:=nil;
+  LastComponent:=nil;
+
+  OutVAT;
+
+  Caption:='Set '+CCVATName^+' Rates';
+
+
+  ExLocal.Create;
+
+  SetHelpContextIDs; // NF: 16/05/06 Fix for incorrect Context IDs
+end;
+
+
+procedure TSetVATRate.FormDestroy(Sender: TObject);
+begin
+  ExLocal.Destroy;
+end;
+
+
+{ == Procedure to Send Message to Get Record == }
+
+Procedure TSetVATRate.Send_UpdateList(Mode   :  Integer);
+
+Var
+  Message1 :  TMessage;
+  MessResult
+           :  LongInt;
+
+Begin
+  FillChar(Message1,Sizeof(Message1),0);
+
+  With Message1 do
+  Begin
+    MSg:=WM_FormCloseMsg;
+    WParam:=Mode;
+    LParam:=0;
+  end;
+
+  With Message1 do
+    MessResult:=SendMessage((Owner as TForm).Handle,Msg,WParam,LParam);
+
+end; {Proc..}
+
+
+procedure TSetVATRate.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  Send_UpdateList(52);
+end;
+
+procedure TSetVATRate.FormClose(Sender: TObject; var Action: TCloseAction);
+Var
+  LStatus  :  Integer;
+begin
+  Action:=caFree;
+  InVATP:=BOff;
+
+  // CA 14/02/2013 v7.0.2 ABSEXCH-14003: Initialising SysVATAudit
+  SysVATAudit := NIL;
+
+  If (Not BeenStored) then
+  Begin
+    LStatus:=UnlockMultiSing(F[SysF],SysF,SysAddr[VATR]);
+  end;
+
+  //PR: 15/05/2017 ABSEXCH-18683 v2017 R1 Release process lock
+  SendMessage(Application.MainForm.Handle, WM_LOCKEDPROCESSFINISHED, Ord(plVATSetup), 0);
+end;
+
+procedure TSetVATRate.SetSyssStore(EnabFlag,
+                                  VOMode  :  Boolean);
+
+Var
+  Loop  :  Integer;
+
+Begin
+
+  OkCP1Btn.Enabled:=Not VOMode and (ICEDFM=0) ;
+
+  IHBtn.Enabled:=OKCP1Btn.Enabled;
+  OHBtn.Enabled:=OKCP1Btn.Enabled;
+  CPBtn.Enabled:=OKCP1Btn.Enabled;
+
+
+  For Loop:=0 to ComponentCount-1 do
+  Begin
+    If (Components[Loop] is Text8Pt) then
+    Begin
+      If (Text8Pt(Components[Loop]).Tag=1) then
+        Text8Pt(Components[Loop]).ReadOnly:= VOMode;
+    end
+      else
+        If (Components[Loop] is TEditDate) then
+        Begin
+          If (TEditDate(Components[Loop]).Tag=1) then
+            TEditDate(Components[Loop]).ReadOnly:= VOMode;
+        end
+        else
+          If (Components[Loop] is TEditPeriod) then
+          Begin
+            If (TEditPeriod(Components[Loop]).Tag=1) then
+              TEditPeriod(Components[Loop]).ReadOnly:= VOMode;
+          end
+          else
+            If (Components[Loop] is TCurrencyEdit) then
+            Begin
+              If (TCurrencyEdit(Components[Loop]).Tag=1) then
+                TCurrencyEdit(Components[Loop]).ReadOnly:= VOMode;
+            end
+            else
+              If (Components[Loop] is TBorCheck) then
+              Begin
+                If (TBorCheck(Components[Loop]).Tag=1) then
+                  TBorCheck(Components[Loop]).Enabled:= Not VOMode;
+              end
+              else
+                If (Components[Loop] is TSBSComboBox) then
+                Begin
+                  If (TSBSComboBox(Components[Loop]).Tag=1) then
+                    TSBSComboBox(Components[Loop]).ReadOnly:= VOMode;
+              end;
+  end; {Loop..}
+
+end;
+
+procedure TSetVATRate.ProcessSyss;
+Begin
+  GlobLocked:=BOn;
+  If GetMultiSys(BOff,GlobLocked,VATR) and (GlobLocked) then
+  Begin
+    OutVAT;
+    SetSyssStore(BOn,BOff);
+  end;
+end;
+
+procedure TSetVATRate.Form2Rates;
+Var
+  n  :  VATType;
+Begin
+  For n:=VStart to VEnd do
+    With SyssVAT.VATRates.VAT[n] do
+    Begin
+      Desc:=DescAry[n].Text;
+      Rate:=Pcnt(DRateAry[n].Value);
+      Include:=GoodsAry[n].Checked;
+    end;
+end;
+
+Function TSetVATRate.StoreSyss : Boolean;
+Var
+  EqPr  :  ShortInt;
+  NeedAuthorisation : Boolean;
+Begin
+  With SyssVAT^,VATRates do
+  Begin
+    NeedAuthorisation := (Not SBSIn) And ((VATReturnDate <> LTR.DateValue) Or (VATInterval <> Trunc(TRE.Value)));
+    If NeedAuthorisation Then
+    Begin
+      Result := AuthoriseVATChange(VATReturnDate, LTR.DateValue, VATInterval, Trunc(TRE.Value));
+    End // If NeedAuthorisation
+    Else
+      Result := True;
+
+    If Result Then
+    Begin
+      VATReturnDate:=LTR.DateValue;
+      VATInterval:=Trunc(TRE.Value);
+
+      VATScheme:=Idx2VScheme(TSF.ItemIndex);
+
+      CurrPeriod:=Calc_NewVATPeriod(VATReturnDate,VATInterval);
+
+      // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+      If edtVAT100UserId.Visible And (edtVAT100UserId.Text <> '') Then
+      Begin
+        VAT100UserID := EncryptVAT100UserId(edtVAT100UserId.Text);
+        VAT100Password := EncryptVAT100Password(edtVAT100Password.Text);
+        VAT100SenderType := cbVAT100SenderType.Text;
+      End // If edtVAT100UserId.Visible And (edtVAT100UserId.Text <> '')
+      Else
+      Begin
+        VAT100UserID := '';
+        VAT100Password := '';
+        VAT100SenderType := '';
+      End; // Else
+
+      Form2Rates;
+    End; // If Result
+  end;
+end;
+
+//------------------------------
+
+// MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+Function TSetVATRate.Validate : Boolean;
+Begin // Validate
+  // If visible (i.e. UK) then validate the VAT100 XML Settings if set
+  If edtVAT100UserId.Visible Then
+  Begin
+    // If the User Id isn't set then ignoer the details
+    If (edtVAT100UserId.Text <> '') Then
+    Begin
+      // Passwords must match
+      Result := (edtVAT100Password.Text = edtVAT100PasswordConfirmation.Text);
+      If (Not Result) Then
+      Begin
+        If edtVAT100Password.CanFocus Then
+          edtVAT100Password.SetFocus;
+        MessageDlg ('The VAT100 XML Password and Confirmation Password do not match', mtError, [mbOK], 0);
+      End; // If (Not Result)
+
+      If Result Then
+      Begin
+        Result := (cbVAT100SenderType.ItemIndex >= 0);
+        If (Not Result) Then
+        Begin
+          If cbVAT100SenderType.CanFocus Then
+            cbVAT100SenderType.SetFocus;
+          MessageDlg ('The VAT100 Submitter Type must be set', mtError, [mbOK], 0);
+        End; // If (Not Result)
+      End; // If Result
+    End // If (edtVAT100UserId.Text <> '')
+    Else
+      // User Id not set so ignore the fields
+      Result := True;
+  End // If edtVAT100UserId.Visible
+  Else
+    // Don't validate invisible fields
+    Result := True;
+End; // Validate
+
+//------------------------------
+
+procedure TSetVATRate.OkCP1BtnClick(Sender: TObject);
+Var
+  AbortStore : Boolean;
+begin
+  If (Sender is TButton) then
+    With (Sender as TButton) do
+    Begin
+      AbortStore := False;
+
+      If (ModalResult=mrOk) then
+      Begin
+        // MH 04/01/2011 v6.6 ABSEXCH-10548: Set focus to OK button to trigger OnExit event on date and Period/Year
+        //                                   fields which processes the text and updates the value
+        If (ActiveControl <> OkCP1Btn) Then
+          // Move focus to OK button to force any OnExit validation to occur
+          OkCP1Btn.SetFocus;
+
+        // If focus isn't on the OK button then that implies a validation error so the store should be abandoned
+        If (ActiveControl = OkCP1Btn) Then
+        Begin
+          // MH 10/05/2013 ABSEXCH-13793 v7.0.4: Added new fields for XML VAT100 Export
+          If Validate Then
+          Begin
+            AbortStore := Not StoreSyss
+          End // If Validate
+          Else
+            AbortStore := True;
+        End // If (ActiveControl = OkCP1Btn)
+        Else
+          AbortStore := True;
+      end
+      else
+        If (OKCp1Btn.Enabled) then
+        Begin
+          GlobLocked:=BOn;
+
+          GetMultiSys(BOff,GlobLocked,VATR); {* Restore values *}
+
+
+        end;
+
+      If (Not AbortStore) Then
+      Begin
+        If (OKCp1Btn.Enabled) then
+        Begin
+          PutMultiSys(VATR,BOn);
+          BeenStored:=BOn;
+          Init_STDVATList;
+
+          // CA 14/02/2013 v7.0.2 ABSEXCH-14003: Setting up the After SysVATAudit
+          if Assigned(SysVATAudit) Then
+          Begin
+            SysVATAudit.AfterData := SyssVAT;
+            SysVATAudit.WriteAuditEntry;
+            SysVATAudit := NIL;
+          End;
+        end;
+
+        Close;
+      End; // If (Not AbortStore)
+    end; {With..}
+end;
+
+
+procedure TSetVATRate.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  GlobFormKeyDown(Sender,Key,Shift,ActiveControl,Handle);
+end;
+
+procedure TSetVATRate.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  GlobFormKeyPress(Sender,Key,ActiveControl,Handle);
+end;
+
+
+procedure TSetVATRate.LTRChange(Sender: TObject);
+begin
+  OutEq;
+end;
+
+
+
+
+
+
+{ ================= Routine to Close Current Period ============== }
+
+Procedure TSetVATRate.Close_VATPr(ShowVPr  :  Boolean);
+
+Var
+  VYr,VPr  :  Integer;
+
+  CFinish  :  Boolean;
+
+  mbRet    :  Word;
+
+
+
+Begin
+
+  CFinish:=BOff;
+
+  With SyssVAT.VATRates do
+  Begin
+    VYr:=Part_Date('Y',CurrPeriod);
+    VPr:=Part_Date('M',CurrPeriod);
+  end;  
+
+  mbRet:=MessageDlg('Close Current '+CCVATName^+' Period ('+Form_Int(VPr,0)+'/'+Form_Int(VYr,0)+')?',mtConfirmation,[mbYes,mbNo],0);
+
+  If (mbRet=mrYes) then
+  Begin
+    Close_CurrPeriod;
+    CFinish:=VAT_CashAcc(SyssVAT.VATRates.VATScheme);
+
+    If (ShowVPr) then
+      OutVAT;
+
+  end; {If..}
+
+  If (CFinish) then
+    OKCP1BtnClick(OKCP1Btn);
+
+end; {Proc..}
+
+
+procedure TSetVATRate.CPBtnClick(Sender: TObject);
+begin
+  {$IFDEF CU}
+    If (Hookengaged) then
+      GenHooks(MiscBase+1,06,ExLocal)
+    else
+  {$ENDIF}
+      // CJS 2014-12-02 - T020 - Redirect Close Period button to VAT Return (UK Only)
+      {$IFDEF SOP}
+      {$IFNDEF SCHEDULER}
+      // For UK, under non-cash-accounting, run the new VAT Return Wizard,
+      // otherwise just close the VAT Period
+      if (CurrentCountry = UKCCode) and not (VAT_CashAcc(SyssVat.VATRates.VATScheme)) then
+      begin
+        // CJS 2014-12-11 - ABSEXCH-15927 - closing VAT Period from VAT Setup fails
+        // The VAT Return cannot be run while this form is open, so launch the
+        // VAT Return and close this form straight-away.
+        VATReturn(Application.MainForm);
+        Close;
+      end
+      else
+      {$ENDIF}
+      {$ENDIF}
+        Close_VATPr(BOn);
+end;
+
+
+Function TSetVATRate.GetActiveRate  :  VATType;
+
+Var
+  FoundOk  :  Boolean;
+
+Begin
+  FoundOk:=BOff;
+
+  For Result:=VStart to VEnd do
+  Begin
+    FoundOk:=((LastComponent=DescAry[Result]) or (LastComponent=DRateAry[Result])
+              or (LastComponent=GoodsAry[Result]));
+
+    If (FoundOk) then
+      Break;
+
+  end;
+
+
+  If (Not FoundOk) then
+    Result:=Standard;
+
+end;
+
+
+
+procedure TSetVATRate.Display_History(HistMode     :  Boolean;
+                                      VCode        :  Char;
+                                      ChangeFocus  :  Boolean);
+
+
+{$IFDEF NOM}
+
+  Var
+    NomNHCtrl  :  TNHCtrlRec;
+
+    FoundLong  :  Longint;
+
+    fPr,fYr    :  Byte;
+
+    HistForm   :  THistWin;
+
+    WasNew     :  Boolean;
+
+  Begin
+
+    WasNew:=BOff;
+
+    With NomNHCtrl do
+    Begin
+      FillChar(NomNHCtrl,Sizeof(NomNHCtrl),0);
+
+      NHMode:=4;
+      NBMode:=11;
+
+      NHCr:=0;
+      NHTxCr:=0;
+      NHPr:=0;
+      NHYr:=0;
+
+      NHCCode:=FullNCode(VCode);
+
+      NHKeyLen:=NHCodeLen;
+
+      With Nom do
+      Begin
+        MainK:=FullNHistKey(IOVATCh[HistMode],NHCCode,NHCr,0,0);
+        AltMainK:=MainK;
+      end;
+
+      Set_NHFormMode(NomNHCtrl);
+
+    end;
+
+    If (HistFormPtr=nil) then
+    Begin
+      WasNew:=BOn;
+
+      HistForm:=THistWin.Create(Self);
+
+      HistFormPtr:=HistForm;
+
+    end
+    else
+      HistForm:=HistFormPtr;
+
+    Try
+
+     With HistForm do
+     Begin
+
+
+       WindowState:=wsNormal;
+
+       If (ChangeFocus) then
+         Show;
+
+       ShowLink(BOn,BOff);
+
+
+     end; {With..}
+
+
+    except
+
+     HistFormPtr:=nil;
+
+     HistForm.Free;
+     HistForm:=nil;
+
+    end; {try..}
+
+{$ELSE}
+begin
+{$ENDIF}
+
+end;
+
+
+
+procedure TSetVATRate.IHBtnClick(Sender: TObject);
+begin
+  With SyssVAT.VATRates.VAT[GetActiveRate] do
+    Display_History((Sender=OHBtn),Code,BOn);
+end;
+
+procedure TSetVATRate.CDesc0Enter(Sender: TObject);
+begin
+  LastComponent:=TComponent(Sender);
+end;
+
+procedure TSetVATRate.Warn_VATScheme;
+
+
+  Begin
+    CustomDlg(Application.MainForm,'Please Note!',CCVATName^+' Scheme Changed',
+                               'Changing the '+CCVATName^+' scheme will have '+
+                               'serious implications on your '+CCVATName^+' returns, unless the '+
+                               'correct procedure is followed.'+#13+
+                               'Please consult your supplier.',
+                               mtInformation,
+                               [mbOk]);
+
+
+
+  end;
+
+procedure TSetVATRate.TSFExit(Sender: TObject);
+begin
+  If (LastScheme<>TSF.ItemIndex) then
+  Begin
+    LastScheme:=TSF.ItemIndex;
+    Warn_VATScheme;
+  end;
+end;
+
+// NF: 16/05/06 Fix for incorrect Context IDs
+procedure TSetVATRate.SetHelpContextIDs;
+begin
+  CDesc0.HelpContext := 1775;
+  CDesc1.HelpContext := 1775;
+  CDesc2.HelpContext := 1775;
+  CDesc3.HelpContext := 1775;
+  CDesc4.HelpContext := 1775;
+  CDesc5.HelpContext := 1775;
+  CDesc6.HelpContext := 1775;
+  CDesc7.HelpContext := 1775;
+  CDesc8.HelpContext := 1775;
+  CDesc9.HelpContext := 1775;
+  CDesc10.HelpContext := 1775;
+  CDesc11.HelpContext := 1775;
+  CDesc12.HelpContext := 1775;
+  CDesc13.HelpContext := 1775;
+  CDesc14.HelpContext := 1775;
+  CDesc15.HelpContext := 1775;
+  CDesc16.HelpContext := 1775;
+  CDesc17.HelpContext := 1775;
+  CDesc18.HelpContext := 1775;
+  CDesc19.HelpContext := 1775;
+  CDesc20.HelpContext := 1775;
+  DR0.HelpContext := 1776;
+  DR1.HelpContext := 1776;
+  DR2.HelpContext := 1776;
+  DR3.HelpContext := 1776;
+  DR4.HelpContext := 1776;
+  DR5.HelpContext := 1776;
+  DR6.HelpContext := 1776;
+  DR7.HelpContext := 1776;
+  DR8.HelpContext := 1776;
+  DR9.HelpContext := 1776;
+  DR10.HelpContext := 1776;
+  DR11.HelpContext := 1776;
+  DR12.HelpContext := 1776;
+  DR13.HelpContext := 1776;
+  DR14.HelpContext := 1776;
+  DR15.HelpContext := 1776;
+  DR16.HelpContext := 1776;
+  DR17.HelpContext := 1776;
+  DR18.HelpContext := 1776;
+  DR19.HelpContext := 1776;
+  DR20.HelpContext := 1776;
+  GC0.HelpContext := 1777;
+  GC1.HelpContext := 1777;
+  GC2.HelpContext := 1777;
+  GC3.HelpContext := 1777;
+  GC4.HelpContext := 1777;
+  GC5.HelpContext := 1777;
+  GC6.HelpContext := 1777;
+  GC7.HelpContext := 1777;
+  GC8.HelpContext := 1777;
+  GC9.HelpContext := 1777;
+  GC10.HelpContext := 1777;
+  GC11.HelpContext := 1777;
+  GC12.HelpContext := 1777;
+  GC13.HelpContext := 1777;
+  GC14.HelpContext := 1777;
+  GC15.HelpContext := 1777;
+  GC16.HelpContext := 1777;
+  GC17.HelpContext := 1777;
+  GC18.HelpContext := 1777;
+  GC19.HelpContext := 1777;
+  GC20.HelpContext := 1777;
+
+  LTR.HelpContext := 1778;
+  TRE.HelpContext := 1779;
+  EqF.HelpContext := 1780;
+  TSF.HelpContext := 1781;
+
+  OkCP1Btn.HelpContext := 1782;
+  CanCP1Btn.HelpContext := 1783;
+  CPBtn.HelpContext := 1784;
+  IHBtn.HelpContext := 1785;
+  OHBtn.HelpContext := 1786;
+end;
+
+procedure TSetVATRate.SubmissionsBtnClick(Sender: TObject);
+begin
+  // PKR. 10/09/2015. ABSEXCH-16834. Should not be able to open multiple submission windows.
+  if not Assigned(vatHistoryForm) then
+  begin
+    vatHistoryForm := TvatHistoryForm.Create(Application.MainForm);
+  end;
+  vatHistoryForm.Show;
+end;
+
+end.

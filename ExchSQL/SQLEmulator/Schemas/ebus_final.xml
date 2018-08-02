@@ -1,0 +1,285 @@
+<schemarecord version="3" tldformat="4" tldthreshold="0" recordfieldname="rec_pfix,sub_type" identitycol="PositionId" reclen="944" >
+  <recordfields>
+      <schemafield fieldname="fixed" fullfieldname="fixed" typename="ebus_FIXED" size="0" elements="1" id="-1" columnname="" />
+      <schemafield fieldname="var" fullfieldname="var" typename="ebus_VAR" size="0" elements="1" id="-1" columnname="" />
+  </recordfields>
+  <fixedfields>
+      <schemafield fieldname="rec_pfix" fullfieldname="rec_pfix" typename="char" size="1" elements="1" id="-1" columnname="RecPfix" />
+      <schemafield fieldname="sub_type" fullfieldname="sub_type" typename="char" size="1" elements="1" id="-1" columnname="SubType" />
+      <schemafield fieldname="ebus_code1" fullfieldname="ebus_code1" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="ebuscode1" />
+      <schemafield fieldname="ebus_code2" fullfieldname="ebus_code2" typename="DelphiEmbeddedCaseSensitiveString" size="21" elements="1" id="-1" columnname="ebuscode2" />
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes>
+    <recordtype name="TebusParams" id="0" stringid="EG">
+      <schemafields>
+        <schemafield fieldname="ent_default_company" fullfieldname="ent_default_company" typename="DelphiString" size="7" elements="1" id="0" columnname="EntDefaultCompany"/>
+        <schemafield fieldname="ent_csv_map_file_dir" fullfieldname="ent_csv_map_file_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="EntCSVMapFileDir"/>
+        <schemafield fieldname="ent_text_file_dir" fullfieldname="ent_text_file_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="EntTextFileDir"/>
+        <schemafield fieldname="ent_poll_freq" fullfieldname="ent_poll_freq" typename="ulong" size="4" elements="1" id="0" columnname="EntPollFreq"/>
+        <schemafield fieldname="ent_setup_password" fullfieldname="ent_setup_password" typename="DelphiString" size="13" elements="1" id="0" columnname="EntSetupPassword"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusDragNet" id="1" stringid="DG">
+      <schemafields>
+        <schemafield fieldname="dnet_publisher_code" fullfieldname="dnet_publisher_code" typename="DelphiString" size="9" elements="1" id="0" columnname="DNetPublishercode"/>
+        <schemafield fieldname="dnet_publisher_password" fullfieldname="dnet_publisher_password" typename="DelphiString" size="21" elements="1" id="0" columnname="DNetPublisherPassword"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusCompany" id="2" stringid="EC">
+      <schemafields>
+        <schemafield fieldname="comp_posting_log_dir" fullfieldname="comp_posting_log_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="CompPostingLogDir"/>
+        <schemafield fieldname="comp_def_cost_centre" fullfieldname="comp_def_cost_centre" typename="DelphiString" size="4" elements="1" id="0" columnname="CompDefCostCentre"/>
+        <schemafield fieldname="comp_def_dept" fullfieldname="comp_def_dept" typename="DelphiString" size="4" elements="1" id="0" columnname="CompDefDept"/>
+        <schemafield fieldname="comp_def_location" fullfieldname="comp_def_location" typename="DelphiString" size="4" elements="1" id="0" columnname="CompDefLocation"/>
+        <schemafield fieldname="comp_def_customer" fullfieldname="comp_def_customer" typename="DelphiString" size="11" elements="1" id="0" columnname="CompDefCustomer"/>
+        <schemafield fieldname="comp_def_supplier" fullfieldname="comp_def_supplier" typename="DelphiString" size="11" elements="1" id="0" columnname="CompDefSupplier"/>
+        <schemafield fieldname="comp_def_purch_nom" fullfieldname="comp_def_purch_nom" typename="long" size="4" elements="1" id="0" columnname="CompDefPurchNom"/>
+        <schemafield fieldname="comp_def_sales_nom" fullfieldname="comp_def_sales_nom" typename="long" size="4" elements="1" id="0" columnname="CompDefSalesNom"/>
+        <schemafield fieldname="comp_def_vat_code" fullfieldname="comp_def_vat_code" typename="char" size="1" elements="1" id="0" columnname="CompDefVATcode"/>
+        <schemafield fieldname="comp_set_period_method" fullfieldname="comp_set_period_method" typename="BYTE" size="1" elements="1" id="0" columnname="CompSetPeriodMethod"/>
+        <schemafield fieldname="comp_period" fullfieldname="comp_period" typename="BYTE" size="1" elements="1" id="0" columnname="CompPeriod"/>
+        <schemafield fieldname="comp_year" fullfieldname="comp_year" typename="BYTE" size="1" elements="1" id="0" columnname="CompYear"/>
+        <schemafield fieldname="comp_keep_trans_no" fullfieldname="comp_keep_trans_no" typename="BYTE" size="1" elements="1" id="0" columnname="CompKeepTransNo"/>
+        <schemafield fieldname="comp_post_hold_flag" fullfieldname="comp_post_hold_flag" typename="BYTE" size="1" elements="1" id="0" columnname="CompPostHoldFlag"/>
+        <schemafield fieldname="comp_trans_text_dir" fullfieldname="comp_trans_text_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="CompTransTextDir"/>
+        <schemafield fieldname="comp_ord_ok_text_file" fullfieldname="comp_ord_ok_text_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompOrdOKTextFile"/>
+        <schemafield fieldname="comp_ord_fail_text_file" fullfieldname="comp_ord_fail_text_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompOrdFailTextFile"/>
+        <schemafield fieldname="comp_inv_ok_text_file" fullfieldname="comp_inv_ok_text_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompInvOKTextFile"/>
+        <schemafield fieldname="comp_inv_fail_text_file" fullfieldname="comp_inv_fail_text_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompInvFailTextFile"/>
+        <schemafield fieldname="comp_xml_after_process" fullfieldname="comp_xml_after_process" typename="BYTE" size="1" elements="1" id="0" columnname="CompXMLAfterProcess"/>
+        <schemafield fieldname="comp_csv_delimiter" fullfieldname="comp_csv_delimiter" typename="char" size="1" elements="1" id="0" columnname="CompCSVDelimiter"/>
+        <schemafield fieldname="comp_csv_separator" fullfieldname="comp_csv_separator" typename="char" size="1" elements="1" id="0" columnname="CompCSVSeparator"/>
+        <schemafield fieldname="comp_csv_inc_header_row" fullfieldname="comp_csv_inc_header_row" typename="BYTE" size="1" elements="1" id="0" columnname="CompCSVIncHeaderRow"/>
+        <schemafield fieldname="comp_freight_line" fullfieldname="comp_freight_line" typename="BYTE" size="1" elements="1" id="0" columnname="CompFreightLine"/>
+        <schemafield fieldname="comp_misc_line" fullfieldname="comp_misc_line" typename="BYTE" size="1" elements="1" id="0" columnname="CompMiscLine"/>
+        <schemafield fieldname="comp_discount" fullfieldname="comp_discount" typename="BYTE" size="1" elements="1" id="0" columnname="CompDiscount"/>
+        <schemafield fieldname="comp_cust_lock_file" fullfieldname="comp_cust_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompCustLockFile"/>
+        <schemafield fieldname="comp_stock_lock_file" fullfieldname="comp_stock_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompStockLockFile"/>
+        <schemafield fieldname="comp_stock_grp_lock_file" fullfieldname="comp_stock_grp_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompStockGrpLockFile"/>
+        <schemafield fieldname="comp_trans_lock_file" fullfieldname="comp_trans_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="CompTransLockFile"/>
+        <schemafield fieldname="comp_cust_lock_ext" fullfieldname="comp_cust_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="CompCustLockExt"/>
+        <schemafield fieldname="comp_stock_lock_ext" fullfieldname="comp_stock_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="CompStockLockExt"/>
+        <schemafield fieldname="comp_stock_grp_lock_ext" fullfieldname="comp_stock_grp_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="CompStockGrpLockExt"/>
+        <schemafield fieldname="comp_trans_lock_ext" fullfieldname="comp_trans_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="CompTransLockExt"/>
+        <schemafield fieldname="comp_cust_lock_method" fullfieldname="comp_cust_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="CompCustLockMethod"/>
+        <schemafield fieldname="comp_stock_lock_method" fullfieldname="comp_stock_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="CompStockLockMethod"/>
+        <schemafield fieldname="comp_stock_grp_method" fullfieldname="comp_stock_grp_method" typename="BYTE" size="1" elements="1" id="0" columnname="CompStockGrpMethod"/>
+        <schemafield fieldname="comp_trans_lock_method" fullfieldname="comp_trans_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="CompTransLockMethod"/>
+        <schemafield fieldname="comp_use_stock_for_charges" fullfieldname="comp_use_stock_for_charges" typename="BYTE" size="1" elements="1" id="0" columnname="CompUseStockForCharges"/>
+        <schemafield fieldname="comp_freight_stock_code" fullfieldname="comp_freight_stock_code" typename="DelphiString" size="17" elements="1" id="0" columnname="CompFreightStockcode"/>
+        <schemafield fieldname="comp_misc_stock_code" fullfieldname="comp_misc_stock_code" typename="DelphiString" size="17" elements="1" id="0" columnname="CompMiscStockcode"/>
+        <schemafield fieldname="comp_disc_stock_code" fullfieldname="comp_disc_stock_code" typename="DelphiString" size="17" elements="1" id="0" columnname="CompDiscStockcode"/>
+        <schemafield fieldname="comp_freight_desc" fullfieldname="comp_freight_desc" typename="DelphiString" size="41" elements="1" id="0" columnname="CompFreightDesc"/>
+        <schemafield fieldname="comp_misc_desc" fullfieldname="comp_misc_desc" typename="DelphiString" size="41" elements="1" id="0" columnname="CompMiscDesc"/>
+        <schemafield fieldname="comp_disc_desc" fullfieldname="comp_disc_desc" typename="DelphiString" size="41" elements="1" id="0" columnname="CompDiscDesc"/>
+        <schemafield fieldname="comp_reapply_pricing" fullfieldname="comp_reapply_pricing" typename="BYTE" size="1" elements="1" id="0" columnname="CompReapplyPricing"/>
+        <schemafield fieldname="comp_your_ref_to_alt_ref" fullfieldname="comp_your_ref_to_alt_ref" typename="bool1" size="1" elements="1" id="0" columnname="CompYourRefToAltRef"/>
+        <schemafield fieldname="comp_use_matching" fullfieldname="comp_use_matching" typename="bool1" size="1" elements="1" id="0" columnname="CompUseMatching"/>
+        <schemafield fieldname="comp_sentimail_event" fullfieldname="comp_sentimail_event" typename="bool1" size="1" elements="1" id="0" columnname="CompSentimailEvent"/>
+        <schemafield fieldname="comp_location_origin" fullfieldname="comp_location_origin" typename="BYTE" size="1" elements="1" id="0" columnname="CompLocationOrigin"/>
+        <schemafield fieldname="comp_import_udf1" fullfieldname="comp_import_udf1" typename="bool1" size="1" elements="1" id="0" columnname="CompImportUDF1"/>
+        <schemafield fieldname="comp_general_notes" fullfieldname="comp_general_notes" typename="bool1" size="1" elements="1" id="0" columnname="CompGeneralNotes"/>
+        <schemafield fieldname="comp_cc_dep_from_xml" fullfieldname="comp_cc_dep_from_xml" typename="bool1" size="1" elements="1" id="0" columnname="CompCCDepFromXML"/>
+        <schemafield fieldname="comp_use_basda_309" fullfieldname="comp_use_basda_309" typename="bool1" size="1" elements="1" id="0" columnname="CompUseBasda309"/>
+        <schemafield fieldname="comp_desc_lines_from_xml" fullfieldname="comp_desc_lines_from_xml" typename="bool1" size="1" elements="1" id="0" columnname="CompDescLinesFromXML"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusFileCounters" id="3" stringid="EN">
+      <schemafields>
+        <schemafield fieldname="stockcounter" fullfieldname="stockcounter" typename="long" size="4" elements="1" id="0" columnname="stockcounter"/>
+        <schemafield fieldname="stockgrpcounter" fullfieldname="stockgrpcounter" typename="long" size="4" elements="1" id="0" columnname="stockgrpcounter"/>
+        <schemafield fieldname="transactioncounter" fullfieldname="transactioncounter" typename="long" size="4" elements="1" id="0" columnname="transactioncounter"/>
+        <schemafield fieldname="CustomerCounter" fullfieldname="CustomerCounter" typename="long" size="4" elements="1" id="0" columnname="CustomerCounter"/>
+        <schemafield fieldname="emailcounter" fullfieldname="emailcounter" typename="long" size="4" elements="1" id="0" columnname="emailcounter"/>
+        <schemafield fieldname="exportlogcounter" fullfieldname="exportlogcounter" typename="long" size="4" elements="1" id="0" columnname="exportlogcounter"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusImport" id="4" stringid="EI">
+      <schemafields>
+        <schemafield fieldname="import_search_dir" fullfieldname="import_search_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="ImportSearchDir"/>
+        <schemafield fieldname="import_archive_dir" fullfieldname="import_archive_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="ImportArchiveDir"/>
+        <schemafield fieldname="import_fail_dir" fullfieldname="import_fail_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="ImportFailDir"/>
+        <schemafield fieldname="import_log_dir" fullfieldname="import_log_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="ImportLogDir"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusExport" id="5" stringid="EX">
+      <schemafields>
+        <schemafield fieldname="expt_description" fullfieldname="expt_description" typename="DelphiString" size="51" elements="1" id="0" columnname="ExptDescription"/>
+        <schemafield fieldname="expt_stock" fullfieldname="expt_stock" typename="BYTE" size="1" elements="1" id="0" columnname="ExptStock"/>
+        <schemafield fieldname="expt_stock_groups" fullfieldname="expt_stock_groups" typename="BYTE" size="1" elements="1" id="0" columnname="ExptStockGroups"/>
+        <schemafield fieldname="expt_customers" fullfieldname="expt_customers" typename="BYTE" size="1" elements="1" id="0" columnname="ExptCustomers"/>
+        <schemafield fieldname="expt_inc_cur_sales_trans" fullfieldname="expt_inc_cur_sales_trans" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIncCurSalesTrans"/>
+        <schemafield fieldname="expt_inc_cur_sales_orders" fullfieldname="expt_inc_cur_sales_orders" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIncCurSalesOrders"/>
+        <schemafield fieldname="expt_inc_cur_purch_trans" fullfieldname="expt_inc_cur_purch_trans" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIncCurPurchTrans"/>
+        <schemafield fieldname="expt_inc_cur_purch_orders" fullfieldname="expt_inc_cur_purch_orders" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIncCurPurchOrders"/>
+        <schemafield fieldname="expt_inc_com_pricing" fullfieldname="expt_inc_com_pricing" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIncCOMPricing"/>
+        <schemafield fieldname="expt_ignore_cust_web_inc" fullfieldname="expt_ignore_cust_web_inc" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIgnoreCustWebInc"/>
+        <schemafield fieldname="expt_ignore_stock_web_inc" fullfieldname="expt_ignore_stock_web_inc" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIgnoreStockWebInc"/>
+        <schemafield fieldname="expt_ignore_stock_grp_web_inc" fullfieldname="expt_ignore_stock_grp_web_inc" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIgnoreStockGrpWebInc"/>
+        <schemafield fieldname="expt_cust_file_name" fullfieldname="expt_cust_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCustFileName"/>
+        <schemafield fieldname="expt_stock_file_name" fullfieldname="expt_stock_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptStockFileName"/>
+        <schemafield fieldname="expt_stock_loc_file_name" fullfieldname="expt_stock_loc_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptStockLocFileName"/>
+        <schemafield fieldname="expt_stock_group_file_name" fullfieldname="expt_stock_group_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptStockGroupFileName"/>
+        <schemafield fieldname="expt_trans_file_name" fullfieldname="expt_trans_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptTransFileName"/>
+        <schemafield fieldname="expt_trans_lines_file_name" fullfieldname="expt_trans_lines_file_name" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptTransLinesFileName"/>
+        <schemafield fieldname="expt_zip_files" fullfieldname="expt_zip_files" typename="BYTE" size="1" elements="1" id="0" columnname="ExptZipFiles"/>
+        <schemafield fieldname="expt_transport_type" fullfieldname="expt_transport_type" typename="char" size="1" elements="1" id="0" columnname="ExptTransportType"/>
+        <schemafield fieldname="expt_data_type" fullfieldname="expt_data_type" typename="char" size="1" elements="1" id="0" columnname="ExptDataType"/>
+        <schemafield fieldname="expt_active" fullfieldname="expt_active" typename="BYTE" size="1" elements="1" id="0" columnname="ExptActive"/>
+        <schemafield fieldname="expt_time_type" fullfieldname="expt_time_type" typename="BYTE" size="1" elements="1" id="0" columnname="ExptTimeType"/>
+        <schemafield fieldname="expt_frequency" fullfieldname="expt_frequency" typename="int16" size="2" elements="1" id="0" columnname="ExptFrequency"/>
+        <schemafield fieldname="expt_time1" fullfieldname="expt_time1" typename="DelphiDateTime" size="8" elements="1" id="0" columnname="ExptTime1"/>
+        <schemafield fieldname="expt_time2" fullfieldname="expt_time2" typename="DelphiDateTime" size="8" elements="1" id="0" columnname="ExptTime2"/>
+        <schemafield fieldname="expt_days_of_week" fullfieldname="expt_days_of_week" typename="BYTE" size="1" elements="1" id="0" columnname="ExptDaysOfWeek"/>
+        <schemafield fieldname="expt_catalogues" fullfieldname="expt_catalogues" typename="DelphiString" size="21" elements="1" id="0" columnname="ExptCatalogues"/>
+        <schemafield fieldname="expt_csv_cust_map_file" fullfieldname="expt_csv_cust_map_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCSVCustMAPFile"/>
+        <schemafield fieldname="expt_csv_stock_map_file" fullfieldname="expt_csv_stock_map_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCSVStockMAPFile"/>
+        <schemafield fieldname="expt_csv_stock_grp_map_file" fullfieldname="expt_csv_stock_grp_map_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCSVStockGrpMAPFile"/>
+        <schemafield fieldname="expt_csv_trans_map_file" fullfieldname="expt_csv_trans_map_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCSVTransMAPFile"/>
+        <schemafield fieldname="expt_last_export_at" fullfieldname="expt_last_export_at" typename="DelphiDateTime" size="8" elements="1" id="0" columnname="ExptLastExportAt"/>
+        <schemafield fieldname="expt_cust_lock_file" fullfieldname="expt_cust_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptCustLockFile"/>
+        <schemafield fieldname="expt_stock_lock_file" fullfieldname="expt_stock_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptStockLockFile"/>
+        <schemafield fieldname="expt_stock_grp_lock_file" fullfieldname="expt_stock_grp_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptStockGrpLockFile"/>
+        <schemafield fieldname="expt_trans_lock_file" fullfieldname="expt_trans_lock_file" typename="DelphiString" size="13" elements="1" id="0" columnname="ExptTransLockFile"/>
+        <schemafield fieldname="expt_cust_lock_ext" fullfieldname="expt_cust_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="ExptCustLockExt"/>
+        <schemafield fieldname="expt_stock_lock_ext" fullfieldname="expt_stock_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="ExptStockLockExt"/>
+        <schemafield fieldname="expt_stock_grp_lock_ext" fullfieldname="expt_stock_grp_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="ExptStockGrpLockExt"/>
+        <schemafield fieldname="expt_trans_lock_ext" fullfieldname="expt_trans_lock_ext" typename="DelphiString" size="4" elements="1" id="0" columnname="ExptTransLockExt"/>
+        <schemafield fieldname="expt_cust_lock_method" fullfieldname="expt_cust_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="ExptCustLockMethod"/>
+        <schemafield fieldname="expt_stock_lock_method" fullfieldname="expt_stock_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="ExptStockLockMethod"/>
+        <schemafield fieldname="expt_stock_grp_method" fullfieldname="expt_stock_grp_method" typename="BYTE" size="1" elements="1" id="0" columnname="ExptStockGrpMethod"/>
+        <schemafield fieldname="expt_trans_lock_method" fullfieldname="expt_trans_lock_method" typename="BYTE" size="1" elements="1" id="0" columnname="ExptTransLockMethod"/>
+        <schemafield fieldname="expt_stock_filter" fullfieldname="expt_stock_filter" typename="DelphiString" size="17" elements="1" id="0" columnname="ExptStockFilter"/>
+        <schemafield fieldname="expt_ignore_com_cust_inc" fullfieldname="expt_ignore_com_cust_inc" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIgnoreCOMCustInc"/>
+        <schemafield fieldname="expt_ignore_com_stock_inc" fullfieldname="expt_ignore_com_stock_inc" typename="BYTE" size="1" elements="1" id="0" columnname="ExptIgnoreCOMStockInc"/>
+        <schemafield fieldname="expt_command_line" fullfieldname="expt_command_line" typename="DelphiString" size="101" elements="1" id="0" columnname="ExptCommandLine"/>
+        <schemafield fieldname="expt_cust_acc_type_filter" fullfieldname="expt_cust_acc_type_filter" typename="DelphiString" size="5" elements="1" id="0" columnname="ExptCustAccTypeFilter"/>
+        <schemafield fieldname="expt_cust_acc_type_filter_flag" fullfieldname="expt_cust_acc_type_filter_flag" typename="BYTE" size="1" elements="1" id="0" columnname="ExptCustAccTypeFilterFlag"/>
+        <schemafield fieldname="expt_stock_web_filter" fullfieldname="expt_stock_web_filter" typename="DelphiString" size="21" elements="1" id="0" columnname="ExptStockWebFilter"/>
+        <schemafield fieldname="expt_stock_web_filter_flag" fullfieldname="expt_stock_web_filter_flag" typename="BYTE" size="1" elements="1" id="0" columnname="ExptStockWebFilterFlag"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusCatalogue" id="6" stringid="EA">
+      <schemafields>
+        <schemafield fieldname="cat_title" fullfieldname="cat_title" typename="DelphiString" size="41" elements="1" id="0" columnname="CatTitle"/>
+        <schemafield fieldname="cat_credit_limit_applies" fullfieldname="cat_credit_limit_applies" typename="bool1" size="1" elements="1" id="0" columnname="CatCreditLimitApplies"/>
+        <schemafield fieldname="cat_on_hold_applies" fullfieldname="cat_on_hold_applies" typename="bool1" size="1" elements="1" id="0" columnname="CatOnHoldApplies"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusFTP" id="7" stringid="EF">
+      <schemafields>
+        <schemafield fieldname="ftp_site_port" fullfieldname="ftp_site_port" typename="long" size="4" elements="1" id="0" columnname="FTPSitePort"/>
+        <schemafield fieldname="ftp_site_address" fullfieldname="ftp_site_address" typename="DelphiString" size="41" elements="1" id="0" columnname="FTPSiteAddress"/>
+        <schemafield fieldname="ftp_user_name" fullfieldname="ftp_user_name" typename="DelphiString" size="21" elements="1" id="0" columnname="FTPUserName"/>
+        <schemafield fieldname="ftp_password" fullfieldname="ftp_password" typename="DelphiString" size="21" elements="1" id="0" columnname="FTPPassword"/>
+        <schemafield fieldname="ftp_request_timeout" fullfieldname="ftp_request_timeout" typename="int8" size="1" elements="1" id="0" columnname="FTPRequestTimeOut"/>
+        <schemafield fieldname="ftp_proxy_port" fullfieldname="ftp_proxy_port" typename="long" size="4" elements="1" id="0" columnname="FTPProxyPort"/>
+        <schemafield fieldname="ftp_proxy_address" fullfieldname="ftp_proxy_address" typename="DelphiString" size="41" elements="1" id="0" columnname="FTPProxyAddress"/>
+        <schemafield fieldname="ftp_passive_mode" fullfieldname="ftp_passive_mode" typename="int8" size="1" elements="1" id="0" columnname="FTPPassiveMode"/>
+        <schemafield fieldname="ftp_root_dir" fullfieldname="ftp_root_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="FTPRootDir"/>
+        <schemafield fieldname="ftp_customer_dir" fullfieldname="ftp_customer_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="FTPCustomerDir"/>
+        <schemafield fieldname="ftp_stock_dir" fullfieldname="ftp_stock_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="FTPStockDir"/>
+        <schemafield fieldname="ftpcom_price_dir" fullfieldname="ftpcom_price_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="FTPCOMPriceDir"/>
+        <schemafield fieldname="ftp_transaction_dir" fullfieldname="ftp_transaction_dir" typename="DelphiString" size="51" elements="1" id="0" columnname="FTPTransactionDir"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusEmail" id="8" stringid="EE">
+      <schemafields>
+        <schemafield fieldname="email_enabled" fullfieldname="email_enabled" typename="bool1" size="1" elements="1" id="0" columnname="EmailEnabled"/>
+        <schemafield fieldname="email_admin_address" fullfieldname="email_admin_address" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailAdminAddress"/>
+        <schemafield fieldname="email_notify_admin" fullfieldname="email_notify_admin" typename="BYTE" size="1" elements="1" id="0" columnname="EmailNotifyAdmin"/>
+        <schemafield fieldname="email_type" fullfieldname="email_type" typename="BYTE" size="1" elements="1" id="0" columnname="EmailType"/>
+        <schemafield fieldname="email_server_name" fullfieldname="email_server_name" typename="DelphiString" size="41" elements="1" id="0" columnname="EmailServerName"/>
+        <schemafield fieldname="email_account_name" fullfieldname="email_account_name" typename="DelphiString" size="41" elements="1" id="0" columnname="EmailAccountName"/>
+        <schemafield fieldname="email_account_password" fullfieldname="email_account_password" typename="DelphiString" size="41" elements="1" id="0" columnname="EmailAccountPassword"/>
+        <schemafield fieldname="email_notify_sender" fullfieldname="email_notify_sender" typename="BYTE" size="1" elements="1" id="0" columnname="EmailNotifySender"/>
+        <schemafield fieldname="email_confirm_processing" fullfieldname="email_confirm_processing" typename="BYTE" size="1" elements="1" id="0" columnname="EmailConfirmProcessing"/>
+        <schemafield fieldname="email_customer_addr" fullfieldname="email_customer_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailCustomerAddr"/>
+        <schemafield fieldname="email_stock_addr" fullfieldname="email_stock_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailStockAddr"/>
+        <schemafield fieldname="email_com_price_addr" fullfieldname="email_com_price_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailCOMPriceAddr"/>
+        <schemafield fieldname="email_transaction_addr" fullfieldname="email_transaction_addr" typename="DelphiString" size="101" elements="1" id="0" columnname="EmailTransactionAddr"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusFile" id="9" stringid="ED">
+      <schemafields>
+        <schemafield fieldname="file_customer_dir" fullfieldname="file_customer_dir" typename="DelphiString" size="81" elements="1" id="0" columnname="FileCustomerDir"/>
+        <schemafield fieldname="file_stock_dir" fullfieldname="file_stock_dir" typename="DelphiString" size="81" elements="1" id="0" columnname="FileStockDir"/>
+        <schemafield fieldname="file_stock_group_dir" fullfieldname="file_stock_group_dir" typename="DelphiString" size="81" elements="1" id="0" columnname="FileStockGroupDir"/>
+        <schemafield fieldname="file_trans_dir" fullfieldname="file_trans_dir" typename="DelphiString" size="81" elements="1" id="0" columnname="FileTransDir"/>
+        <schemafield fieldname="file_com_price_dir" fullfieldname="file_com_price_dir" typename="DelphiString" size="81" elements="1" id="0" columnname="FileCOMPriceDir"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusDragNetCompany" id="10" stringid="DC">
+      <schemafields>
+        <schemafield fieldname="dnet_company_code" fullfieldname="dnet_company_code" typename="char" size="1" elements="1" id="0" columnname="DNetCompanycode"/>
+        <schemafield fieldname="dnet_order_no_start" fullfieldname="dnet_order_no_start" typename="long" size="4" elements="1" id="0" columnname="DNetOrderNoStart"/>
+        <schemafield fieldname="dnet_order_prefix" fullfieldname="dnet_order_prefix" typename="DelphiString" size="4" elements="1" id="0" columnname="DNetOrderPrefix"/>
+        <schemafield fieldname="dnet_cust_exported_at" fullfieldname="dnet_cust_exported_at" typename="DelphiDateTime" size="8" elements="1" id="0" columnname="DNetCustExportedAt"/>
+        <schemafield fieldname="dnet_stock_exported_at" fullfieldname="dnet_stock_exported_at" typename="DelphiDateTime" size="8" elements="1" id="0" columnname="DNetStockExportedAt"/>
+        <schemafield fieldname="dnet_last_order_file" fullfieldname="dnet_last_order_file" typename="DelphiString" size="13" elements="1" id="0" columnname="DNetLastOrderFile"/>
+        <schemafield fieldname="dnet_use_external_ref" fullfieldname="dnet_use_external_ref" typename="bool1" size="1" elements="1" id="0" columnname="DNetUseExternalRef"/>
+        <schemafield fieldname="dnet_use_catalogues" fullfieldname="dnet_use_catalogues" typename="bool1" size="1" elements="1" id="0" columnname="DNetUseCatalogues"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TebusDragNetCountry" id="11" stringid="DY">
+      <schemafields>
+        <schemafield fieldname="dnet_ctry_code" fullfieldname="dnet_ctry_code" typename="DelphiString" size="4" elements="1" id="0" columnname="DNetCtrycode"/>
+        <schemafield fieldname="dnet_ctry_name" fullfieldname="dnet_ctry_name" typename="DelphiString" size="21" elements="1" id="0" columnname="DNetCtryName"/>
+        <schemafield fieldname="dnet_ctry_tax_code" fullfieldname="dnet_ctry_tax_code" typename="DelphiString" size="4" elements="1" id="0" columnname="DNetCtryTaxcode"/>
+        <schemafield fieldname="dnet_ctry_ecmember" fullfieldname="dnet_ctry_ecmember" typename="bool1" size="1" elements="1" id="0" columnname="DNetCtryECMember"/>
+        <schemafield fieldname="dnet_ctry_home_country" fullfieldname="dnet_ctry_home_country" typename="bool1" size="1" elements="1" id="0" columnname="DNetCtryHomeCountry"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TPreserveDocFields" id="12" stringid="EP">
+      <schemafields>
+        <schemafield fieldname="inv_order_no" fullfieldname="inv_order_no" typename="DelphiString" size="11" elements="1" id="0" columnname="InvOrderNo"/>
+        <schemafield fieldname="inv_buyers_order" fullfieldname="inv_buyers_order" typename="DelphiString" size="21" elements="1" id="0" columnname="InvBuyersOrder"/>
+        <schemafield fieldname="inv_project_code" fullfieldname="inv_project_code" typename="DelphiString" size="21" elements="1" id="0" columnname="InvProjectcode"/>
+        <schemafield fieldname="inv_analysis_code" fullfieldname="inv_analysis_code" typename="DelphiString" size="21" elements="1" id="0" columnname="InvAnalysiscode"/>
+        <schemafield fieldname="inv_supp_invoice" fullfieldname="inv_supp_invoice" typename="DelphiString" size="21" elements="1" id="0" columnname="InvSuppInvoice"/>
+        <schemafield fieldname="inv_buyers_delivery" fullfieldname="inv_buyers_delivery" typename="DelphiString" size="21" elements="1" id="0" columnname="InvBuyersDelivery"/>
+        <schemafield fieldname="inv_folio" fullfieldname="inv_folio" typename="long" size="4" elements="1" id="0" columnname="InvFolio"/>
+        <schemafield fieldname="inv_posted" fullfieldname="inv_posted" typename="bool1" size="1" elements="1" id="0" columnname="InvPosted"/>
+        <schemafield fieldname="inv_posted_date" fullfieldname="inv_posted_date" typename="DelphiString" size="9" elements="1" id="0" columnname="InvPostedDate"/>
+      </schemafields>
+    </recordtype>
+    <recordtype name="TPreserveLineFields=record" id="13" stringid="EQ">
+      <schemafields>
+        <schemafield fieldname="id_abs_line_no" fullfieldname="id_abs_line_no" typename="long" size="4" elements="1" id="0" columnname="IdAbsLineNo"/>
+        <schemafield fieldname="id_line_no" fullfieldname="id_line_no" typename="long" size="4" elements="1" id="0" columnname="IdLineNo"/>
+        <schemafield fieldname="id_folio" fullfieldname="id_folio" typename="long" size="4" elements="1" id="0" columnname="IdFolio"/>
+        <schemafield fieldname="id_project_code" fullfieldname="id_project_code" typename="DelphiString" size="21" elements="1" id="0" columnname="IdProjectcode"/>
+        <schemafield fieldname="id_analysis_code" fullfieldname="id_analysis_code" typename="DelphiString" size="21" elements="1" id="0" columnname="IdAnalysiscode"/>
+        <schemafield fieldname="id_buyers_order" fullfieldname="id_buyers_order" typename="DelphiString" size="21" elements="1" id="0" columnname="IdBuyersOrder"/>
+        <schemafield fieldname="id_buyers_line_ref" fullfieldname="id_buyers_line_ref" typename="DelphiString" size="21" elements="1" id="0" columnname="IdBuyersLineRef"/>
+        <schemafield fieldname="id_order_no" fullfieldname="id_order_no" typename="DelphiString" size="11" elements="1" id="0" columnname="IdOrderNo"/>
+        <schemafield fieldname="id_pdn_no" fullfieldname="id_pdn_no" typename="DelphiString" size="11" elements="1" id="0" columnname="IdPDNNo"/>
+        <schemafield fieldname="id_pdn_line_no" fullfieldname="id_pdn_line_no" typename="long" size="4" elements="1" id="0" columnname="IdPDNLineNo"/>
+        <schemafield fieldname="id_value" fullfieldname="id_value" typename="double" size="8" elements="1" id="0" columnname="IdValue"/>
+        <schemafield fieldname="id_qty" fullfieldname="id_qty" typename="double" size="8" elements="1" id="0" columnname="IDQty"/>
+        <schemafield fieldname="id_order_line_no" fullfieldname="id_order_line_no" typename="long" size="4" elements="1" id="0" columnname="IdOrderLineNo"/>
+        <schemafield fieldname="id_stock_code" fullfieldname="id_stock_code" typename="DelphiString" size="17" elements="1" id="0" columnname="IdStockcode"/>
+        <schemafield fieldname="id_description" fullfieldname="id_description" typename="DelphiString" size="61" elements="1" id="0" columnname="IdDescription"/>
+        <schemafield fieldname="id_disc_amount" fullfieldname="id_disc_amount" typename="double" size="8" elements="1" id="0" columnname="IdDiscAmount"/>
+        <schemafield fieldname="id_disc_char" fullfieldname="id_disc_char" typename="char" size="1" elements="1" id="0" columnname="IdDiscChar"/>
+        <schemafield fieldname="id_disc2_amount" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="IdDisc2Amount"></schemafield>
+        <schemafield fieldname="id_disc2_char" fullfieldname="" typename="char" size="1" elements="1" id="0" columnname="IdDisc2Char"></schemafield>
+        <schemafield fieldname="id_disc3_amount" fullfieldname="" typename="DelphiReal" size="6" elements="1" id="0" columnname="IdDisc3Amount"></schemafield>
+        <schemafield fieldname="id_disc_char" fullfieldname="" typename="char" size="1" elements="1" id="0" columnname="IdDisc3Char"></schemafield>
+        <schemafield fieldname="id_disc3_type" fullfieldname="" typename="uint8" size="1" elements="1" id="0" columnname="IdDisc3Type"></schemafield>
+      </schemafields>
+    </recordtype>
+  </recordtypes>
+  <indexes>
+    <schemaindexes indexnumber="0" isclustered="0" isunique="1">
+      <indexfields>
+        <item>rec_pfix</item>
+        <item>sub_type</item>
+        <item computedcolumnname="ebuscode1Computed">ebus_code1</item>
+        <item computedcolumnname="ebuscode2Computed">ebus_code2</item>
+      </indexfields>
+    </schemaindexes>
+  </indexes>
+</schemarecord>
+

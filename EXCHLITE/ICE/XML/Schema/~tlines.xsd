@@ -1,0 +1,91 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     	    xmlns:tns="urn:www-iris-co-uk:tlines"
+            targetNamespace="urn:www-iris-co-uk:tlines" >
+            
+  <xsd:complexType name="addr">
+    <xsd:sequence>
+      <xsd:element name='addr1' type='xsd:string'/>
+      <xsd:element name='addr2' type='xsd:string'/>
+      <xsd:element name='addr3' type='xsd:string'/>
+      <xsd:element name='addr4' type='xsd:string'/>
+      <xsd:element name='addr5' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="daddr">
+    <xsd:sequence>
+      <xsd:element name='daddr1' type='xsd:string'/>
+      <xsd:element name='daddr2' type='xsd:string'/>
+      <xsd:element name='daddr3' type='xsd:string'/>
+      <xsd:element name='daddr4' type='xsd:string'/>
+      <xsd:element name='daddr5' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="sterms">
+    <xsd:sequence>
+      <xsd:element name='sterms1' type='xsd:string'/>
+      <xsd:element name='sterms2' type='xsd:string'/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="boolean2">
+    <xsd:restriction base='xsd:string'>
+      <xsd:enumeration value='True' />
+      <xsd:enumeration value='False' />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="custrec">
+    <xsd:sequence>
+      <xsd:element name='custcode' type='xsd:string'/>
+      <xsd:element name='custsupp' type='xsd:string'/>
+      <xsd:element name='company' type='xsd:string'/>
+      <xsd:element name='areacode' type='xsd:string'/>
+      <xsd:element name='repcode' type='xsd:string'/>
+      <xsd:element name='remitcode' type='xsd:string'/>
+      <xsd:element name='vatregno' type='xsd:string'/>
+      <xsd:element name='addr' type='tns:addr' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='despaddr' type='tns:boolean2'/>
+      <xsd:element name='daddr' type='tns:daddr' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='contact' type='xsd:string'/>
+      <xsd:element name='phone' type='xsd:string'/>
+      <xsd:element name='fax' type='xsd:string'/>
+      <xsd:element name='refno' type='xsd:string'/>
+      <xsd:element name='tradterm' type='tns:boolean2'/>
+      <xsd:element name='sterms' type='tns:sterms' minOccurs='1' maxOccurs='1' />
+      <xsd:element name='currency' type='xsd:byte'/>
+      <xsd:element name='vatcode' type='xsd:string'/>
+      <xsd:element name='payterms' type='xsd:integer'/>
+      <xsd:element name='creditlimit' type='xsd:double'/>
+      <xsd:element name='discount' type='xsd:double'/>
+      <xsd:element name='creditstatus' type='xsd:integer'/>
+      <xsd:element name='custcc' type='xsd:string'/>
+      <xsd:element name='cdiscch' type='xsd:string'/>
+      <xsd:element name='custdep' type='xsd:string'/>
+
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name='message'>
+    <xsd:sequence>
+      <xsd:element name='tlinerec' type='tns:tlinerec' minOccurs='1' maxOccurs='unbounded' />
+    </xsd:sequence>
+
+    <xsd:attribute name='guid' type='xsd:string'/>
+    <xsd:attribute name='number' type='xsd:integer'/>
+    <xsd:attribute name='count' type='xsd:integer'/>
+    <xsd:attribute name='source' type='xsd:string'/>
+    <xsd:attribute name='destination' type='xsd:string'/>
+    <xsd:attribute name='flag' type='xsd:byte'/>
+  </xsd:complexType>
+
+  <xsd:complexType name='tlines'>
+    <xsd:sequence>
+      <xsd:element name='message' type='tns:message' minOccurs='1' maxOccurs='1' />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name='tlines' type='tns:tlines'/>
+
+</xsd:schema>

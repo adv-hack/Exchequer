@@ -1,0 +1,203 @@
+Document Type: WSE
+item: Global
+  Version=9.01
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=Properties
+end
+item: Remark
+end
+item: Remark
+  Text=....Install Plug-In Files
+end
+item: Remark
+end
+item: If/While Statement
+  Variable=INSTTYPE
+  Value=B
+  Flags=00000001
+end
+item: Install File
+  Source=.\FILES\USERHADM.EXE
+  Destination=%ENTDIR%\USERHADM.EXE
+  Description=Configuration Module
+  Flags=0000000010000010
+end
+item: Install File
+  Source=.\FILES\ENTUSERF.DLL
+  Destination=%ENTDIR%\ENTUSERF.DLL
+  Description=User-Defined Fields Plug-In
+  Flags=0000000010000010
+end
+item: Install File
+  Source=.\FILES\USRFDLG.DLL
+  Destination=%ENTDIR%\USRFDLG.DLL
+  Description=User-Defined Fields Plug-In
+  Flags=0000000010000010
+end
+item: Install File
+  Source=.\FILES\USERDEF.CHM
+  Destination=%ENTDIR%\USERDEF.CHM
+  Description=Help File
+  Flags=0000000010000010
+end
+remarked item: Install File
+  Source=U:\BESPOKE\EXCHEQR\USERDEF\INSTALL\FILES\USERDEF.CNT
+  Destination=%ENTDIR%\USERDEF.CNT
+  Description=Help File
+  Flags=0000000010000010
+end
+item: Install File
+  Source=.\FILES\USERDFPI.LST
+  Destination=%ENTDIR%\USERDFPI.LST
+  Description=Help File
+  Flags=0000000010000010
+end
+remarked item: Install File
+  Source=U:\BESPOKE\EXCHEQR\USERDEF\INSTALL\FILES\ENTUSERF.EXE
+  Destination=%ENTDIR%\ENTUSERF.EXE
+  Description=Configuration Module
+  Flags=0000000010000010
+end
+remarked item: Install File
+  Source=X:\BESPOKE\EXCHEQR\USERDEF\INSTALL\FILES\ENTUSERF.INI
+  Destination=%ENTDIR%\ENTUSERF.INI
+  Description=Configuration File
+  Flags=0000000010001010
+end
+item: End Block
+end
+item: Remark
+end
+item: Copy Local File
+  Source=%INST%\ENTSETUP.DLL
+  Destination=%ENTDIR%ENTSETUP.DLL
+  Description=Plug-In Setup Function Library
+  Local Path=ENTSETUP.DLL
+  Flags=0000010011010010
+end
+remarked item: Install File
+  Source=U:\BESPOKE\EXCHEQR\BtrvSQL.dll
+  Destination=%ENTDIR%BtrvSQL.dll
+  Description=SQL Emulation File
+  Flags=0000010010010010
+end
+item: Remark
+end
+item: Remark
+  Text=....Check for SQL
+end
+item: Remark
+  Text=....REMOVED - ALL DATABASE CREATION IS NOW DONE IN THE PLUGIN
+end
+item: Remark
+  Text=....REMOVED - ALL DATABASE CREATION IS NOW DONE IN THE PLUGIN
+end
+remarked item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=Wise7_IsSQLVersion
+  Return Variable=0
+  Flags=00000010
+end
+remarked item: Remark
+  Text=SQL Version
+end
+remarked item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=320
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=SQL Version
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Wise Installation System\Help\Wise.hlp
+  Variable Name5=_OPTION_
+  Variable Value5=B
+  Variable Name6=_HEIGHT_
+  Variable Value6=80
+  Variable Name7=_MSG_TEXT_
+  Variable Value7=Adding SQL Tables
+  Variable Name8=_Y_POS_
+  Variable Name9=_X_POS_
+end
+remarked item: Set Variable
+  Variable=SQL_DATA
+  Value=%INST%\UDFields.zip
+end
+remarked item: Set Variable
+  Variable=V_DLLERROR
+  Value=0
+end
+remarked item: Set Variable
+  Variable=V_MAINDIR
+  Value=%ENTDIR%
+end
+remarked item: Call DLL Function
+  Pathname=%INST%\ENTSETUP.DLL
+  Function Name=SCD_SQLDataImport
+  Return Variable=0
+end
+remarked item: If/While Statement
+  Variable=V_DLLERROR
+  Value=0
+  Flags=00000001
+end
+remarked item: Display Message
+  Title=EntSetup.Dll  Error
+  Text=The following error occurred whilst calling SCD_SQLDataImport :
+  Text=
+  Text=  Error : %FUNCRES%
+  Text=
+  Text=Please contact your Exchequer helpline number.
+  Flags=00110000
+end
+remarked item: Exit Installation
+  Flags=8
+end
+remarked item: End Block
+end
+remarked item: Custom Script Item
+  Filename=Display Progress Message.wse
+  Variable Name1=_CENTER_
+  Variable Value1=AB
+  Variable Name2=_WIDTH_
+  Variable Value2=320
+  Variable Name3=_MSG_TITLE_
+  Variable Value3=SQL Version
+  Variable Name4=HELPFILE
+  Variable Value4=C:\Program Files\Wise Installation System\Help\Wise.hlp
+  Variable Name5=_OPTION_
+  Variable Value5=A
+  Variable Name6=_Y_POS_
+  Variable Name7=_MSG_TEXT_
+  Variable Value7=Updating SQL Databases
+  Variable Name8=_HEIGHT_
+  Variable Value8=80
+  Variable Name9=_X_POS_
+end
+remarked item: Else Statement
+end
+remarked item: Remark
+  Text=Pervasive Version
+end
+remarked item: End Block
+end

@@ -1,0 +1,7 @@
+The ini file is HSBCIreland.ini. It should contain the UserIDs for Payment and receipts:
+
+[EFT]
+UserID=886655
+RecUserID=886655
+
+The format expects a 12-digit company hsbc bank account number. This should be stored in the System Setup Bank Ref field.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<val:jobrate xmlns:val="urn:www-iris-co-uk:jobrate">
+<message guid="" number="" count="" source="" destination="" flag="">
+    <jobraterec>
+       <jempcode/>   <!--:  String[10];    { Employee Code } -->
+       <jratecode/>  <!--:  String[10];    { Job Rate Code }  -->
+       <jratedesc><![CDATA[]]></jratedesc>  <!--:  String[30];    { Job Rate Description } -->
+       <janalcode/>  <!--:  String[10];    { Job Analysis Code } -->
+       <costcurr/>   <!--:  SmallInt;      { Time Cost Currency }-->
+       <cost/>       <!--:  Double;        { Time Cost } -->
+       <chargecurr/> <!--:  SmallInt;      { Time Charge Currency }  -->
+       <chargerate/> <!-- :  Double;        { Time Charge Rate } -->
+       <payrollcode/> <!--:  SmallInt;      { Payroll Code } -->
+       <payfactor/>  <!--:  SmallInt;      { Payroll Factor Code } -->
+       <payrate/>    <!--:  SmallInt;      { Payroll Rate Code } -->
+    </jobraterec>
+</message>
+</val:jobrate>

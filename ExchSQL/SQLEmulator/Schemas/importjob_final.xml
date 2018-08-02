@@ -1,0 +1,17 @@
+<schemarecord tldformat="3" version="0" tldthreshold="0" createtableproc="" isview="0" recordfieldname="" identitycol="PositionId" reclen="12">
+    <recordfields/>
+    <fixedfields>
+        <schemafield fieldname="f_field_1" fullfieldname="" typename="binary" size="8" elements="1" id="-1" columnname="f_field_1"/>
+        <schemafield fieldname="f_field_2" fullfieldname="" typename="int" size="4" elements="1" id="-1" columnname="f_field_2"/>
+    </fixedfields>
+    <defaultrecordtype>
+    </defaultrecordtype>
+    <recordtypes/>
+    <indexes>
+        <schemaindexes indexnumber="0" isunique="0" isclustered="0">
+            <indexfields>
+                <item>f_field_1</item>
+            </indexfields>
+        </schemaindexes>
+    </indexes>
+</schemarecord>

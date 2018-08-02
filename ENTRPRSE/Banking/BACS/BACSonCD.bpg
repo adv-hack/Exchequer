@@ -1,0 +1,250 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = ABNADMIN.exe ABNEPF.dll AIBADMIN.exe AccBank.dll AIBEFT.dll \
+  ANZABA.dll BACS1.dll BACSess.dll BACSNC.dll BACSTEL.dll BankIre.dll BIAdmin.exe \
+  BankIreX.dll BankLine.dll BanklinB.dll BLAdHoc.dll BANKSCOT.dll BUSMAST.dll \
+  Clyde13.dll ClydeNew.dll ClydBANK.dll COOPBANK.dll COUTTS.dll DANSKE.dll \
+  DANSKEUK.dll FirstNat.dll FirstTst.dll HEXAGON.dll HSB103EZ.dll HSB103PP.dll \
+  Hsbc18.dll HSBCAus.dll HSBCCAN.dll HsbcIre.dll HSBCNZ.dll HypoV.dll IDADMIN.exe \
+  IDEAL.dll JPMorgan.dll Lloyds.dll NIBBacs.dll NATWEST.dll AUTADMIN.exe \
+  Northern.dll PAYAWAY.dll NWPayMan.dll PCPAYCSV.dll PCPAYASC.dll RaboBank.dll \
+  RBS.dll CASHMAN.dll RBSBULK.dll Santnder.dll ShbBacs.dll ShbIntl.dll \
+  SogeCash.dll ULSTRBNK.dll Unity.dll YORKBANK.dll HSBCNach.dll ABNSEPA.dll \
+  AIBSEPA.dll BISEPA.dll BLSepa.dll BoASepa.dll DANSKSEP.dll Deutsche.dll \
+  HSBCSepa.dll NorthCSF.dll UBSPAY.dll UniSEPA.dll ULSTSEPA.dll ANZ.dll BMSepa.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+ABNADMIN.exe: ABN\ABNADMIN.DPR
+  $(DCC)
+
+ABNEPF.dll: ABN\ABNEPF.DPR
+  $(DCC)
+
+AccBank.dll: AccBank\AccBank.dpr
+  $(DCC)
+
+AIBADMIN.exe: AIB\AIBADMIN.DPR
+  $(DCC)
+
+AIBEFT.dll: AIB\AIBEFT.DPR
+  $(DCC)
+
+ANZABA.dll: ANZ-ABA\ANZABA.DPR
+  $(DCC)
+
+BACS1.dll: BACS1\BACS1.DPR
+  $(DCC)
+
+BACSess.dll: Bacsess\BACSess.dpr
+  $(DCC)
+
+BACSNC.dll: BACSNC\BACSNC.DPR
+  $(DCC)
+
+BACSTEL.dll: BACSTEL\BACSTEL.DPR
+  $(DCC)
+
+BankIre.dll: BankIreland\BankIre.dpr
+  $(DCC)
+
+BIAdmin.exe: BankIreland\BIAdmin.dpr
+  $(DCC)
+
+BankIreX.dll: BankIrelandEx\BankIreX.dpr
+  $(DCC)
+
+BankLine.dll: BankLine\BankLine.dpr
+  $(DCC)
+
+BanklinB.dll: BankLine\Bulk\BanklinB.dpr
+  $(DCC)
+
+BLAdHoc.dll: BankLine Adhoc\BLAdHoc.dpr
+  $(DCC)
+
+BANKSCOT.dll: BANKSCOT\BANKSCOT.DPR
+  $(DCC)
+
+BUSMAST.dll: BUSMAST\BUSMAST.DPR
+  $(DCC)
+
+Clyde13.dll: Clydesdale 2013\Clyde13.DPR
+  $(DCC)
+
+ClydeNew.dll: Clydesdale2\ClydeNew.DPR
+  $(DCC)
+
+ClydBANK.dll: Clydsdale\ClydBANK.DPR
+  $(DCC)
+
+COOPBANK.dll: Coop\COOPBANK.DPR
+  $(DCC)
+
+COUTTS.dll: COUTTS\COUTTS.DPR
+  $(DCC)
+
+DANSKE.dll: Danske\DANSKE.DPR
+  $(DCC)
+
+DANSKEUK.dll: DanskeUK\DANSKEUK.DPR
+  $(DCC)
+
+FirstNat.dll: FirstNat\FirstNat.DPR
+  $(DCC)
+
+FirstTst.dll: FirstTrust\FirstTst.dpr
+  $(DCC)
+
+HEXAGON.dll: HEXAGON\HEXAGON.DPR
+  $(DCC)
+
+HSB103EZ.dll: HSBC MT103 EZ\HSB103EZ.DPR
+  $(DCC)
+
+HSB103PP.dll: HSBC MT103 PP\HSB103PP.DPR
+  $(DCC)
+
+Hsbc18.dll: Hsbc18\Hsbc18.dpr
+  $(DCC)
+
+HSBCAus.dll: HSBCAustralia\HSBCAus.DPR
+  $(DCC)
+
+HSBCCAN.dll: HSBCCanada\HSBCCAN.DPR
+  $(DCC)
+
+HsbcIre.dll: HsbcIreland\HsbcIre.DPR
+  $(DCC)
+
+HSBCNZ.dll: HSBCNZ\HSBCNZ.DPR
+  $(DCC)
+
+HypoV.dll: HypoV\HypoV.dpr
+  $(DCC)
+
+IDADMIN.exe: IDEAL\IDADMIN.DPR
+  $(DCC)
+
+IDEAL.dll: IDEAL\IDEAL.DPR
+  $(DCC)
+
+JPMorgan.dll: JPMorgan\JPMorgan.dpr
+  $(DCC)
+
+Lloyds.dll: Lloyds\Lloyds.dpr
+  $(DCC)
+
+NIBBacs.dll: National Irish Bank\NIBBacs.dpr
+  $(DCC)
+
+NATWEST.dll: NATWEST\NATWEST.DPR
+  $(DCC)
+
+AUTADMIN.exe: NATWEST\AUTADMIN.DPR
+  $(DCC)
+
+Northern.dll: Northern\Northern.dpr
+  $(DCC)
+
+PAYAWAY.dll: PAYAWAY\PAYAWAY.DPR
+  $(DCC)
+
+NWPayMan.dll: PayManager\NWPayMan.dpr
+  $(DCC)
+
+PCPAYCSV.dll: PCPAY\PCPAYCSV.DPR
+  $(DCC)
+
+PCPAYASC.dll: PCPAYASC\PCPAYASC.DPR
+  $(DCC)
+
+RaboBank.dll: RaboBank\RaboBank.dpr
+  $(DCC)
+
+RBS.dll: RBS\RBS.DPR
+  $(DCC)
+
+CASHMAN.dll: RBS\Manage\CASHMAN.DPR
+  $(DCC)
+
+RBSBULK.dll: rbsbulk\RBSBULK.DPR
+  $(DCC)
+
+Santnder.dll: Santander\Santnder.DPR
+  $(DCC)
+
+ShbBacs.dll: SHB\BACS\ShbBacs.dpr
+  $(DCC)
+
+ShbIntl.dll: SHB\INTL\ShbIntl.dpr
+  $(DCC)
+
+SogeCash.dll: SogeCash\SogeCash.dpr
+  $(DCC)
+
+ULSTRBNK.dll: Ulstrbnk\ULSTRBNK.DPR
+  $(DCC)
+
+Unity.dll: Unity\Unity.dpr
+  $(DCC)
+
+YORKBANK.dll: Yorkbank\YORKBANK.DPR
+  $(DCC)
+
+HSBCNach.dll: HSBCNacha\HSBCNach.DPR
+  $(DCC)
+
+ABNSEPA.dll: ABN-AMRO Sepa\ABNSEPA.DPR
+  $(DCC)
+
+AIBSEPA.dll: AIB\SEPA\AIBSEPA.DPR
+  $(DCC)
+
+BISEPA.dll: BankIrelandEx\SEPA\BISEPA.DPR
+  $(DCC)
+
+BLSepa.dll: BankLine SEPA\BLSepa.dpr
+  $(DCC)
+
+BoASepa.dll: BankOfAmericaSepa\BoASepa.DPR
+  $(DCC)
+
+DANSKSEP.dll: Danske SEPA\DANSKSEP.DPR
+  $(DCC)
+
+Deutsche.dll: Deutsche Bank Sepa\Deutsche.DPR
+  $(DCC)
+
+HSBCSepa.dll: HsbcSepa\HSBCSepa.DPR
+  $(DCC)
+
+NorthCSF.dll: Northern\CSF\NorthCSF.dpr
+  $(DCC)
+
+UBSPAY.dll: UBS\UBSPAY.DPR
+  $(DCC)
+
+UniSEPA.dll: Unicredit SEPA\UniSEPA.DPR
+  $(DCC)
+
+ULSTSEPA.dll: Ulster SEPA\ULSTSEPA.DPR
+  $(DCC)
+
+ANZ.dll: ANZ\ANZ.dpr
+  $(DCC)
+
+BMSepa.dll: Barclays BM Sepa\BMSepa.dpr
+  $(DCC)
+
+

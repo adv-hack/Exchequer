@@ -1,0 +1,20 @@
+b431.117
+--------
+
+	TRADE.EXE
+	---------
+	Sanity Check added after login.
+	Fixed Bug with using "Create From..." on a TX with a non-stock item in it.
+
+	POSSETUP.EXE
+	------------
+	The Config now checks the currency of the input GL Codes.
+	Changed Nominal stuff to say GL Code instead.
+
+	SETUP
+	-----
+	Fixed small typo in installation program.
+	It now runs the configuration program for you after installation.
+       	Option added for demo version (previews to screen).
+        In the default TRADE01.DAT - Fixed GL Code for VISA so that it is now the correct currency.
+

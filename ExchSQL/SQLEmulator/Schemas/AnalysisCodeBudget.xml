@@ -1,0 +1,44 @@
+<schemarecord version="1" tldformat="4" tldthreshold="0" recordfieldname="" identitycol="PositionId" reclen="135" >
+	<recordfields></recordfields>
+	<fixedfields>
+    <schemafield fieldname="anal_code" fullfieldname="anal_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="AnalCode" collation="1"/>
+    <schemafield fieldname="hist_folio" fullfieldname="hist_folio" typename="long" size="4" elements="1" id="-1" columnname="HistFolio"/>
+    <schemafield fieldname="job_code" fullfieldname="job_code" typename="DelphiString" size="11" elements="1" id="-1" columnname="JobCode" collation="1"/>
+    <schemafield fieldname="stock_code" fullfieldname="stock_code" typename="DelphiString" size="21" elements="1" id="-1" columnname="StockCode" collation="1"/>
+    <schemafield fieldname="b_type" fullfieldname="b_type" typename="BYTE" size="1" elements="1" id="-1" columnname="BType"/>
+    <schemafield fieldname="re_charge" fullfieldname="re_charge" typename="bool1" size="1" elements="1" id="-1" columnname="ReCharge"/>
+    <schemafield fieldname="over_cost" fullfieldname="over_cost" typename="double" size="8" elements="1" id="-1" columnname="OverCost"/>
+    <schemafield fieldname="unit_price" fullfieldname="unit_price" typename="double" size="8" elements="1" id="-1" columnname="UnitPrice"/>
+    <schemafield fieldname="bo_qty" fullfieldname="bo_qty" typename="double" size="8" elements="1" id="-1" columnname="BoQty"/>
+    <schemafield fieldname="br_qty" fullfieldname="br_qty" typename="double" size="8" elements="1" id="-1" columnname="BRQty"/>
+    <schemafield fieldname="bo_value" fullfieldname="bo_value" typename="double" size="8" elements="1" id="-1" columnname="BoValue"/>
+    <schemafield fieldname="br_value" fullfieldname="br_value" typename="double" size="8" elements="1" id="-1" columnname="BRValue"/>
+    <schemafield fieldname="curr_budg" fullfieldname="curr_budg" typename="BYTE" size="1" elements="1" id="-1" columnname="CurrBudg"/>
+    <schemafield fieldname="pay_r_mode" fullfieldname="pay_r_mode" typename="bool1" size="1" elements="1" id="-1" columnname="PayRMode"/>
+    <schemafield fieldname="curr_p_type" fullfieldname="curr_p_type" typename="BYTE" size="1" elements="1" id="-1" columnname="CurrPType"/>
+    <schemafield fieldname="anal_hed" fullfieldname="anal_hed" typename="BYTE" size="1" elements="1" id="-1" columnname="AnalHed"/>
+    <schemafield fieldname="orig_valuation" fullfieldname="orig_valuation" typename="double" size="8" elements="1" id="-1" columnname="OrigValuation"/>
+    <schemafield fieldname="rev_valuation" fullfieldname="rev_valuation" typename="double" size="8" elements="1" id="-1" columnname="RevValuation"/>
+    <schemafield fieldname="jb_uplift_p" fullfieldname="jb_uplift_p" typename="double" size="8" elements="1" id="-1" columnname="JBUpliftP"/>
+    <schemafield fieldname="ja_pcnt_app" fullfieldname="ja_pcnt_app" typename="double" size="8" elements="1" id="-1" columnname="JAPcntApp"/>
+    <schemafield fieldname="ja_b_basis" fullfieldname="ja_b_basis" typename="BYTE" size="1" elements="1" id="-1" columnname="JABBasis"/>
+    <schemafield fieldname="jbudget_curr" fullfieldname="jbudget_curr" typename="BYTE" size="1" elements="1" id="-1" columnname="JBudgetCurr"/>
+  </fixedfields>
+  <defaultrecordtype/>
+  <recordtypes></recordtypes>
+	<indexes>
+		<schemaindexes indexnumber="0" isclustered="0" isunique="0">
+			<indexfields>
+				<item>job_code</item>
+				<item>anal_code</item>
+				<item>curr_budg</item>
+			</indexfields>
+		</schemaindexes>
+		<schemaindexes indexnumber="1" isclustered="0" isunique="0">
+			<indexfields>
+				<item>job_code</item>
+				<item>anal_hed</item>
+			</indexfields>
+		</schemaindexes>
+	</indexes>
+</schemarecord>
