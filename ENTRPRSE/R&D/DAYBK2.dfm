@@ -49,8 +49,8 @@ object Daybk1: TDaybk1
       object db1SBox: TScrollBox
         Left = 1
         Top = 2
-        Width = 380
-        Height = 308
+        Width = 1
+        Height = 1
         HorzScrollBar.Position = 7
         VertScrollBar.Visible = False
         TabOrder = 0
@@ -499,6 +499,30 @@ object Daybk1: TDaybk1
         AllowReSize = False
         IsGroupBox = False
         TextId = 0
+      end
+      object pnlGridBackground: TPanel
+        Left = 1
+        Top = 2
+        Width = 380
+        Height = 308
+        Color = clSkyBlue
+        TabOrder = 2
+        inline frDaybkGrid: TfrDataGrid
+          Left = 1
+          Top = 1
+          Width = 378
+          Height = 306
+          Align = alClient
+          TabOrder = 0
+          inherited pnlMain: TPanel
+            Width = 378
+            Height = 306
+            inherited grdMain: TcxGrid
+              Width = 376
+              Height = 304
+            end
+          end
+        end
       end
     end
     object QuotesPage: TTabSheet

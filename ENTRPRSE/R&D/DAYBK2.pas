@@ -66,7 +66,7 @@ uses
   ConsumerUtils,
 
   //Rahul002
-  dmMainDaybk2
+  dmMainDaybk2, BaseFrame, GridFrame
   ;
 
 
@@ -458,6 +458,8 @@ type
     mnuN11: TMenuItem;
     mnuNoFilter1: TMenuItem;
     WindowExport: TWindowExport;
+    pnlGridBackground: TPanel;
+    frDaybkGrid: TfrDataGrid;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -1812,14 +1814,14 @@ Begin
   PagePoint[0].X:=ClientWidth-(DPageCtrl1.Width);
   PagePoint[0].Y:=ClientHeight-(DPageCtrl1.Height);
 
-  PagePoint[1].X:=DPageCtrl1.Width-(db1SBox.Width);
-  PagePoint[1].Y:=DPageCtrl1.Height-(db1SBox.Height);
+  PagePoint[1].X:=DPageCtrl1.Width-(pnlGridBackground.Width);
+  PagePoint[1].Y:=DPageCtrl1.Height-(pnlGridBackground.Height);
 
   PagePoint[2].X:=DPageCtrl1.Width-(db1BtnPanel.Left);
   PagePoint[2].Y:=DPageCtrl1.Height-(db1BtnPanel.Height);
 
   PagePoint[3].X:=db1BtnPanel.Height-(db1BSBox.Height);
-  PagePoint[3].Y:=db1SBox.ClientHeight-(db1ORefPanel.Height);
+  PagePoint[3].Y:=pnlGridBackground.ClientHeight-(db1ORefPanel.Height);
 
   PagePoint[4].X:=DPageCtrl1.Width-(db1ListBtnPanel.Left);
   PagePoint[4].Y:=DPageCtrl1.Height-(db1ListBtnPanel.Height); 
@@ -2362,9 +2364,12 @@ begin
 
   //Rahul002-dataModule stuff
   if (DocHed in SalesSplit) then
-    FdmMain := TMainDataModule.Create(mtSales)
+    FdmMain := TMainDataModule.Create(Self,mtSales)
   else
-    FdmMain := TMainDataModule.Create(mtPurchase);
+    FdmMain := TMainDataModule.Create(Self,mtPurchase);
+
+  frDaybkGrid.vMain.DataController.DataSource := FdmMain.dsDaybkFetchData;
+  frDaybkGrid.InitGridColumns;
 
   MULCtrlO[0]:=TDayBkMList.Create(Self);
 
@@ -2773,8 +2778,8 @@ begin
     DPageCtrl1.Height:=ClientHeight-PagePoint[0].Y;
 
 
-    db1SBox.Width:=DPageCtrl1.Width-PagePoint[1].X;
-    db1SBox.Height:=DPageCtrl1.Height-PagePoint[1].Y;
+    pnlGridBackground.Width:=DPageCtrl1.Width-PagePoint[1].X;
+    pnlGridBackground.Height:=DPageCtrl1.Height-PagePoint[1].Y;
 
     db2SBox.Width:=DPageCtrl1.Width-PagePoint[1].X;
     db2SBox.Height:=DPageCtrl1.Height-PagePoint[1].Y;
@@ -2824,7 +2829,7 @@ begin
         VisiRec:=List[0];
 
         With (VisiRec^.PanelObj as TSBSPanel) do
-          Height:=db1SBox.ClientHeight-PagePoint[3].Y;
+          Height:=pnlGridBackground.ClientHeight-PagePoint[3].Y;
       end;
 
 
