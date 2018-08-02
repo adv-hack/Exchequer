@@ -6,11 +6,10 @@ object MainDataModule: TMainDataModule
   Height = 495
   Width = 756
   object connMain: TADOConnection
-    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;User ID=ADM1139ZZZZ01899;Initial Catalog=Exch2018R1;Dat' +
-      'a Source=RAHULB-PC'
+      'a Source=RAHULB-PC;'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 56
