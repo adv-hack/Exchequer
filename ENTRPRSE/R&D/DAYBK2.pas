@@ -63,7 +63,10 @@ uses
   WindowExport, ExportListIntf, oExcelExport,
 
   // CJS 2013-11-28 - MRD1.1.23 - Filter by Customer/Consumer
-  ConsumerUtils
+  ConsumerUtils,
+
+  //Rahul002
+  dmMainDaybk2
   ;
 
 
@@ -534,6 +537,9 @@ type
 
   private
     { Private declarations }
+
+    //Rahul002
+    FdmMain: TMainDataModule;
 
     UpDateFromPost,
     ListActive,
@@ -2319,7 +2325,6 @@ Var
   KeyEnd,
   KeyPrime
      :  Str255;
-
 begin
   StartPanel := nil;
   ListActive:=BOff;
@@ -2354,7 +2359,12 @@ begin
   //Rahul001-Disabling multilist
   db1SBox.Visible := False;
   db1ListBtnPanel.Visible := False;
-  //Rahul001-Disabling multilist
+
+  //Rahul002-dataModule stuff
+  if (DocHed in SalesSplit) then
+    FdmMain := TMainDataModule.Create(mtSales)
+  else
+    FdmMain := TMainDataModule.Create(mtPurchase);
 
   MULCtrlO[0]:=TDayBkMList.Create(Self);
 

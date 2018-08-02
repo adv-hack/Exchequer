@@ -2000,7 +2000,7 @@ Var
 Begin
   //Rahul001- stop call for daybk2 main tab
   if (Trim(Self.Parent.Name) = 'db1SBox') then
-    Exit;
+    Exit;   
   {$IFDEF MADEXCEPT}
     // MH 27/03/2013 v7.0.3 ABSEXCH-14144: Added additional logging to identify list classes in MadExcept logs
     If MadExceptListLogging Then
