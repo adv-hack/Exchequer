@@ -1816,7 +1816,7 @@ Begin
   PagePoint[3].Y:=db1SBox.ClientHeight-(db1ORefPanel.Height);
 
   PagePoint[4].X:=DPageCtrl1.Width-(db1ListBtnPanel.Left);
-  PagePoint[4].Y:=DPageCtrl1.Height-(db1ListBtnPanel.Height);
+  PagePoint[4].Y:=DPageCtrl1.Height-(db1ListBtnPanel.Height); 
 
 //  GotCoord:=BOn;
 
@@ -2351,6 +2351,12 @@ begin
     LastHCommP:=DayBkHistCommP;
   {$ENDIF}
 
+  //Rahul001-Disabling multilist
+  db1SBox.Visible := False;
+  db1ListBtnPanel.Visible := False;
+  //Rahul001-Disabling multilist
+
+  MULCtrlO[0]:=TDayBkMList.Create(Self);
 
   db1SBox.HorzScrollBar.Position:=0;
   db1SBox.VertScrollBar.Position:=0;
@@ -2371,8 +2377,6 @@ begin
   {.$ENDIF}
 
 
-
-  MULCtrlO[0]:=TDayBkMList.Create(Self);
 
   { CJS - 2013-08-21 - ABSEXCH-14558 - Daybook SortViews }
   If (DocHed In SalesSplit) then
@@ -2395,6 +2399,7 @@ begin
   MulCtrlO[0].Name := ListNames[0];
 
   Try
+
 
     With MULCtrlO[0] do
     Begin
@@ -2438,7 +2443,7 @@ begin
       except
         VisiList.Free;
 
-      end;
+      end;   
 
       {InitSize.Y:=368;
       InitSize.X:=530;
@@ -2565,10 +2570,11 @@ begin
       if MulCtrlO[0].UseDefaultSortView then
         MulCtrlO[0].UseDefaultSortView := MulCtrlO[0].SortView.LoadDefaultSortView;
 
-      if MulCtrlO[0].UseDefaultSortView then
+      //Rahul001- LoadingList
+      {if MulCtrlO[0].UseDefaultSortView then
         RefreshList
       else
-        StartList(InvF,InvRNoK,KeyStart,KeyEnd,KeyPrime,DKeyLen,BOff);
+        StartList(InvF,InvRNoK,KeyStart,KeyEnd,KeyPrime,DKeyLen,BOff);}
 
       ListOfSet:=10;
 
@@ -2581,7 +2587,7 @@ begin
 
     MULCtrlO[0].Free;
     MULCtrlO[0]:=Nil;
-  end;
+  end; 
 
 
   If (LastHRunNo=0) then
