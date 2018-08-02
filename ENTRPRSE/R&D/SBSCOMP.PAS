@@ -343,6 +343,8 @@ type
 
     SelectCol     :      ^TSelectCol;
 
+    IsDataFramework  : Boolean;
+
 
     Procedure RePaint_Row;
 
@@ -1255,6 +1257,7 @@ end;
 Procedure TMULCtrl.SetInListF(FO  :  Boolean);
 
 Begin
+
   If (FO<>fInListFind) then
     fInListFind:=FO;
 end;
@@ -1278,7 +1281,7 @@ Var
 
 Begin
   Inherited Create(AOwner);
-
+  IsDataFramework := False;
   fInProc := False;
   fDoingDestroy:=False;
 
@@ -2164,6 +2167,12 @@ end;
 Function TMULCtrl.ValidLine  :  Boolean;
 
 Begin
+  if IsDataFramework then
+  begin
+    Result := True;
+    Exit;
+  end;
+
   {$IFDEF MADEXCEPT}
     // MH 27/03/2013 v7.0.3 ABSEXCH-14144: Added additional logging to identify list classes in MadExcept logs
     If MadExceptListLogging Then

@@ -2372,6 +2372,7 @@ begin
   frDaybkGrid.InitGridColumns;
 
   MULCtrlO[0]:=TDayBkMList.Create(Self);
+  MULCtrlO[0].IsDataFramework := True;
 
   db1SBox.HorzScrollBar.Position:=0;
   db1SBox.VertScrollBar.Position:=0;
@@ -4059,7 +4060,7 @@ Begin
 
           With MULCtrlO[WParam-100] do
           Begin
-            if IsDataBase then Exit;
+            if IsDataFramework then Exit;
               If ((DocHed In SalesSplit) and (Inv.InvDocHed In SalesSplit)) or ((DocHed In PurchSplit) and (Inv.InvDocHed In PurchSplit))
               or ((DocHed In WOPSplit) and (Inv.InvDocHed In WOPSplit))
               {$IFDEF RET}  or ((DocHed In StkRETSplit) and (Inv.InvDocHed In StkRetSplit)) {$ENDIF}
@@ -5503,9 +5504,9 @@ begin
   AllowPostedEdit := False;
 
   If ((Sender Is TButton) or (Sender Is TMenuItem)) and (Not MULCtrlO[Current_Page].InListFind)
-     and ((MULCtrlO[Current_Page].ValidLine) or (Sender=Adddb1Btn) or (Sender=Add1) or (IsDataBase)) then
+     and ((MULCtrlO[Current_Page].ValidLine) or (Sender=Adddb1Btn) or (Sender=Add1)  ) then
   Begin
-    if (not IsDataBase) then
+    if (not MULCtrlO[Current_Page].IsDataFrameWork) then
       With MULCtrlO[Current_Page] do
         RefreshLine(MUListBoxes[0].Row,BOff);
 
