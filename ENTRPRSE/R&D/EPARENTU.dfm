@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 114
-  Top = 66
+  Top = 187
   Width = 1024
-  Height = 586
+  Height = 465
   Caption = 'Exchequer'
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -44,8 +44,8 @@ object MainForm: TMainForm
   end
   object SBSPanel1: TSBSPanel
     Left = 0
-    Top = 516
-    Width = 1016
+    Top = 387
+    Width = 1008
     Height = 19
     Align = alBottom
     BevelOuter = bvNone
@@ -56,7 +56,7 @@ object MainForm: TMainForm
     object StatusBar: TStatusBar
       Left = 0
       Top = 0
-      Width = 1016
+      Width = 1008
       Height = 19
       Align = alClient
       Panels = <
@@ -178,7 +178,7 @@ object MainForm: TMainForm
   object AdvDockPanel: TAdvDockPanel
     Left = 0
     Top = 0
-    Width = 1016
+    Width = 1008
     Height = 46
     MinimumSize = 3
     LockHeight = False
@@ -190,7 +190,7 @@ object MainForm: TMainForm
     object AdvToolBar: TAdvToolBar
       Left = 3
       Top = 1
-      Width = 1010
+      Width = 1002
       Height = 44
       AllowFloating = False
       Locked = True

@@ -6,7 +6,6 @@ interface
 {$I DEFOvr.Inc}
 
 uses
-  Test,
   ShareMem,
   Windows, SysUtils, Classes, Graphics, Forms, Controls, Menus, Math,
   StdCtrls, Dialogs, Buttons, Messages, ExtCtrls, ComCtrls,
@@ -790,7 +789,6 @@ type
     procedure mnuCheckSQLPostingCompatibilityClick(Sender: TObject);
     procedure popExportListPopup(Sender: TObject);
     procedure ExportToExcelMenuItemsClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -10104,14 +10102,6 @@ begin
 end;
 
 //-------------------------------------------------------------------------
-
-procedure TMainForm.Button1Click(Sender: TObject);
-var
-  lFrmObj: TForm1;
-begin
-  lFrmObj := TForm1.Create(Self);
-  lFrmObj.Show();
-end;
 
 Initialization
   ExitSave:=ExitProc;

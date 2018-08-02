@@ -7,6 +7,11 @@ program Enter1;
 
 uses
   ShareMem,
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   madListForms in 'W:\Compon\madCollection\madExcept\Custom\madListForms.pas',  
   {$IFDEF HTMLHELP}
     D6OnHelpFix,
@@ -230,8 +235,7 @@ uses
     CISWrite in 'W:\Entrprse\CISXML\CISWrite.pas' {TCISMessageRec},
     CISXCnst in 'W:\Entrprse\CISXML\CISXCnst.pas' ,
     InternetFiling_TLB in 'W:\Entrprse\CISXML\InternetFiling_TLB.pas',
-    //MSCorLib_TLB in '\FBI Release 1.0.5\Delphi Test Harness\MSCorLib_TLB.pas',
-    MSCorLib_TLB in 'W:\Entrprse\CISXML\MSCorLib_TLB.pas',
+
     CISXMLWU,
     CISXMLTU,
 
