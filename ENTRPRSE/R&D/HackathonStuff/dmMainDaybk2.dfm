@@ -1,8 +1,8 @@
 object MainDataModule: TMainDataModule
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 563
-  Top = 246
+  Left = 393
+  Top = 165
   Height = 495
   Width = 756
   object connMain: TADOConnection
@@ -19,6 +19,7 @@ object MainDataModule: TMainDataModule
   object qryDaybkFetchData: TADOQuery
     Connection = connMain
     CursorType = ctStatic
+    AfterScroll = qryDaybkFetchDataAfterScroll
     Parameters = <>
     Left = 40
     Top = 112
@@ -201,9 +202,11 @@ object MainDataModule: TMainDataModule
     end
     object qryDaybkFetchDatathNetValue: TFloatField
       FieldName = 'thNetValue'
+      DisplayFormat = '0.00'
     end
     object qryDaybkFetchDatathTotalVAT: TFloatField
       FieldName = 'thTotalVAT'
+      DisplayFormat = '0.00'
     end
     object qryDaybkFetchDatathSettleDiscPerc: TFloatField
       FieldName = 'thSettleDiscPerc'

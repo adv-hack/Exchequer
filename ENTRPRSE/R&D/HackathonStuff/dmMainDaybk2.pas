@@ -3,7 +3,8 @@ unit dmMainDaybk2;
 interface
 
 uses
-  SysUtils, Classes, SQLCallerU, DB, ADODB, SQLUtils, GlobVar, Dialogs;
+  SysUtils, Classes, SQLCallerU, DB, ADODB, SQLUtils, GlobVar, Dialogs, Varconst,
+  Btrvu2, BtKeys1U;
 
 const
   NonDocTypeForPurch = 22;
@@ -229,6 +230,7 @@ type
     qryDaybkFetchDatathBatchLinkTrans: TMemoField;
     dsDaybkFetchData: TDataSource;
     procedure DataModuleDestroy(Sender: TObject);
+    procedure qryDaybkFetchDataAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
     FModuleType: TModuleType;
@@ -303,6 +305,14 @@ end;
 constructor TMainDataModule.Create(aOwner : TComponent);
 begin
   inherited Create(aOwner);
+end;
+
+procedure TMainDataModule.qryDaybkFetchDataAfterScroll(DataSet: TDataSet);
+var
+  lKeyS: Str255;
+begin
+  lKeyS := FullOurRefKey(qryDaybkFetchDatathOurRef.Value);
+  Status := Find_Rec(B_GetEq,F[InvF],InvF,RecPtr[InvF]^, InvOurRefK, lKeyS);
 end;
 
 end.

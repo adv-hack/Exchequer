@@ -6,7 +6,6 @@ object ObjDFrm: TObjDFrm
   Hint = 
     '|Double click on any of the ObjectDrill branches to view the inf' +
     'ormation shown in more detail.'
-  HorzScrollBar.Position = 25
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ObjectDrill'
   Color = clBtnFace
@@ -30,7 +29,7 @@ object ObjDFrm: TObjDFrm
   PixelsPerInch = 96
   TextHeight = 14
   object ODOLine: TSBSOutlineB
-    Left = -25
+    Left = 0
     Top = 0
     Width = 233
     Height = 191
@@ -240,7 +239,7 @@ object ObjDFrm: TObjDFrm
     Data = {9C01}
   end
   object ClsI1Btn: TButton
-    Left = 51
+    Left = 76
     Top = 197
     Width = 80
     Height = 21
