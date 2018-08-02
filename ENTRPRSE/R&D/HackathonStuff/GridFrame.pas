@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BaseFrame, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
-  cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses,
+  Dialogs, BaseFrame, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,     MainData,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxGridCommon,
+  cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses,cxGridDBDataDefinitions,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Menus, ActnList;
+  cxGridDBTableView, cxGrid, Menus, ActnList, ADODB;
 
 type
   TfrDataGrid = class(TfrBase)
@@ -16,6 +16,8 @@ type
     vMain: TcxGridDBTableView;
     lvlMain: TcxGridLevel;
     grdMain: TcxGrid;
+    aColumnCust: TAction;
+    procedure aColumnCustExecute(Sender: TObject);
   private
     FAutoloadColumn: Boolean;
     procedure SetAutoloadColumn(const Value: Boolean);
@@ -84,19 +86,57 @@ begin
 end;
 
 procedure TfrDataGrid.InitGridColumns;
+
+var
+  I: Integer;
+  AItem: TcxCustomGridTableItem;
 begin
   inherited;
   if AutoloadColumn then
   begin
-    vMain.BeginUpdate;
-    vMain.DataController.CreateAllItems;
-    vMain.EndUpdate;
+    if vMain.DataController.DataSource.DataSet = nil then Exit;
+    
+    ShowHourglassCursor;
+    try
+      vMain.BeginUpdate;
+      try
+        with vMain.DataController.DataSource.DataSet  do
+          for I := 0 to FieldCount - 1 do
+          begin
+            if Fields[I].Visible then
+            begin 
+              AItem := vMain.CreateItem;
+              with AItem do
+              begin
+                with DataBinding as TcxGridItemDBDataBinding do
+                  FieldName := Fields[I].FieldName;
+                Name := CreateUniqueName(GridView.Owner, GridView, AItem,
+                  ScxGridPrefixName, Fields[I].FieldName);
+                Visible := Fields[I].Visible;
+              end;
+            end;
+          end;
+      finally
+        vMain.EndUpdate;
+      end;
+    finally
+      HideHourglassCursor;
+    end;
   end;
 end;
+
+
 
 procedure TfrDataGrid.SetAutoloadColumn(const Value: Boolean);
 begin
   FAutoloadColumn := Value;
+end;
+
+procedure TfrDataGrid.aColumnCustExecute(Sender: TObject);
+begin
+  inherited;
+//
+//vMain.OptionsCustomize.
 end;
 
 end.
