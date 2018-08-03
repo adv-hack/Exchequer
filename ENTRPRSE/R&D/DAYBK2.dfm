@@ -1,8 +1,8 @@
 object Daybk1: TDaybk1
-  Left = 602
-  Top = 243
-  Width = 542
-  Height = 379
+  Left = 353
+  Top = 147
+  Width = 1378
+  Height = 455
   HelpContext = 1
   HorzScrollBar.Visible = False
   VertScrollBar.Visible = False
@@ -516,11 +516,331 @@ object Daybk1: TDaybk1
           Align = alClient
           TabOrder = 0
           inherited pnlMain: TPanel
+            Left = 0
+            Top = 0
             Width = 378
             Height = 306
+            Align = alClient
+            TabOrder = 0
             inherited grdMain: TcxGrid
+              Left = 1
+              Top = 1
               Width = 376
               Height = 304
+              Align = alClient
+              TabOrder = 0
+              inherited vMain: TcxGridDBTableView
+                PopupMenu = frDaybkGrid.pmMain
+                NavigatorButtons.ConfirmDelete = False
+                NavigatorButtons.Insert.Visible = False
+                NavigatorButtons.Delete.Visible = False
+                NavigatorButtons.Edit.Visible = False
+                NavigatorButtons.Post.Visible = False
+                NavigatorButtons.Refresh.Visible = False
+                NavigatorButtons.SaveBookmark.Visible = False
+                NavigatorButtons.GotoBookmark.Visible = False
+                BackgroundBitmaps.Background.Data = {00000000}
+                BackgroundBitmaps.Content.Data = {00000000}
+                BackgroundBitmaps.FilterBox.Data = {00000000}
+                BackgroundBitmaps.Footer.Data = {00000000}
+                BackgroundBitmaps.Header.Data = {00000000}
+                BackgroundBitmaps.Group.Data = {00000000}
+                BackgroundBitmaps.GroupByBox.Data = {00000000}
+                BackgroundBitmaps.Indicator.Data = {00000000}
+                BackgroundBitmaps.Preview.Data = {00000000}
+                DataController.KeyFieldNames = 'PositionId'
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsBehavior.IncSearch = True
+                OptionsCustomize.ColumnsQuickCustomization = True
+                OptionsData.CancelOnExit = False
+                OptionsData.Deleting = False
+                OptionsData.DeletingConfirmation = False
+                OptionsData.Editing = False
+                OptionsData.Inserting = False
+                OptionsSelection.CellSelect = False
+                OptionsSelection.MultiSelect = True
+                OptionsView.Navigator = True
+                OptionsView.NavigatorOffset = 60
+                OptionsView.GridLineColor = 16577257
+                Styles.GroupByBox = styleGroupBox
+                Styles.Header = cxStyle1
+              end
+              inherited vDetail: TcxGridDBTableView
+                NavigatorButtons.ConfirmDelete = False
+                NavigatorButtons.First.Visible = False
+                NavigatorButtons.PriorPage.Visible = False
+                NavigatorButtons.Prior.Visible = False
+                NavigatorButtons.Next.Visible = False
+                NavigatorButtons.NextPage.Visible = False
+                NavigatorButtons.Last.Visible = False
+                NavigatorButtons.Insert.Visible = False
+                NavigatorButtons.Append.Visible = False
+                NavigatorButtons.Delete.Visible = False
+                NavigatorButtons.Edit.Visible = False
+                NavigatorButtons.Post.Visible = False
+                NavigatorButtons.Cancel.Visible = False
+                NavigatorButtons.Refresh.Visible = False
+                NavigatorButtons.SaveBookmark.Visible = False
+                NavigatorButtons.GotoBookmark.Visible = False
+                NavigatorButtons.Filter.Visible = False
+                BackgroundBitmaps.Background.Data = {00000000}
+                BackgroundBitmaps.Content.Data = {00000000}
+                BackgroundBitmaps.FilterBox.Data = {00000000}
+                BackgroundBitmaps.Footer.Data = {00000000}
+                BackgroundBitmaps.Header.Data = {00000000}
+                BackgroundBitmaps.Group.Data = {00000000}
+                BackgroundBitmaps.GroupByBox.Data = {00000000}
+                BackgroundBitmaps.Indicator.Data = {00000000}
+                BackgroundBitmaps.Preview.Data = {00000000}
+                DataController.DetailKeyFieldNames = 'tlFolioNum'
+                DataController.KeyFieldNames = 'PositionId'
+                DataController.MasterKeyFieldNames = 'thFolioNum'
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsBehavior.IncSearch = True
+                OptionsCustomize.ColumnsQuickCustomization = True
+                OptionsData.CancelOnExit = False
+                OptionsData.Deleting = False
+                OptionsData.DeletingConfirmation = False
+                OptionsData.Editing = False
+                OptionsData.Inserting = False
+                OptionsSelection.CellSelect = False
+                OptionsSelection.MultiSelect = True
+                OptionsView.Navigator = True
+                OptionsView.NavigatorOffset = 60
+                OptionsView.GridLineColor = 16577257
+                OptionsView.GroupByBox = False
+                inherited vDetailtlFolioNum: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlFolioNum'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlStockCodeTrans1: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlStockCodeTrans1'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlDescription: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlDescription'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlOurRef: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlOurRef'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlGLCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlGLCode'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlLineType: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlLineType'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlDepartment: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlDepartment'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlCostCentre: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlCostCentre'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlDocType: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlDocType'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlQty: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlQty'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlQtyMul: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlQtyMul'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlNetValue: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlNetValue'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlDiscount: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlDiscount'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlVATCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlVATCode'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlVATAmount: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlVATAmount'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlPaymentCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlPaymentCode'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlCost: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlCost'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlAcCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlAcCode'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlLineDate: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlLineDate'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlJobCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlJobCode'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlAnalysisCode: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlAnalysisCode'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlStockDeductQty: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlStockDeductQty'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlLocation: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlLocation'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlQtyPicked: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlQtyPicked'
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlQtyPickedWO: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlQtyPickedWO'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlUsePack: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlUsePack'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlSerialQty: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlSerialQty'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlQtyPack: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlQtyPack'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailtlAcCodeTrans: TcxGridDBColumn
+                  DataBinding.FieldName = 'tlAcCodeTrans'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+                inherited vDetailPositionId: TcxGridDBColumn
+                  DataBinding.FieldName = 'PositionId'
+                  Visible = False
+                  HeaderGlyph.Data = {00000000}
+                end
+              end
+              inherited lvlMain: TcxGridLevel
+                GridView = frDaybkGrid.vMain
+                inherited lvlDetail: TcxGridLevel
+                  GridView = frDaybkGrid.vDetail
+                  Visible = False
+                end
+              end
+            end
+          end
+          inherited alMain: TActionList
+            inherited aExpand: TAction
+              Caption = 'Expand All'
+              ShortCut = 24645
+            end
+            inherited aCollapse: TAction
+              Caption = 'Collapse All'
+              ShortCut = 24643
+            end
+            inherited aBestFit: TAction
+              Caption = 'Apply Best Fit'
+            end
+            inherited aColumnCust: TAction
+              Caption = 'Column Customization'
+            end
+            inherited aExportToExcel: TAction
+              Caption = 'Export To Excel'
+            end
+            inherited aExportToHtml: TAction
+              Caption = 'Export To HTML'
+            end
+            inherited aExportToXML: TAction
+              Caption = 'Export To XML'
+            end
+            inherited aExportToText: TAction
+              Caption = 'Export To Text'
+            end
+            inherited aShowDetail: TAction
+              Caption = 'Show Detail'
+            end
+            inherited aRefresh: TAction
+              Caption = 'Refresh'
+              ShortCut = 116
+            end
+          end
+          inherited pmMain: TPopupMenu
+            inherited ApplyBestFit1: TMenuItem
+              Action = frDaybkGrid.aBestFit
+              Bitmap.Data = {00000000}
+            end
+            inherited N3: TMenuItem
+              Bitmap.Data = {00000000}
+              Caption = '-'
+            end
+            inherited CollapseAll1: TMenuItem
+              Action = frDaybkGrid.aCollapse
+              Bitmap.Data = {00000000}
+            end
+            inherited CollapseAll2: TMenuItem
+              Action = frDaybkGrid.aExpand
+              Bitmap.Data = {00000000}
+            end
+            inherited N1: TMenuItem
+              Bitmap.Data = {00000000}
+              Caption = '-'
+            end
+            inherited mniShowDetail: TMenuItem
+              Action = frDaybkGrid.aShowDetail
+              Bitmap.Data = {00000000}
+            end
+            inherited Refresh1: TMenuItem
+              Action = frDaybkGrid.aRefresh
+              Bitmap.Data = {00000000}
+            end
+            inherited N2: TMenuItem
+              Bitmap.Data = {00000000}
+              Caption = '-'
+            end
+            inherited ExportToExcel1: TMenuItem
+              Action = frDaybkGrid.aExportToExcel
+              Bitmap.Data = {00000000}
+            end
+            inherited ExportToHTML1: TMenuItem
+              Action = frDaybkGrid.aExportToHtml
+              Bitmap.Data = {00000000}
+            end
+            inherited ExportToText1: TMenuItem
+              Action = frDaybkGrid.aExportToText
+              Bitmap.Data = {00000000}
+            end
+            inherited ExportToXML1: TMenuItem
+              Action = frDaybkGrid.aExportToXML
+              Bitmap.Data = {00000000}
             end
           end
         end
@@ -4044,5 +4364,23 @@ object Daybk1: TDaybk1
     OnGetExportDescription = WindowExportGetExportDescription
     Left = 34
     Top = 102
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 112
+    Top = 64
+    PixelsPerInch = 96
+    object styleGroupBox: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 16709095
+      TextColor = 16744448
+    end
+    object cxStyle1: TcxStyle
+      AssignedValues = [svFont]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+    end
   end
 end

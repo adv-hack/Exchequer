@@ -1,8 +1,8 @@
 object MainDataModule: TMainDataModule
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 182
-  Top = 161
+  Left = 603
+  Top = 155
   Height = 495
   Width = 756
   object connMain: TADOConnection
@@ -89,7 +89,6 @@ object MainDataModule: TMainDataModule
     object qryDaybkFetchDataPeriod: TStringField
       FieldName = 'Period'
       ReadOnly = True
-      Visible = False
       Size = 21
     end
     object qryDaybkFetchDatathDueDate: TStringField
@@ -280,6 +279,7 @@ object MainDataModule: TMainDataModule
     object qryDetailtlOurRef: TStringField
       DisplayLabel = 'Our Ref'
       FieldName = 'tlOurRef'
+      Visible = False
       Size = 10
     end
     object qryDetailtlGLCode: TIntegerField
@@ -313,6 +313,7 @@ object MainDataModule: TMainDataModule
     object qryDetailtlQtyMul: TFloatField
       DisplayLabel = 'Qty Mulltiplier'
       FieldName = 'tlQtyMul'
+      Visible = False
       DisplayFormat = '0.00'
     end
     object qryDetailtlNetValue: TFloatField
@@ -348,6 +349,7 @@ object MainDataModule: TMainDataModule
     object qryDetailtlAcCode: TStringField
       DisplayLabel = 'Ac Code'
       FieldName = 'tlAcCode'
+      Visible = False
       Size = 10
     end
     object qryDetailtlLineDate: TStringField
@@ -368,15 +370,18 @@ object MainDataModule: TMainDataModule
     object qryDetailtlStockDeductQty: TFloatField
       DisplayLabel = 'Deduct Qty'
       FieldName = 'tlStockDeductQty'
+      Visible = False
     end
     object qryDetailtlLocation: TStringField
       DisplayLabel = 'Location'
       FieldName = 'tlLocation'
+      Visible = False
       Size = 3
     end
     object qryDetailtlQtyPicked: TFloatField
       DisplayLabel = 'Qty Picked'
       FieldName = 'tlQtyPicked'
+      Visible = False
     end
     object qryDetailtlQtyPickedWO: TFloatField
       FieldName = 'tlQtyPickedWO'

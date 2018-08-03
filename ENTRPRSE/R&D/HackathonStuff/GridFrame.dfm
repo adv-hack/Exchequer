@@ -40,25 +40,26 @@ inherited frDataGrid: TfrDataGrid
         OptionsSelection.MultiSelect = True
         OptionsView.Navigator = True
         OptionsView.NavigatorOffset = 60
+        OptionsView.GridLineColor = 16577257
       end
       object vDetail: TcxGridDBTableView
         NavigatorButtons.ConfirmDelete = False
-        NavigatorButtons.First.Visible = True
-        NavigatorButtons.PriorPage.Visible = True
-        NavigatorButtons.Prior.Visible = True
-        NavigatorButtons.Next.Visible = True
-        NavigatorButtons.NextPage.Visible = True
-        NavigatorButtons.Last.Visible = True
+        NavigatorButtons.First.Visible = False
+        NavigatorButtons.PriorPage.Visible = False
+        NavigatorButtons.Prior.Visible = False
+        NavigatorButtons.Next.Visible = False
+        NavigatorButtons.NextPage.Visible = False
+        NavigatorButtons.Last.Visible = False
         NavigatorButtons.Insert.Visible = False
         NavigatorButtons.Append.Visible = False
         NavigatorButtons.Delete.Visible = False
         NavigatorButtons.Edit.Visible = False
         NavigatorButtons.Post.Visible = False
-        NavigatorButtons.Cancel.Visible = True
+        NavigatorButtons.Cancel.Visible = False
         NavigatorButtons.Refresh.Visible = False
         NavigatorButtons.SaveBookmark.Visible = False
         NavigatorButtons.GotoBookmark.Visible = False
-        NavigatorButtons.Filter.Visible = True
+        NavigatorButtons.Filter.Visible = False
         DataController.DetailKeyFieldNames = 'tlFolioNum'
         DataController.KeyFieldNames = 'PositionId'
         DataController.MasterKeyFieldNames = 'thFolioNum'
@@ -76,25 +77,16 @@ inherited frDataGrid: TfrDataGrid
         OptionsSelection.MultiSelect = True
         OptionsView.Navigator = True
         OptionsView.NavigatorOffset = 60
-        object vDetailtlFolioNum: TcxGridDBColumn
-          DataBinding.FieldName = 'tlFolioNum'
-          Visible = False
-        end
+        OptionsView.GridLineColor = 16577257
+        OptionsView.GroupByBox = False
         object vDetailtlStockCodeTrans1: TcxGridDBColumn
           DataBinding.FieldName = 'tlStockCodeTrans1'
         end
         object vDetailtlDescription: TcxGridDBColumn
           DataBinding.FieldName = 'tlDescription'
         end
-        object vDetailtlOurRef: TcxGridDBColumn
-          DataBinding.FieldName = 'tlOurRef'
-        end
         object vDetailtlGLCode: TcxGridDBColumn
           DataBinding.FieldName = 'tlGLCode'
-        end
-        object vDetailtlLineType: TcxGridDBColumn
-          DataBinding.FieldName = 'tlLineType'
-          Visible = False
         end
         object vDetailtlDepartment: TcxGridDBColumn
           DataBinding.FieldName = 'tlDepartment'
@@ -102,15 +94,8 @@ inherited frDataGrid: TfrDataGrid
         object vDetailtlCostCentre: TcxGridDBColumn
           DataBinding.FieldName = 'tlCostCentre'
         end
-        object vDetailtlDocType: TcxGridDBColumn
-          DataBinding.FieldName = 'tlDocType'
-          Visible = False
-        end
         object vDetailtlQty: TcxGridDBColumn
           DataBinding.FieldName = 'tlQty'
-        end
-        object vDetailtlQtyMul: TcxGridDBColumn
-          DataBinding.FieldName = 'tlQtyMul'
         end
         object vDetailtlNetValue: TcxGridDBColumn
           DataBinding.FieldName = 'tlNetValue'
@@ -125,16 +110,9 @@ inherited frDataGrid: TfrDataGrid
           DataBinding.FieldName = 'tlVATAmount'
           Visible = False
         end
-        object vDetailtlPaymentCode: TcxGridDBColumn
-          DataBinding.FieldName = 'tlPaymentCode'
-          Visible = False
-        end
         object vDetailtlCost: TcxGridDBColumn
           DataBinding.FieldName = 'tlCost'
           Visible = False
-        end
-        object vDetailtlAcCode: TcxGridDBColumn
-          DataBinding.FieldName = 'tlAcCode'
         end
         object vDetailtlLineDate: TcxGridDBColumn
           DataBinding.FieldName = 'tlLineDate'
@@ -146,39 +124,6 @@ inherited frDataGrid: TfrDataGrid
         end
         object vDetailtlAnalysisCode: TcxGridDBColumn
           DataBinding.FieldName = 'tlAnalysisCode'
-          Visible = False
-        end
-        object vDetailtlStockDeductQty: TcxGridDBColumn
-          DataBinding.FieldName = 'tlStockDeductQty'
-        end
-        object vDetailtlLocation: TcxGridDBColumn
-          DataBinding.FieldName = 'tlLocation'
-        end
-        object vDetailtlQtyPicked: TcxGridDBColumn
-          DataBinding.FieldName = 'tlQtyPicked'
-        end
-        object vDetailtlQtyPickedWO: TcxGridDBColumn
-          DataBinding.FieldName = 'tlQtyPickedWO'
-          Visible = False
-        end
-        object vDetailtlUsePack: TcxGridDBColumn
-          DataBinding.FieldName = 'tlUsePack'
-          Visible = False
-        end
-        object vDetailtlSerialQty: TcxGridDBColumn
-          DataBinding.FieldName = 'tlSerialQty'
-          Visible = False
-        end
-        object vDetailtlQtyPack: TcxGridDBColumn
-          DataBinding.FieldName = 'tlQtyPack'
-          Visible = False
-        end
-        object vDetailtlAcCodeTrans: TcxGridDBColumn
-          DataBinding.FieldName = 'tlAcCodeTrans'
-          Visible = False
-        end
-        object vDetailPositionId: TcxGridDBColumn
-          DataBinding.FieldName = 'PositionId'
           Visible = False
         end
       end

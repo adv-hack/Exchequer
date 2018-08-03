@@ -142,8 +142,8 @@ begin
       qryDaybkFetchData.SQL.Text := ' SELECT [thRunNo] '+
                                       ',[thOurRef]   '+
                                       ',[thAcCode]'+
-                                      ',Convert(DATE, [thTransDate], 103) as thTransDate_1'+
-                                      ',(Str(thYear+1900) + ' + QuotedStr('-') + '+lTrim(Str(thperiod))) as Period ' +
+                                      ',Convert(DATE, [thTransDate], 103) as thTransDate_1' +
+                                      ',(lTrim(Str(thperiod)) + ' + QuotedStr('/') + '+ lTrim(Str(thYear+1900))) as Period ' +
                                       ',[thNetValue] + [thTotalVAT] as Amount '+
                                       ',[thHoldFlag] ' + 
                                       ',CurrencyCode ' +

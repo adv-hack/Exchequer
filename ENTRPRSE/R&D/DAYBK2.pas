@@ -66,7 +66,7 @@ uses
   ConsumerUtils,
 
   //Rahul002
-  dmMainDaybk2, BaseFrame, GridFrame
+  dmMainDaybk2, BaseFrame, GridFrame, cxStyles
   ;
 
 
@@ -460,6 +460,9 @@ type
     WindowExport: TWindowExport;
     pnlGridBackground: TPanel;
     frDaybkGrid: TfrDataGrid;
+    cxStyleRepository1: TcxStyleRepository;
+    styleGroupBox: TcxStyle;
+    cxStyle1: TcxStyle;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -2684,6 +2687,8 @@ begin
   *)
   {$ENDIF}
 
+  Finddb1Btn.Enabled := false;
+  SortViewBtn.enabled := false;
 end;
 
 
@@ -7975,8 +7980,8 @@ begin
   frDaybkGrid.vDetail.DataController.DetailKeyFieldNames := 'tlFolioNum';
   frDaybkGrid.vDetail.DataController.DataSource := FdmMain.dsDaybookDetail;
   FdmMain.InitDetailQuery;
-  frDaybkGrid.InitColumns(frDaybkGrid.vDetail);
-  frDaybkGrid.vDetail.ApplyBestFit();   
+ // frDaybkGrid.InitColumns(frDaybkGrid.vDetail);
+  frDaybkGrid.vDetail.ApplyBestFit();
 end;
 
 //PL 09/02/2017 2017-R1 ABSEXCH-13159 :  added ability to post Single Transaction on Daybook posting
