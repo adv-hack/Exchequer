@@ -32,6 +32,36 @@ type
     aShowDetail: TAction;
     mniShowDetail: TMenuItem;
     N3: TMenuItem;
+    vDetailtlFolioNum: TcxGridDBColumn;
+    vDetailtlStockCodeTrans1: TcxGridDBColumn;
+    vDetailtlDescription: TcxGridDBColumn;
+    vDetailtlOurRef: TcxGridDBColumn;
+    vDetailtlGLCode: TcxGridDBColumn;
+    vDetailtlLineType: TcxGridDBColumn;
+    vDetailtlDepartment: TcxGridDBColumn;
+    vDetailtlCostCentre: TcxGridDBColumn;
+    vDetailtlDocType: TcxGridDBColumn;
+    vDetailtlQty: TcxGridDBColumn;
+    vDetailtlQtyMul: TcxGridDBColumn;
+    vDetailtlNetValue: TcxGridDBColumn;
+    vDetailtlDiscount: TcxGridDBColumn;
+    vDetailtlVATCode: TcxGridDBColumn;
+    vDetailtlVATAmount: TcxGridDBColumn;
+    vDetailtlPaymentCode: TcxGridDBColumn;
+    vDetailtlCost: TcxGridDBColumn;
+    vDetailtlAcCode: TcxGridDBColumn;
+    vDetailtlLineDate: TcxGridDBColumn;
+    vDetailtlJobCode: TcxGridDBColumn;
+    vDetailtlAnalysisCode: TcxGridDBColumn;
+    vDetailtlStockDeductQty: TcxGridDBColumn;
+    vDetailtlLocation: TcxGridDBColumn;
+    vDetailtlQtyPicked: TcxGridDBColumn;
+    vDetailtlQtyPickedWO: TcxGridDBColumn;
+    vDetailtlUsePack: TcxGridDBColumn;
+    vDetailtlSerialQty: TcxGridDBColumn;
+    vDetailtlQtyPack: TcxGridDBColumn;
+    vDetailtlAcCodeTrans: TcxGridDBColumn;
+    vDetailPositionId: TcxGridDBColumn;
     procedure aExportToTextExecute(Sender: TObject);
     procedure aExportToXMLExecute(Sender: TObject);
     procedure aExportToHtmlExecute(Sender: TObject);
@@ -76,6 +106,8 @@ begin
   vMain.BeginUpdate;
   try
     vMain.ApplyBestFit();
+    if lvlDetail.Visible then
+      vDetail.ApplyBestFit();
   finally
    vMain.EndUpdate;
   end;
@@ -124,7 +156,7 @@ begin
 
     ShowHourglassCursor;
     try
-      aView.BeginUpdate;
+      //aView.BeginUpdate;
       try
         with aView.DataController.DataSource.DataSet  do
           for I := 0 to FieldCount - 1 do
@@ -143,7 +175,7 @@ begin
             end;
           end;
       finally
-        aView.EndUpdate;
+      //  aView.EndUpdate;
       end;
     finally
       HideHourglassCursor;

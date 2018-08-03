@@ -536,6 +536,7 @@ type
     function WindowExportEnableExport: Boolean;
     procedure WindowExportExecuteCommand(const CommandID: Integer; Const ProgressHWnd : HWnd);
     function WindowExportGetExportDescription: String;
+    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -7969,13 +7970,13 @@ end;
 
 procedure TDaybk1.OnSetDetail(Sender: TObject);
 begin
-  frDaybkGrid.vDetail.DataController.DataSource := FdmMain.dsDaybkFetchData;
-
   frDaybkGrid.vDetail.DataController.MasterKeyFieldNames := 'thFolioNum';
-  frDaybkGrid.vDetail.DataController.KeyFieldNames := 'PositionId';
-
+  frDaybkGrid.vDetail.DataController.KeyFieldNames := 'tlFolioNum';
+  frDaybkGrid.vDetail.DataController.DetailKeyFieldNames := 'tlFolioNum';
+  frDaybkGrid.vDetail.DataController.DataSource := FdmMain.dsDaybookDetail;
+  FdmMain.InitDetailQuery;
   frDaybkGrid.InitColumns(frDaybkGrid.vDetail);
-
+  frDaybkGrid.vDetail.ApplyBestFit();   
 end;
 
 //PL 09/02/2017 2017-R1 ABSEXCH-13159 :  added ability to post Single Transaction on Daybook posting
@@ -8249,6 +8250,11 @@ begin
 end;
 
 //=========================================================================
+
+procedure TDaybk1.FormShow(Sender: TObject);
+begin
+  frDaybkGrid.aBestFitExecute(Sender);
+end;
 
 Initialization
 

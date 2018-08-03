@@ -52,6 +52,36 @@ type
     qryDaybkFetchDatathOriginator: TStringField;
     qryDaybkFetchDataPositionId: TAutoIncField;
     qryDaybkFetchDataOurRefPrefix: TStringField;
+    qryDetailtlFolioNum: TIntegerField;
+    qryDetailtlStockCodeTrans1: TMemoField;
+    qryDetailtlOurRef: TStringField;
+    qryDetailtlGLCode: TIntegerField;
+    qryDetailtlLineType: TStringField;
+    qryDetailtlDepartment: TStringField;
+    qryDetailtlCostCentre: TStringField;
+    qryDetailtlDocType: TIntegerField;
+    qryDetailtlQty: TFloatField;
+    qryDetailtlQtyMul: TFloatField;
+    qryDetailtlNetValue: TFloatField;
+    qryDetailtlDiscount: TFloatField;
+    qryDetailtlVATCode: TStringField;
+    qryDetailtlVATAmount: TFloatField;
+    qryDetailtlPaymentCode: TStringField;
+    qryDetailtlCost: TFloatField;
+    qryDetailtlAcCode: TStringField;
+    qryDetailtlLineDate: TStringField;
+    qryDetailtlDescription: TStringField;
+    qryDetailtlJobCode: TStringField;
+    qryDetailtlAnalysisCode: TStringField;
+    qryDetailtlStockDeductQty: TFloatField;
+    qryDetailtlLocation: TStringField;
+    qryDetailtlQtyPicked: TFloatField;
+    qryDetailtlQtyPickedWO: TFloatField;
+    qryDetailtlUsePack: TBooleanField;
+    qryDetailtlSerialQty: TFloatField;
+    qryDetailtlQtyPack: TFloatField;
+    qryDetailtlAcCodeTrans: TStringField;
+    qryDetailPositionId: TAutoIncField;
     procedure DataModuleDestroy(Sender: TObject);
     procedure qryDaybkFetchDataAfterScroll(DataSet: TDataSet);
   private
@@ -61,6 +91,8 @@ type
     { Public declarations }
     constructor Create(aOwner : TComponent); overload;
     constructor Create(aOwner : TComponent; aModuleType: TModuleType); overload;
+
+    procedure InitDetailQuery;
   end;
 
 var
@@ -169,6 +201,40 @@ var
 begin
   lKeyS := FullOurRefKey(qryDaybkFetchDatathOurRef.Value);
   Status := Find_Rec(B_GetEq,F[InvF],InvF,RecPtr[InvF]^, InvOurRefK, lKeyS);
+end;
+
+procedure TMainDataModule.InitDetailQuery;
+begin
+  if qryDetail.Active then
+    qryDetail.Close;
+
+  qryDetail.Connection  := connMain;
+
+  qryDetail.SQL.Text := ' SELECT [tlFolioNum],[tlStockCodeTrans1],[tlOurRef]   '+
+                                ' ,[tlGLCode] ,[tlLineType] ,[tlDepartment] ,[tlCostCentre] '+
+                                ' ,[tlDocType]      ,[tlQty]      ,[tlQtyMul]     ,[tlNetValue]     ,[tlDiscount]    ,[tlVATCode]     ,[tlVATAmount] '+
+                                ' ,[tlPaymentCode]  ,[tlCost]    ,[tlAcCode]   ,[tlLineDate]    ,[tlDescription]   ,[tlJobCode]    ,[tlAnalysisCode] '+
+                                ' ,[tlStockDeductQty]    ,[tlLocation]    ,[tlQtyPicked]    ,[tlQtyPickedWO]    ,[tlUsePack]    ,[tlSerialQty]       '+
+                                ' ,[tlQtyPack]      ,[tlAcCodeTrans]	  ,PositionId '+
+                                ' FROM '+  SQLUtils.GetCompanyCode(SetDrive) + '.[DETAILS] '+
+                                ' where tlDocType = :DocType1 or tlDocType = :DocType2'  ;
+
+
+  case FModuleType of
+      mtSales :  {SALES SCREEN}
+        begin
+          qryDetail.Parameters.ParamValues['DocType1'] := 0;
+          qryDetail.Parameters.ParamValues['DocType2'] := 1;
+        end; {mtSales}
+
+      mtPurchase :
+        begin    {PURCHASE SCREEN}
+          qryDetail.Parameters.ParamValues['DocType1'] := 0;
+          qryDetail.Parameters.ParamValues['DocType2'] := 1;
+        end; {mtPurchase}
+    end; {case}
+
+    qryDetail.Open;
 end;
 
 end.

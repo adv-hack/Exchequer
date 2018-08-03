@@ -9,7 +9,7 @@ object MainDataModule: TMainDataModule
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;User ID=ADM1139ZZZZ01899;Initial Catalog=Exchequer;Data' +
-      ' Source=BRD-PG00WBZY-L\SQLEXPRESS;'
+      ' Source=sonanis-pc;'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 56
@@ -136,9 +136,202 @@ object MainDataModule: TMainDataModule
   object qryDetail: TADOQuery
     Connection = connMain
     CursorType = ctStatic
-    Parameters = <>
+    Parameters = <
+      item
+        Name = 'DocType1'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end
+      item
+        Name = 'DocType2'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT [tlFolioNum],[tlStockCodeTrans1],[tlOurRef]'
+      '      ,[tlGLCode]'
+      '      ,[tlLineType]      '
+      '      ,[tlDepartment]'
+      '      ,[tlCostCentre]      '
+      '      ,[tlDocType]'
+      '      ,[tlQty]'
+      '      ,[tlQtyMul]'
+      '      ,[tlNetValue]'
+      '      ,[tlDiscount]'
+      '      ,[tlVATCode]'
+      '      ,[tlVATAmount]'
+      '      ,[tlPaymentCode]'
+      '      ,[tlCost]'
+      '      ,[tlAcCode]'
+      '      ,[tlLineDate]'
+      '      ,[tlDescription]'
+      '      ,[tlJobCode]'
+      '      ,[tlAnalysisCode]'
+      '      ,[tlStockDeductQty]'
+      '      ,[tlLocation]'
+      '      ,[tlQtyPicked]'
+      '      ,[tlQtyPickedWO]'
+      '      ,[tlUsePack]'
+      '      ,[tlSerialQty]'
+      '      ,[tlQtyPack]'
+      '      ,[tlAcCodeTrans]'
+      #9'  ,PositionId'
+      '      '
+      '  FROM [ZZZZ01].[DETAILS]'
+      ''
+      '  where tlDocType = :DocType1  or tlDocType = :DocType2'
+      '  ')
     Left = 64
     Top = 264
+    object qryDetailtlFolioNum: TIntegerField
+      FieldName = 'tlFolioNum'
+      Visible = False
+    end
+    object qryDetailtlStockCodeTrans1: TMemoField
+      DisplayLabel = 'Code'
+      FieldName = 'tlStockCodeTrans1'
+      ReadOnly = True
+      BlobType = ftMemo
+    end
+    object qryDetailtlDescription: TStringField
+      DisplayLabel = 'Description'
+      FieldName = 'tlDescription'
+      Size = 60
+    end
+    object qryDetailtlOurRef: TStringField
+      DisplayLabel = 'Our Ref'
+      FieldName = 'tlOurRef'
+      Size = 10
+    end
+    object qryDetailtlGLCode: TIntegerField
+      DisplayLabel = 'GL Code'
+      FieldName = 'tlGLCode'
+    end
+    object qryDetailtlLineType: TStringField
+      FieldName = 'tlLineType'
+      Visible = False
+      Size = 1
+    end
+    object qryDetailtlDepartment: TStringField
+      DisplayLabel = 'Department'
+      FieldName = 'tlDepartment'
+      Size = 3
+    end
+    object qryDetailtlCostCentre: TStringField
+      DisplayLabel = 'Cost Centre'
+      FieldName = 'tlCostCentre'
+      Size = 3
+    end
+    object qryDetailtlDocType: TIntegerField
+      FieldName = 'tlDocType'
+      Visible = False
+    end
+    object qryDetailtlQty: TFloatField
+      DisplayLabel = 'Qty'
+      FieldName = 'tlQty'
+      DisplayFormat = '0.00'
+    end
+    object qryDetailtlQtyMul: TFloatField
+      DisplayLabel = 'Qty Mulltiplier'
+      FieldName = 'tlQtyMul'
+      DisplayFormat = '0.00'
+    end
+    object qryDetailtlNetValue: TFloatField
+      DisplayLabel = 'Net Value'
+      FieldName = 'tlNetValue'
+      DisplayFormat = '0.00'
+    end
+    object qryDetailtlDiscount: TFloatField
+      DisplayLabel = 'Discount'
+      FieldName = 'tlDiscount'
+      DisplayFormat = '0.00'
+    end
+    object qryDetailtlVATCode: TStringField
+      DisplayLabel = 'VAT Code'
+      FieldName = 'tlVATCode'
+      Size = 1
+    end
+    object qryDetailtlVATAmount: TFloatField
+      DisplayLabel = 'VAT Amount'
+      FieldName = 'tlVATAmount'
+      Visible = False
+      DisplayFormat = '0.00'
+    end
+    object qryDetailtlPaymentCode: TStringField
+      FieldName = 'tlPaymentCode'
+      Visible = False
+      Size = 1
+    end
+    object qryDetailtlCost: TFloatField
+      FieldName = 'tlCost'
+      Visible = False
+    end
+    object qryDetailtlAcCode: TStringField
+      DisplayLabel = 'Ac Code'
+      FieldName = 'tlAcCode'
+      Size = 10
+    end
+    object qryDetailtlLineDate: TStringField
+      FieldName = 'tlLineDate'
+      Visible = False
+      Size = 8
+    end
+    object qryDetailtlJobCode: TStringField
+      FieldName = 'tlJobCode'
+      Visible = False
+      Size = 10
+    end
+    object qryDetailtlAnalysisCode: TStringField
+      FieldName = 'tlAnalysisCode'
+      Visible = False
+      Size = 10
+    end
+    object qryDetailtlStockDeductQty: TFloatField
+      DisplayLabel = 'Deduct Qty'
+      FieldName = 'tlStockDeductQty'
+    end
+    object qryDetailtlLocation: TStringField
+      DisplayLabel = 'Location'
+      FieldName = 'tlLocation'
+      Size = 3
+    end
+    object qryDetailtlQtyPicked: TFloatField
+      DisplayLabel = 'Qty Picked'
+      FieldName = 'tlQtyPicked'
+    end
+    object qryDetailtlQtyPickedWO: TFloatField
+      FieldName = 'tlQtyPickedWO'
+      Visible = False
+    end
+    object qryDetailtlUsePack: TBooleanField
+      FieldName = 'tlUsePack'
+      Visible = False
+    end
+    object qryDetailtlSerialQty: TFloatField
+      FieldName = 'tlSerialQty'
+      Visible = False
+    end
+    object qryDetailtlQtyPack: TFloatField
+      FieldName = 'tlQtyPack'
+      Visible = False
+    end
+    object qryDetailtlAcCodeTrans: TStringField
+      FieldName = 'tlAcCodeTrans'
+      ReadOnly = True
+      Visible = False
+      Size = 10
+    end
+    object qryDetailPositionId: TAutoIncField
+      FieldName = 'PositionId'
+      ReadOnly = True
+      Visible = False
+    end
   end
   object dsDaybookDetail: TDataSource
     DataSet = qryDetail

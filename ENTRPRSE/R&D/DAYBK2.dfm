@@ -29,6 +29,7 @@ object Daybk1: TDaybk1
   OnMouseDown = FormMouseDown
   OnPaint = FormPaint
   OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object DPageCtrl1: TPageControl
