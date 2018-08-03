@@ -2376,6 +2376,10 @@ begin
   frDaybkGrid.InitGridColumns;
   frDaybkGrid.OnSetDetail := OnSetDetail;
 
+  //Stop Find and Sortview
+  Finddb1Btn.Enabled := false;
+  SortViewBtn.enabled := false;
+
   MULCtrlO[0]:=TDayBkMList.Create(Self);
   MULCtrlO[0].IsDataFramework := True;
 
@@ -5798,6 +5802,7 @@ begin
         If Ok2Cont then
         Begin
           ContraCopy_Doc(Inv.FolioNum,CCMode,SCode);
+          frDaybkGrid.RefreshGrid;
 
           LastDocHed:=Inv.InvDocHed;
 
@@ -6318,12 +6323,18 @@ begin
   Begin
     if (Dest.Items[n].Name) = 'PostTransactionOnlyX' then
     begin
-      Dest.Items[n].Caption := 'Post '+ Inv.OurRef+' only';
+      if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+        Dest.Items[n].Caption := 'Post Selected only'
+      else
+        Dest.Items[n].Caption := 'Post '+ Inv.OurRef+' only';
     end
     else
     if (Dest.Items[n].Name) = 'PostTransactionWithReportX' then
     begin
-      Dest.Items[n].Caption := 'Post '+ Inv.OurRef+' with Posting Report';
+      if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+        Dest.Items[n].Caption := 'Post Selected with Posting Report'
+      else
+        Dest.Items[n].Caption := 'Post '+ Inv.OurRef+' with Posting Report';
     end;
 
   end;
@@ -6350,7 +6361,7 @@ begin
     Begin
       X:=X-50;
       Y:=Y-15;
-    end;
+    end;   
     PopUpMenu5.PopUp(ListPoint.X,ListPoint.Y);
   end
   //PL 09/02/2017 2017-R1 ABSEXCH-13159 :  added ability to post Single Transaction on Daybook posting
@@ -7928,8 +7939,16 @@ var
 begin
   if SingleDaybkVisible then
   begin
-    PostTransactionOnly.Caption := 'Post '+ Inv.OurRef+' only';
-    PostTransactionWithReport.Caption := 'Post '+ Inv.OurRef+' with Posting Report';
+    if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+    begin
+      PostTransactionOnly.Caption := 'Post Selected only';
+      PostTransactionWithReport.Caption := 'Post Selected with Posting Report';
+    end
+    else
+    begin
+      PostTransactionOnly.Caption := 'Post '+ Inv.OurRef+' only';
+      PostTransactionWithReport.Caption := 'Post '+ Inv.OurRef +' with Posting Report';
+    end;
 
     PostTransactionOnly.Visible := BOn;
     PostTransactionWithReport.Visible := BOn;
@@ -8004,7 +8023,10 @@ begin
     EXIT;
   Try
   lPostRunNo := 0;
-  lMsg := Format(cPostConfirmation, [Inv.OurRef]);
+  if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+    lMsg := 'Are you sure you want to post Selected transactions?'
+  else
+    lMsg := Format(cPostConfirmation, [Inv.OurRef]);
 
   if MessageDlg(lMsg, mtConfirmation, [mbOK,mbCancel], 0) = mrOK  then
   begin
@@ -8105,9 +8127,13 @@ begin
               lProgressFrm := nil;
             end;
 
-            ShowMessage('Transaction '+Inv.OurRef+' has been posted successfully');
+            if (frDaybkGrid.vMain.Controller.SelectedRowCount >= 2) then
+              ShowMessage('Selected transactions have been posted successfully')
+            else
+              ShowMessage('Transaction '+Inv.OurRef+' has been posted successfully');
           end;
           RefreshList;
+          frDaybkGrid.RefreshGrid;
         end //if lExcludeLog = EmptyStr
         else
           MessageDlg(lExcludeLog, mtError, [mbOK], 0);
