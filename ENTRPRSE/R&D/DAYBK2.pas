@@ -4060,7 +4060,11 @@ Begin
 
           With MULCtrlO[WParam-100] do
           Begin
-            if IsDataFramework then Exit;
+            if IsDataFramework then
+            begin
+              frDaybkGrid.RefreshGrid;
+              Exit;
+            end;
               If ((DocHed In SalesSplit) and (Inv.InvDocHed In SalesSplit)) or ((DocHed In PurchSplit) and (Inv.InvDocHed In PurchSplit))
               or ((DocHed In WOPSplit) and (Inv.InvDocHed In WOPSplit))
               {$IFDEF RET}  or ((DocHed In StkRETSplit) and (Inv.InvDocHed In StkRetSplit)) {$ENDIF}
