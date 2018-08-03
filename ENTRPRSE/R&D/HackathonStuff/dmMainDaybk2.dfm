@@ -9,7 +9,7 @@ object MainDataModule: TMainDataModule
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
       'fo=False;User ID=ADM1139ZZZZ01899;Initial Catalog=Exchequer;Data' +
-      ' Source=sonanis-pc;'
+      ' Source=RAHULB-PC;'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 56
@@ -20,112 +20,185 @@ object MainDataModule: TMainDataModule
     CursorType = ctStatic
     AfterScroll = qryDaybkFetchDataAfterScroll
     Parameters = <>
+    SQL.Strings = (
+      ''
+      
+        ' SELECT [thRunNo] ,[thOurRef]   ,[thAcCode],Convert(date, [thTra' +
+        'nsDate], 103) as thTransDate_1,(Str(thYear+1900) + '#39'-'#39'+lTrim(Str' +
+        '(thperiod))) as Period ,'
+      
+        ' [thNetValue] + [thTotalVAT] as Amount ,[thHoldFlag] ,CurrencyCo' +
+        'de , Curr.Description ,'
+      
+        ' Curr.PrintSymbol ,[thNomAuto]  ,[thFolioNum] ,[thCurrency] ,[th' +
+        'DueDate]  ,[thCustSupp] ,[thCompanyRate] ,'
+      
+        ' [thDailyRate]   ,[thDocType]     ,[thTotalLineDiscount] ,[thOpe' +
+        'rator]          ,[thDeliveryNoteRef]   ,[thControlGL]         ,[' +
+        'thJobCode]           ,'
+      
+        ' [thPostedDate]        ,[thPORPickSOR]        ,[thYourRef]      ' +
+        '     ,[thOriginator]        ,[PositionId]          ,'
+      
+        ' [OurRefPrefix]        ,[thTagged]           ,[thPrinted]       ' +
+        '    ,[thIncludeInPickingRun]'
+      
+        ' FROM ZZZZ01.[DOCUMENT] Doc inner join ZZZZ01.[CURRENCY] Curr on' +
+        ' Doc.thcurrency = Curr.currencycode'
+      
+        ' where [OurRefPrefix] = '#39'S'#39' and [thRunNo] = 0 and (Doc.thFolioNu' +
+        'm > -2147483647) and (Doc.thFolioNum < 2147483647) and Doc.thDoc' +
+        'Type <> 7 ')
     Left = 40
     Top = 112
     object qryDaybkFetchDatathRunNo: TIntegerField
       FieldName = 'thRunNo'
+      Visible = False
     end
     object qryDaybkFetchDataCurrencyCode: TIntegerField
       FieldName = 'CurrencyCode'
+      Visible = False
     end
     object qryDaybkFetchDataDescription: TStringField
       FieldName = 'Description'
+      Visible = False
       Size = 11
     end
-    object qryDaybkFetchDataPrintSymbol: TStringField
-      FieldName = 'PrintSymbol'
-      Size = 3
-    end
     object qryDaybkFetchDatathAcCode: TStringField
+      DisplayLabel = 'A/C'
       FieldName = 'thAcCode'
       Size = 10
     end
     object qryDaybkFetchDatathNomAuto: TBooleanField
       FieldName = 'thNomAuto'
+      Visible = False
     end
     object qryDaybkFetchDatathOurRef: TStringField
+      DisplayLabel = 'Our Ref'
       FieldName = 'thOurRef'
       Size = 10
     end
     object qryDaybkFetchDatathFolioNum: TIntegerField
       FieldName = 'thFolioNum'
+      Visible = False
     end
     object qryDaybkFetchDatathCurrency: TIntegerField
       FieldName = 'thCurrency'
+      Visible = False
     end
-    object qryDaybkFetchDatathYear: TIntegerField
-      FieldName = 'thYear'
-    end
-    object qryDaybkFetchDatathPeriod: TIntegerField
-      FieldName = 'thPeriod'
+    object qryDaybkFetchDataPeriod: TStringField
+      FieldName = 'Period'
+      ReadOnly = True
+      Visible = False
+      Size = 21
     end
     object qryDaybkFetchDatathDueDate: TStringField
+      DisplayLabel = 'Due Date'
       FieldName = 'thDueDate'
-      Size = 8
-    end
-    object qryDaybkFetchDatathTransDate: TStringField
-      FieldName = 'thTransDate'
+      Visible = False
       Size = 8
     end
     object qryDaybkFetchDatathCustSupp: TStringField
       FieldName = 'thCustSupp'
+      Visible = False
       Size = 1
     end
     object qryDaybkFetchDatathCompanyRate: TFloatField
       FieldName = 'thCompanyRate'
+      Visible = False
     end
     object qryDaybkFetchDatathDailyRate: TFloatField
       FieldName = 'thDailyRate'
+      Visible = False
     end
     object qryDaybkFetchDatathDocType: TIntegerField
       FieldName = 'thDocType'
-    end
-    object qryDaybkFetchDatathNetValue: TFloatField
-      FieldName = 'thNetValue'
-    end
-    object qryDaybkFetchDatathTotalVAT: TFloatField
-      FieldName = 'thTotalVAT'
+      Visible = False
     end
     object qryDaybkFetchDatathTotalLineDiscount: TFloatField
       FieldName = 'thTotalLineDiscount'
+      Visible = False
     end
     object qryDaybkFetchDatathOperator: TStringField
+      DisplayLabel = 'User'
       FieldName = 'thOperator'
       Size = 10
     end
     object qryDaybkFetchDatathDeliveryNoteRef: TStringField
       FieldName = 'thDeliveryNoteRef'
+      Visible = False
       Size = 10
     end
     object qryDaybkFetchDatathControlGL: TIntegerField
       FieldName = 'thControlGL'
+      Visible = False
     end
     object qryDaybkFetchDatathJobCode: TStringField
       FieldName = 'thJobCode'
+      Visible = False
       Size = 10
     end
     object qryDaybkFetchDatathPostedDate: TStringField
       FieldName = 'thPostedDate'
+      Visible = False
       Size = 8
     end
     object qryDaybkFetchDatathPORPickSOR: TBooleanField
       FieldName = 'thPORPickSOR'
+      Visible = False
+    end
+    object qryDaybkFetchDataPrintSymbol: TStringField
+      DisplayLabel = 'Currency'
+      FieldName = 'PrintSymbol'
+      OnGetText = qryDaybkFetchDataPrintSymbolGetText
+      Size = 3
     end
     object qryDaybkFetchDatathYourRef: TStringField
+      DisplayLabel = 'Your Ref'
       FieldName = 'thYourRef'
     end
     object qryDaybkFetchDatathOriginator: TStringField
       FieldName = 'thOriginator'
+      Visible = False
       Size = 36
     end
     object qryDaybkFetchDataPositionId: TAutoIncField
       FieldName = 'PositionId'
       ReadOnly = True
+      Visible = False
     end
     object qryDaybkFetchDataOurRefPrefix: TStringField
       FieldName = 'OurRefPrefix'
       ReadOnly = True
+      Visible = False
       Size = 1
+    end
+    object qryDaybkFetchDataAmount: TFloatField
+      FieldName = 'Amount'
+      ReadOnly = True
+      DisplayFormat = '0.00'
+    end
+    object qryDaybkFetchDatathHoldFlag: TIntegerField
+      DisplayLabel = 'Status'
+      FieldName = 'thHoldFlag'
+      OnGetText = qryDaybkFetchDatathHoldFlagGetText
+    end
+    object qryDaybkFetchDatathTagged: TIntegerField
+      FieldName = 'thTagged'
+      Visible = False
+    end
+    object qryDaybkFetchDatathPrinted: TBooleanField
+      FieldName = 'thPrinted'
+      Visible = False
+    end
+    object qryDaybkFetchDatathIncludeInPickingRun: TBooleanField
+      FieldName = 'thIncludeInPickingRun'
+      Visible = False
+    end
+    object qryDaybkFetchDatathTransDate_1: TStringField
+      DisplayLabel = 'Date'
+      FieldName = 'thTransDate_1'
+      Size = 10
     end
   end
   object dsDaybkFetchData: TDataSource

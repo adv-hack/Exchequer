@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, SQLCallerU, DB, ADODB, SQLUtils, GlobVar, Dialogs, Varconst,
-  Btrvu2, BtKeys1U;
+  Btrvu2, BtKeys1U, BTSupU2, SysU1, ETDateU;
 
 const
   NonDocTypeForPurch = 22;
@@ -31,16 +31,12 @@ type
     qryDaybkFetchDatathOurRef: TStringField;
     qryDaybkFetchDatathFolioNum: TIntegerField;
     qryDaybkFetchDatathCurrency: TIntegerField;
-    qryDaybkFetchDatathYear: TIntegerField;
-    qryDaybkFetchDatathPeriod: TIntegerField;
+    qryDaybkFetchDataPeriod: TStringField;
     qryDaybkFetchDatathDueDate: TStringField;
-    qryDaybkFetchDatathTransDate: TStringField;
     qryDaybkFetchDatathCustSupp: TStringField;
     qryDaybkFetchDatathCompanyRate: TFloatField;
     qryDaybkFetchDatathDailyRate: TFloatField;
     qryDaybkFetchDatathDocType: TIntegerField;
-    qryDaybkFetchDatathNetValue: TFloatField;
-    qryDaybkFetchDatathTotalVAT: TFloatField;
     qryDaybkFetchDatathTotalLineDiscount: TFloatField;
     qryDaybkFetchDatathOperator: TStringField;
     qryDaybkFetchDatathDeliveryNoteRef: TStringField;
@@ -52,6 +48,12 @@ type
     qryDaybkFetchDatathOriginator: TStringField;
     qryDaybkFetchDataPositionId: TAutoIncField;
     qryDaybkFetchDataOurRefPrefix: TStringField;
+	qryDaybkFetchDataAmount: TFloatField;
+    qryDaybkFetchDatathHoldFlag: TIntegerField;
+    qryDaybkFetchDatathTagged: TIntegerField;
+    qryDaybkFetchDatathPrinted: TBooleanField;
+    qryDaybkFetchDatathIncludeInPickingRun: TBooleanField;
+    qryDaybkFetchDatathTransDate_1: TStringField;
     qryDetailtlFolioNum: TIntegerField;
     qryDetailtlStockCodeTrans1: TMemoField;
     qryDetailtlOurRef: TStringField;
@@ -84,6 +86,12 @@ type
     qryDetailPositionId: TAutoIncField;
     procedure DataModuleDestroy(Sender: TObject);
     procedure qryDaybkFetchDataAfterScroll(DataSet: TDataSet);
+    procedure qryDaybkFetchDataPrintSymbolGetText(Sender: TField;
+      var Text: String; DisplayText: Boolean);
+    procedure qryDaybkFetchDatathHoldFlagGetText(Sender: TField;
+      var Text: String; DisplayText: Boolean);
+    procedure qryDaybkFetchDatathTransDateGetText(Sender: TField;
+      var Text: String; DisplayText: Boolean);
   private
     { Private declarations }
     FModuleType: TModuleType;
@@ -131,22 +139,24 @@ begin
                                  // '(thFolioNum < 2147483647) AND ' +
                                  // 'thDocType <> :thdoctype';
 
-      qryDaybkFetchData.SQL.Text := ' SELECT [thRunNo],CurrencyCode, Curr.Description, Curr.PrintSymbol '+
-                                      ',[thAcCode]'+
-                                      ',[thNomAuto]  '+
+      qryDaybkFetchData.SQL.Text := ' SELECT [thRunNo] '+
                                       ',[thOurRef]   '+
+                                      ',[thAcCode]'+
+                                      ',Convert(DATE, [thTransDate], 103) as thTransDate_1'+
+                                      ',(Str(thYear+1900) + ' + QuotedStr('-') + '+lTrim(Str(thperiod))) as Period ' +
+                                      ',[thNetValue] + [thTotalVAT] as Amount '+
+                                      ',[thHoldFlag] ' + 
+                                      ',CurrencyCode ' +
+                                      ', Curr.Description ' +
+                                      ', Curr.PrintSymbol '+
+                                      ',[thNomAuto]  '+
                                       ',[thFolioNum] '+
                                       ',[thCurrency] '+
-                                      ',[thYear]     '+
-                                      ',[thPeriod]   '+
                                       ',[thDueDate]  '+
-                                      ',[thTransDate]'+
                                       ',[thCustSupp] '+
                                       ',[thCompanyRate] '+
                                       ',[thDailyRate]   '+
                                       ',[thDocType]     '+
-                                      ',[thNetValue]    '+
-                                      ',[thTotalVAT]    '+
                                       ',[thTotalLineDiscount] '+
                                       ',[thOperator]          '+
                                       ',[thDeliveryNoteRef]   '+
@@ -158,6 +168,9 @@ begin
                                       ',[thOriginator]        '+
                                       ',[PositionId]          '+
                                       ',[OurRefPrefix]        '+
+                                      ',[thTagged]           '+
+                                      ',[thPrinted]           '+
+                                      ',[thIncludeInPickingRun] '+
 
      'FROM ' + SQLUtils.GetCompanyCode(SetDrive) + '.[DOCUMENT] Doc ' +
 	  'inner join ' + SQLUtils.GetCompanyCode(SetDrive) + '.[CURRENCY] Curr on Doc.thcurrency = Curr.currencycode ' +
@@ -235,6 +248,24 @@ begin
     end; {case}
 
     qryDetail.Open;
+end;
+
+procedure TMainDataModule.qryDaybkFetchDataPrintSymbolGetText(
+  Sender: TField; var Text: String; DisplayText: Boolean);
+begin
+  Text := TxLatePound(Sender.Value, True);
+end;
+
+procedure TMainDataModule.qryDaybkFetchDatathHoldFlagGetText(
+  Sender: TField; var Text: String; DisplayText: Boolean);
+begin
+  Text := Disp_HoldPStat(Sender.Value,qryDaybkFetchDatathTagged.Value, qryDaybkFetchDatathPrinted.Value, BOff,(qryDaybkFetchDatathIncludeInPickingRun.Value));
+end;
+
+procedure TMainDataModule.qryDaybkFetchDatathTransDateGetText(
+  Sender: TField; var Text: String; DisplayText: Boolean);
+begin
+  //Text := POutDate(Sender.Value);
 end;
 
 end.
