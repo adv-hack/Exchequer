@@ -127,12 +127,11 @@ begin
                                       ',[PositionId]          '+
                                       ',[OurRefPrefix]        '+
 
-     'FROM ' + SQLUtils.GetCompanyCode(SetDrive) + '.[DOCUMENT] Doc' +
-	  'inner join ' + SQLUtils.GetCompanyCode(SetDrive) + '.[CURRENCY] Curr on Doc.thcurrency =Curr.currencycode ' +
-    'where [OurRefPrefix] =: ''S''and [thRunNo] =: 0 and (Doc.thFolioNum > -2147483647) and (Doc.thFolioNum < 2147483647) and Doc.thDocType <> 7 ' ;
+     'FROM ' + SQLUtils.GetCompanyCode(SetDrive) + '.[DOCUMENT] Doc ' +
+	  'inner join ' + SQLUtils.GetCompanyCode(SetDrive) + '.[CURRENCY] Curr on Doc.thcurrency = Curr.currencycode ' +
+    'where [OurRefPrefix] = :ourrefprefix and [thRunNo] = 0 and (Doc.thFolioNum > -2147483647) and (Doc.thFolioNum < 2147483647) and Doc.thDocType <> :thdoctype ' ;
 
     //Now we initialise query with proper where clause
-
     case FModuleType of
       mtSales :  {SALES SCREEN}
         begin
