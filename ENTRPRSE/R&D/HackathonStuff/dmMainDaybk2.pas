@@ -229,6 +229,8 @@ type
     qryDaybkFetchDatathLongYourRefTrans: TMemoField;
     qryDaybkFetchDatathBatchLinkTrans: TMemoField;
     dsDaybkFetchData: TDataSource;
+    qryDetail: TADOQuery;
+    dsDaybookDetail: TDataSource;
     procedure DataModuleDestroy(Sender: TObject);
     procedure qryDaybkFetchDataAfterScroll(DataSet: TDataSet);
   private

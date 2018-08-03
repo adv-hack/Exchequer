@@ -39,6 +39,7 @@ type
     procedure aShowDetailExecute(Sender: TObject);
   private
     FAutoloadColumn: Boolean;
+    FOnSetDetail: TNotifyEvent;
     procedure SetAutoloadColumn(const Value: Boolean);
     procedure InitColumns(aView: TcxGridDBTableView);
     { Private declarations }
@@ -57,6 +58,7 @@ type
     procedure InitGridColumns();
 
     property AutoloadColumn : Boolean read FAutoloadColumn write SetAutoloadColumn;
+    property OnSetDetail : TNotifyEvent read FOnSetDetail write FOnSetDetail;  
   end;
 
 var
@@ -229,6 +231,15 @@ begin
   inherited;
   lvlDetail.Visible := not lvlDetail.Visible;
   mniShowDetail.Checked := lvlDetail.Visible;
+
+  if Assigned(FOnSetDetail) and lvlDetail.Visible then
+  begin
+    FOnSetDetail(Self)
+  end else
+  begin
+    vDetail.DataController.DataSource := nil;
+  end;
+
 end;
 
 procedure TfrDataGrid.RefreshGrid;

@@ -1,8 +1,8 @@
 object MainDataModule: TMainDataModule
   OldCreateOrder = False
   OnDestroy = DataModuleDestroy
-  Left = 393
-  Top = 165
+  Left = 182
+  Top = 161
   Height = 495
   Width = 756
   object connMain: TADOConnection
@@ -928,5 +928,17 @@ object MainDataModule: TMainDataModule
     DataSet = qryDaybkFetchData
     Left = 160
     Top = 112
+  end
+  object qryDetail: TADOQuery
+    Connection = connMain
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 64
+    Top = 264
+  end
+  object dsDaybookDetail: TDataSource
+    DataSet = qryDetail
+    Left = 176
+    Top = 248
   end
 end

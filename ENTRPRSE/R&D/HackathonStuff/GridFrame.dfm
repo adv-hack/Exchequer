@@ -23,6 +23,7 @@ inherited frDataGrid: TfrDataGrid
         NavigatorButtons.Refresh.Visible = False
         NavigatorButtons.SaveBookmark.Visible = False
         NavigatorButtons.GotoBookmark.Visible = False
+        DataController.KeyFieldNames = 'PositionId'
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
