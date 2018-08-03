@@ -41,13 +41,13 @@ type
     FAutoloadColumn: Boolean;
     FOnSetDetail: TNotifyEvent;
     procedure SetAutoloadColumn(const Value: Boolean);
-    procedure InitColumns(aView: TcxGridDBTableView);
+
     { Private declarations }
   public
     { Public declarations }
 
     constructor Create(AOwner: TComponent); override;
-
+    procedure InitColumns(aView: TcxGridDBTableView);
     procedure Init(); override;
     procedure ExpandAll(); override;
     procedure CollapseAll(); override;
