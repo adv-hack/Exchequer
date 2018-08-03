@@ -799,6 +799,8 @@ type
                                    Var   Dest    :  TMenuItem;
                                          Extended: Boolean = False);
     procedure SingleDaybookPost(WithReport : Boolean);
+
+    procedure OnSetDetail(Sender: TObject);
   public
     { Public declarations }
 
@@ -831,6 +833,8 @@ type
     // MH 08/10/2014 ABSEXCH-15698: Added method to allow the Payment and Refund dialogs
     //                              for Order Payments to refresh the daybooks
     Procedure UpdateForOrderPaymentsTransactions (Const OurRef : String);
+
+
   end;
 
 
@@ -2370,6 +2374,7 @@ begin
 
   frDaybkGrid.vMain.DataController.DataSource := FdmMain.dsDaybkFetchData;
   frDaybkGrid.InitGridColumns;
+  frDaybkGrid.OnSetDetail := OnSetDetail;
 
   MULCtrlO[0]:=TDayBkMList.Create(Self);
   MULCtrlO[0].IsDataFramework := True;
@@ -7940,6 +7945,18 @@ begin
     PostTransactionOnly.Visible := BOff ;
     PostTransactionWithReport.Visible := BOff ;
   end;
+end;
+
+
+procedure TDaybk1.OnSetDetail(Sender: TObject);
+begin
+  frDaybkGrid.vDetail.DataController.DataSource := FdmMain.dsDaybkFetchData;
+
+  frDaybkGrid.vDetail.DataController.MasterKeyFieldNames := 'thFolioNum';
+  frDaybkGrid.vDetail.DataController.KeyFieldNames := 'PositionId';
+
+  frDaybkGrid.InitColumns(frDaybkGrid.vDetail);
+
 end;
 
 //PL 09/02/2017 2017-R1 ABSEXCH-13159 :  added ability to post Single Transaction on Daybook posting
